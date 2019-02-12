@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>四川工商学院毕业设计管理系统</title>
+    <link rel="icon" href="assets/img/bitbug_favicon.ico" type="img/x-ico"/>
+    <!-- Bootstrap Styles-->
+    <link href="assets/css/bootstrap.css" rel="stylesheet"/>
+    <!-- 字体图标 Styles-->
+    <link href="assets/css/iconfont.css" rel="stylesheet"/>
+    <!-- 分页 Styles-->
+    <link href="assets/css/pagination.css" rel="stylesheet"/>
+    <!-- 自定义 Styles-->
+    <link href="assets/css/custom-styles.css" rel="stylesheet"/>
+</head>
+<body>
+<!--引入公告模块-->
+<div id="publicNavigation"></div>
+
+<!--主体内容开始-->
+<div id="page-wrapper">
+    <div class="header">
+        <h3 class="page-header">
+            通知公告
+        </h3>
+        <ol class="breadcrumb">
+            <li><a href="index.html">首页</a></li>
+            <li><a href="announcements.html">通知公告</a></li>
+            <li class="active">数据</li>
+        </ol>
+    </div>
+    <div id="page-inner">
+        <!--通知公告开始-->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        通知公告
+                    </div>
+                    <div class="panel-body">
+                        <div class="alert alert-success textEllipsis">
+                            <strong>
+                                <span class="colorf44">1分钟前</span> 选题
+                            </strong> 选题时间
+                        </div>
+                        <div class="alert alert-info textEllipsis">
+                            <strong>
+                                <span class="colorf44">2分钟前</span> 开题报告
+                            </strong> 提交开题报告
+                        </div>
+                        <div class="alert alert-warning textEllipsis">
+                            <strong>
+                                <span class="colorf44">3分钟前</span> 过程文档
+                            </strong>
+                            提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档
+                        </div>
+                        <div class="alert alert-danger textEllipsis">
+                            <strong>
+                                <span class="colorf44">5分钟前</span> 提交论文
+                            </strong> 论文截止时间
+                        </div>
+                        <!--分页开始-->
+                        <div class="m-style"></div>
+                        <!--分页结束-->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--通知公告结束-->
+    </div>
+</div>
+</div>
+<!--主体内容结束-->
+<!-- jQuery Js -->
+<script src="assets/js/jquery-1.10.2.js"></script>
+<script>
+    $("#publicNavigation").load("./publicNavigation.html");
+</script>
+</body>
+</html>

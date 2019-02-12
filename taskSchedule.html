@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>四川工商学院毕业设计管理系统</title>
+    <link rel="icon" href="assets/img/bitbug_favicon.ico" type="img/x-ico"/>
+    <!-- Bootstrap Styles-->
+    <link href="assets/css/bootstrap.css" rel="stylesheet"/>
+    <!-- 自定义 Styles-->
+    <link href="assets/css/custom-styles.css" rel="stylesheet"/>
+</head>
+<body>
+<!--引入公告模块-->
+<div id="publicNavigation"></div>
+
+<div id="page-wrapper">
+    <div class="header">
+        <h3 class="page-header">
+            任务进度
+        </h3>
+        <ol class="breadcrumb">
+            <li><a href="index.html">首页</a></li>
+            <li><a href="taskSchedule.html">任务进度</a></li>
+            <li class="active">数据</li>
+        </ol>
+    </div>
+    <div id="page-inner">
+        <!--任务进度开始-->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        任务进度
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-xs-6 col-md-3">
+                                <div class="whiteBagColor">
+                                    <div style="text-align: center">
+                                        <h4><a href="#">开题报告</a></h4>
+                                        <div class="easypiechart easypiechart-blue" data-percent="20"><span
+                                                class="percent">20%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-6 col-md-3">
+                                <div class="whiteBagColor">
+                                    <div style="text-align: center">
+                                        <h4><a href="#">中期检查</a></h4>
+                                        <div class="easypiechart easypiechart-red" data-percent="0"><span
+                                                class="percent">0%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-6 col-md-3">
+                                <div class="whiteBagColor">
+                                    <div style="text-align: center">
+                                        <h4><a href="#">指导记录</a></h4>
+                                        <div class="easypiechart easypiechart-teal" data-percent="60"><span
+                                                class="percent">60%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-6 col-md-3">
+                                <div class="whiteBagColor">
+                                    <div style="text-align: center">
+                                        <h4><a href="#">外文翻译</a></h4>
+                                        <div class="easypiechart easypiechart-orange" data-percent="90"><span
+                                                class="percent">90%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--分页开始-->
+                        <div class="m-style"></div>
+                        <!--分页结束-->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--任务进度结束-->
+    </div>
+</div>
+</div>
+
+<!-- jQuery Js -->
+<script src="assets/js/jquery-1.10.2.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#publicNavigation").load("./publicNavigation.html");
+    });
+</script>
+
+</body>
+</html>

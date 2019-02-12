@@ -1,0 +1,23 @@
+.confirm {
+    color: #fff !important;
+    background-color: #07c160;
+    border-color: #07c160 !important;
+}
+
+.reset {
+    color: #fff !important;
+    background-color: #f44;
+    border-color: #f44 !important;
+}
+
+.buttons {
+    background-color: #00acd6;
+    /*margin-top: 20px;*/
+    text-align: center;
+    height: 30px;
+    line-height: 30px;
+}
+
+.paddingTop {
+    padding-top: 20px;
+}

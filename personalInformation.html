@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>四川工商学院毕业设计管理系统</title>
+    <link rel="icon" href="assets/img/bitbug_favicon.ico" type="img/x-ico"/>
+    <!-- Bootstrap Styles-->
+    <link href="assets/css/bootstrap.css" rel="stylesheet"/>
+    <!-- 字体图标 Styles-->
+    <link href="assets/css/iconfont.css" rel="stylesheet"/>
+    <!-- 分页 Styles-->
+    <link href="assets/css/pagination.css" rel="stylesheet"/>
+    <!-- 自定义 Styles-->
+    <link href="assets/css/custom-styles.css" rel="stylesheet"/>
+    <!-- 自定义 Styles-->
+    <link href="assets/css/changePass.css" rel="stylesheet"/>
+</head>
+<body>
+<!--引入公告模块-->
+<div id="publicNavigation"></div>
+
+<!--个人信息开始-->
+<div id="page-wrapper">
+    <div class="header">
+        <h3 class="page-header">
+            个人信息
+        </h3>
+        <ol class="breadcrumb">
+            <li><a href="index.html">首页</a></li>
+            <li><a href="cpersonalInformation.html">个人信息</a></li>
+            <li class="active">数据</li>
+        </ol>
+    </div>
+    <div id="page-inner">
+        <!--修改密码开始-->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        个人信息
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-3"></div>
+                            <div class="col-md-6">
+                                    <div class="panel-body">
+                                        <div class="table-responsive">
+                                            <table class="table">
+                                                <tbody>
+                                                <tr class="success">
+                                                    <td>姓名</td>
+                                                    <td>XXX</td>
+                                                </tr>
+                                                <tr class="info">
+                                                    <td>学号</td>
+                                                    <td>xxxxxxxxxxxx</td>
+                                                </tr>
+                                                <tr class="warning">
+                                                    <td>角色</td>
+                                                    <td>学生</td>
+                                                </tr>
+                                                <tr class="danger">
+                                                    <td>专业</td>
+                                                    <td>计算机</td>
+                                                </tr>
+                                                <tr class="success">
+                                                    <td>学年</td>
+                                                    <td>2018-2019</td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--个人信息结束-->
+    </div>
+</div>
+<!--主体内容结束-->
+<!-- jQuery Js -->
+<script src="assets/js/jquery-1.10.2.js"></script>
+<script>
+    $("#publicNavigation").load("./publicNavigation.html");
+</script>
+</body>
+</html>
