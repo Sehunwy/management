@@ -5,6 +5,10 @@
     zoom: 1;
 }
 
+.m-style input {
+    text-align: center !important;
+}
+
 .m-style:before,
 .m-style:after {
     content: "";

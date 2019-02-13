@@ -8,6 +8,19 @@ body {
     display: none;
 }
 
+.drop-down::-webkit-calendar-picker-indicator {
+    opacity: 100;
+    position: absolute;
+    right: 16px;
+    display: block;
+    padding: 11px;
+    z-index: 1;
+    font-size: 0;
+    background-color: #fff;
+    cursor: pointer;
+    background-image: url('../img/drop-down.png');
+}
+
 ::-webkit-calendar-picker-indicator {
     opacity: 100;
     position: absolute;
@@ -16,10 +29,9 @@ body {
     padding: 11px;
     z-index: 1;
     font-size: 0;
+    background-color: #fff;
+    cursor: pointer;
     background-image: url('../img/date.png');
-    /*visibility:hidden*/
-    /*margin-left: 10px;*/
-    /*display: none;*/
 }
 
 input {

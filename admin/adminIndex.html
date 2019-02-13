@@ -32,118 +32,22 @@
             <span id="sideNav" class="iconfont icon-right-s packUpIcon"></span>
         </div>
         <ul class="nav navbar-top-links navbar-right">
-            <!--任务进度开始-->
-            <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
-                    <span class="iconfont icon-jindu iconColor fontSize14"></span>
-                    <span class="iconfont icon-jiantou iconColor fontSize8"></span>
-                </a>
-                <ul class="dropdown-menu dropdown-tasks">
-                    <li>
-                        <a href="#">
-                            <div>
-                                <p>
-                                    <strong>开题报告</strong>
-                                    <span class="pull-right text-muted">60% 完成</span>
-                                </p>
-                                <div class="progress progress-striped active">
-                                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60"
-                                         aria-valuemin="0" aria-valuemax="100" style="width: 60%"></div>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                    <!--分割线-->
-                    <li class="divider"></li>
-                    <li>
-                        <a href="#">
-                            <div>
-                                <p>
-                                    <strong>中期检查</strong>
-                                    <span class="pull-right text-muted">28% 完成</span>
-                                </p>
-                                <div class="progress progress-striped active">
-                                    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="28"
-                                         aria-valuemin="0" aria-valuemax="100" style="width: 28%"></div>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a href="#">
-                            <div>
-                                <p>
-                                    <strong>指导记录</strong>
-                                    <span class="pull-right text-muted">60% 完成</span>
-                                </p>
-                                <div class="progress progress-striped active">
-                                    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60"
-                                         aria-valuemin="0" aria-valuemax="100" style="width: 60%"></div>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a class="text-center" href="./taskSchedule.html">
-                            <strong>查看更多任务进度</strong>
-                            <i class="fa fa-angle-right"></i>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-            <!--任务进度结束-->
-            <!--通知开始-->
-            <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
-                    <span class="iconfont icon-lingdang iconColor fontSize14"></span>
-                    <span class="iconfont icon-jiantou iconColor fontSize8"></span>
-                </a>
-                <ul class="dropdown-menu dropdown-alerts">
-                    <li>
-                        <a href="#">
-                            <div>
-                                <i class="fa fa-comment fa-fw"></i> 选题事项
-                                <span class="pull-right text-muted small">4分钟前</span>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a href="#">
-                            <div>
-                                <i class="fa fa-comment fa-fw"></i> 开题报告
-                                <span class="pull-right text-muted small">12分钟前</span>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a class="text-center" href="./notice.html">
-                            <strong>查看更多通知</strong>
-                            <i class="fa fa-angle-right"></i>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-            <!--通知结束-->
             <!--个人信息开始-->
             <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
                     <span class="iconfont icon-wode iconColor fontSize14"></span>
                     <span class="iconfont icon-jiantou iconColor fontSize8"></span>
                 </a>
-                <ul class="dropdown-menu dropdown-user">
+                <ul class="dropdown-menu dropdown-user topBar">
                     <li>
-                        <a href="personalInformation.html">
+                        <a href="#" id="management_nine">
                             <span class="paddingIco iconfont icon-wode"></span>
                             个人信息
                         </a>
                     </li>
                     <li class="divider"></li>
                     <li>
-                        <a href="./changePassword.html">
+                        <a href="#" id="management_ten">
                             <span class="paddingIco iconfont icon-xiugaimima01"></span>
                             修改密码
                         </a>
@@ -165,14 +69,14 @@
     <!--侧导航栏开始-->
     <nav class="navbar-default navbar-side">
         <div class="sidebar-collapse">
-            <ul class="nav list-unstyled" id="sideBarAdmin" id="sideBar">
+            <ul class="nav list-unstyled" id="sideBar">
                 <li>
                     <a href="#" class="active-menu" id="management_one">
-                        <span class="iconfont icon-dabian iconColorWhite fontSize14 naviconpadding"></span>课题管理
+                        <span class="iconfont icon-lunwentimu iconColor fontSize14 naviconpadding"></span>课题管理
                     </a>
                 </li>
                 <li><a href="#" id="management_two">
-                    <span class="iconfont icon-xuanti-mingcheng iconColorWhite fontSize14 naviconpadding"></span>答辩管理
+                    <span class="iconfont icon-dabian iconColorWhite fontSize14 naviconpadding"></span>答辩管理
                 </a>
                 </li>
                 <li><a href="#" id="management_three">
@@ -180,23 +84,23 @@
                 </a>
                 </li>
                 <li><a href="#" id="management_four">
-                    <span class="iconfont icon-dabian iconColorWhite fontSize14 naviconpadding"></span>用户管理
+                    <span class="iconfont icon-yonghu-tianchong iconColorWhite fontSize14 naviconpadding"></span>用户管理
                 </a>
                 </li>
                 <li><a href="#" id="management_five">
-                    <span class="iconfont icon-dabian iconColorWhite fontSize14 naviconpadding"></span>安全管理
+                    <span class="iconfont icon-anquan iconColorWhite fontSize14 naviconpadding"></span>安全管理
                 </a>
                 </li>
                 <li><a href="#" id="management_six">
-                    <span class="iconfont icon-dabian iconColorWhite fontSize14 naviconpadding"></span>历届优秀管理
+                    <span class="iconfont icon-icon-test iconColorWhite fontSize14 naviconpadding"></span>历届优秀管理
                 </a>
                 </li>
                 <li><a href="#" id="management_seven">
-                    <span class="iconfont icon-dabian iconColorWhite fontSize14 naviconpadding"></span>新闻管理
+                    <span class="iconfont icon-xinwenguanli iconColorWhite fontSize14 naviconpadding"></span>新闻管理
                 </a>
                 </li>
                 <li><a href="#" id="management_eight">
-                    <span class="iconfont icon-dabian iconColorWhite fontSize14 naviconpadding"></span>系统管理
+                    <span class="iconfont icon-xitongguanli iconColorWhite fontSize14 naviconpadding"></span>系统管理
                 </a>
                 </li>
             </ul>
@@ -204,6 +108,119 @@
 
     </nav>
     <!--侧导航栏结束-->
+
+    <!--个人信息开始-->
+    <div id="nine" class="page-wrapper displayNone">
+        <div class="header">
+            <h3 class="page-header">
+                个人信息
+            </h3>
+            <ol class="breadcrumb index">
+                <li><a href="#">首页</a></li>
+                <li class="active">个人信息</li>
+            </ol>
+        </div>
+        <div class="page-inner">
+            <!--个信息开始-->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            个人信息
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-3"></div>
+                                <div class="col-md-6">
+                                    <div class="panel-body">
+                                        <div class="table-responsive">
+                                            <table class="table">
+                                                <tbody>
+                                                <tr class="success">
+                                                    <td>姓名</td>
+                                                    <td>XXX</td>
+                                                </tr>
+                                                <tr class="info">
+                                                    <td>编号</td>
+                                                    <td>xxxxxxxxxxxx</td>
+                                                </tr>
+                                                <tr class="warning">
+                                                    <td>角色</td>
+                                                    <td>管理员</td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--个人信息结束-->
+        </div>
+    </div>
+    <!--个人信息结束-->
+
+    <!--修改密码开始-->
+    <div id="ten" class="page-wrapper displayNone">
+        <div class="header">
+            <h3 class="page-header">
+                修改密码
+            </h3>
+            <ol class="breadcrumb index">
+                <li><a href="#">首页</a></li>
+                <li class="active">修改密码</li>
+            </ol>
+        </div>
+        <div class="page-inner">
+            <!--修改密码开始-->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            修改密码
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-4">
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group has-success">
+                                        <label class="control-label" for="inputPassBefore">原密码</label>
+                                        <input type="password" class="form-control" id="inputPassBefore" autofocus
+                                               required>
+                                    </div>
+                                    <div class="form-group has-warning">
+                                        <label class="control-label" for="inputPassNew">新密码</label>
+                                        <input type="password" class="form-control" id="inputPassNew" required>
+                                    </div>
+                                    <div class="form-group has-error">
+                                        <label class="control-label" for="inputPassConfirm">确认新密码</label>
+                                        <input type="password" class="form-control" id="inputPassConfirm" required>
+                                    </div>
+                                    <div style="height: 40px"></div>
+                                    <div class="col-md-2">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <button type="button" class="btn btn-sm btn-info">确认</button>
+                                    </div>
+                                    <div class="col-md-1">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <button type="reset" class="btn btn-sm btn-danger">重置</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--修改密码结束-->
+            </div>
+        </div>
+    </div>
+    <!--修改密码结束-->
 
     <!--课题管理开始-->
     <div id="one" class="page-wrapper">
@@ -238,8 +255,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-2">
-                                        <button type="button" class="btn btn-info btn-ms" data-toggle="modal"
-                                                data-target="#checkTopic">确定
+                                        <button type="button" class="btn btn-info btn-ms">确定
                                         </button>
                                     </div>
                                 </div>
@@ -304,7 +320,7 @@
                                     2019-01-05 17:47:28
                                 </div>
                                 <div class="col-md-1 textEllipsis textAlign">
-                                    不通过
+                                    通过
                                 </div>
                                 <div class="col-md-1 textEllipsis textAlign">
                                     <button type="button" class="btn btn-info btn-xs" data-toggle="modal"
@@ -329,7 +345,7 @@
                                     2019-01-05 17:47:28
                                 </div>
                                 <div class="col-md-1 textEllipsis textAlign">
-                                    不通过
+                                    待审核
                                 </div>
                                 <div class="col-md-1 textEllipsis textAlign">
                                     <button type="button" class="btn btn-info btn-xs" data-toggle="modal"
@@ -410,6 +426,11 @@
                 <div class="modal-body">
                     <div class="alert alert-success textEllipsis">
                         <strong>
+                            <span>学院:</span>
+                        </strong>
+                        <span>计算机</span>
+                        <hr>
+                        <strong>
                             <span>课题题目:</span>
                         </strong>
                         <span>PMMA灯具基于moldflow三维流动优化的注塑模设计</span>
@@ -433,6 +454,11 @@
                             <span>申报时间:</span>
                         </strong>
                         <span>2019-01-05 17:47:28</span>
+                        <hr>
+                        <strong>
+                            <span>审核状态:</span>
+                        </strong>
+                        <span>通过</span>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -443,115 +469,6 @@
         </div>
     </div>
     <!--审核课题详情结束-->
-    <!--&lt;!&ndash;修改课题详情开始&ndash;&gt;-->
-    <!--<div class="modal fade" id="modifyTopic" role="dialog">-->
-    <!--<div class="modal-dialog">-->
-    <!--<div class="modal-content">-->
-    <!--<div class="modal-header">-->
-    <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span-->
-    <!--aria-hidden="true">&times;</span></button>-->
-    <!--<h4 class="modal-title">修改课题信息</h4>-->
-    <!--</div>-->
-    <!--<div class="modal-body">-->
-    <!--<div class="alert alert-success textEllipsis">-->
-    <!--<div style="height: 18px">-->
-    <!--<div class="col-md-2 col-xs-2">-->
-    <!--<strong>-->
-    <!--<span>课题题目:</span>-->
-    <!--</strong>-->
-    <!--</div>-->
-
-    <!--<div style="margin-top: -10px" class="col-md-10 col-xs-10">-->
-    <!--<input type="text" class="form-control"-->
-    <!--placeholder="PMMA灯具基于moldflow三维流动优化的注塑模设计">-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--<hr>-->
-    <!--<div style="height: 18px">-->
-    <!--<div class="col-md-2 col-xs-2">-->
-    <!--<strong>-->
-    <!--<span>题目类型:</span>-->
-    <!--</strong>-->
-    <!--</div>-->
-
-    <!--<div style="margin-top: -10px" class="col-md-10 col-xs-10">-->
-    <!--<input type="text" class="form-control"-->
-    <!--placeholder="工程工业设计">-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--<hr>-->
-    <!--<div style="height: 18px">-->
-    <!--<div class="col-md-2 col-xs-2">-->
-    <!--<strong>-->
-    <!--<span>题目来源:</span>-->
-    <!--</strong>-->
-    <!--</div>-->
-
-    <!--<div style="margin-top: -10px" class="col-md-10 col-xs-10">-->
-    <!--<input type="text" class="form-control"-->
-    <!--placeholder="生产实际（社会实践）题">-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--<hr>-->
-    <!--<div style="height: 18px">-->
-    <!--<div class="col-md-2 col-xs-2">-->
-    <!--<strong>-->
-    <!--<span>指导老师:</span>-->
-    <!--</strong>-->
-    <!--</div>-->
-
-    <!--<div style="margin-top: -10px" class="col-md-10 col-xs-10">-->
-    <!--<input type="text" class="form-control"-->
-    <!--placeholder="廖永衡（0120080001）">-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--<hr>-->
-    <!--<div style="height: 18px">-->
-    <!--<div class="col-md-2 col-xs-2">-->
-    <!--<strong>-->
-    <!--<span>申报时间:</span>-->
-    <!--</strong>-->
-    <!--</div>-->
-
-    <!--<div style="margin-top: -10px" class="col-md-10 col-xs-10">-->
-    <!--<input type="text" class="form-control"-->
-    <!--placeholder="2019-01-05 17:47:28">-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--<div class="modal-footer">-->
-    <!--<button type="button" class="btn btn-xs btn-white" data-dismiss="modal">取 消</button>-->
-    <!--<button type="button" class="btn btn-xs btn-danger">保 存</button>-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--&lt;!&ndash;修改课题详情结束&ndash;&gt;-->
-    <!--&lt;!&ndash;删除课题开始&ndash;&gt;-->
-    <!--<div class="modal fade" id="deleteTopic" role="dialog">-->
-    <!--<div class="modal-dialog">-->
-    <!--<div class="modal-content">-->
-    <!--<div class="modal-header">-->
-    <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span-->
-    <!--aria-hidden="true">&times;</span></button>-->
-    <!--<h4 class="modal-title" id="gridSystemModalLabel">提示</h4>-->
-    <!--</div>-->
-    <!--<div class="modal-body">-->
-    <!--<div class="container-fluid">-->
-    <!--确定要删除该课题？删除后不可恢复！-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--<div class="modal-footer">-->
-    <!--<button type="button" class="btn btn-xs btn-white" data-dismiss="modal">取 消</button>-->
-    <!--<button type="button" class="btn btn-xs btn-danger">保 存</button>-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--&lt;!&ndash; /.modal-content &ndash;&gt;-->
-    <!--</div>-->
-    <!--&lt;!&ndash; /.modal-dialog &ndash;&gt;-->
-    <!--</div>-->
-    <!--&lt;!&ndash;删除课题结束&ndash;&gt;-->
     <!--课题管理结束-->
 
     <!--答辩管理开始-->
@@ -565,37 +482,314 @@
                             答辩管理
                         </div>
                         <div class="panel-body">
-                            <div class="alert alert-success textEllipsis">
-                                <strong>
-                                    <span class="colorf44">1分钟前</span> 选题
-                                </strong> 选题时间
-                            </div>
                             <div class="alert alert-info textEllipsis">
-                                <strong>
-                                    <span class="colorf44">2分钟前</span> 开题报告
-                                </strong> 提交开题报告
+                                <div style="padding-bottom: 15px" class="col-md-12">
+                                    <div class="col-md-2">
+                                        <h4 class="font_bold">设定答辩时间</h4>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div style="padding: 0;text-align: right" class="col-md-5">开始答辩时间：</div>
+
+                                        <div class="col-md-7">
+                                            <input style="padding-left: 2px;padding-right: 30px" class="form-control"
+                                                   type="date">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div style="padding: 0;text-align: right" class="col-md-5">结束答辩时间：</div>
+
+                                        <div class="col-md-7">
+                                            <input style="padding-left: 2px;padding-right: 30px" class="form-control"
+                                                   type="date">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <button type="button" class="btn btn-info btn-ms">确定
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="alert alert-warning textEllipsis">
-                                <strong>
-                                    <span class="colorf44">3分钟前</span> 过程文档
-                                </strong>
-                                提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档
+                            <div style="padding-bottom: 15px" class="col-md-12">
+                                <div style="margin-bottom: 15px" class="col-md-12">
+                                    <div class="col-md-4">
+                                        <select class="form-control">
+                                            <option>计算机与软件工程系</option>
+                                            <option>土木系</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <button type="button" class="btn btn-info btn-ms">查询
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="alert alert-success textEllipsis border_radius marginBottom0">
+                                    <div class="col-md-3 textAlign">
+                                        学院
+                                    </div>
+                                    <div class="col-md-2 textAlign">
+                                        答辩时间
+                                    </div>
+                                    <div class="col-md-2 textAlign">
+                                        教室安排
+                                    </div>
+                                    <div class="col-md-2 textAlign">
+                                        申请人
+                                    </div>
+                                    <div class="col-md-1 textAlign">
+                                        审核状态
+                                    </div>
+                                    <div class="col-md-2 textAlign">
+                                        操作
+                                    </div>
+                                </div>
+                                <div class="alert alert-warning textEllipsis border_radius marginBottom0">
+                                    <div title="计算机与软件工程学院" class="col-md-3 textEllipsis textAlign">
+                                        计算机与软件工程学院
+                                    </div>
+                                    <div title="2019-01-05 17:00" class="col-md-2 textEllipsis textAlign">
+                                        2019-01-05 17:00
+                                    </div>
+                                    <div title="6A-405" class="col-md-2 textEllipsis textAlign">
+                                        6A-405
+                                    </div>
+                                    <div title="廖永衡（系主任）" class="col-md-2 textAlign textEllipsis">
+                                        廖永衡（系主任）
+                                    </div>
+                                    <div class="col-md-1 textEllipsis textAlign">
+                                        通过
+                                    </div>
+                                    <div class="col-md-2 textEllipsis textAlign">
+                                        <button type="button" class="btn btn-info btn-xs" data-toggle="modal"
+                                                data-target="#checkPlea">审核
+                                        </button>
+                                        <button type="button" class="btn btn-info btn-xs" data-toggle="modal"
+                                                data-target="#modifyPlea">修改
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="alert alert-danger textEllipsis border_radius marginBottom0">
+                                    <div title="计算机与软件工程学院" class="col-md-3 textEllipsis textAlign">
+                                        计算机与软件工程学院
+                                    </div>
+                                    <div title="2019-01-05 17:00" class="col-md-2 textEllipsis textAlign">
+                                        2019-01-05 17:00
+                                    </div>
+                                    <div title="6A-405" class="col-md-2 textEllipsis textAlign">
+                                        6A-405
+                                    </div>
+                                    <div title="廖永衡（系主任）" class="col-md-2 textAlign textEllipsis">
+                                        廖永衡（系主任）
+                                    </div>
+                                    <div class="col-md-1 textEllipsis textAlign">
+                                        通过
+                                    </div>
+                                    <div class="col-md-2 textEllipsis textAlign">
+                                        <button type="button" class="btn btn-info btn-xs" data-toggle="modal"
+                                                data-target="#checkPlea">审核
+                                        </button>
+                                        <button type="button" class="btn btn-info btn-xs" data-toggle="modal"
+                                                data-target="#modifyPlea">修改
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="alert alert-warning textEllipsis border_radius marginBottom0">
+                                    <div title="计算机与软件工程学院" class="col-md-3 textEllipsis textAlign">
+                                        计算机与软件工程学院
+                                    </div>
+                                    <div title="2019-01-05 17:00" class="col-md-2 textEllipsis textAlign">
+                                        2019-01-05 17:00
+                                    </div>
+                                    <div title="6A-405" class="col-md-2 textEllipsis textAlign">
+                                        6A-405
+                                    </div>
+                                    <div title="廖永衡（系主任）" class="col-md-2 textAlign textEllipsis">
+                                        廖永衡（系主任）
+                                    </div>
+                                    <div class="col-md-1 textEllipsis textAlign">
+                                        待审核
+                                    </div>
+                                    <div class="col-md-2 textEllipsis textAlign">
+                                        <button type="button" class="btn btn-info btn-xs" data-toggle="modal"
+                                                data-target="#checkPlea">审核
+                                        </button>
+                                        <button type="button" class="btn btn-info btn-xs" data-toggle="modal"
+                                                data-target="#modifyPlea">修改
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="alert alert-danger textEllipsis border_radius marginBottom0">
+                                    <div title="计算机与软件工程学院" class="col-md-3 textEllipsis textAlign">
+                                        计算机与软件工程学院
+                                    </div>
+                                    <div title="2019-01-05 17:00" class="col-md-2 textEllipsis textAlign">
+                                        2019-01-05 17:00
+                                    </div>
+                                    <div title="6A-405" class="col-md-2 textEllipsis textAlign">
+                                        6A-405
+                                    </div>
+                                    <div title="廖永衡（系主任）" class="col-md-2 textAlign textEllipsis">
+                                        廖永衡（系主任）
+                                    </div>
+                                    <div class="col-md-1 textEllipsis textAlign">
+                                        不通过
+                                    </div>
+                                    <div class="col-md-2 textEllipsis textAlign">
+                                        <button type="button" class="btn btn-info btn-xs" data-toggle="modal"
+                                                data-target="#checkPlea">审核
+                                        </button>
+                                        <button type="button" class="btn btn-info btn-xs" data-toggle="modal"
+                                                data-target="#modifyPlea">修改
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!--分页开始-->
+                                <div style="margin-top: 15px" class="m-style"></div>
+                                <!--分页结束-->
                             </div>
-                            <div class="alert alert-danger textEllipsis">
-                                <strong>
-                                    <span class="colorf44">5分钟前</span> 提交论文
-                                </strong> 论文截止时间
-                            </div>
-                            <!--分页开始-->
-                            <div class="m-style"></div>
-                            <!--分页结束-->
                         </div>
                     </div>
                 </div>
+                <!--答辩管理结束-->
             </div>
-            <!--答辩管理结束-->
         </div>
     </div>
+    <!--审核答辩详情开始-->
+    <div class="modal fade" id="checkPlea" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">审核答辩信息</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-success textEllipsis">
+                        <strong>
+                            <span>学院:</span>
+                        </strong>
+                        <span>计算机与软件工程学院</span>
+                        <hr>
+                        <strong>
+                            <span>答辩时间:</span>
+                        </strong>
+                        <span>2019-01-05 17:00</span>
+                        <hr>
+                        <strong>
+                            <span>教室安排:</span>
+                        </strong>
+                        <span>6A-405</span>
+                        <hr>
+                        <strong>
+                            <span>申请人:</span>
+                        </strong>
+                        <span>廖永衡（系主任）</span>
+                        <hr>
+                        <strong>
+                            <span>审核状态:</span>
+                        </strong>
+                        <span>通过</span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">审核通过</button>
+                    <button type="button" class="btn btn-sm btn-info" data-dismiss="modal">审核不通过</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--审核答辩详情结束-->
+    <!--调整答辩安排开始-->
+    <div class="modal fade" id="modifyPlea" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">调整答辩安排信息</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-success textEllipsis">
+                        <div style="height: 18px">
+                            <div class="col-md-12">
+                                <div class="col-md-2">
+                                    <strong>
+                                        <span>学院:</span>
+                                    </strong>
+                                </div>
+                                <div class="col-md-4">
+                                    计算机与软件工程学院
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div style="height: 18px">
+                            <div class="col-md-2 col-xs-2">
+                                <strong>
+                                    <span>答辩时间:</span>
+                                </strong>
+                            </div>
+
+                            <div style="margin-top: -10px" class="col-md-10 col-xs-10">
+                                <div class="col-md-6">
+                                    <input style="padding-left: 2px;padding-right: 30px" class="form-control"
+                                           type="date">
+                                </div>
+                                <div class="col-md-3">
+                                    <input style="padding-left: 16px;padding-right: 6px" class="form-control"
+                                           type="time">
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div style="height: 18px">
+                            <div class="col-md-2 col-xs-2">
+                                <strong>
+                                    <span>教室安排:</span>
+                                </strong>
+                            </div>
+
+                            <div style="margin-top: -10px" class="col-md-6 col-xs-6">
+                                <input type="text" class="form-control"
+                                       placeholder="6A-405">
+                            </div>
+                        </div>
+                        <hr>
+                        <div style="height: 18px">
+                            <div class="col-md-12">
+                                <div class="col-md-2">
+                                    <strong>
+                                        <span>申请人:</span>
+                                    </strong>
+                                </div>
+                                <div class="col-md-4">
+                                    廖永衡（系主任）
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div style="height: 18px">
+                            <div class="col-md-12">
+                                <div class="col-md-2">
+                                    <strong>
+                                        <span>审核状态:</span>
+                                    </strong>
+                                </div>
+                                <div class="col-md-4">
+                                    通过
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-xs btn-white" data-dismiss="modal">取 消</button>
+                    <button type="button" class="btn btn-xs btn-danger">保 存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--调整答辩安排结束-->
     <!--答辩管理结束-->
 
     <!--文件管理开始-->
@@ -649,21 +843,12 @@
             <!--文件管理结束-->
         </div>
     </div>
-    <!--答辩管理结束-->
+    <!--文件管理结束-->
 
     <!--用户管理开始-->
     <div id="four" class="page-wrapper displayNone">
-        <div class="header">
-            <h3 class="page-header">
-                用户管理
-            </h3>
-            <ol class="breadcrumb">
-                <li><a href="adminIndex.html">首页</a></li>
-                <li class="active">用户管理</li>
-            </ol>
-        </div>
-        <div class="page-inner">
-            <!--用户管理开始-->
+        <div style="margin: 0px" class="page-inner">
+            <!--题目管理开始-->
             <div class="row">
                 <div class="col-md-12">
                     <div class="panel panel-default">
@@ -671,37 +856,336 @@
                             用户管理
                         </div>
                         <div class="panel-body">
-                            <div class="alert alert-success textEllipsis">
-                                <strong>
-                                    <span class="colorf44">1分钟前</span> 选题
-                                </strong> 选题时间
+                            <div class="textEllipsis">
+                                <div style="padding-bottom: 15px" class="col-md-12">
+                                    <div class="col-md-2">
+                                        <button type="button" class="btn btn-info" data-toggle="modal"
+                                                data-target="#addUser">添加用户
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="alert alert-info textEllipsis">
-                                <strong>
-                                    <span class="colorf44">2分钟前</span> 开题报告
-                                </strong> 提交开题报告
+                            <div style="padding-bottom: 15px" class="col-md-12">
+                                <div class="col-md-4">
+                                    <div class="col-md-10 col-xs-10" style="padding: 0px">
+                                        <input style="border-bottom-right-radius: 0px;border-top-right-radius: 0px"
+                                               type="text" class="form-control">
+                                    </div>
+                                    <div class="col-md-2 col-xs-2" style="padding-left: 5px">
+                                        <button style="border-bottom-left-radius: 0px;border-top-left-radius: 0px;float: left"
+                                                type="button" class="btn btn-info">
+                                            <span class="iconfont icon-sousuo fontSize14"></span>
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="alert alert-warning textEllipsis">
-                                <strong>
-                                    <span class="colorf44">3分钟前</span> 过程文档
-                                </strong>
-                                提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档
+                            <div class="alert alert-success textEllipsis border_radius marginBottom0">
+                                <div class="col-md-3 textAlign">
+                                    学院
+                                </div>
+                                <div class="col-md-1 textAlign">
+                                    姓名
+                                </div>
+                                <div class="col-md-3 textAlign">
+                                    编号
+                                </div>
+                                <div class="col-md-2 textAlign">
+                                    权限
+                                </div>
+                                <div class="col-md-3 textAlign">
+                                    操作
+                                </div>
                             </div>
-                            <div class="alert alert-danger textEllipsis">
-                                <strong>
-                                    <span class="colorf44">5分钟前</span> 提交论文
-                                </strong> 论文截止时间
+                            <div class="alert alert-warning textEllipsis border_radius marginBottom0">
+                                <div title="计算机与软件工程学院" class="col-md-3 textEllipsis textAlign">
+                                    计算机与软件工程学院
+                                </div>
+                                <div title="王xx" class="col-md-1 textEllipsis textAlign">
+                                    王xx
+                                </div>
+                                <div title="xxxxxxxxxxxx" class="col-md-3 textEllipsis textAlign">
+                                    xxxxxxxxxxxx
+                                </div>
+                                <div title="学生" class="col-md-2 textAlign textEllipsis">
+                                    学生
+                                </div>
+                                <div class="col-md-3 textEllipsis textAlign">
+                                    <button type="button" class="btn btn-danger btn-xs" data-toggle="modal"
+                                            data-target="#deleteUser">删除
+                                    </button>
+                                    <button type="button" class="btn btn-info btn-xs" data-toggle="modal"
+                                            data-target="#modifyUser">修改
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="alert alert-danger textEllipsis border_radius marginBottom0">
+                                <div title="计算机与软件工程学院" class="col-md-3 textEllipsis textAlign">
+                                    计算机与软件工程学院
+                                </div>
+                                <div title="王xx" class="col-md-1 textEllipsis textAlign">
+                                    王xx
+                                </div>
+                                <div title="xxxxxxxxxxxx" class="col-md-3 textEllipsis textAlign">
+                                    xxxxxxxxxxxx
+                                </div>
+                                <div title="学生" class="col-md-2 textAlign textEllipsis">
+                                    学生
+                                </div>
+                                <div class="col-md-3 textEllipsis textAlign">
+                                    <button type="button" class="btn btn-danger btn-xs" data-toggle="modal"
+                                            data-target="#deleteUser">删除
+                                    </button>
+                                    <button type="button" class="btn btn-info btn-xs" data-toggle="modal"
+                                            data-target="#modifyUser">修改
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="alert alert-warning textEllipsis border_radius marginBottom0">
+                                <div title="计算机与软件工程学院" class="col-md-3 textEllipsis textAlign">
+                                    计算机与软件工程学院
+                                </div>
+                                <div title="王xx" class="col-md-1 textEllipsis textAlign">
+                                    王xx
+                                </div>
+                                <div title="xxxxxxxxxxxx" class="col-md-3 textEllipsis textAlign">
+                                    xxxxxxxxxxxx
+                                </div>
+                                <div title="学生" class="col-md-2 textAlign textEllipsis">
+                                    学生
+                                </div>
+                                <div class="col-md-3 textEllipsis textAlign">
+                                    <button type="button" class="btn btn-danger btn-xs" data-toggle="modal"
+                                            data-target="#deleteUser">删除
+                                    </button>
+                                    <button type="button" class="btn btn-info btn-xs" data-toggle="modal"
+                                            data-target="#modifyUser">修改
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="alert alert-danger textEllipsis border_radius marginBottom0">
+                                <div title="计算机与软件工程学院" class="col-md-3 textEllipsis textAlign">
+                                    计算机与软件工程学院
+                                </div>
+                                <div title="王xx" class="col-md-1 textEllipsis textAlign">
+                                    王xx
+                                </div>
+                                <div title="xxxxxxxxxxxx" class="col-md-3 textEllipsis textAlign">
+                                    xxxxxxxxxxxx
+                                </div>
+                                <div title="学生" class="col-md-2 textAlign textEllipsis">
+                                    学生
+                                </div>
+                                <div class="col-md-3 textEllipsis textAlign">
+                                    <button type="button" class="btn btn-danger btn-xs" data-toggle="modal"
+                                            data-target="#deleteUser">删除
+                                    </button>
+                                    <button type="button" class="btn btn-info btn-xs" data-toggle="modal"
+                                            data-target="#modifyUser">修改
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="alert alert-warning textEllipsis border_radius marginBottom0">
+                                <div title="计算机与软件工程学院" class="col-md-3 textEllipsis textAlign">
+                                    计算机与软件工程学院
+                                </div>
+                                <div title="王xx" class="col-md-1 textEllipsis textAlign">
+                                    王xx
+                                </div>
+                                <div title="xxxxxxxxxxxx" class="col-md-3 textEllipsis textAlign">
+                                    xxxxxxxxxxxx
+                                </div>
+                                <div title="学生" class="col-md-2 textAlign textEllipsis">
+                                    学生
+                                </div>
+                                <div class="col-md-3 textEllipsis textAlign">
+                                    <button type="button" class="btn btn-danger btn-xs" data-toggle="modal"
+                                            data-target="#deleteUser">删除
+                                    </button>
+                                    <button type="button" class="btn btn-info btn-xs" data-toggle="modal"
+                                            data-target="#modifyUser">修改
+                                    </button>
+                                </div>
                             </div>
                             <!--分页开始-->
-                            <div class="m-style"></div>
+                            <div style="margin-top: 15px" class="m-style"></div>
                             <!--分页结束-->
                         </div>
                     </div>
                 </div>
             </div>
-            <!--用户管理结束-->
+            <!--题目管理结束-->
         </div>
     </div>
+    <!--新增用户开始-->
+    <div class="modal fade" id="addUser" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">新增用户</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-success textEllipsis">
+                        <div style="height: 18px">
+                            <div class="col-md-2 col-xs-2">
+                                <strong>
+                                    <span>学院:</span>
+                                </strong>
+                            </div>
+                            <div style="margin-top: -10px" class="col-md-6 col-xs-6">
+                                <input type="text" list="college" class="form-control drop-down"/>
+                                <datalist id="college">
+                                    <option value="计算机与软件工程学院"/>
+                                    <option value="土木"/>
+                                    <option value="经济"/>
+                                </datalist>
+                            </div>
+                        </div>
+                        <hr>
+                        <div style="height: 18px">
+                            <div class="col-md-2 col-xs-2">
+                                <strong>
+                                    <span>姓名:</span>
+                                </strong>
+                            </div>
+
+                            <div style="margin-top: -10px" class="col-md-6 col-xs-6">
+                                <input type="text" class="form-control">
+                            </div>
+                        </div>
+                        <hr>
+                        <div style="height: 18px">
+                            <div class="col-md-2 col-xs-2">
+                                <strong>
+                                    <span>编号:</span>
+                                </strong>
+                            </div>
+
+                            <div style="margin-top: -10px" class="col-md-6 col-xs-6">
+                                <input type="text" class="form-control">
+                            </div>
+                        </div>
+                        <hr>
+                        <div style="height: 18px">
+                            <div class="col-md-2 col-xs-2">
+                                <strong>
+                                    <span>权限:</span>
+                                </strong>
+                            </div>
+                            <div style="margin-top: -10px" class="col-md-6 col-xs-6">
+                                <input type="text" list="permissions" class="form-control drop-down"/>
+                                <datalist id="permissions">
+                                    <option value="学生"/>
+                                    <option value="教师"/>
+                                    <option value="系主任"/>
+                                </datalist>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-xs btn-white" data-dismiss="modal">取 消</button>
+                    <button type="button" class="btn btn-xs btn-danger">保 存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--新增用户结束-->
+    <!--删除用户开始-->
+    <div class="modal fade" id="deleteUser" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="gridSystemModalLabel">提示</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        确定要删除该用户？删除后不可恢复！
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-xs btn-white" data-dismiss="modal">取 消</button>
+                    <button type="button" class="btn btn-xs btn-danger">保 存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--删除用户结束-->
+    <!--修改用户信息及权限开始-->
+    <div class="modal fade" id="modifyUser" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">修改用户信息及权限</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-success textEllipsis">
+                        <div style="height: 18px">
+                            <div class="col-md-2 col-xs-2">
+                                <strong>
+                                    <span>学院:</span>
+                                </strong>
+                            </div>
+
+                            <div style="margin-top: -10px" class="col-md-6 col-xs-6">
+                                <input type="text" class="form-control"
+                                       placeholder="计算机与软件工程学院">
+                            </div>
+                        </div>
+                        <hr>
+                        <div style="height: 18px">
+                            <div class="col-md-2 col-xs-2">
+                                <strong>
+                                    <span>姓名:</span>
+                                </strong>
+                            </div>
+
+                            <div style="margin-top: -10px" class="col-md-6 col-xs-6">
+                                <input type="text" class="form-control"
+                                       placeholder="王XX">
+                            </div>
+                        </div>
+                        <hr>
+                        <div style="height: 18px">
+                            <div class="col-md-2 col-xs-2">
+                                <strong>
+                                    <span>编号:</span>
+                                </strong>
+                            </div>
+
+                            <div style="margin-top: -10px" class="col-md-6 col-xs-6">
+                                <input type="text" class="form-control"
+                                       placeholder="xxxxxxxxxxxx">
+                            </div>
+                        </div>
+                        <hr>
+                        <div style="height: 18px">
+                            <div class="col-md-2 col-xs-2">
+                                <strong>
+                                    <span>权限:</span>
+                                </strong>
+                            </div>
+
+                            <div style="margin-top: -10px" class="col-md-6 col-xs-6">
+                                <input type="text" class="form-control"
+                                       placeholder="学生">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-xs btn-white" data-dismiss="modal">取 消</button>
+                    <button type="button" class="btn btn-xs btn-danger">保 存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--修改用户信息及权限结束-->
     <!--用户管理结束-->
 
     <!--安全管理开始-->
@@ -928,11 +1412,6 @@
 <script src="../assets/js/bootstrap.js"></script>
 <!-- 自定义 Js -->
 <script src="../assets/js/common.js"></script>
-<!--圆形进度条-->
-<!-- easypiechart-data Js -->
-<script src="../assets/js/easypiechart-data.js"></script>
-<!-- easypiechart Js -->
-<script src="../assets/js/easypiechart.js"></script>
 
 <!--分页开始-->
 <script>
