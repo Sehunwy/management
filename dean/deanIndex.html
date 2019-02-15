@@ -13,6 +13,15 @@
     <link href="../assets/css/pagination.css" rel="stylesheet"/>
     <!-- 自定义 Styles-->
     <link href="../assets/css/custom-styles.css" rel="stylesheet"/>
+    <style>
+        #dv {
+            width: 100px;
+            height: 100px;
+            background-color: yellow;
+            margin: 0px auto 0px;
+        }
+
+    </style>
 </head>
 <body>
 <div id="wrapper">
@@ -250,112 +259,1558 @@
 
     <!--题目管理开始-->
     <div id="one" class="page-wrapper">
-        <div class="header">
-            <h3 class="page-header">
-                题目管理
-                <small>欢迎 XXX</small>
-            </h3>
-            <ol class="breadcrumb index">
-                <li><a href="#">首页</a></li>
-                <li class="active">题目管理</li>
-            </ol>
-        </div>
-        <div class="page-inner">
-            <!--进度提示开始-->
+        <div style="margin: 0px" class="page-inner">
+            <!--题目管理开始-->
             <div class="row">
-                <div class="col-xs-24 col-md-12">
-                    <div>
-                        <div class="titleContent">
-                            <span>进度提示</span>
-                            <span style="float: right">
-                            <a href="./taskSchedule.html">
-                                查看更多进度
-                                <sapn class="iconfont icon-jiantou1"></sapn>
-                            </a>
-                        </span>
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div style="background-color: #f5f5f5">
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li class="active"><a href="#draw" role="tab"
+                                                      data-toggle="tab">出题</a></li>
+                                <li><a href="#topic_Selection" role="tab" data-toggle="tab">选题</a></li>
+                            </ul>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-6 col-md-3">
-                    <div class="whiteBagColor">
-                        <div style="text-align: center">
-                            <h4><a href="#">开题报告</a></h4>
-                            <div class="easypiechart easypiechart-blue" data-percent="20"><span
-                                    class="percent">20%</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xs-6 col-md-3">
-                    <div class="whiteBagColor">
-                        <div style="text-align: center">
-                            <h4><a href="#">中期检查</a></h4>
-                            <div class="easypiechart easypiechart-red" data-percent="0"><span
-                                    class="percent">0%</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xs-6 col-md-3">
-                    <div class="whiteBagColor">
-                        <div style="text-align: center">
-                            <h4><a href="#">指导记录</a></h4>
-                            <div class="easypiechart easypiechart-teal" data-percent="60"><span
-                                    class="percent">60%</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xs-6 col-md-3">
-                    <div class="whiteBagColor">
-                        <div style="text-align: center">
-                            <h4><a href="#">外文翻译</a></h4>
-                            <div class="easypiechart easypiechart-orange" data-percent="90"><span
-                                    class="percent">90%</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--进度提示结束-->
+                        <div class="tab-content">
+                            <div class="tab-pane active panel-body" id="draw">
+                                <div class="alert alert-info textEllipsis">
+                                </div>
+                                <div style="padding-bottom: 15px;padding-left: 0px" class="col-md-12">
+                                    <div style="padding-left: 0px" class="col-md-4">
+                                        <div class="col-md-10 col-xs-10" style="padding: 0px">
+                                            <input style="border-bottom-right-radius: 0px;border-top-right-radius: 0px"
+                                                   type="text" class="form-control">
+                                        </div>
+                                        <div class="col-md-2 col-xs-2" style="padding-left: 5px">
+                                            <button style="border-bottom-left-radius: 0px;border-top-left-radius: 0px;float: left"
+                                                    type="button" class="btn btn-info">
+                                                <span class="iconfont icon-sousuo fontSize14"></span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="alert alert-success textEllipsis border_radius marginBottom0">
+                                    <div class="col-md-2 textAlign">
+                                        课题题目
+                                    </div>
+                                    <div class="col-md-2 textAlign">
+                                        题目类型
+                                    </div>
+                                    <div class="col-md-2 textAlign">
+                                        题目来源
+                                    </div>
+                                    <div class="col-md-2 textAlign">
+                                        指导老师
+                                    </div>
+                                    <div class="col-md-2 textAlign">
+                                        申报时间
+                                    </div>
+                                    <div class="col-md-1 textAlign">
+                                        审核状态
+                                    </div>
+                                    <div class="col-md-1 textAlign">
+                                        操作
+                                    </div>
+                                </div>
+                                <div class="alert alert-warning textEllipsis border_radius marginBottom0">
+                                    <div title="PMMA灯具基于moldflow三维流动优化的注塑模设计" class="col-md-2 textEllipsis textAlign">
+                                        PMMA灯具基于moldflow三维流动优化的注塑模设计
+                                    </div>
+                                    <div title="工程工业设计" class="col-md-2 textEllipsis textAlign">
+                                        工程工业设计
+                                    </div>
+                                    <div title="生产实际（社会实践）题" class="col-md-2 textEllipsis textAlign">
+                                        生产实际（社会实践）题
+                                    </div>
+                                    <div title="廖永衡（0120080001）" class="col-md-2 textAlign textEllipsis">
+                                        廖永衡（0120080001）
+                                    </div>
+                                    <div title="2019-01-05 17:47:28" class="col-md-2 textEllipsis textAlign">
+                                        2019-01-05 17:47:28
+                                    </div>
+                                    <div class="col-md-1 textEllipsis textAlign">
+                                        通过
+                                    </div>
+                                    <div class="col-md-1 textEllipsis textAlign">
+                                        <button type="button" class="btn btn-info btn-xs" data-toggle="modal"
+                                                data-target="#checkDraw">审核
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="alert alert-danger textEllipsis border_radius marginBottom0">
+                                    <div title="PMMA灯具基于moldflow三维流动优化的注塑模设计" class="col-md-2 textEllipsis textAlign">
+                                        PMMA灯具基于moldflow三维流动优化的注塑模设计
+                                    </div>
+                                    <div title="工程工业设计" class="col-md-2 textEllipsis textAlign">
+                                        工程工业设计
+                                    </div>
+                                    <div title="生产实际（社会实践）题" class="col-md-2 textEllipsis textAlign">
+                                        生产实际（社会实践）题
+                                    </div>
+                                    <div title="廖永衡（0120080001）" class="col-md-2 textAlign textEllipsis">
+                                        廖永衡（0120080001）
+                                    </div>
+                                    <div title="2019-01-05 17:47:28" class="col-md-2 textEllipsis textAlign">
+                                        2019-01-05 17:47:28
+                                    </div>
+                                    <div class="col-md-1 textEllipsis textAlign">
+                                        待审核
+                                    </div>
+                                    <div class="col-md-1 textEllipsis textAlign">
+                                        <button type="button" class="btn btn-info btn-xs" data-toggle="modal"
+                                                data-target="#checkDraw">审核
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="alert alert-warning textEllipsis border_radius marginBottom0">
+                                    <div title="PMMA灯具基于moldflow三维流动优化的注塑模设计" class="col-md-2 textEllipsis textAlign">
+                                        PMMA灯具基于moldflow三维流动优化的注塑模设计
+                                    </div>
+                                    <div title="工程工业设计" class="col-md-2 textEllipsis textAlign">
+                                        工程工业设计
+                                    </div>
+                                    <div title="生产实际（社会实践）题" class="col-md-2 textEllipsis textAlign">
+                                        生产实际（社会实践）题
+                                    </div>
+                                    <div title="廖永衡（0120080001）" class="col-md-2 textAlign textEllipsis">
+                                        廖永衡（0120080001）
+                                    </div>
+                                    <div title="2019-01-05 17:47:28" class="col-md-2 textEllipsis textAlign">
+                                        2019-01-05 17:47:28
+                                    </div>
+                                    <div class="col-md-1 textEllipsis textAlign">
+                                        不通过
+                                    </div>
+                                    <div class="col-md-1 textEllipsis textAlign">
+                                        <button type="button" class="btn btn-info btn-xs" data-toggle="modal"
+                                                data-target="#checkDraw">审核
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="alert alert-danger textEllipsis border_radius marginBottom0">
+                                    <div title="PMMA灯具基于moldflow三维流动优化的注塑模设计" class="col-md-2 textEllipsis textAlign">
+                                        PMMA灯具基于moldflow三维流动优化的注塑模设计
+                                    </div>
+                                    <div title="工程工业设计" class="col-md-2 textEllipsis textAlign">
+                                        工程工业设计
+                                    </div>
+                                    <div title="生产实际（社会实践）题" class="col-md-2 textEllipsis textAlign">
+                                        生产实际（社会实践）题
+                                    </div>
+                                    <div title="廖永衡（0120080001）" class="col-md-2 textAlign textEllipsis">
+                                        廖永衡（0120080001）
+                                    </div>
+                                    <div title="2019-01-05 17:47:28" class="col-md-2 textEllipsis textAlign">
+                                        2019-01-05 17:47:28
+                                    </div>
+                                    <div class="col-md-1 textEllipsis textAlign">
+                                        不通过
+                                    </div>
+                                    <div class="col-md-1 textEllipsis textAlign">
+                                        <button type="button" class="btn btn-info btn-xs" data-toggle="modal"
+                                                data-target="#checkDraw">审核
+                                        </button>
+                                    </div>
+                                </div>
 
-            <!--我的课题开始-->
-            <div class="row marginTop10">
-                <div class="col-xs-24 col-md-12">
-                    <div>
-                        <div class="titleContent">
-                            <span>我的课题</span>
+                                <!--分页开始-->
+                                <div style="margin-top: 15px" class="m-style"></div>
+                                <!--分页结束-->
+                            </div>
+                            <div class="tab-pane panel-body" id="topic_Selection">
+                                <div class="alert alert-info textEllipsis">
+                                    <div style="padding-bottom: 15px" class="col-md-12">
+                                        <div class="col-md-2">
+                                            <h4 class="font_bold">设定选题时间</h4>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div style="padding: 0;text-align: right" class="col-md-5">开始选题时间：</div>
+
+                                            <div class="col-md-7">
+                                                <input style="padding-left: 2px;padding-right: 30px"
+                                                       class="form-control"
+                                                       type="date">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div style="padding: 0;text-align: right" class="col-md-5">结束选题时间：</div>
+
+                                            <div class="col-md-7">
+                                                <input style="padding-left: 2px;padding-right: 30px"
+                                                       class="form-control"
+                                                       type="date">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <button type="button" class="btn btn-info btn-ms">确定
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="padding-left:0px;padding-bottom: 15px" class="col-md-12">
+                                    <div style="padding-left: 0px" class="col-md-4">
+                                        <div class="col-md-10 col-xs-10" style="padding: 0px">
+                                            <input style="border-bottom-right-radius: 0px;border-top-right-radius: 0px"
+                                                   type="text" class="form-control">
+                                        </div>
+                                        <div class="col-md-2 col-xs-2" style="padding-left: 5px">
+                                            <button style="border-bottom-left-radius: 0px;border-top-left-radius: 0px;float: left"
+                                                    type="button" class="btn btn-info">
+                                                <span class="iconfont icon-sousuo fontSize14"></span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="alert alert-success textEllipsis border_radius marginBottom0">
+                                    <div class="col-md-2 textAlign">
+                                        课题题目
+                                    </div>
+                                    <div class="col-md-2 textAlign">
+                                        题目类型
+                                    </div>
+                                    <div class="col-md-2 textAlign">
+                                        题目来源
+                                    </div>
+                                    <div class="col-md-2 textAlign">
+                                        申请人
+                                    </div>
+                                    <div class="col-md-2 textAlign">
+                                        申请时间
+                                    </div>
+                                    <div class="col-md-1 textAlign">
+                                        审核状态
+                                    </div>
+                                    <div class="col-md-1 textAlign">
+                                        操作
+                                    </div>
+                                </div>
+                                <div class="alert alert-warning textEllipsis border_radius marginBottom0">
+                                    <div title="PMMA灯具基于moldflow三维流动优化的注塑模设计" class="col-md-2 textEllipsis textAlign">
+                                        PMMA灯具基于moldflow三维流动优化的注塑模设计
+                                    </div>
+                                    <div title="工程工业设计" class="col-md-2 textEllipsis textAlign">
+                                        工程工业设计
+                                    </div>
+                                    <div title="生产实际（社会实践）题" class="col-md-2 textEllipsis textAlign">
+                                        生产实际（社会实践）题
+                                    </div>
+                                    <div title="廖永衡（0120080001）" class="col-md-2 textAlign textEllipsis">
+                                        廖永衡（0120080001）
+                                    </div>
+                                    <div title="2019-01-05 17:47:28" class="col-md-2 textEllipsis textAlign">
+                                        2019-01-05 17:47:28
+                                    </div>
+                                    <div class="col-md-1 textEllipsis textAlign">
+                                        通过
+                                    </div>
+                                    <div class="col-md-1 textEllipsis textAlign">
+                                        <button type="button" class="btn btn-info btn-xs" data-toggle="modal"
+                                                data-target="#checkSelection">审核
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="alert alert-danger textEllipsis border_radius marginBottom0">
+                                    <div title="PMMA灯具基于moldflow三维流动优化的注塑模设计" class="col-md-2 textEllipsis textAlign">
+                                        PMMA灯具基于moldflow三维流动优化的注塑模设计
+                                    </div>
+                                    <div title="工程工业设计" class="col-md-2 textEllipsis textAlign">
+                                        工程工业设计
+                                    </div>
+                                    <div title="生产实际（社会实践）题" class="col-md-2 textEllipsis textAlign">
+                                        生产实际（社会实践）题
+                                    </div>
+                                    <div title="廖永衡（0120080001）" class="col-md-2 textAlign textEllipsis">
+                                        廖永衡（0120080001）
+                                    </div>
+                                    <div title="2019-01-05 17:47:28" class="col-md-2 textEllipsis textAlign">
+                                        2019-01-05 17:47:28
+                                    </div>
+                                    <div class="col-md-1 textEllipsis textAlign">
+                                        待审核
+                                    </div>
+                                    <div class="col-md-1 textEllipsis textAlign">
+                                        <button type="button" class="btn btn-info btn-xs" data-toggle="modal"
+                                                data-target="#checkSelection">审核
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="alert alert-warning textEllipsis border_radius marginBottom0">
+                                    <div title="PMMA灯具基于moldflow三维流动优化的注塑模设计" class="col-md-2 textEllipsis textAlign">
+                                        PMMA灯具基于moldflow三维流动优化的注塑模设计
+                                    </div>
+                                    <div title="工程工业设计" class="col-md-2 textEllipsis textAlign">
+                                        工程工业设计
+                                    </div>
+                                    <div title="生产实际（社会实践）题" class="col-md-2 textEllipsis textAlign">
+                                        生产实际（社会实践）题
+                                    </div>
+                                    <div title="廖永衡（0120080001）" class="col-md-2 textAlign textEllipsis">
+                                        廖永衡（0120080001）
+                                    </div>
+                                    <div title="2019-01-05 17:47:28" class="col-md-2 textEllipsis textAlign">
+                                        2019-01-05 17:47:28
+                                    </div>
+                                    <div class="col-md-1 textEllipsis textAlign">
+                                        不通过
+                                    </div>
+                                    <div class="col-md-1 textEllipsis textAlign">
+                                        <button type="button" class="btn btn-info btn-xs" data-toggle="modal"
+                                                data-target="#checkSelection">审核
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="alert alert-danger textEllipsis border_radius marginBottom0">
+                                    <div title="PMMA灯具基于moldflow三维流动优化的注塑模设计" class="col-md-2 textEllipsis textAlign">
+                                        PMMA灯具基于moldflow三维流动优化的注塑模设计
+                                    </div>
+                                    <div title="工程工业设计" class="col-md-2 textEllipsis textAlign">
+                                        工程工业设计
+                                    </div>
+                                    <div title="生产实际（社会实践）题" class="col-md-2 textEllipsis textAlign">
+                                        生产实际（社会实践）题
+                                    </div>
+                                    <div title="廖永衡（0120080001）" class="col-md-2 textAlign textEllipsis">
+                                        廖永衡（0120080001）
+                                    </div>
+                                    <div title="2019-01-05 17:47:28" class="col-md-2 textEllipsis textAlign">
+                                        2019-01-05 17:47:28
+                                    </div>
+                                    <div class="col-md-1 textEllipsis textAlign">
+                                        不通过
+                                    </div>
+                                    <div class="col-md-1 textEllipsis textAlign">
+                                        <button type="button" class="btn btn-info btn-xs" data-toggle="modal"
+                                                data-target="#checkSelection">审核
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!--分页开始-->
+                                <div style="margin-top: 15px" class="m-style"></div>
+                                <!--分页结束-->
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-xs-24 col-md-12 marginTop10">
-                    <div class="whiteBagColor">
-                        <div class="titleContent">
-                            <span class="fontColor847a7a">课题题目：</span>
-                            <span class="newline">四川工商学院毕业设计管理系统的设计与实现——Web客户端子系统【师生互选课题】</span>
-                            <a style="float: right" href="#">查看详情</a>
-                        </div>
-                        <div class="dividerDiv"></div>
-                        <div class="titleContent">
-                            <span class="fontColor847a7a">审核状态：</span>
-                            <span class="color07c160">审核通过，指导教师确认通过学生选题</span>
-                        </div>
-                        <div class="dividerDiv"></div>
-                        <div class="titleContent">
-                            <span class="fontColor847a7a">任务书：</span>
-                            <a href="#" class="colorf44 commitments">查看任务书</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--我的课题结束-->
+            <!--题目管理结束-->
         </div>
     </div>
+    <!--审核出题开始-->
+    <div class="modal fade" id="checkDraw" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">审核出题信息</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-success textEllipsis">
+                        <strong>
+                            <span>课题题目:</span>
+                        </strong>
+                        <span>PMMA灯具基于moldflow三维流动优化的注塑模设计</span>
+                        <hr>
+                        <strong>
+                            <span>题目类型:</span>
+                        </strong>
+                        <span>工程工业设计</span>
+                        <hr>
+                        <strong>
+                            <span>题目来源:</span>
+                        </strong>
+                        <span>生产实际（社会实践）题</span>
+                        <hr>
+                        <strong>
+                            <span>指导老师:</span>
+                        </strong>
+                        <span>廖永衡（0120080001）</span>
+                        <hr>
+                        <strong>
+                            <span>申报时间:</span>
+                        </strong>
+                        <span>2019-01-05 17:47:28</span>
+                        <hr>
+                        <strong>
+                            <span>审核状态:</span>
+                        </strong>
+                        <span>通过</span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">审核通过</button>
+                    <button type="button" class="btn btn-sm btn-info" data-dismiss="modal">审核不通过</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--审核出题结束-->
+    <!--审核选题开始-->
+    <div class="modal fade" id="checkSelection" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">审核选题信息</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-success textEllipsis">
+                        <strong>
+                            <span>课题题目:</span>
+                        </strong>
+                        <span>PMMA灯具基于moldflow三维流动优化的注塑模设计</span>
+                        <hr>
+                        <strong>
+                            <span>题目类型:</span>
+                        </strong>
+                        <span>工程工业设计</span>
+                        <hr>
+                        <strong>
+                            <span>题目来源:</span>
+                        </strong>
+                        <span>生产实际（社会实践）题</span>
+                        <hr>
+                        <strong>
+                            <span>申请人:</span>
+                        </strong>
+                        <span>廖永衡（0120080001）</span>
+                        <hr>
+                        <strong>
+                            <span>申请时间:</span>
+                        </strong>
+                        <span>2019-01-05 17:47:28</span>
+                        <hr>
+                        <strong>
+                            <span>审核状态:</span>
+                        </strong>
+                        <span>通过</span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">审核通过</button>
+                    <button type="button" class="btn btn-sm btn-info" data-dismiss="modal">审核不通过</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--审核选题结束-->
     <!--题目管理结束-->
+
+    <!--统计报表开始-->
+    <div id="two" class="page-wrapper displayNone">
+        <div style="margin: 0px" class="page-inner">
+            <!--题目管理开始-->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div style="background-color: #f5f5f5">
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li class="active"><a href="#assign_Topic" role="tab"
+                                                      data-toggle="tab">出题情况</a></li>
+                                <li><a href="#select_Topic" role="tab" data-toggle="tab">选题情况</a></li>
+                                <li><a href="#reply" role="tab" data-toggle="tab">答辩情况</a></li>
+                                <li><a href="#results_Summary" role="tab" data-toggle="tab">成绩汇总</a></li>
+                                <li><a href="#material_Archive" role="tab" data-toggle="tab">材料归档</a></li>
+                            </ul>
+                        </div>
+                        <div class="tab-content">
+                            <div class="tab-pane active panel-body" id="assign_Topic">
+                                <div style="padding-bottom: 15px;padding-left: 0px" class="col-md-12">
+                                    <div style="padding-left: 0px" class="col-md-4">
+                                        <div class="col-md-10 col-xs-10" style="padding: 0px">
+                                            <input style="border-bottom-right-radius: 0px;border-top-right-radius: 0px"
+                                                   type="text" class="form-control">
+                                        </div>
+                                        <div class="col-md-2 col-xs-2" style="padding-left: 5px">
+                                            <button style="border-bottom-left-radius: 0px;border-top-left-radius: 0px;float: left"
+                                                    type="button" class="btn btn-info">
+                                                <span class="iconfont icon-sousuo fontSize14"></span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="alert alert-success textEllipsis border_radius marginBottom0">
+                                    <div class="col-md-2 textAlign">
+                                        课题题目
+                                    </div>
+                                    <div class="col-md-2 textAlign">
+                                        题目类型
+                                    </div>
+                                    <div class="col-md-2 textAlign">
+                                        题目来源
+                                    </div>
+                                    <div class="col-md-2 textAlign">
+                                        指导老师
+                                    </div>
+                                    <div class="col-md-2 textAlign">
+                                        申报时间
+                                    </div>
+                                    <div class="col-md-1 textAlign">
+                                        审核状态
+                                    </div>
+                                    <div class="col-md-1 textAlign">
+                                        操作
+                                    </div>
+                                </div>
+                                <div class="alert alert-warning textEllipsis border_radius marginBottom0">
+                                    <div title="PMMA灯具基于moldflow三维流动优化的注塑模设计" class="col-md-2 textEllipsis textAlign">
+                                        PMMA灯具基于moldflow三维流动优化的注塑模设计
+                                    </div>
+                                    <div title="工程工业设计" class="col-md-2 textEllipsis textAlign">
+                                        工程工业设计
+                                    </div>
+                                    <div title="生产实际（社会实践）题" class="col-md-2 textEllipsis textAlign">
+                                        生产实际（社会实践）题
+                                    </div>
+                                    <div title="廖永衡（0120080001）" class="col-md-2 textAlign textEllipsis">
+                                        廖永衡（0120080001）
+                                    </div>
+                                    <div title="2019-01-05 17:47:28" class="col-md-2 textEllipsis textAlign">
+                                        2019-01-05 17:47:28
+                                    </div>
+                                    <div class="col-md-1 textEllipsis textAlign">
+                                        通过
+                                    </div>
+                                    <div class="col-md-1 textEllipsis textAlign">
+                                        <button type="button" class="btn btn-info btn-xs" data-toggle="modal"
+                                                data-target="#checkDraw">审核
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="alert alert-danger textEllipsis border_radius marginBottom0">
+                                    <div title="PMMA灯具基于moldflow三维流动优化的注塑模设计" class="col-md-2 textEllipsis textAlign">
+                                        PMMA灯具基于moldflow三维流动优化的注塑模设计
+                                    </div>
+                                    <div title="工程工业设计" class="col-md-2 textEllipsis textAlign">
+                                        工程工业设计
+                                    </div>
+                                    <div title="生产实际（社会实践）题" class="col-md-2 textEllipsis textAlign">
+                                        生产实际（社会实践）题
+                                    </div>
+                                    <div title="廖永衡（0120080001）" class="col-md-2 textAlign textEllipsis">
+                                        廖永衡（0120080001）
+                                    </div>
+                                    <div title="2019-01-05 17:47:28" class="col-md-2 textEllipsis textAlign">
+                                        2019-01-05 17:47:28
+                                    </div>
+                                    <div class="col-md-1 textEllipsis textAlign">
+                                        待审核
+                                    </div>
+                                    <div class="col-md-1 textEllipsis textAlign">
+                                        <button type="button" class="btn btn-info btn-xs" data-toggle="modal"
+                                                data-target="#checkDraw">审核
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="alert alert-warning textEllipsis border_radius marginBottom0">
+                                    <div title="PMMA灯具基于moldflow三维流动优化的注塑模设计" class="col-md-2 textEllipsis textAlign">
+                                        PMMA灯具基于moldflow三维流动优化的注塑模设计
+                                    </div>
+                                    <div title="工程工业设计" class="col-md-2 textEllipsis textAlign">
+                                        工程工业设计
+                                    </div>
+                                    <div title="生产实际（社会实践）题" class="col-md-2 textEllipsis textAlign">
+                                        生产实际（社会实践）题
+                                    </div>
+                                    <div title="廖永衡（0120080001）" class="col-md-2 textAlign textEllipsis">
+                                        廖永衡（0120080001）
+                                    </div>
+                                    <div title="2019-01-05 17:47:28" class="col-md-2 textEllipsis textAlign">
+                                        2019-01-05 17:47:28
+                                    </div>
+                                    <div class="col-md-1 textEllipsis textAlign">
+                                        不通过
+                                    </div>
+                                    <div class="col-md-1 textEllipsis textAlign">
+                                        <button type="button" class="btn btn-info btn-xs" data-toggle="modal"
+                                                data-target="#checkDraw">审核
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="alert alert-danger textEllipsis border_radius marginBottom0">
+                                    <div title="PMMA灯具基于moldflow三维流动优化的注塑模设计" class="col-md-2 textEllipsis textAlign">
+                                        PMMA灯具基于moldflow三维流动优化的注塑模设计
+                                    </div>
+                                    <div title="工程工业设计" class="col-md-2 textEllipsis textAlign">
+                                        工程工业设计
+                                    </div>
+                                    <div title="生产实际（社会实践）题" class="col-md-2 textEllipsis textAlign">
+                                        生产实际（社会实践）题
+                                    </div>
+                                    <div title="廖永衡（0120080001）" class="col-md-2 textAlign textEllipsis">
+                                        廖永衡（0120080001）
+                                    </div>
+                                    <div title="2019-01-05 17:47:28" class="col-md-2 textEllipsis textAlign">
+                                        2019-01-05 17:47:28
+                                    </div>
+                                    <div class="col-md-1 textEllipsis textAlign">
+                                        不通过
+                                    </div>
+                                    <div class="col-md-1 textEllipsis textAlign">
+                                        <button type="button" class="btn btn-info btn-xs" data-toggle="modal"
+                                                data-target="#checkDraw">审核
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!--分页开始-->
+                                <div style="margin-top: 15px" class="m-style"></div>
+                                <!--分页结束-->
+                            </div>
+                            <div class="tab-pane panel-body" id="select_Topic">
+                                <div style="padding-bottom: 15px;padding-left: 0px" class="col-md-12">
+                                    <div style="padding-left: 0px" class="col-md-4">
+                                        <div class="col-md-10 col-xs-10" style="padding: 0px">
+                                            <input style="border-bottom-right-radius: 0px;border-top-right-radius: 0px"
+                                                   type="text" class="form-control">
+                                        </div>
+                                        <div class="col-md-2 col-xs-2" style="padding-left: 5px">
+                                            <button style="border-bottom-left-radius: 0px;border-top-left-radius: 0px;float: left"
+                                                    type="button" class="btn btn-info">
+                                                <span class="iconfont icon-sousuo fontSize14"></span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="alert alert-success textEllipsis border_radius marginBottom0">
+                                    <div class="col-md-2 textAlign">
+                                        课题题目
+                                    </div>
+                                    <div class="col-md-2 textAlign">
+                                        题目类型
+                                    </div>
+                                    <div class="col-md-2 textAlign">
+                                        题目来源
+                                    </div>
+                                    <div class="col-md-2 textAlign">
+                                        指导老师
+                                    </div>
+                                    <div class="col-md-2 textAlign">
+                                        申报时间
+                                    </div>
+                                    <div class="col-md-1 textAlign">
+                                        审核状态
+                                    </div>
+                                    <div class="col-md-1 textAlign">
+                                        操作
+                                    </div>
+                                </div>
+                                <div class="alert alert-warning textEllipsis border_radius marginBottom0">
+                                    <div title="PMMA灯具基于moldflow三维流动优化的注塑模设计" class="col-md-2 textEllipsis textAlign">
+                                        PMMA灯具基于moldflow三维流动优化的注塑模设计
+                                    </div>
+                                    <div title="工程工业设计" class="col-md-2 textEllipsis textAlign">
+                                        工程工业设计
+                                    </div>
+                                    <div title="生产实际（社会实践）题" class="col-md-2 textEllipsis textAlign">
+                                        生产实际（社会实践）题
+                                    </div>
+                                    <div title="廖永衡（0120080001）" class="col-md-2 textAlign textEllipsis">
+                                        廖永衡（0120080001）
+                                    </div>
+                                    <div title="2019-01-05 17:47:28" class="col-md-2 textEllipsis textAlign">
+                                        2019-01-05 17:47:28
+                                    </div>
+                                    <div class="col-md-1 textEllipsis textAlign">
+                                        通过
+                                    </div>
+                                    <div class="col-md-1 textEllipsis textAlign">
+                                        <button type="button" class="btn btn-info btn-xs" data-toggle="modal"
+                                                data-target="#checkDraw">审核
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="alert alert-danger textEllipsis border_radius marginBottom0">
+                                    <div title="PMMA灯具基于moldflow三维流动优化的注塑模设计" class="col-md-2 textEllipsis textAlign">
+                                        PMMA灯具基于moldflow三维流动优化的注塑模设计
+                                    </div>
+                                    <div title="工程工业设计" class="col-md-2 textEllipsis textAlign">
+                                        工程工业设计
+                                    </div>
+                                    <div title="生产实际（社会实践）题" class="col-md-2 textEllipsis textAlign">
+                                        生产实际（社会实践）题
+                                    </div>
+                                    <div title="廖永衡（0120080001）" class="col-md-2 textAlign textEllipsis">
+                                        廖永衡（0120080001）
+                                    </div>
+                                    <div title="2019-01-05 17:47:28" class="col-md-2 textEllipsis textAlign">
+                                        2019-01-05 17:47:28
+                                    </div>
+                                    <div class="col-md-1 textEllipsis textAlign">
+                                        待审核
+                                    </div>
+                                    <div class="col-md-1 textEllipsis textAlign">
+                                        <button type="button" class="btn btn-info btn-xs" data-toggle="modal"
+                                                data-target="#checkDraw">审核
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="alert alert-warning textEllipsis border_radius marginBottom0">
+                                    <div title="PMMA灯具基于moldflow三维流动优化的注塑模设计" class="col-md-2 textEllipsis textAlign">
+                                        PMMA灯具基于moldflow三维流动优化的注塑模设计
+                                    </div>
+                                    <div title="工程工业设计" class="col-md-2 textEllipsis textAlign">
+                                        工程工业设计
+                                    </div>
+                                    <div title="生产实际（社会实践）题" class="col-md-2 textEllipsis textAlign">
+                                        生产实际（社会实践）题
+                                    </div>
+                                    <div title="廖永衡（0120080001）" class="col-md-2 textAlign textEllipsis">
+                                        廖永衡（0120080001）
+                                    </div>
+                                    <div title="2019-01-05 17:47:28" class="col-md-2 textEllipsis textAlign">
+                                        2019-01-05 17:47:28
+                                    </div>
+                                    <div class="col-md-1 textEllipsis textAlign">
+                                        不通过
+                                    </div>
+                                    <div class="col-md-1 textEllipsis textAlign">
+                                        <button type="button" class="btn btn-info btn-xs" data-toggle="modal"
+                                                data-target="#checkDraw">审核
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="alert alert-danger textEllipsis border_radius marginBottom0">
+                                    <div title="PMMA灯具基于moldflow三维流动优化的注塑模设计" class="col-md-2 textEllipsis textAlign">
+                                        PMMA灯具基于moldflow三维流动优化的注塑模设计
+                                    </div>
+                                    <div title="工程工业设计" class="col-md-2 textEllipsis textAlign">
+                                        工程工业设计
+                                    </div>
+                                    <div title="生产实际（社会实践）题" class="col-md-2 textEllipsis textAlign">
+                                        生产实际（社会实践）题
+                                    </div>
+                                    <div title="廖永衡（0120080001）" class="col-md-2 textAlign textEllipsis">
+                                        廖永衡（0120080001）
+                                    </div>
+                                    <div title="2019-01-05 17:47:28" class="col-md-2 textEllipsis textAlign">
+                                        2019-01-05 17:47:28
+                                    </div>
+                                    <div class="col-md-1 textEllipsis textAlign">
+                                        不通过
+                                    </div>
+                                    <div class="col-md-1 textEllipsis textAlign">
+                                        <button type="button" class="btn btn-info btn-xs" data-toggle="modal"
+                                                data-target="#checkDraw">审核
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!--分页开始-->
+                                <div style="margin-top: 15px" class="m-style"></div>
+                                <!--分页结束-->
+                            </div>
+                            <div class="tab-pane panel-body" id="reply">
+                                <div style="padding-bottom: 15px;padding-left: 0px" class="col-md-12">
+                                    <div style="padding-left: 0px" class="col-md-4">
+                                        <div class="col-md-10 col-xs-10" style="padding: 0px">
+                                            <input style="border-bottom-right-radius: 0px;border-top-right-radius: 0px"
+                                                   type="text" class="form-control">
+                                        </div>
+                                        <div class="col-md-2 col-xs-2" style="padding-left: 5px">
+                                            <button style="border-bottom-left-radius: 0px;border-top-left-radius: 0px;float: left"
+                                                    type="button" class="btn btn-info">
+                                                <span class="iconfont icon-sousuo fontSize14"></span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="alert alert-success textEllipsis border_radius marginBottom0">
+                                    <div class="col-md-2 textAlign">
+                                        课题题目
+                                    </div>
+                                    <div class="col-md-2 textAlign">
+                                        题目类型
+                                    </div>
+                                    <div class="col-md-2 textAlign">
+                                        题目来源
+                                    </div>
+                                    <div class="col-md-2 textAlign">
+                                        指导老师
+                                    </div>
+                                    <div class="col-md-2 textAlign">
+                                        申报时间
+                                    </div>
+                                    <div class="col-md-1 textAlign">
+                                        审核状态
+                                    </div>
+                                    <div class="col-md-1 textAlign">
+                                        操作
+                                    </div>
+                                </div>
+                                <div class="alert alert-warning textEllipsis border_radius marginBottom0">
+                                    <div title="PMMA灯具基于moldflow三维流动优化的注塑模设计" class="col-md-2 textEllipsis textAlign">
+                                        PMMA灯具基于moldflow三维流动优化的注塑模设计
+                                    </div>
+                                    <div title="工程工业设计" class="col-md-2 textEllipsis textAlign">
+                                        工程工业设计
+                                    </div>
+                                    <div title="生产实际（社会实践）题" class="col-md-2 textEllipsis textAlign">
+                                        生产实际（社会实践）题
+                                    </div>
+                                    <div title="廖永衡（0120080001）" class="col-md-2 textAlign textEllipsis">
+                                        廖永衡（0120080001）
+                                    </div>
+                                    <div title="2019-01-05 17:47:28" class="col-md-2 textEllipsis textAlign">
+                                        2019-01-05 17:47:28
+                                    </div>
+                                    <div class="col-md-1 textEllipsis textAlign">
+                                        通过
+                                    </div>
+                                    <div class="col-md-1 textEllipsis textAlign">
+                                        <button type="button" class="btn btn-info btn-xs" data-toggle="modal"
+                                                data-target="#checkDraw">审核
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="alert alert-danger textEllipsis border_radius marginBottom0">
+                                    <div title="PMMA灯具基于moldflow三维流动优化的注塑模设计" class="col-md-2 textEllipsis textAlign">
+                                        PMMA灯具基于moldflow三维流动优化的注塑模设计
+                                    </div>
+                                    <div title="工程工业设计" class="col-md-2 textEllipsis textAlign">
+                                        工程工业设计
+                                    </div>
+                                    <div title="生产实际（社会实践）题" class="col-md-2 textEllipsis textAlign">
+                                        生产实际（社会实践）题
+                                    </div>
+                                    <div title="廖永衡（0120080001）" class="col-md-2 textAlign textEllipsis">
+                                        廖永衡（0120080001）
+                                    </div>
+                                    <div title="2019-01-05 17:47:28" class="col-md-2 textEllipsis textAlign">
+                                        2019-01-05 17:47:28
+                                    </div>
+                                    <div class="col-md-1 textEllipsis textAlign">
+                                        待审核
+                                    </div>
+                                    <div class="col-md-1 textEllipsis textAlign">
+                                        <button type="button" class="btn btn-info btn-xs" data-toggle="modal"
+                                                data-target="#checkDraw">审核
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="alert alert-warning textEllipsis border_radius marginBottom0">
+                                    <div title="PMMA灯具基于moldflow三维流动优化的注塑模设计" class="col-md-2 textEllipsis textAlign">
+                                        PMMA灯具基于moldflow三维流动优化的注塑模设计
+                                    </div>
+                                    <div title="工程工业设计" class="col-md-2 textEllipsis textAlign">
+                                        工程工业设计
+                                    </div>
+                                    <div title="生产实际（社会实践）题" class="col-md-2 textEllipsis textAlign">
+                                        生产实际（社会实践）题
+                                    </div>
+                                    <div title="廖永衡（0120080001）" class="col-md-2 textAlign textEllipsis">
+                                        廖永衡（0120080001）
+                                    </div>
+                                    <div title="2019-01-05 17:47:28" class="col-md-2 textEllipsis textAlign">
+                                        2019-01-05 17:47:28
+                                    </div>
+                                    <div class="col-md-1 textEllipsis textAlign">
+                                        不通过
+                                    </div>
+                                    <div class="col-md-1 textEllipsis textAlign">
+                                        <button type="button" class="btn btn-info btn-xs" data-toggle="modal"
+                                                data-target="#checkDraw">审核
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="alert alert-danger textEllipsis border_radius marginBottom0">
+                                    <div title="PMMA灯具基于moldflow三维流动优化的注塑模设计" class="col-md-2 textEllipsis textAlign">
+                                        PMMA灯具基于moldflow三维流动优化的注塑模设计
+                                    </div>
+                                    <div title="工程工业设计" class="col-md-2 textEllipsis textAlign">
+                                        工程工业设计
+                                    </div>
+                                    <div title="生产实际（社会实践）题" class="col-md-2 textEllipsis textAlign">
+                                        生产实际（社会实践）题
+                                    </div>
+                                    <div title="廖永衡（0120080001）" class="col-md-2 textAlign textEllipsis">
+                                        廖永衡（0120080001）
+                                    </div>
+                                    <div title="2019-01-05 17:47:28" class="col-md-2 textEllipsis textAlign">
+                                        2019-01-05 17:47:28
+                                    </div>
+                                    <div class="col-md-1 textEllipsis textAlign">
+                                        不通过
+                                    </div>
+                                    <div class="col-md-1 textEllipsis textAlign">
+                                        <button type="button" class="btn btn-info btn-xs" data-toggle="modal"
+                                                data-target="#checkDraw">审核
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!--分页开始-->
+                                <div style="margin-top: 15px" class="m-style"></div>
+                                <!--分页结束-->
+                            </div>
+                            <div class="tab-pane panel-body" id="results_Summary">
+                                <div style="padding-bottom: 15px;padding-left: 0px" class="col-md-12">
+                                    <div style="padding-left: 0px" class="col-md-4">
+                                        <div class="col-md-10 col-xs-10" style="padding: 0px">
+                                            <input style="border-bottom-right-radius: 0px;border-top-right-radius: 0px"
+                                                   type="text" class="form-control">
+                                        </div>
+                                        <div class="col-md-2 col-xs-2" style="padding-left: 5px">
+                                            <button style="border-bottom-left-radius: 0px;border-top-left-radius: 0px;float: left"
+                                                    type="button" class="btn btn-info">
+                                                <span class="iconfont icon-sousuo fontSize14"></span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="alert alert-success textEllipsis border_radius marginBottom0">
+                                    <div class="col-md-2 textAlign">
+                                        课题题目
+                                    </div>
+                                    <div class="col-md-2 textAlign">
+                                        题目类型
+                                    </div>
+                                    <div class="col-md-2 textAlign">
+                                        题目来源
+                                    </div>
+                                    <div class="col-md-2 textAlign">
+                                        指导老师
+                                    </div>
+                                    <div class="col-md-2 textAlign">
+                                        申报时间
+                                    </div>
+                                    <div class="col-md-1 textAlign">
+                                        审核状态
+                                    </div>
+                                    <div class="col-md-1 textAlign">
+                                        操作
+                                    </div>
+                                </div>
+                                <div class="alert alert-warning textEllipsis border_radius marginBottom0">
+                                    <div title="PMMA灯具基于moldflow三维流动优化的注塑模设计" class="col-md-2 textEllipsis textAlign">
+                                        PMMA灯具基于moldflow三维流动优化的注塑模设计
+                                    </div>
+                                    <div title="工程工业设计" class="col-md-2 textEllipsis textAlign">
+                                        工程工业设计
+                                    </div>
+                                    <div title="生产实际（社会实践）题" class="col-md-2 textEllipsis textAlign">
+                                        生产实际（社会实践）题
+                                    </div>
+                                    <div title="廖永衡（0120080001）" class="col-md-2 textAlign textEllipsis">
+                                        廖永衡（0120080001）
+                                    </div>
+                                    <div title="2019-01-05 17:47:28" class="col-md-2 textEllipsis textAlign">
+                                        2019-01-05 17:47:28
+                                    </div>
+                                    <div class="col-md-1 textEllipsis textAlign">
+                                        通过
+                                    </div>
+                                    <div class="col-md-1 textEllipsis textAlign">
+                                        <button type="button" class="btn btn-info btn-xs" data-toggle="modal"
+                                                data-target="#checkDraw">审核
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="alert alert-danger textEllipsis border_radius marginBottom0">
+                                    <div title="PMMA灯具基于moldflow三维流动优化的注塑模设计" class="col-md-2 textEllipsis textAlign">
+                                        PMMA灯具基于moldflow三维流动优化的注塑模设计
+                                    </div>
+                                    <div title="工程工业设计" class="col-md-2 textEllipsis textAlign">
+                                        工程工业设计
+                                    </div>
+                                    <div title="生产实际（社会实践）题" class="col-md-2 textEllipsis textAlign">
+                                        生产实际（社会实践）题
+                                    </div>
+                                    <div title="廖永衡（0120080001）" class="col-md-2 textAlign textEllipsis">
+                                        廖永衡（0120080001）
+                                    </div>
+                                    <div title="2019-01-05 17:47:28" class="col-md-2 textEllipsis textAlign">
+                                        2019-01-05 17:47:28
+                                    </div>
+                                    <div class="col-md-1 textEllipsis textAlign">
+                                        待审核
+                                    </div>
+                                    <div class="col-md-1 textEllipsis textAlign">
+                                        <button type="button" class="btn btn-info btn-xs" data-toggle="modal"
+                                                data-target="#checkDraw">审核
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="alert alert-warning textEllipsis border_radius marginBottom0">
+                                    <div title="PMMA灯具基于moldflow三维流动优化的注塑模设计" class="col-md-2 textEllipsis textAlign">
+                                        PMMA灯具基于moldflow三维流动优化的注塑模设计
+                                    </div>
+                                    <div title="工程工业设计" class="col-md-2 textEllipsis textAlign">
+                                        工程工业设计
+                                    </div>
+                                    <div title="生产实际（社会实践）题" class="col-md-2 textEllipsis textAlign">
+                                        生产实际（社会实践）题
+                                    </div>
+                                    <div title="廖永衡（0120080001）" class="col-md-2 textAlign textEllipsis">
+                                        廖永衡（0120080001）
+                                    </div>
+                                    <div title="2019-01-05 17:47:28" class="col-md-2 textEllipsis textAlign">
+                                        2019-01-05 17:47:28
+                                    </div>
+                                    <div class="col-md-1 textEllipsis textAlign">
+                                        不通过
+                                    </div>
+                                    <div class="col-md-1 textEllipsis textAlign">
+                                        <button type="button" class="btn btn-info btn-xs" data-toggle="modal"
+                                                data-target="#checkDraw">审核
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="alert alert-danger textEllipsis border_radius marginBottom0">
+                                    <div title="PMMA灯具基于moldflow三维流动优化的注塑模设计" class="col-md-2 textEllipsis textAlign">
+                                        PMMA灯具基于moldflow三维流动优化的注塑模设计
+                                    </div>
+                                    <div title="工程工业设计" class="col-md-2 textEllipsis textAlign">
+                                        工程工业设计
+                                    </div>
+                                    <div title="生产实际（社会实践）题" class="col-md-2 textEllipsis textAlign">
+                                        生产实际（社会实践）题
+                                    </div>
+                                    <div title="廖永衡（0120080001）" class="col-md-2 textAlign textEllipsis">
+                                        廖永衡（0120080001）
+                                    </div>
+                                    <div title="2019-01-05 17:47:28" class="col-md-2 textEllipsis textAlign">
+                                        2019-01-05 17:47:28
+                                    </div>
+                                    <div class="col-md-1 textEllipsis textAlign">
+                                        不通过
+                                    </div>
+                                    <div class="col-md-1 textEllipsis textAlign">
+                                        <button type="button" class="btn btn-info btn-xs" data-toggle="modal"
+                                                data-target="#checkDraw">审核
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!--分页开始-->
+                                <div style="margin-top: 15px" class="m-style"></div>
+                                <!--分页结束-->
+                            </div>
+                            <div class="tab-pane panel-body" id="material_Archive">
+                                <div style="padding-bottom: 15px;padding-left: 0px" class="col-md-12">
+                                    <div style="padding-left: 0px" class="col-md-4">
+                                        <div class="col-md-10 col-xs-10" style="padding: 0px">
+                                            <input style="border-bottom-right-radius: 0px;border-top-right-radius: 0px"
+                                                   type="text" class="form-control">
+                                        </div>
+                                        <div class="col-md-2 col-xs-2" style="padding-left: 5px">
+                                            <button style="border-bottom-left-radius: 0px;border-top-left-radius: 0px;float: left"
+                                                    type="button" class="btn btn-info">
+                                                <span class="iconfont icon-sousuo fontSize14"></span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="alert alert-success textEllipsis border_radius marginBottom0">
+                                    <div class="col-md-2 textAlign">
+                                        课题题目
+                                    </div>
+                                    <div class="col-md-2 textAlign">
+                                        题目类型
+                                    </div>
+                                    <div class="col-md-2 textAlign">
+                                        题目来源
+                                    </div>
+                                    <div class="col-md-2 textAlign">
+                                        指导老师
+                                    </div>
+                                    <div class="col-md-2 textAlign">
+                                        申报时间
+                                    </div>
+                                    <div class="col-md-1 textAlign">
+                                        审核状态
+                                    </div>
+                                    <div class="col-md-1 textAlign">
+                                        操作
+                                    </div>
+                                </div>
+                                <div class="alert alert-warning textEllipsis border_radius marginBottom0">
+                                    <div title="PMMA灯具基于moldflow三维流动优化的注塑模设计" class="col-md-2 textEllipsis textAlign">
+                                        PMMA灯具基于moldflow三维流动优化的注塑模设计
+                                    </div>
+                                    <div title="工程工业设计" class="col-md-2 textEllipsis textAlign">
+                                        工程工业设计
+                                    </div>
+                                    <div title="生产实际（社会实践）题" class="col-md-2 textEllipsis textAlign">
+                                        生产实际（社会实践）题
+                                    </div>
+                                    <div title="廖永衡（0120080001）" class="col-md-2 textAlign textEllipsis">
+                                        廖永衡（0120080001）
+                                    </div>
+                                    <div title="2019-01-05 17:47:28" class="col-md-2 textEllipsis textAlign">
+                                        2019-01-05 17:47:28
+                                    </div>
+                                    <div class="col-md-1 textEllipsis textAlign">
+                                        通过
+                                    </div>
+                                    <div class="col-md-1 textEllipsis textAlign">
+                                        <button type="button" class="btn btn-info btn-xs" data-toggle="modal"
+                                                data-target="#checkDraw">审核
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="alert alert-danger textEllipsis border_radius marginBottom0">
+                                    <div title="PMMA灯具基于moldflow三维流动优化的注塑模设计" class="col-md-2 textEllipsis textAlign">
+                                        PMMA灯具基于moldflow三维流动优化的注塑模设计
+                                    </div>
+                                    <div title="工程工业设计" class="col-md-2 textEllipsis textAlign">
+                                        工程工业设计
+                                    </div>
+                                    <div title="生产实际（社会实践）题" class="col-md-2 textEllipsis textAlign">
+                                        生产实际（社会实践）题
+                                    </div>
+                                    <div title="廖永衡（0120080001）" class="col-md-2 textAlign textEllipsis">
+                                        廖永衡（0120080001）
+                                    </div>
+                                    <div title="2019-01-05 17:47:28" class="col-md-2 textEllipsis textAlign">
+                                        2019-01-05 17:47:28
+                                    </div>
+                                    <div class="col-md-1 textEllipsis textAlign">
+                                        待审核
+                                    </div>
+                                    <div class="col-md-1 textEllipsis textAlign">
+                                        <button type="button" class="btn btn-info btn-xs" data-toggle="modal"
+                                                data-target="#checkDraw">审核
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="alert alert-warning textEllipsis border_radius marginBottom0">
+                                    <div title="PMMA灯具基于moldflow三维流动优化的注塑模设计" class="col-md-2 textEllipsis textAlign">
+                                        PMMA灯具基于moldflow三维流动优化的注塑模设计
+                                    </div>
+                                    <div title="工程工业设计" class="col-md-2 textEllipsis textAlign">
+                                        工程工业设计
+                                    </div>
+                                    <div title="生产实际（社会实践）题" class="col-md-2 textEllipsis textAlign">
+                                        生产实际（社会实践）题
+                                    </div>
+                                    <div title="廖永衡（0120080001）" class="col-md-2 textAlign textEllipsis">
+                                        廖永衡（0120080001）
+                                    </div>
+                                    <div title="2019-01-05 17:47:28" class="col-md-2 textEllipsis textAlign">
+                                        2019-01-05 17:47:28
+                                    </div>
+                                    <div class="col-md-1 textEllipsis textAlign">
+                                        不通过
+                                    </div>
+                                    <div class="col-md-1 textEllipsis textAlign">
+                                        <button type="button" class="btn btn-info btn-xs" data-toggle="modal"
+                                                data-target="#checkDraw">审核
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="alert alert-danger textEllipsis border_radius marginBottom0">
+                                    <div title="PMMA灯具基于moldflow三维流动优化的注塑模设计" class="col-md-2 textEllipsis textAlign">
+                                        PMMA灯具基于moldflow三维流动优化的注塑模设计
+                                    </div>
+                                    <div title="工程工业设计" class="col-md-2 textEllipsis textAlign">
+                                        工程工业设计
+                                    </div>
+                                    <div title="生产实际（社会实践）题" class="col-md-2 textEllipsis textAlign">
+                                        生产实际（社会实践）题
+                                    </div>
+                                    <div title="廖永衡（0120080001）" class="col-md-2 textAlign textEllipsis">
+                                        廖永衡（0120080001）
+                                    </div>
+                                    <div title="2019-01-05 17:47:28" class="col-md-2 textEllipsis textAlign">
+                                        2019-01-05 17:47:28
+                                    </div>
+                                    <div class="col-md-1 textEllipsis textAlign">
+                                        不通过
+                                    </div>
+                                    <div class="col-md-1 textEllipsis textAlign">
+                                        <button type="button" class="btn btn-info btn-xs" data-toggle="modal"
+                                                data-target="#checkDraw">审核
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!--分页开始-->
+                                <div style="margin-top: 15px" class="m-style"></div>
+                                <!--分页结束-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--题目管理结束-->
+        </div>
+    </div>
+    <!--统计报表结束-->
+
+    <!--答辩管理开始-->
+    <div id="three" class="page-wrapper displayNone">
+        <div style="margin: 0px" class="page-inner">
+            <!--题目管理开始-->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div style="background-color: #f5f5f5">
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li class="active"><a href="#teachers_Group" role="tab"
+                                                      data-toggle="tab">教师分组</a></li>
+                                <li><a href="#students_Group" role="tab" data-toggle="tab">学生分组</a></li>
+                            </ul>
+                        </div>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="teachers_Group">
+                                <div class="panel-body">
+                                    <div style="padding-left:0px;padding-bottom: 15px" class="col-md-12">
+                                        <div style="padding-left:0px;" class="col-md-4">
+                                            <div class="col-md-10 col-xs-10" style="padding: 0px">
+                                                <input style="border-bottom-right-radius: 0px;border-top-right-radius: 0px"
+                                                       type="text" class="form-control">
+                                            </div>
+                                            <div class="col-md-2 col-xs-2" style="padding-left: 5px">
+                                                <button style="border-bottom-left-radius: 0px;border-top-left-radius: 0px;float: left"
+                                                        type="button" class="btn btn-info">
+                                                    <span class="iconfont icon-sousuo fontSize14"></span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="alert alert-success textEllipsis border_radius marginBottom0">
+                                        <div class="col-md-1 textAlign">
+                                            指导老师
+                                        </div>
+                                        <div class="col-md-3 textAlign">
+                                            答辩时间
+                                        </div>
+                                        <div class="col-md-1 textAlign">
+                                            答辩教室
+                                        </div>
+                                        <div class="col-md-4 textAlign">
+                                            答辩教师
+                                        </div>
+                                        <div class="col-md-1 textAlign">
+                                            分组
+                                        </div>
+                                        <div class="col-md-1 textAlign">
+                                            题目数量
+                                        </div>
+                                        <div class="col-md-1 textAlign">
+                                            操作
+                                        </div>
+                                    </div>
+                                    <div class="alert alert-warning textEllipsis border_radius marginBottom0">
+                                        <div title="廖永衡" class="col-md-1 textEllipsis textAlign">
+                                            廖永衡
+                                        </div>
+                                        <div title="2019-01-05 17:47:28" class="col-md-3 textEllipsis textAlign">
+                                            2019-01-05 17:47:28
+                                        </div>
+                                        <div title="6A-404" class="col-md-1 textEllipsis textAlign">
+                                            6A-404
+                                        </div>
+                                        <div title="廖永衡 廖永衡 廖永衡" class="col-md-4 textEllipsis textAlign">
+                                            廖永衡 廖永衡 廖永衡
+                                        </div>
+                                        <div title="生产实际（社会实践）题" class="col-md-1 textEllipsis textAlign">
+                                            第一组
+                                        </div>
+                                        <div title="廖永衡（0120080001）" class="col-md-1 textAlign textEllipsis">
+                                            5题
+                                        </div>
+                                        <div class="col-md-1 textEllipsis textAlign">
+                                            <button type="button" class="btn btn-info btn-xs" data-toggle="modal"
+                                                    data-target="#modify_Teachers_Group">修改
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="alert alert-danger textEllipsis border_radius marginBottom0">
+                                        <div title="廖永衡" class="col-md-1 textEllipsis textAlign">
+                                            廖永衡
+                                        </div>
+                                        <div title="2019-01-05 17:47:28" class="col-md-3 textEllipsis textAlign">
+                                            2019-01-05 17:47:28
+                                        </div>
+                                        <div title="6A-404" class="col-md-1 textEllipsis textAlign">
+                                            6A-404
+                                        </div>
+                                        <div title="廖永衡 廖永衡 廖永衡" class="col-md-4 textEllipsis textAlign">
+                                            廖永衡 廖永衡 廖永衡
+                                        </div>
+                                        <div title="生产实际（社会实践）题" class="col-md-1 textEllipsis textAlign">
+                                            第一组
+                                        </div>
+                                        <div title="廖永衡（0120080001）" class="col-md-1 textAlign textEllipsis">
+                                            5题
+                                        </div>
+                                        <div class="col-md-1 textEllipsis textAlign">
+                                            <button type="button" class="btn btn-info btn-xs" data-toggle="modal"
+                                                    data-target="#modify_Teachers_Group">修改
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="alert alert-warning textEllipsis border_radius marginBottom0">
+                                        <div title="廖永衡" class="col-md-1 textEllipsis textAlign">
+                                            廖永衡
+                                        </div>
+                                        <div title="2019-01-05 17:47:28" class="col-md-3 textEllipsis textAlign">
+                                            2019-01-05 17:47:28
+                                        </div>
+                                        <div title="6A-404" class="col-md-1 textEllipsis textAlign">
+                                            6A-404
+                                        </div>
+                                        <div title="廖永衡 廖永衡 廖永衡" class="col-md-4 textEllipsis textAlign">
+                                            廖永衡 廖永衡 廖永衡
+                                        </div>
+                                        <div title="生产实际（社会实践）题" class="col-md-1 textEllipsis textAlign">
+                                            第一组
+                                        </div>
+                                        <div title="廖永衡（0120080001）" class="col-md-1 textAlign textEllipsis">
+                                            5题
+                                        </div>
+                                        <div class="col-md-1 textEllipsis textAlign">
+                                            <button type="button" class="btn btn-info btn-xs" data-toggle="modal"
+                                                    data-target="#modify_Teachers_Group">修改
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="alert alert-danger textEllipsis border_radius marginBottom0">
+                                        <div title="廖永衡" class="col-md-1 textEllipsis textAlign">
+                                            廖永衡
+                                        </div>
+                                        <div title="2019-01-05 17:47:28" class="col-md-3 textEllipsis textAlign">
+                                            2019-01-05 17:47:28
+                                        </div>
+                                        <div title="6A-404" class="col-md-1 textEllipsis textAlign">
+                                            6A-404
+                                        </div>
+                                        <div title="廖永衡 廖永衡 廖永衡" class="col-md-4 textEllipsis textAlign">
+                                            廖永衡 廖永衡 廖永衡
+                                        </div>
+                                        <div title="生产实际（社会实践）题" class="col-md-1 textEllipsis textAlign">
+                                            第一组
+                                        </div>
+                                        <div title="廖永衡（0120080001）" class="col-md-1 textAlign textEllipsis">
+                                            5题
+                                        </div>
+                                        <div class="col-md-1 textEllipsis textAlign">
+                                            <button type="button" class="btn btn-info btn-xs" data-toggle="modal"
+                                                    data-target="#modify_Teachers_Group">修改
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="alert alert-warning textEllipsis border_radius marginBottom0">
+                                        <div title="廖永衡" class="col-md-1 textEllipsis textAlign">
+                                            廖永衡
+                                        </div>
+                                        <div title="2019-01-05 17:47:28" class="col-md-3 textEllipsis textAlign">
+                                            2019-01-05 17:47:28
+                                        </div>
+                                        <div title="6A-404" class="col-md-1 textEllipsis textAlign">
+                                            6A-404
+                                        </div>
+                                        <div title="廖永衡 廖永衡 廖永衡 何太碧" class="col-md-4 textEllipsis textAlign">
+                                            廖永衡 廖永衡 廖永衡 何太碧
+                                        </div>
+                                        <div title="生产实际（社会实践）题" class="col-md-1 textEllipsis textAlign">
+                                            第一组
+                                        </div>
+                                        <div title="廖永衡（0120080001）" class="col-md-1 textAlign textEllipsis">
+                                            5题
+                                        </div>
+                                        <div class="col-md-1 textEllipsis textAlign">
+                                            <button type="button" class="btn btn-info btn-xs" data-toggle="modal"
+                                                    data-target="#modify_Teachers_Group">修改
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <!--分页开始-->
+                                    <div style="margin-top: 15px" class="m-style"></div>
+                                    <!--分页结束-->
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="students_Group">
+                                <div class="panel-body">
+                                    <textarea class="form-control" rows="19" autofocus></textarea>
+                                </div>
+                                <div class="panel-footer">
+                                    <button type="button" class="btn btn-info">发布新闻</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--题目管理结束-->
+        </div>
+    </div>
+    <!--修改教师答辩安排开始-->
+    <div class="modal fade" id="modify_Teachers_Group" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">调整答辩安排信息</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-success textEllipsis">
+                        <div style="height: 18px">
+                            <div class="col-md-12">
+                                <div style="padding-left: 0px" class="col-md-2 col-xs-2">
+                                    <strong>
+                                        <span>指导老师:</span>
+                                    </strong>
+                                </div>
+                                <div class="col-md-10  col-xs-10">
+                                    廖永衡
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div style="height: 18px">
+                            <div class="col-md-2 col-xs-2">
+                                <strong>
+                                    <span>答辩时间:</span>
+                                </strong>
+                            </div>
+
+                            <div style="padding-left:0px;margin-top: -10px" class="col-md-10 col-xs-10">
+                                <div class="col-md-6 col-xs-6">
+                                    <input style="padding-left: 2px;padding-right: 30px"
+                                           class="form-control"
+                                           type="date" id="date_Teachers_Group">
+                                </div>
+                                <div class="col-md-3 col-xs-3">
+                                    <input placeholder="17:47" style="padding-left: 16px;padding-right: 6px"
+                                           class="form-control"
+                                           type="time">
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div style="height: 18px">
+                            <div class="col-md-2 col-xs-2">
+                                <strong>
+                                    <span>教室安排:</span>
+                                </strong>
+                            </div>
+
+                            <div style="margin-top: -10px" class="col-md-6 col-xs-6">
+                                <input type="text" class="form-control"
+                                       placeholder="6A-405">
+                            </div>
+                        </div>
+                        <hr>
+                        <div style="height: 18px">
+                            <div class="col-md-12">
+                                <div style="padding-left: 0px" class="col-md-2  col-xs-2">
+                                    <strong>
+                                        <span>分组:</span>
+                                    </strong>
+                                </div>
+                                <div style="margin-top: -10px" class="col-md-4 col-xs-4">
+                                    <input type="text" list="Modify_college" placeholder="第一组"
+                                           class="form-control drop-down"/>
+                                    <datalist id="Modify_college">
+                                        <option value="第一组"/>
+                                        <option value="第二组"/>
+                                        <option value="第三组"/>
+                                        <option value="第四组"/>
+                                        <option value="第五组"/>
+                                        <option value="第六组"/>
+                                        <option value="第七组"/>
+                                    </datalist>
+                                </div>
+                                <!--<div style="padding-left: 0px" class="col-md-6  col-xs-6">-->
+                                <!--<input type="text" class="form-control"-->
+                                <!--placeholder="第一组">-->
+                                <!--</div>-->
+                            </div>
+                        </div>
+                        <hr>
+                        <div style="height: 18px">
+                            <div class="col-md-12">
+                                <div style="padding-left: 0px" class="col-md-2  col-xs-2">
+                                    <strong>
+                                        <span>分组:</span>
+                                    </strong>
+                                </div>
+                                <div style="margin-top: -10px" class="col-md-4 col-xs-4">
+                                    <input type="text" class="form-control"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="margin-top: 10px; height: 18px">
+                            <div style="margin-top: 20px;" class="col-md-12">
+                                <div style="padding-left: 0px" class="col-md-2  col-xs-2">
+                                </div>
+                                <div style="margin-top: -10px" class="col-md-4 col-xs-4">
+                                    <input type="text" list="plea_Teacher"
+                                           class="form-control drop-down"/>
+                                    <datalist id="plea_Teacher">
+                                        <option value="李龙"/>
+                                        <option value="王国志"/>
+                                        <option value="董刚强"/>
+                                        <option value="吴松"/>
+                                        <option value="张宗豪"/>
+                                        <option value="陈瑞琴"/>
+                                        <option value="张庆如"/>
+                                    </datalist>
+                                </div>
+                                <div style="margin-top: -11px" class="col-md-2  col-xs-2">
+                                    <button type="button" class="btn btn-info">确定
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-xs btn-white" data-dismiss="modal">取 消</button>
+                    <button type="button" class="btn btn-xs btn-danger">保 存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--修改教师答辩安排结束-->
+    <!--答辩管理结束-->
+
+    <!--新闻管理开始-->
+    <div id="four" class="page-wrapper displayNone">
+        <div style="margin: 0px" class="page-inner">
+            <!--题目管理开始-->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div style="background-color: #f5f5f5">
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li class="active"><a href="#announcement" role="tab"
+                                                      data-toggle="tab">发布公告</a></li>
+                                <li><a href="#news" role="tab" data-toggle="tab">发布新闻</a></li>
+                            </ul>
+                        </div>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="announcement">
+                                <div class="panel-body">
+                                    <textarea class="form-control" rows="19" autofocus></textarea>
+                                </div>
+                                <div class="panel-footer">
+                                    <button type="button" class="btn btn-info">发布公告</button>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="news">
+                                <div class="panel-body">
+                                    <textarea class="form-control" rows="19" autofocus></textarea>
+                                </div>
+                                <div class="panel-footer">
+                                    <button type="button" class="btn btn-info">发布新闻</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--题目管理结束-->
+        </div>
+    </div>
+    <!--新闻管理结束-->
+
 
     <!--查看更多通知开始-->
     <div id="five" class="page-wrapper displayNone">
@@ -443,6 +1898,34 @@
     });
 </script>
 <!--分页结束-->
+
+
+<script>
+    $(function () {
+        // 添加选项
+        $("#opbtn").click(function () {
+            if ($("#opts>li").size() < 6) {// 最多添加6个选项
+                $("#opts").append("<li><input /></li>");
+            } else {// 提示选项个数已经达到最大
+                $("#optips").html("选项个数已经达到最大,不能再添加!");
+                $("#optips").css({"color": "red"});
+            }
+
+        });
+
+        // 删除选项
+        $("#delbtn").click(function () {
+            if ($("#opts>li").size() <= 0) {
+                $("#optips").html("已经没有选项可以删除了!");
+                $("#optips").css({"color": "red"});
+            } else {
+                // 删除选项,每次删除最后一个
+                $("#opts>li").last().remove();
+            }
+        });
+    });
+
+</script>
 
 </body>
 </html>

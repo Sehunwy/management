@@ -1,6 +1,5 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <link rel="icon" href="../assets/img/bitbug_favicon.ico" type="img/x-ico"/>
@@ -14,18 +13,22 @@
         <form action="">
             <h1>用户登录</h1>
             <div>
-                <input type="text" placeholder="用户名" required="" id="username"/>
+                <input type="text" placeholder="请输入用户名" required="" id="username"/>
             </div>
             <div>
-                <input type="password" placeholder="密码" required="" id="password"/>
+                <input type="password" placeholder="请输入密码" required="" id="password"/>
             </div>
             <div>
-                <label><input name="category" type="radio" value="" />学生 </label>
+                <input style="padding: 15px 10px 15px 40px; width:100px;position: relative;top: -15px;left: -41px" type="text" placeholder="请输入验证码">
+                <canvas id="identify" style="cursor: pointer"></canvas>
+            </div>
+            <div>
+                <label><input name="category" type="radio" value="" checked/>学生 </label>
                 <label><input name="category" type="radio" value="" />教师 </label>
                 <label><input name="category" type="radio" value="" />系主任 </label>
                 <label><input name="category" type="radio" value="" />管理员 </label>
             </div>
-            <div class="">
+            <div>
                 <span class="help-block u-errormessage" id="js-server-helpinfo">&nbsp;</span></div>
             <div>
                 <input type="submit" value="登录" class="btn btn-primary" id="js-btn-login"/>
@@ -34,6 +37,152 @@
         </form>
     </section>
 </div>
+
+<script type="text/javascript">
+    class IdentifyCode {
+        constructor(canvasId, width, height) {
+            this.width = width;
+            this.height = height;
+            this.canvas = document.querySelector(canvasId);
+            this.ctx = this.canvas.getContext("2d");
+            this.code = "";
+            this.codeRange = [];
+            this.generateCodeRange();
+            this.freshCode();
+        }
+
+        initCanvas() {
+            this.canvas.width = this.width;
+            this.canvas.height = this.height;
+        }
+
+        // 生成随机色
+        randomColor() {
+            let colorStr = "#";
+            for(let i = 0; i < 6; i++) {
+                colorStr += Math.floor(Math.random() * 16).toString(16);
+            }
+            return colorStr;
+        }
+
+        // 生成验证码字母范围
+        generateCodeRange() {
+            let codeRange = [];
+            for(let i = "A".charCodeAt(0); i <= "Z".charCodeAt(0); i++) {
+                codeRange.push(String.fromCharCode(i));
+            }
+            for(let i = "a".charCodeAt(0); i <= "z".charCodeAt(0); i++) {
+                codeRange.push(String.fromCharCode(i));
+            }
+            for(let i = "0".charCodeAt(0); i <= "9".charCodeAt(0); i++) {
+                codeRange.push(String.fromCharCode(i));
+            }
+            this.codeRange = codeRange;
+            // return codeRange;
+        }
+
+        // 生成四位随机数
+        randomCode() {
+            this.code = "";
+            let len = this.codeRange.length;
+            for(let i = 0; i < 4; i++) {
+                this.code += this.codeRange[Math.floor(Math.random() * len)];
+            }
+        }
+
+        // 画背景色
+        drawBackground() {
+            let bgColor = "#d9edf7";
+            // let bgColor = "#fff";
+            this.ctx.rect(0, 0, this.width, this.height);
+            this.ctx.fillStyle = bgColor;
+            this.ctx.fill();
+        }
+
+        // 画干扰线
+        drawDisturbLines() {
+            for(let i = 0; i < 4; i++) {
+                this.drawOneLine();
+            }
+        }
+        drawOneLine() {
+            let startX = Math.floor(Math.random() * this.width);
+            let startY = Math.floor(Math.random() * this.height);
+            let endX = Math.floor(Math.random() * this.width);
+            let endY = Math.floor(Math.random() * this.height);
+            this.ctx.strokeStyle = this.randomColor();
+            this.ctx.lineWidth = Math.ceil(Math.random() * 2);
+            this.ctx.beginPath();
+            this.ctx.moveTo(startX, startY);
+            this.ctx.lineTo(endX, endY);
+            this.ctx.closePath();
+            this.ctx.stroke();
+        }
+
+        // 画干扰点
+        drawDisturbDots() {
+            for(let i = 0, count = this.width * this.height / 100; i < count; i++) {
+                this.drawOneDot();
+            }
+        }
+        drawOneDot() {
+            let ox = Math.floor(Math.random() * this.width);
+            let oy = Math.floor(Math.random() * this.height);
+            this.ctx.fillStyle = this.randomColor();
+            this.ctx.beginPath();
+            this.ctx.arc(ox, oy, 1, 0, 2 * Math.PI);
+            this.ctx.closePath();
+            this.ctx.fill();
+        }
+
+        // 画文字(数字或字母)
+        drawLetters() {
+            for(let i = 0, len = this.code.length; i < len; i++) {
+                let offsetX = this.width * 0.15; // 中间的70%画字母，两边各15%
+                let x = i * this.width * 0.7 / this.code.length + offsetX;
+                let y = this.height / 2;
+                let letter = this.code[i];
+                let fontSize = 30 - Math.round(Math.random() * 4);
+                this.drawOneLetter(letter, x, y, fontSize);
+            }
+        }
+        drawOneLetter(letter, x, y, fontSize) {
+            this.ctx.font = fontSize + "px Times new roman";
+            this.ctx.textBaseline = "middle";
+            this.ctx.fillStyle = this.randomColor();
+            let rA = 1 - Math.random() * 2;
+            let angle = rA / 20;
+            this.ctx.rotate(angle);
+            this.ctx.fillText(letter, x, y);
+        }
+
+        // 更换一个验证码
+        freshCode() {
+            this.clear();
+            this.randomCode();
+            //console.log(this.code);
+            this.initCanvas();
+            this.drawBackground();
+            this.drawDisturbLines();
+            this.drawDisturbDots();
+            this.drawLetters();
+        }
+
+        // 清除画布
+        clear() {
+            this.ctx.clearRect(0, 0, this.width, this.height);
+        }
+    }
+</script>
+<script type="text/javascript">
+    let identifyCode = new IdentifyCode("#identify", 100, 40);
+    console.log(identifyCode.code);
+    let identify = document.querySelector("#identify");
+    identify.onclick = function() {
+        identifyCode.freshCode();
+        console.log(identifyCode.code);
+    }
+</script>
 
 </body>
 </html>

@@ -1131,10 +1131,13 @@
                                     <span>学院:</span>
                                 </strong>
                             </div>
-
                             <div style="margin-top: -10px" class="col-md-6 col-xs-6">
-                                <input type="text" class="form-control"
-                                       placeholder="计算机与软件工程学院">
+                                <input type="text" list="Modify_college" placeholder="计算机与软件工程" class="form-control drop-down"/>
+                                <datalist id="Modify_college">
+                                    <option value="计算机与软件工程"/>
+                                    <option value="营销"/>
+                                    <option value="经济"/>
+                                </datalist>
                             </div>
                         </div>
                         <hr>
@@ -1170,10 +1173,13 @@
                                     <span>权限:</span>
                                 </strong>
                             </div>
-
                             <div style="margin-top: -10px" class="col-md-6 col-xs-6">
-                                <input type="text" class="form-control"
-                                       placeholder="学生">
+                                <input type="text" list="Modify_permissions" placeholder="学生" class="form-control drop-down"/>
+                                <datalist id="Modify_permissions">
+                                    <option value="学生"/>
+                                    <option value="教师"/>
+                                    <option value="系主任"/>
+                                </datalist>
                             </div>
                         </div>
                     </div>

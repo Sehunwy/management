@@ -208,13 +208,13 @@ a:hover{ text-decoration: underline; }
 }
 #content form input[type="text"]:focus,
 #content form input[type="password"]:focus {
-    -webkit-box-shadow: 0 0 2px #ed1c24 inset;
-    -moz-box-shadow: 0 0 2px #ed1c24 inset;
-    -ms-box-shadow: 0 0 2px #ed1c24 inset;
-    -o-box-shadow: 0 0 2px #ed1c24 inset;
-    box-shadow: 0 0 2px #ed1c24 inset;
+    -webkit-box-shadow: 0 0 2px #66afe9 inset;
+    -moz-box-shadow: 0 0 2px #66afe9 inset;
+    -ms-box-shadow: 0 0 2px #66afe9 inset;
+    -o-box-shadow: 0 0 2px #66afe9 inset;
+    box-shadow: 0 0 2px #66afe9 inset;
     background-color: #fff;
-    border: 1px solid #ed1c24;
+    border: 1px solid #66afe9;
     outline: none;
 }
 #username { background-position: 10px 10px !important }
