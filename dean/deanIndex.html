@@ -1717,10 +1717,6 @@
                                         <option value="第七组"/>
                                     </datalist>
                                 </div>
-                                <!--<div style="padding-left: 0px" class="col-md-6  col-xs-6">-->
-                                <!--<input type="text" class="form-control"-->
-                                <!--placeholder="第一组">-->
-                                <!--</div>-->
                             </div>
                         </div>
                         <hr>
@@ -1728,20 +1724,29 @@
                             <div class="col-md-12">
                                 <div style="padding-left: 0px" class="col-md-2  col-xs-2">
                                     <strong>
-                                        <span>分组:</span>
+                                        <span>答辩教师:</span>
                                     </strong>
                                 </div>
-                                <div style="margin-top: -10px" class="col-md-4 col-xs-4">
-                                    <input type="text" class="form-control"/>
+
+                                <div id="choose_teacher">
+                                    <!--<div style="margin-bottom:10px;margin-left:4px;padding:0px;" class="col-md-2 col-xs-2">-->
+                                        <!--<input placeholder="王国志" type="text" class="form-control"/>-->
+                                    <!--</div>-->
+                                    <!--<div style="padding: 0px" class="col-md-1  col-xs-1">-->
+                                        <!--<span style="position: absolute;left: -8px;top: -10px;font-size: 20px" class="iconfont icon-shanchu"></span>-->
+                                    <!--</div>-->
                                 </div>
                             </div>
                         </div>
                         <div style="margin-top: 10px; height: 18px">
                             <div style="margin-top: 20px;" class="col-md-12">
                                 <div style="padding-left: 0px" class="col-md-2  col-xs-2">
+                                    <strong>
+                                        <span>选择答辩教师:</span>
+                                    </strong>
                                 </div>
                                 <div style="margin-top: -10px" class="col-md-4 col-xs-4">
-                                    <input type="text" list="plea_Teacher"
+                                    <input id="input" type="text" list="plea_Teacher"
                                            class="form-control drop-down"/>
                                     <datalist id="plea_Teacher">
                                         <option value="李龙"/>
@@ -1754,7 +1759,7 @@
                                     </datalist>
                                 </div>
                                 <div style="margin-top: -11px" class="col-md-2  col-xs-2">
-                                    <button type="button" class="btn btn-info">确定
+                                    <button type="button" class="btn btn-info" onclick="chooseTeacer()">确定
                                     </button>
                                 </div>
                             </div>
@@ -1899,6 +1904,47 @@
 </script>
 <!--分页结束-->
 
+<script>
+    function  chooseTeacer() {
+            let $options = $("#plea_Teacher").children();
+            for (let i = 0; i < $options.length; i++) {
+                if ($options.eq(i).val().trim() == $("#input").val().trim()) {
+                    let valueInput = $("#input").val().trim();
+                    let choose_teacher = document.getElementById('choose_teacher');
+                    let divrow = document.createElement('div');
+                    divrow.setAttribute('class','newRow');
+                    divrow.setAttribute('id','newRow'+$(".newRow").size());
+                    if($(".newRow").size()==6) {
+                        divrow.innerHTML = '<div style="margin-bottom:10px;padding:0px 0px 0px 20px;white-space: pre-wrap; color: red" class="col-md-3 col-xs-3">选项个数达到最大,不能再添加!</div>';
+                    }
+                    else if($(".newRow").size()<6) {
+                        divrow.innerHTML = '<div style="margin-bottom:10px;margin-left:4px;padding:0px;" class="col-md-2 col-xs-2">\n' +
+                            '                                        <input readonly value='+valueInput+' type="text" class="form-control"/>\n' +
+                            '                                    </div>\n' +
+                            '                                    <div style="padding: 0px" class="col-md-1  col-xs-1">\n' +
+                            '                                        <span style="position: absolute;left: -8px;top: -10px;font-size: 20px" class="iconfont icon-shanchu" onclick="deleteTeacer('+$(".newRow").size()+')"></span>\n' +
+                            '                                    </div>';
+
+                    }
+                    choose_teacher.appendChild(divrow);
+
+                    break;
+                } else if(i == $options.length-1) {
+                    console.log("err")
+                }
+            }
+    }
+
+    function deleteTeacer(id) {
+        let teacher_id = document.getElementById('newRow' + id);
+        $(teacher_id).remove();
+        console.log($(".newRow").size());
+        if($(".newRow").size()<7) {
+            $(document.getElementById('newRow6')).remove();
+        }
+        // console.log(id);
+    }
+</script>
 
 <script>
     $(function () {

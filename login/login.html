@@ -6,38 +6,125 @@
     <title>四川工商学院毕业设计管理系统登录界面</title>
     <!-- 自定义 Styles-->
     <link href="../assets/css/login.css" rel="stylesheet"/>
+    <!-- Bootstrap Styles-->
+    <link href="../assets/css/bootstrap.css" rel="stylesheet"/>
+    <!-- 字体图标 Styles-->
+    <link href="../assets/css/iconfont.css" rel="stylesheet"/>
 </head>
 <body>
 <div class="container">
-    <section id="content">
-        <form action="">
-            <h1>用户登录</h1>
-            <div>
-                <input type="text" placeholder="请输入用户名" required="" id="username"/>
+    <div id="content">
+        <ul class="tab_menu">
+            <li class="selected">账户密码登录</li>
+            <li>手机号登录</li>
+        </ul>
+        <div class="horizontal"></div>
+        <div id="type0" class="row type">
+            <div class="col-md-12">
+                <div class="col-md-1">
+                </div>
+                <div class="col-md-10">
+                    <div class="form-group has-success">
+                        <span class="iconfont icon-wode iconFont"></span>
+                        <input type="text" class="form-control" placeholder="请输入学号（工号）" autofocus required>
+                    </div>
+                </div>
             </div>
-            <div>
-                <input type="password" placeholder="请输入密码" required="" id="password"/>
+            <div class="col-md-12">
+                <div class="col-md-1"></div>
+                <div class="col-md-10">
+                    <div class="form-group has-success">
+                        <span class="iconfont icon-mima iconFont"></span>
+                        <input type="password" class="form-control" placeholder="请输入密码" required>
+                    </div>
+                </div>
             </div>
-            <div>
-                <input style="padding: 15px 10px 15px 40px; width:100px;position: relative;top: -15px;left: -41px" type="text" placeholder="请输入验证码">
-                <canvas id="identify" style="cursor: pointer"></canvas>
+            <div class="col-md-12">
+                <div class="col-md-1"></div>
+                <div class="col-md-5">
+                    <div class="form-group has-success">
+                        <span class="iconfont icon-ERP_yanzhengma iconFont"></span>
+                        <input type="text" class="form-control" placeholder="请输入验证码" required>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="form-group has-success">
+                        <canvas id="identify" style="cursor: pointer"></canvas>
+                    </div>
+                </div>
             </div>
-            <div>
-                <label><input name="category" type="radio" value="" checked/>学生 </label>
-                <label><input name="category" type="radio" value="" />教师 </label>
-                <label><input name="category" type="radio" value="" />系主任 </label>
-                <label><input name="category" type="radio" value="" />管理员 </label>
+            <div class="col-md-12">
+                <div class="col-md-1"></div>
+                <div class="col-md-2 padding0">
+                    <label><input name="category" type="radio" value="" checked/>学生 </label>
+                </div>
+                <div class="col-md-4 padding0">
+                    <label><input name="categoryPhone" type="radio" value=""/>教师/系主任 </label>
+                </div>
+                <div class="col-md-2 padding0">
+                    <label><input name="category" type="radio" value=""/>管理员 </label>
+                </div>
             </div>
-            <div>
-                <span class="help-block u-errormessage" id="js-server-helpinfo">&nbsp;</span></div>
-            <div>
-                <input type="submit" value="登录" class="btn btn-primary" id="js-btn-login"/>
-                <a href="#">忘记密码?</a>
+            <div style="padding-bottom: 20px" class="col-md-12">
+                <div class="col-md-1"></div>
+                <div class="col-md-3">
+                    <button type="button" class="btn btn-sm btn-info">登录</button>
+                </div>
+                <div class="col-md-4"></div>
+                <div style="line-height: 30px;height: 30px" class="col-md-3">
+                    <a href="#">忘记密码?</a>
+                </div>
             </div>
-        </form>
-    </section>
+        </div>
+        <div id="type1" class="row type hide">
+            <div class="col-md-12">
+                <div class="col-md-1"></div>
+                <div class="col-md-10">
+                    <div class="form-group has-success">
+                        <span class="iconfont icon-gerenxinxiyedianhuahaoma iconFont"></span>
+                        <input type="text" class="form-control" placeholder="请输入电话号码" autofocus required>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="col-md-1"></div>
+                <div class="col-md-5">
+                    <div class="form-group has-success">
+                        <span class="iconfont icon-ERP_yanzhengma iconFont"></span>
+                        <input type="text" class="form-control" placeholder="请输入验证码" required>
+                    </div>
+                </div>
+                <div class="col-md-5">
+
+                    <button id="btn" type="button" class="btn btn-info">获取验证码</button>
+                </div>
+            </div>
+            <div style="padding-bottom: 20px" class="col-md-12">
+                <div class="col-md-1"></div>
+                <div class="col-md-3">
+                    <button type="button" class="btn btn-sm btn-info">登录</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 </div>
 
+<!-- jQuery Js -->
+<script src="../assets/js/jquery-1.10.2.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        let $tab_li = $('#content ul li');
+        $tab_li.click(function () {
+            console.log(111);
+            $(this).addClass('selected').siblings().removeClass('selected');
+            let index = $tab_li.index(this);
+            $('.type').addClass('hide');
+            $('#type' + index).removeClass('hide');
+
+        });
+    });
+</script>
 <script type="text/javascript">
     class IdentifyCode {
         constructor(canvasId, width, height) {
@@ -59,7 +146,7 @@
         // 生成随机色
         randomColor() {
             let colorStr = "#";
-            for(let i = 0; i < 6; i++) {
+            for (let i = 0; i < 6; i++) {
                 colorStr += Math.floor(Math.random() * 16).toString(16);
             }
             return colorStr;
@@ -68,13 +155,13 @@
         // 生成验证码字母范围
         generateCodeRange() {
             let codeRange = [];
-            for(let i = "A".charCodeAt(0); i <= "Z".charCodeAt(0); i++) {
+            for (let i = "A".charCodeAt(0); i <= "Z".charCodeAt(0); i++) {
                 codeRange.push(String.fromCharCode(i));
             }
-            for(let i = "a".charCodeAt(0); i <= "z".charCodeAt(0); i++) {
+            for (let i = "a".charCodeAt(0); i <= "z".charCodeAt(0); i++) {
                 codeRange.push(String.fromCharCode(i));
             }
-            for(let i = "0".charCodeAt(0); i <= "9".charCodeAt(0); i++) {
+            for (let i = "0".charCodeAt(0); i <= "9".charCodeAt(0); i++) {
                 codeRange.push(String.fromCharCode(i));
             }
             this.codeRange = codeRange;
@@ -85,7 +172,7 @@
         randomCode() {
             this.code = "";
             let len = this.codeRange.length;
-            for(let i = 0; i < 4; i++) {
+            for (let i = 0; i < 4; i++) {
                 this.code += this.codeRange[Math.floor(Math.random() * len)];
             }
         }
@@ -101,10 +188,11 @@
 
         // 画干扰线
         drawDisturbLines() {
-            for(let i = 0; i < 4; i++) {
+            for (let i = 0; i < 4; i++) {
                 this.drawOneLine();
             }
         }
+
         drawOneLine() {
             let startX = Math.floor(Math.random() * this.width);
             let startY = Math.floor(Math.random() * this.height);
@@ -121,10 +209,11 @@
 
         // 画干扰点
         drawDisturbDots() {
-            for(let i = 0, count = this.width * this.height / 100; i < count; i++) {
+            for (let i = 0, count = this.width * this.height / 100; i < count; i++) {
                 this.drawOneDot();
             }
         }
+
         drawOneDot() {
             let ox = Math.floor(Math.random() * this.width);
             let oy = Math.floor(Math.random() * this.height);
@@ -137,7 +226,7 @@
 
         // 画文字(数字或字母)
         drawLetters() {
-            for(let i = 0, len = this.code.length; i < len; i++) {
+            for (let i = 0, len = this.code.length; i < len; i++) {
                 let offsetX = this.width * 0.15; // 中间的70%画字母，两边各15%
                 let x = i * this.width * 0.7 / this.code.length + offsetX;
                 let y = this.height / 2;
@@ -146,6 +235,7 @@
                 this.drawOneLetter(letter, x, y, fontSize);
             }
         }
+
         drawOneLetter(letter, x, y, fontSize) {
             this.ctx.font = fontSize + "px Times new roman";
             this.ctx.textBaseline = "middle";
@@ -178,9 +268,30 @@
     let identifyCode = new IdentifyCode("#identify", 100, 40);
     console.log(identifyCode.code);
     let identify = document.querySelector("#identify");
-    identify.onclick = function() {
+    identify.onclick = function () {
         identifyCode.freshCode();
         console.log(identifyCode.code);
+    }
+</script>
+
+<script>
+    let wait = 60;
+    document.getElementById("btn").onclick = function() {
+        time(this);
+    }
+    function time(o) {
+        if (wait == 0) {
+            o.removeAttribute("disabled");
+            o.innerHTML = "获取验证码";
+            wait = 60;
+        } else {
+            o.setAttribute("disabled", true);
+            o.innerHTML = wait + "秒后重新发送";
+            wait--;
+            setTimeout(function() {
+                time(o)
+            }, 1000)
+        }
     }
 </script>
 

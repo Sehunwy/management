@@ -418,6 +418,356 @@
     </div>
     <!--首页结束-->
 
+    <!--学生选题开始-->
+    <div id="two" class="page-wrapper displayNone">
+        <div style="margin: 0px" class="page-inner">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div style="background-color: #f5f5f5">
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li class="active"><a href="#topic_Selection" role="tab"
+                                                      data-toggle="tab">选题</a></li>
+                                <li><a href="#topic_Selected" role="tab" data-toggle="tab">已选课题</a></li>
+                            </ul>
+                        </div>
+                        <div class="tab-content">
+                            <div class="tab-pane active panel-body" id="topic_Selection">
+                                <div class="alert alert-info textEllipsis">
+                                    <div>1.根据您所在学校或院系的设置，您最多可选 3 个课题等待导师确认，最终可确定1个双选课题</div>
+                                    <div>2.根据您所在学校或院系的设置，每个课题最多可供 3 名学生选择，并等待导师确认，最终每个课题可确定1人双选</div>
+                                </div>
+                                <div style="padding-bottom: 15px;padding-left: 0px" class="col-md-12">
+                                    <div style="padding-left: 0px" class="col-md-12">
+                                        <div style="margin-bottom: 10px" class="col-md-4 col-xs-4">
+                                            <div class="col-md-3 col-xs-3" style="padding: 0px">
+                                                课题题目：
+                                            </div>
+                                            <div class="col-md-9 col-xs-9" style="padding: 0px">
+                                                <input type="text" class="form-control"/>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 col-xs-1"></div>
+                                        <div style="margin-bottom: 10px" class="col-md-4 col-xs-4">
+                                            <div class="col-md-3 col-xs-3" style="padding: 0px">
+                                                指导教师：
+                                            </div>
+                                            <div class="col-md-9 col-xs-9" style="padding: 0px">
+                                                <input type="text" class="form-control"/>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 col-xs-1"></div>
+                                        <div style="margin-bottom: 10px" class="col-md-4 col-xs-4">
+                                            <div class="col-md-3 col-xs-3" style="padding: 0px">
+                                                教师编号：
+                                            </div>
+                                            <div class="col-md-9 col-xs-9" style="padding: 0px">
+                                                <input type="text" class="form-control"/>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 col-xs-1"></div>
+                                        <div style="margin-bottom: 10px" class="col-md-4 col-xs-4">
+                                            <div class="col-md-3 col-xs-3" style="padding: 0px">
+                                                题目类型：
+                                            </div>
+                                            <div class="col-md-9 col-xs-9" style="padding: 0px">
+                                                <select style="margin:0px 5px" class="form-control">
+                                                    <option value="typeAll">全部</option>
+                                                    <option value="typeOther">其他</option>
+                                                    <option value="artBeauty">艺美设计</option>
+                                                    <option value="engineeringIndustrial">工程工业设计</option>
+                                                    <option value="application">应用研究</option>
+                                                    <option value="theoretical">理论研究</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 col-xs-1"></div>
+                                        <div style="margin-bottom: 10px" class="col-md-4 col-xs-4">
+                                            <div class="col-md-3 col-xs-3" style="padding: 0px">
+                                                题目来源：
+                                            </div>
+                                            <div class="col-md-9 col-xs-9" style="padding: 0px">
+                                                <select style="margin:0px 5px" class="form-control">
+                                                    <option value="sourceAll">全部</option>
+                                                    <option value="sourceOther">其他</option>
+                                                    <option value="productionPractice">生产实际（社会实践）题</option>
+                                                    <option value="teacherResearch">教师科研课题</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2 col-xs-2"></div>
+                                        <div class="col-md-2 col-xs-2" style="padding-left: 5px">
+                                            <button
+                                                    type="button" class="btn btn-info">查询
+                                                <!--<span class="iconfont icon-sousuo fontSize14"></span>-->
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="alert alert-success textEllipsis border_radius marginBottom0">
+                                    <div class="col-md-2 textAlign">
+                                        课题题目
+                                    </div>
+                                    <div class="col-md-2 textAlign">
+                                        题目类型
+                                    </div>
+                                    <div class="col-md-2 textAlign">
+                                        题目来源
+                                    </div>
+                                    <div class="col-md-3 textAlign">
+                                        指导老师
+                                    </div>
+                                    <div class="col-md-1 textAlign">
+                                        可选人数
+                                    </div>
+                                    <div class="col-md-2 textAlign">
+                                        操作
+                                    </div>
+                                </div>
+                                <div class="alert alert-warning textEllipsis border_radius marginBottom0">
+                                    <div title="PMMA灯具基于moldflow三维流动优化的注塑模设计" class="col-md-2 textEllipsis textAlign">
+                                        PMMA灯具基于moldflow三维流动优化的注塑模设计
+                                    </div>
+                                    <div title="工程工业设计" class="col-md-2 textEllipsis textAlign">
+                                        工程工业设计
+                                    </div>
+                                    <div title="生产实际（社会实践）题" class="col-md-2 textEllipsis textAlign">
+                                        生产实际（社会实践）题
+                                    </div>
+                                    <div title="廖永衡（0120080001）" class="col-md-3 textAlign textEllipsis">
+                                        廖永衡（0120080001）
+                                    </div>
+                                    <div class="col-md-1 textAlign textEllipsis">
+                                        10人
+                                    </div>
+                                    <div class="col-md-2 textEllipsis textAlign">
+                                        <button type="button" class="btn btn-info btn-xs" data-toggle="modal"
+                                                data-target="#viewTopic">查看
+                                        </button>
+                                        <button type="button" class="btn btn-danger btn-xs" data-toggle="modal"
+                                                data-target="#chooseTopic">选题
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="alert alert-danger textEllipsis border_radius marginBottom0">
+                                    <div title="PMMA灯具基于moldflow三维流动优化的注塑模设计" class="col-md-2 textEllipsis textAlign">
+                                        PMMA灯具基于moldflow三维流动优化的注塑模设计
+                                    </div>
+                                    <div title="工程工业设计" class="col-md-2 textEllipsis textAlign">
+                                        工程工业设计
+                                    </div>
+                                    <div title="生产实际（社会实践）题" class="col-md-2 textEllipsis textAlign">
+                                        生产实际（社会实践）题
+                                    </div>
+                                    <div title="廖永衡（0120080001）" class="col-md-3 textAlign textEllipsis">
+                                        廖永衡（0120080001）
+                                    </div>
+                                    <div class="col-md-1 textAlign textEllipsis">
+                                        10人
+                                    </div>
+                                    <div class="col-md-2 textEllipsis textAlign">
+                                        <button type="button" class="btn btn-info btn-xs" data-toggle="modal"
+                                                data-target="#checkDraw">查看
+                                        </button>
+                                        <button type="button" class="btn btn-danger btn-xs" data-toggle="modal"
+                                                data-target="#checkDraw">选题
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="alert alert-warning textEllipsis border_radius marginBottom0">
+                                    <div title="PMMA灯具基于moldflow三维流动优化的注塑模设计" class="col-md-2 textEllipsis textAlign">
+                                        PMMA灯具基于moldflow三维流动优化的注塑模设计
+                                    </div>
+                                    <div title="工程工业设计" class="col-md-2 textEllipsis textAlign">
+                                        工程工业设计
+                                    </div>
+                                    <div title="生产实际（社会实践）题" class="col-md-2 textEllipsis textAlign">
+                                        生产实际（社会实践）题
+                                    </div>
+                                    <div title="廖永衡（0120080001）" class="col-md-3 textAlign textEllipsis">
+                                        廖永衡（0120080001）
+                                    </div>
+                                    <div class="col-md-1 textAlign textEllipsis">
+                                        10人
+                                    </div>
+                                    <div class="col-md-2 textEllipsis textAlign">
+                                        <button type="button" class="btn btn-info btn-xs" data-toggle="modal"
+                                                data-target="#checkDraw">查看
+                                        </button>
+                                        <button type="button" class="btn btn-danger btn-xs" data-toggle="modal"
+                                                data-target="#checkDraw">选题
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="alert alert-danger textEllipsis border_radius marginBottom0">
+                                    <div title="PMMA灯具基于moldflow三维流动优化的注塑模设计" class="col-md-2 textEllipsis textAlign">
+                                        PMMA灯具基于moldflow三维流动优化的注塑模设计
+                                    </div>
+                                    <div title="工程工业设计" class="col-md-2 textEllipsis textAlign">
+                                        工程工业设计
+                                    </div>
+                                    <div title="生产实际（社会实践）题" class="col-md-2 textEllipsis textAlign">
+                                        生产实际（社会实践）题
+                                    </div>
+                                    <div title="廖永衡（0120080001）" class="col-md-3 textAlign textEllipsis">
+                                        廖永衡（0120080001）
+                                    </div>
+                                    <div class="col-md-1 textAlign textEllipsis">
+                                        10人
+                                    </div>
+                                    <div class="col-md-2 textEllipsis textAlign">
+                                        <button type="button" class="btn btn-info btn-xs" data-toggle="modal"
+                                                data-target="#checkDraw">查看
+                                        </button>
+                                        <button type="button" class="btn btn-danger btn-xs" data-toggle="modal"
+                                                data-target="#checkDraw">选题
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!--分页开始-->
+                                <div style="margin-top: 15px" class="m-style"></div>
+                                <!--分页结束-->
+                            </div>
+                            <div class="tab-pane panel-body" id="topic_Selected">
+                                <div style="padding-left:0px;padding-bottom: 15px" class="col-md-12">
+                                    <div style="padding-left: 0px" class="col-md-4">
+                                        <div class="col-md-10 col-xs-10" style="padding: 0px">
+                                            <h4 class="font_bold">已选课题列表</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="alert alert-success textEllipsis border_radius marginBottom0">
+                                    <div class="col-md-3 textAlign">
+                                        课题题目
+                                    </div>
+                                    <div class="col-md-2 textAlign">
+                                        题目类型
+                                    </div>
+                                    <div class="col-md-2 textAlign">
+                                        题目来源
+                                    </div>
+                                    <div class="col-md-3 textAlign">
+                                        指导教师（编号）
+                                    </div>
+                                    <div class="col-md-1 textAlign">
+                                        确认状态
+                                    </div>
+                                    <div class="col-md-1 textAlign">
+                                        操作
+                                    </div>
+                                </div>
+                                <div class="alert alert-danger textEllipsis border_radius marginBottom0">
+                                    <div title="PMMA灯具基于moldflow三维流动优化的注塑模设计" class="col-md-3 textEllipsis textAlign">
+                                        PMMA灯具基于moldflow三维流动优化的注塑模设计
+                                    </div>
+                                    <div title="工程工业设计" class="col-md-2 textEllipsis textAlign">
+                                        工程工业设计
+                                    </div>
+                                    <div title="生产实际（社会实践）题" class="col-md-2 textEllipsis textAlign">
+                                        生产实际（社会实践）题
+                                    </div>
+                                    <div title="廖永衡（0120080001）" class="col-md-3 textAlign textEllipsis">
+                                        廖永衡（0120080001）
+                                    </div>
+                                    <div class="col-md-1 textEllipsis textAlign">
+                                        不通过
+                                    </div>
+                                    <div class="col-md-1 textEllipsis textAlign">
+                                        <button type="button" class="btn btn-info btn-xs" data-toggle="modal"
+                                                data-target="#checkSelection">查看
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="alert alert-warning textEllipsis border_radius marginBottom0">
+                                    <div title="PMMA灯具基于moldflow三维流动优化的注塑模设计" class="col-md-3 textEllipsis textAlign">
+                                        PMMA灯具基于moldflow三维流动优化的注塑模设计
+                                    </div>
+                                    <div title="工程工业设计" class="col-md-2 textEllipsis textAlign">
+                                        工程工业设计
+                                    </div>
+                                    <div title="生产实际（社会实践）题" class="col-md-2 textEllipsis textAlign">
+                                        生产实际（社会实践）题
+                                    </div>
+                                    <div title="廖永衡（0120080001）" class="col-md-3 textAlign textEllipsis">
+                                        廖永衡（0120080001）
+                                    </div>
+                                    <div class="col-md-1 textEllipsis textAlign">
+                                        通过
+                                    </div>
+                                    <div class="col-md-1 textEllipsis textAlign">
+                                        <button type="button" class="btn btn-info btn-xs" data-toggle="modal"
+                                                data-target="#checkSelection">查看
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--查看选题详情开始-->
+    <div class="modal fade" id="viewTopic" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">课题详细信息</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-success textEllipsis">
+                        <strong>
+                            <span>课题题目:</span>
+                        </strong>
+                        <span>PMMA灯具基于moldflow三维流动优化的注塑模设计</span>
+                        <hr>
+                        <strong>
+                            <span>选题范围:</span>
+                        </strong>
+                        <span>全校</span>
+                        <hr>
+                        <strong>
+                            <span>题目类型:</span>
+                        </strong>
+                        <span>工程工业设计</span>
+                        <hr>
+                        <strong>
+                            <span>题目来源:</span>
+                        </strong>
+                        <span>生产实际（社会实践）题</span>
+                        <hr>
+                        <strong>
+                            <span>可选专业:</span>
+                        </strong>
+                        <span>材料科学与工程学院-材料成型及控制工程</span>
+                        <hr>
+                        <strong>
+                            <span>题目简介:</span>
+                        </strong>
+                        <span>本产品为PMMA灯具，灯具内有凸台和内孔，模具设计时应充分考虑该结构的脱模问题，该产品材料为PMMA，在模具设计时应根据PMMA的流变特性，合理设计模具浇注系统。</span>
+                        <hr>
+                        <strong>
+                            <span>可选人数:</span>
+                        </strong>
+                        <span>10人</span>
+                        <strong>
+                            <span>指导教师:</span>
+                        </strong>
+                        <span>廖永衡（0120080001）</span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm btn-info" data-dismiss="modal">关闭</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--查看选题详情结束-->
+    <!--学生选题结束-->
+
     <!--查看更多任务进度开始-->
     <div id="five" class="page-wrapper displayNone">
         <div class="header">
