@@ -46,7 +46,7 @@
                             <div>
                                 <p>
                                     <strong>开题报告</strong>
-                                    <span class="pull-right text-muted">60% 完成</span>
+                                    <span class="pull-right text-muted">60%</span>
                                 </p>
                                 <div class="progress progress-striped active">
                                     <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60"
@@ -62,7 +62,7 @@
                             <div>
                                 <p>
                                     <strong>中期检查</strong>
-                                    <span class="pull-right text-muted">28% 完成</span>
+                                    <span class="pull-right text-muted">28%</span>
                                 </p>
                                 <div class="progress progress-striped active">
                                     <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="28"
@@ -77,7 +77,7 @@
                             <div>
                                 <p>
                                     <strong>指导记录</strong>
-                                    <span class="pull-right text-muted">60% 完成</span>
+                                    <span class="pull-right text-muted">60%</span>
                                 </p>
                                 <div class="progress progress-striped active">
                                     <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60"
@@ -1208,7 +1208,8 @@
                                 <div class="alert alert-info textEllipsis">
                                     <div>
                                         <span style="color: #333333;">最新提交时间：2018-11-25 15:49:48</span>
-                                        <span style="padding-left: 100px"><a href="#foreignTranslationDetails">查看审核详情</a></span>
+                                        <span style="padding-left: 100px"><a
+                                                href="#foreignTranslationDetails">查看审核详情</a></span>
                                     </div>
                                 </div>
                                 <div style="padding-left:0px;padding-bottom: 15px" class="col-md-12">
@@ -1245,24 +1246,47 @@
                                 </div>
                                 <div id="writeForeignTranslation"
                                      class="col-md-12 displayNone openingReport">
-                                    <h5 class="font_bold">中期检查需要填写的内容</h5>
-                                    <textarea class="form-control" rows="10" name="textarea"
-                                              style="background-color: #fff">
+                                    <div style="width: 49%; display: inline-block">
+                                        <h5 class="font_bold">外文译文内容</h5>
+                                        <textarea class="form-control" rows="10" name="textarea"
+                                                  style="background-color: #fff">
                                     </textarea>
-                                    <h5 class="font_bold">添加附件</h5>
-                                    <input id="fileChooseForeign" type="file" style="display: none">
-                                    <div class="row">
-                                        <div class="col-md-5 paddingRightt0">
-                                            <input id="fileNameForeign" class="form-control" type="text">
-                                        </div>
-                                        <div class="col-md-5 paddingLeft0">
-                                            <button type="button"
-                                                    class="btn btn-info border_bottom_left_radius border_top_left_radius"
-                                                    onclick="fileClick('fileChooseForeign','fileNameForeign')">
-                                                浏览
-                                            </button>
+                                        <h5 class="font_bold">添加附件</h5>
+                                        <input id="fileChooseForeign" type="file" style="display: none">
+                                        <div class="row">
+                                            <div class="col-md-5 paddingRightt0">
+                                                <input id="fileNameForeign" class="form-control" type="text">
+                                            </div>
+                                            <div class="col-md-5 paddingLeft0">
+                                                <button type="button"
+                                                        class="btn btn-info border_bottom_left_radius border_top_left_radius"
+                                                        onclick="fileClick('fileChooseForeign','fileNameForeign')">
+                                                    浏览
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
+                                    <div style="width: 49%; float: right">
+                                        <h5 class="font_bold">原文内容 </h5>
+                                        <textarea class="form-control" rows="10" name="textarea"
+                                                  style="background-color: #fff">
+                                    </textarea>
+                                        <h5 class="font_bold">添加附件</h5>
+                                        <input id="fileChooseOriginal" type="file" style="display: none">
+                                        <div class="row">
+                                            <div class="col-md-5 paddingRightt0">
+                                                <input id="fileNameOriginal" class="form-control" type="text">
+                                            </div>
+                                            <div class="col-md-5 paddingLeft0">
+                                                <button type="button"
+                                                        class="btn btn-info border_bottom_left_radius border_top_left_radius"
+                                                        onclick="fileClick('fileChooseOriginal','fileNameOriginal')">
+                                                    浏览
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                     <div class="row" style="margin-top: 10px">
                                         <div class="col-md-2">
                                             <button type="button" class="btn btn-info" onclick="submitForeign()">
@@ -1310,6 +1334,211 @@
                                 </div>
                             </div>
                             <!--提交外文译文和原文结束-->
+                            <!--提交中期报告开始-->
+                            <div class="tab-pane panel-body" id="literatureReview">
+                                <div class="alert alert-info textEllipsis">
+                                    <div>
+                                        <span style="color: #333333;">最新提交时间：2018-11-25 15:49:48</span>
+                                        <span style="padding-left: 100px"><a href="#literatureReviewDetails">查看审核详情</a></span>
+                                    </div>
+                                </div>
+                                <div style="padding-left:0px;padding-bottom: 15px" class="col-md-12">
+                                    <div style="padding-left: 0px" class="col-md-4">
+                                        <h4 class="font_bold">提交记录</h4>
+                                    </div>
+                                </div>
+                                <div class="alert alert-success textEllipsis border_radius marginBottom0">
+                                    <div class="col-md-5 textAlign">
+                                        课题题目
+                                    </div>
+                                    <div class="col-md-3 textAlign">
+                                        审核状态
+                                    </div>
+                                    <div class="col-md-4 textAlign">
+                                        提交时间
+                                    </div>
+                                </div>
+                                <div class="alert alert-warning textEllipsis border_radius marginBottom0">
+                                    <div class="col-md-5 textAlign">
+                                        PMMA灯具基于moldflow三维流动优化的注塑模设计
+                                    </div>
+                                    <div class="col-md-3 textAlign">
+                                        等待指导教师审核
+                                    </div>
+                                    <div class="col-md-4 textAlign">
+                                        2018-12-09 18:30:18
+                                    </div>
+                                </div>
+                                <div style="padding-left:0px;padding-bottom: 15px" class="col-md-12">
+                                    <div style="padding-left: 0px" class="col-md-4">
+                                        <h4 class="font_bold">文献综述详情</h4>
+                                    </div>
+                                </div>
+                                <div id="writeLiterature"
+                                     class="col-md-12 displayNone openingReport">
+                                    <h5 class="font_bold">文献综述需要填写的内容</h5>
+                                    <textarea class="form-control" rows="10" name="textarea"
+                                              style="background-color: #fff">
+                                    </textarea>
+                                    <h5 class="font_bold">添加附件</h5>
+                                    <input id="fileChooseLiterature" type="file" style="display: none">
+                                    <div class="row">
+                                        <div class="col-md-5 paddingRightt0">
+                                            <input id="fileNameLiterature" class="form-control" type="text">
+                                        </div>
+                                        <div class="col-md-5 paddingLeft0">
+                                            <button type="button"
+                                                    class="btn btn-info border_bottom_left_radius border_top_left_radius"
+                                                    onclick="fileClick('fileChooseLiterature','fileNameLiterature')">
+                                                浏览
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="margin-top: 10px">
+                                        <div class="col-md-2">
+                                            <button type="button" class="btn btn-info" onclick="submitLiterature()">
+                                                提交
+                                            </button>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <button type="button" class="btn btn-success"
+                                                    onclick="cancelLiterature()">
+                                                取消
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="modifyLiterature" class="col-md-12 openingReport">
+                                    <h5 class="font_bold">文献综述内容</h5>
+                                    <div class="whiteColor">
+                                        <div class="reportContent">
+                                            提交内容
+                                        </div>
+                                        <div class="reportNotation">
+                                            <h3>暂无批注内容</h3>
+                                        </div>
+                                    </div>
+                                    <h5 class="font_bold">附件</h5>
+                                    <div class="whiteColor" style="padding:10px;">
+                                        附件：开题报告.docx <a style="padding-left: 20px" href="#">点击下载</a>
+                                    </div>
+                                    <div class="row" style="margin-top: 10px">
+                                        <div class="col-md-2">
+                                            <button onclick="modifyLiterature()" type="button" class="btn btn-info ">
+                                                修改
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="padding-left:0px;padding-bottom: 15px" class="col-md-12">
+                                    <div style="padding-left: 0px" class="col-md-4">
+                                        <h4 id="literatureReviewDetails" class="font_bold">文献综述审核情况</h4>
+                                    </div>
+                                </div>
+                                <div class="alert alert-danger textEllipsis border_radius marginBottom0">
+                                    等待指导教师审核
+                                </div>
+                            </div>
+                            <!--提交中期报告结束-->
+                            <!--提交指导记录开始-->
+                            <div class="tab-pane panel-body" id="graduationDesign">
+                                <div style="padding-left:0px;padding-bottom: 15px" class="col-md-12">
+                                    <div style="padding-left: 0px" class="col-md-4">
+                                        <div class="col-md-10 col-xs-10" style="padding: 0px">
+                                            <h4 class="font_bold">学生毕业设计（论文）列表</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button style="margin-bottom: 10px;" type="button"
+                                        class="management_graduation newPage btn btn-info">
+                                    提交毕业设计（论文）
+                                </button>
+                                <div class="alert alert-success textEllipsis border_radius marginBottom0">
+                                    <div class="col-md-3 textAlign">
+                                        课题题目
+                                    </div>
+                                    <div class="col-md-3 textAlign">
+                                        提交时间
+                                    </div>
+                                    <div class="col-md-1 textAlign">
+                                        提交次数
+                                    </div>
+                                    <div class="col-md-3 textAlign">
+                                        审核状态
+                                    </div>
+                                    <div class="col-md-2 textAlign">
+                                        操作
+                                    </div>
+                                </div>
+                                <div class="alert alert-danger textEllipsis border_radius marginBottom0">
+                                    <div title="PMMA灯具基于moldflow三维流动优化的注塑模设计" class="col-md-3 textEllipsis textAlign">
+                                        PMMA灯具基于moldflow三维流动优化的注塑模设计
+                                    </div>
+                                    <div class="col-md-3 textEllipsis textAlign">
+                                        2018-11-25 15:49:48
+                                    </div>
+                                    <div class="col-md-1 textEllipsis textAlign">
+                                        1
+                                    </div>
+                                    <div class="col-md-3 textAlign textEllipsis">
+                                        等待指导教师审核
+                                    </div>
+                                    <div class="col-md-2 textEllipsis textAlign">
+                                        <button style="margin-bottom: 10px" type="button"
+                                                class="management_graduationView newPage btn btn-info btn-xs">
+                                            查看
+                                        </button>
+                                        <button style="margin-bottom: 10px" type="button"
+                                                class="management_graduation newPage btn btn-info btn-xs">
+                                            修改
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="alert alert-warning textEllipsis border_radius marginBottom0">
+                                    <div title="PMMA灯具基于moldflow三维流动优化的注塑模设计" class="col-md-3 textEllipsis textAlign">
+                                        PMMA灯具基于moldflow三维流动优化的注塑模设计
+                                    </div>
+                                    <div class="col-md-3 textEllipsis textAlign">
+                                        2018-11-25 15:49:48
+                                    </div>
+                                    <div class="col-md-1 textEllipsis textAlign">
+                                        2
+                                    </div>
+                                    <div class="col-md-3 textAlign textEllipsis">
+                                        审核通过
+                                    </div>
+                                    <div class="col-md-2 textEllipsis textAlign">
+                                        <button style="margin-bottom: 10px" type="button"
+                                                class="management_graduationView newPage btn btn-info btn-xs">
+                                            查看
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="alert alert-danger textEllipsis border_radius marginBottom0">
+                                    <div class="col-md-3 textEllipsis textAlign">
+                                    </div>
+                                    <div class="col-md-3 textEllipsis textAlign">
+
+                                    </div>
+                                    <div class="col-md-1 textEllipsis textAlign">
+                                        3
+                                    </div>
+                                    <div class="col-md-3 textAlign textEllipsis">
+
+                                    </div>
+                                    <div class="col-md-2 textEllipsis textAlign">
+                                        <button style="margin-bottom: 10px" type="button"
+                                                class="management_graduation newPage btn btn-info btn-xs">
+                                            提交
+                                        </button>
+                                    </div>
+                                </div>
+                                <!--分页开始-->
+                                <div style="margin-top: 15px" class="m-style"></div>
+                                <!--分页结束-->
+                            </div>
+                            <!--提交指导记录结束-->
                         </div>
                     </div>
                 </div>
@@ -1326,33 +1555,6 @@
                             提交指导记录
                         </div>
                         <div class="panel-body">
-                            <div style="padding-left:0px;padding-bottom: 15px" class="col-md-12">
-                                <div style="padding-left: 0px" class="col-md-4">
-                                    <h4 class="font_bold">提交记录</h4>
-                                </div>
-                            </div>
-                            <div class="alert alert-success textEllipsis border_radius marginBottom0">
-                                <div class="col-md-5 textAlign">
-                                    课题题目
-                                </div>
-                                <div class="col-md-3 textAlign">
-                                    审核状态
-                                </div>
-                                <div class="col-md-4 textAlign">
-                                    提交时间
-                                </div>
-                            </div>
-                            <div class="alert alert-warning textEllipsis border_radius marginBottom0">
-                                <div class="col-md-5 textAlign">
-                                    PMMA灯具基于moldflow三维流动优化的注塑模设计
-                                </div>
-                                <div class="col-md-3 textAlign">
-                                    等待指导教师审核
-                                </div>
-                                <div class="col-md-4 textAlign">
-                                    2018-12-09 18:30:18
-                                </div>
-                            </div>
                             <div id="writeGuide"
                                  class="col-md-12 openingReport">
                                 <h5 class="font_bold">主题</h5>
@@ -1406,6 +1608,40 @@
                             提交指导记录
                         </div>
                         <div class="panel-body">
+                            <div class="alert alert-info textEllipsis">
+                                <div>
+                                    <span style="color: #333333;">最新提交时间：2018-11-25 15:49:48</span>
+                                    <span style="padding-left: 100px"><a
+                                            href="#guideDetails">查看审核详情</a></span>
+                                </div>
+                            </div>
+                            <div style="padding-left:0px;padding-bottom: 15px" class="col-md-12">
+                                <div style="padding-left: 0px" class="col-md-4">
+                                    <h4 class="font_bold">提交记录</h4>
+                                </div>
+                            </div>
+                            <div class="alert alert-success textEllipsis border_radius marginBottom0">
+                                <div class="col-md-5 textAlign">
+                                    课题题目
+                                </div>
+                                <div class="col-md-3 textAlign">
+                                    审核状态
+                                </div>
+                                <div class="col-md-4 textAlign">
+                                    提交时间
+                                </div>
+                            </div>
+                            <div class="alert alert-warning textEllipsis border_radius marginBottom0">
+                                <div class="col-md-5 textAlign">
+                                    PMMA灯具基于moldflow三维流动优化的注塑模设计
+                                </div>
+                                <div class="col-md-3 textAlign">
+                                    等待指导教师审核
+                                </div>
+                                <div class="col-md-4 textAlign">
+                                    2018-12-09 18:30:18
+                                </div>
+                            </div>
                             <div class="col-md-12 openingReport">
                                 <h5 class="font_bold">主题</h5>
                                 <div class="whiteColor">
@@ -1451,6 +1687,14 @@
                                     </div>
                                 </div>
                             </div>
+                            <div style="padding-left:0px;padding-bottom: 15px" class="col-md-12">
+                                <div style="padding-left: 0px" class="col-md-4">
+                                    <h4 id="guideDetails" class="font_bold">指导记录审核情况</h4>
+                                </div>
+                            </div>
+                            <div class="alert alert-danger textEllipsis border_radius marginBottom0">
+                                等待指导教师审核
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1458,135 +1702,586 @@
         </div>
     </div>
     <!--查看指导记录结束-->
+    <!--更改毕业设计（论文）开始-->
+    <div id="graduation" class="page-wrapper displayNone">
+        <div style="margin: 0px" class="page-inner">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            提交毕业设计(论文)
+                        </div>
+                        <div class="panel-body">
+                            <div id="writeGraduation"
+                                 class="col-md-12 openingReport">
+                                <h5 class="font_bold">关键词</h5>
+                                <input type="text" class="form-control">
+                                <h5 class="font_bold">创新点</h5>
+                                <textarea class="form-control" rows="5" name="textarea">
+                                </textarea>
+                                <h5 class="font_bold">中文摘要</h5>
+                                <textarea class="form-control" rows="5" name="textarea">
+                                </textarea>
+                                <h5 class="font_bold">英文摘要</h5>
+                                <textarea class="form-control" rows="5" name="textarea">
+                                </textarea>
+                                <h5 class="font_bold">其他</h5>
+                                <input type="text" class="form-control">
+                                <h5 style="display: inline-block" class="font_bold">
+                                    论文文档:
+                                </h5>
+                                <span style="padding-left: 10px;color: #f00">请上传您毕业设计（论文）的全部内容，包括篇名、目录、关键词、中英文摘要、正文、参考文献、附录等全部内容 </span>
+                                <input id="fileChooseGraduation" type="file" style="display: none">
+                                <div class="row">
+                                    <div class="col-md-5 paddingRightt0">
+                                        <input id="fileNameGraduation" class="form-control" type="text"
+                                               placeholder="此处提交的文档将在符合条件后进行检测">
+                                    </div>
+                                    <div class="col-md-5 paddingLeft0">
+                                        <button type="button"
+                                                class="btn btn-info border_bottom_left_radius border_top_left_radius"
+                                                onclick="fileClick('fileChooseGraduation','fileNameGraduation')">
+                                            选择待检测文档
+                                        </button>
+                                    </div>
+                                </div>
+                                <h5 class="font_bold">
+                                    添加附件:
+                                    <span style="padding-left: 10px;font-weight: normal">上传有关毕业设计（论文）的附件，上传的文件将以附件的形式显示。</span>
+                                </h5>
+                                <span style="color: #f00">提示：附件内容不检测，需要检测的论文请提交至“论文文档”处，不提交论文文档将不进行检测</span>
+                                <input id="fileChooseAttachment" type="file" style="display: none">
+                                <div class="row">
+                                    <div class="col-md-5 paddingRightt0">
+                                        <input id="fileNameAttachment" class="form-control" type="text"
+                                               placeholder="此处为附件文件，不检测">
+                                    </div>
+                                    <div class="col-md-5 paddingLeft0">
+                                        <button type="button"
+                                                class="btn btn-info border_bottom_left_radius border_top_left_radius"
+                                                onclick="fileClick('fileChooseAttachment','fileNameAttachment')">
+                                            选择附件
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="row" style="margin-top: 10px">
+                                    <div class="col-md-2">
+                                        <button type="button" class="management_graduationView newPage btn btn-info">
+                                            提交
+                                        </button>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <button type="button" class="management_three newPage btn btn-success">
+                                            取消
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--更改毕业设计（论文）结束-->
+    <!--查看毕业设计（论文）开始-->
+    <div id="graduationView" class="page-wrapper displayNone">
+        <div style="margin: 0px" class="page-inner">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            提交毕业设计(论文)
+                        </div>
+                        <div class="panel-body">
+                            <div class="alert alert-info textEllipsis">
+                                <div>
+                                    <span style="color: #333333;">最新提交时间：2018-11-25 15:49:48</span>
+                                    <span style="padding-left: 100px"><a
+                                            href="#graduationDetails">查看审核详情</a></span>
+                                </div>
+                            </div>
+                            <div style="padding-left:0px;padding-bottom: 15px" class="col-md-12">
+                                <div style="padding-left: 0px" class="col-md-4">
+                                    <h4 class="font_bold">提交记录</h4>
+                                </div>
+                            </div>
+                            <div class="alert alert-success textEllipsis border_radius marginBottom0">
+                                <div class="col-md-5 textAlign">
+                                    课题题目
+                                </div>
+                                <div class="col-md-3 textAlign">
+                                    审核状态
+                                </div>
+                                <div class="col-md-4 textAlign">
+                                    提交时间
+                                </div>
+                            </div>
+                            <div class="alert alert-warning textEllipsis border_radius marginBottom0">
+                                <div class="col-md-5 textAlign">
+                                    PMMA灯具基于moldflow三维流动优化的注塑模设计
+                                </div>
+                                <div class="col-md-3 textAlign">
+                                    等待指导教师审核
+                                </div>
+                                <div class="col-md-4 textAlign">
+                                    2018-12-09 18:30:18
+                                </div>
+                            </div>
+                            <div class="col-md-12 openingReport">
+                                <h5 class="font_bold">关键词</h5>
+                                <div class="whiteColor">
+                                    <div class="reportContent">
+                                        提交内容
+                                    </div>
+                                    <div class="reportNotation">
+                                        <h3>暂无批注内容</h3>
+                                    </div>
+                                </div>
+                                <h5 class="font_bold">创新点</h5>
+                                <div class="whiteColor">
+                                    <div class="reportContent">
+                                        提交内容
+                                    </div>
+                                    <div class="reportNotation">
+                                        <h3>暂无批注内容</h3>
+                                    </div>
+                                </div>
+                                <h5 class="font_bold">中文摘要</h5>
+                                <div class="whiteColor">
+                                    <div class="reportContent">
+                                        提交内容
+                                    </div>
+                                    <div class="reportNotation">
+                                        <h3>暂无批注内容</h3>
+                                    </div>
+                                </div>
+                                <h5 class="font_bold">英文摘要</h5>
+                                <div class="whiteColor">
+                                    <div class="reportContent">
+                                        提交内容
+                                    </div>
+                                    <div class="reportNotation">
+                                        <h3>暂无批注内容</h3>
+                                    </div>
+                                </div>
+                                <h5 class="font_bold">其他</h5>
+                                <div class="whiteColor">
+                                    <div class="reportContent">
+                                        提交内容
+                                    </div>
+                                    <div class="reportNotation">
+                                        <h3>暂无批注内容</h3>
+                                    </div>
+                                </div>
+                                <h5 class="font_bold">论文文档</h5>
+                                <div class="whiteColor" style="padding:10px;">
+                                    附件：开题报告.docx <a style="padding-left: 20px" href="#">点击下载</a>
+                                </div>
+                                <h5 class="font_bold">附件</h5>
+                                <div class="whiteColor" style="padding:10px;">
+                                    附件：开题报告.docx <a style="padding-left: 20px" href="#">点击下载</a>
+                                </div>
+                                <div class="row" style="margin-top: 10px">
+                                    <div class="col-md-2">
+                                        <button type="button" class="management_graduation newPage btn btn-info">
+                                            更改
+                                        </button>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <button type="button" class="management_three newPage  btn btn-success">
+                                            返回
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="padding-left:0px;padding-bottom: 15px" class="col-md-12">
+                                <div style="padding-left: 0px" class="col-md-4">
+                                    <h4 id="graduationDetails" class="font_bold">毕业设计(论文)审核情况</h4>
+                                </div>
+                            </div>
+                            <div class="alert alert-danger textEllipsis border_radius marginBottom0">
+                                等待指导教师审核
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--查看毕业设计（论文）结束-->
     <!--过程文档管理结束-->
 
-
-    <!--查看更多任务进度开始-->
-    <div id="five" class="page-wrapper displayNone">
-        <div class="header">
-            <h3 class="page-header">
-                任务进度
-            </h3>
-            <ol class="breadcrumb index">
-                <li><a href="#">首页</a></li>
-                <li class="active">任务进度</li>
-            </ol>
-        </div>
-        <div id="page-inner">
-            <!--任务进度开始-->
+    <!--学生答辩开始-->
+    <div id="four" class="page-wrapper displayNone">
+        <div style="margin: 0px" class="page-inner">
             <div class="row">
                 <div class="col-md-12">
                     <div class="panel panel-default">
-                        <div class="panel-heading">
-                            任务进度
+                        <div style="background-color: #f5f5f5">
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li class="active"><a href="#reply_arrange" role="tab"
+                                                      data-toggle="tab">查看答辩安排</a></li>
+                                <li><a href="#reply_record" role="tab" data-toggle="tab">答辩记录</a></li>
+                                <li><a href="#reply_results" role="tab" data-toggle="tab">查看成绩</a></li>
+                            </ul>
                         </div>
-                        <div class="panel-body">
-                            <div class="row">
-                                <div class="col-xs-6 col-md-3">
-                                    <div class="whiteBgColor">
-                                        <div style="text-align: center">
-                                            <h4><a href="#">开题报告</a></h4>
-                                            <div class="easypiechart easypiechart-blue" data-percent="20"><span
-                                                    class="percent">20%</span>
-                                            </div>
-                                        </div>
+                        <div class="tab-content">
+                            <!--查看答辩安排开始-->
+                            <div class="tab-pane active panel-body" id="reply_arrange">
+                                <div class="alert alert-success textEllipsis border_radius marginBottom0">
+                                    <div class="col-md-3 textAlign">
+                                        课题题目
+                                    </div>
+                                    <div class="col-md-1 textAlign">
+                                        指导老师
+                                    </div>
+                                    <div class="col-md-3 textAlign">
+                                        答辩时间
+                                    </div>
+                                    <div class="col-md-1 textAlign">
+                                        答辩教室
+                                    </div>
+                                    <div class="col-md-3 textAlign">
+                                        答辩教师
+                                    </div>
+                                    <div class="col-md-1 textAlign">
+                                        分组
                                     </div>
                                 </div>
-                                <div class="col-xs-6 col-md-3">
-                                    <div class="whiteBgColor">
-                                        <div style="text-align: center">
-                                            <h4><a href="#">中期检查</a></h4>
-                                            <div class="easypiechart easypiechart-red" data-percent="0"><span
-                                                    class="percent">0%</span>
-                                            </div>
-                                        </div>
+                                <div class="alert alert-warning textEllipsis border_radius marginBottom0">
+                                    <div title="PMMA灯具基于moldflow三维流动优化的注塑模设计" class="col-md-3 textEllipsis textAlign">
+                                        PMMA灯具基于moldflow三维流动优化的注塑模设计
                                     </div>
-                                </div>
-                                <div class="col-xs-6 col-md-3">
-                                    <div class="whiteBgColor">
-                                        <div style="text-align: center">
-                                            <h4><a href="#">指导记录</a></h4>
-                                            <div class="easypiechart easypiechart-teal" data-percent="60"><span
-                                                    class="percent">60%</span>
-                                            </div>
-                                        </div>
+                                    <div class="col-md-1 textEllipsis textAlign">
+                                        廖永衡
                                     </div>
-                                </div>
-                                <div class="col-xs-6 col-md-3">
-                                    <div class="whiteBgColor">
-                                        <div style="text-align: center">
-                                            <h4><a href="#">外文翻译</a></h4>
-                                            <div class="easypiechart easypiechart-orange" data-percent="90"><span
-                                                    class="percent">90%</span>
-                                            </div>
-                                        </div>
+                                    <div class="col-md-3 textEllipsis textAlign">
+                                        2019-01-05 17:47:28
+                                    </div>
+                                    <div class="col-md-1 textEllipsis textAlign">
+                                        6A-404
+                                    </div>
+                                    <div class="col-md-3 textAlign textEllipsis">
+                                        廖永衡 廖永衡 廖永衡 何太碧
+                                    </div>
+                                    <div class="col-md-1 textAlign textEllipsis">
+                                        第一组
                                     </div>
                                 </div>
                             </div>
-                            <!--分页开始-->
-                            <div class="m-style"></div>
-                            <!--分页结束-->
+                            <!--查看答辩安排结束-->
+                            <!--答辩记录开始-->
+                            <div class="tab-pane panel-body" id="reply_record">
+                                <div id="writePlea" class="row displayNone">
+                                    <div class="col-md-12 col-xs-12">
+                                        <h5 class="font_bold">提交答辩记录</h5>
+                                        <textarea rows="19" class="form-control"> </textarea>
+                                    </div>
+                                    <div style="padding-top: 10px" class="col-md-2">
+                                        <button type="button" class="btn btn-info" onclick="submitPlea()">
+                                            提交
+                                        </button>
+                                    </div>
+                                    <div style="padding-top: 10px" class="col-md-2">
+                                        <button type="button" class="btn btn-success" onclick="cancelPlea()">
+                                            取消
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div id="modifyPlea">
+                                    <h5 class="font_bold">答辩记录内容</h5>
+                                    <div class="whiteColor">
+                                        <div class="reportContent">
+                                            提交内容
+                                        </div>
+                                        <div class="reportNotation">
+                                            <h3>暂无批注内容</h3>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="margin-top: 10px">
+                                        <div class="col-md-2">
+                                            <button onclick="modifyPlea()" type="button" class="btn btn-info ">
+                                                修改
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!--答辩记录结束-->
+                            <!--查看成绩开始-->
+                            <div class="tab-pane panel-body" id="reply_results">
+                                <div style="padding-left:0px;padding-bottom: 15px" class="col-md-12">
+                                    <div style="padding-left: 0px" class="col-md-4">
+                                        <div class="col-md-10 col-xs-10" style="padding: 0px">
+                                            <h4 class="font_bold">毕设/论文材料列表</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="alert alert-success textEllipsis border_radius marginBottom0">
+                                    <div class="col-md-2 textAlign">
+                                        序号
+                                    </div>
+                                    <div class="col-md-2 textAlign">
+                                        是否已提交
+                                    </div>
+                                    <div class="col-md-8 textAlign">
+                                        材料名称
+                                    </div>
+                                </div>
+                                <div class="alert alert-danger textEllipsis border_radius marginBottom0">
+                                    <div  class="col-md-2 textEllipsis textAlign">
+                                        1
+                                    </div>
+                                    <div class="col-md-2 textEllipsis textAlign">
+                                        <span class="submit">是</span>
+                                    </div>
+                                    <div class="col-md-8 textEllipsis textAlign">
+                                        外文译文和原件
+                                    </div>
+                                </div>
+                                <div class="alert alert-warning textEllipsis border_radius marginBottom0">
+                                    <div  class="col-md-2 textEllipsis textAlign">
+                                        2
+                                    </div>
+                                    <div class="col-md-2 textEllipsis textAlign">
+                                        <span class="notSubmit">否</span>
+                                    </div>
+                                    <div class="col-md-8 textEllipsis textAlign">
+                                        学生毕业设计（论文）开题报告
+                                    </div>
+                                </div>
+                                <div class="alert alert-danger textEllipsis border_radius marginBottom0">
+                                    <div  class="col-md-2 textEllipsis textAlign">
+                                        3
+                                    </div>
+                                    <div class="col-md-2 textEllipsis textAlign">
+                                        <span class="notSubmit">否</span>
+                                    </div>
+                                    <div class="col-md-8 textEllipsis textAlign">
+                                        学生毕业设计（论文）开题报告
+                                    </div>
+                                </div>
+                                <div class="alert alert-warning textEllipsis border_radius marginBottom0">
+                                    <div  class="col-md-2 textEllipsis textAlign">
+                                        4
+                                    </div>
+                                    <div class="col-md-2 textEllipsis textAlign">
+                                        <span class="submit">是</span>
+                                    </div>
+                                    <div class="col-md-8 textEllipsis textAlign">
+                                        学生毕业设计（论文）开题报告
+                                    </div>
+                                </div>
+                                <div class="alert alert-danger textEllipsis border_radius marginBottom0">
+                                    <div  class="col-md-2 textEllipsis textAlign">
+                                        4
+                                    </div>
+                                    <div class="col-md-2 textEllipsis textAlign">
+                                        <span class="submit">是</span>
+                                    </div>
+                                    <div class="col-md-8 textEllipsis textAlign">
+                                        学生毕业设计（论文）开题报告
+                                    </div>
+                                </div>
+                                <div class="alert alert-warning textEllipsis border_radius marginBottom0">
+                                    <div  class="col-md-2 textEllipsis textAlign">
+                                        4
+                                    </div>
+                                    <div class="col-md-2 textEllipsis textAlign">
+                                        <span class="submit">是</span>
+                                    </div>
+                                    <div class="col-md-8 textEllipsis textAlign">
+                                        学生毕业设计（论文）开题报告
+                                    </div>
+                                </div>
+                                <div style="padding-left:0px;padding-bottom: 15px" class="col-md-12">
+                                    <div style="padding-left: 0px" class="col-md-4">
+                                        <div class="col-md-10 col-xs-10" style="padding: 0px">
+                                            <h4 class="font_bold">权重信息</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="alert alert-info textEllipsis">
+                                    评分 = 毕设/论文材料*30% + 答辩*30% + 系统*40%
+                                </div>
+                                <div style="padding-left:0px;padding-bottom: 15px" class="col-md-12">
+                                    <div style="padding-left: 0px" class="col-md-4">
+                                        <div class="col-md-10 col-xs-10" style="padding: 0px">
+                                            <h4 class="font_bold">学生评分权重信息</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="alert alert-info textEllipsis">
+                                    评分 = 90*30% + 90*30% + 90*40%
+                                </div>
+                                <div style="padding-left:0px;padding-bottom: 15px" class="col-md-12">
+                                    <div style="padding-left: 0px" class="col-md-4">
+                                        <div class="col-md-10 col-xs-10" style="padding: 0px">
+                                            <h4 class="font_bold">学生成绩</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="margin-top: 74px" class="alert alert-info">
+                                    <div><span class="notSubmit">最终成绩 ：</span>90</div>
+                                    <div style="word-wrap:break-word"><span class="notSubmit">评&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;语 ：</span>四川工商学院毕业设计管理系统的设计与实现——Web客户端子系统四川工商学院毕业设计管理系统的设计与实现——Web客户端子系统四川工商学院毕业设计管理系统的设计与实现——Web客户端子系统四川工商学院毕业设计管理系统的设计与实现——Web客户端子系统四川工商学院毕业设计管理系统的设计与实现——Web客户端子系统四川工商学院毕业设计管理系统的设计与实现——Web客户端子系统
+                            </div>
+                            <!--查看成绩结束-->
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--查看答辩详情开始-->
+
+
+<!--查看更多任务进度开始-->
+<div id="five" class="page-wrapper displayNone">
+    <div class="header">
+        <h3 class="page-header">
+            任务进度
+        </h3>
+        <ol class="breadcrumb index">
+            <li><a href="#">首页</a></li>
+            <li class="active">任务进度</li>
+        </ol>
+    </div>
+    <div id="page-inner">
+        <!--任务进度开始-->
+        <div class="row">
+            <div class="col-xs-12 col-md-12">
+                <div>
+                    <div class="titleContent">
+                        <span>进度提示</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-4 col-md-4">
+                <div class="whiteBgColor">
+                    <div style="text-align: center">
+                        <h4><a href="#">开题报告</a></h4>
+                        <div class="easypiechart easypiechart-blue" data-percent="20"><span
+                                class="percent">20%</span>
                         </div>
                     </div>
                 </div>
             </div>
-            <!--任务进度结束-->
-        </div>
-    </div>
-    <!--查看更多任务进度-->
-
-    <!--查看更多通知开始-->
-    <div id="six" class="page-wrapper displayNone">
-        <div class="header">
-            <h3 class="page-header">
-                通知公告
-            </h3>
-            <ol class="breadcrumb index">
-                <li><a href="#">首页</a></li>
-                <li class="active">通知公告</li>
-            </ol>
-        </div>
-        <div class="page-inner">
-            <!--通知公告开始-->
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            通知公告
-                        </div>
-                        <div class="panel-body">
-                            <div class="alert alert-success textEllipsis">
-                                <strong>
-                                    <span class="colorf44">1分钟前</span> 选题
-                                </strong> 选题时间
-                            </div>
-                            <div class="alert alert-info textEllipsis">
-                                <strong>
-                                    <span class="colorf44">2分钟前</span> 开题报告
-                                </strong> 提交开题报告
-                            </div>
-                            <div class="alert alert-warning textEllipsis">
-                                <strong>
-                                    <span class="colorf44">3分钟前</span> 过程文档
-                                </strong>
-                                提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档
-                            </div>
-                            <div class="alert alert-danger textEllipsis">
-                                <strong>
-                                    <span class="colorf44">5分钟前</span> 提交论文
-                                </strong> 论文截止时间
-                            </div>
-                            <!--分页开始-->
-                            <div class="m-style"></div>
-                            <!--分页结束-->
+            <div class="col-xs-4 col-md-4">
+                <div class="whiteBgColor">
+                    <div style="text-align: center">
+                        <h4><a href="#">中期检查</a></h4>
+                        <div class="easypiechart easypiechart-red" data-percent="0"><span
+                                class="percent">0%</span>
                         </div>
                     </div>
                 </div>
             </div>
-            <!--通知公告结束-->
+            <div class="col-xs-4 col-md-4">
+                <div class="whiteBgColor">
+                    <div style="text-align: center">
+                        <h4><a href="#">指导记录</a></h4>
+                        <div class="easypiechart easypiechart-teal" data-percent="60"><span
+                                class="percent">60%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-4 col-md-4">
+                <div class="whiteBgColor">
+                    <div style="text-align: center">
+                        <h4><a href="#">外文译文和原文</a></h4>
+                        <div class="easypiechart easypiechart-teal" data-percent="60"><span
+                                class="percent">60%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-4 col-md-4">
+                <div class="whiteBgColor">
+                    <div style="text-align: center">
+                        <h4><a href="#">文献综述</a></h4>
+                        <div class="easypiechart easypiechart-teal" data-percent="60"><span
+                                class="percent">60%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-4 col-md-4">
+                <div class="whiteBgColor">
+                    <div style="text-align: center">
+                        <h4 style="display: inline-block"><a href="#">毕业设计（论文）</a></h4>
+                        <span style="color: #f00">【未提交论文】</span>
+                        <div class="easypiechart easypiechart-orange" data-percent="90"><span
+                                class="percent">90%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+        <!--任务进度结束-->
     </div>
-    <!--查看更多通知结束-->
+</div>
+<!--查看更多任务进度-->
+
+<!--查看更多通知开始-->
+<div id="six" class="page-wrapper displayNone">
+    <div class="header">
+        <h3 class="page-header">
+            通知公告
+        </h3>
+        <ol class="breadcrumb index">
+            <li><a href="#">首页</a></li>
+            <li class="active">通知公告</li>
+        </ol>
+    </div>
+    <div class="page-inner">
+        <!--通知公告开始-->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        通知公告
+                    </div>
+                    <div class="panel-body">
+                        <div class="alert alert-success textEllipsis">
+                            <strong>
+                                <span class="colorf44">1分钟前</span> 选题
+                            </strong> 选题时间
+                        </div>
+                        <div class="alert alert-info textEllipsis">
+                            <strong>
+                                <span class="colorf44">2分钟前</span> 开题报告
+                            </strong> 提交开题报告
+                        </div>
+                        <div class="alert alert-warning textEllipsis">
+                            <strong>
+                                <span class="colorf44">3分钟前</span> 过程文档
+                            </strong>
+                            提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档
+                        </div>
+                        <div class="alert alert-danger textEllipsis">
+                            <strong>
+                                <span class="colorf44">5分钟前</span> 提交论文
+                            </strong> 论文截止时间
+                        </div>
+                        <!--分页开始-->
+                        <div class="m-style"></div>
+                        <!--分页结束-->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--通知公告结束-->
+    </div>
+</div>
+<!--查看更多通知结束-->
 </div>
 
 </div>
@@ -1686,6 +2381,32 @@
 
     function modifyForeign() {
         this.submitBlock('writeForeignTranslation', 'modifyForeignTranslation');
+    }
+
+    // 文献综述
+    function submitLiterature() {
+        this.submitNone('writeLiterature', 'modifyLiterature');
+    }
+
+    function cancelLiterature() {
+        this.submitNone('writeLiterature', 'modifyLiterature');
+    }
+
+    function modifyLiterature() {
+        this.submitBlock('writeLiterature', 'modifyLiterature');
+    }
+
+    // 答辩记录
+    function submitPlea() {
+        this.submitNone('writePlea', 'modifyPlea');
+    }
+
+    function cancelPlea() {
+        this.submitNone('writePlea', 'modifyPlea');
+    }
+
+    function modifyPlea() {
+        this.submitBlock('writePlea', 'modifyPlea');
     }
 </script>
 

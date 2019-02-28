@@ -21,3 +21,11 @@
     background-color: #ffffff;
     border: 1px solid #3c763d
 }
+
+.submit {
+    color: #0B8902;
+}
+
+.notSubmit {
+    color: #f00;
+}
