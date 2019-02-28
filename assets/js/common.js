@@ -52,15 +52,30 @@
             $('#'+id+' span').addClass('iconColor');
         });
 
-        $(".topBar li a").click(function () {
+        // $(".topBar li a").click(function () {
+        //     $('.page-wrapper').addClass('displayNone');
+        //     $('.page-wrapper').removeClass('displayBlock');
+        //     let id = $(this).attr("id");
+        //     let len = id.length;
+        //     let addId = id.slice(11,len);
+        //     $('#'+addId).addClass('displayBlock');
+        // });
+
+        $(".newPage").click(function () {
+            console.log("1111");
             $('.page-wrapper').addClass('displayNone');
             $('.page-wrapper').removeClass('displayBlock');
-            let id = $(this).attr("id");
-            let len = id.length;
-            let addId = id.slice(11,len);
+            // let id = $(this).attr("id");
+            let className = $(this).attr("class");
+            // console.log(id.trim().split(" "))
+            let management = className.trim().split(" ")[0];
+            let len = management.length;
+            // console.log(id.slice(11,len));
+            let addId = management.slice(11,len);
             $('#'+addId).addClass('displayBlock');
         });
 
+        // 返回首页
         $(".index li a").click(function () {
             console.log(111);
             $('#sideBar li a').removeClass('active-menu');

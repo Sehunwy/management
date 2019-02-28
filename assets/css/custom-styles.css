@@ -92,12 +92,20 @@ input {
     color: #07c160;;
 }
 
-.whiteBagColor {
+.whiteBgColor {
     background-color: #ffffff;
 }
 
 .paddingTopBottom {
     padding: 10px 0;
+}
+
+.paddingLeft0 {
+    padding-left: 0px;
+}
+
+.paddingRightt0 {
+    padding-right: 0px;
 }
 
 .fontColor847a7a {

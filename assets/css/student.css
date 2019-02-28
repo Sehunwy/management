@@ -1,0 +1,23 @@
+.openingReport {
+    padding: 0px 15px 10px 15px;
+}
+
+.reportContent {
+    min-height: 50px;
+    padding: 10px;
+    width: 70%;
+    display: inline-block;
+    border-right: 1px solid #3c763d;
+}
+
+.reportNotation {
+    text-align: center;
+    padding: 10px;
+    width: 29%;
+    display: inline-block;
+}
+
+.whiteColor {
+    background-color: #ffffff;
+    border: 1px solid #3c763d
+}
