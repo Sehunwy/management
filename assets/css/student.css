@@ -29,3 +29,19 @@
 .notSubmit {
     color: #f00;
 }
+
+.bgColorReady {
+    background-color: #d9edf7 !important;
+}
+
+.paddingBottom10 {
+    padding-bottom: 10px !important;
+}
+.padding10 {
+    padding: 10px;
+}
+
+.clickColor {
+    color: #5bc0de;
+    text-decoration:underline;
+}

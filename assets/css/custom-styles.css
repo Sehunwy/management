@@ -34,6 +34,10 @@ body {
     background-image: url('../img/date.png');
 }
 
+.cursorPointer {
+    cursor: pointer;
+}
+
 input {
     text-align: left;
 }
@@ -107,6 +111,7 @@ input {
 .paddingRightt0 {
     padding-right: 0px;
 }
+
 
 .fontColor847a7a {
     color: #847a7a;

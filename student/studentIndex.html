@@ -104,18 +104,20 @@
                 <ul class="dropdown-menu dropdown-alerts topBar">
                     <li>
                         <a href="#">
-                            <div>
-                                <i class="fa fa-comment fa-fw"></i> 选题事项
-                                <span class="pull-right text-muted small">4分钟前</span>
+                            <div style="width: 200px">
+                                <span style="display:inline-block;width: 80%" class="textEllipsis">选题事项</span>
+                                <span style="display:inline-block;width: 20%"
+                                      class="pull-right text-muted small">4分钟前</span>
                             </div>
                         </a>
                     </li>
                     <li class="divider"></li>
                     <li>
                         <a href="#">
-                            <div>
-                                <i class="fa fa-comment fa-fw"></i> 开题报告
-                                <span class="pull-right text-muted small">12分钟前</span>
+                            <div style="width: 200px">
+                                <span style="display:inline-block;width: 80%" class="textEllipsis">开题报告事项</span>
+                                <span style="display:inline-block;width: 20%"
+                                      class="pull-right text-muted small">4分钟前</span>
                             </div>
                         </a>
                     </li>
@@ -129,6 +131,42 @@
                 </ul>
             </li>
             <!--通知结束-->
+            <!--新闻开始-->
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+                    <span class="iconfont icon-huabanfuben iconColor fontSize14"></span>
+                    <span class="iconfont icon-jiantou iconColor fontSize8"></span>
+                </a>
+                <ul class="dropdown-menu dropdown-alerts topBar">
+                    <li>
+                        <a href="#">
+                            <div style="width: 200px">
+                                <span style="display:inline-block;width: 80%" class="textEllipsis">新闻事项新闻事项新闻事项新闻事项新闻事项新闻事项</span>
+                                <span style="display:inline-block;width: 20%"
+                                      class="pull-right text-muted small">4分钟前</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="#">
+                            <div style="width: 200px">
+                                <span style="display:inline-block;width: 80%" class="textEllipsis">新闻事项新闻事项新闻事项新闻事项新闻事项新闻事项</span>
+                                <span style="display:inline-block;width: 20%"
+                                      class="pull-right text-muted small">4分钟前</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a class="management_ten text-center newPage" href="#">
+                            <strong>查看更多新闻</strong>
+                            <i class="fa fa-angle-right"></i>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <!--新闻结束-->
             <!--个人信息开始-->
             <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
@@ -139,7 +177,7 @@
                     <li>
                         <a href="#" class="management_seven newPage">
                             <span class="paddingIco iconfont icon-wode"></span>
-                            个人信息
+                            个人信息维护
                         </a>
                     </li>
                     <li class="divider"></li>
@@ -184,6 +222,10 @@
                     <span class="iconfont icon-dabian iconColorWhite fontSize14 naviconpadding"></span>答辩管理
                 </a>
                 </li>
+                <li><a href="#" id="management_nine">
+                    <span class="iconfont icon-icon-test iconColorWhite fontSize14 naviconpadding"></span>历届优秀浏览
+                </a>
+                </li>
             </ul>
         </div>
 
@@ -194,11 +236,11 @@
     <div id="seven" class="page-wrapper displayNone">
         <div class="header">
             <h3 class="page-header">
-                个人信息
+                个人信息维护
             </h3>
             <ol class="breadcrumb index">
                 <li><a href="#">首页</a></li>
-                <li class="active">个人信息</li>
+                <li class="active">个人信息维护</li>
             </ol>
         </div>
         <div class="page-inner">
@@ -207,39 +249,105 @@
                 <div class="col-md-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            个人信息
+                            个人信息维护
                         </div>
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-md-3"></div>
                                 <div class="col-md-6">
                                     <div class="panel-body">
-                                        <div class="table-responsive">
-                                            <table class="table">
-                                                <tbody>
-                                                <tr class="success">
-                                                    <td>姓名</td>
-                                                    <td>XXX</td>
-                                                </tr>
-                                                <tr class="info">
-                                                    <td>学号</td>
-                                                    <td>xxxxxxxxxxxx</td>
-                                                </tr>
-                                                <tr class="warning">
-                                                    <td>角色</td>
-                                                    <td>学生</td>
-                                                </tr>
-                                                <tr class="danger">
-                                                    <td>专业</td>
-                                                    <td>计算机</td>
-                                                </tr>
-                                                <tr class="success">
-                                                    <td>学年</td>
-                                                    <td>2018-2019</td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
+                                        <div class="row">
+                                            <div class="col-md-12" style="padding-bottom: 10px">
+                                                <div class="col-md-2"></div>
+                                                <div style="height: 41px;line-height: 41px"
+                                                     class="col-md-2 paddingRightt0">
+                                                    姓名：
+                                                </div>
+                                                <div class="col-md-6 paddingLeft0 paddingRightt0">
+                                                    <input value="wangXxx" style="background-color: #d9edf7;"
+                                                           class="form-control" type="text" readonly>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12" style="padding-bottom: 10px">
+                                                <div class="col-md-2"></div>
+                                                <div style="height: 41px;line-height: 41px"
+                                                     class="col-md-2 paddingRightt0">
+                                                    学号：
+                                                </div>
+                                                <div class="col-md-6 paddingLeft0 paddingRightt0">
+                                                    <input value="3120150905119" style="background-color: #d9edf7;"
+                                                           class="form-control" type="text" readonly>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12" style="padding-bottom: 10px">
+                                                <div class="col-md-2"></div>
+                                                <div style="height: 41px;line-height: 41px"
+                                                     class="col-md-2 paddingRightt0">
+                                                    院系：
+                                                </div>
+                                                <div class="col-md-6 paddingLeft0 paddingRightt0">
+                                                    <input value="计算机与软件工程学院" style="background-color: #d9edf7 ;"
+                                                           class="form-control" type="text" readonly>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12" style="padding-bottom: 10px">
+                                                <div class="col-md-2"></div>
+                                                <div style="height: 41px;line-height: 41px"
+                                                     class="col-md-2 paddingRightt0">
+                                                    专业：
+                                                </div>
+                                                <div class="col-md-6 paddingLeft0 paddingRightt0">
+                                                    <input value="软件工程" style="background-color: #d9edf7;"
+                                                           class="form-control" type="text" readonly>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12" style="padding-bottom: 10px">
+                                                <div class="col-md-2"></div>
+                                                <div style="height: 41px;line-height: 41px"
+                                                     class="col-md-2 paddingRightt0">
+                                                    班级：
+                                                </div>
+                                                <div class="col-md-6 paddingLeft0 paddingRightt0">
+                                                    <input value="软件设计15-1" style="background-color: #d9edf7;"
+                                                           class="form-control" type="text" readonly>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12" style="padding-bottom: 10px">
+                                                <div class="col-md-2"></div>
+                                                <div style="height: 41px;line-height: 41px"
+                                                     class="col-md-2 paddingRightt0">
+                                                    性别：
+                                                </div>
+                                                <div class="col-md-6 paddingLeft0 paddingRightt0">
+                                                    <select class="form-control" style="margin: 0 5px">
+                                                        <option value="chooseSex">请选择</option>
+                                                        <option value="male">男</option>
+                                                        <option value="female">女</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12" style="padding-bottom: 10px">
+                                                <div class="col-md-2"></div>
+                                                <div style="height: 41px;line-height: 41px"
+                                                     class="col-md-2 paddingRightt0">
+                                                    邮箱：
+                                                </div>
+                                                <div class="col-md-6 paddingLeft0 paddingRightt0">
+                                                    <input class="form-control" type="email">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12" style="padding-bottom: 10px">
+                                                <div class="col-md-4"></div>
+                                                <div class="col-md-6 paddingLeft0 paddingRightt0">
+                                                    <button style="margin: 0 5px" type="button"
+                                                            class="btn btn-sm btn-info">
+                                                        确认修改
+                                                    </button>
+                                                </div>
+                                            </div>
+
                                         </div>
+
                                     </div>
                                 </div>
                             </div>
@@ -535,7 +643,9 @@
                                         生产实际（社会实践）题
                                     </div>
                                     <div title="廖永衡（0120080001）" class="col-md-3 textAlign textEllipsis">
-                                        廖永衡（0120080001）
+                                        <span class="clickColor cursorPointer" data-toggle="modal"  data-target="#teacherDetails">
+                                            廖永衡（0120080001）
+                                        </span>
                                     </div>
                                     <div class="col-md-1 textAlign textEllipsis">
                                         10人
@@ -560,7 +670,9 @@
                                         生产实际（社会实践）题
                                     </div>
                                     <div title="廖永衡（0120080001）" class="col-md-3 textAlign textEllipsis">
-                                        廖永衡（0120080001）
+                                        <span class="clickColor cursorPointer" data-toggle="modal"  data-target="#teacherDetails">
+                                            廖永衡（0120080001）
+                                        </span>
                                     </div>
                                     <div class="col-md-1 textAlign textEllipsis">
                                         10人
@@ -585,7 +697,9 @@
                                         生产实际（社会实践）题
                                     </div>
                                     <div title="廖永衡（0120080001）" class="col-md-3 textAlign textEllipsis">
-                                        廖永衡（0120080001）
+                                        <span class="clickColor cursorPointer" data-toggle="modal"  data-target="#teacherDetails">
+                                            廖永衡（0120080001）
+                                        </span>
                                     </div>
                                     <div class="col-md-1 textAlign textEllipsis">
                                         10人
@@ -610,7 +724,9 @@
                                         生产实际（社会实践）题
                                     </div>
                                     <div title="廖永衡（0120080001）" class="col-md-3 textAlign textEllipsis">
-                                        廖永衡（0120080001）
+                                        <span class="clickColor cursorPointer" data-toggle="modal"  data-target="#teacherDetails">
+                                            廖永衡（0120080001）
+                                        </span>
                                     </div>
                                     <div class="col-md-1 textAlign textEllipsis">
                                         10人
@@ -670,7 +786,9 @@
                                         生产实际（社会实践）题
                                     </div>
                                     <div title="廖永衡（0120080001）" class="col-md-3 textAlign textEllipsis">
-                                        廖永衡（0120080001）
+                                        <span class="clickColor cursorPointer" data-toggle="modal"  data-target="#teacherDetails">
+                                            廖永衡（0120080001）
+                                        </span>
                                     </div>
                                     <div class="col-md-1 textEllipsis textAlign">
                                         不通过
@@ -692,7 +810,9 @@
                                         生产实际（社会实践）题
                                     </div>
                                     <div title="廖永衡（0120080001）" class="col-md-3 textAlign textEllipsis">
-                                        廖永衡（0120080001）
+                                        <span class="clickColor cursorPointer" data-toggle="modal"  data-target="#teacherDetails">
+                                            廖永衡（0120080001）
+                                        </span>
                                     </div>
                                     <div class="col-md-1 textEllipsis textAlign">
                                         通过
@@ -787,6 +907,45 @@
     </div>
     <!--查看选题详情结束-->
     <!--确认选题开始-->
+    <div class="modal fade" id="teacherDetails" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">指导教师详细信息</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-success">
+                        <strong>
+                            <span>指导教师:</span>
+                        </strong>
+                        <span>廖永衡（0120080001）</span>
+                        <hr>
+                        <strong>
+                            <span>教师职称:</span>
+                        </strong>
+                        <span>副教授</span>
+                        <hr>
+                        <strong>
+                            <span>导师联系邮箱:</span>
+                        </strong>
+                        <span>6676776777@163.com</span>
+                        <hr>
+                        <strong>
+                            <span>学院:</span>
+                        </strong>
+                        <span>计算机与软件工程学院</span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm btn-info" data-dismiss="modal">关闭</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--确认选题结束-->
+    <!--查看教师详细信息开始-->
     <div class="modal fade" id="chooseTopic" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -807,7 +966,7 @@
             </div>
         </div>
     </div>
-    <!--确认选题结束-->
+    <!--查看教师详细信息结束-->
     <!--学生选题结束-->
 
     <!--过程文档管理开始-->
@@ -1976,7 +2135,21 @@
                                 <div id="writePlea" class="row displayNone">
                                     <div class="col-md-12 col-xs-12">
                                         <h5 class="font_bold">提交答辩记录</h5>
-                                        <textarea rows="19" class="form-control"> </textarea>
+                                        <textarea rows="10" class="form-control"> </textarea>
+                                        <h5 class="font_bold">添加附件</h5>
+                                        <input id="fileChoosePlea" type="file" style="display: none">
+                                        <div class="row">
+                                            <div class="col-md-5 paddingRightt0">
+                                                <input id="fileNamePlea" class="form-control" type="text">
+                                            </div>
+                                            <div class="col-md-5 paddingLeft0">
+                                                <button type="button"
+                                                        class="btn btn-info border_bottom_left_radius border_top_left_radius"
+                                                        onclick="fileClick('fileChoosePlea','fileNamePlea')">
+                                                    浏览
+                                                </button>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div style="padding-top: 10px" class="col-md-2">
                                         <button type="button" class="btn btn-info" onclick="submitPlea()">
@@ -1999,6 +2172,10 @@
                                         <div class="reportNotation">
                                             <h3>暂无批注内容</h3>
                                         </div>
+                                    </div>
+                                    <h5 class="font_bold">附件</h5>
+                                    <div class="whiteColor" style="padding:10px;">
+                                        附件：开题报告.docx <a style="padding-left: 20px" href="#">点击下载</a>
                                     </div>
                                     <div class="row" style="margin-top: 10px">
                                         <div class="col-md-2">
@@ -2032,7 +2209,7 @@
                                     </div>
                                 </div>
                                 <div class="alert alert-danger textEllipsis border_radius marginBottom0">
-                                    <div  class="col-md-2 textEllipsis textAlign">
+                                    <div class="col-md-2 textEllipsis textAlign">
                                         1
                                     </div>
                                     <div class="col-md-2 textEllipsis textAlign">
@@ -2043,7 +2220,7 @@
                                     </div>
                                 </div>
                                 <div class="alert alert-warning textEllipsis border_radius marginBottom0">
-                                    <div  class="col-md-2 textEllipsis textAlign">
+                                    <div class="col-md-2 textEllipsis textAlign">
                                         2
                                     </div>
                                     <div class="col-md-2 textEllipsis textAlign">
@@ -2054,7 +2231,7 @@
                                     </div>
                                 </div>
                                 <div class="alert alert-danger textEllipsis border_radius marginBottom0">
-                                    <div  class="col-md-2 textEllipsis textAlign">
+                                    <div class="col-md-2 textEllipsis textAlign">
                                         3
                                     </div>
                                     <div class="col-md-2 textEllipsis textAlign">
@@ -2065,7 +2242,7 @@
                                     </div>
                                 </div>
                                 <div class="alert alert-warning textEllipsis border_radius marginBottom0">
-                                    <div  class="col-md-2 textEllipsis textAlign">
+                                    <div class="col-md-2 textEllipsis textAlign">
                                         4
                                     </div>
                                     <div class="col-md-2 textEllipsis textAlign">
@@ -2076,7 +2253,7 @@
                                     </div>
                                 </div>
                                 <div class="alert alert-danger textEllipsis border_radius marginBottom0">
-                                    <div  class="col-md-2 textEllipsis textAlign">
+                                    <div class="col-md-2 textEllipsis textAlign">
                                         4
                                     </div>
                                     <div class="col-md-2 textEllipsis textAlign">
@@ -2087,7 +2264,7 @@
                                     </div>
                                 </div>
                                 <div class="alert alert-warning textEllipsis border_radius marginBottom0">
-                                    <div  class="col-md-2 textEllipsis textAlign">
+                                    <div class="col-md-2 textEllipsis textAlign">
                                         4
                                     </div>
                                     <div class="col-md-2 textEllipsis textAlign">
@@ -2127,161 +2304,341 @@
                                 <div style="margin-top: 74px" class="alert alert-info">
                                     <div><span class="notSubmit">最终成绩 ：</span>90</div>
                                     <div style="word-wrap:break-word"><span class="notSubmit">评&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;语 ：</span>四川工商学院毕业设计管理系统的设计与实现——Web客户端子系统四川工商学院毕业设计管理系统的设计与实现——Web客户端子系统四川工商学院毕业设计管理系统的设计与实现——Web客户端子系统四川工商学院毕业设计管理系统的设计与实现——Web客户端子系统四川工商学院毕业设计管理系统的设计与实现——Web客户端子系统四川工商学院毕业设计管理系统的设计与实现——Web客户端子系统
+                                    </div>
+                                </div>
                             </div>
                             <!--查看成绩结束-->
                         </div>
-
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<!--查看答辩详情开始-->
+    <!--学生答辩结束-->
 
+    <!--历届优秀浏览开始-->
+    <div id="nine" class="page-wrapper displayNone">
+        <div style="margin: 0px" class="page-inner">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            历届优秀浏览
+                        </div>
+                        <div class="panel-body">
+                            <div style="padding-bottom: 15px" class="col-md-12">
+                                <div class="alert alert-success textEllipsis border_radius marginBottom0">
+                                    <div class="col-md-4 textAlign">
+                                        题目
+                                    </div>
+                                    <div class="col-md-2 textAlign">
+                                        届
+                                    </div>
+                                    <div class="col-md-2 textAlign">
+                                        优秀生
+                                    </div>
+                                    <div class="col-md-2 textAlign">
+                                        专业
+                                    </div>
+                                    <div class="col-md-2 textAlign">
+                                        操作
+                                    </div>
+                                </div>
+                                <div class="alert alert-warning textEllipsis border_radius marginBottom0">
+                                    <div title="PMMA灯具基于moldflow三维流动优化的注塑模设计" class="col-md-4 textEllipsis textAlign">
+                                        PMMA灯具基于moldflow三维流动优化的注塑模设计
+                                    </div>
+                                    <div class="col-md-2 textEllipsis textAlign">
+                                        2018届
+                                    </div>
+                                    <div title="6A-405" class="col-md-2 textEllipsis textAlign">
+                                        张三
+                                    </div>
+                                    <div title="廖永衡（系主任）" class="col-md-2 textAlign textEllipsis">
+                                        软件工程
+                                    </div>
+                                    <div class="col-md-2 textEllipsis textAlign">
+                                        <button type="button" class="management_goodDetails newPage btn btn-info btn-xs" data-toggle="modal"
+                                                data-target="#checkPlea">查看
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="alert alert-danger textEllipsis border_radius marginBottom0">
+                                    <div title="PMMA灯具基于moldflow三维流动优化的注塑模设计" class="col-md-4 textEllipsis textAlign">
+                                        PMMA灯具基于moldflow三维流动优化的注塑模设计
+                                    </div>
+                                    <div class="col-md-2 textEllipsis textAlign">
+                                        2018届
+                                    </div>
+                                    <div title="6A-405" class="col-md-2 textEllipsis textAlign">
+                                        张三
+                                    </div>
+                                    <div title="廖永衡（系主任）" class="col-md-2 textAlign textEllipsis">
+                                        软件工程
+                                    </div>
+                                    <div class="col-md-2 textEllipsis textAlign">
+                                        <button type="button" class="management_goodDetails newPage btn btn-info btn-xs" data-toggle="modal"
+                                                data-target="#checkPlea">查看
+                                        </button>
+                                    </div>
+                                </div>
 
-<!--查看更多任务进度开始-->
-<div id="five" class="page-wrapper displayNone">
-    <div class="header">
-        <h3 class="page-header">
-            任务进度
-        </h3>
-        <ol class="breadcrumb index">
-            <li><a href="#">首页</a></li>
-            <li class="active">任务进度</li>
-        </ol>
-    </div>
-    <div id="page-inner">
-        <!--任务进度开始-->
-        <div class="row">
-            <div class="col-xs-12 col-md-12">
-                <div>
-                    <div class="titleContent">
-                        <span>进度提示</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-4 col-md-4">
-                <div class="whiteBgColor">
-                    <div style="text-align: center">
-                        <h4><a href="#">开题报告</a></h4>
-                        <div class="easypiechart easypiechart-blue" data-percent="20"><span
-                                class="percent">20%</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-4 col-md-4">
-                <div class="whiteBgColor">
-                    <div style="text-align: center">
-                        <h4><a href="#">中期检查</a></h4>
-                        <div class="easypiechart easypiechart-red" data-percent="0"><span
-                                class="percent">0%</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-4 col-md-4">
-                <div class="whiteBgColor">
-                    <div style="text-align: center">
-                        <h4><a href="#">指导记录</a></h4>
-                        <div class="easypiechart easypiechart-teal" data-percent="60"><span
-                                class="percent">60%</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-4 col-md-4">
-                <div class="whiteBgColor">
-                    <div style="text-align: center">
-                        <h4><a href="#">外文译文和原文</a></h4>
-                        <div class="easypiechart easypiechart-teal" data-percent="60"><span
-                                class="percent">60%</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-4 col-md-4">
-                <div class="whiteBgColor">
-                    <div style="text-align: center">
-                        <h4><a href="#">文献综述</a></h4>
-                        <div class="easypiechart easypiechart-teal" data-percent="60"><span
-                                class="percent">60%</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-4 col-md-4">
-                <div class="whiteBgColor">
-                    <div style="text-align: center">
-                        <h4 style="display: inline-block"><a href="#">毕业设计（论文）</a></h4>
-                        <span style="color: #f00">【未提交论文】</span>
-                        <div class="easypiechart easypiechart-orange" data-percent="90"><span
-                                class="percent">90%</span>
+                                <!--分页开始-->
+                                <div style="margin-top: 15px" class="m-style"></div>
+                                <!--分页结束-->
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!--任务进度结束-->
     </div>
-</div>
-<!--查看更多任务进度-->
-
-<!--查看更多通知开始-->
-<div id="six" class="page-wrapper displayNone">
-    <div class="header">
-        <h3 class="page-header">
-            通知公告
-        </h3>
-        <ol class="breadcrumb index">
-            <li><a href="#">首页</a></li>
-            <li class="active">通知公告</li>
-        </ol>
-    </div>
-    <div class="page-inner">
-        <!--通知公告开始-->
-        <div class="row">
-            <div class="col-md-12">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        通知公告
-                    </div>
-                    <div class="panel-body">
-                        <div class="alert alert-success textEllipsis">
-                            <strong>
-                                <span class="colorf44">1分钟前</span> 选题
-                            </strong> 选题时间
+    <!--历届优秀浏览详情开始-->
+    <div id="goodDetails" class="page-wrapper displayNone">
+        <div style="margin: 0px" class="page-inner">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            优秀浏览详情
                         </div>
-                        <div class="alert alert-info textEllipsis">
-                            <strong>
-                                <span class="colorf44">2分钟前</span> 开题报告
-                            </strong> 提交开题报告
+                        <div class="panel-body">
+                            <div class="col-md-12 openingReport">
+                                <h5 class="font_bold">题目</h5>
+                                <div class="whiteColor padding10">
+                                    毕设题目
+                                </div>
+                                <h5 class="font_bold">届</h5>
+                                <div class="whiteColor padding10">
+                                    2018届
+                                </div>
+                                <h5 class="font_bold">优秀生</h5>
+                                <div class="whiteColor padding10">
+                                    张三
+                                </div>
+                                <h5 class="font_bold">专业</h5>
+                                <div class="whiteColor padding10">
+                                    软件工程
+                                </div>
+                                <h5 class="font_bold">简介</h5>
+                                <div class="whiteColor padding10">
+                                    毕设简介
+                                </div>
+                                <h5 class="font_bold">附件</h5>
+                                <div class="whiteColor" style="padding:10px;">
+                                    附件：开题报告.docx <a style="padding-left: 20px" href="#">点击下载</a>
+                                </div>
+                                <div class="row" style="margin-top: 10px">
+                                    <div class="col-md-2">
+                                        <button type="button" class="management_nine newPage  btn btn-info">
+                                            返回
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="alert alert-warning textEllipsis">
-                            <strong>
-                                <span class="colorf44">3分钟前</span> 过程文档
-                            </strong>
-                            提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档
-                        </div>
-                        <div class="alert alert-danger textEllipsis">
-                            <strong>
-                                <span class="colorf44">5分钟前</span> 提交论文
-                            </strong> 论文截止时间
-                        </div>
-                        <!--分页开始-->
-                        <div class="m-style"></div>
-                        <!--分页结束-->
                     </div>
                 </div>
             </div>
         </div>
-        <!--通知公告结束-->
     </div>
-</div>
-<!--查看更多通知结束-->
+    <!--历届优秀浏览详情开始-->
+    <!--历届优秀浏览结束-->
+
+    <!--查看更多任务进度开始-->
+    <div id="five" class="page-wrapper displayNone">
+        <div class="header">
+            <h3 class="page-header">
+                任务进度
+            </h3>
+            <ol class="breadcrumb index">
+                <li><a href="#">首页</a></li>
+                <li class="active">任务进度</li>
+            </ol>
+        </div>
+        <div id="page-inner">
+            <!--任务进度开始-->
+            <div class="row">
+                <div class="col-xs-12 col-md-12">
+                    <div>
+                        <div class="titleContent">
+                            <span>进度提示</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-4 col-md-4">
+                    <div class="whiteBgColor">
+                        <div style="text-align: center">
+                            <h4><a href="#">开题报告</a></h4>
+                            <div class="easypiechart easypiechart-blue" data-percent="20"><span
+                                    class="percent">20%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-4 col-md-4">
+                    <div class="whiteBgColor">
+                        <div style="text-align: center">
+                            <h4><a href="#">中期检查</a></h4>
+                            <div class="easypiechart easypiechart-red" data-percent="0"><span
+                                    class="percent">0%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-4 col-md-4">
+                    <div class="whiteBgColor">
+                        <div style="text-align: center">
+                            <h4><a href="#">指导记录</a></h4>
+                            <div class="easypiechart easypiechart-teal" data-percent="60"><span
+                                    class="percent">60%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-4 col-md-4">
+                    <div class="whiteBgColor">
+                        <div style="text-align: center">
+                            <h4><a href="#">外文译文和原文</a></h4>
+                            <div class="easypiechart easypiechart-teal" data-percent="60"><span
+                                    class="percent">60%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-4 col-md-4">
+                    <div class="whiteBgColor">
+                        <div style="text-align: center">
+                            <h4><a href="#">文献综述</a></h4>
+                            <div class="easypiechart easypiechart-teal" data-percent="60"><span
+                                    class="percent">60%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-4 col-md-4">
+                    <div class="whiteBgColor">
+                        <div style="text-align: center">
+                            <h4 style="display: inline-block"><a href="#">毕业设计（论文）</a></h4>
+                            <span style="color: #f00">【未提交论文】</span>
+                            <div class="easypiechart easypiechart-orange" data-percent="90"><span
+                                    class="percent">90%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--任务进度结束-->
+        </div>
+    </div>
+    <!--查看更多任务进度-->
+
+    <!--查看更多通知开始-->
+    <div id="six" class="page-wrapper displayNone">
+        <div class="header">
+            <h3 class="page-header">
+                通知公告
+            </h3>
+            <ol class="breadcrumb index">
+                <li><a href="#">首页</a></li>
+                <li class="active">通知公告</li>
+            </ol>
+        </div>
+        <div class="page-inner">
+            <!--通知公告开始-->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            通知公告
+                        </div>
+                        <div class="panel-body">
+                            <div class="alert alert-success">
+                                <strong>
+                                    <span class="colorf44">1分钟前</span> 选题
+                                </strong> 选题时间
+                            </div>
+                            <div class="alert alert-info">
+                                <strong>
+                                    <span class="colorf44">2分钟前</span> 开题报告
+                                </strong> 提交开题报告
+                            </div>
+                            <div class="alert alert-warning">
+                                <strong>
+                                    <span class="colorf44">3分钟前</span> 过程文档
+                                </strong>
+                                提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档
+                            </div>
+                            <div class="alert alert-danger">
+                                <strong>
+                                    <span class="colorf44">5分钟前</span> 提交论文
+                                </strong> 论文截止时间
+                            </div>
+                            <!--分页开始-->
+                            <div class="m-style"></div>
+                            <!--分页结束-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--通知公告结束-->
+        </div>
+    </div>
+    <!--查看更多通知结束-->
+
+    <!--查看更多新闻开始-->
+    <div id="ten" class="page-wrapper displayNone">
+        <div class="header">
+            <h3 class="page-header">
+                校内新闻
+            </h3>
+            <ol class="breadcrumb index">
+                <li><a href="#">首页</a></li>
+                <li class="active">校内新闻</li>
+            </ol>
+        </div>
+        <div class="page-inner">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            校内新闻
+                        </div>
+                        <div class="panel-body">
+                            <div class="alert alert-success">
+                                <strong>
+                                    <span class="colorf44">1分钟前</span>
+                                </strong>
+                                校内新闻校内新闻校内新闻校内新闻校内新闻校内新闻校内新闻校内新闻校内新闻校内新闻校内新闻校内新闻校内新闻校内新闻校内新闻校内新闻校内新闻校内新闻校内新闻
+                            </div>
+                            <div class="alert alert-info">
+                                <strong>
+                                    <span class="colorf44">2分钟前</span>
+                                </strong> 提交开题报告
+                            </div>
+                            <div class="alert alert-warning">
+                                <strong>
+                                    <span class="colorf44">3分钟前</span>
+                                </strong>
+                                提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档
+                            </div>
+                            <div class="alert alert-danger">
+                                <strong>
+                                    <span class="colorf44">5分钟前</span>
+                                </strong> 论文截止时间
+                            </div>
+                            <!--分页开始-->
+                            <div class="m-style"></div>
+                            <!--分页结束-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--查看更多新闻结束-->
 </div>
 
 </div>
