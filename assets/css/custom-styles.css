@@ -34,6 +34,11 @@ body {
     background-image: url('../img/date.png');
 }
 
+ul,li,ol {
+    list-style: none;
+    padding: 0px;
+}
+
 .cursorPointer {
     cursor: pointer;
 }

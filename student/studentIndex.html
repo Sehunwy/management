@@ -96,39 +96,38 @@
             </li>
             <!--任务进度结束-->
             <!--通知开始-->
-            <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+            <li id="marquee" class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false" onclick="moveTop()">
                     <span class="iconfont icon-lingdang iconColor fontSize14"></span>
+                    <span class="messageUnread">12</span>
                     <span class="iconfont icon-jiantou iconColor fontSize8"></span>
                 </a>
-                <ul class="dropdown-menu dropdown-alerts topBar">
-                    <li>
-                        <a href="#">
-                            <div style="width: 200px">
-                                <span style="display:inline-block;width: 80%" class="textEllipsis">选题事项</span>
-                                <span style="display:inline-block;width: 20%"
-                                      class="pull-right text-muted small">4分钟前</span>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a href="#">
-                            <div style="width: 200px">
-                                <span style="display:inline-block;width: 80%" class="textEllipsis">开题报告事项</span>
-                                <span style="display:inline-block;width: 20%"
-                                      class="pull-right text-muted small">4分钟前</span>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a class="management_six text-center newPage" href="#">
-                            <strong>查看更多通知</strong>
-                            <i class="fa fa-angle-right"></i>
-                        </a>
-                    </li>
-                </ul>
+                <div class="dropdown-menu dropdown-alerts topBar" style="text-align: center;width: 200px;height: 125px">
+                    <ul class="ul1" style="overflow:hidden;height: 90px;">
+                        <li class="textEllipsis notificationMmessage"
+                            style="">
+                            1分钟前 选题 选题时间选题 选题时间11.12
+                        </li>
+                        <li class="textEllipsis notificationMmessage"
+                            style="">
+                            选题 选题时间选题 选题时间11.12
+                        </li>
+                        <li class="textEllipsis notificationMmessage"
+                            style="">
+                            3分钟前 选题 选题时间选题 选题时间11.12
+                        </li>
+                        <!--<li>-->
+                        <!--<a class="management_six text-center newPage" href="#">-->
+                        <!--<strong>查看更多通知</strong>-->
+                        <!--<i class="fa fa-angle-right"></i>-->
+                        <!--</a>-->
+                        <!--</li>-->
+                    </ul>
+                    <a style="text-align: center" class="management_six text-center newPage" href="#">
+                        <strong>查看更多通知</strong>
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                </div>
             </li>
             <!--通知结束-->
             <!--新闻开始-->
@@ -432,6 +431,14 @@
             </ol>
         </div>
         <div class="page-inner">
+            <!--<div class="notice">-->
+            <!--<ul>-->
+            <!--<li>第1条公告第1条公告第1条公告第1条公告第1条公告第1条公告</li>-->
+            <!--<li>第2条公告第2条公告第2条公告第2条公告第2条公告第2条公告</li>-->
+            <!--<li>第3条公告第3条公告第3条公告第3条公告第3条公告第3条公告</li>-->
+            <!--<li>第4条公告第4条公告第4条公告第4条公告第4条公告第4条公告</li>-->
+            <!--</ul>-->
+            <!--</div>-->
             <!--进度提示开始-->
             <div class="row">
                 <div class="col-xs-24 col-md-12">
@@ -643,7 +650,8 @@
                                         生产实际（社会实践）题
                                     </div>
                                     <div title="廖永衡（0120080001）" class="col-md-3 textAlign textEllipsis">
-                                        <span class="clickColor cursorPointer" data-toggle="modal"  data-target="#teacherDetails">
+                                        <span class="clickColor cursorPointer" data-toggle="modal"
+                                              data-target="#teacherDetails">
                                             廖永衡（0120080001）
                                         </span>
                                     </div>
@@ -670,7 +678,8 @@
                                         生产实际（社会实践）题
                                     </div>
                                     <div title="廖永衡（0120080001）" class="col-md-3 textAlign textEllipsis">
-                                        <span class="clickColor cursorPointer" data-toggle="modal"  data-target="#teacherDetails">
+                                        <span class="clickColor cursorPointer" data-toggle="modal"
+                                              data-target="#teacherDetails">
                                             廖永衡（0120080001）
                                         </span>
                                     </div>
@@ -697,7 +706,8 @@
                                         生产实际（社会实践）题
                                     </div>
                                     <div title="廖永衡（0120080001）" class="col-md-3 textAlign textEllipsis">
-                                        <span class="clickColor cursorPointer" data-toggle="modal"  data-target="#teacherDetails">
+                                        <span class="clickColor cursorPointer" data-toggle="modal"
+                                              data-target="#teacherDetails">
                                             廖永衡（0120080001）
                                         </span>
                                     </div>
@@ -724,7 +734,8 @@
                                         生产实际（社会实践）题
                                     </div>
                                     <div title="廖永衡（0120080001）" class="col-md-3 textAlign textEllipsis">
-                                        <span class="clickColor cursorPointer" data-toggle="modal"  data-target="#teacherDetails">
+                                        <span class="clickColor cursorPointer" data-toggle="modal"
+                                              data-target="#teacherDetails">
                                             廖永衡（0120080001）
                                         </span>
                                     </div>
@@ -786,7 +797,8 @@
                                         生产实际（社会实践）题
                                     </div>
                                     <div title="廖永衡（0120080001）" class="col-md-3 textAlign textEllipsis">
-                                        <span class="clickColor cursorPointer" data-toggle="modal"  data-target="#teacherDetails">
+                                        <span class="clickColor cursorPointer" data-toggle="modal"
+                                              data-target="#teacherDetails">
                                             廖永衡（0120080001）
                                         </span>
                                     </div>
@@ -810,7 +822,8 @@
                                         生产实际（社会实践）题
                                     </div>
                                     <div title="廖永衡（0120080001）" class="col-md-3 textAlign textEllipsis">
-                                        <span class="clickColor cursorPointer" data-toggle="modal"  data-target="#teacherDetails">
+                                        <span class="clickColor cursorPointer" data-toggle="modal"
+                                              data-target="#teacherDetails">
                                             廖永衡（0120080001）
                                         </span>
                                     </div>
@@ -2358,7 +2371,8 @@
                                         软件工程
                                     </div>
                                     <div class="col-md-2 textEllipsis textAlign">
-                                        <button type="button" class="management_goodDetails newPage btn btn-info btn-xs" data-toggle="modal"
+                                        <button type="button" class="management_goodDetails newPage btn btn-info btn-xs"
+                                                data-toggle="modal"
                                                 data-target="#checkPlea">查看
                                         </button>
                                     </div>
@@ -2377,7 +2391,8 @@
                                         软件工程
                                     </div>
                                     <div class="col-md-2 textEllipsis textAlign">
-                                        <button type="button" class="management_goodDetails newPage btn btn-info btn-xs" data-toggle="modal"
+                                        <button type="button" class="management_goodDetails newPage btn btn-info btn-xs"
+                                                data-toggle="modal"
                                                 data-target="#checkPlea">查看
                                         </button>
                                     </div>
@@ -2555,29 +2570,113 @@
                             通知公告
                         </div>
                         <div class="panel-body">
-                            <div class="alert alert-success">
-                                <strong>
-                                    <span class="colorf44">1分钟前</span> 选题
-                                </strong> 选题时间
+                            <div style="padding-bottom: 10px">
+                                <span style="padding-right: 20px" class="clickColor cursorPointer" data-toggle="modal"
+                                      data-target="#deleMessage">
+                                            删除
+                                        </span>
+                                <span style="padding-right: 20px" class="clickColor cursorPointer" data-toggle="modal"
+                                      data-target="#readMessage">
+                                            全部标为已读
+                                        </span>
+                                <span style="padding-right: 20px" class="clickColor cursorPointer" data-toggle="modal"
+                                      data-target="#unreadMessage">
+                                            标为未读
+                                        </span>
                             </div>
-                            <div class="alert alert-info">
-                                <strong>
-                                    <span class="colorf44">2分钟前</span> 开题报告
-                                </strong> 提交开题报告
+
+                            <div class="alert alert-success textEllipsis border_radius marginBottom0">
+                                <div class="col-md-1 textAlign">
+                                    <input id="sel_1" onchange="selectAll()" type="checkbox" value="1"/>
+                                </div>
+                                <div class="col-md-5">
+                                    通知公告内容
+                                </div>
+                                <div class="col-md-3 textAlign">
+                                    接收时间
+                                </div>
+                                <div class="col-md-3 textAlign">
+                                    通知公告类型
+                                </div>
                             </div>
-                            <div class="alert alert-warning">
-                                <strong>
-                                    <span class="colorf44">3分钟前</span> 过程文档
-                                </strong>
-                                提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档
+                            <div class="alert alert-danger textEllipsis border_radius marginBottom0">
+                                <div class="col-md-1 textEllipsis textAlign">
+                                    <input type="checkbox" value="2"/>
+                                </div>
+                                <div class="col-md-5 textEllipsis">
+                                    <span class="iconfont icon-wodexiaoxi"></span>
+                                    <span class="clickColor cursorPointer" data-toggle="modal"
+                                          data-target="#messageDetails">
+                                            通知公告
+                                        </span>
+
+                                </div>
+                                <div class="col-md-3 textEllipsis textAlign">
+                                    2019-01-01 12:00:00
+                                </div>
+                                <div class="col-md-3 textAlign textEllipsis">
+                                    通知
+                                </div>
                             </div>
-                            <div class="alert alert-danger">
-                                <strong>
-                                    <span class="colorf44">5分钟前</span> 提交论文
-                                </strong> 论文截止时间
+                            <div class="alert alert-danger textEllipsis border_radius marginBottom0">
+                                <div class="col-md-1 textEllipsis textAlign">
+                                    <input type="checkbox" value="2"/>
+                                </div>
+                                <div class="col-md-5 textEllipsis">
+                                    <span class="iconfont icon-wodexiaoxi"></span>
+                                    <span class="clickColor cursorPointer" data-toggle="modal"
+                                          data-target="#messageDetails">
+                                    通知公告
+                                    </span>
+                                </div>
+                                <div class="col-md-3 textEllipsis textAlign">
+                                    2019-01-01 12:00:00
+                                </div>
+                                <div class="col-md-3 textAlign textEllipsis">
+                                    通知
+                                </div>
+                            </div>
+                            <div class="alert alert-warning textEllipsis border_radius marginBottom0">
+                                <div class="col-md-1 textEllipsis textAlign">
+                                    <input type="checkbox" value="2"/>
+                                </div>
+                                <div class="col-md-5 textEllipsis">
+                                    <span class="iconfont icon-yiduxiaoxi"></span>
+                                    <span class="clickColor cursorPointer" data-toggle="modal"
+                                          data-target="#messageDetails">
+                                    选题时间选题时间选题时间选题时间选题时间选题时间选题时间选题时间选题时间选题时间选题时间
+                                    选题时间选题时间选题时间选题时间选题时间选题时间选题时间选题时间选题时间
+                                    </span>
+
+                                </div>
+                                <div class="col-md-3 textEllipsis textAlign">
+                                    2019-01-01 12:00:00
+                                </div>
+                                <div class="col-md-3 textAlign textEllipsis">
+                                    通知
+                                </div>
+                            </div>
+                            <div class="alert alert-warning textEllipsis border_radius marginBottom0">
+                                <div class="col-md-1 textEllipsis textAlign">
+                                    <input type="checkbox" value="2"/>
+                                </div>
+                                <div class="col-md-5 textEllipsis">
+                                    <span class="iconfont icon-yiduxiaoxi"></span>
+                                    <span class="clickColor cursorPointer" data-toggle="modal"
+                                          data-target="#messageDetails">
+                                    选题时间选题时间选题时间选题时间选题时间选题时间选题时间选题时间选题时间选题时间选题时间
+                                    选题时间选题时间选题时间选题时间选题时间选题时间选题时间选题时间选题时间
+                                    </span>
+                                </div>
+                                <div class="col-md-3 textEllipsis textAlign">
+                                    2019-01-01 12:00:00
+                                </div>
+                                <div class="col-md-3 textAlign textEllipsis">
+                                    通知
+                                </div>
                             </div>
                             <!--分页开始-->
-                            <div class="m-style"></div>
+                            <div style="margin-top: 10px" class="m-style"></div>
                             <!--分页结束-->
                         </div>
                     </div>
@@ -2586,6 +2685,109 @@
             <!--通知公告结束-->
         </div>
     </div>
+    <!--查看通知公告详情开始-->
+    <div class="modal fade" id="messageDetails" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">通知公告详细信息</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-success">
+                        <strong>
+                            <span>通知公告内容:</span>
+                        </strong>
+                        <span>
+                            廖永衡（0120080001）廖永衡（0120080001）廖永衡（0120080001）廖永衡（0120080001）廖永衡（0120080001）
+                            廖永衡（0120080001）廖永衡（0120080001）廖永衡（0120080001）廖永衡（0120080001）
+                        </span>
+                        <hr>
+                        <strong>
+                            <span>接收时间:</span>
+                        </strong>
+                        <span>2019-01-01 12:00:00</span>
+                        <hr>
+                        <strong>
+                            <span>通知公告类型:</span>
+                        </strong>
+                        <span>消息</span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm btn-info" data-dismiss="modal">关闭</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--查看通知公告详情结束-->
+    <!--删除通知公告开始-->
+    <div class="modal fade" id="deleMessage" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">提示</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        确定要删除通知公告？删除后不可恢复！
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-xs btn-white" data-dismiss="modal">取 消</button>
+                    <button type="button" class="btn btn-xs btn-danger">保 存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--删除通知公告结束-->
+    <!--通知公告标为已读开始-->
+    <div class="modal fade" id="readMessage" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">提示</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        确定要将通知公告全部标为已读？
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-xs btn-white" data-dismiss="modal">取 消</button>
+                    <button type="button" class="btn btn-xs btn-danger">保 存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--通知公告标为已读结束-->
+    <!--通知公告标为未读开始-->
+    <div class="modal fade" id="unreadMessage" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">提示</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        确定要将通知公告全部标为未读？
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-xs btn-white" data-dismiss="modal">取 消</button>
+                    <button type="button" class="btn btn-xs btn-danger">保 存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--通知公告标为未读结束-->
     <!--查看更多通知结束-->
 
     <!--查看更多新闻开始-->
@@ -2607,30 +2809,89 @@
                             校内新闻
                         </div>
                         <div class="panel-body">
-                            <div class="alert alert-success">
-                                <strong>
-                                    <span class="colorf44">1分钟前</span>
-                                </strong>
-                                校内新闻校内新闻校内新闻校内新闻校内新闻校内新闻校内新闻校内新闻校内新闻校内新闻校内新闻校内新闻校内新闻校内新闻校内新闻校内新闻校内新闻校内新闻校内新闻
+                            <div class="alert alert-success textEllipsis border_radius marginBottom0">
+                                <div class="col-md-3">
+                                    新闻标题
+                                </div>
+                                <div class="col-md-6">
+                                    新闻内容
+                                </div>
+                                <div class="col-md-3">
+                                    发布时间
+                                </div>
                             </div>
-                            <div class="alert alert-info">
-                                <strong>
-                                    <span class="colorf44">2分钟前</span>
-                                </strong> 提交开题报告
+                            <div class="alert alert-danger textEllipsis border_radius marginBottom0">
+                                <div class="col-md-3 textEllipsis">
+                                    <span class="clickColor cursorPointer" data-toggle="modal"
+                                          data-target="#readingNews">
+                                            新闻标题
+                                        </span>
+                                </div>
+                                <div class="col-md-6 textEllipsis">
+                                    新闻内容
+                                </div>
+                                <div class="col-md-3 textEllipsis">
+                                    2019-01-01 12:00:00
+                                </div>
                             </div>
-                            <div class="alert alert-warning">
-                                <strong>
-                                    <span class="colorf44">3分钟前</span>
-                                </strong>
-                                提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档
+                            <div class="alert alert-warning textEllipsis border_radius marginBottom0">
+                                <div class="col-md-3 textEllipsis">
+                                    <span class="clickColor cursorPointer" data-toggle="modal"
+                                          data-target="#readingNews">
+                                            新闻标题
+                                        </span>
+                                </div>
+                                <div class="col-md-6 textEllipsis">
+                                    新闻内容
+                                </div>
+                                <div class="col-md-3 textEllipsis">
+                                    2019-01-01 12:00:00
+                                </div>
                             </div>
-                            <div class="alert alert-danger">
-                                <strong>
-                                    <span class="colorf44">5分钟前</span>
-                                </strong> 论文截止时间
+                            <div class="alert alert-danger textEllipsis border_radius marginBottom0">
+                                <div class="col-md-3 textEllipsis">
+                                    <span class="clickColor cursorPointer" data-toggle="modal"
+                                          data-target="#readingNews">
+                                            新闻标题
+                                        </span>
+                                </div>
+                                <div class="col-md-6 textEllipsis">
+                                    新闻内容
+                                </div>
+                                <div class="col-md-3 textEllipsis">
+                                    2019-01-01 12:00:00
+                                </div>
+                            </div>
+                            <div class="alert alert-warning textEllipsis border_radius marginBottom0">
+                                <div class="col-md-3 textEllipsis">
+                                    <span class="clickColor cursorPointer" data-toggle="modal"
+                                          data-target="#readingNews">
+                                            新闻标题
+                                        </span>
+                                </div>
+                                <div class="col-md-6 textEllipsis">
+                                    新闻内容
+                                </div>
+                                <div class="col-md-3 textEllipsis">
+                                    2019-01-01 12:00:00
+                                </div>
+                            </div>
+                            <div class="alert alert-danger textEllipsis border_radius marginBottom0">
+                                <div class="col-md-3 textEllipsis">
+                                    <span class="clickColor cursorPointer" data-toggle="modal"
+                                          data-target="#readingNews">
+                                            新闻标题
+                                        </span>
+                                </div>
+                                <div class="col-md-6 textEllipsis">
+                                    新闻内容
+                                </div>
+                                <div class="col-md-3 textEllipsis">
+                                    2019-01-01 12:00:00
+                                </div>
                             </div>
                             <!--分页开始-->
-                            <div class="m-style"></div>
+                            <div style="margin-top: 10px" class="m-style"></div>
                             <!--分页结束-->
                         </div>
                     </div>
@@ -2638,6 +2899,42 @@
             </div>
         </div>
     </div>
+    <!--查看通知公告详情开始-->
+    <div class="modal fade" id="readingNews" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">新闻详细信息</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-success">
+                        <strong>
+                            <span>新闻标题:</span>
+                        </strong>
+                        <span>
+                            新闻标题
+                        </span>
+                        <hr>
+                        <strong>
+                            <span>新闻内容:</span>
+                        </strong>
+                        <span>新闻内容</span>
+                        <hr>
+                        <strong>
+                            <span>接收时间:</span>
+                        </strong>
+                        <span>2019-01-01 12:00:00</span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm btn-info" data-dismiss="modal">关闭</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--查看通知公告详情结束-->
     <!--查看更多新闻结束-->
 </div>
 
@@ -2689,6 +2986,15 @@
     }
 </script>
 <!--获取上传文件名称结束-->
+
+<script type="text/javascript">
+    function selectAll() {
+        var isCheck = $("#sel_1").is(':checked');  //获得全选复选框是否选中
+        $("input[type='checkbox']").each(function () {
+            this.checked = isCheck;       //循环赋值给每个复选框是否选中
+        });
+    }
+</script>
 
 <script>
     function submitNone(id1, id2) {
@@ -2767,6 +3073,55 @@
     }
 </script>
 
+<script>
+    function noticeUp(obj, top, time) {
+        $(obj).animate({
+            marginTop: top
+        }, time, function () {
+            $(this).css({marginTop: "0"}).find(":first").appendTo(this);
+        })
+    }
+
+    let interval;
+
+    function moveTop() {
+        let li = $(".ul1").find("li");
+        let num = li.length;
+        if (num > 2) {
+            for (let i = 0; i < num; i++) {
+                li[i].style.top = "0px";
+            }
+            let marquee = document.getElementById('marquee');
+            let openClass = marquee.classList.contains('open');
+            clearInterval(interval);
+            if (!openClass) {
+                interval = setInterval(function () {
+                    for (let i = 0; i < num; i++) {
+                        let top = li[i].style.top;
+                        top = top.replace("px", "");
+                        top = top - 10;
+                        if (top < -(i + 1) * 40) {
+                            top = (num - i - 1) * 40;
+                        }
+                        li[i].style.top = top + "px";
+                    }
+                }, 1000);
+            }
+            window.addEventListener('click', function () {
+                for (let i = 0; i < num; i++) {
+                    li[i].style.top = "0px";
+                }
+                clearInterval(interval);
+            }, false);
+        }
+    }
+
+
+    // $(function () {
+    //     // 调用 公告滚动函数
+    //     setInterval("noticeUp('.notice','-40px',500)", 2000);
+    // });
+</script>
 
 </body>
 </html>
