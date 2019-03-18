@@ -34,6 +34,17 @@
             <span id="sideNav" class="iconfont icon-right-s packUpIcon"></span>
         </div>
         <ul class="nav navbar-top-links navbar-right">
+            <li style="color: #fff">
+                <span style="padding-right: 20px">
+                    姓名：王XX
+                </span>
+                <span style="padding-right: 20px">
+                    学院：计算机与软件工程学院
+                </span>
+                <span>
+                    专业：软件工程
+                </span>
+            </li>
             <!--任务进度开始-->
             <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
@@ -95,77 +106,41 @@
                 </ul>
             </li>
             <!--任务进度结束-->
-            <!--通知开始-->
-            <li id="marquee" class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false" onclick="moveTop()">
-                    <span class="iconfont icon-lingdang iconColor fontSize14"></span>
-                    <span class="messageUnread">12</span>
-                    <span class="iconfont icon-jiantou iconColor fontSize8"></span>
-                </a>
-                <div class="dropdown-menu dropdown-alerts topBar" style="text-align: center;width: 200px;height: 125px">
-                    <ul class="ul1" style="overflow:hidden;height: 90px;">
-                        <li class="textEllipsis notificationMmessage"
-                            style="">
-                            1分钟前 选题 选题时间选题 选题时间11.12
-                        </li>
-                        <li class="textEllipsis notificationMmessage"
-                            style="">
-                            选题 选题时间选题 选题时间11.12
-                        </li>
-                        <li class="textEllipsis notificationMmessage"
-                            style="">
-                            3分钟前 选题 选题时间选题 选题时间11.12
-                        </li>
-                        <!--<li>-->
-                        <!--<a class="management_six text-center newPage" href="#">-->
-                        <!--<strong>查看更多通知</strong>-->
-                        <!--<i class="fa fa-angle-right"></i>-->
-                        <!--</a>-->
-                        <!--</li>-->
-                    </ul>
-                    <a style="text-align: center" class="management_six text-center newPage" href="#">
-                        <strong>查看更多通知</strong>
-                        <i class="fa fa-angle-right"></i>
-                    </a>
-                </div>
-            </li>
-            <!--通知结束-->
-            <!--新闻开始-->
+            <!--通知公告开始-->
             <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
-                    <span class="iconfont icon-huabanfuben iconColor fontSize14"></span>
+                    <span class="iconfont icon-lingdang iconColor fontSize14"></span>
+                    <span class="messageUnread textEllipsis">12</span>
                     <span class="iconfont icon-jiantou iconColor fontSize8"></span>
                 </a>
                 <ul class="dropdown-menu dropdown-alerts topBar">
                     <li>
-                        <a href="#">
-                            <div style="width: 200px">
-                                <span style="display:inline-block;width: 80%" class="textEllipsis">新闻事项新闻事项新闻事项新闻事项新闻事项新闻事项</span>
-                                <span style="display:inline-block;width: 20%"
-                                      class="pull-right text-muted small">4分钟前</span>
-                            </div>
-                        </a>
+                        <div style="width: 240px;padding-right: 20px;padding-left: 20px">
+                            <span style="display:inline-block;width: 80%"
+                                  class="textEllipsis">新闻事项新闻事项新闻事项新闻事项新闻事项新闻事项</span>
+                            <span style="display:inline-block;width: 20%"
+                                  class="pull-right text-muted small">通知</span>
+                        </div>
                     </li>
                     <li class="divider"></li>
                     <li>
-                        <a href="#">
-                            <div style="width: 200px">
-                                <span style="display:inline-block;width: 80%" class="textEllipsis">新闻事项新闻事项新闻事项新闻事项新闻事项新闻事项</span>
-                                <span style="display:inline-block;width: 20%"
-                                      class="pull-right text-muted small">4分钟前</span>
-                            </div>
-                        </a>
+                        <div style="width: 240px;padding-right: 20px;padding-left: 20px">
+                            <span style="display:inline-block;width: 80%"
+                                  class="textEllipsis">新闻事项新闻事项新闻事项新闻事项新闻事项新闻事项</span>
+                            <span style="display:inline-block;width: 20%"
+                                  class="pull-right text-muted small">通知</span>
+                        </div>
                     </li>
                     <li class="divider"></li>
                     <li>
-                        <a class="management_ten text-center newPage" href="#">
-                            <strong>查看更多新闻</strong>
+                        <a class="management_six text-center newPage" href="#">
+                            <strong>查看更多</strong>
                             <i class="fa fa-angle-right"></i>
                         </a>
                     </li>
                 </ul>
             </li>
-            <!--新闻结束-->
+            <!--通知公告结束-->
             <!--个人信息开始-->
             <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
@@ -196,6 +171,7 @@
                 </ul>
             </li>
             <!--个人信息结束-->
+
         </ul>
     </nav>
     <!--顶部导航结束-->
@@ -223,6 +199,10 @@
                 </li>
                 <li><a href="#" id="management_nine">
                     <span class="iconfont icon-icon-test iconColorWhite fontSize14 naviconpadding"></span>历届优秀浏览
+                </a>
+                </li>
+                <li><a href="#" id="management_ten">
+                    <span class="iconfont icon-xinwenguanli iconColorWhite fontSize14 naviconpadding"></span>新闻浏览
                 </a>
                 </li>
             </ul>
@@ -263,8 +243,8 @@
                                                     姓名：
                                                 </div>
                                                 <div class="col-md-6 paddingLeft0 paddingRightt0">
-                                                    <input value="wangXxx" style="background-color: #d9edf7;"
-                                                           class="form-control" type="text" readonly>
+                                                    <input placeholder="wangXxx" class="form-control whiteBgColor"
+                                                           type="text" readonly>
                                                 </div>
                                             </div>
                                             <div class="col-md-12" style="padding-bottom: 10px">
@@ -274,8 +254,8 @@
                                                     学号：
                                                 </div>
                                                 <div class="col-md-6 paddingLeft0 paddingRightt0">
-                                                    <input value="3120150905119" style="background-color: #d9edf7;"
-                                                           class="form-control" type="text" readonly>
+                                                    <input placeholder="3120150905119" class="form-control whiteBgColor"
+                                                           type="text" readonly>
                                                 </div>
                                             </div>
                                             <div class="col-md-12" style="padding-bottom: 10px">
@@ -285,8 +265,8 @@
                                                     院系：
                                                 </div>
                                                 <div class="col-md-6 paddingLeft0 paddingRightt0">
-                                                    <input value="计算机与软件工程学院" style="background-color: #d9edf7 ;"
-                                                           class="form-control" type="text" readonly>
+                                                    <input placeholder="计算机与软件工程学院" class="form-control whiteBgColor"
+                                                           type="text" readonly>
                                                 </div>
                                             </div>
                                             <div class="col-md-12" style="padding-bottom: 10px">
@@ -296,8 +276,8 @@
                                                     专业：
                                                 </div>
                                                 <div class="col-md-6 paddingLeft0 paddingRightt0">
-                                                    <input value="软件工程" style="background-color: #d9edf7;"
-                                                           class="form-control" type="text" readonly>
+                                                    <input placeholder="软件工程" class="form-control whiteBgColor"
+                                                           type="text" readonly>
                                                 </div>
                                             </div>
                                             <div class="col-md-12" style="padding-bottom: 10px">
@@ -307,8 +287,8 @@
                                                     班级：
                                                 </div>
                                                 <div class="col-md-6 paddingLeft0 paddingRightt0">
-                                                    <input value="软件设计15-1" style="background-color: #d9edf7;"
-                                                           class="form-control" type="text" readonly>
+                                                    <input placeholder="软件设计15-1" class="form-control whiteBgColor"
+                                                           type="text" readonly>
                                                 </div>
                                             </div>
                                             <div class="col-md-12" style="padding-bottom: 10px">
@@ -333,6 +313,16 @@
                                                 </div>
                                                 <div class="col-md-6 paddingLeft0 paddingRightt0">
                                                     <input class="form-control" type="email">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12" style="padding-bottom: 10px">
+                                                <div class="col-md-2"></div>
+                                                <div style="height: 41px;line-height: 41px"
+                                                     class="col-md-2 paddingRightt0">
+                                                    手机：
+                                                </div>
+                                                <div class="col-md-6 paddingLeft0 paddingRightt0">
+                                                    <input class="form-control" type="tel">
                                                 </div>
                                             </div>
                                             <div class="col-md-12" style="padding-bottom: 10px">
@@ -431,22 +421,15 @@
             </ol>
         </div>
         <div class="page-inner">
-            <!--<div class="notice">-->
-            <!--<ul>-->
-            <!--<li>第1条公告第1条公告第1条公告第1条公告第1条公告第1条公告</li>-->
-            <!--<li>第2条公告第2条公告第2条公告第2条公告第2条公告第2条公告</li>-->
-            <!--<li>第3条公告第3条公告第3条公告第3条公告第3条公告第3条公告</li>-->
-            <!--<li>第4条公告第4条公告第4条公告第4条公告第4条公告第4条公告</li>-->
-            <!--</ul>-->
-            <!--</div>-->
+
             <!--进度提示开始-->
             <div class="row">
-                <div class="col-xs-24 col-md-12">
+                <div class="col-xs-12 col-md-12">
                     <div>
                         <div class="titleContent">
                             <span>进度提示</span>
                             <span style="float: right">
-                            <a href="./taskSchedule.html">
+                            <a href="#" class="management_five newPage">
                                 查看更多进度
                                 <sapn class="iconfont icon-jiantou1"></sapn>
                             </a>
@@ -515,7 +498,8 @@
                         <div class="titleContent">
                             <span class="fontColor847a7a">课题题目：</span>
                             <span class="newline">四川工商学院毕业设计管理系统的设计与实现——Web客户端子系统【师生互选课题】</span>
-                            <a style="float: right" href="#">查看详情</a>
+                            <a style="float: right" href="#" data-toggle="modal" data-target="#viewTopic">查看详情</a>
+                            </button>
                         </div>
                         <div class="dividerDiv"></div>
                         <div class="titleContent">
@@ -591,11 +575,11 @@
                                             <div class="col-md-9 col-xs-9" style="padding: 0px">
                                                 <select style="margin:0px 5px" class="form-control">
                                                     <option value="typeAll">全部</option>
-                                                    <option value="typeOther">其他</option>
                                                     <option value="artBeauty">艺美设计</option>
                                                     <option value="engineeringIndustrial">工程工业设计</option>
                                                     <option value="application">应用研究</option>
                                                     <option value="theoretical">理论研究</option>
+                                                    <option value="typeOther">其他</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -607,9 +591,9 @@
                                             <div class="col-md-9 col-xs-9" style="padding: 0px">
                                                 <select style="margin:0px 5px" class="form-control">
                                                     <option value="sourceAll">全部</option>
-                                                    <option value="sourceOther">其他</option>
                                                     <option value="productionPractice">生产实际（社会实践）题</option>
                                                     <option value="teacherResearch">教师科研课题</option>
+                                                    <option value="sourceOther">其他</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -770,7 +754,7 @@
                                     <div class="col-md-3 textAlign">
                                         课题题目
                                     </div>
-                                    <div class="col-md-2 textAlign">
+                                    <div class="col-md-1 textAlign">
                                         题目类型
                                     </div>
                                     <div class="col-md-2 textAlign">
@@ -782,7 +766,7 @@
                                     <div class="col-md-1 textAlign">
                                         确认状态
                                     </div>
-                                    <div class="col-md-1 textAlign">
+                                    <div class="col-md-2 textAlign">
                                         操作
                                     </div>
                                 </div>
@@ -790,7 +774,7 @@
                                     <div title="PMMA灯具基于moldflow三维流动优化的注塑模设计" class="col-md-3 textEllipsis textAlign">
                                         PMMA灯具基于moldflow三维流动优化的注塑模设计
                                     </div>
-                                    <div title="工程工业设计" class="col-md-2 textEllipsis textAlign">
+                                    <div title="工程工业设计" class="col-md-1 textEllipsis textAlign padding0">
                                         工程工业设计
                                     </div>
                                     <div title="生产实际（社会实践）题" class="col-md-2 textEllipsis textAlign">
@@ -805,17 +789,20 @@
                                     <div class="col-md-1 textEllipsis textAlign">
                                         不通过
                                     </div>
-                                    <div class="col-md-1 textEllipsis textAlign">
+                                    <div class="col-md-2 textEllipsis textAlign">
                                         <button type="button" class="btn btn-info btn-xs" data-toggle="modal"
                                                 data-target="#viewTopic">查看
                                         </button>
+                                        <button type="button" class="btn btn-danger btn-xs" data-toggle="modal"
+                                                data-target="#cancelTopic">取消选题
+                                        </button>
                                     </div>
                                 </div>
-                                <div class="alert alert-warning textEllipsis border_radius marginBottom0">
+                                <div class="alert alert-danger textEllipsis border_radius marginBottom0">
                                     <div title="PMMA灯具基于moldflow三维流动优化的注塑模设计" class="col-md-3 textEllipsis textAlign">
                                         PMMA灯具基于moldflow三维流动优化的注塑模设计
                                     </div>
-                                    <div title="工程工业设计" class="col-md-2 textEllipsis textAlign">
+                                    <div title="工程工业设计" class="col-md-1 textEllipsis textAlign padding0">
                                         工程工业设计
                                     </div>
                                     <div title="生产实际（社会实践）题" class="col-md-2 textEllipsis textAlign">
@@ -828,11 +815,14 @@
                                         </span>
                                     </div>
                                     <div class="col-md-1 textEllipsis textAlign">
-                                        通过
+                                        不通过
                                     </div>
-                                    <div class="col-md-1 textEllipsis textAlign">
+                                    <div class="col-md-2 textEllipsis textAlign">
                                         <button type="button" class="btn btn-info btn-xs" data-toggle="modal"
                                                 data-target="#viewTopic">查看
+                                        </button>
+                                        <button type="button" class="btn btn-danger btn-xs" data-toggle="modal"
+                                                data-target="#cancelTopic">取消选题
                                         </button>
                                     </div>
                                 </div>
@@ -864,6 +854,16 @@
                             <span>选题范围:</span>
                         </strong>
                         <span>全校</span>
+                        <hr>
+                        <strong>
+                            <span>是否真题真做的题目:</span>
+                        </strong>
+                        <span>是</span>
+                        <hr>
+                        <strong>
+                            <span>如果是真题真做的题目，请填写清楚委托方名称:</span>
+                        </strong>
+                        <span>西华大学</span>
                         <hr>
                         <strong>
                             <span>题目类型:</span>
@@ -909,7 +909,6 @@
                             <span>题目简介:</span>
                         </strong>
                         <span>本产品为PMMA灯具，灯具内有凸台和内孔，模具设计时应充分考虑该结构的脱模问题，该产品材料为PMMA，在模具设计时应根据PMMA的流变特性，合理设计模具浇注系统。</span>
-
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -919,7 +918,7 @@
         </div>
     </div>
     <!--查看选题详情结束-->
-    <!--确认选题开始-->
+    <!--查看教师详细信息开始-->
     <div class="modal fade" id="teacherDetails" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -957,8 +956,8 @@
             </div>
         </div>
     </div>
-    <!--确认选题结束-->
-    <!--查看教师详细信息开始-->
+    <!--查看教师详细信息结束-->
+    <!--确认选题开始-->
     <div class="modal fade" id="chooseTopic" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -979,7 +978,29 @@
             </div>
         </div>
     </div>
-    <!--查看教师详细信息结束-->
+    <!--确认选题结束-->
+    <!--取消选题开始-->
+    <div class="modal fade" id="cancelTopic" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">提示</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        确定要取消选择该题目！
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-xs btn-white" data-dismiss="modal">取 消</button>
+                    <button type="button" class="btn btn-xs btn-danger">保 存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--取消选题结束-->
     <!--学生选题结束-->
 
     <!--过程文档管理开始-->
@@ -1010,33 +1031,6 @@
                                 </div>
                                 <div style="padding-left:0px;padding-bottom: 15px" class="col-md-12">
                                     <div style="padding-left: 0px" class="col-md-4">
-                                        <h4 class="font_bold">提交记录</h4>
-                                    </div>
-                                </div>
-                                <div class="alert alert-success textEllipsis border_radius marginBottom0">
-                                    <div class="col-md-5 textAlign">
-                                        课题题目
-                                    </div>
-                                    <div class="col-md-3 textAlign">
-                                        审核状态
-                                    </div>
-                                    <div class="col-md-4 textAlign">
-                                        提交时间
-                                    </div>
-                                </div>
-                                <div class="alert alert-warning textEllipsis border_radius marginBottom0">
-                                    <div class="col-md-5 textAlign">
-                                        PMMA灯具基于moldflow三维流动优化的注塑模设计
-                                    </div>
-                                    <div class="col-md-3 textAlign">
-                                        等待指导教师审核
-                                    </div>
-                                    <div class="col-md-4 textAlign">
-                                        2018-12-09 18:30:18
-                                    </div>
-                                </div>
-                                <div style="padding-left:0px;padding-bottom: 15px" class="col-md-12">
-                                    <div style="padding-left: 0px" class="col-md-4">
                                         <h4 class="font_bold">开题报告详情</h4>
                                     </div>
                                 </div>
@@ -1044,20 +1038,16 @@
                                      class="col-md-12 displayNone openingReport">
                                     <h5 class="font_bold">课题研究的目的和意义</h5>
                                     <textarea class="form-control" rows="10" name="textarea"
-                                              style="background-color: #fff">
-                                    </textarea>
+                                              style="background-color: #fff"></textarea>
                                     <h5 class="font_bold">课题研究方案和主要内容</h5>
                                     <textarea class="form-control" rows="10" name="textarea"
-                                              style="background-color: #fff">
-                                    </textarea>
+                                              style="background-color: #fff"></textarea>
                                     <h5 class="font_bold">研究方法及技术途径</h5>
                                     <textarea class="form-control" rows="10" name="textarea"
-                                              style="background-color: #fff">
-                                    </textarea>
+                                              style="background-color: #fff"></textarea>
                                     <h5 class="font_bold">实施计划</h5>
                                     <textarea class="form-control" rows="10" name="textarea"
-                                              style="background-color: #fff">
-                                    </textarea>
+                                              style="background-color: #fff"></textarea>
                                     <h5 class="font_bold">添加附件</h5>
                                     <input id="fileChoose" type="file" style="display: none">
                                     <div class="row">
@@ -1074,7 +1064,8 @@
                                     </div>
                                     <div class="row" style="margin-top: 10px">
                                         <div class="col-md-2">
-                                            <button type="button" class="btn btn-info" onclick="submitOpeningReport()">
+                                            <button type="button" class="btn btn-info"
+                                                    onclick="submitOpeningReport()">
                                                 提交
                                             </button>
                                         </div>
@@ -1093,17 +1084,11 @@
                                         <div class="reportContent">
                                             提交内容
                                         </div>
-                                        <div class="reportNotation">
-                                            <h3>暂无批注内容</h3>
-                                        </div>
                                     </div>
                                     <h5 class="font_bold">课题研究方案和主要内容</h5>
                                     <div class="whiteColor">
                                         <div class="reportContent">
                                             提交内容
-                                        </div>
-                                        <div class="reportNotation">
-                                            <h3>暂无批注内容</h3>
                                         </div>
                                     </div>
                                     <h5 class="font_bold">研究方法及技术途径</h5>
@@ -1111,17 +1096,19 @@
                                         <div class="reportContent">
                                             提交内容
                                         </div>
-                                        <div class="reportNotation">
-                                            <h3>暂无批注内容</h3>
-                                        </div>
                                     </div>
                                     <h5 class="font_bold">实施计划</h5>
                                     <div class="whiteColor">
                                         <div class="reportContent">
                                             提交内容
                                         </div>
-                                        <div class="reportNotation">
-                                            <h3>暂无批注内容</h3>
+                                    </div>
+                                    <h5 class="font_bold">批注内容</h5>
+                                    <div class="whiteColor">
+                                        <div class="reportContent">
+                                            提交内容提交内容提交内容提交内容提交内容提交内容提交内容提交内容提交内容
+                                            提交内容提交内容提交内容提交内容提交内容提交内容提交内容提交内容提交内容
+                                            提交内容提交内容提交内容提交内容提交内容提交内容
                                         </div>
                                     </div>
                                     <h5 class="font_bold">附件</h5>
@@ -1136,13 +1123,26 @@
                                         </div>
                                     </div>
                                 </div>
+
                                 <div style="padding-left:0px;padding-bottom: 15px" class="col-md-12">
                                     <div style="padding-left: 0px" class="col-md-4">
                                         <h4 id="reviewDetails" class="font_bold">开题报告审核情况</h4>
                                     </div>
                                 </div>
-                                <div class="alert alert-danger textEllipsis border_radius marginBottom0">
-                                    等待指导教师审核
+                                <div class="col-md-12 alert alert-danger">
+                                    <div>
+                                        <span class="notSubmit">审核状态：</span>已审核
+                                    </div>
+                                    <div>
+                                        <span class="notSubmit">审核教师姓名：</span>廖永衡（0120080001）
+                                    </div>
+                                    <div>
+                                        <span class="notSubmit">审核时间：</span>2018-11-25 15:49:48
+                                    </div>
+                                    <div>
+                                        <span class="notSubmit">审核建议：</span>审核建议审核建议审核建议审核建议审核建议审核建议审核建议
+                                        审核建议审核建议审核建议审核建议审核建议审核建议审核建议审核建议审核建议
+                                        审核建议审核建议审核建议审核建议审核建议审核建议审核建议审核建议审核建议</div>
                                 </div>
                             </div>
                             <!--提交开题报告结束-->
@@ -1151,34 +1151,8 @@
                                 <div class="alert alert-info textEllipsis">
                                     <div>
                                         <span style="color: #333333;">最新提交时间：2018-11-25 15:49:48</span>
-                                        <span style="padding-left: 100px"><a href="#intermediateInspectionDetails">查看审核详情</a></span>
-                                    </div>
-                                </div>
-                                <div style="padding-left:0px;padding-bottom: 15px" class="col-md-12">
-                                    <div style="padding-left: 0px" class="col-md-4">
-                                        <h4 class="font_bold">提交记录</h4>
-                                    </div>
-                                </div>
-                                <div class="alert alert-success textEllipsis border_radius marginBottom0">
-                                    <div class="col-md-5 textAlign">
-                                        课题题目
-                                    </div>
-                                    <div class="col-md-3 textAlign">
-                                        审核状态
-                                    </div>
-                                    <div class="col-md-4 textAlign">
-                                        提交时间
-                                    </div>
-                                </div>
-                                <div class="alert alert-warning textEllipsis border_radius marginBottom0">
-                                    <div class="col-md-5 textAlign">
-                                        PMMA灯具基于moldflow三维流动优化的注塑模设计
-                                    </div>
-                                    <div class="col-md-3 textAlign">
-                                        等待指导教师审核
-                                    </div>
-                                    <div class="col-md-4 textAlign">
-                                        2018-12-09 18:30:18
+                                        <span style="padding-left: 100px"><a
+                                                href="#intermediateInspectionDetails">查看审核详情</a></span>
                                     </div>
                                 </div>
                                 <div style="padding-left:0px;padding-bottom: 15px" class="col-md-12">
@@ -1190,8 +1164,7 @@
                                      class="col-md-12 displayNone openingReport">
                                     <h5 class="font_bold">中期检查需要填写的内容</h5>
                                     <textarea class="form-control" rows="10" name="textarea"
-                                              style="background-color: #fff">
-                                    </textarea>
+                                              style="background-color: #fff"></textarea>
                                     <h5 class="font_bold">添加附件</h5>
                                     <input id="fileChooseIntermediate" type="file" style="display: none">
                                     <div class="row">
@@ -1227,8 +1200,11 @@
                                         <div class="reportContent">
                                             提交内容
                                         </div>
-                                        <div class="reportNotation">
-                                            <h3>暂无批注内容</h3>
+                                    </div>
+                                    <h5 class="font_bold">批注内容</h5>
+                                    <div class="whiteColor">
+                                        <div class="reportContent">
+                                            提交内容
                                         </div>
                                     </div>
                                     <h5 class="font_bold">附件</h5>
@@ -1248,8 +1224,20 @@
                                         <h4 id="intermediateInspectionDetails" class="font_bold">中期报告审核情况</h4>
                                     </div>
                                 </div>
-                                <div class="alert alert-danger textEllipsis border_radius marginBottom0">
-                                    等待指导教师审核
+                                <div class="col-md-12 alert alert-danger">
+                                    <div>
+                                        <span class="notSubmit">审核状态：</span>已审核
+                                    </div>
+                                    <div>
+                                        <span class="notSubmit">审核教师姓名：</span>廖永衡（0120080001）
+                                    </div>
+                                    <div>
+                                        <span class="notSubmit">审核时间：</span>2018-11-25 15:49:48
+                                    </div>
+                                    <div>
+                                        <span class="notSubmit">审核建议：</span>审核建议审核建议审核建议审核建议审核建议审核建议审核建议
+                                        审核建议审核建议审核建议审核建议审核建议审核建议审核建议审核建议审核建议
+                                        审核建议审核建议审核建议审核建议审核建议审核建议审核建议审核建议审核建议</div>
                                 </div>
                             </div>
                             <!--提交中期报告结束-->
@@ -1383,35 +1371,7 @@
                                         <span style="padding-left: 100px"><a
                                                 href="#foreignTranslationDetails">查看审核详情</a></span>
                                     </div>
-                                </div>
-                                <div style="padding-left:0px;padding-bottom: 15px" class="col-md-12">
-                                    <div style="padding-left: 0px" class="col-md-4">
-                                        <h4 class="font_bold">提交记录</h4>
-                                    </div>
-                                </div>
-                                <div class="alert alert-success textEllipsis border_radius marginBottom0">
-                                    <div class="col-md-5 textAlign">
-                                        课题题目
-                                    </div>
-                                    <div class="col-md-3 textAlign">
-                                        审核状态
-                                    </div>
-                                    <div class="col-md-4 textAlign">
-                                        提交时间
-                                    </div>
-                                </div>
-                                <div class="alert alert-warning textEllipsis border_radius marginBottom0">
-                                    <div class="col-md-5 textAlign">
-                                        PMMA灯具基于moldflow三维流动优化的注塑模设计
-                                    </div>
-                                    <div class="col-md-3 textAlign">
-                                        等待指导教师审核
-                                    </div>
-                                    <div class="col-md-4 textAlign">
-                                        2018-12-09 18:30:18
-                                    </div>
-                                </div>
-                                <div style="padding-left:0px;padding-bottom: 15px" class="col-md-12">
+                                </div><div style="padding-left:0px;padding-bottom: 15px" class="col-md-12">
                                     <div style="padding-left: 0px" class="col-md-4">
                                         <h4 class="font_bold">中期报告详情</h4>
                                     </div>
@@ -1421,8 +1381,7 @@
                                     <div style="width: 49%; display: inline-block">
                                         <h5 class="font_bold">外文译文内容</h5>
                                         <textarea class="form-control" rows="10" name="textarea"
-                                                  style="background-color: #fff">
-                                    </textarea>
+                                                  style="background-color: #fff"></textarea>
                                         <h5 class="font_bold">添加附件</h5>
                                         <input id="fileChooseForeign" type="file" style="display: none">
                                         <div class="row">
@@ -1441,8 +1400,7 @@
                                     <div style="width: 49%; float: right">
                                         <h5 class="font_bold">原文内容 </h5>
                                         <textarea class="form-control" rows="10" name="textarea"
-                                                  style="background-color: #fff">
-                                    </textarea>
+                                                  style="background-color: #fff"></textarea>
                                         <h5 class="font_bold">添加附件</h5>
                                         <input id="fileChooseOriginal" type="file" style="display: none">
                                         <div class="row">
@@ -1480,8 +1438,11 @@
                                         <div class="reportContent">
                                             提交内容
                                         </div>
-                                        <div class="reportNotation">
-                                            <h3>暂无批注内容</h3>
+                                    </div>
+                                    <h5 class="font_bold">批注内容</h5>
+                                    <div class="whiteColor">
+                                        <div class="reportContent">
+                                            提交内容
                                         </div>
                                     </div>
                                     <h5 class="font_bold">附件</h5>
@@ -1501,44 +1462,30 @@
                                         <h4 id="foreignTranslationDetails" class="font_bold">中期报告审核情况</h4>
                                     </div>
                                 </div>
-                                <div class="alert alert-danger textEllipsis border_radius marginBottom0">
-                                    等待指导教师审核
+                                <div class="col-md-12 alert alert-danger">
+                                    <div>
+                                        <span class="notSubmit">审核状态：</span>已审核
+                                    </div>
+                                    <div>
+                                        <span class="notSubmit">审核教师姓名：</span>廖永衡（0120080001）
+                                    </div>
+                                    <div>
+                                        <span class="notSubmit">审核时间：</span>2018-11-25 15:49:48
+                                    </div>
+                                    <div>
+                                        <span class="notSubmit">审核建议：</span>审核建议审核建议审核建议审核建议审核建议审核建议审核建议
+                                        审核建议审核建议审核建议审核建议审核建议审核建议审核建议审核建议审核建议
+                                        审核建议审核建议审核建议审核建议审核建议审核建议审核建议审核建议审核建议</div>
                                 </div>
                             </div>
                             <!--提交外文译文和原文结束-->
-                            <!--提交中期报告开始-->
+                            <!--提交文献综述开始-->
                             <div class="tab-pane panel-body" id="literatureReview">
                                 <div class="alert alert-info textEllipsis">
                                     <div>
                                         <span style="color: #333333;">最新提交时间：2018-11-25 15:49:48</span>
-                                        <span style="padding-left: 100px"><a href="#literatureReviewDetails">查看审核详情</a></span>
-                                    </div>
-                                </div>
-                                <div style="padding-left:0px;padding-bottom: 15px" class="col-md-12">
-                                    <div style="padding-left: 0px" class="col-md-4">
-                                        <h4 class="font_bold">提交记录</h4>
-                                    </div>
-                                </div>
-                                <div class="alert alert-success textEllipsis border_radius marginBottom0">
-                                    <div class="col-md-5 textAlign">
-                                        课题题目
-                                    </div>
-                                    <div class="col-md-3 textAlign">
-                                        审核状态
-                                    </div>
-                                    <div class="col-md-4 textAlign">
-                                        提交时间
-                                    </div>
-                                </div>
-                                <div class="alert alert-warning textEllipsis border_radius marginBottom0">
-                                    <div class="col-md-5 textAlign">
-                                        PMMA灯具基于moldflow三维流动优化的注塑模设计
-                                    </div>
-                                    <div class="col-md-3 textAlign">
-                                        等待指导教师审核
-                                    </div>
-                                    <div class="col-md-4 textAlign">
-                                        2018-12-09 18:30:18
+                                        <span style="padding-left: 100px"><a
+                                                href="#literatureReviewDetails">查看审核详情</a></span>
                                     </div>
                                 </div>
                                 <div style="padding-left:0px;padding-bottom: 15px" class="col-md-12">
@@ -1550,8 +1497,7 @@
                                      class="col-md-12 displayNone openingReport">
                                     <h5 class="font_bold">文献综述需要填写的内容</h5>
                                     <textarea class="form-control" rows="10" name="textarea"
-                                              style="background-color: #fff">
-                                    </textarea>
+                                              style="background-color: #fff"></textarea>
                                     <h5 class="font_bold">添加附件</h5>
                                     <input id="fileChooseLiterature" type="file" style="display: none">
                                     <div class="row">
@@ -1587,8 +1533,11 @@
                                         <div class="reportContent">
                                             提交内容
                                         </div>
-                                        <div class="reportNotation">
-                                            <h3>暂无批注内容</h3>
+                                    </div>
+                                    <h5 class="font_bold">批注内容</h5>
+                                    <div class="whiteColor">
+                                        <div class="reportContent">
+                                            提交内容
                                         </div>
                                     </div>
                                     <h5 class="font_bold">附件</h5>
@@ -1608,12 +1557,24 @@
                                         <h4 id="literatureReviewDetails" class="font_bold">文献综述审核情况</h4>
                                     </div>
                                 </div>
-                                <div class="alert alert-danger textEllipsis border_radius marginBottom0">
-                                    等待指导教师审核
+                                <div class="col-md-12 alert alert-danger">
+                                    <div>
+                                        <span class="notSubmit">审核状态：</span>已审核
+                                    </div>
+                                    <div>
+                                        <span class="notSubmit">审核教师姓名：</span>廖永衡（0120080001）
+                                    </div>
+                                    <div>
+                                        <span class="notSubmit">审核时间：</span>2018-11-25 15:49:48
+                                    </div>
+                                    <div>
+                                        <span class="notSubmit">审核建议：</span>审核建议审核建议审核建议审核建议审核建议审核建议审核建议
+                                        审核建议审核建议审核建议审核建议审核建议审核建议审核建议审核建议审核建议
+                                        审核建议审核建议审核建议审核建议审核建议审核建议审核建议审核建议审核建议</div>
                                 </div>
                             </div>
-                            <!--提交中期报告结束-->
-                            <!--提交指导记录开始-->
+                            <!--提交文件综述结束-->
+                            <!--提交毕业设计开始-->
                             <div class="tab-pane panel-body" id="graduationDesign">
                                 <div style="padding-left:0px;padding-bottom: 15px" class="col-md-12">
                                     <div style="padding-left: 0px" class="col-md-4">
@@ -1710,7 +1671,7 @@
                                 <div style="margin-top: 15px" class="m-style"></div>
                                 <!--分页结束-->
                             </div>
-                            <!--提交指导记录结束-->
+                            <!--提交毕业设计结束-->
                         </div>
                     </div>
                 </div>
@@ -1734,8 +1695,7 @@
                                 <h5 style="padding-top: 60px" class="font_bold">指导时间</h5>
                                 <input type="text" class="form-control">
                                 <h5 style="padding-top: 60px" class="font_bold">主要工作</h5>
-                                <textarea class="form-control" rows="5" name="textarea">
-                                    </textarea>
+                                <textarea class="form-control" rows="5" name="textarea"></textarea>
                                 <h5 class="font_bold">添加附件</h5>
                                 <input id="fileChooseGuide" type="file" style="display: none">
                                 <div class="row">
@@ -1787,41 +1747,11 @@
                                             href="#guideDetails">查看审核详情</a></span>
                                 </div>
                             </div>
-                            <div style="padding-left:0px;padding-bottom: 15px" class="col-md-12">
-                                <div style="padding-left: 0px" class="col-md-4">
-                                    <h4 class="font_bold">提交记录</h4>
-                                </div>
-                            </div>
-                            <div class="alert alert-success textEllipsis border_radius marginBottom0">
-                                <div class="col-md-5 textAlign">
-                                    课题题目
-                                </div>
-                                <div class="col-md-3 textAlign">
-                                    审核状态
-                                </div>
-                                <div class="col-md-4 textAlign">
-                                    提交时间
-                                </div>
-                            </div>
-                            <div class="alert alert-warning textEllipsis border_radius marginBottom0">
-                                <div class="col-md-5 textAlign">
-                                    PMMA灯具基于moldflow三维流动优化的注塑模设计
-                                </div>
-                                <div class="col-md-3 textAlign">
-                                    等待指导教师审核
-                                </div>
-                                <div class="col-md-4 textAlign">
-                                    2018-12-09 18:30:18
-                                </div>
-                            </div>
                             <div class="col-md-12 openingReport">
                                 <h5 class="font_bold">主题</h5>
                                 <div class="whiteColor">
                                     <div class="reportContent">
                                         提交内容
-                                    </div>
-                                    <div class="reportNotation">
-                                        <h3>暂无批注内容</h3>
                                     </div>
                                 </div>
                                 <h5 class="font_bold">指导时间</h5>
@@ -1829,17 +1759,17 @@
                                     <div class="reportContent">
                                         提交内容
                                     </div>
-                                    <div class="reportNotation">
-                                        <h3>暂无批注内容</h3>
-                                    </div>
                                 </div>
                                 <h5 class="font_bold">主要工作</h5>
                                 <div class="whiteColor">
                                     <div class="reportContent">
                                         提交内容
                                     </div>
-                                    <div class="reportNotation">
-                                        <h3>暂无批注内容</h3>
+                                </div>
+                                <h5 class="font_bold">批注内容</h5>
+                                <div class="whiteColor">
+                                    <div class="reportContent">
+                                        提交内容
                                     </div>
                                 </div>
                                 <h5 class="font_bold">附件</h5>
@@ -1864,8 +1794,20 @@
                                     <h4 id="guideDetails" class="font_bold">指导记录审核情况</h4>
                                 </div>
                             </div>
-                            <div class="alert alert-danger textEllipsis border_radius marginBottom0">
-                                等待指导教师审核
+                            <div class="col-md-12 alert alert-danger">
+                                <div>
+                                    <span class="notSubmit">审核状态：</span>已审核
+                                </div>
+                                <div>
+                                    <span class="notSubmit">审核教师姓名：</span>廖永衡（0120080001）
+                                </div>
+                                <div>
+                                    <span class="notSubmit">审核时间：</span>2018-11-25 15:49:48
+                                </div>
+                                <div>
+                                    <span class="notSubmit">审核建议：</span>审核建议审核建议审核建议审核建议审核建议审核建议审核建议
+                                    审核建议审核建议审核建议审核建议审核建议审核建议审核建议审核建议审核建议
+                                    审核建议审核建议审核建议审核建议审核建议审核建议审核建议审核建议审核建议</div>
                             </div>
                         </div>
                     </div>
@@ -1889,14 +1831,11 @@
                                 <h5 class="font_bold">关键词</h5>
                                 <input type="text" class="form-control">
                                 <h5 class="font_bold">创新点</h5>
-                                <textarea class="form-control" rows="5" name="textarea">
-                                </textarea>
+                                <textarea class="form-control" rows="5" name="textarea"></textarea>
                                 <h5 class="font_bold">中文摘要</h5>
-                                <textarea class="form-control" rows="5" name="textarea">
-                                </textarea>
+                                <textarea class="form-control" rows="5" name="textarea"></textarea>
                                 <h5 class="font_bold">英文摘要</h5>
-                                <textarea class="form-control" rows="5" name="textarea">
-                                </textarea>
+                                <textarea class="form-control" rows="5" name="textarea"></textarea>
                                 <h5 class="font_bold">其他</h5>
                                 <input type="text" class="form-control">
                                 <h5 style="display: inline-block" class="font_bold">
@@ -1973,41 +1912,11 @@
                                             href="#graduationDetails">查看审核详情</a></span>
                                 </div>
                             </div>
-                            <div style="padding-left:0px;padding-bottom: 15px" class="col-md-12">
-                                <div style="padding-left: 0px" class="col-md-4">
-                                    <h4 class="font_bold">提交记录</h4>
-                                </div>
-                            </div>
-                            <div class="alert alert-success textEllipsis border_radius marginBottom0">
-                                <div class="col-md-5 textAlign">
-                                    课题题目
-                                </div>
-                                <div class="col-md-3 textAlign">
-                                    审核状态
-                                </div>
-                                <div class="col-md-4 textAlign">
-                                    提交时间
-                                </div>
-                            </div>
-                            <div class="alert alert-warning textEllipsis border_radius marginBottom0">
-                                <div class="col-md-5 textAlign">
-                                    PMMA灯具基于moldflow三维流动优化的注塑模设计
-                                </div>
-                                <div class="col-md-3 textAlign">
-                                    等待指导教师审核
-                                </div>
-                                <div class="col-md-4 textAlign">
-                                    2018-12-09 18:30:18
-                                </div>
-                            </div>
                             <div class="col-md-12 openingReport">
                                 <h5 class="font_bold">关键词</h5>
                                 <div class="whiteColor">
                                     <div class="reportContent">
                                         提交内容
-                                    </div>
-                                    <div class="reportNotation">
-                                        <h3>暂无批注内容</h3>
                                     </div>
                                 </div>
                                 <h5 class="font_bold">创新点</h5>
@@ -2015,17 +1924,11 @@
                                     <div class="reportContent">
                                         提交内容
                                     </div>
-                                    <div class="reportNotation">
-                                        <h3>暂无批注内容</h3>
-                                    </div>
                                 </div>
                                 <h5 class="font_bold">中文摘要</h5>
                                 <div class="whiteColor">
                                     <div class="reportContent">
                                         提交内容
-                                    </div>
-                                    <div class="reportNotation">
-                                        <h3>暂无批注内容</h3>
                                     </div>
                                 </div>
                                 <h5 class="font_bold">英文摘要</h5>
@@ -2033,17 +1936,17 @@
                                     <div class="reportContent">
                                         提交内容
                                     </div>
-                                    <div class="reportNotation">
-                                        <h3>暂无批注内容</h3>
-                                    </div>
                                 </div>
                                 <h5 class="font_bold">其他</h5>
                                 <div class="whiteColor">
                                     <div class="reportContent">
                                         提交内容
                                     </div>
-                                    <div class="reportNotation">
-                                        <h3>暂无批注内容</h3>
+                                </div>
+                                <h5 class="font_bold">批注内容</h5>
+                                <div class="whiteColor">
+                                    <div class="reportContent">
+                                        提交内容
                                     </div>
                                 </div>
                                 <h5 class="font_bold">论文文档</h5>
@@ -2072,8 +1975,20 @@
                                     <h4 id="graduationDetails" class="font_bold">毕业设计(论文)审核情况</h4>
                                 </div>
                             </div>
-                            <div class="alert alert-danger textEllipsis border_radius marginBottom0">
-                                等待指导教师审核
+                            <div class="col-md-12 alert alert-danger">
+                                <div>
+                                    <span class="notSubmit">审核状态：</span>已审核
+                                </div>
+                                <div>
+                                    <span class="notSubmit">审核教师姓名：</span>廖永衡（0120080001）
+                                </div>
+                                <div>
+                                    <span class="notSubmit">审核时间：</span>2018-11-25 15:49:48
+                                </div>
+                                <div>
+                                    <span class="notSubmit">审核建议：</span>审核建议审核建议审核建议审核建议审核建议审核建议审核建议
+                                    审核建议审核建议审核建议审核建议审核建议审核建议审核建议审核建议审核建议
+                                    审核建议审核建议审核建议审核建议审核建议审核建议审核建议审核建议审核建议</div>
                             </div>
                         </div>
                     </div>
@@ -2125,19 +2040,19 @@
                                     <div title="PMMA灯具基于moldflow三维流动优化的注塑模设计" class="col-md-3 textEllipsis textAlign">
                                         PMMA灯具基于moldflow三维流动优化的注塑模设计
                                     </div>
-                                    <div class="col-md-1 textEllipsis textAlign">
+                                    <div style="padding:0px" class="col-md-1 textEllipsis textAlign">
                                         廖永衡
                                     </div>
                                     <div class="col-md-3 textEllipsis textAlign">
                                         2019-01-05 17:47:28
                                     </div>
-                                    <div class="col-md-1 textEllipsis textAlign">
+                                    <div style="padding:0px" class="col-md-1 textEllipsis textAlign">
                                         6A-404
                                     </div>
                                     <div class="col-md-3 textAlign textEllipsis">
                                         廖永衡 廖永衡 廖永衡 何太碧
                                     </div>
-                                    <div class="col-md-1 textAlign textEllipsis">
+                                    <div style="padding:0px" class="col-md-1 textAlign textEllipsis">
                                         第一组
                                     </div>
                                 </div>
@@ -2148,7 +2063,7 @@
                                 <div id="writePlea" class="row displayNone">
                                     <div class="col-md-12 col-xs-12">
                                         <h5 class="font_bold">提交答辩记录</h5>
-                                        <textarea rows="10" class="form-control"> </textarea>
+                                        <textarea rows="10" class="form-control"></textarea>
                                         <h5 class="font_bold">添加附件</h5>
                                         <input id="fileChoosePlea" type="file" style="display: none">
                                         <div class="row">
@@ -2340,6 +2255,27 @@
                         </div>
                         <div class="panel-body">
                             <div style="padding-bottom: 15px" class="col-md-12">
+                                <div style="padding-bottom: 15px;padding-left: 0px" class="col-md-12">
+                                    <div style="padding-left: 0px" class="col-md-12">
+                                        <div class="col-md-1 col-xs-1" style="padding-right: 0px">
+                                            条件：
+                                        </div>
+                                        <div class="col-md-3 col-xs-3" style="padding: 0px">
+                                            <select style="margin:0px 5px" class="form-control">
+                                                <option value="title">题目</option>
+                                                <option value="period">届</option>
+                                                <option value="honorStudent">优秀生姓名</option>
+                                                <option value="professional">专业</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6 col-xs-6">
+                                            <input type="text" class="form-control">
+                                        </div>
+                                        <div class="col-md-2 col-xs-2" style="padding-left: 5px">
+                                            <button type="button" class="btn btn-info">查询</button>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="alert alert-success textEllipsis border_radius marginBottom0">
                                     <div class="col-md-4 textAlign">
                                         题目
@@ -2554,11 +2490,11 @@
     <div id="six" class="page-wrapper displayNone">
         <div class="header">
             <h3 class="page-header">
-                通知公告
+                消息
             </h3>
             <ol class="breadcrumb index">
                 <li><a href="#">首页</a></li>
-                <li class="active">通知公告</li>
+                <li class="active">消息</li>
             </ol>
         </div>
         <div class="page-inner">
@@ -2567,7 +2503,11 @@
                 <div class="col-md-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            通知公告
+                            消息
+                            <div style="float: right">
+                                <span style="padding-right: 20px" class="clickColor cursorPointer">查看通知</span>
+                                <span class="clickColor cursorPointer">查看公告</span>
+                            </div>
                         </div>
                         <div class="panel-body">
                             <div style="padding-bottom: 10px">
@@ -2584,19 +2524,18 @@
                                             标为未读
                                         </span>
                             </div>
-
                             <div class="alert alert-success textEllipsis border_radius marginBottom0">
                                 <div class="col-md-1 textAlign">
-                                    <input id="sel_1" onchange="selectAll()" type="checkbox" value="1"/>
+                                    <input id="sel_1" onchange="selectAll('sel_1')" type="checkbox" value="1"/>
                                 </div>
                                 <div class="col-md-5">
-                                    通知公告内容
+                                    消息内容
                                 </div>
                                 <div class="col-md-3 textAlign">
                                     接收时间
                                 </div>
                                 <div class="col-md-3 textAlign">
-                                    通知公告类型
+                                    消息类型
                                 </div>
                             </div>
                             <div class="alert alert-danger textEllipsis border_radius marginBottom0">
@@ -2615,7 +2554,7 @@
                                     2019-01-01 12:00:00
                                 </div>
                                 <div class="col-md-3 textAlign textEllipsis">
-                                    通知
+                                    公告
                                 </div>
                             </div>
                             <div class="alert alert-danger textEllipsis border_radius marginBottom0">
@@ -2899,7 +2838,7 @@
             </div>
         </div>
     </div>
-    <!--查看通知公告详情开始-->
+    <!--查看新闻详情开始-->
     <div class="modal fade" id="readingNews" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -2934,7 +2873,7 @@
             </div>
         </div>
     </div>
-    <!--查看通知公告详情结束-->
+    <!--查看新闻详情结束-->
     <!--查看更多新闻结束-->
 </div>
 
@@ -2948,6 +2887,8 @@
 <script src="../assets/js/bootstrap.js"></script>
 <!-- 自定义 Js -->
 <script src="../assets/js/common.js"></script>
+<!-- 自定义函数 Js -->
+<script src="../assets/js/commonFunction.js"></script>
 <!--圆形进度条-->
 <!-- easypiechart-data Js -->
 <script src="../assets/js/easypiechart-data.js"></script>
@@ -2971,29 +2912,21 @@
 </script>
 <!--分页结束-->
 
-<!--获取上传文件名称开始-->
-<script>
-    // $('input[id=fileChoose]').change(function () {
-    //     let files = document.getElementById("fileChoose").files;
-    //     $('#fileName').val(files[0].name);
-    // });
-    function fileClick(fileChoose, fileName) {
-        $('#' + fileChoose).click();
-        $('#' + fileChoose).change(function () {
-            let files = document.getElementById(fileChoose).files;
-            $('#' + fileName).val(files[0].name);
-        });
-    }
-</script>
-<!--获取上传文件名称结束-->
-
 <script type="text/javascript">
-    function selectAll() {
-        var isCheck = $("#sel_1").is(':checked');  //获得全选复选框是否选中
+    function selectAll(id) {
+        console.log(id);
+        let isCheck = $("#" + id).is(':checked');  //获得全选复选框是否选中
         $("input[type='checkbox']").each(function () {
             this.checked = isCheck;       //循环赋值给每个复选框是否选中
         });
     }
+
+    // function selectAll() {
+    //     let isCheck = $("#sel_1").is(':checked');  //获得全选复选框是否选中
+    //     $("input[type='checkbox']").each(function () {
+    //         this.checked = isCheck;       //循环赋值给每个复选框是否选中
+    //     });
+    // }
 </script>
 
 <script>
@@ -3074,13 +3007,6 @@
 </script>
 
 <script>
-    function noticeUp(obj, top, time) {
-        $(obj).animate({
-            marginTop: top
-        }, time, function () {
-            $(this).css({marginTop: "0"}).find(":first").appendTo(this);
-        })
-    }
 
     let interval;
 
@@ -3121,6 +3047,18 @@
     //     // 调用 公告滚动函数
     //     setInterval("noticeUp('.notice','-40px',500)", 2000);
     // });
+    function noticeUp(obj, top, time) {
+        $(obj).animate({
+            marginTop: top
+        }, time, function () {
+            $(this).css({marginTop: "0"}).find(":first").appendTo(this);
+        })
+    }
+
+    $(function () {
+        // 调用 公告滚动函数
+        setInterval("noticeUp('.notice ul','-35px',500)", 2000);
+    });
 </script>
 
 </body>

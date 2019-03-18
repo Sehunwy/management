@@ -34,13 +34,57 @@ body {
     background-image: url('../img/date.png');
 }
 
-ul,li,ol {
+
+input[type=checkbox] {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+}
+
+input[type=checkbox]::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    color: white;
+    font-size: 15px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+input[type=checkbox]:checked::before {
+    color: white;
+    background-color: #5bc0de;
+    content: '√';
+}
+
+.whiteColor {
+    background-color: #ffffff;
+    border: 1px solid #3c763d
+}
+
+.clickColor {
+    color: #5bc0de;
+    text-decoration: underline;
+}
+
+ul, li, ol {
     list-style: none;
     padding: 0px;
 }
 
 .cursorPointer {
     cursor: pointer;
+}
+
+.padding10 {
+    padding: 10px;
 }
 
 input {
@@ -84,13 +128,13 @@ input {
 }
 
 .textEllipsis {
-    overflow:hidden;
-    text-overflow:ellipsis;
-    white-space:nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .newline {
-    word-wrap:break-word;
+    word-wrap: break-word;
 }
 
 .colorf44 {
@@ -102,7 +146,15 @@ input {
 }
 
 .whiteBgColor {
-    background-color: #ffffff;
+    background-color: #ffffff !important;
+}
+
+.margin05 {
+    margin: 0 5px;
+}
+
+.margin0 {
+    margin: 0px;
 }
 
 .paddingTopBottom {
@@ -153,8 +205,8 @@ h4 {
     padding-top: 10px;
 }
 
-a,a:hover {
-    text-decoration:none
+a, a:hover {
+    text-decoration: none
 }
 
 .square-btn-adjust {
@@ -170,11 +222,40 @@ p {
     line-height: 25px;
     padding-top: 20px;
 }
+
 /*初始化样式结束*/
+
+/*公用样式开始*/
+.padding0 {
+    padding: 0px !important;
+}
+
+.messageUnread {
+    /*padding: 1px;*/
+    background-color: #f00;
+    display: inline-block;
+    position: absolute;
+    left: 26px;
+    top: 7px;
+    border-radius: 50%;
+    font-size: 12px;
+    text-align: center;
+    line-height: 20px;
+    width: 20px;
+    height: 20px;
+    color: #fff;
+}
+
+.readOnlyStyle {
+    background-color: #fff !important;
+    color: #999;
+}
+
+/*公用样式结束*/
 
 /*字体图标样式开始*/
 .iconColor {
-    color: #F09B22!important;
+    color: #F09B22 !important;
 }
 
 .iconColorWhite {
@@ -196,8 +277,8 @@ p {
 .fontSize8 {
     font-size: 8px;
 }
-/*字体图标样式结束*/
 
+/*字体图标样式结束*/
 
 /*导航栏样式开始*/
 .navbar-side .nav > li > a > i {
@@ -357,7 +438,6 @@ p {
 .sidebar-collapse > .nav > li {
     border-bottom: 1px solid rgba(107, 108, 109, 0.19);
 }
-
 
 
 .sidebar-collapse .nav > li > a:hover,
@@ -556,7 +636,7 @@ ul.dropdown-menu.dropdown-messages li a div {
 
 .commitments:hover {
     color: #ef4040;
-    opacity:0.8;
+    opacity: 0.8;
 }
 
 /*主体内容样式结束*/
@@ -616,6 +696,7 @@ ul.dropdown-menu.dropdown-messages li a div {
         font-size: 19px;
     }
 }
+
 /*媒体查询结束*/
 
 

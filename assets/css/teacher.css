@@ -1,0 +1,26 @@
+.ul1 li {
+    position: relative;
+    top: 0px;
+}
+
+/*.messageUnread {*/
+    /*padding: 1px;*/
+    /*background-color: #f00;*/
+    /*display: inline-block;*/
+    /*position: absolute;*/
+    /*left: 26px;*/
+    /*top: 7px;*/
+    /*border-radius: 50%;*/
+    /*font-size: 12px;*/
+    /*text-align: center;*/
+    /*line-height: 20px;*/
+    /*color: #fff;*/
+/*}*/
+
+.notificationMmessage {
+    color: #0B8902;
+    padding: 5px;
+    line-height: 40px;
+    height: 40px;
+    border-bottom: 1px solid #ccc
+}
