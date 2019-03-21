@@ -63,7 +63,6 @@
 
         $(".newPage").click(function () {
             console.log("1111");
-            $('#sideBar li a').removeClass('active-menu');
             $('.page-wrapper').addClass('displayNone');
             $('.page-wrapper').removeClass('displayBlock');
             // let id = $(this).attr("id");
@@ -73,7 +72,6 @@
             let len = management.length;
             // console.log(id.slice(11,len));
             let addId = management.slice(11,len);
-            $('#'+addId).addClass('active-menu');
             $('#'+addId).addClass('displayBlock');
         });
 

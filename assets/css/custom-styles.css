@@ -2,6 +2,7 @@
 body {
     font-family: 'Open Sans', sans-serif;
     background: #323232;
+    color: #000000;
     /*background: #64625f;*/
 }
 
@@ -255,6 +256,10 @@ p {
 .readOnlyStyle {
     background-color: #fff !important;
     color: #999;
+}
+
+.paddingTop60 {
+    padding-top: 60px;
 }
 
 /*公用样式结束*/
