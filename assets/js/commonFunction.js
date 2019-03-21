@@ -7,3 +7,12 @@ function fileClick(fileChoose, fileName) {
     });
 }
 <!--获取上传文件名称结束-->
+
+// 取消输入框的值开始
+function cancelTitle() {
+    let textContent = document.getElementsByClassName('textContent');
+    for (let i = 0; i < textContent.length; i++) {
+        textContent[i].value = "";
+    }
+}
+// 取消输入框的值结束

@@ -13,6 +13,8 @@
     <link href="../assets/css/pagination.css" rel="stylesheet"/>
     <!-- 自定义 Styles-->
     <link href="../assets/css/custom-styles.css" rel="stylesheet"/>
+    <!-- 自定义管理员 Styles-->
+    <link href="../assets/css/adminIndex.css" rel="stylesheet"/>
 </head>
 <body>
 <div id="wrapper">
@@ -27,7 +29,7 @@
             </button>
             <a class="navbar-brand" href="index.html">
                 <img style="width: 40px;display: inline-block" src="../assets/img/crest.jpg" alt="">
-                <strong>四川工商学院</strong>
+                <strong style="font-size: 14px;">四川工商学院后台管理系统</strong>
             </a>
             <span id="sideNav" class="iconfont icon-right-s packUpIcon"></span>
         </div>
@@ -40,14 +42,14 @@
                 </a>
                 <ul class="dropdown-menu dropdown-user topBar">
                     <li>
-                        <a href="#" id="management_nine">
+                        <a href="#" class="management_personal newPage">
                             <span class="paddingIco iconfont icon-wode"></span>
-                            个人信息
+                            个人信息维护
                         </a>
                     </li>
                     <li class="divider"></li>
                     <li>
-                        <a href="#" id="management_ten">
+                        <a href="#" class="management_password newPage">
                             <span class="paddingIco iconfont icon-xiugaimima01"></span>
                             修改密码
                         </a>
@@ -229,184 +231,349 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="panel panel-default">
-                        <div class="panel-heading">
-                            题目管理
+                        <div style="background-color: #f5f5f5">
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li class="active"><a href="#subjectReview" role="tab" data-toggle="tab">题目审核</a></li>
+                                <li><a href="#draw_situation" role="tab" data-toggle="tab">出题情况</a></li>
+                                <li><a href="#topic_situation" role="tab" data-toggle="tab">选题情况</a></li>
+                            </ul>
                         </div>
-                        <div class="panel-body">
-                            <div class="alert alert-info textEllipsis">
-                                <div style="padding-bottom: 15px" class="col-md-12">
-                                    <div class="col-md-2">
-                                        <h4 class="font_bold">设定选题时间</h4>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div style="padding: 0;text-align: right" class="col-md-5">开始选题时间：</div>
-
-                                        <div class="col-md-7">
-                                            <input style="padding-left: 2px;padding-right: 30px" class="form-control"
-                                                   type="date">
+                        <div class="tab-content">
+                            <!--题目审核开始-->
+                            <div class="tab-pane active panel-body" id="subjectReview">
+                                <div class="alert alert-info textEllipsis">
+                                    <div style="padding-bottom: 15px" class="col-md-12">
+                                        <div class="col-md-2">
+                                            <h4 class="font_bold" style="display: inline-block">选题时间： </h4>
+                                            2019-01-05 17:47:28 -- 2019-01-05 17:47:28
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
-                                        <div style="padding: 0;text-align: right" class="col-md-5">结束选题时间：</div>
+                                    <div style="padding-bottom: 15px" class="col-md-12">
+                                        <div class="col-md-2">
+                                            <h4 class="font_bold">设定选题时间</h4>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div style="padding: 0;text-align: right" class="col-md-5">开始选题时间：</div>
 
-                                        <div class="col-md-7">
-                                            <input style="padding-left: 2px;padding-right: 30px" class="form-control"
-                                                   type="date">
+                                            <div class="col-md-7">
+                                                <input style="padding-left: 2px;padding-right: 30px"
+                                                       class="form-control"
+                                                       type="date">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div style="padding: 0;text-align: right" class="col-md-5">结束选题时间：</div>
+
+                                            <div class="col-md-7">
+                                                <input style="padding-left: 2px;padding-right: 30px"
+                                                       class="form-control"
+                                                       type="date">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <button type="button" class="btn btn-info btn-ms">确定
+                                            </button>
                                         </div>
                                     </div>
-                                    <div class="col-md-2">
-                                        <button type="button" class="btn btn-info btn-ms">确定
+                                </div>
+                                <div style="padding-bottom: 15px;padding-left: 0px" class="col-md-12">
+                                    <div style="padding-left: 0px" class="col-md-1">
+                                        学 院：
+                                    </div>
+                                    <div style="padding-left: 0px" class="col-md-3">
+                                        <select class="form-control">
+                                            <option value="0">计算机与软件工程学院</option>
+                                            <option value="1">经济</option>
+                                            <option value="2">土木</option>
+                                        </select>
+                                    </div>
+                                    <div style="padding-left: 0px" class="col-md-1 padding0">
+                                        <button type="button" class="btn btn-info">查询
                                         </button>
                                     </div>
                                 </div>
-                            </div>
-                            <div style="padding-bottom: 15px" class="col-md-12">
-                                <div class="col-md-2">
-                                    <select class="form-control">
-                                        <option>出题</option>
-                                        <option>选题</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="col-md-10 col-xs-10" style="padding: 0px">
-                                        <input style="border-bottom-right-radius: 0px;border-top-right-radius: 0px"
-                                               type="text" class="form-control">
+                                <div class="alert alert-success textEllipsis border_radius marginBottom0">
+                                    <div class="col-md-2 textAlign">
+                                        课题题目
                                     </div>
-                                    <div class="col-md-2 col-xs-2" style="padding-left: 5px">
-                                        <button style="border-bottom-left-radius: 0px;border-top-left-radius: 0px;float: left"
-                                                type="button" class="btn btn-info">
-                                            <span class="iconfont icon-sousuo fontSize14"></span>
+                                    <div class="col-md-3 textAlign">
+                                        学院
+                                    </div>
+                                    <div class="col-md-1 textAlign">
+                                        学院审核状态
+                                    </div>
+                                    <div class="col-md-2 textAlign">
+                                        指导老师
+                                    </div>
+                                    <div class="col-md-2 textAlign">
+                                        申报时间
+                                    </div>
+                                    <div class="col-md-1 textAlign">
+                                        审核状态
+                                    </div>
+                                    <div class="col-md-1 textAlign">
+                                        操作
+                                    </div>
+                                </div>
+                                <div class="alert alert-danger textEllipsis border_radius marginBottom0">
+                                    <div title="PMMA灯具基于moldflow三维流动优化的注塑模设计" class="col-md-2 textEllipsis textAlign">
+                                       <span class="clickColor cursorPointer" data-toggle="modal"
+                                             data-target="#topicDetails">
+                                            PMMA灯具基于moldflow三维流动优化的注塑模设计
+                                        </span>
+                                    </div>
+                                    <div class="col-md-3 textEllipsis textAlign">
+                                        计算机与软件工程学院
+                                    </div>
+                                    <div class="col-md-1 textEllipsis textAlign">
+                                        待审核
+                                    </div>
+                                    <div title="廖永衡（0120080001）" class="col-md-2 textAlign textEllipsis padding0">
+                                        廖永衡（0120080001）
+                                    </div>
+                                    <div title="2019-01-05 17:47:28" class="col-md-2 textEllipsis textAlign padding0">
+                                        2019-01-05 17:47:28
+                                    </div>
+                                    <div class="col-md-1 textEllipsis textAlign">
+                                        不通过
+                                    </div>
+                                    <div class="col-md-1 textEllipsis textAlign">
+                                        <button type="button" class="btn btn-info btn-xs" data-toggle="modal"
+                                                data-target="#checkDraw">审核
                                         </button>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="alert alert-success textEllipsis border_radius marginBottom0">
-                                <div class="col-md-2 textAlign">
-                                    课题题目
+                                <div class="alert alert-warning textEllipsis border_radius marginBottom0">
+                                    <div title="PMMA灯具基于moldflow三维流动优化的注塑模设计" class="col-md-2 textEllipsis textAlign">
+                                       <span class="clickColor cursorPointer" data-toggle="modal"
+                                             data-target="#topicDetails">
+                                            PMMA灯具基于moldflow三维流动优化的注塑模设计
+                                        </span>
+                                    </div>
+                                    <div class="col-md-3 textEllipsis textAlign">
+                                        计算机与软件工程学院
+                                    </div>
+                                    <div class="col-md-1 textEllipsis textAlign">
+                                        待审核
+                                    </div>
+                                    <div title="廖永衡（0120080001）" class="col-md-2 textAlign textEllipsis padding0">
+                                        廖永衡（0120080001）
+                                    </div>
+                                    <div title="2019-01-05 17:47:28" class="col-md-2 textEllipsis textAlign padding0">
+                                        2019-01-05 17:47:28
+                                    </div>
+                                    <div class="col-md-1 textEllipsis textAlign">
+                                        不通过
+                                    </div>
+                                    <div class="col-md-1 textEllipsis textAlign">
+                                        <button type="button" class="btn btn-info btn-xs" data-toggle="modal"
+                                                data-target="#checkDraw">审核
+                                        </button>
+                                    </div>
                                 </div>
-                                <div class="col-md-2 textAlign">
-                                    题目类型
+                                <div class="alert alert-danger textEllipsis border_radius marginBottom0">
+                                    <div title="PMMA灯具基于moldflow三维流动优化的注塑模设计" class="col-md-2 textEllipsis textAlign">
+                                       <span class="clickColor cursorPointer" data-toggle="modal"
+                                             data-target="#topicDetails">
+                                            PMMA灯具基于moldflow三维流动优化的注塑模设计
+                                        </span>
+                                    </div>
+                                    <div class="col-md-3 textEllipsis textAlign">
+                                        计算机与软件工程学院
+                                    </div>
+                                    <div class="col-md-1 textEllipsis textAlign">
+                                        待审核
+                                    </div>
+                                    <div title="廖永衡（0120080001）" class="col-md-2 textAlign textEllipsis padding0">
+                                        廖永衡（0120080001）
+                                    </div>
+                                    <div title="2019-01-05 17:47:28" class="col-md-2 textEllipsis textAlign padding0">
+                                        2019-01-05 17:47:28
+                                    </div>
+                                    <div class="col-md-1 textEllipsis textAlign">
+                                        不通过
+                                    </div>
+                                    <div class="col-md-1 textEllipsis textAlign">
+                                        <button type="button" class="btn btn-info btn-xs" data-toggle="modal"
+                                                data-target="#checkDraw">审核
+                                        </button>
+                                    </div>
                                 </div>
-                                <div class="col-md-2 textAlign">
-                                    题目来源
-                                </div>
-                                <div class="col-md-2 textAlign">
-                                    指导老师
-                                </div>
-                                <div class="col-md-2 textAlign">
-                                    申报时间
-                                </div>
-                                <div class="col-md-1 textAlign">
-                                    审核状态
-                                </div>
-                                <div class="col-md-1 textAlign">
-                                    操作
-                                </div>
-                            </div>
-                            <div class="alert alert-warning textEllipsis border_radius marginBottom0">
-                                <div title="PMMA灯具基于moldflow三维流动优化的注塑模设计" class="col-md-2 textEllipsis textAlign">
-                                    PMMA灯具基于moldflow三维流动优化的注塑模设计
-                                </div>
-                                <div title="工程工业设计" class="col-md-2 textEllipsis textAlign">
-                                    工程工业设计
-                                </div>
-                                <div title="生产实际（社会实践）题" class="col-md-2 textEllipsis textAlign">
-                                    生产实际（社会实践）题
-                                </div>
-                                <div title="廖永衡（0120080001）" class="col-md-2 textAlign textEllipsis">
-                                    廖永衡（0120080001）
-                                </div>
-                                <div title="2019-01-05 17:47:28" class="col-md-2 textEllipsis textAlign">
-                                    2019-01-05 17:47:28
-                                </div>
-                                <div class="col-md-1 textEllipsis textAlign">
-                                    通过
-                                </div>
-                                <div class="col-md-1 textEllipsis textAlign">
-                                    <button type="button" class="btn btn-info btn-xs" data-toggle="modal"
-                                            data-target="#checkTopic">审核
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="alert alert-danger textEllipsis border_radius marginBottom0">
-                                <div title="PMMA灯具基于moldflow三维流动优化的注塑模设计" class="col-md-2 textEllipsis textAlign">
-                                    PMMA灯具基于moldflow三维流动优化的注塑模设计
-                                </div>
-                                <div title="工程工业设计" class="col-md-2 textEllipsis textAlign">
-                                    工程工业设计
-                                </div>
-                                <div title="生产实际（社会实践）题" class="col-md-2 textEllipsis textAlign">
-                                    生产实际（社会实践）题
-                                </div>
-                                <div title="廖永衡（0120080001）" class="col-md-2 textAlign textEllipsis">
-                                    廖永衡（0120080001）
-                                </div>
-                                <div title="2019-01-05 17:47:28" class="col-md-2 textEllipsis textAlign">
-                                    2019-01-05 17:47:28
-                                </div>
-                                <div class="col-md-1 textEllipsis textAlign">
-                                    待审核
-                                </div>
-                                <div class="col-md-1 textEllipsis textAlign">
-                                    <button type="button" class="btn btn-info btn-xs" data-toggle="modal"
-                                            data-target="#checkTopic">审核
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="alert alert-warning textEllipsis border_radius marginBottom0">
-                                <div title="PMMA灯具基于moldflow三维流动优化的注塑模设计" class="col-md-2 textEllipsis textAlign">
-                                    PMMA灯具基于moldflow三维流动优化的注塑模设计
-                                </div>
-                                <div title="工程工业设计" class="col-md-2 textEllipsis textAlign">
-                                    工程工业设计
-                                </div>
-                                <div title="生产实际（社会实践）题" class="col-md-2 textEllipsis textAlign">
-                                    生产实际（社会实践）题
-                                </div>
-                                <div title="廖永衡（0120080001）" class="col-md-2 textAlign textEllipsis">
-                                    廖永衡（0120080001）
-                                </div>
-                                <div title="2019-01-05 17:47:28" class="col-md-2 textEllipsis textAlign">
-                                    2019-01-05 17:47:28
-                                </div>
-                                <div class="col-md-1 textEllipsis textAlign">
-                                    不通过
-                                </div>
-                                <div class="col-md-1 textEllipsis textAlign">
-                                    <button type="button" class="btn btn-info btn-xs" data-toggle="modal"
-                                            data-target="#checkTopic">审核
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="alert alert-danger textEllipsis border_radius marginBottom0">
-                                <div title="PMMA灯具基于moldflow三维流动优化的注塑模设计" class="col-md-2 textEllipsis textAlign">
-                                    PMMA灯具基于moldflow三维流动优化的注塑模设计
-                                </div>
-                                <div title="工程工业设计" class="col-md-2 textEllipsis textAlign">
-                                    工程工业设计
-                                </div>
-                                <div title="生产实际（社会实践）题" class="col-md-2 textEllipsis textAlign">
-                                    生产实际（社会实践）题
-                                </div>
-                                <div title="廖永衡（0120080001）" class="col-md-2 textAlign textEllipsis">
-                                    廖永衡（0120080001）
-                                </div>
-                                <div title="2019-01-05 17:47:28" class="col-md-2 textEllipsis textAlign">
-                                    2019-01-05 17:47:28
-                                </div>
-                                <div class="col-md-1 textEllipsis textAlign">
-                                    不通过
-                                </div>
-                                <div class="col-md-1 textEllipsis textAlign">
-                                    <button type="button" class="btn btn-info btn-xs" data-toggle="modal"
-                                            data-target="#checkTopic">审核
-                                    </button>
-                                </div>
-                            </div>
 
-                            <!--分页开始-->
-                            <div style="margin-top: 15px" class="m-style"></div>
-                            <!--分页结束-->
+                                <!--分页开始-->
+                                <div style="margin-top: 15px" class="m-style"></div>
+                                <!--分页结束-->
+                            </div>
+                            <!--题目审核结束-->
+                            <!--出题情况开始-->
+                            <div class="tab-pane panel-body" id="draw_situation">
+                                <div style="padding-left:0px;padding-bottom: 15px" class="col-md-12">
+                                    <div style="padding-bottom: 15px;padding-left: 0px" class="col-md-12">
+                                        <div style="padding-left: 0px" class="col-md-12">
+                                            <div class="col-md-1 col-xs-1" style="padding-right: 0px">
+                                                学 院：
+                                            </div>
+                                            <div class="col-md-3 col-xs-3" style="padding: 0px">
+                                                <select style="margin:0px 5px" class="form-control">
+                                                    <option value="0">全部</option>
+                                                    <option value="1">计算机与软件工程学院</option>
+                                                    <option value="2">土木</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-1 col-xs-1">
+                                            </div>
+                                            <div class="col-md-1 col-xs-1 padding0">
+                                                教师姓名：
+                                            </div>
+                                            <div class="col-md-3 col-xs-3">
+                                                <input type="text" class="form-control">
+                                            </div>
+                                            <div class="col-md-2 col-xs-2" style="padding-left: 5px">
+                                                <button type="button" class="btn btn-info">查询</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div style="padding-left: 0px" class="col-md-4">
+                                        <div class="col-md-10 col-xs-10" style="padding: 0px">
+                                            <h4 class="font_bold">已出课题列表</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="alert alert-success textEllipsis border_radius marginBottom0">
+                                    <div class="col-md-4 textAlign">
+                                        课题题目
+                                    </div>
+                                    <div class="col-md-2 textAlign">
+                                        已选人数/可选人数
+                                    </div>
+                                    <div class="col-md-3 textAlign">
+                                        指导教师（编号）
+                                    </div>
+                                    <div class="col-md-3 textAlign">
+                                        学院
+                                    </div>
+                                </div>
+                                <div class="alert alert-danger textEllipsis border_radius marginBottom0">
+                                    <div title="PMMA灯具基于moldflow三维流动优化的注塑模设计" class="col-md-4 textEllipsis textAlign">
+                                        <span class="clickColor cursorPointer" data-toggle="modal"
+                                              data-target="#topicDetails">
+                                            PMMA灯具基于moldflow三维流动优化的注塑模设计
+                                        </span>
+
+                                    </div>
+                                    <div class="col-md-2 textEllipsis textAlign">
+                                        2/6
+                                    </div>
+                                    <div class="col-md-3 textEllipsis textAlign">
+                                        廖永衡（0120080001）
+                                    </div>
+                                    <div class="col-md-3 textAlign textEllipsis">
+                                        计算机与软件工程学院
+                                    </div>
+                                </div>
+                                <div class="alert alert-warning textEllipsis border_radius marginBottom0">
+                                    <div title="PMMA灯具基于moldflow三维流动优化的注塑模设计" class="col-md-4 textEllipsis textAlign">
+                                        <span class="clickColor cursorPointer" data-toggle="modal"
+                                              data-target="#topicDetails">
+                                            PMMA灯具基于moldflow三维流动优化的注塑模设计
+                                        </span>
+
+                                    </div>
+                                    <div class="col-md-2 textEllipsis textAlign">
+                                        2/6
+                                    </div>
+                                    <div class="col-md-3 textEllipsis textAlign">
+                                        廖永衡（0120080001）
+                                    </div>
+                                    <div class="col-md-3 textAlign textEllipsis">
+                                        计算机与软件工程学院
+                                    </div>
+                                </div>
+
+                                <!--分页开始-->
+                                <div style="margin-top: 15px" class="m-style"></div>
+                                <!--分页结束-->
+                            </div>
+                            <!--出题情况结束-->
+                            <!--选题情况开始-->
+                            <div class="tab-pane panel-body" id="topic_situation">
+                                <div style="padding-left:0px;padding-bottom: 15px" class="col-md-12">
+                                    <div style="padding-bottom: 15px;padding-left: 0px" class="col-md-12">
+                                        <div style="padding-left: 0px" class="col-md-12">
+                                            <div class="col-md-1 col-xs-1" style="padding-right: 0px">
+                                                学 院：
+                                            </div>
+                                            <div class="col-md-3 col-xs-3" style="padding: 0px">
+                                                <select style="margin:0px 5px" class="form-control">
+                                                    <option value="0">全部</option>
+                                                    <option value="1">计算机与软件工程学院</option>
+                                                    <option value="2">土木</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-1 col-xs-1">
+                                            </div>
+                                            <div class="col-md-1 col-xs-1 padding0">
+                                                学生姓名：
+                                            </div>
+                                            <div class="col-md-3 col-xs-3">
+                                                <input type="text" class="form-control">
+                                            </div>
+                                            <div class="col-md-2 col-xs-2" style="padding-left: 5px">
+                                                <button type="button" class="btn btn-info">查询</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div style="padding-left: 0px" class="col-md-4">
+                                        <div class="col-md-10 col-xs-10" style="padding: 0px">
+                                            <h4 class="font_bold">已出课题列表</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="alert alert-success textEllipsis border_radius marginBottom0">
+                                    <div class="col-md-5 textAlign">
+                                        课题题目
+                                    </div>
+                                    <div class="col-md-4 textAlign">
+                                        学生姓名（学号）
+                                    </div>
+                                    <div class="col-md-3 textAlign">
+                                        学院
+                                    </div>
+                                </div>
+                                <div class="alert alert-danger textEllipsis border_radius marginBottom0">
+                                    <div title="PMMA灯具基于moldflow三维流动优化的注塑模设计" class="col-md-5 textEllipsis textAlign">
+                                        <span class="clickColor cursorPointer" data-toggle="modal"
+                                              data-target="#topicDetails">
+                                            PMMA灯具基于moldflow三维流动优化的注塑模设计
+                                        </span>
+                                    </div>
+                                    <div class="col-md-4 textEllipsis textAlign">
+                                        王晓霞（3120150905999）
+                                    </div>
+                                    <div class="col-md-3 textAlign textEllipsis">
+                                        计算机与软件工程学院
+                                    </div>
+                                </div>
+                                <div class="alert alert-warning textEllipsis border_radius marginBottom0">
+                                    <div title="PMMA灯具基于moldflow三维流动优化的注塑模设计" class="col-md-5 textEllipsis textAlign">
+                                        <span class="clickColor cursorPointer" data-toggle="modal"
+                                              data-target="#topicDetails">
+                                            PMMA灯具基于moldflow三维流动优化的注塑模设计
+                                        </span>
+                                    </div>
+                                    <div class="col-md-4 textEllipsis textAlign">
+                                        王晓霞（3120150905999）
+                                    </div>
+                                    <div class="col-md-3 textAlign textEllipsis">
+                                        计算机与软件工程学院
+                                    </div>
+                                </div>
+
+                                <!--分页开始-->
+                                <div style="margin-top: 15px" class="m-style"></div>
+                                <!--分页结束-->
+                            </div>
+                            <!--选题情况结束-->
                         </div>
                     </div>
                 </div>
@@ -414,26 +581,88 @@
             <!--题目管理结束-->
         </div>
     </div>
+    <!--通过选题时间节点开始-->
+    <div class="modal fade in" id="passTime" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">×</span></button>
+                    <h4 class="modal-title">提示</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        确定通过该选题时间节点
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-xs btn-white" data-dismiss="modal">取 消</button>
+                    <button type="button" class="btn btn-xs btn-danger">保 存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--通过选题时间节点结束-->
+    <!--不通过选题时间节点开始-->
+    <div class="modal fade in" id="noPassTime" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">×</span></button>
+                    <h4 class="modal-title">提示</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        确定不通过该选题时间节点
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-xs btn-white" data-dismiss="modal">取 消</button>
+                    <button type="button" class="btn btn-xs btn-danger">保 存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--不通过选题时间节点结束-->
     <!--审核课题详情开始-->
-    <div class="modal fade" id="checkTopic" role="dialog">
+    <div class="modal fade" id="checkDraw" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                             aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">审核课题信息</h4>
+                    <h4 class="modal-title">已出课题详细信息</h4>
                 </div>
                 <div class="modal-body">
-                    <div class="alert alert-success textEllipsis">
+                    <div class="alert alert-success">
                         <strong>
                             <span>学院:</span>
                         </strong>
-                        <span>计算机</span>
+                        <span>计算机与软件工程学院</span>
                         <hr>
                         <strong>
                             <span>课题题目:</span>
                         </strong>
-                        <span>PMMA灯具基于moldflow三维流动优化的注塑模设计</span>
+                        <span>课题题目</span>
+                        <hr>
+                        <strong>
+                            <span>指导教师:</span>
+                        </strong>
+                        <span>廖永衡（0120080001）</span>
+                        <hr>
+                        <strong>
+                            <span>题目简介:</span>
+                        </strong>
+                        <span>
+                            题目简介题目简介题目简介题目简介题目简介题目简介题目简介题目简介题目简介
+                            题目简介题目简介题目简介题目简介题目简介题目简介题目简介题目简介题目简介
+                        </span>
+                        <hr>
+                        <strong>
+                            <span>题目来源:</span>
+                        </strong>
+                        <span>生产实际</span>
                         <hr>
                         <strong>
                             <span>题目类型:</span>
@@ -441,34 +670,121 @@
                         <span>工程工业设计</span>
                         <hr>
                         <strong>
-                            <span>题目来源:</span>
+                            <span>出题时间:</span>
                         </strong>
-                        <span>生产实际（社会实践）题</span>
+                        <span>2018-12-12 12:12:12</span>
                         <hr>
                         <strong>
-                            <span>指导老师:</span>
+                            <span>可选人数:</span>
                         </strong>
-                        <span>廖永衡（0120080001）</span>
+                        <span>6</span>
                         <hr>
                         <strong>
-                            <span>申报时间:</span>
+                            <span>是否真题真做的题目:</span>
                         </strong>
-                        <span>2019-01-05 17:47:28</span>
+                        <span>是</span>
+                        <hr>
+                        <strong>
+                            <span>委托方名称:</span>
+                        </strong>
+                        <span>西华大学</span>
+                        <hr>
+                        <strong>
+                            <span>任务书:</span>
+                        </strong>
+                        <span>未上传</span>
                         <hr>
                         <strong>
                             <span>审核状态:</span>
                         </strong>
-                        <span>通过</span>
+                        <span>不通过</span>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">审核通过</button>
-                    <button type="button" class="btn btn-sm btn-info" data-dismiss="modal">审核不通过</button>
+                    <button type="button" class="btn btn-sm btn-info" data-dismiss="modal">审核通过</button>
+                    <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">审核不通过</button>
                 </div>
             </div>
         </div>
     </div>
     <!--审核课题详情结束-->
+    <!--查看课题详细信息开始-->
+    <div class="modal fade" id="topicDetails" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">已出课题详细信息</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-success">
+                        <strong>
+                            <span>课题题目:</span>
+                        </strong>
+                        <span>课题题目</span>
+                        <hr>
+                        <strong>
+                            <span>题目简介:</span>
+                        </strong>
+                        <span>
+                            题目简介题目简介题目简介题目简介题目简介题目简介题目简介题目简介题目简介
+                            题目简介题目简介题目简介题目简介题目简介题目简介题目简介题目简介题目简介
+                        </span>
+                        <hr>
+                        <strong>
+                            <span>题目来源:</span>
+                        </strong>
+                        <span>生产实际</span>
+                        <hr>
+                        <strong>
+                            <span>题目类型:</span>
+                        </strong>
+                        <span>工程工业设计</span>
+                        <hr>
+                        <strong>
+                            <span>出题时间:</span>
+                        </strong>
+                        <span>2018-12-12 12:12:12</span>
+                        <hr>
+                        <strong>
+                            <span>已选人数/可选人数:</span>
+                        </strong>
+                        <span>4/6</span>
+                        <hr>
+                        <strong>
+                            <span>是否真题真做的题目:</span>
+                        </strong>
+                        <span>是</span>
+                        <hr>
+                        <strong>
+                            <span>委托方名称:</span>
+                        </strong>
+                        <span>西华大学</span>
+                        <hr>
+                        <strong>
+                            <span>任务书:</span>
+                        </strong>
+                        <span>未上传</span>
+                        <hr>
+                        <strong>
+                            <span>系主任审核状态:</span>
+                        </strong>
+                        <span>不通过</span>
+                        <hr>
+                        <strong>
+                            <span>管理员审核状态:</span>
+                        </strong>
+                        <span>不通过</span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm btn-info" data-dismiss="modal">关闭</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--查看课题详细信息结束-->
     <!--课题管理结束-->
 
     <!--答辩管理开始-->
@@ -484,6 +800,10 @@
                         <div class="panel-body">
                             <div class="alert alert-info textEllipsis">
                                 <div style="padding-bottom: 15px" class="col-md-12">
+                                    <div class="col-md-12">
+                                        <h4 class="font_bold" style="display: inline-block">答辩时间：</h4>
+                                        2019-01-05 17:47:28 -- 2019-01-05 17:47:28
+                                    </div>
                                     <div class="col-md-2">
                                         <h4 class="font_bold">设定答辩时间</h4>
                                     </div>
@@ -848,7 +1168,6 @@
     <!--用户管理开始-->
     <div id="four" class="page-wrapper displayNone">
         <div style="margin: 0px" class="page-inner">
-            <!--题目管理开始-->
             <div class="row">
                 <div class="col-md-12">
                     <div class="panel panel-default">
@@ -868,8 +1187,16 @@
                             <div style="padding-bottom: 15px" class="col-md-12">
                                 <div class="col-md-4">
                                     <div class="col-md-10 col-xs-10" style="padding: 0px">
-                                        <input style="border-bottom-right-radius: 0px;border-top-right-radius: 0px"
-                                               type="text" class="form-control">
+                                        <input type="text" list="chooseCollege"
+                                               class="form-control drop-down border_bottom_right_radius border_top_right_radius">
+                                        <datalist id="chooseCollege">
+                                            <option value="计算机与软件工程学院">
+                                            </option>
+                                            <option value="土木">
+                                            </option>
+                                            <option value="经济">
+                                            </option>
+                                        </datalist>
                                     </div>
                                     <div class="col-md-2 col-xs-2" style="padding-left: 5px">
                                         <button style="border-bottom-left-radius: 0px;border-top-left-radius: 0px;float: left"
@@ -1013,7 +1340,6 @@
                     </div>
                 </div>
             </div>
-            <!--题目管理结束-->
         </div>
     </div>
     <!--新增用户开始-->
@@ -1132,7 +1458,8 @@
                                 </strong>
                             </div>
                             <div style="margin-top: -10px" class="col-md-6 col-xs-6">
-                                <input type="text" list="Modify_college" placeholder="计算机与软件工程" class="form-control drop-down"/>
+                                <input type="text" list="Modify_college" placeholder="计算机与软件工程"
+                                       class="form-control drop-down"/>
                                 <datalist id="Modify_college">
                                     <option value="计算机与软件工程"/>
                                     <option value="营销"/>
@@ -1174,7 +1501,8 @@
                                 </strong>
                             </div>
                             <div style="margin-top: -10px" class="col-md-6 col-xs-6">
-                                <input type="text" list="Modify_permissions" placeholder="学生" class="form-control drop-down"/>
+                                <input type="text" list="Modify_permissions" placeholder="学生"
+                                       class="form-control drop-down"/>
                                 <datalist id="Modify_permissions">
                                     <option value="学生"/>
                                     <option value="教师"/>
@@ -1247,110 +1575,615 @@
     </div>
     <!--安全管理结束-->
 
-    <!--历届优秀管理开始-->
+    <!--历届优秀浏览开始-->
     <div id="six" class="page-wrapper displayNone">
-        <div class="header">
-            <h3 class="page-header">
-                历届优秀管理
-            </h3>
-            <ol class="breadcrumb">
-                <li><a href="adminIndex.html">首页</a></li>
-                <li class="active">历届优秀管理</li>
-            </ol>
-        </div>
-        <div class="page-inner">
-            <!--历届优秀管理开始-->
+        <div style="margin: 0px" class="page-inner">
             <div class="row">
                 <div class="col-md-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            历届优秀管理
+                            历届优秀浏览
                         </div>
                         <div class="panel-body">
-                            <div class="alert alert-success textEllipsis">
-                                <strong>
-                                    <span class="colorf44">1分钟前</span> 选题
-                                </strong> 选题时间
+                            <div style="padding-bottom: 15px" class="col-md-12">
+                                <div style="padding-bottom: 15px;padding-left: 0px" class="col-md-12">
+                                    <div style="padding-left: 0px" class="col-md-12">
+                                        <div class="col-md-1 col-xs-1" style="padding-right: 0px">
+                                            条件：
+                                        </div>
+                                        <div class="col-md-3 col-xs-3" style="padding: 0px">
+                                            <select style="margin:0px 5px" class="form-control">
+                                                <option value="title">题目</option>
+                                                <option value="period">届</option>
+                                                <option value="honorStudent">优秀生姓名</option>
+                                                <option value="professional">学院</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6 col-xs-6">
+                                            <input type="text" class="form-control">
+                                        </div>
+                                        <div class="col-md-2 col-xs-2" style="padding-left: 5px">
+                                            <button type="button" class="btn btn-info">查询</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="alert alert-success textEllipsis border_radius marginBottom0">
+                                    <div class="col-md-4 textAlign">
+                                        题目
+                                    </div>
+                                    <div class="col-md-1 textAlign">
+                                        届
+                                    </div>
+                                    <div class="col-md-2 textAlign">
+                                        优秀生（学号）
+                                    </div>
+                                    <div class="col-md-3 textAlign">
+                                        学院
+                                    </div>
+                                    <div class="col-md-2 textAlign">
+                                        操作
+                                    </div>
+                                </div>
+                                <div class="alert alert-warning textEllipsis border_radius marginBottom0">
+                                    <div title="PMMA灯具基于moldflow三维流动优化的注塑模设计" class="col-md-4 textEllipsis textAlign">
+                                        PMMA灯具基于moldflow三维流动优化的注塑模设计
+                                    </div>
+                                    <div class="col-md-1 textEllipsis textAlign">
+                                        2018届
+                                    </div>
+                                    <div class="col-md-2 textEllipsis textAlign">
+                                        张三（3120150905999）
+                                    </div>
+                                    <div class="col-md-3 textAlign textEllipsis">
+                                        计算机与软件工程学院
+                                    </div>
+                                    <div class="col-md-2 textEllipsis textAlign">
+                                        <button type="button"
+                                                class="management_goodDetails newPage btn btn-info btn-xs">查看
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="alert alert-danger textEllipsis border_radius marginBottom0">
+                                    <div title="PMMA灯具基于moldflow三维流动优化的注塑模设计" class="col-md-4 textEllipsis textAlign">
+                                        PMMA灯具基于moldflow三维流动优化的注塑模设计
+                                    </div>
+                                    <div class="col-md-1 textEllipsis textAlign">
+                                        2018届
+                                    </div>
+                                    <div class="col-md-2 textEllipsis textAlign">
+                                        张三（3120150905999）
+                                    </div>
+                                    <div class="col-md-3 textAlign textEllipsis">
+                                        计算机与软件工程学院
+                                    </div>
+                                    <div class="col-md-2 textEllipsis textAlign">
+                                        <button type="button"
+                                                class="management_goodDetails newPage btn btn-info btn-xs">查看
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!--分页开始-->
+                                <div style="margin-top: 15px" class="m-style"></div>
+                                <!--分页结束-->
                             </div>
-                            <div class="alert alert-info textEllipsis">
-                                <strong>
-                                    <span class="colorf44">2分钟前</span> 开题报告
-                                </strong> 提交开题报告
-                            </div>
-                            <div class="alert alert-warning textEllipsis">
-                                <strong>
-                                    <span class="colorf44">3分钟前</span> 过程文档
-                                </strong>
-                                提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档
-                            </div>
-                            <div class="alert alert-danger textEllipsis">
-                                <strong>
-                                    <span class="colorf44">5分钟前</span> 提交论文
-                                </strong> 论文截止时间
-                            </div>
-                            <!--分页开始-->
-                            <div class="m-style"></div>
-                            <!--分页结束-->
                         </div>
                     </div>
                 </div>
             </div>
-            <!--历届优秀管理结束-->
         </div>
     </div>
-    <!--历届优秀管理结束-->
+    <!--历届优秀浏览详情开始-->
+    <div id="goodDetails" class="page-wrapper displayNone">
+        <div style="margin: 0px" class="page-inner">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            优秀浏览详情
+                        </div>
+                        <div class="panel-body">
+                            <div class="col-md-12 openingReport">
+                                <h5 class="font_bold">题目</h5>
+                                <div class="whiteColor padding10">
+                                    毕设题目
+                                </div>
+                                <h5 class="font_bold">届</h5>
+                                <div class="whiteColor padding10">
+                                    2018届
+                                </div>
+                                <h5 class="font_bold">优秀生</h5>
+                                <div class="whiteColor padding10">
+                                    张三
+                                </div>
+                                <h5 class="font_bold">专业</h5>
+                                <div class="whiteColor padding10">
+                                    软件工程
+                                </div>
+                                <h5 class="font_bold">简介</h5>
+                                <div class="whiteColor padding10">
+                                    毕设简介
+                                </div>
+                                <h5 class="font_bold">附件</h5>
+                                <div class="whiteColor" style="padding:10px;">
+                                    附件：开题报告.docx <a style="padding-left: 20px" href="#">点击下载</a>
+                                </div>
+                                <div class="row" style="margin-top: 10px">
+                                    <div class="col-md-2">
+                                        <button type="button" class="management_nine newPage  btn btn-info">
+                                            返回
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--历届优秀浏览详情开始-->
+    <!--历届优秀浏览结束-->
 
     <!--新闻管理开始-->
-    <div id="seven" class="page-wrapper displayNone">
-        <div class="header">
-            <h3 class="page-header">
-                新闻管理
-            </h3>
-            <ol class="breadcrumb">
-                <li><a href="adminIndex.html">首页</a></li>
-                <li class="active">新闻管理</li>
-            </ol>
-        </div>
-        <div class="page-inner">
-            <!--新闻管理开始-->
+    <div id="seven" class="page-wrapper">
+        <div style="margin: 0px" class="page-inner">
             <div class="row">
                 <div class="col-md-12">
                     <div class="panel panel-default">
-                        <div class="panel-heading">
-                            新闻管理
+                        <div style="background-color: #f5f5f5">
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li class="active"><a href="#notice" role="tab" data-toggle="tab">公告</a></li>
+                                <li><a href="#news" role="tab" data-toggle="tab">新闻</a></li>
+                                <li><a href="#newsRelease" role="tab" data-toggle="tab">发布新闻</a></li>
+                                <li><a href="#announcement" role="tab" data-toggle="tab">发布公告</a></li>
+                            </ul>
                         </div>
-                        <div class="panel-body">
-                            <div class="alert alert-success textEllipsis">
-                                <strong>
-                                    <span class="colorf44">1分钟前</span> 选题
-                                </strong> 选题时间
+                        <div class="tab-content">
+                            <!--发布公告开始-->
+                            <div class="tab-pane active panel-body" id="notice">
+                                <div style="padding-bottom: 10px">
+                                <span style="padding-right: 20px" class="clickColor cursorPointer" data-toggle="modal"
+                                      data-target="#deleMessage">
+                                            删除
+                                        </span>
+                                    <span style="padding-right: 20px" class="clickColor cursorPointer"
+                                          data-toggle="modal"
+                                          data-target="#readMessage">
+                                            全部标为已读
+                                        </span>
+                                    <span style="padding-right: 20px" class="clickColor cursorPointer"
+                                          data-toggle="modal"
+                                          data-target="#unreadMessage">
+                                            标为未读
+                                        </span>
+                                </div>
+                                <div class="alert alert-success textEllipsis border_radius marginBottom0">
+                                    <div class="col-md-1 textAlign">
+                                        <input id="message" onchange="selectAll('message','messageClass')"
+                                               type="checkbox"
+                                               value="1"/>
+                                    </div>
+                                    <div class="col-md-5">
+                                        消息内容
+                                    </div>
+                                    <div class="col-md-3 textAlign">
+                                        接收时间
+                                    </div>
+                                    <div class="col-md-3 textAlign">
+                                        消息类型
+                                    </div>
+                                </div>
+                                <div class="alert alert-danger textEllipsis border_radius marginBottom0">
+                                    <div class="col-md-1 textEllipsis textAlign">
+                                        <input class="messageClass" type="checkbox" value="2"/>
+                                    </div>
+                                    <div class="col-md-5 textEllipsis">
+                                        <span class="iconfont icon-wodexiaoxi"></span>
+                                        <span class="clickColor cursorPointer" data-toggle="modal"
+                                              data-target="#messageDetails">
+                                            通知公告
+                                        </span>
+
+                                    </div>
+                                    <div class="col-md-3 textEllipsis textAlign">
+                                        2019-01-01 12:00:00
+                                    </div>
+                                    <div class="col-md-3 textAlign textEllipsis">
+                                        通知
+                                    </div>
+                                </div>
+                                <div class="alert alert-danger textEllipsis border_radius marginBottom0">
+                                    <div class="col-md-1 textEllipsis textAlign">
+                                        <input class="messageClass" type="checkbox" value="2"/>
+                                    </div>
+                                    <div class="col-md-5 textEllipsis">
+                                        <span class="iconfont icon-wodexiaoxi"></span>
+                                        <span class="clickColor cursorPointer" data-toggle="modal"
+                                              data-target="#messageDetails">
+                                    通知公告
+                                    </span>
+                                    </div>
+                                    <div class="col-md-3 textEllipsis textAlign">
+                                        2019-01-01 12:00:00
+                                    </div>
+                                    <div class="col-md-3 textAlign textEllipsis">
+                                        公告
+                                    </div>
+                                </div>
+                                <div class="alert alert-warning textEllipsis border_radius marginBottom0">
+                                    <div class="col-md-1 textEllipsis textAlign">
+                                        <input class="messageClass" type="checkbox" value="2"/>
+                                    </div>
+                                    <div class="col-md-5 textEllipsis">
+                                        <span class="iconfont icon-yiduxiaoxi"></span>
+                                        <span class="clickColor cursorPointer" data-toggle="modal"
+                                              data-target="#messageDetails">
+                                    选题时间选题时间选题时间选题时间选题时间选题时间选题时间选题时间选题时间选题时间选题时间
+                                    选题时间选题时间选题时间选题时间选题时间选题时间选题时间选题时间选题时间
+                                    </span>
+
+                                    </div>
+                                    <div class="col-md-3 textEllipsis textAlign">
+                                        2019-01-01 12:00:00
+                                    </div>
+                                    <div class="col-md-3 textAlign textEllipsis">
+                                        通知
+                                    </div>
+                                </div>
+                                <div class="alert alert-warning textEllipsis border_radius marginBottom0">
+                                    <div class="col-md-1 textEllipsis textAlign">
+                                        <input class="messageClass" type="checkbox" value="2"/>
+                                    </div>
+                                    <div class="col-md-5 textEllipsis">
+                                        <span class="iconfont icon-yiduxiaoxi"></span>
+                                        <span class="clickColor cursorPointer" data-toggle="modal"
+                                              data-target="#messageDetails">
+                                    选题时间选题时间选题时间选题时间选题时间选题时间选题时间选题时间选题时间选题时间选题时间
+                                    选题时间选题时间选题时间选题时间选题时间选题时间选题时间选题时间选题时间
+                                    </span>
+                                    </div>
+                                    <div class="col-md-3 textEllipsis textAlign">
+                                        2019-01-01 12:00:00
+                                    </div>
+                                    <div class="col-md-3 textAlign textEllipsis">
+                                        通知
+                                    </div>
+                                </div>
+                                <!--分页开始-->
+                                <div style="margin-top: 10px" class="m-style"></div>
+                                <!--分页结束-->
                             </div>
-                            <div class="alert alert-info textEllipsis">
-                                <strong>
-                                    <span class="colorf44">2分钟前</span> 开题报告
-                                </strong> 提交开题报告
+                            <!--发布公告结束-->
+                            <!--发布新闻开始-->
+                            <div class="tab-pane active panel-body" id="news">
+                                <div style="padding-bottom: 10px">
+                                <span style="padding-right: 20px" class="clickColor cursorPointer" data-toggle="modal"
+                                      data-target="#deleNews">
+                                            删除
+                                        </span>
+                                </div>
+                                <div class="alert alert-success textEllipsis border_radius marginBottom0">
+                                    <div class="col-md-1 textAlign">
+                                        <input id="newsCheckbox" onchange="selectAll('newsCheckbox','newsClass')"
+                                               type="checkbox"
+                                               value="1"/>
+                                    </div>
+                                    <div class="col-md-3">
+                                        新闻标题
+                                    </div>
+                                    <div class="col-md-5 textAlign">
+                                        新闻内容
+                                    </div>
+                                    <div class="col-md-3 textAlign">
+                                        发布时间
+                                    </div>
+                                </div>
+                                <div class="alert alert-danger textEllipsis border_radius marginBottom0">
+                                    <div class="col-md-1 textEllipsis textAlign">
+                                        <input class="newsClass" type="checkbox" value="2"/>
+                                    </div>
+                                    <div class="col-md-5 textEllipsis">
+                                        <span class="iconfont icon-wodexiaoxi"></span>
+                                        <span class="clickColor cursorPointer" data-toggle="modal"
+                                              data-target="#newsDetails">
+                                            新闻标题
+                                        </span>
+
+                                    </div>
+                                    <div class="col-md-3 textEllipsis textAlign">
+                                        新闻新闻
+                                    </div>
+                                    <div class="col-md-3 textAlign textEllipsis">
+                                        2019-01-01 12:00:00
+                                    </div>
+                                </div>
+                                <div class="alert alert-warning textEllipsis border_radius marginBottom0">
+                                    <div class="col-md-1 textEllipsis textAlign">
+                                        <input class="newsClass" type="checkbox" value="2"/>
+                                    </div>
+                                    <div class="col-md-5 textEllipsis">
+                                        <span class="iconfont icon-wodexiaoxi"></span>
+                                        <span class="clickColor cursorPointer" data-toggle="modal"
+                                              data-target="#newsDetails">
+                                            新闻标题
+                                        </span>
+
+                                    </div>
+                                    <div class="col-md-3 textEllipsis textAlign">
+                                        新闻新闻
+                                    </div>
+                                    <div class="col-md-3 textAlign textEllipsis">
+                                        2019-01-01 12:00:00
+                                    </div>
+                                </div>
+                                <div class="alert alert-danger textEllipsis border_radius marginBottom0">
+                                    <div class="col-md-1 textEllipsis textAlign">
+                                        <input class="newsClass" type="checkbox" value="2"/>
+                                    </div>
+                                    <div class="col-md-5 textEllipsis">
+                                        <span class="iconfont icon-wodexiaoxi"></span>
+                                        <span class="clickColor cursorPointer" data-toggle="modal"
+                                              data-target="#newsDetails">
+                                            新闻标题
+                                        </span>
+
+                                    </div>
+                                    <div class="col-md-3 textEllipsis textAlign">
+                                        新闻新闻
+                                    </div>
+                                    <div class="col-md-3 textAlign textEllipsis">
+                                        2019-01-01 12:00:00
+                                    </div>
+                                </div>
+                                <div class="alert alert-warning textEllipsis border_radius marginBottom0">
+                                    <div class="col-md-1 textEllipsis textAlign">
+                                        <input class="newsClass" type="checkbox" value="2"/>
+                                    </div>
+                                    <div class="col-md-5 textEllipsis">
+                                        <span class="iconfont icon-wodexiaoxi"></span>
+                                        <span class="clickColor cursorPointer" data-toggle="modal"
+                                              data-target="#newsDetails">
+                                            新闻标题
+                                        </span>
+
+                                    </div>
+                                    <div class="col-md-3 textEllipsis textAlign">
+                                        新闻新闻
+                                    </div>
+                                    <div class="col-md-3 textAlign textEllipsis">
+                                        2019-01-01 12:00:00
+                                    </div>
+                                </div>
+                                <div class="alert alert-danger textEllipsis border_radius marginBottom0">
+                                    <div class="col-md-1 textEllipsis textAlign">
+                                        <input class="newsClass" type="checkbox" value="2"/>
+                                    </div>
+                                    <div class="col-md-5 textEllipsis">
+                                        <span class="iconfont icon-wodexiaoxi"></span>
+                                        <span class="clickColor cursorPointer" data-toggle="modal"
+                                              data-target="#newsDetails">
+                                            新闻标题
+                                        </span>
+
+                                    </div>
+                                    <div class="col-md-3 textEllipsis textAlign">
+                                        新闻新闻
+                                    </div>
+                                    <div class="col-md-3 textAlign textEllipsis">
+                                        2019-01-01 12:00:00
+                                    </div>
+                                </div>
+                                <!--分页开始-->
+                                <div style="margin-top: 10px" class="m-style"></div>
+                                <!--分页结束-->
                             </div>
-                            <div class="alert alert-warning textEllipsis">
-                                <strong>
-                                    <span class="colorf44">3分钟前</span> 过程文档
-                                </strong>
-                                提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档提交过程文档
+                            <!--发布新闻结束-->
+                            <!--发布新闻开始-->
+                            <div class="tab-pane panel-body" id="newsRelease">
+                                <h5 class="font_bold">新闻标题</h5>
+                                <textarea style="margin:0px 5px" rows="1" type="text"
+                                          class="form-control textContent"></textarea>
+                                <h5 class="font_bold">新闻内容</h5>
+                                <textarea style="margin:0px 5px 10px 5px" rows="5" type="text"
+                                          class="form-control textContent"></textarea>
+                                <div style="padding-left: 0px" class="col-md-1 padding0">
+                                    <button type="button" class="btn btn-info">确定
+                                    </button>
+                                </div>
                             </div>
-                            <div class="alert alert-danger textEllipsis">
-                                <strong>
-                                    <span class="colorf44">5分钟前</span> 提交论文
-                                </strong> 论文截止时间
+                            <!--发布新闻结束-->
+                            <!--发布公告开始-->
+                            <div class="tab-pane panel-body" id="announcement">
+                                <div style="padding-bottom: 15px;padding-left: 0px" class="col-md-12">
+                                    <div class="col-md-1 padding0">
+                                        公告范围：
+                                    </div>
+                                    <div style="padding-left: 0px" class="col-md-2">
+                                        <select class="form-control">
+                                            <option value="0">全部</option>
+                                            <option value="1">学生</option>
+                                            <option value="2">教师</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <h5 style="padding-top: 60px" class="font_bold">公告内容</h5>
+                                <textarea style="margin:0px 5px 10px 5px" rows="5" type="text"
+                                          class="form-control textContent"></textarea>
+                                <div style="padding-left: 0px" class="col-md-1 padding0">
+                                    <button type="button" class="btn btn-info">确定
+                                    </button>
+                                </div>
                             </div>
-                            <!--分页开始-->
-                            <div class="m-style"></div>
-                            <!--分页结束-->
+                            <!--发布公告结束-->
                         </div>
                     </div>
                 </div>
             </div>
-            <!--新闻管理结束-->
         </div>
     </div>
+    <!--查看通知公告详情开始-->
+    <div class="modal fade" id="messageDetails" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">通知公告详细信息</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-success">
+                        <strong>
+                            <span>通知公告内容:</span>
+                        </strong>
+                        <span>
+                            廖永衡（0120080001）廖永衡（0120080001）廖永衡（0120080001）廖永衡（0120080001）廖永衡（0120080001）
+                            廖永衡（0120080001）廖永衡（0120080001）廖永衡（0120080001）廖永衡（0120080001）
+                        </span>
+                        <hr>
+                        <strong>
+                            <span>接收时间:</span>
+                        </strong>
+                        <span>2019-01-01 12:00:00</span>
+                        <hr>
+                        <strong>
+                            <span>通知公告类型:</span>
+                        </strong>
+                        <span>消息</span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm btn-info" data-dismiss="modal">关闭</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--查看通知公告详情结束-->
+    <!--删除通知公告开始-->
+    <div class="modal fade" id="deleMessage" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">提示</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        确定要删除通知公告？删除后不可恢复！
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-xs btn-white" data-dismiss="modal">取 消</button>
+                    <button type="button" class="btn btn-xs btn-danger">保 存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--删除通知公告结束-->
+    <!--通知公告标为已读开始-->
+    <div class="modal fade" id="readMessage" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">提示</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        确定要将通知公告全部标为已读？
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-xs btn-white" data-dismiss="modal">取 消</button>
+                    <button type="button" class="btn btn-xs btn-danger">保 存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--通知公告标为已读结束-->
+    <!--通知公告标为未读开始-->
+    <div class="modal fade" id="unreadMessage" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">提示</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        确定要将通知公告全部标为未读？
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-xs btn-white" data-dismiss="modal">取 消</button>
+                    <button type="button" class="btn btn-xs btn-danger">保 存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--通知公告标为未读结束-->
+    <!--查看新闻详情开始-->
+    <div class="modal fade" id="newsDetails" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">新闻详细信息</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-success">
+                        <strong>
+                            <span>新闻标题:</span>
+                        </strong>
+                        <span>
+                            廖永衡（0120080001）廖永衡（0120080001）廖永衡（0120080001）廖永衡（0120080001）廖永衡（0120080001）
+                            廖永衡（0120080001）廖永衡（0120080001）廖永衡（0120080001）廖永衡（0120080001）
+                        </span>
+                        <hr>
+                        <strong>
+                            <span>新闻内容:</span>
+                        </strong>
+                        <span>2019-01-01 12:00:00</span>
+                        <hr>
+                        <strong>
+                            <span>发布时间:</span>
+                        </strong>
+                        <span>2019-01-01 12:00:00</span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm btn-info" data-dismiss="modal">关闭</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--查看新闻详情结束-->
+    <!--删除新闻开始-->
+    <div class="modal fade" id="deleNews" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">提示</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        确定要删除新闻？删除后不可恢复！
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-xs btn-white" data-dismiss="modal">取 消</button>
+                    <button type="button" class="btn btn-xs btn-danger">保 存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--删除新闻结束-->
     <!--新闻管理结束-->
 
     <!--系统管理开始-->
@@ -1406,6 +2239,182 @@
     </div>
     <!--系统管理结束-->
 
+    <!--个人信息开始-->
+    <div id="personal" class="page-wrapper displayNone">
+        <div class="header">
+            <h3 class="page-header">
+                个人信息维护
+            </h3>
+            <ol class="breadcrumb index">
+                <li><a href="#">首页</a></li>
+                <li class="active">个人信息维护</li>
+            </ol>
+        </div>
+        <div class="page-inner">
+            <!--个信息开始-->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            个人信息维护
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-3"></div>
+                                <div class="col-md-6">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-md-12" style="padding-bottom: 10px">
+                                                <div class="col-md-2"></div>
+                                                <div style="height: 41px;line-height: 41px"
+                                                     class="col-md-2 paddingRightt0">
+                                                    姓名：
+                                                </div>
+                                                <div class="col-md-6 paddingLeft0 paddingRightt0">
+                                                    <input placeholder="wangXxx" class="form-control whiteBgColor"
+                                                           type="text" readonly>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12" style="padding-bottom: 10px">
+                                                <div class="col-md-2"></div>
+                                                <div style="height: 41px;line-height: 41px"
+                                                     class="col-md-2 paddingRightt0">
+                                                    职工号：
+                                                </div>
+                                                <div class="col-md-6 paddingLeft0 paddingRightt0">
+                                                    <input placeholder="3242324232" class="form-control whiteBgColor"
+                                                           type="text" readonly>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12" style="padding-bottom: 10px">
+                                                <div class="col-md-2"></div>
+                                                <div style="height: 41px;line-height: 41px"
+                                                     class="col-md-2 paddingRightt0">
+                                                    职称：
+                                                </div>
+                                                <div class="col-md-6 paddingLeft0 paddingRightt0">
+                                                    <input placeholder="教授" class="form-control whiteBgColor"
+                                                           type="text"
+                                                           readonly>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12" style="padding-bottom: 10px">
+                                                <div class="col-md-2"></div>
+                                                <div style="height: 41px;line-height: 41px"
+                                                     class="col-md-2 paddingRightt0">
+                                                    性别：
+                                                </div>
+                                                <div class="col-md-6 paddingLeft0 paddingRightt0">
+                                                    <select class="form-control" style="margin: 0 5px">
+                                                        <option value="chooseSex">请选择</option>
+                                                        <option value="male">男</option>
+                                                        <option value="female">女</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12" style="padding-bottom: 10px">
+                                                <div class="col-md-2"></div>
+                                                <div style="height: 41px;line-height: 41px"
+                                                     class="col-md-2 paddingRightt0">
+                                                    邮箱：
+                                                </div>
+                                                <div class="col-md-6 paddingLeft0 paddingRightt0">
+                                                    <input class="form-control" type="email">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12" style="padding-bottom: 10px">
+                                                <div class="col-md-2"></div>
+                                                <div style="height: 41px;line-height: 41px"
+                                                     class="col-md-2 paddingRightt0">
+                                                    手机号：
+                                                </div>
+                                                <div class="col-md-6 paddingLeft0 paddingRightt0">
+                                                    <input class="form-control" type="tel">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12" style="padding-bottom: 10px">
+                                                <div class="col-md-4"></div>
+                                                <div class="col-md-6 paddingLeft0 paddingRightt0">
+                                                    <button style="margin: 0 5px" type="button"
+                                                            class="btn btn-sm btn-info">
+                                                        确认修改
+                                                    </button>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--个人信息结束-->
+        </div>
+    </div>
+    <!--个人信息结束-->
+
+    <!--修改密码开始-->
+    <div id="password" class="page-wrapper displayNone">
+        <div class="header">
+            <h3 class="page-header">
+                修改密码
+            </h3>
+            <ol class="breadcrumb index">
+                <li><a href="#">首页</a></li>
+                <li class="active">修改密码</li>
+            </ol>
+        </div>
+        <div class="page-inner">
+            <!--修改密码开始-->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            修改密码
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-4">
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group has-success">
+                                        <label class="control-label" for="inputPassBefore">原密码</label>
+                                        <input type="password" class="form-control" id="inputPassBefore" autofocus
+                                               required>
+                                    </div>
+                                    <div class="form-group has-warning">
+                                        <label class="control-label" for="inputPassNew">新密码</label>
+                                        <input type="password" class="form-control" id="inputPassNew" required>
+                                    </div>
+                                    <div class="form-group has-error">
+                                        <label class="control-label" for="inputPassConfirm">确认新密码</label>
+                                        <input type="password" class="form-control" id="inputPassConfirm" required>
+                                    </div>
+                                    <div style="height: 40px"></div>
+                                    <div class="col-md-2">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <button type="button" class="btn btn-sm btn-info">确认</button>
+                                    </div>
+                                    <div class="col-md-1">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <button type="reset" class="btn btn-sm btn-danger">重置</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--修改密码结束-->
+            </div>
+        </div>
+    </div>
+    <!--修改密码结束-->
+
 </div>
 
 </div>
@@ -1435,6 +2444,15 @@
     });
 </script>
 <!--分页结束-->
+
+<script type="text/javascript">
+    function selectAll(id, className) {
+        let isCheck = $("#" + id).is(':checked');  //获得全选复选框是否选中
+        $("." + className).each(function () {
+            this.checked = isCheck;       //循环赋值给每个复选框是否选中
+        });
+    }
+</script>
 
 </body>
 </html>

@@ -2,6 +2,7 @@
 body {
     font-family: 'Open Sans', sans-serif;
     background: #323232;
+    /*background: #64625f;*/
 }
 
 ::-webkit-inner-spin-button {
@@ -226,6 +227,11 @@ p {
 /*初始化样式结束*/
 
 /*公用样式开始*/
+
+.lineHeight {
+    line-height: 42px;
+}
+
 .padding0 {
     padding: 0px !important;
 }
@@ -349,6 +355,7 @@ p {
     /* text-transform: uppercase; */
     line-height: 30px;
     background: #F09B22;
+    /*background: #363432;*/
 }
 
 
@@ -447,11 +454,13 @@ p {
 
 .navbar-side {
     border: none;
+    /*background: #64625f;*/
     background: #323232;
 }
 
 .top-navbar {
     background: #323232;
+    /*background: #64625f;*/
     border-bottom: none;
 }
 
