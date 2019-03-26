@@ -3,7 +3,11 @@ body {
     font-family: 'Open Sans', sans-serif;
     background: #323232;
     color: #000000;
-    /*background: #64625f;*/
+
+}
+
+body, html {
+    height: 100%;
 }
 
 ::-webkit-inner-spin-button {
@@ -184,6 +188,7 @@ input {
 
 #wrapper {
     width: 100%;
+    height: calc(100% - 60px);
 }
 
 .text-center {
@@ -260,6 +265,42 @@ p {
 
 .paddingTop60 {
     padding-top: 60px;
+}
+
+.width100 {
+    width: 100%;
+}
+
+.textNews {
+    color: #fff;
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    display: inline-block;
+    position: relative;
+    top: -30px;
+    background-color: #000;
+    opacity: 0.7;
+    padding: 0 10px;
+}
+
+.imgheight {
+    height: 130px;
+}
+
+.hovered:hover {
+    border: 1px solid #F09B22;
+    cursor: pointer;
+}
+
+.titlehover:hover {
+    color: #F09B22;
+    cursor: pointer;
+}
+
+p {
+    text-indent: 2em;
 }
 
 /*公用样式结束*/
@@ -533,14 +574,18 @@ ul.dropdown-menu.dropdown-messages li a div {
 
 /*主体内容样式开始*/
 #page-wrapper {
-    padding: 15px 15px;
-    min-height: 600px;
+    /*padding: 15px 15px;*/
+    /*min-height: 600px;*/
+    margin: 0 0 0 260px;
+    min-height: 100%;
     background: #EDEDED;
 }
 
 .page-wrapper {
-    padding: 15px 15px;
-    min-height: 600px;
+    /*padding: 15px 15px;*/
+    /*min-height: 600px;*/
+    margin: 0 0 0 260px;
+    min-height: 100%;
     background: #EDEDED;
 }
 
@@ -549,7 +594,7 @@ ul.dropdown-menu.dropdown-messages li a div {
     margin: 10px 20px 10px 0px;
     background-color: transparent;
     padding: 15px 30px;
-    min-height: 400px;
+    /*min-height: 400px;*/
 }
 
 .page-inner {
@@ -557,7 +602,7 @@ ul.dropdown-menu.dropdown-messages li a div {
     margin: 10px 20px 10px 0px;
     background-color: transparent;
     padding: 15px 30px;
-    min-height: 400px;
+    /*min-height: 400px;*/
 }
 
 #page-wrapper {
@@ -656,60 +701,60 @@ ul.dropdown-menu.dropdown-messages li a div {
 /*主体内容样式结束*/
 
 /*媒体查询开始*/
-@media (min-width: 768px) {
-    #page-wrapper {
-        margin: 0 0 0 260px;
-        padding: 0;
-        min-height: 560px;
-    }
+/*@media (min-width: 768px) {*/
+/*#page-wrapper {*/
+/*margin: 0 0 0 260px;*/
+/*padding: 0;*/
+/*!*min-height: 560px;*!*/
+/*}*/
 
-    .page-wrapper {
-        margin: 0 0 0 260px;
-        padding: 0;
-        min-height: 560px;
-    }
+/*.page-wrapper {*/
+/*margin: 0 0 0 260px;*/
+/*padding: 0;*/
+/*!*min-height: 560px;*!*/
+/*}*/
 
-    .navbar-side {
-        width: 260px;
-        z-index: 1;
-    }
+/*.navbar-side {*/
+/*width: 260px;*/
+/*z-index: 1;*/
+/*}*/
 
-    .navbar {
-        border-radius: 0px;
-    }
+/*.navbar {*/
+/*border-radius: 0px;*/
+/*}*/
 
-}
+/*}*/
 
-@media (max-width: 768px) {
+/*@media (max-width: 768px) {*/
 
-    #page-wrapper {
-        position: relative;
-        top: 93px;
-    }
+/*#page-wrapper {*/
+/*position: relative;*/
+/*top: 93px;*/
+/*}*/
 
-    .page-wrapper {
-        position: relative;
-        top: 93px;
-    }
-}
+/*.page-wrapper {*/
+/*position: relative;*/
+/*top: 93px;*/
+/*}*/
+/*}*/
 
-@media (max-width: 480px) {
-    #page-wrapper {
-        position: relative;
-        top: 93px;
-    }
+/*@media (max-width: 480px) {*/
+/*#page-wrapper {*/
+/*position: relative;*/
+/*top: 93px;*/
+/*}*/
 
-    .page-wrapper {
-        position: relative;
-        top: 93px;
-    }
+/*.page-wrapper {*/
+/*position: relative;*/
+/*top: 93px;*/
+/*}*/
 
-    .page-header small {
-        display: block;
-        padding-top: 14px;
-        font-size: 19px;
-    }
-}
+/*.page-header small {*/
+/*display: block;*/
+/*padding-top: 14px;*/
+/*font-size: 19px;*/
+/*}*/
+/*}*/
 
 /*媒体查询结束*/
 
