@@ -303,6 +303,10 @@ p {
     text-indent: 2em;
 }
 
+#editor img {
+    width: 400px !important;
+}
+
 /*公用样式结束*/
 
 /*字体图标样式开始*/

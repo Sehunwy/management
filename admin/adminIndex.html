@@ -165,65 +165,6 @@
     </div>
     <!--个人信息结束-->
 
-    <!--修改密码开始-->
-    <div id="ten" class="page-wrapper displayNone">
-        <div class="header">
-            <h3 class="page-header">
-                修改密码
-            </h3>
-            <ol class="breadcrumb index">
-                <li><a href="#">首页</a></li>
-                <li class="active">修改密码</li>
-            </ol>
-        </div>
-        <div class="page-inner">
-            <!--修改密码开始-->
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            修改密码
-                        </div>
-                        <div class="panel-body">
-                            <div class="row">
-                                <div class="col-md-4">
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group has-success">
-                                        <label class="control-label" for="inputPassBefore">原密码</label>
-                                        <input type="password" class="form-control" id="inputPassBefore" autofocus
-                                               required>
-                                    </div>
-                                    <div class="form-group has-warning">
-                                        <label class="control-label" for="inputPassNew">新密码</label>
-                                        <input type="password" class="form-control" id="inputPassNew" required>
-                                    </div>
-                                    <div class="form-group has-error">
-                                        <label class="control-label" for="inputPassConfirm">确认新密码</label>
-                                        <input type="password" class="form-control" id="inputPassConfirm" required>
-                                    </div>
-                                    <div style="height: 40px"></div>
-                                    <div class="col-md-2">
-                                    </div>
-                                    <div class="col-md-3">
-                                        <button type="button" class="btn btn-sm btn-info">确认</button>
-                                    </div>
-                                    <div class="col-md-1">
-                                    </div>
-                                    <div class="col-md-3">
-                                        <button type="reset" class="btn btn-sm btn-danger">重置</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--修改密码结束-->
-            </div>
-        </div>
-    </div>
-    <!--修改密码结束-->
-
     <!--课题管理开始-->
     <div id="one" class="page-wrapper">
         <div style="margin: 0px" class="page-inner">
@@ -249,25 +190,29 @@
                                         </div>
                                     </div>
                                     <div style="padding-bottom: 15px" class="col-md-12">
-                                        <div class="col-md-2">
+                                        <div class="col-md-12">
                                             <h4 class="font_bold">设定选题时间</h4>
                                         </div>
-                                        <div class="col-md-4">
-                                            <div style="padding: 0;text-align: right" class="col-md-5">开始选题时间：</div>
-
-                                            <div class="col-md-7">
+                                        <div class="col-md-6">
+                                            <div class="col-md-3 padding0">开始选题时间：</div>
+                                            <div class="col-md-6">
                                                 <input style="padding-left: 2px;padding-right: 30px"
                                                        class="form-control"
                                                        type="date">
                                             </div>
+                                            <div class="col-md-3">
+                                                <input style="padding-left: 16px;padding-right: 6px" class="form-control" type="time">
+                                            </div>
                                         </div>
-                                        <div class="col-md-4">
-                                            <div style="padding: 0;text-align: right" class="col-md-5">结束选题时间：</div>
-
-                                            <div class="col-md-7">
+                                        <div class="col-md-6">
+                                            <div class="col-md-3 padding0">结束选题时间：</div>
+                                            <div class="col-md-6">
                                                 <input style="padding-left: 2px;padding-right: 30px"
                                                        class="form-control"
                                                        type="date">
+                                            </div>
+                                            <div class="col-md-3">
+                                                <input style="padding-left: 16px;padding-right: 6px" class="form-control" type="time">
                                             </div>
                                         </div>
                                         <div class="col-md-2">
@@ -804,28 +749,36 @@
                                         <h4 class="font_bold" style="display: inline-block">答辩时间：</h4>
                                         2019-01-05 17:47:28 -- 2019-01-05 17:47:28
                                     </div>
-                                    <div class="col-md-2">
-                                        <h4 class="font_bold">设定答辩时间</h4>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div style="padding: 0;text-align: right" class="col-md-5">开始答辩时间：</div>
-
-                                        <div class="col-md-7">
-                                            <input style="padding-left: 2px;padding-right: 30px" class="form-control"
-                                                   type="date">
+                                    <div style="padding-bottom: 15px" class="col-md-12">
+                                        <div class="col-md-12 padding0">
+                                            <h4 class="font_bold">设定答辩时间</h4>
                                         </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div style="padding: 0;text-align: right" class="col-md-5">结束答辩时间：</div>
-
-                                        <div class="col-md-7">
-                                            <input style="padding-left: 2px;padding-right: 30px" class="form-control"
-                                                   type="date">
+                                        <div class="col-md-6">
+                                            <div class="col-md-3 padding0">开始选题时间：</div>
+                                            <div class="col-md-6">
+                                                <input style="padding-left: 2px;padding-right: 30px"
+                                                       class="form-control"
+                                                       type="date">
+                                            </div>
+                                            <div class="col-md-3">
+                                                <input style="padding-left: 16px;padding-right: 6px" class="form-control" type="time">
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <button type="button" class="btn btn-info btn-ms">确定
-                                        </button>
+                                        <div class="col-md-6">
+                                            <div class="col-md-3 padding0">结束选题时间：</div>
+                                            <div class="col-md-6">
+                                                <input style="padding-left: 2px;padding-right: 30px"
+                                                       class="form-control"
+                                                       type="date">
+                                            </div>
+                                            <div class="col-md-3">
+                                                <input style="padding-left: 16px;padding-right: 6px" class="form-control" type="time">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <button type="button" class="btn btn-info btn-ms">确定
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -1726,7 +1679,7 @@
     <!--历届优秀浏览结束-->
 
     <!--新闻管理开始-->
-    <div id="seven" class="page-wrapper">
+    <div id="seven" class="page-wrapper displayNone">
         <div style="margin: 0px" class="page-inner">
             <div class="row">
                 <div class="col-md-12">
@@ -1857,138 +1810,52 @@
                             <!--查看公告结束-->
                             <!--查看新闻开始-->
                             <div class="tab-pane panel-body" id="news">
-                                <div style="padding-bottom: 10px">
-                                <span style="padding-right: 20px" class="clickColor cursorPointer" data-toggle="modal"
-                                      data-target="#deleNews">
-                                            删除
-                                        </span>
+                                <div style="float: right">
+                                    <span style="padding-right: 20px" class="clickColor cursorPointer">查看本校新闻</span>
+                                    <span class="clickColor cursorPointer">查看本系新闻</span>
                                 </div>
-                                <div class="alert alert-success textEllipsis border_radius marginBottom0">
-                                    <div class="col-md-1 textAlign">
-                                        <input id="newsCheckbox" onchange="selectAll('newsCheckbox','newsClass')"
-                                               type="checkbox"
-                                               value="1"/>
+                                <div class="col-md-12" style="padding-bottom: 20px;border-bottom: 1px solid #ccc">
+                                    <div class="col-md-12">
+                                        <h4 class="management_newsDetails newPage font_bold titlehover">本周前期热起来周末又降温</h4>
                                     </div>
-                                    <div class="col-md-3">
-                                        新闻标题
-                                    </div>
-                                    <div class="col-md-5 textAlign">
-                                        新闻内容
-                                    </div>
-                                    <div class="col-md-3 textAlign">
-                                        发布时间
-                                    </div>
-                                </div>
-                                <div class="alert alert-danger textEllipsis border_radius marginBottom0">
-                                    <div class="col-md-1 textEllipsis textAlign">
-                                        <input class="newsClass" type="checkbox" value="2"/>
-                                    </div>
-                                    <div class="col-md-5 textEllipsis">
-                                        <span class="iconfont icon-wodexiaoxi"></span>
-                                        <span class="clickColor cursorPointer" data-toggle="modal"
-                                              data-target="#newsDetails">
-                                            新闻标题
-                                        </span>
-
-                                    </div>
-                                    <div class="col-md-3 textEllipsis textAlign">
-                                        新闻新闻
-                                    </div>
-                                    <div class="col-md-3 textAlign textEllipsis">
-                                        2019-01-01 12:00:00
+                                    <div class="col-md-12">
+                                        <div class="col-md-3">
+                                            <img class="imgheight width100 hovered" src="../assets/img/news.jpg" alt="" onclick="showMaxImg(this)">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <img class="imgheight width100 hovered" src="../assets/img/news.jpg" alt="" onclick="showMaxImg(this)">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <img class="imgheight width100 hovered" src="../assets/img/news.jpg" alt="" onclick="showMaxImg(this)">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <img class="imgheight width100 hovered" src="../assets/img/news.jpg" alt="" onclick="showMaxImg(this)">
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="alert alert-warning textEllipsis border_radius marginBottom0">
-                                    <div class="col-md-1 textEllipsis textAlign">
-                                        <input class="newsClass" type="checkbox" value="2"/>
+                                <div class="col-md-12" style="padding-bottom: 20px;border-bottom: 1px solid #ccc">
+                                    <div class="col-md-12">
+                                        <h4 class="management_newsDetails newPage font_bold titlehover">本周前期热起来周末又降温</h4>
                                     </div>
-                                    <div class="col-md-5 textEllipsis">
-                                        <span class="iconfont icon-wodexiaoxi"></span>
-                                        <span class="clickColor cursorPointer" data-toggle="modal"
-                                              data-target="#newsDetails">
-                                            新闻标题
-                                        </span>
-
-                                    </div>
-                                    <div class="col-md-3 textEllipsis textAlign">
-                                        新闻新闻
-                                    </div>
-                                    <div class="col-md-3 textAlign textEllipsis">
-                                        2019-01-01 12:00:00
-                                    </div>
-                                </div>
-                                <div class="alert alert-danger textEllipsis border_radius marginBottom0">
-                                    <div class="col-md-1 textEllipsis textAlign">
-                                        <input class="newsClass" type="checkbox" value="2"/>
-                                    </div>
-                                    <div class="col-md-5 textEllipsis">
-                                        <span class="iconfont icon-wodexiaoxi"></span>
-                                        <span class="clickColor cursorPointer" data-toggle="modal"
-                                              data-target="#newsDetails">
-                                            新闻标题
-                                        </span>
-
-                                    </div>
-                                    <div class="col-md-3 textEllipsis textAlign">
-                                        新闻新闻
-                                    </div>
-                                    <div class="col-md-3 textAlign textEllipsis">
-                                        2019-01-01 12:00:00
-                                    </div>
-                                </div>
-                                <div class="alert alert-warning textEllipsis border_radius marginBottom0">
-                                    <div class="col-md-1 textEllipsis textAlign">
-                                        <input class="newsClass" type="checkbox" value="2"/>
-                                    </div>
-                                    <div class="col-md-5 textEllipsis">
-                                        <span class="iconfont icon-wodexiaoxi"></span>
-                                        <span class="clickColor cursorPointer" data-toggle="modal"
-                                              data-target="#newsDetails">
-                                            新闻标题
-                                        </span>
-
-                                    </div>
-                                    <div class="col-md-3 textEllipsis textAlign">
-                                        新闻新闻
-                                    </div>
-                                    <div class="col-md-3 textAlign textEllipsis">
-                                        2019-01-01 12:00:00
-                                    </div>
-                                </div>
-                                <div class="alert alert-danger textEllipsis border_radius marginBottom0">
-                                    <div class="col-md-1 textEllipsis textAlign">
-                                        <input class="newsClass" type="checkbox" value="2"/>
-                                    </div>
-                                    <div class="col-md-5 textEllipsis">
-                                        <span class="iconfont icon-wodexiaoxi"></span>
-                                        <span class="clickColor cursorPointer" data-toggle="modal"
-                                              data-target="#newsDetails">
-                                            新闻标题
-                                        </span>
-
-                                    </div>
-                                    <div class="col-md-3 textEllipsis textAlign">
-                                        新闻新闻
-                                    </div>
-                                    <div class="col-md-3 textAlign textEllipsis">
-                                        2019-01-01 12:00:00
+                                    <div class="col-md-12">
+                                        <div class="col-md-3">
+                                            <img class="imgheight width100 hovered" src="../assets/img/cloud.jpg" alt="" onclick="showMaxImg(this)">
+                                        </div>
                                     </div>
                                 </div>
                                 <!--分页开始-->
-                                <div style="margin-top: 10px" class="m-style"></div>
+                                <div class="col-md-12" style="padding-top: 20px">
+                                    <div class="m-style"></div>
+                                </div>
                                 <!--分页结束-->
                             </div>
                             <!--查看新闻结束-->
                             <!--发布新闻开始-->
                             <div class="tab-pane panel-body" id="newsRelease">
-                                <h5 class="font_bold">新闻标题</h5>
-                                <textarea style="margin:0px 5px" rows="1" type="text"
-                                          class="form-control textContent"></textarea>
-                                <h5 class="font_bold">新闻内容</h5>
-                                <textarea style="margin:0px 5px 10px 5px" rows="13" type="text"
-                                          class="form-control textContent"></textarea>
-                                <div style="padding-left: 0px" class="col-md-1 padding0">
-                                    <button type="button" class="btn btn-info">确定
+                                <div id="editor">
+                                </div>
+                                <div style="padding-left: 0px;margin-top: 10px" class="col-md-1">
+                                    <button id="btn2" type="button" class="btn btn-info">确定
                                     </button>
                                 </div>
                             </div>
@@ -2126,42 +1993,65 @@
     </div>
     <!--通知公告标为未读结束-->
     <!--查看新闻详情开始-->
-    <div class="modal fade" id="newsDetails" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                            aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">新闻详细信息</h4>
-                </div>
-                <div class="modal-body">
-                    <div class="alert alert-success">
-                        <strong>
-                            <span>新闻标题:</span>
-                        </strong>
-                        <span>
-                            廖永衡（0120080001）廖永衡（0120080001）廖永衡（0120080001）廖永衡（0120080001）廖永衡（0120080001）
-                            廖永衡（0120080001）廖永衡（0120080001）廖永衡（0120080001）廖永衡（0120080001）
-                        </span>
-                        <hr>
-                        <strong>
-                            <span>新闻内容:</span>
-                        </strong>
-                        <span>2019-01-01 12:00:00</span>
-                        <hr>
-                        <strong>
-                            <span>发布时间:</span>
-                        </strong>
-                        <span>2019-01-01 12:00:00</span>
+    <div id="newsDetails" class="page-wrapper displayNone">
+        <div style="margin: 0px" class="page-inner">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            新闻浏览详情
+                        </div>
+                        <div class="panel-body">
+                            <div class="col-md-12" style="text-align: center">
+                                <h3 style="padding: 0 0 20px 0">新闻标题</h3>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="col-md-4 padding0">
+                                    <span style="color:#ababab">2019.03.25 15:39:38</span>
+                                </div>
+                                <div class="col-md-8">
+                                    <span style="float: right">来源：管理员</span>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div style="padding: 20px;">
+                                    <p>新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容
+                                        新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容
+                                        新闻内容新闻内容新闻内容新闻内容新闻内容</p>
+                                    <p>新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容
+                                        新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容
+                                        新闻内容新闻内容新闻内容新闻内容新闻内容</p>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="col-md-10">
+                                </div>
+                                <div class="col-md-1">
+                                    <button type="button" class="management_seven newPage btn btn-info">返
+                                        回
+                                    </button>
+                                </div>
+                                <div class="col-md-1">
+                                    <button data-toggle="modal" data-target="#deleNews" type="button" class="btn btn-danger">删除</button>
+                                </div>
+
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-sm btn-info" data-dismiss="modal">关闭</button>
                 </div>
             </div>
         </div>
     </div>
     <!--查看新闻详情结束-->
+    <!--图片弹出大图开始-->
+    <div class="modal fade bs-example-modal-lg text-center" id="imgModal" tabindex="-1" role="dialog" data-toggle="modal" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" style="display:inline-block;width:auto;">
+            <div class="modal-content">
+                <div id="imgshow"></div>
+            </div>
+        </div>
+    </div>
+    <!--图片弹出大图结束-->
     <!--删除新闻开始-->
     <div class="modal fade" id="deleNews" role="dialog">
         <div class="modal-dialog">
@@ -2427,6 +2317,26 @@
 <script src="../assets/js/bootstrap.js"></script>
 <!-- 自定义 Js -->
 <script src="../assets/js/common.js"></script>
+<!-- 自定义函数 Js -->
+<script src="../assets/js/commonFunction.js"></script>
+<!--wangEditor富文本编辑器-->
+<script type="text/javascript" src="../assets/js/wangEditor.js"></script>
+<script type="text/javascript">
+    let E = window.wangEditor;
+    let editor = new E('#editor');
+    editor.customConfig.zIndex = 0;
+    //显示“上传图片”的tab
+    editor.customConfig.uploadImgShowBase64 = true;
+    // 关闭粘贴样式的过滤
+    editor.customConfig.pasteFilterStyle = false
+    // 忽略粘贴内容中的图片
+    editor.customConfig.pasteIgnoreImg = true
+    editor.create();
+    document.getElementById('btn2').addEventListener('click', function () {
+        // 读取 text
+        alert(editor.txt.html())
+    }, false)
+</script>
 
 <!--分页开始-->
 <script>
