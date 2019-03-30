@@ -167,3 +167,7 @@ ul, li, ol {
     top: 10px;
     color: #3c763d
 }
+
+label,label input {
+    cursor: pointer;
+}

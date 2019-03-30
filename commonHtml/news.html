@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" panel="width=device-width, initial-scale=1.0"/>
+    <title>四川工商学院毕业设计管理系统</title>
+</head>
+<body>
+<!--查看更多新闻开始-->
+<div id="news" class="page-wrapper displayNone">
+    <div style="margin: 0px" class="page-inner">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        新闻浏览
+                        <div style="float: right">
+                            <span style="padding-right: 20px" class="clickColor cursorPointer">查看本校新闻</span>
+                            <span class="clickColor cursorPointer">查看本系新闻</span>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="col-md-12" style="padding-bottom: 20px;border-bottom: 1px solid #ccc">
+                            <div class="col-md-12">
+                                <h4 class="management_newsDetails newPage font_bold titlehover">本周前期热起来周末又降温</h4>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="col-md-3">
+                                    <img class="imgheight width100 hovered" src="../assets/img/news.jpg" alt=""
+                                         onclick="showMaxImg(this)">
+                                </div>
+                                <div class="col-md-3">
+                                    <img class="imgheight width100 hovered" src="../assets/img/news.jpg" alt=""
+                                         onclick="showMaxImg(this)">
+                                </div>
+                                <div class="col-md-3">
+                                    <img class="imgheight width100 hovered" src="../assets/img/news.jpg" alt=""
+                                         onclick="showMaxImg(this)">
+                                </div>
+                                <div class="col-md-3">
+                                    <img class="imgheight width100 hovered" src="../assets/img/news.jpg" alt=""
+                                         onclick="showMaxImg(this)">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12" style="padding-bottom: 20px;border-bottom: 1px solid #ccc">
+                            <div class="col-md-12">
+                                <h4 class="management_newsDetails newPage font_bold titlehover">本周前期热起来周末又降温</h4>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="col-md-3">
+                                    <img class="imgheight width100 hovered" src="../assets/img/cloud.jpg" alt=""
+                                         onclick="showMaxImg(this)">
+                                </div>
+                            </div>
+                        </div>
+                        <!--分页开始-->
+                        <div class="col-md-12" style="padding-top: 20px">
+                            <div class="m-style"></div>
+                        </div>
+                        <!--分页结束-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--查看新闻详情开始-->
+<div id="newsDetails" class="page-wrapper displayNone">
+    <div style="margin: 0px" class="page-inner">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        新闻浏览详情
+                    </div>
+                    <div class="panel-body">
+                        <div class="col-md-12" style="text-align: center">
+                            <h3 style="padding: 0 0 20px 0">新闻标题</h3>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="col-md-4 padding0">
+                                <span style="color:#ababab">2019.03.25 15:39:38</span>
+                            </div>
+                            <div class="col-md-8">
+                                <span style="float: right">来源：管理员</span>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div style="padding: 20px;">
+                                <p>新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容
+                                    新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容
+                                    新闻内容新闻内容新闻内容新闻内容新闻内容</p>
+                                <p>新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容
+                                    新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容
+                                    新闻内容新闻内容新闻内容新闻内容新闻内容</p>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <button style="float: right" type="button" class="management_news newPage btn btn-info">返
+                                回
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--查看新闻详情结束-->
+<!--图片弹出大图开始-->
+<div class="modal fade bs-example-modal-lg text-center" id="imgModal" tabindex="-1" role="dialog" data-toggle="modal"
+     aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" style="display:inline-block;width:auto;">
+        <div class="modal-content">
+            <div id="imgshow"></div>
+        </div>
+    </div>
+</div>
+<!--图片弹出大图结束-->
+<!--查看更多新闻结束-->
+</body>
+
+<script src="../assets/js/common.js"></script>
+<!--分页开始-->
+<script>
+    $('.m-style').pagination({
+        pageCount: 5,
+        jump: true,
+        coping: true,
+        homePage: '首页',
+        endPage: '末页',
+        prevContent: '上页',
+        nextContent: '下页',
+        callback: function (api) {
+            console.log(api.getCurrent());
+        }
+    });
+</script>
+<!--分页结束-->
+</html>

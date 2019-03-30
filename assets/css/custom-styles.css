@@ -583,6 +583,24 @@ ul.dropdown-menu.dropdown-messages li a div {
     margin: 0 0 0 260px;
     min-height: 100%;
     background: #EDEDED;
+    position: relative;
+    top: 55px;
+    box-shadow: 0 0 10px #757575;
+    -moz-box-shadow: 0 0 10px #757575;
+    -webkit-box-shadow: 0 0 10px #757575;
+}
+
+#commonWrapper {
+    /*padding: 15px 15px;*/
+    /*min-height: 600px;*/
+    margin: 0 0 0 260px;
+    min-height: 100%;
+    background: #EDEDED;
+    position: relative;
+    top: 55px;
+    box-shadow: 0 0 10px #757575;
+    -moz-box-shadow: 0 0 10px #757575;
+    -webkit-box-shadow: 0 0 10px #757575;
 }
 
 .page-wrapper {
@@ -591,6 +609,14 @@ ul.dropdown-menu.dropdown-messages li a div {
     margin: 0 0 0 260px;
     min-height: 100%;
     background: #EDEDED;
+}
+
+.page-wrapper {
+    position: relative;
+    top: 55px;
+    box-shadow: 0 0 10px #757575;
+    -moz-box-shadow: 0 0 10px #757575;
+    -webkit-box-shadow: 0 0 10px #757575;
 }
 
 #page-inner {
@@ -607,22 +633,6 @@ ul.dropdown-menu.dropdown-messages li a div {
     background-color: transparent;
     padding: 15px 30px;
     /*min-height: 400px;*/
-}
-
-#page-wrapper {
-    position: relative;
-    top: 55px;
-    box-shadow: 0 0 10px #757575;
-    -moz-box-shadow: 0 0 10px #757575;
-    -webkit-box-shadow: 0 0 10px #757575;
-}
-
-.page-wrapper {
-    position: relative;
-    top: 55px;
-    box-shadow: 0 0 10px #757575;
-    -moz-box-shadow: 0 0 10px #757575;
-    -webkit-box-shadow: 0 0 10px #757575;
 }
 
 .page-header {

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" panel="width=device-width, initial-scale=1.0"/>
+    <title>四川工商学院毕业设计管理系统</title>
+</head>
+<body>
+<!--查看更多通知开始-->
+<div id="messageNotice" class="page-wrapper displayNone">
+    <div class="header">
+        <h3 class="page-header">
+            消息
+        </h3>
+        <ol class="breadcrumb index">
+            <li><a href="#">首页</a></li>
+            <li class="active">消息</li>
+        </ol>
+    </div>
+    <div class="page-inner">
+        <!--通知公告开始-->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        消息
+                        <div style="float: right">
+                            <span style="padding-right: 20px" class="clickColor cursorPointer">查看通知</span>
+                            <span class="clickColor cursorPointer">查看公告</span>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div style="padding-bottom: 10px">
+                                <span style="padding-right: 20px" class="clickColor cursorPointer" data-toggle="modal"
+                                      data-target="#deleMessage">
+                                            删除
+                                        </span>
+                            <span style="padding-right: 20px" class="clickColor cursorPointer" data-toggle="modal"
+                                  data-target="#readMessage">
+                                            全部标为已读
+                                        </span>
+                            <span style="padding-right: 20px" class="clickColor cursorPointer" data-toggle="modal"
+                                  data-target="#unreadMessage">
+                                            标为未读
+                                        </span>
+                        </div>
+                        <div class="alert alert-success textEllipsis border_radius marginBottom0">
+                            <div class="col-md-1 textAlign">
+                                <input id="sel_1" onchange="selectAll('sel_1')" type="checkbox" value="1"/>
+                            </div>
+                            <div class="col-md-5">
+                                消息内容
+                            </div>
+                            <div class="col-md-3 textAlign">
+                                接收时间
+                            </div>
+                            <div class="col-md-3 textAlign">
+                                消息类型
+                            </div>
+                        </div>
+                        <div class="alert alert-danger textEllipsis border_radius marginBottom0">
+                            <div class="col-md-1 textEllipsis textAlign">
+                                <input type="checkbox" value="2"/>
+                            </div>
+                            <div class="col-md-5 textEllipsis">
+                                <span class="iconfont icon-wodexiaoxi"></span>
+                                <span class="clickColor cursorPointer" data-toggle="modal"
+                                      data-target="#messageDetails">
+                                            通知公告
+                                        </span>
+
+                            </div>
+                            <div class="col-md-3 textEllipsis textAlign">
+                                2019-01-01 12:00:00
+                            </div>
+                            <div class="col-md-3 textAlign textEllipsis">
+                                公告
+                            </div>
+                        </div>
+                        <div class="alert alert-danger textEllipsis border_radius marginBottom0">
+                            <div class="col-md-1 textEllipsis textAlign">
+                                <input type="checkbox" value="2"/>
+                            </div>
+                            <div class="col-md-5 textEllipsis">
+                                <span class="iconfont icon-wodexiaoxi"></span>
+                                <span class="clickColor cursorPointer" data-toggle="modal"
+                                      data-target="#messageDetails">
+                                    通知公告
+                                    </span>
+                            </div>
+                            <div class="col-md-3 textEllipsis textAlign">
+                                2019-01-01 12:00:00
+                            </div>
+                            <div class="col-md-3 textAlign textEllipsis">
+                                通知
+                            </div>
+                        </div>
+                        <div class="alert alert-warning textEllipsis border_radius marginBottom0">
+                            <div class="col-md-1 textEllipsis textAlign">
+                                <input type="checkbox" value="2"/>
+                            </div>
+                            <div class="col-md-5 textEllipsis">
+                                <span class="iconfont icon-yiduxiaoxi"></span>
+                                <span class="clickColor cursorPointer" data-toggle="modal"
+                                      data-target="#messageDetails">
+                                    选题时间选题时间选题时间选题时间选题时间选题时间选题时间选题时间选题时间选题时间选题时间
+                                    选题时间选题时间选题时间选题时间选题时间选题时间选题时间选题时间选题时间
+                                    </span>
+
+                            </div>
+                            <div class="col-md-3 textEllipsis textAlign">
+                                2019-01-01 12:00:00
+                            </div>
+                            <div class="col-md-3 textAlign textEllipsis">
+                                通知
+                            </div>
+                        </div>
+                        <div class="alert alert-warning textEllipsis border_radius marginBottom0">
+                            <div class="col-md-1 textEllipsis textAlign">
+                                <input type="checkbox" value="2"/>
+                            </div>
+                            <div class="col-md-5 textEllipsis">
+                                <span class="iconfont icon-yiduxiaoxi"></span>
+                                <span class="clickColor cursorPointer" data-toggle="modal"
+                                      data-target="#messageDetails">
+                                    选题时间选题时间选题时间选题时间选题时间选题时间选题时间选题时间选题时间选题时间选题时间
+                                    选题时间选题时间选题时间选题时间选题时间选题时间选题时间选题时间选题时间
+                                    </span>
+                            </div>
+                            <div class="col-md-3 textEllipsis textAlign">
+                                2019-01-01 12:00:00
+                            </div>
+                            <div class="col-md-3 textAlign textEllipsis">
+                                通知
+                            </div>
+                        </div>
+                        <!--分页开始-->
+                        <div style="margin-top: 10px" class="m-style"></div>
+                        <!--分页结束-->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--通知公告结束-->
+    </div>
+</div>
+<!--查看通知公告详情开始-->
+<div class="modal fade" id="messageDetails" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">通知公告详细信息</h4>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-success">
+                    <strong>
+                        <span>通知公告内容:</span>
+                    </strong>
+                    <span>
+                            廖永衡（0120080001）廖永衡（0120080001）廖永衡（0120080001）廖永衡（0120080001）廖永衡（0120080001）
+                            廖永衡（0120080001）廖永衡（0120080001）廖永衡（0120080001）廖永衡（0120080001）
+                        </span>
+                    <hr>
+                    <strong>
+                        <span>接收时间:</span>
+                    </strong>
+                    <span>2019-01-01 12:00:00</span>
+                    <hr>
+                    <strong>
+                        <span>通知公告类型:</span>
+                    </strong>
+                    <span>消息</span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-sm btn-info" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--查看通知公告详情结束-->
+<!--删除通知公告开始-->
+<div class="modal fade" id="deleMessage" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">提示</h4>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    确定要删除通知公告？删除后不可恢复！
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-xs btn-white" data-dismiss="modal">取 消</button>
+                <button type="button" class="btn btn-xs btn-danger">保 存</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--删除通知公告结束-->
+<!--通知公告标为已读开始-->
+<div class="modal fade" id="readMessage" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">提示</h4>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    确定要将通知公告全部标为已读？
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-xs btn-white" data-dismiss="modal">取 消</button>
+                <button type="button" class="btn btn-xs btn-danger">保 存</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--通知公告标为已读结束-->
+<!--通知公告标为未读开始-->
+<div class="modal fade" id="unreadMessage" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">提示</h4>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    确定要将通知公告全部标为未读？
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-xs btn-white" data-dismiss="modal">取 消</button>
+                <button type="button" class="btn btn-xs btn-danger">保 存</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--通知公告标为未读结束-->
+<!--查看更多通知结束-->
+</body>
+
+<script src="../assets/js/common.js"></script>
+<!--分页开始-->
+<script>
+    $('.m-style').pagination({
+        pageCount: 5,
+        jump: true,
+        coping: true,
+        homePage: '首页',
+        endPage: '末页',
+        prevContent: '上页',
+        nextContent: '下页',
+        callback: function (api) {
+            console.log(api.getCurrent());
+        }
+    });
+</script>
+<!--分页结束-->
+</html>
