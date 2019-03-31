@@ -13,15 +13,10 @@
     <link href="../assets/css/pagination.css" rel="stylesheet"/>
     <!-- 自定义 Styles-->
     <link href="../assets/css/custom-styles.css" rel="stylesheet"/>
-    <style>
-        #dv {
-            width: 100px;
-            height: 100px;
-            background-color: yellow;
-            margin: 0px auto 0px;
-        }
-
-    </style>
+    <!-- jQuery Js -->
+    <script src="../assets/js/jquery-1.10.2.js"></script>
+    <!-- 自定义 Js -->
+    <script src="../assets/js/common.js"></script>
 </head>
 <body>
 <div id="wrapper">
@@ -41,12 +36,12 @@
             <span id="sideNav" class="iconfont icon-right-s packUpIcon"></span>
         </div>
         <ul class="nav navbar-top-links navbar-right">
-            <!--通知开始-->
+            <!--通知公告开始-->
             <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
                     <span class="iconfont icon-lingdang iconColor fontSize14"></span>
-                    <span class="messageUnread textEllipsis">12</span>
                     <span class="iconfont icon-jiantou iconColor fontSize8"></span>
+                    <span class="messageUnread textEllipsis">12</span>
                 </a>
                 <ul class="dropdown-menu dropdown-alerts topBar">
                     <li>
@@ -63,19 +58,19 @@
                             <span style="display:inline-block;width: 80%"
                                   class="textEllipsis">新闻事项新闻事项新闻事项新闻事项新闻事项新闻事项</span>
                             <span style="display:inline-block;width: 20%"
-                                  class="pull-right text-muted small">通知</span>
+                                  class="pull-right text-muted small">公告</span>
                         </div>
                     </li>
                     <li class="divider"></li>
                     <li>
-                        <a class="management_notice text-center newPage" href="#">
+                        <a class="management_messageNotice text-center newPage topPage" href="#">
                             <strong>查看更多</strong>
                             <i class="fa fa-angle-right"></i>
                         </a>
                     </li>
                 </ul>
             </li>
-            <!--通知结束-->
+            <!--通知公告结束-->
             <!--个人信息开始-->
             <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
@@ -84,21 +79,21 @@
                 </a>
                 <ul class="dropdown-menu dropdown-user topBar">
                     <li>
-                        <a href="#" class="management_personal newPage">
+                        <a href="#" class="management_personal newPage topPage">
                             <span class="paddingIco iconfont icon-wode"></span>
-                            个人信息
+                            个人信息维护
                         </a>
                     </li>
                     <li class="divider"></li>
                     <li>
-                        <a href="#" class="management_password newPage">
+                        <a href="#" class="management_passwordChange newPage topPage">
                             <span class="paddingIco iconfont icon-xiugaimima01"></span>
                             修改密码
                         </a>
                     </li>
                     <li class="divider"></li>
                     <li>
-                        <a href="#">
+                        <a href="#" class="management_bounced bounced" data-toggle="modal" data-target="#logOut">
                             <span class="paddingIco iconfont icon-tuichudenglu"></span>
                             退出登录
                         </a>
@@ -144,68 +139,6 @@
 
     </nav>
     <!--侧导航栏结束-->
-
-    <!--个人信息开始-->
-    <div id="six" class="page-wrapper displayNone">
-        <div class="header">
-            <h3 class="page-header">
-                个人信息
-            </h3>
-            <ol class="breadcrumb index">
-                <li><a href="#">首页</a></li>
-                <li class="active">个人信息</li>
-            </ol>
-        </div>
-        <div class="page-inner">
-            <!--个信息开始-->
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            个人信息
-                        </div>
-                        <div class="panel-body">
-                            <div class="row">
-                                <div class="col-md-3"></div>
-                                <div class="col-md-6">
-                                    <div class="panel-body">
-                                        <div class="table-responsive">
-                                            <table class="table">
-                                                <tbody>
-                                                <tr class="success">
-                                                    <td>姓名</td>
-                                                    <td>XXX</td>
-                                                </tr>
-                                                <tr class="info">
-                                                    <td>学号</td>
-                                                    <td>xxxxxxxxxxxx</td>
-                                                </tr>
-                                                <tr class="warning">
-                                                    <td>角色</td>
-                                                    <td>学生</td>
-                                                </tr>
-                                                <tr class="danger">
-                                                    <td>专业</td>
-                                                    <td>计算机</td>
-                                                </tr>
-                                                <tr class="success">
-                                                    <td>学年</td>
-                                                    <td>2018-2019</td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--个人信息结束-->
-        </div>
-    </div>
-    <!--个人信息结束-->
 
     <!--题目管理开始-->
     <div id="one" class="page-wrapper">
@@ -3455,113 +3388,12 @@
     <!--不通过选题结束-->
     <!--学生管理结束-->
 
-    <!--查看更多新闻开始-->
-    <div id="news" class="page-wrapper displayNone">
-        <div style="margin: 0px" class="page-inner">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            新闻浏览
-                            <div style="float: right">
-                                <span style="padding-right: 20px" class="clickColor cursorPointer">查看本校新闻</span>
-                                <span class="clickColor cursorPointer">查看本系新闻</span>
-                            </div>
-                        </div>
-                        <div class="panel-body">
-                            <div class="col-md-12" style="padding-bottom: 20px;border-bottom: 1px solid #ccc">
-                                <div class="col-md-12">
-                                    <h4 class="management_newsDetails newPage font_bold titlehover">本周前期热起来周末又降温</h4>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="col-md-3">
-                                        <img class="imgheight width100 hovered" src="../assets/img/news.jpg" alt="" onclick="showMaxImg(this)">
-                                    </div>
-                                    <div class="col-md-3">
-                                        <img class="imgheight width100 hovered" src="../assets/img/news.jpg" alt="" onclick="showMaxImg(this)">
-                                    </div>
-                                    <div class="col-md-3">
-                                        <img class="imgheight width100 hovered" src="../assets/img/news.jpg" alt="" onclick="showMaxImg(this)">
-                                    </div>
-                                    <div class="col-md-3">
-                                        <img class="imgheight width100 hovered" src="../assets/img/news.jpg" alt="" onclick="showMaxImg(this)">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-12" style="padding-bottom: 20px;border-bottom: 1px solid #ccc">
-                                <div class="col-md-12">
-                                    <h4 class="management_newsDetails newPage font_bold titlehover">本周前期热起来周末又降温</h4>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="col-md-3">
-                                        <img class="imgheight width100 hovered" src="../assets/img/cloud.jpg" alt="" onclick="showMaxImg(this)">
-                                    </div>
-                                </div>
-                            </div>
-                            <!--分页开始-->
-                            <div class="col-md-12" style="padding-top: 20px">
-                                <div class="m-style"></div>
-                            </div>
-                            <!--分页结束-->
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <!--新闻浏览-->
+    <div id="new" class="commmon news displayNone" style="height: 100%">
     </div>
-    <!--查看新闻详情开始-->
-    <div id="newsDetails" class="page-wrapper displayNone">
-        <div style="margin: 0px" class="page-inner">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            新闻浏览详情
-                        </div>
-                        <div class="panel-body">
-                            <div class="col-md-12" style="text-align: center">
-                                <h3 style="padding: 0 0 20px 0">新闻标题</h3>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="col-md-4 padding0">
-                                    <span style="color:#ababab">2019.03.25 15:39:38</span>
-                                </div>
-                                <div class="col-md-8">
-                                    <span style="float: right">来源：管理员</span>
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div style="padding: 20px;">
-                                    <p>新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容
-                                        新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容
-                                        新闻内容新闻内容新闻内容新闻内容新闻内容</p>
-                                    <p>新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容
-                                        新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容
-                                        新闻内容新闻内容新闻内容新闻内容新闻内容</p>
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <button style="float: right" type="button" class="management_news newPage btn btn-info">返
-                                    回
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--查看新闻详情结束-->
-    <!--图片弹出大图开始-->
-    <div class="modal fade bs-example-modal-lg text-center" id="imgModal" tabindex="-1" role="dialog" data-toggle="modal" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" style="display:inline-block;width:auto;">
-            <div class="modal-content">
-                <div id="imgshow"></div>
-            </div>
-        </div>
-    </div>
-    <!--图片弹出大图结束-->
-    <!--查看更多新闻结束-->
+    <script>
+        $("#new").load("../commonHtml/news.html");
+    </script>
 
 
     <!--历届优秀浏览开始-->
@@ -3802,475 +3634,49 @@
     <!--确认删除优秀毕业设计结束-->
     <!--历届优秀浏览结束-->
 
-    <!--查看更多通知开始-->
-    <div id="notice" class="page-wrapper displayNone">
-        <div class="header">
-            <h3 class="page-header">
-                消息
-            </h3>
-            <ol class="breadcrumb index">
-                <li><a href="#">首页</a></li>
-                <li class="active">消息</li>
-            </ol>
-        </div>
-        <div class="page-inner">
-            <!--通知公告开始-->
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            消息
-                            <div style="float: right">
-                                <span style="padding-right: 20px" class="clickColor cursorPointer">查看通知</span>
-                                <span class="clickColor cursorPointer">查看公告</span>
-                            </div>
-                        </div>
-                        <div class="panel-body">
-                            <div style="padding-bottom: 10px">
-                                <span style="padding-right: 20px" class="clickColor cursorPointer" data-toggle="modal"
-                                      data-target="#deleMessage">
-                                            删除
-                                        </span>
-                                <span style="padding-right: 20px" class="clickColor cursorPointer" data-toggle="modal"
-                                      data-target="#readMessage">
-                                            全部标为已读
-                                        </span>
-                                <span style="padding-right: 20px" class="clickColor cursorPointer" data-toggle="modal"
-                                      data-target="#unreadMessage">
-                                            标为未读
-                                        </span>
-                            </div>
-
-                            <div class="alert alert-success textEllipsis border_radius marginBottom0">
-                                <div class="col-md-1 textAlign">
-                                    <input id="message" onchange="selectAll('message','messageClass')" type="checkbox"
-                                           value="1"/>
-                                </div>
-                                <div class="col-md-5">
-                                    消息内容
-                                </div>
-                                <div class="col-md-3 textAlign">
-                                    接收时间
-                                </div>
-                                <div class="col-md-3 textAlign">
-                                    消息类型
-                                </div>
-                            </div>
-                            <div class="alert alert-danger textEllipsis border_radius marginBottom0">
-                                <div class="col-md-1 textEllipsis textAlign">
-                                    <input class="messageClass" type="checkbox" value="2"/>
-                                </div>
-                                <div class="col-md-5 textEllipsis">
-                                    <span class="iconfont icon-wodexiaoxi"></span>
-                                    <span class="clickColor cursorPointer" data-toggle="modal"
-                                          data-target="#messageDetails">
-                                            通知公告
-                                        </span>
-
-                                </div>
-                                <div class="col-md-3 textEllipsis textAlign">
-                                    2019-01-01 12:00:00
-                                </div>
-                                <div class="col-md-3 textAlign textEllipsis">
-                                    通知
-                                </div>
-                            </div>
-                            <div class="alert alert-danger textEllipsis border_radius marginBottom0">
-                                <div class="col-md-1 textEllipsis textAlign">
-                                    <input class="messageClass" type="checkbox" value="2"/>
-                                </div>
-                                <div class="col-md-5 textEllipsis">
-                                    <span class="iconfont icon-wodexiaoxi"></span>
-                                    <span class="clickColor cursorPointer" data-toggle="modal"
-                                          data-target="#messageDetails">
-                                    通知公告
-                                    </span>
-                                </div>
-                                <div class="col-md-3 textEllipsis textAlign">
-                                    2019-01-01 12:00:00
-                                </div>
-                                <div class="col-md-3 textAlign textEllipsis">
-                                    通知
-                                </div>
-                            </div>
-                            <div class="alert alert-warning textEllipsis border_radius marginBottom0">
-                                <div class="col-md-1 textEllipsis textAlign">
-                                    <input class="messageClass" type="checkbox" value="2"/>
-                                </div>
-                                <div class="col-md-5 textEllipsis">
-                                    <span class="iconfont icon-yiduxiaoxi"></span>
-                                    <span class="clickColor cursorPointer" data-toggle="modal"
-                                          data-target="#messageDetails">
-                                    选题时间选题时间选题时间选题时间选题时间选题时间选题时间选题时间选题时间选题时间选题时间
-                                    选题时间选题时间选题时间选题时间选题时间选题时间选题时间选题时间选题时间
-                                    </span>
-
-                                </div>
-                                <div class="col-md-3 textEllipsis textAlign">
-                                    2019-01-01 12:00:00
-                                </div>
-                                <div class="col-md-3 textAlign textEllipsis">
-                                    通知
-                                </div>
-                            </div>
-                            <div class="alert alert-warning textEllipsis border_radius marginBottom0">
-                                <div class="col-md-1 textEllipsis textAlign">
-                                    <input class="messageClass" type="checkbox" value="2"/>
-                                </div>
-                                <div class="col-md-5 textEllipsis">
-                                    <span class="iconfont icon-yiduxiaoxi"></span>
-                                    <span class="clickColor cursorPointer" data-toggle="modal"
-                                          data-target="#messageDetails">
-                                    选题时间选题时间选题时间选题时间选题时间选题时间选题时间选题时间选题时间选题时间选题时间
-                                    选题时间选题时间选题时间选题时间选题时间选题时间选题时间选题时间选题时间
-                                    </span>
-                                </div>
-                                <div class="col-md-3 textEllipsis textAlign">
-                                    2019-01-01 12:00:00
-                                </div>
-                                <div class="col-md-3 textAlign textEllipsis">
-                                    通知
-                                </div>
-                            </div>
-                            <!--分页开始-->
-                            <div style="margin-top: 10px" class="m-style"></div>
-                            <!--分页结束-->
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--通知公告结束-->
-        </div>
+    <!--通知公告-->
+    <div id="announcements" class="commmonTop messageNotice displayNone" style="height: 100%">
     </div>
-    <!--查看通知公告详情开始-->
-    <div class="modal fade" id="messageDetails" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                            aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">通知公告详细信息</h4>
-                </div>
-                <div class="modal-body">
-                    <div class="alert alert-success">
-                        <strong>
-                            <span>通知公告内容:</span>
-                        </strong>
-                        <span>
-                            廖永衡（0120080001）廖永衡（0120080001）廖永衡（0120080001）廖永衡（0120080001）廖永衡（0120080001）
-                            廖永衡（0120080001）廖永衡（0120080001）廖永衡（0120080001）廖永衡（0120080001）
-                        </span>
-                        <hr>
-                        <strong>
-                            <span>接收时间:</span>
-                        </strong>
-                        <span>2019-01-01 12:00:00</span>
-                        <hr>
-                        <strong>
-                            <span>通知公告类型:</span>
-                        </strong>
-                        <span>消息</span>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-sm btn-info" data-dismiss="modal">关闭</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--查看通知公告详情结束-->
-    <!--删除通知公告开始-->
-    <div class="modal fade" id="deleMessage" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                            aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">提示</h4>
-                </div>
-                <div class="modal-body">
-                    <div class="container-fluid">
-                        确定要删除通知公告？删除后不可恢复！
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-xs btn-white" data-dismiss="modal">取 消</button>
-                    <button type="button" class="btn btn-xs btn-danger">保 存</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--删除通知公告结束-->
-    <!--通知公告标为已读开始-->
-    <div class="modal fade" id="readMessage" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                            aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">提示</h4>
-                </div>
-                <div class="modal-body">
-                    <div class="container-fluid">
-                        确定要将通知公告全部标为已读？
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-xs btn-white" data-dismiss="modal">取 消</button>
-                    <button type="button" class="btn btn-xs btn-danger">保 存</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--通知公告标为已读结束-->
-    <!--通知公告标为未读开始-->
-    <div class="modal fade" id="unreadMessage" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                            aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">提示</h4>
-                </div>
-                <div class="modal-body">
-                    <div class="container-fluid">
-                        确定要将通知公告全部标为未读？
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-xs btn-white" data-dismiss="modal">取 消</button>
-                    <button type="button" class="btn btn-xs btn-danger">保 存</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--通知公告标为未读结束-->
-    <!--查看更多通知结束-->
+    <script>
+        $("#announcements").load("../commonHtml/announcements.html");
+    </script>
 
-    <!--个人信息开始-->
-    <div id="personal" class="page-wrapper displayNone">
-        <div class="header">
-            <h3 class="page-header">
-                个人信息维护
-            </h3>
-            <ol class="breadcrumb index">
-                <li><a href="#">首页</a></li>
-                <li class="active">个人信息维护</li>
-            </ol>
-        </div>
-        <div class="page-inner">
-            <!--个信息开始-->
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            个人信息维护
-                        </div>
-                        <div class="panel-body">
-                            <div class="row">
-                                <div class="col-md-3"></div>
-                                <div class="col-md-6">
-                                    <div class="panel-body">
-                                        <div class="row">
-                                            <div class="col-md-12" style="padding-bottom: 10px">
-                                                <div class="col-md-2"></div>
-                                                <div style="height: 41px;line-height: 41px"
-                                                     class="col-md-2 paddingRightt0">
-                                                    姓名：
-                                                </div>
-                                                <div class="col-md-6 paddingLeft0 paddingRightt0">
-                                                    <input placeholder="wangXxx" class="form-control whiteBgColor"
-                                                           type="text" readonly>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-12" style="padding-bottom: 10px">
-                                                <div class="col-md-2"></div>
-                                                <div style="height: 41px;line-height: 41px"
-                                                     class="col-md-2 paddingRightt0">
-                                                    职工号：
-                                                </div>
-                                                <div class="col-md-6 paddingLeft0 paddingRightt0">
-                                                    <input placeholder="3242324232" class="form-control whiteBgColor"
-                                                           type="text" readonly>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-12" style="padding-bottom: 10px">
-                                                <div class="col-md-2"></div>
-                                                <div style="height: 41px;line-height: 41px"
-                                                     class="col-md-2 paddingRightt0">
-                                                    院系：
-                                                </div>
-                                                <div class="col-md-6 paddingLeft0 paddingRightt0">
-                                                    <input placeholder="计算机与软件工程学院" class="form-control whiteBgColor"
-                                                           type="text" readonly>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-12" style="padding-bottom: 10px">
-                                                <div class="col-md-2"></div>
-                                                <div style="height: 41px;line-height: 41px"
-                                                     class="col-md-2 paddingRightt0">
-                                                    职称：
-                                                </div>
-                                                <div class="col-md-6 paddingLeft0 paddingRightt0">
-                                                    <input placeholder="教授" class="form-control whiteBgColor"
-                                                           type="text"
-                                                           readonly>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-12" style="padding-bottom: 10px">
-                                                <div class="col-md-2"></div>
-                                                <div style="height: 41px;line-height: 41px"
-                                                     class="col-md-2 paddingRightt0">
-                                                    性别：
-                                                </div>
-                                                <div class="col-md-6 paddingLeft0 paddingRightt0">
-                                                    <select class="form-control" style="margin: 0 5px">
-                                                        <option value="chooseSex">请选择</option>
-                                                        <option value="male">男</option>
-                                                        <option value="female">女</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-12" style="padding-bottom: 10px">
-                                                <div class="col-md-2"></div>
-                                                <div style="height: 41px;line-height: 41px"
-                                                     class="col-md-2 paddingRightt0">
-                                                    邮箱：
-                                                </div>
-                                                <div class="col-md-6 paddingLeft0 paddingRightt0">
-                                                    <input class="form-control" type="email">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-12" style="padding-bottom: 10px">
-                                                <div class="col-md-2"></div>
-                                                <div style="height: 41px;line-height: 41px"
-                                                     class="col-md-2 paddingRightt0">
-                                                    手机号：
-                                                </div>
-                                                <div class="col-md-6 paddingLeft0 paddingRightt0">
-                                                    <input class="form-control" type="tel">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-12" style="padding-bottom: 10px">
-                                                <div class="col-md-4"></div>
-                                                <div class="col-md-6 paddingLeft0 paddingRightt0">
-                                                    <button style="margin: 0 5px" type="button"
-                                                            class="btn btn-info">
-                                                        确认修改
-                                                    </button>
-                                                </div>
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--个人信息结束-->
-        </div>
+    <!--个人信息-->
+    <div id="personInfo" class="commmonTop personal displayNone" style="height: 100%">
     </div>
-    <!--个人信息结束-->
+    <script>
+        $("#personInfo").load("../commonHtml/personal.html");
+    </script>
 
-    <!--修改密码开始-->
-    <div id="password" class="page-wrapper displayNone">
-        <div class="header">
-            <h3 class="page-header">
-                修改密码
-            </h3>
-            <ol class="breadcrumb index">
-                <li><a href="#">首页</a></li>
-                <li class="active">修改密码</li>
-            </ol>
-        </div>
-        <div class="page-inner">
-            <!--修改密码开始-->
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            修改密码
-                        </div>
-                        <div class="panel-body">
-                            <div class="row">
-                                <div class="col-md-4">
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group has-success">
-                                        <label class="control-label" for="inputPassBefore">原密码</label>
-                                        <input type="password" class="form-control" id="inputPassBefore" autofocus
-                                               required>
-                                    </div>
-                                    <div class="form-group has-warning">
-                                        <label class="control-label" for="inputPassNew">新密码</label>
-                                        <input type="password" class="form-control" id="inputPassNew" required>
-                                    </div>
-                                    <div class="form-group has-error">
-                                        <label class="control-label" for="inputPassConfirm">确认新密码</label>
-                                        <input type="password" class="form-control" id="inputPassConfirm" required>
-                                    </div>
-                                    <div style="height: 40px"></div>
-                                    <div class="col-md-2">
-                                    </div>
-                                    <div class="col-md-3">
-                                        <button type="button" class="btn btn-sm btn-info">确认</button>
-                                    </div>
-                                    <div class="col-md-1">
-                                    </div>
-                                    <div class="col-md-3">
-                                        <button type="reset" class="btn btn-sm btn-danger">重置</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--修改密码结束-->
-            </div>
-        </div>
+    <!--退出登录-->
+    <div id="login" class="bounced displayNone">
     </div>
-    <!--修改密码结束-->
+    <script>
+        $("#login").load("../commonHtml/logOut.html");
+    </script>
+
+    <!--修改密码-->
+    <div id="changePassword" class="commmonTop passwordChange displayNone" style="height: 100%">
+    </div>
+    <script>
+        $("#changePassword").load("../commonHtml/changePassword.html");
+    </script>
 </div>
 
 </div>
-
-<!-- jQuery Js -->
-<script src="../assets/js/jquery-1.10.2.js"></script>
 <!--jquery.pagination.js-->
 <script src="../assets/js/jquery.pagination.js"></script>
 <!-- Bootstrap Js -->
 <script src="../assets/js/bootstrap.js"></script>
-<!-- 自定义 Js -->
-<script src="../assets/js/common.js"></script>
-<!-- 自定义 Js -->
+<script src="../assets/js/sideCloseOpen.js"></script>
+
+<!-- 自定义函数 Js -->
 <script src="../assets/js/commonFunction.js"></script>
 <!--圆形进度条-->
 <!-- easypiechart-data Js -->
 <script src="../assets/js/easypiechart-data.js"></script>
 <!-- easypiechart Js -->
 <script src="../assets/js/easypiechart.js"></script>
-<!--wangEditor富文本编辑器-->
-<script type="text/javascript" src="../assets/js/wangEditor.js"></script>
-<script type="text/javascript">
-    let E = window.wangEditor;
-    let editor = new E('#editor');
-    editor.customConfig.zIndex = 0;
-    //显示“上传图片”的tab
-    editor.customConfig.uploadImgShowBase64 = true;
-    // 关闭粘贴样式的过滤
-    editor.customConfig.pasteFilterStyle = false
-    // 忽略粘贴内容中的图片
-    editor.customConfig.pasteIgnoreImg = true
-    editor.create();
-    document.getElementById('btn2').addEventListener('click', function () {
-        // 读取 text
-        alert(editor.txt.html())
-    }, false)
-</script>
-
 <!--分页开始-->
 <script>
     $('.m-style').pagination({
@@ -4288,6 +3694,7 @@
 </script>
 <!--分页结束-->
 
+<!--添加、删除答辩教师-->
 <script>
     function chooseTeacer() {
         let $options = $("#plea_Teacher").children();
@@ -4317,7 +3724,6 @@
             }
         }
     }
-
     function deleteTeacer(id) {
         let teacher_id = document.getElementById('newRow' + id);
         $(teacher_id).remove();
@@ -4325,52 +3731,6 @@
         if ($(".newRow").size() < 7) {
             $(document.getElementById('newRow6')).remove();
         }
-        // console.log(id);
-    }
-</script>
-
-<script type="text/javascript">
-    function selectAll(id, className) {
-        let isCheck = $("#" + id).is(':checked');  //获得全选复选框是否选中
-        $("." + className).each(function () {
-            this.checked = isCheck;       //循环赋值给每个复选框是否选中
-        });
-    }
-</script>
-
-<script>
-    $(function () {
-        // 添加选项
-        $("#opbtn").click(function () {
-            if ($("#opts>li").size() < 6) {// 最多添加6个选项
-                $("#opts").append("<li><input /></li>");
-            } else {// 提示选项个数已经达到最大
-                $("#optips").html("选项个数已经达到最大,不能再添加!");
-                $("#optips").css({"color": "red"});
-            }
-
-        });
-
-        // 删除选项
-        $("#delbtn").click(function () {
-            if ($("#opts>li").size() <= 0) {
-                $("#optips").html("已经没有选项可以删除了!");
-                $("#optips").css({"color": "red"});
-            } else {
-                // 删除选项,每次删除最后一个
-                $("#opts>li").last().remove();
-            }
-        });
-    });
-
-</script>
-
-<script type="text/javascript">
-    function selectAll(id, className) {
-        let isCheck = $("#" + id).is(':checked');  //获得全选复选框是否选中
-        $("." + className).each(function () {
-            this.checked = isCheck;       //循环赋值给每个复选框是否选中
-        });
     }
 </script>
 

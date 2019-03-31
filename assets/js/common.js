@@ -53,6 +53,11 @@
             $('.'+addId).addClass('displayBlock');
         });
 
+        //弹框
+        $(".bounced").click(function () {
+            $('.bounced').addClass('displayBlock');
+        });
+
         // 返回首页
         $(".index li a").click(function () {
             console.log(111);
@@ -66,6 +71,19 @@
             $('#sideBar li a span').removeClass('iconColor');
             $('#sideBar li a span').addClass('iconColorWhite');
             $('#management_one span').addClass('iconColor');
+        });
+
+        // 通知公告
+        $(document).ready(function () {
+            let $tab_li = $('#affiche ul li');
+            $tab_li.click(function () {
+                console.log(111);
+                $(this).addClass('selected').siblings().removeClass('selected');
+                let index = $tab_li.index(this);
+                $('.type').addClass('hide');
+                $('#type' + index).removeClass('hide');
+
+            });
         });
 
     });

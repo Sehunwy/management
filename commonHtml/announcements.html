@@ -46,7 +46,7 @@
                         </div>
                         <div class="alert alert-success textEllipsis border_radius marginBottom0">
                             <div class="col-md-1 textAlign">
-                                <input id="sel_1" onchange="selectAll('sel_1')" type="checkbox" value="1"/>
+                                <input id="notices" onchange="selectAll('notices','checkboxNotice')" type="checkbox" value="1"/>
                             </div>
                             <div class="col-md-5">
                                 消息内容
@@ -60,7 +60,7 @@
                         </div>
                         <div class="alert alert-danger textEllipsis border_radius marginBottom0">
                             <div class="col-md-1 textEllipsis textAlign">
-                                <input type="checkbox" value="2"/>
+                                <input class="checkboxNotice" type="checkbox" value="2"/>
                             </div>
                             <div class="col-md-5 textEllipsis">
                                 <span class="iconfont icon-wodexiaoxi"></span>
@@ -79,7 +79,7 @@
                         </div>
                         <div class="alert alert-danger textEllipsis border_radius marginBottom0">
                             <div class="col-md-1 textEllipsis textAlign">
-                                <input type="checkbox" value="2"/>
+                                <input class="checkboxNotice" type="checkbox" value="2"/>
                             </div>
                             <div class="col-md-5 textEllipsis">
                                 <span class="iconfont icon-wodexiaoxi"></span>
@@ -97,7 +97,7 @@
                         </div>
                         <div class="alert alert-warning textEllipsis border_radius marginBottom0">
                             <div class="col-md-1 textEllipsis textAlign">
-                                <input type="checkbox" value="2"/>
+                                <input class="checkboxNotice" type="checkbox" value="2"/>
                             </div>
                             <div class="col-md-5 textEllipsis">
                                 <span class="iconfont icon-yiduxiaoxi"></span>
@@ -117,7 +117,7 @@
                         </div>
                         <div class="alert alert-warning textEllipsis border_radius marginBottom0">
                             <div class="col-md-1 textEllipsis textAlign">
-                                <input type="checkbox" value="2"/>
+                                <input class="checkboxNotice" type="checkbox" value="2"/>
                             </div>
                             <div class="col-md-5 textEllipsis">
                                 <span class="iconfont icon-yiduxiaoxi"></span>
@@ -251,6 +251,7 @@
 </body>
 
 <script src="../assets/js/common.js"></script>
+<script src="../assets/js/commonFunction.js"></script>
 <!--分页开始-->
 <script>
     $('.m-style').pagination({

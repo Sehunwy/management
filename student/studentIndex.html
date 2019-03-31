@@ -120,8 +120,8 @@
                 <ul class="dropdown-menu dropdown-alerts topBar">
                     <li>
                         <div style="width: 240px;padding-right: 20px;padding-left: 20px">
-                            <span style="display:inline-block;width: 80%"
-                                  class="textEllipsis">新闻事项新闻事项新闻事项新闻事项新闻事项新闻事项</span>
+                <span style="display:inline-block;width: 80%"
+                      class="textEllipsis">新闻事项新闻事项新闻事项新闻事项新闻事项新闻事项</span>
                             <span style="display:inline-block;width: 20%"
                                   class="pull-right text-muted small">通知</span>
                         </div>
@@ -129,8 +129,8 @@
                     <li class="divider"></li>
                     <li>
                         <div style="width: 240px;padding-right: 20px;padding-left: 20px">
-                            <span style="display:inline-block;width: 80%"
-                                  class="textEllipsis">新闻事项新闻事项新闻事项新闻事项新闻事项新闻事项</span>
+                <span style="display:inline-block;width: 80%"
+                      class="textEllipsis">新闻事项新闻事项新闻事项新闻事项新闻事项新闻事项</span>
                             <span style="display:inline-block;width: 20%"
                                   class="pull-right text-muted small">通知</span>
                         </div>
@@ -143,6 +143,8 @@
                         </a>
                     </li>
                 </ul>
+
+
             </li>
             <!--通知公告结束-->
             <!--个人信息开始-->
@@ -160,14 +162,14 @@
                     </li>
                     <li class="divider"></li>
                     <li>
-                        <a href="#" class="management_eight newPage topPage">
+                        <a href="#" class="management_passwordChange newPage topPage">
                             <span class="paddingIco iconfont icon-xiugaimima01"></span>
                             修改密码
                         </a>
                     </li>
                     <li class="divider"></li>
                     <li>
-                        <a href="#">
+                        <a href="#" class="management_bounced bounced" data-toggle="modal" data-target="#logOut">
                             <span class="paddingIco iconfont icon-tuichudenglu"></span>
                             退出登录
                         </a>
@@ -353,64 +355,8 @@
     </div>
     <!--个人信息结束-->
 
-    <!--修改密码开始-->
-    <div id="eight" class="page-wrapper displayNone">
-        <div class="header">
-            <h3 class="page-header">
-                修改密码
-            </h3>
-            <ol class="breadcrumb index">
-                <li><a href="#">首页</a></li>
-                <li class="active">修改密码</li>
-            </ol>
-        </div>
-        <div class="page-inner">
-            <!--修改密码开始-->
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            修改密码
-                        </div>
-                        <div class="panel-body">
-                            <div class="row">
-                                <div class="col-md-4">
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group has-success">
-                                        <label class="control-label" for="inputPassBefore">原密码</label>
-                                        <input type="password" class="form-control" id="inputPassBefore" autofocus
-                                               required>
-                                    </div>
-                                    <div class="form-group has-warning">
-                                        <label class="control-label" for="inputPassNew">新密码</label>
-                                        <input type="password" class="form-control" id="inputPassNew" required>
-                                    </div>
-                                    <div class="form-group has-error">
-                                        <label class="control-label" for="inputPassConfirm">确认新密码</label>
-                                        <input type="password" class="form-control" id="inputPassConfirm" required>
-                                    </div>
-                                    <div style="height: 40px"></div>
-                                    <div class="col-md-2">
-                                    </div>
-                                    <div class="col-md-3">
-                                        <button type="button" class="btn btn-sm btn-info">确认</button>
-                                    </div>
-                                    <div class="col-md-1">
-                                    </div>
-                                    <div class="col-md-3">
-                                        <button type="reset" class="btn btn-sm btn-danger">重置</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--修改密码结束-->
-            </div>
-        </div>
-    </div>
-    <!--修改密码结束-->
+
+
 
     <!--首页开始-->
     <div id="one" class="page-wrapper">
@@ -2269,7 +2215,6 @@
     <!--学生答辩结束-->
 
 
-
     <!--查看更多任务进度开始-->
     <div id="five" class="page-wrapper displayNone">
         <div class="header">
@@ -2360,6 +2305,20 @@
     </div>
     <!--查看更多任务进度-->
 
+    <!--退出登录-->
+    <div id="login" class="bounced displayNone">
+    </div>
+    <script>
+        $("#login").load("../commonHtml/logOut.html");
+    </script>
+
+    <!--修改密码-->
+    <div id="changePassword" class="commmonTop passwordChange displayNone" style="height: 100%">
+    </div>
+    <script>
+        $("#changePassword").load("../commonHtml/changePassword.html");
+    </script>
+
     <!--通知公告-->
     <div id="announcements" class="commmonTop messageNotice displayNone" style="height: 100%">
     </div>
@@ -2388,9 +2347,6 @@
 
 </body>
 
-
-<!-- jQuery Js -->
-<!--<script src="../assets/js/jquery-1.10.2.js"></script>-->
 <!--jquery.pagination.js-->
 <script src="../assets/js/jquery.pagination.js"></script>
 <!-- Bootstrap Js -->
@@ -2423,23 +2379,6 @@
 </script>
 <!--分页结束-->
 
-
-<script type="text/javascript">
-    function selectAll(id) {
-        console.log(id);
-        let isCheck = $("#" + id).is(':checked');  //获得全选复选框是否选中
-        $("input[type='checkbox']").each(function () {
-            this.checked = isCheck;       //循环赋值给每个复选框是否选中
-        });
-    }
-
-    // function selectAll() {
-    //     let isCheck = $("#sel_1").is(':checked');  //获得全选复选框是否选中
-    //     $("input[type='checkbox']").each(function () {
-    //         this.checked = isCheck;       //循环赋值给每个复选框是否选中
-    //     });
-    // }
-</script>
 
 <script>
     function submitNone(id1, id2) {

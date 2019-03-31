@@ -24,3 +24,11 @@ function showMaxImg(obj) {
     $("#imgModal").find("#imgshow").html("<img src='" + src + "' class='carousel-inner img-responsive img-rounded' data-dismiss='modal'>");
     $("#imgModal").modal('show');
 }
+
+//全选
+function selectAll(id, className) {
+    let isCheck = $("#" + id).is(':checked');  //获得全选复选框是否选中
+    $("." + className).each(function () {
+        this.checked = isCheck;       //循环赋值给每个复选框是否选中
+    });
+}

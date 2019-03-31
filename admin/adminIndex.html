@@ -15,6 +15,10 @@
     <link href="../assets/css/custom-styles.css" rel="stylesheet"/>
     <!-- 自定义管理员 Styles-->
     <link href="../assets/css/adminIndex.css" rel="stylesheet"/>
+    <!-- jQuery Js -->
+    <script src="../assets/js/jquery-1.10.2.js"></script>
+    <!-- 自定义 Js -->
+    <script src="../assets/js/common.js"></script>
 </head>
 <body>
 <div id="wrapper">
@@ -42,21 +46,21 @@
                 </a>
                 <ul class="dropdown-menu dropdown-user topBar">
                     <li>
-                        <a href="#" class="management_personal newPage">
+                        <a href="#" class="management_personal newPage topPage">
                             <span class="paddingIco iconfont icon-wode"></span>
                             个人信息维护
                         </a>
                     </li>
                     <li class="divider"></li>
                     <li>
-                        <a href="#" class="management_password newPage">
+                        <a href="#" class="management_passwordChange newPage topPage">
                             <span class="paddingIco iconfont icon-xiugaimima01"></span>
                             修改密码
                         </a>
                     </li>
                     <li class="divider"></li>
                     <li>
-                        <a href="#">
+                        <a href="#" class="management_bounced bounced" data-toggle="modal" data-target="#logOut">
                             <span class="paddingIco iconfont icon-tuichudenglu"></span>
                             退出登录
                         </a>
@@ -2129,196 +2133,44 @@
     </div>
     <!--系统管理结束-->
 
-    <!--个人信息开始-->
-    <div id="personal" class="page-wrapper displayNone">
-        <div class="header">
-            <h3 class="page-header">
-                个人信息维护
-            </h3>
-            <ol class="breadcrumb index">
-                <li><a href="#">首页</a></li>
-                <li class="active">个人信息维护</li>
-            </ol>
-        </div>
-        <div class="page-inner">
-            <!--个信息开始-->
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            个人信息维护
-                        </div>
-                        <div class="panel-body">
-                            <div class="row">
-                                <div class="col-md-3"></div>
-                                <div class="col-md-6">
-                                    <div class="panel-body">
-                                        <div class="row">
-                                            <div class="col-md-12" style="padding-bottom: 10px">
-                                                <div class="col-md-2"></div>
-                                                <div style="height: 41px;line-height: 41px"
-                                                     class="col-md-2 paddingRightt0">
-                                                    姓名：
-                                                </div>
-                                                <div class="col-md-6 paddingLeft0 paddingRightt0">
-                                                    <input placeholder="wangXxx" class="form-control whiteBgColor"
-                                                           type="text" readonly>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-12" style="padding-bottom: 10px">
-                                                <div class="col-md-2"></div>
-                                                <div style="height: 41px;line-height: 41px"
-                                                     class="col-md-2 paddingRightt0">
-                                                    职工号：
-                                                </div>
-                                                <div class="col-md-6 paddingLeft0 paddingRightt0">
-                                                    <input placeholder="3242324232" class="form-control whiteBgColor"
-                                                           type="text" readonly>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-12" style="padding-bottom: 10px">
-                                                <div class="col-md-2"></div>
-                                                <div style="height: 41px;line-height: 41px"
-                                                     class="col-md-2 paddingRightt0">
-                                                    职称：
-                                                </div>
-                                                <div class="col-md-6 paddingLeft0 paddingRightt0">
-                                                    <input placeholder="教授" class="form-control whiteBgColor"
-                                                           type="text"
-                                                           readonly>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-12" style="padding-bottom: 10px">
-                                                <div class="col-md-2"></div>
-                                                <div style="height: 41px;line-height: 41px"
-                                                     class="col-md-2 paddingRightt0">
-                                                    性别：
-                                                </div>
-                                                <div class="col-md-6 paddingLeft0 paddingRightt0">
-                                                    <select class="form-control" style="margin: 0 5px">
-                                                        <option value="chooseSex">请选择</option>
-                                                        <option value="male">男</option>
-                                                        <option value="female">女</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-12" style="padding-bottom: 10px">
-                                                <div class="col-md-2"></div>
-                                                <div style="height: 41px;line-height: 41px"
-                                                     class="col-md-2 paddingRightt0">
-                                                    邮箱：
-                                                </div>
-                                                <div class="col-md-6 paddingLeft0 paddingRightt0">
-                                                    <input class="form-control" type="email">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-12" style="padding-bottom: 10px">
-                                                <div class="col-md-2"></div>
-                                                <div style="height: 41px;line-height: 41px"
-                                                     class="col-md-2 paddingRightt0">
-                                                    手机号：
-                                                </div>
-                                                <div class="col-md-6 paddingLeft0 paddingRightt0">
-                                                    <input class="form-control" type="tel">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-12" style="padding-bottom: 10px">
-                                                <div class="col-md-4"></div>
-                                                <div class="col-md-6 paddingLeft0 paddingRightt0">
-                                                    <button style="margin: 0 5px" type="button"
-                                                            class="btn btn-sm btn-info">
-                                                        确认修改
-                                                    </button>
-                                                </div>
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--个人信息结束-->
-        </div>
+    <!--个人信息-->
+    <div id="personInfo" class="commmonTop personal displayNone" style="height: 100%">
     </div>
-    <!--个人信息结束-->
+    <script>
+        $("#personInfo").load("../commonHtml/personal.html");
+    </script>
 
-    <!--修改密码开始-->
-    <div id="password" class="page-wrapper displayNone">
-        <div class="header">
-            <h3 class="page-header">
-                修改密码
-            </h3>
-            <ol class="breadcrumb index">
-                <li><a href="#">首页</a></li>
-                <li class="active">修改密码</li>
-            </ol>
-        </div>
-        <div class="page-inner">
-            <!--修改密码开始-->
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            修改密码
-                        </div>
-                        <div class="panel-body">
-                            <div class="row">
-                                <div class="col-md-4">
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group has-success">
-                                        <label class="control-label" for="inputPassBefore">原密码</label>
-                                        <input type="password" class="form-control" id="inputPassBefore" autofocus
-                                               required>
-                                    </div>
-                                    <div class="form-group has-warning">
-                                        <label class="control-label" for="inputPassNew">新密码</label>
-                                        <input type="password" class="form-control" id="inputPassNew" required>
-                                    </div>
-                                    <div class="form-group has-error">
-                                        <label class="control-label" for="inputPassConfirm">确认新密码</label>
-                                        <input type="password" class="form-control" id="inputPassConfirm" required>
-                                    </div>
-                                    <div style="height: 40px"></div>
-                                    <div class="col-md-2">
-                                    </div>
-                                    <div class="col-md-3">
-                                        <button type="button" class="btn btn-sm btn-info">确认</button>
-                                    </div>
-                                    <div class="col-md-1">
-                                    </div>
-                                    <div class="col-md-3">
-                                        <button type="reset" class="btn btn-sm btn-danger">重置</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--修改密码结束-->
-            </div>
-        </div>
+    <!--退出登录-->
+    <div id="login" class="bounced displayNone">
     </div>
-    <!--修改密码结束-->
+    <script>
+        $("#login").load("../commonHtml/logOut.html");
+    </script>
+
+    <!--修改密码-->
+    <div id="changePassword" class="commmonTop passwordChange displayNone" style="height: 100%">
+    </div>
+    <script>
+        $("#changePassword").load("../commonHtml/changePassword.html");
+    </script>
 
 </div>
 
 </div>
 
-<!-- jQuery Js -->
-<script src="../assets/js/jquery-1.10.2.js"></script>
 <!--jquery.pagination.js-->
 <script src="../assets/js/jquery.pagination.js"></script>
 <!-- Bootstrap Js -->
 <script src="../assets/js/bootstrap.js"></script>
-<!-- 自定义 Js -->
-<script src="../assets/js/common.js"></script>
+<script src="../assets/js/sideCloseOpen.js"></script>
+
 <!-- 自定义函数 Js -->
 <script src="../assets/js/commonFunction.js"></script>
+<!--圆形进度条-->
+<!-- easypiechart-data Js -->
+<script src="../assets/js/easypiechart-data.js"></script>
+<!-- easypiechart Js -->
+<script src="../assets/js/easypiechart.js"></script>
 <!--wangEditor富文本编辑器-->
 <script type="text/javascript" src="../assets/js/wangEditor.js"></script>
 <script type="text/javascript">
@@ -2354,15 +2206,6 @@
     });
 </script>
 <!--分页结束-->
-
-<script type="text/javascript">
-    function selectAll(id, className) {
-        let isCheck = $("#" + id).is(':checked');  //获得全选复选框是否选中
-        $("." + className).each(function () {
-            this.checked = isCheck;       //循环赋值给每个复选框是否选中
-        });
-    }
-</script>
 
 </body>
 </html>
