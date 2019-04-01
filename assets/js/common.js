@@ -10,7 +10,6 @@
             $('.commmonTop').addClass('displayNone');
             $('.commmonTop').removeClass('displayBlock');
             let id = $(this).attr("id");
-            console.log(id+' span');
             let len = id.length;
             let addId = id.slice(11,len);
             $(this).addClass('active-menu');
@@ -18,9 +17,7 @@
             $('#sideBar li a span').removeClass('iconColor');
             $('#sideBar li a span').addClass('iconColorWhite');
             $('#'+id+' span').addClass('iconColor');
-
             $('.'+addId).addClass('displayBlock');
-            console.log("addId "+addId);
         });
 
         $(".topPage").click(function () {
@@ -29,25 +26,18 @@
             $('.commmon').addClass('displayNone');
             $('.commmon').removeClass('displayBlock');
             let className = $(this).attr("class");
-            // console.log(id.trim().split(" "))
             let management = className.trim().split(" ")[0];
             let len = management.length;
-            // console.log(id.slice(11,len));
             let addId = management.slice(11,len);
-            // $('#'+addId).addClass('displayBlock');
             $('.'+addId).addClass('displayBlock');
         });
 
         $(".newPage").click(function () {
-            console.log("1111");
             $('.page-wrapper').addClass('displayNone');
             $('.page-wrapper').removeClass('displayBlock');
-            // let id = $(this).attr("id");
             let className = $(this).attr("class");
-            // console.log(id.trim().split(" "))
             let management = className.trim().split(" ")[0];
             let len = management.length;
-            // console.log(id.slice(11,len));
             let addId = management.slice(11,len);
             $('#'+addId).addClass('displayBlock');
             $('.'+addId).addClass('displayBlock');
@@ -60,7 +50,6 @@
 
         // 返回首页
         $(".index li a").click(function () {
-            console.log(111);
             $('#sideBar li a').removeClass('active-menu');
             $('.page-wrapper').addClass('displayNone');
             $('.page-wrapper').removeClass('displayBlock');
@@ -77,17 +66,23 @@
         $(document).ready(function () {
             let $tab_li = $('#affiche ul li');
             $tab_li.click(function () {
-                console.log(111);
                 $(this).addClass('selected').siblings().removeClass('selected');
                 let index = $tab_li.index(this);
                 $('.type').addClass('hide');
                 $('#type' + index).removeClass('hide');
-
             });
         });
-
     });
-// })
+
+    $(document).ready(function () {
+        let $tab_li = $('#content>ul>li');
+        $tab_li.click(function () {
+            $(this).addClass('selected').siblings().removeClass('selected');
+            let index = $tab_li.index(this);
+            $('.type').addClass('hide');
+            $('#type' + index).removeClass('hide');
+        });
+    });
 }(jQuery));
 
 

@@ -233,6 +233,68 @@ p {
 /*初始化样式结束*/
 
 /*公用样式开始*/
+.horizontal {
+    height: 1px;
+    width: 100%;
+    background-color: #ccc;
+}
+
+.tab_menu li {
+    display: inline-block;
+    width: 90px;
+    text-align: center;
+    cursor: pointer;
+    height: 40px;
+    line-height: 40px;
+}
+
+.hide {
+    display: none;
+}
+
+.selected {
+    border-bottom: 3px solid #22B3C8;
+}
+
+.fontsize14 {
+    font-size: 14px;
+}
+
+.height10 {
+    height: 10px;
+}
+
+.liStyle {
+    height: 40px;
+    line-height: 40px;
+    padding: 0 5px;
+}
+
+.liBorderBottom {
+    border-bottom: 1px solid #ccc;
+}
+
+.aStyle {
+    color: #333;
+}
+
+.aStyle:hover {
+    color: #225081;
+}
+
+.noticeContent {
+    position: absolute;
+    background-color: #ffffff;
+    width: 200px;
+    display: none;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+    padding: 0 5px;
+    right: 0px;
+}
+
+.noticeIcon:hover .noticeContent {
+    display: block !important;
+}
 
 .lineHeight {
     line-height: 42px;

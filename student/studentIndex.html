@@ -50,134 +50,147 @@
                 </span>
             </li>
             <!--任务进度开始-->
-            <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+            <li class="noticeIcon">
+                <a href="#">
                     <span class="iconfont icon-jindu iconColor fontSize14"></span>
                     <span class="iconfont icon-jiantou iconColor fontSize8"></span>
                 </a>
-                <ul class="dropdown-menu dropdown-tasks topBar">
-                    <li>
-                        <a href="#">
+                <div class="noticeContent">
+                    <ul>
+                        <li>
                             <div>
-                                <p>
+                                <p class="fontsize14 padding0">
                                     <strong>开题报告</strong>
                                     <span class="pull-right text-muted">60%</span>
                                 </p>
-                                <div class="progress progress-striped active">
-                                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60"
+                                <div class="progress progress-striped active height10">
+                                    <div class="progress-bar progress-bar-success" role="progressbar"
+                                         aria-valuenow="60"
                                          aria-valuemin="0" aria-valuemax="100" style="width: 60%"></div>
                                 </div>
                             </div>
-                        </a>
-                    </li>
-                    <!--分割线-->
-                    <li class="divider"></li>
-                    <li>
-                        <a href="#">
+                        </li>
+                        <li>
                             <div>
-                                <p>
+                                <p class="fontsize14 padding0">
                                     <strong>中期检查</strong>
                                     <span class="pull-right text-muted">28%</span>
                                 </p>
-                                <div class="progress progress-striped active">
-                                    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="28"
+                                <div class="progress progress-striped active height10">
+                                    <div class="progress-bar progress-bar-info" role="progressbar"
+                                         aria-valuenow="28"
                                          aria-valuemin="0" aria-valuemax="100" style="width: 28%"></div>
                                 </div>
                             </div>
-                        </a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a href="#">
+                        </li>
+                        <li>
                             <div>
-                                <p>
+                                <p class="fontsize14 padding0">
                                     <strong>指导记录</strong>
                                     <span class="pull-right text-muted">60%</span>
                                 </p>
-                                <div class="progress progress-striped active">
-                                    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60"
+                                <div class="progress progress-striped active height10">
+                                    <div class="progress-bar progress-bar-warning" role="progressbar"
+                                         aria-valuenow="60"
                                          aria-valuemin="0" aria-valuemax="100" style="width: 60%"></div>
                                 </div>
                             </div>
-                        </a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a class="management_five text-center newPage topPage" href="#">
-                            <strong>查看更多任务进度</strong>
-                        </a>
-                    </li>
-                </ul>
+                        </li>
+                        <li style="text-align: center;padding-bottom: 10px">
+                            <a class="management_five text-center newPage topPage" href="#">
+                                <strong>查看更多任务进度</strong>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
             </li>
             <!--任务进度结束-->
             <!--通知公告开始-->
-            <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+            <li class="noticeIcon">
+                <a href="#">
                     <span class="iconfont icon-lingdang iconColor fontSize14"></span>
                     <span class="messageUnread textEllipsis">12</span>
                     <span class="iconfont icon-jiantou iconColor fontSize8"></span>
                 </a>
-                <ul class="dropdown-menu dropdown-alerts topBar">
-                    <li>
-                        <div style="width: 240px;padding-right: 20px;padding-left: 20px">
-                <span style="display:inline-block;width: 80%"
-                      class="textEllipsis">新闻事项新闻事项新闻事项新闻事项新闻事项新闻事项</span>
-                            <span style="display:inline-block;width: 20%"
-                                  class="pull-right text-muted small">通知</span>
-                        </div>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <div style="width: 240px;padding-right: 20px;padding-left: 20px">
-                <span style="display:inline-block;width: 80%"
-                      class="textEllipsis">新闻事项新闻事项新闻事项新闻事项新闻事项新闻事项</span>
-                            <span style="display:inline-block;width: 20%"
-                                  class="pull-right text-muted small">通知</span>
-                        </div>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a class="management_messageNotice text-center newPage topPage" href="#">
-                            <strong>查看更多</strong>
-                            <i class="fa fa-angle-right"></i>
-                        </a>
-                    </li>
-                </ul>
-
-
+                <div id="content" class="noticeContent" style="width: 400px">
+                    <ul class="tab_menu">
+                        <li style="width: 190px" class="selected">公告</li>
+                        <li style="width: 190px">通知</li>
+                    </ul>
+                    <div class="horizontal"></div>
+                    <div id="type0" class="type">
+                        <ul>
+                            <li class="liStyle liBorderBottom textEllipsis">
+                                公告公告公告公告公告
+                            </li>
+                            <li class="liStyle liBorderBottom textEllipsis">
+                                公告公告公告公告公告
+                            </li>
+                            <li class="liStyle liBorderBottom textEllipsis">
+                                公告公告公告公告公告公告公告公告公告公告
+                            </li>
+                            <li class="liStyle liBorderBottom textEllipsis  text-center">
+                                <a class="management_messageNotice text-center newPage topPage" href="#">
+                                    <strong>查看更多公告</strong>
+                                    <i class="fa fa-angle-right"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div id="type1" class="type hide">
+                        <ul>
+                            <li class="liStyle liBorderBottom textEllipsis">
+                                通知通知通知通知通知通知通知
+                            </li>
+                            <li class="liStyle liBorderBottom textEllipsis">
+                                通知通知通知通知通知通知通知通知通知
+                            </li>
+                            <li class="liStyle liBorderBottom textEllipsis">
+                                公通知通知通知通知通知通知通知通知通知通知
+                            </li>
+                            <li class="liStyle liBorderBottom textEllipsis  text-center">
+                                <a class="management_messageNotice text-center newPage topPage" href="#">
+                                    <strong>查看更多通知</strong>
+                                    <i class="fa fa-angle-right"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </li>
             <!--通知公告结束-->
             <!--个人信息开始-->
-            <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+            <li class="noticeIcon">
+                <a href="#">
                     <span class="iconfont icon-wode iconColor fontSize14"></span>
                     <span class="iconfont icon-jiantou iconColor fontSize8"></span>
                 </a>
-                <ul class="dropdown-menu dropdown-user topBar">
-                    <li>
-                        <a href="#" class="management_seven newPage topPage">
-                            <span class="paddingIco iconfont icon-wode"></span>
-                            个人信息维护
-                        </a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a href="#" class="management_passwordChange newPage topPage">
-                            <span class="paddingIco iconfont icon-xiugaimima01"></span>
-                            修改密码
-                        </a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a href="#" class="management_bounced bounced" data-toggle="modal" data-target="#logOut">
-                            <span class="paddingIco iconfont icon-tuichudenglu"></span>
-                            退出登录
-                        </a>
-                    </li>
-                </ul>
+                <div class="noticeContent">
+                    <ul>
+                        <li class="liStyle liBorderBottom">
+                            <a href="#" class="management_seven newPage topPage aStyle">
+                                <span class="paddingIco iconfont icon-wode"></span>
+                                个人信息维护
+                            </a>
+                        </li>
+                        <li class="liStyle liBorderBottom">
+                            <a href="#" class="management_passwordChange newPage topPage aStyle">
+                                <span class="paddingIco iconfont icon-xiugaimima01"></span>
+                                修改密码
+                            </a>
+                        </li>
+                        <li class="liStyle">
+                            <a href="#" class="management_bounced bounced aStyle" data-toggle="modal"
+                               data-target="#logOut">
+                                <span class="paddingIco iconfont icon-tuichudenglu"></span>
+                                退出登录
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </li>
             <!--个人信息结束-->
-
         </ul>
     </nav>
     <!--顶部导航结束-->
@@ -354,8 +367,6 @@
         </div>
     </div>
     <!--个人信息结束-->
-
-
 
 
     <!--首页开始-->
