@@ -24,36 +24,37 @@
                 <div class="col-md-1">
                 </div>
                 <div class="col-md-10">
-                    <div class="form-group has-success">
+                    <div class="form-group has-info" id="usernameParent">
                         <span class="iconfont icon-wode iconFont"></span>
                         <input id="username" type="text" class="form-control" placeholder="请输入学号（工号）" autofocus
-                               required>
+                               data-toggle="popover">
                     </div>
                 </div>
             </div>
             <div class="col-md-12">
                 <div class="col-md-1"></div>
                 <div class="col-md-10">
-                    <div class="form-group has-success">
+                    <div class="form-group has-info" id="passwordParent">
                         <span class="iconfont icon-mima iconFont"></span>
-                        <input id="password" type="password" class="form-control" placeholder="请输入密码" required>
+                        <input id="password" type="password" class="form-control" placeholder="请输入密码"
+                               data-toggle="popover">
                     </div>
                 </div>
             </div>
             <div class="col-md-12">
                 <div class="col-md-1"></div>
                 <div class="col-md-5">
-                    <div class="form-group has-success">
+                    <div class="form-group has-info" id="inputCodeParent">
                         <span class="iconfont icon-ERP_yanzhengma iconFont"></span>
-                        <input id="inputCode" type="text" class="form-control" placeholder="请输入验证码" required>
+                        <input id="inputCode" type="text" class="form-control" placeholder="请输入验证码"
+                               data-toggle="popover">
                     </div>
                 </div>
                 <div class="col-md-5">
-                    <div class="form-group has-success">
+                    <div class="form-group has-info">
                         <img style="cursor: pointer" id="code"
                              src="http://www.yuanbw.cn:20086/gpms/code/getVerifyCode?width=100&height=40"
                              onclick="javascript:document.getElementById('code').src='http://www.yuanbw.cn:20086/gpms/code/getVerifyCode?width=100&height=40&'+Math.random()">
-                        <!--<canvas id="identify" style="cursor: pointer"></canvas>-->
                     </div>
                 </div>
             </div>
@@ -84,29 +85,28 @@
             <div class="col-md-12">
                 <div class="col-md-1"></div>
                 <div class="col-md-10">
-                    <div class="form-group has-success">
+                    <div class="form-group has-info" id="telNumberParent">
                         <span class="iconfont icon-gerenxinxiyedianhuahaoma iconFont"></span>
-                        <input type="text" class="form-control" placeholder="请输入电话号码" autofocus required>
+                        <input id="telNumber" type="text" class="form-control" placeholder="请输入电话号码" autofocus>
                     </div>
                 </div>
             </div>
             <div class="col-md-12">
                 <div class="col-md-1"></div>
                 <div class="col-md-5">
-                    <div class="form-group has-success">
+                    <div class="form-group has-info" id="telCodeParent">
                         <span class="iconfont icon-ERP_yanzhengma iconFont"></span>
-                        <input type="text" class="form-control" placeholder="请输入验证码" required>
+                        <input id="telCode" type="text" class="form-control" placeholder="请输入验证码">
                     </div>
                 </div>
                 <div class="col-md-5">
-
-                    <button id="btn" type="button" class="btn btn-info">获取验证码</button>
+                    <button id="btn" type="button" class="btn btn-info" onclick="getPhoneCode()">获取验证码</button>
                 </div>
             </div>
             <div style="padding-bottom: 20px" class="col-md-12">
                 <div class="col-md-1"></div>
                 <div class="col-md-3">
-                    <button type="button" class="btn btn-sm btn-info">登录</button>
+                    <button type="button" class="btn btn-sm btn-info" onclick="phoneLogin()">登录</button>
                 </div>
             </div>
         </div>
@@ -116,6 +116,111 @@
 
 <!-- jQuery Js -->
 <script src="../assets/js/jquery-1.10.2.js"></script>
+<!-- Bootstrap Js -->
+<script src="../assets/js/bootstrap.js"></script>
+<!-- 自定义函数 Js -->
+<script src="../assets/js/commonFunction.js"></script>
+
+<script>
+
+    function classChange(id, oldClass, newClass) {
+        $('#' + id).addClass(newClass);
+        $('#' + id).removeClass(oldClass);
+    }
+
+    function uernamePopover() {
+        let username = document.getElementById('username');
+        let usernameValue = document.getElementById('username').value;
+        if (usernameValue == '') {
+            username.setAttribute('data-content', "学号（工号）不能为空");
+            classChange('usernameParent', 'has-info', 'has-error');
+        } else {
+            username.setAttribute('data-content', "");
+            classChange('usernameParent', 'has-error', 'has-info');
+        }
+    }
+
+    function passwordPopover() {
+        let password = document.getElementById('password');
+        let passwordValue = document.getElementById('password').value;
+        let length = passwordValue.length;
+        if (passwordValue == '') {
+            password.setAttribute('data-content', "密码不能为空");
+            classChange('passwordParent', 'has-info', 'has-error');
+        } else if (length < 6 || length > 16) {
+            console.log(passwordValue.length + "   " + passwordValue);
+            password.setAttribute('data-content', "密码长度为6-16位");
+            classChange('passwordParent', 'has-info', 'has-error');
+        } else {
+            password.setAttribute('data-content', "");
+            classChange('passwordParent', 'has-error', 'has-info');
+        }
+    }
+
+    function inputCodePopover(code, codePrent) {
+        let inputCode = document.getElementById(code);
+        let inputCodeValue = document.getElementById(code).value;
+        if (inputCodeValue == '') {
+            inputCode.setAttribute('data-content', "验证码不能为空");
+            classChange(codePrent, 'has-info', 'has-error');
+        } else {
+            inputCode.setAttribute('data-content', "");
+            classChange(codePrent, 'has-error', 'has-info');
+        }
+    }
+
+    function telNumberPopover(telNumber, telNumberParent) {
+        let tel = document.getElementById(telNumber);
+        let telValue = document.getElementById(telNumber).value;
+        if (telValue == '') {
+            tel.setAttribute('data-content', "手机号不能为空");
+            classChange(telNumberParent, 'has-info', 'has-error');
+        } else if (!(/^1[34578]\d{9}$/.test(telValue))) {
+            tel.setAttribute('data-content', "手机号码有误，请重填");
+            classChange(telNumberParent, 'has-info', 'has-error');
+        } else {
+            tel.setAttribute('data-content', "");
+            classChange(telNumberParent, 'has-error', 'has-info');
+        }
+    }
+
+    function popover(id) {
+        $('#' + id).popover({
+            trigger: 'manual'
+        })
+            .on('focus', function () {
+// 获得焦点时隐藏
+                classChange(id + "Parent", 'has-error', 'has-info');
+                $(this).popover('hide');
+            })
+            .on('blur', function () {
+                if (id == "username") {
+                    uernamePopover();
+                } else if (id == "password") {
+                    passwordPopover();
+                } else if (id == "inputCode") {
+                    inputCodePopover('inputCode', 'inputCodeParent');
+                } else if (id == "telCode") {
+                    inputCodePopover('telCode', 'telCodeParent');
+                } else if (id == "telNumber") {
+                    telNumberPopover('telNumber', 'telNumberParent');
+                }
+// 失去焦点时显示
+                $(this).popover('show');
+            });
+    }
+
+    $(function () {
+// 初始化 popover，触发方式为手动触发
+        popover("username");
+        popover("password");
+        popover("inputCode");
+        popover("telCode");
+        popover("telNumber");
+    });
+</script>
+
+<!--用户名密码登录-->
 <script>
     function Login() {
         let username = document.getElementById('username').value;
@@ -144,26 +249,25 @@
             crossDomain: true,
             success: function (responseStr) {
                 let msg = responseStr.msg;
-                console.log("success");
+                console.log(responseStr);
                 if (msg == "登录成功") {
                     let authority = responseStr.data.authority;
-                    console.log(authority);
+                    let token = responseStr.data.jwtToken;
+                    setCookie("token",token,"d2");
                     if (authority == 1) {
                         window.location.href = "../student/studentIndex.html";
-                    }
-                    else if(authority == 2) {
+                    } else if (authority == 2) {
                         window.location.href = "../teacher/teacherIndex.html";
-                    }
-                    else if(authority == 3) {
+                    } else if (authority == 3) {
                         window.location.href = "../dean/deanIndex.html";
-                    }
-                    else if(authority == 4) {
+                    } else if (authority == 4) {
                         window.location.href = "../admin/adminIndex.html";
                     }
+                } else if (msg == "密码长度不符") {
+
                 } else {
                     alert(msg);
                 }
-
             },
             error: function (responseStr) {
                 console.log("failed");
@@ -186,11 +290,11 @@
     });
 </script>
 
+<!--手机登录-->
 <script>
     let wait = 60;
-    document.getElementById("btn").onclick = function () {
-        time(this);
-    }
+    let code;
+    let telNumber = 0;
 
     function time(o) {
         if (wait == 0) {
@@ -205,6 +309,75 @@
                 time(o)
             }, 1000)
         }
+    }
+
+    function getPhoneCode() {
+        let btn = document.getElementById("btn");
+        time(btn);
+        let url = "http://www.yuanbw.cn:20086/gpms/rol/sendBindCode";
+        telNumber = document.getElementById('telNumber').value;
+        console.log(telNumber);
+        $.ajax({
+            url: url,
+            type: "POST",
+            data: {
+                tel: telNumber
+            },
+            xhrFields: {
+                withCredentials: true
+            },
+            crossDomain: true,
+            success: function (responseStr) {
+                console.log(responseStr);
+            },
+            error: function (responseStr) {
+                console.log("failed");
+                console.log(responseStr);
+            }
+        });
+    }
+
+    function phoneLogin() {
+        let url = "http://www.yuanbw.cn:20086/gpms/rol/telLogin";
+        console.log(telNumber);
+        code = document.getElementById('telCode').value;
+        console.log(code);
+        $.ajax({
+            url: url,
+            type: "POST",
+            data: {
+                tel: telNumber,
+                telCode: code
+            },
+            xhrFields: {
+                withCredentials: true
+            },
+            crossDomain: true,
+            success: function (responseStr) {
+                console.log(responseStr);
+                let msg = responseStr.msg;
+                console.log("success");
+                if (msg == "验证成功") {
+                    let authority = responseStr.data.authority;
+                    console.log(authority);
+                    if (authority == 1) {
+                        window.location.href = "../student/studentIndex.html";
+                    } else if (authority == 2) {
+                        window.location.href = "../teacher/teacherIndex.html";
+                    } else if (authority == 3) {
+                        window.location.href = "../dean/deanIndex.html";
+                    } else if (authority == 4) {
+                        window.location.href = "../admin/adminIndex.html";
+                    }
+                } else {
+                    alert(msg);
+                }
+            },
+            error: function (responseStr) {
+                console.log("failed");
+                console.log(responseStr);
+            }
+        });
     }
 </script>
 

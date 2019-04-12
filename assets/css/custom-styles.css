@@ -233,6 +233,14 @@ p {
 /*初始化样式结束*/
 
 /*公用样式开始*/
+.icon-shenhe {
+    cursor: pointer;
+}
+
+.icon-shenhe:hover {
+    color: #f09b22;
+}
+
 .horizontal {
     height: 1px;
     width: 100%;
