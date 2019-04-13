@@ -175,7 +175,7 @@
     <nav class="navbar-default navbar-side">
         <div class="sidebar-collapse">
             <ul class="nav list-unstyled" id="sideBar">
-                <li>
+                <li onclick="indexQuery()">
                     <a href="#" class="active-menu" id="management_one">
                         <span class="iconfont icon-shouye iconColor fontSize14 naviconpadding"></span>首页
                     </a>
@@ -377,52 +377,24 @@
                 </div>
             </div>
             <div class="row" id="progressCircle">
-                <script id="progressesCircle" type="text/template">
-                    <% for(let i=0;i<4;i++){ %>
-                    <div class="col-xs-6 col-md-3">
-                        <div class="whiteBgColor">
-                            <div style="text-align: center">
-                                <h4><a href="#"><%= taskProgress[i].progressName %></a></h4>
-                                <div class="easypiechart easypiechart-red" data-percent="<%= taskProgress[i].progress %>"><span
-                                        class="percent"><%= taskProgress[i].progress %>%</span>
-                                </div>
+
+            </div>
+            <script id="progressesCircle" type="text/template">
+                <% for(let i=0;i<4;i++){ %>
+                <div class="col-xs-6 col-md-3">
+                    <div class="whiteBgColor">
+                        <div style="text-align: center">
+                            <h4><a href="#"><%= taskProgress[i].progressName %></a></h4>
+
+                            <div class="<%= taskProgress[i].className %>"
+                                 data-percent="<%= taskProgress[i].progress %>"><span
+                                    class="percent"><%= taskProgress[i].progress %>%</span>
                             </div>
                         </div>
                     </div>
-                    <% } %>
-                </script>
-                <!--<div class="col-xs-6 col-md-3">-->
-                <!--<div class="whiteBgColor">-->
-                <!--<div style="text-align: center">-->
-                <!--<h4><a href="#">中期检查</a></h4>-->
-                <!--<div class="easypiechart easypiechart-red" data-percent="0"><span-->
-                <!--class="percent">0%</span>-->
-                <!--</div>-->
-                <!--</div>-->
-                <!--</div>-->
-                <!--</div>-->
-                <!--<div class="col-xs-6 col-md-3">-->
-                <!--<div class="whiteBgColor">-->
-                <!--<div style="text-align: center">-->
-                <!--<h4><a href="#">指导记录</a></h4>-->
-                <!--<div class="easypiechart easypiechart-teal" data-percent="60"><span-->
-                <!--class="percent">60%</span>-->
-                <!--</div>-->
-                <!--</div>-->
-                <!--</div>-->
-                <!--</div>-->
-                <!--<div class="col-xs-6 col-md-3">-->
-                <!--<div class="whiteBgColor">-->
-                <!--<div style="text-align: center">-->
-                <!--<h4><a href="#">外文翻译</a></h4>-->
-                <!--<div class="easypiechart easypiechart-orange" data-percent="90"><span-->
-                <!--class="percent">90%</span>-->
-                <!--</div>-->
-                <!--</div>-->
-                <!--</div>-->
-                <!--</div>-->
-            </div>
-
+                </div>
+                <% } %>
+            </script>
             <!--进度提示结束-->
 
             <!--我的课题开始-->
@@ -436,27 +408,64 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-xs-24 col-md-12 marginTop10">
-                    <div class="whiteBgColor">
-                        <div class="titleContent">
-                            <span class="fontColor847a7a">课题题目：</span>
-                            <span class="newline">四川工商学院毕业设计管理系统的设计与实现——Web客户端子系统【师生互选课题】</span>
-                            <a style="float: right" href="#" data-toggle="modal" data-target="#viewTopic">查看详情</a>
-                            </button>
-                        </div>
-                        <div class="dividerDiv"></div>
-                        <div class="titleContent">
-                            <span class="fontColor847a7a">审核状态：</span>
-                            <span class="color07c160">审核通过，指导教师确认通过学生选题</span>
-                        </div>
-                        <div class="dividerDiv"></div>
-                        <div class="titleContent">
-                            <span class="fontColor847a7a">任务书：</span>
-                            <a href="#" class="colorf44 commitments">查看任务书</a>
-                        </div>
-                    </div>
+                <div class="col-xs-24 col-md-12 marginTop10" id="indexSelectedTopic">
+
                 </div>
             </div>
+            <script id="indexSelectedTopics" type="text/template">
+                <div class="whiteBgColor">
+                    <% if(titles == "查询记录为空") { %>
+                    <div class="titleContent">
+                        <span class="fontColor847a7a">课题题目：</span>
+                        <span class="newline">
+                                暂无选题信息
+                            </span>
+                    </div>
+                    <div class="dividerDiv"></div>
+                    <div class="titleContent">
+                        <span class="fontColor847a7a">审核状态：</span>
+                        <span class="color07c160">
+                                    暂无审核状态
+                                </span>
+                    </div>
+                    <div class="dividerDiv"></div>
+                    <div class="titleContent">
+                        <span class="fontColor847a7a">任务书：</span>
+                        <span class="colorf44 commitments">暂无任务书</span>
+                    </div>
+                </div>
+                <% } else {%>
+                <div class="titleContent">
+                    <span class="fontColor847a7a">课题题目：</span>
+                    <span class="newline">
+                                <%= titles[0].project.title %>
+                            </span>
+
+                    <a style="float: right" href="#" data-toggle="modal" data-target="#viewTopic"
+                       onclick="titleDetails('<%= titles[0].project.id %>')">查看详情</a>
+                </div>
+                <div class="dividerDiv"></div>
+                <div class="titleContent">
+                    <span class="fontColor847a7a">审核状态：</span>
+                    <span class="color07c160">
+                                    <% if(titles[0].cStatus==0){ %>
+                                    审核不通过，请重新选择课题
+                                    <% } else if(titles[0].cStatus==2){ %>
+                                    审核中，请耐心等待教师审核
+                                    <% } else{ %>
+                                    审核通过，指导教师确认通过学生选题
+                                    <% } %>
+                                </span>
+                </div>
+                <div class="dividerDiv"></div>
+                <div class="titleContent">
+                    <span class="fontColor847a7a">任务书：</span>
+                    <a href="#" class="colorf44 commitments">查看任务书</a>
+                </div>
+                </div>
+                <% } %>
+
+            </script>
             <!--我的课题结束-->
         </div>
     </div>
@@ -2227,72 +2236,27 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-xs-4 col-md-4">
-                    <div class="whiteBgColor">
-                        <div style="text-align: center">
-                            <h4><a href="#">开题报告</a></h4>
-                            <div class="easypiechart easypiechart-blue" data-percent="20"><span
-                                    class="percent">20%</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xs-4 col-md-4">
-                    <div class="whiteBgColor">
-                        <div style="text-align: center">
-                            <h4><a href="#">中期检查</a></h4>
-                            <div class="easypiechart easypiechart-red" data-percent="0"><span
-                                    class="percent">0%</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xs-4 col-md-4">
-                    <div class="whiteBgColor">
-                        <div style="text-align: center">
-                            <h4><a href="#">指导记录</a></h4>
-                            <div class="easypiechart easypiechart-teal" data-percent="60"><span
-                                    class="percent">60%</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xs-4 col-md-4">
-                    <div class="whiteBgColor">
-                        <div style="text-align: center">
-                            <h4><a href="#">外文译文和原文</a></h4>
-                            <div class="easypiechart easypiechart-teal" data-percent="60"><span
-                                    class="percent">60%</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xs-4 col-md-4">
-                    <div class="whiteBgColor">
-                        <div style="text-align: center">
-                            <h4><a href="#">文献综述</a></h4>
-                            <div class="easypiechart easypiechart-teal" data-percent="60"><span
-                                    class="percent">60%</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xs-4 col-md-4">
-                    <div class="whiteBgColor">
-                        <div style="text-align: center">
-                            <h4 style="display: inline-block"><a href="#">毕业设计（论文）</a></h4>
-                            <span style="color: #f00">【未提交论文】</span>
-                            <div class="easypiechart easypiechart-orange" data-percent="90"><span
-                                    class="percent">90%</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="row" id="progressCircleAll">
+
             </div>
             <!--任务进度结束-->
         </div>
     </div>
+    <script id="progressesCircleAll" type="text/template">
+        <% taskProgress.forEach(function(progress) { %>
+        <div class="col-xs-4 col-md-4">
+            <div class="whiteBgColor">
+                <div style="text-align: center">
+                    <h4><a href="#"><%= progress.progressName %></a></h4>
+
+                    <div class="<%= progress.className %>" data-percent="<%= progress.progress %>"><span
+                            class="percent"><%= progress.progress %>%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <% }) %>
+    </script>
     <!--查看更多任务进度-->
 
     <!--退出登录-->
@@ -2352,21 +2316,33 @@
 <script src="../assets/js/easypiechart.js"></script>
 <script src="../assets/js/circleChart.min.js"></script>
 
+
 <script>
-
-
+    let titleArray = [];
     let taskProgress;
     let token = getCookie("token");
-    console.log(token);
-    if (token == null) {
+    if (token == "") {
         window.location.href = "../login/login.html";
     }
-    $(function () {
+
+    function colorOfProgress(progress) {
+        if (progress == 0) {
+            return 'easypiechart easypiechart-red';
+        } else if (progress > 0 && progress < 50) {
+            return 'easypiechart easypiechart-teal'
+        } else {
+            return 'easypiechart easypiechart-blue';
+        }
+    }
+
+    function queryProgress() {
         let url = "http://www.yuanbw.cn:20086/gpms/stu/showDocProgress";
         let progresses = document.getElementById('progresses').innerHTML;
         let progress = document.getElementById('progress');
         let progressesCircle = document.getElementById('progressesCircle').innerHTML;
         let progressCircle = document.getElementById('progressCircle');
+        let progressesCircleAll = document.getElementById('progressesCircleAll').innerHTML;
+        let progressCircleAll = document.getElementById('progressCircleAll');
         let html;
         $.ajax({
             url: url,
@@ -2383,27 +2359,33 @@
                 taskProgress = [
                     {
                         progress: responseStr.data[0],
-                        progressName: "开题报告"
+                        progressName: "开题报告",
+                        className: colorOfProgress(responseStr.data[0])
                     },
                     {
-                        progress: 50,
-                        progressName: "中期检查"
+                        progress: responseStr.data[1],
+                        progressName: "中期检查",
+                        className: colorOfProgress(responseStr.data[1])
                     },
                     {
-                        progress: 100,
-                        progressName: "指导记录"
+                        progress: responseStr.data[2],
+                        progressName: "指导记录",
+                        className: colorOfProgress(responseStr.data[2])
                     },
                     {
                         progress: responseStr.data[3],
-                        progressName: "外文译文和原文"
+                        progressName: "外文译文和原文",
+                        className: colorOfProgress(responseStr.data[3])
                     },
                     {
                         progress: responseStr.data[4],
-                        progressName: "文献综述"
+                        progressName: "文献综述",
+                        className: colorOfProgress(responseStr.data[4])
                     },
                     {
                         progress: responseStr.data[5],
-                        progressName: "毕业设计（论文）"
+                        progressName: "毕业设计（论文）",
+                        className: colorOfProgress(responseStr.data[5])
                     }
                 ];
                 $(".noticeIcon").hover(function () {
@@ -2416,18 +2398,18 @@
                 html = ejs.render(progresses, {taskProgress: taskProgress});
                 progress.innerHTML = html;
                 progressCircle.innerHTML = ejs.render(progressesCircle, {taskProgress: taskProgress});
-                console.log(taskProgress);
+                progressCircleAll.innerHTML = ejs.render(progressesCircleAll, {taskProgress: taskProgress});
                 $('.easypiechart-red').easyPieChart({
                     scaleColor: false,
                     barColor: '#f9243f'
                 });
-                $(function() {
+                $(function () {
                     $('.easypiechart-blue').easyPieChart({
                         scaleColor: false,
                         barColor: '#30a5ff'
                     });
                 });
-                $(function() {
+                $(function () {
                     $('.easypiechart-teal').easyPieChart({
                         scaleColor: false,
                         barColor: '#1ebfae'
@@ -2439,13 +2421,22 @@
                 console.log(responseStr);
             }
         });
+    }
+
+    $(function () {
+        topicSelected();
+        queryProgress();
     });
+
+    function indexQuery() {
+        topicSelected();
+        queryProgress();
+    }
 </script>
 
 <script>
     let pageCount = 1;
     let array = [];
-    let titleArray = [];
 
     function selectTopic(proName, proType, proSource, tecId, tecName) {
         let topics = document.getElementById('topics').innerHTML;
@@ -2454,7 +2445,6 @@
         let limit = 4;
         let offset = 0;
         let url = "http://www.yuanbw.cn:20086/gpms/stu/showProjects";
-        // let token = getCookie("token");
         $.ajax({
             url: url,
             type: "POST",
@@ -2688,6 +2678,8 @@
     function topicSelected() {
         let selectedTopics = document.getElementById('selectedTopics').innerHTML;
         let selectedTopic = document.getElementById('selectedTopic');
+        let indexSelectedTopics = document.getElementById('indexSelectedTopics').innerHTML;
+        let indexSelectedTopic = document.getElementById('indexSelectedTopic');
         let html;
         let url = "http://www.yuanbw.cn:20086/gpms/stu/showChoosePro";
         // let token = getCookie("token");
@@ -2704,10 +2696,13 @@
             },
             success: function (responseStr) {
                 titleArray = responseStr.data;
-                console.log(responseStr);
                 if (responseStr.msg == "查询成功") {
+                    let data = responseStr.data;
                     html = ejs.render(selectedTopics, {titles: responseStr.data});
                     selectedTopic.innerHTML = html;
+                    indexSelectedTopic.innerHTML = ejs.render(indexSelectedTopics, {titles: responseStr.data});
+                } else if (responseStr.msg == "查询记录为空") {
+                    indexSelectedTopic.innerHTML = ejs.render(indexSelectedTopics, {titles: responseStr.msg});
                 }
             },
             error: function (responseStr) {
@@ -2796,58 +2791,4 @@
     }
 </script>
 
-<script>
-
-    let interval;
-
-    function moveTop() {
-        let li = $(".ul1").find("li");
-        let num = li.length;
-        if (num > 2) {
-            for (let i = 0; i < num; i++) {
-                li[i].style.top = "0px";
-            }
-            let marquee = document.getElementById('marquee');
-            let openClass = marquee.classList.contains('open');
-            clearInterval(interval);
-            if (!openClass) {
-                interval = setInterval(function () {
-                    for (let i = 0; i < num; i++) {
-                        let top = li[i].style.top;
-                        top = top.replace("px", "");
-                        top = top - 10;
-                        if (top < -(i + 1) * 40) {
-                            top = (num - i - 1) * 40;
-                        }
-                        li[i].style.top = top + "px";
-                    }
-                }, 1000);
-            }
-            window.addEventListener('click', function () {
-                for (let i = 0; i < num; i++) {
-                    li[i].style.top = "0px";
-                }
-                clearInterval(interval);
-            }, false);
-        }
-    }
-
-
-    // $(function () {
-    //     // 调用 公告滚动函数
-    //     setInterval("noticeUp('.notice','-40px',500)", 2000);
-    // });
-    function noticeUp(obj, top, time) {
-        $(obj).animate({
-            marginTop: top
-        }, time, function () {
-            $(this).css({marginTop: "0"}).find(":first").appendTo(this);
-        })
-    }
-
-    $(function () {
-        // 调用 公告滚动函数
-        setInterval("noticeUp('.notice ul','-35px',500)", 2000);
-    });
-</script>
 </html>

@@ -21,8 +21,8 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-xs btn-white" data-dismiss="modal">取 消</button>
-                <button type="button" class="btn btn-xs btn-danger">确 定</button>
+                <button id="loginOut" type="button" class="btn btn-xs btn-white" data-dismiss="modal">取 消</button>
+                <button type="button" class="btn btn-xs btn-danger" onclick="logOut()">确 定</button>
             </div>
         </div>
     </div>
@@ -30,4 +30,13 @@
 </body>
 
 <script src="../assets/js/common.js"></script>
+
+<script>
+    function logOut() {
+        setCookie("token","","d1");
+        let miss = document.getElementById('loginOut');
+        miss.click();
+        window.location.href = "../login/login.html";
+    }
+</script>
 </html>

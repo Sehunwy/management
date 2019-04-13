@@ -253,7 +253,8 @@
                 if (msg == "登录成功") {
                     let authority = responseStr.data.authority;
                     let token = responseStr.data.jwtToken;
-                    setCookie("token",token,"d2");
+                    setCookie("token",token,"d1");
+                    // document.cookie = token;
                     if (authority == 1) {
                         window.location.href = "../student/studentIndex.html";
                     } else if (authority == 2) {
