@@ -33,10 +33,9 @@
 
 <script>
     function logOut() {
-        setCookie("token","","d1");
         let miss = document.getElementById('loginOut');
+        loginOutFunction();
         miss.click();
-        window.location.href = "../login/login.html";
     }
 </script>
 </html>

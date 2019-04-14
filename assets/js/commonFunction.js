@@ -80,3 +80,30 @@ function clearCookie(name) {
     if(cval!=null)
         document.cookie= name + "="+cval+";expires="+exp.toGMTString();
 }
+
+function loginOutFunction() {
+    let url = "http://www.yuanbw.cn:20086/gpms/rol/logout";
+    let token = getCookie("token");
+    $.ajax({
+        url: url,
+        type: "POST",
+        data: {},
+        xhrFields: {
+            withCredentials: true
+        },
+        crossDomain: true,
+        headers: {
+            Token: token
+        },
+        success: function (responseStr) {
+            if(responseStr.msg == "注销成功") {
+                setCookie("token","","d1");
+                window.location.href = "../login/login.html";
+            }
+        },
+        error: function (responseStr) {
+            console.log("failed");
+            console.log(responseStr);
+        }
+    });
+}

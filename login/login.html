@@ -169,6 +169,7 @@
         }
     }
 
+    //验证手机号码
     function telNumberPopover(telNumber, telNumberParent) {
         let tel = document.getElementById(telNumber);
         let telValue = document.getElementById(telNumber).value;
@@ -183,6 +184,8 @@
             classChange(telNumberParent, 'has-error', 'has-info');
         }
     }
+
+
 
     function popover(id) {
         $('#' + id).popover({
