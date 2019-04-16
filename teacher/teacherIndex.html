@@ -167,7 +167,7 @@
                             <ul class="nav nav-tabs" role="tablist">
                                 <li class="active"><a href="#view_Subject" role="tab" data-toggle="tab">查看已出题目</a></li>
                                 <li><a href="#upload_Title" role="tab"
-                                                      data-toggle="tab">上传题目</a></li>
+                                       data-toggle="tab">上传题目</a></li>
                                 <li><a href="#review_Students_Topics" role="tab" data-toggle="tab">审核学生选题</a></li>
                             </ul>
                         </div>
@@ -235,7 +235,8 @@
                                             </button>
                                         </div>
                                         <div class="col-md-2">
-                                            <button type="button" class="management_one newPage btn btn-success" onclick="cancelTitle()">
+                                            <button type="button" class="management_one newPage btn btn-success"
+                                                    onclick="cancelTitle()">
                                                 取消
                                             </button>
                                         </div>
@@ -421,7 +422,8 @@
                                         生产实际（社会实践）题
                                     </div>
                                     <div class="col-md-3 textAlign textEllipsis">
-                                        <span class="clickColor cursorPointer" data-toggle="modal" data-target="#studentDetails">
+                                        <span class="clickColor cursorPointer" data-toggle="modal"
+                                              data-target="#studentDetails">
                                             王XX（3120150905111）
                                         </span>
                                     </div>
@@ -429,9 +431,11 @@
                                         不通过
                                     </div>
                                     <div class="col-md-2 textEllipsis textAlign">
-                                        <button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#pass">通 过
+                                        <button type="button" class="btn btn-info btn-xs" data-toggle="modal"
+                                                data-target="#pass">通 过
                                         </button>
-                                        <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#noPass">不通过
+                                        <button type="button" class="btn btn-danger btn-xs" data-toggle="modal"
+                                                data-target="#noPass">不通过
                                         </button>
                                     </div>
                                 </div>
@@ -728,6 +732,7 @@
                                                       data-toggle="tab">查看指导学生答辩安排</a></li>
                                 <li><a href="#reply_arrange_self" role="tab" data-toggle="tab">查看答辩安排</a></li>
                                 <li><a href="#defense_rating" role="tab" data-toggle="tab">答辩打分</a></li>
+                                <li><a href="#defense_Situation" role="tab" data-toggle="tab">答辩组长提交答辩打分情况</a></li>
                                 <li><a href="#reply_results" role="tab" data-toggle="tab">答辩结果</a></li>
                             </ul>
                         </div>
@@ -845,24 +850,6 @@
                             <!--查看答辩安排结束-->
                             <!--答辩打分开始-->
                             <div class="tab-pane panel-body" id="defense_rating">
-                                <div class="row" style="padding-bottom: 10px">
-                                    <div class="col-md-3">
-                                        <select class="form-control" onchange="changeCondition(this.value)">
-                                            <option value="0">----请选择查询条件----</option>
-                                            <option value="1">打分分类</option>
-                                            <option value="2">完成状态</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <select class="form-control" id="condition">
-                                            <option value="">----请选择查询条件----</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <button type="button" class="btn btn-info">查询
-                                        </button>
-                                    </div>
-                                </div>
                                 <div class="alert alert-success textEllipsis border_radius marginBottom0">
                                     <div class="col-md-3 textAlign">
                                         课题题目
@@ -873,105 +860,131 @@
                                     <div class="col-md-2 textAlign">
                                         学生学号
                                     </div>
-                                    <div class="col-md-2 textAlign">
-                                        打分分类
-                                    </div>
-                                    <div class="col-md-1 textAlign">
-                                        状态
-                                    </div>
                                     <div class="col-md-1 textAlign">
                                         分数
                                     </div>
                                     <div class="col-md-2 textAlign">
-                                        操作
+                                        打分
+                                    </div>
+                                    <div class="col-md-3 textAlign">
+                                        答辩组长填写评语
                                     </div>
                                 </div>
                                 <div class="alert alert-warning textEllipsis border_radius marginBottom0">
-                                    <div title="PMMA灯具基于moldflow三维流动优化的注塑模设计" class="col-md-3 textAlign textEllipsis">
+                                    <div class="col-md-3 textAlign textEllipsis">
                                         PMMA灯具基于moldflow三维流动优化的注塑模设计
                                     </div>
-                                    <div class="col-md-1 textAlign textEllipsis">
-                                        张珊珊
-                                    </div>
-                                    <div class="col-md-2 textAlign textEllipsis">
-                                        3120150905909
-                                    </div>
-                                    <div class="col-md-2 textAlign textEllipsis">
-                                        论文
-                                    </div>
-                                    <div class="col-md-1 textAlign textEllipsis">
-                                        未完成
-                                    </div>
-                                    <div class="col-md-1 textAlign textEllipsis">
-
+                                    <div class="col-md-1 textAlign">
+                                        王珊珊
                                     </div>
                                     <div class="col-md-2 textAlign">
-                                        <button type="button" class="btn btn-info btn-xs" data-toggle="modal"
-                                                data-target="#viewScore">查看
-                                        </button>
-                                        <button type="button" class="management_scorePlea newPage btn btn-info btn-xs">
-                                            打分
-                                        </button>
+                                        3120150905111
                                     </div>
-                                </div>
-                                <div class="alert alert-danger textEllipsis border_radius marginBottom0">
-                                    <div title="PMMA灯具基于moldflow三维流动优化的注塑模设计" class="col-md-3 textAlign textEllipsis">
-                                        PMMA灯具基于moldflow三维流动优化的注塑模设计
-                                    </div>
-                                    <div class="col-md-1 textAlign textEllipsis">
-                                        张珊珊
-                                    </div>
-                                    <div class="col-md-2 textAlign textEllipsis">
-                                        3120150905909
-                                    </div>
-                                    <div class="col-md-2 textAlign textEllipsis">
-                                        答辩
-                                    </div>
-                                    <div class="col-md-1 textAlign textEllipsis">
-                                        未完成
-                                    </div>
-                                    <div class="col-md-1 textAlign textEllipsis">
-
-                                    </div>
-                                    <div class="col-md-2 textAlign">
-                                        <button type="button" class="btn btn-info btn-xs" data-toggle="modal"
-                                                data-target="#viewScore">查看
-                                        </button>
-                                        <button type="button" class="management_scorePlea newPage btn btn-info btn-xs">
-                                            打分
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="alert alert-warning textEllipsis border_radius marginBottom0">
-                                    <div title="PMMA灯具基于moldflow三维流动优化的注塑模设计" class="col-md-3 textAlign textEllipsis">
-                                        PMMA灯具基于moldflow三维流动优化的注塑模设计
-                                    </div>
-                                    <div class="col-md-1 textAlign textEllipsis">
-                                        张珊珊
-                                    </div>
-                                    <div class="col-md-2 textAlign textEllipsis">
-                                        3120150905909
-                                    </div>
-                                    <div class="col-md-2 textAlign textEllipsis">
-                                        论文
-                                    </div>
-                                    <div class="col-md-1 textAlign textEllipsis">
-                                        已完成
-                                    </div>
-                                    <div class="col-md-1 textAlign textEllipsis">
+                                    <div class="col-md-1 textAlign">
                                         90
                                     </div>
                                     <div class="col-md-2 textAlign">
-                                        <button type="button" class="btn btn-info btn-xs" data-toggle="modal"
-                                                data-target="#viewScore">查看
-                                        </button>
-                                        <button type="button" class="management_scorePlea newPage btn btn-info btn-xs">
-                                            打分
+                                        <input type="text" class="form-control">
+                                    </div>
+                                    <div class="col-md-3 textAlign">
+                                        <textarea class="form-control" rows="2"></textarea>
+                                    </div>
+                                </div>
+                                <div class="alert alert-warning textEllipsis border_radius marginBottom0">
+                                    <div class="col-md-3 textAlign textEllipsis">
+                                        PMMA灯具基于moldflow三维流动优化的注塑模设计
+                                    </div>
+                                    <div class="col-md-1 textAlign">
+                                        王珊珊
+                                    </div>
+                                    <div class="col-md-2 textAlign">
+                                        3120150905111
+                                    </div>
+                                    <div class="col-md-1 textAlign">
+                                        90
+                                    </div>
+                                    <div class="col-md-2 textAlign">
+                                        <input type="text" class="form-control">
+                                    </div>
+                                    <div class="col-md-3 textAlign">
+                                        <textarea class="form-control" rows="2"></textarea>
+                                    </div>
+                                </div>
+                                <div style="margin-top: 10px">
+                                    <div class="col-md-10">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <button type="button" class="btn btn-info">
+                                            提交
                                         </button>
                                     </div>
                                 </div>
                             </div>
                             <!--答辩打分安排结束-->
+                            <!--答辩组长提交答辩打分情况开始-->
+                            <div class="tab-pane panel-body" id="defense_Situation">
+                                <div class="alert alert-success textEllipsis border_radius marginBottom0">
+                                    <div class="col-md-3 textAlign">
+                                        学生姓名（学号）
+                                    </div>
+                                    <div class="col-md-1 textAlign">
+                                        陈红红
+                                    </div>
+                                    <div class="col-md-1 textAlign">
+                                        陈红红
+                                    </div>
+                                </div>
+                                <div class="alert alert-warning textEllipsis border_radius marginBottom0">
+                                    <div class="col-md-3 textAlign textEllipsis">
+                                        <span class="clickColor cursorPointer" data-toggle="modal"
+                                              data-target="#score_details">王珊珊（3120150905119）</span>
+                                    </div>
+                                    <div class="col-md-1 textAlign">
+                                        <div style="padding-bottom: 2px">
+                                            90
+                                            <span class="iconfont icon-zhongzhi iconColor fontSize18"  data-toggle="modal"
+                                                  data-target="#score_reset"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1 textAlign">
+                                        <div style="padding-bottom: 2px">
+                                            90
+                                            <span class="iconfont icon-zhongzhi iconColor fontSize18"  data-toggle="modal"
+                                                  data-target="#score_reset"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="alert alert-warning textEllipsis border_radius marginBottom0">
+                                    <div class="col-md-3 textAlign textEllipsis">
+                                        <span class="clickColor cursorPointer" data-toggle="modal"
+                                              data-target="#score_details">王珊珊（3120150905119）</span>
+                                    </div>
+                                    <div class="col-md-1 textAlign">
+                                        <div style="padding-bottom: 2px">
+                                            90
+                                            <span class="iconfont icon-zhongzhi iconColor fontSize18"  data-toggle="modal"
+                                                  data-target="#score_reset"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1 textAlign">
+                                        <div style="padding-bottom: 2px">
+                                            90
+                                            <span class="iconfont icon-zhongzhi iconColor fontSize18"  data-toggle="modal"
+                                                  data-target="#score_reset"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="margin-top: 10px">
+                                    <div class="col-md-10">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <button type="button" class="btn btn-info">
+                                            提交
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--答辩组长提交答辩打分情况结束-->
                             <!--查看答辩结果开始-->
                             <div class="tab-pane panel-body" id="reply_results">
                                 <div style="padding-left:0px;padding-bottom: 15px" class="col-md-12">
@@ -1053,123 +1066,6 @@
             </div>
         </div>
     </div>
-    <!--答辩打分开始-->
-    <div id="scorePlea" class="page-wrapper displayNone">
-        <div style="margin: 0px" class="page-inner">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            答辩打分
-                        </div>
-                        <div class="panel-body">
-                            <div class="col-md-12 openingReport">
-                                <h5 class="font_bold">课题题目</h5>
-                                <div class="whiteColor padding10">
-                                    PMMA灯具基于moldflow三维流动优化的注塑模设计
-                                </div>
-                                <h5 class="font_bold">学生姓名</h5>
-                                <div class="whiteColor padding10">
-                                    张三
-                                </div>
-                                <h5 class="font_bold">学生学号</h5>
-                                <div class="whiteColor padding10">
-                                    3120150905909
-                                </div>
-                                <h5 class="font_bold">打分分类</h5>
-                                <div class="whiteColor padding10">
-                                    论文
-                                </div>
-                                <h5 class="font_bold">答辩教师打分</h5>
-                                <div class="whiteColor padding10">
-                                    王晓霞：90 喔喔：90
-                                </div>
-                                <h5 class="font_bold">分数</h5>
-                                <input type="text" class="form-control margin0 textContent">
-                                <h5 style="padding-top: 50px" class="font_bold">评语</h5>
-                                <textarea rows="3" type="text" class="form-control margin0 textContent"></textarea>
-                                <h5 class="font_bold">附件</h5>
-                                <div class="whiteColor" style="padding:10px;">
-                                    附件：开题报告.docx <a style="padding-left: 20px" href="#">点击下载</a>
-                                </div>
-                                <div class="row" style="margin-top: 10px">
-                                    <div class="col-md-2">
-                                        <button type="button" class="management_two newPage  btn btn-info">
-                                            确定
-                                        </button>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <button type="button" class="management_two newPage  btn btn-success"
-                                                onclick="cancelTitle()">
-                                            返回
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--答辩打分开始-->
-    <!--查看答辩打分详细信息开始-->
-    <div class="modal fade" id="viewScore" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                            aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">学生答辩打分详细信息</h4>
-                </div>
-                <div class="modal-body">
-                    <div class="alert alert-success">
-                        <strong>
-                            <span>课题题目:</span>
-                        </strong>
-                        <span>PMMA灯具基于moldflow三维流动优化的注塑模设计</span>
-                        <hr>
-                        <strong>
-                            <span>学生姓名:</span>
-                        </strong>
-                        <span>
-                            张珊珊
-                        </span>
-                        <hr>
-                        <strong>
-                            <span>学生学号:</span>
-                        </strong>
-                        <span>3120150905909</span>
-                        <hr>
-                        <strong>
-                            <span>打分分类:</span>
-                        </strong>
-                        <span>论文</span>
-                        <hr>
-                        <strong>
-                            <span>状态:</span>
-                        </strong>
-                        <span>未完成</span>
-                        <hr>
-                        <strong>
-                            <span>分数</span>
-                        </strong>
-                        <span>暂无分数</span>
-                        <hr>
-                        <strong>
-                            <span>附件</span>
-                        </strong>
-                        <span>附件：开题报告.docx <a style="padding-left: 20px" href="#">点击下载</a></span>
-
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-sm btn-info" data-dismiss="modal">关闭</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--查看答辩打分详细信息结束-->
     <!--查看答辩分数详细信息开始-->
     <div class="modal fade" id="defenseScore" role="dialog">
         <div class="modal-dialog">
@@ -1257,6 +1153,42 @@
         </div>
     </div>
     <!--答辩学生详细信息结束 -->
+    <!--答辩学生分数详细信息开始 -->
+    <div class="modal fade" id="score_details" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">答辩学生详细信息</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-success">
+                        <strong>
+                            <span>姓名（学号）:</span>
+                        </strong>
+                        <span>
+                            王晓霞（3120150905999）
+                        </span>
+                        <hr>
+                        <strong>
+                            <span>课题题目:</span>
+                        </strong>
+                        <span>动画场景设计</span>
+                        <hr>
+                        <strong>
+                            <span>分数:</span>
+                        </strong>
+                        <span>90</span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm btn-info" data-dismiss="modal">关闭</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--答辩学生分数详细信息结束 -->
     <!--答辩教师详细信息开始 -->
     <div class="modal fade" id="teacherDetails" role="dialog">
         <div class="modal-dialog">
@@ -1303,6 +1235,28 @@
         </div>
     </div>
     <!--答辩教师详细信息结束 -->
+    <!--重置答辩教师分数开始-->
+    <div class="modal fade" id="score_reset" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">提示</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        确定要重置该答辩教师的打分？
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-xs btn-white" data-dismiss="modal">取 消</button>
+                    <button type="button" class="btn btn-xs btn-danger">保 存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--重置答辩教师分数结束-->
     <!--答辩管理结束-->
 
     <!--学生管理开始-->
@@ -1316,7 +1270,7 @@
                                 <li class="active"><a href="#send_Ntification" role="tab"
                                                       data-toggle="tab">发送通知</a></li>
                                 <li><a href="#review_Material" role="tab" data-toggle="tab">审核材料</a></li>
-
+                                <li><a href="#grade_Papers" role="tab" data-toggle="tab">论文打分</a></li>
                             </ul>
                         </div>
                         <div class="tab-content">
@@ -1469,7 +1423,117 @@
                                 </div>
                             </div>
                             <!--审核材料结束-->
+                            <!--答辩打分开始-->
+                            <div class="tab-pane panel-body" id="grade_Papers">
+                                <div class="alert alert-success textEllipsis border_radius marginBottom0">
+                                    <div class="col-md-3 textAlign">
+                                        课题题目
+                                    </div>
+                                    <div class="col-md-1 textAlign">
+                                        学生姓名
+                                    </div>
+                                    <div class="col-md-2 textAlign">
+                                        学生学号
+                                    </div>
+                                    <div class="col-md-2 textAlign">
+                                        打分分类
+                                    </div>
+                                    <div class="col-md-1 textAlign">
+                                        状态
+                                    </div>
+                                    <div class="col-md-1 textAlign">
+                                        分数
+                                    </div>
+                                    <div class="col-md-2 textAlign">
+                                        操作
+                                    </div>
+                                </div>
+                                <div class="alert alert-warning textEllipsis border_radius marginBottom0">
+                                    <div title="PMMA灯具基于moldflow三维流动优化的注塑模设计" class="col-md-3 textAlign textEllipsis">
+                                        PMMA灯具基于moldflow三维流动优化的注塑模设计
+                                    </div>
+                                    <div class="col-md-1 textAlign textEllipsis">
+                                        张珊珊
+                                    </div>
+                                    <div class="col-md-2 textAlign textEllipsis">
+                                        3120150905909
+                                    </div>
+                                    <div class="col-md-2 textAlign textEllipsis">
+                                        论文
+                                    </div>
+                                    <div class="col-md-1 textAlign textEllipsis">
+                                        未完成
+                                    </div>
+                                    <div class="col-md-1 textAlign textEllipsis">
 
+                                    </div>
+                                    <div class="col-md-2 textAlign">
+                                        <button type="button" class="btn btn-info btn-xs" data-toggle="modal"
+                                                data-target="#viewScore">查看
+                                        </button>
+                                        <button type="button" class="management_scorePlea newPage btn btn-info btn-xs">
+                                            打分
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="alert alert-danger textEllipsis border_radius marginBottom0">
+                                    <div title="PMMA灯具基于moldflow三维流动优化的注塑模设计" class="col-md-3 textAlign textEllipsis">
+                                        PMMA灯具基于moldflow三维流动优化的注塑模设计
+                                    </div>
+                                    <div class="col-md-1 textAlign textEllipsis">
+                                        张珊珊
+                                    </div>
+                                    <div class="col-md-2 textAlign textEllipsis">
+                                        3120150905909
+                                    </div>
+                                    <div class="col-md-2 textAlign textEllipsis">
+                                        答辩
+                                    </div>
+                                    <div class="col-md-1 textAlign textEllipsis">
+                                        未完成
+                                    </div>
+                                    <div class="col-md-1 textAlign textEllipsis">
+
+                                    </div>
+                                    <div class="col-md-2 textAlign">
+                                        <button type="button" class="btn btn-info btn-xs" data-toggle="modal"
+                                                data-target="#viewScore">查看
+                                        </button>
+                                        <button type="button" class="management_scorePlea newPage btn btn-info btn-xs">
+                                            打分
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="alert alert-warning textEllipsis border_radius marginBottom0">
+                                    <div title="PMMA灯具基于moldflow三维流动优化的注塑模设计" class="col-md-3 textAlign textEllipsis">
+                                        PMMA灯具基于moldflow三维流动优化的注塑模设计
+                                    </div>
+                                    <div class="col-md-1 textAlign textEllipsis">
+                                        张珊珊
+                                    </div>
+                                    <div class="col-md-2 textAlign textEllipsis">
+                                        3120150905909
+                                    </div>
+                                    <div class="col-md-2 textAlign textEllipsis">
+                                        论文
+                                    </div>
+                                    <div class="col-md-1 textAlign textEllipsis">
+                                        已完成
+                                    </div>
+                                    <div class="col-md-1 textAlign textEllipsis">
+                                        90
+                                    </div>
+                                    <div class="col-md-2 textAlign">
+                                        <button type="button" class="btn btn-info btn-xs" data-toggle="modal"
+                                                data-target="#viewScore">查看
+                                        </button>
+                                        <button type="button" class="management_scorePlea newPage btn btn-info btn-xs">
+                                            打分
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--答辩打分安排结束-->
                         </div>
                     </div>
                 </div>
@@ -1505,6 +1569,115 @@
         </div>
     </div>
     <!--发送通知内容结束-->
+    <!--答辩打分开始-->
+    <div id="scorePlea" class="page-wrapper displayNone">
+        <div style="margin: 0px" class="page-inner">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            答辩打分
+                        </div>
+                        <div class="panel-body">
+                            <div class="col-md-12 openingReport">
+                                <h5 class="font_bold">课题题目</h5>
+                                <div class="whiteColor padding10">
+                                    PMMA灯具基于moldflow三维流动优化的注塑模设计
+                                </div>
+                                <h5 class="font_bold">学生姓名</h5>
+                                <div class="whiteColor padding10">
+                                    张三
+                                </div>
+                                <h5 class="font_bold">学生学号</h5>
+                                <div class="whiteColor padding10">
+                                    3120150905909
+                                </div>
+                                <h5 class="font_bold">分数</h5>
+                                <input type="text" class="form-control margin0 textContent">
+                                <h5 style="padding-top: 50px" class="font_bold">评语</h5>
+                                <textarea rows="3" type="text" class="form-control margin0 textContent"></textarea>
+                                <h5 class="font_bold">附件</h5>
+                                <div class="whiteColor" style="padding:10px;">
+                                    附件：开题报告.docx <a style="padding-left: 20px" href="#">点击下载</a>
+                                </div>
+                                <div class="row" style="margin-top: 10px">
+                                    <div class="col-md-2">
+                                        <button type="button" class="management_three newPage  btn btn-info">
+                                            确定
+                                        </button>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <button type="button" class="management_three newPage  btn btn-success"
+                                                onclick="cancelTitle()">
+                                            返回
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--答辩打分开始-->
+    <!--查看答辩打分详细信息开始-->
+    <div class="modal fade" id="viewScore" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">学生答辩打分详细信息</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-success">
+                        <strong>
+                            <span>课题题目:</span>
+                        </strong>
+                        <span>PMMA灯具基于moldflow三维流动优化的注塑模设计</span>
+                        <hr>
+                        <strong>
+                            <span>学生姓名:</span>
+                        </strong>
+                        <span>
+                            张珊珊
+                        </span>
+                        <hr>
+                        <strong>
+                            <span>学生学号:</span>
+                        </strong>
+                        <span>3120150905909</span>
+                        <hr>
+                        <strong>
+                            <span>打分分类:</span>
+                        </strong>
+                        <span>论文</span>
+                        <hr>
+                        <strong>
+                            <span>状态:</span>
+                        </strong>
+                        <span>未完成</span>
+                        <hr>
+                        <strong>
+                            <span>分数</span>
+                        </strong>
+                        <span>暂无分数</span>
+                        <hr>
+                        <strong>
+                            <span>附件</span>
+                        </strong>
+                        <span>附件：开题报告.docx <a style="padding-left: 20px" href="#">点击下载</a></span>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm btn-info" data-dismiss="modal">关闭</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--查看答辩打分详细信息结束-->
     <!--在线批注开题报告开始-->
     <div id="openingReport" class="page-wrapper displayNone">
         <div style="margin: 0px" class="page-inner">
@@ -2059,7 +2232,8 @@
                                         等待指导教师审核
                                     </div>
                                     <div class="col-md-1 textEllipsis textAlign">
-                                        <button style="margin-bottom: 10px" type="button" class="management_graduationView newPage btn btn-info btn-xs">
+                                        <button style="margin-bottom: 10px" type="button"
+                                                class="management_graduationView newPage btn btn-info btn-xs">
                                             查看
                                         </button>
                                     </div>
@@ -2233,7 +2407,6 @@
 </div>
 
 
-
 <!--jquery.pagination.js-->
 <script src="../assets/js/jquery.pagination.js"></script>
 <!-- Bootstrap Js -->
@@ -2249,9 +2422,9 @@
 <script src="../assets/js/easypiechart.js"></script>
 
 <script>
-    $("#element").hover(function(){
+    $("#element").hover(function () {
         $('#element').popover('show');
-    },function(){
+    }, function () {
         $('#element').popover('hide');
     });
 

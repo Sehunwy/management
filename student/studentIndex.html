@@ -148,7 +148,7 @@
                 <div class="noticeContent">
                     <ul>
                         <li class="liStyle liBorderBottom">
-                            <a href="#" class="management_seven newPage topPage aStyle">
+                            <a href="#" class="management_seven newPage topPage aStyle" onclick="showRoleInfo()">
                                 <span class="paddingIco iconfont icon-wode"></span>
                                 个人信息维护
                             </a>
@@ -194,6 +194,10 @@
                 </li>
                 <li><a href="#" id="management_four">
                     <span class="iconfont icon-dabian iconColorWhite fontSize14 naviconpadding"></span>答辩管理
+                </a>
+                </li>
+                <li><a href="#" id="management_userNotification">
+                    <span class="iconfont icon-yonghutongzhi iconColorWhite fontSize14 naviconpadding"></span>用户通知
                 </a>
                 </li>
                 <li><a href="#" id="management_good">
@@ -2292,6 +2296,40 @@
     </script>
     <!--查看更多任务进度-->
 
+    <!--发送通知开始userNotification-->
+    <div id="userNotification" class="page-wrapper displayNone">
+        <div style="margin: 0px" class="page-inner">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            向指导教师发送通知
+                        </div>
+                        <div class="panel-body">
+                            <div class="col-md-12" style="padding-bottom: 10px">
+                                <h5 class="font_bold">通知内容</h5>
+                                <textarea class="form-control" rows="5" name="textarea"></textarea>
+                            </div>
+                            <div class="row" style="margin-top: 10px;margin-left: 0px">
+                                <div class="col-md-2">
+                                    <button type="button" class="btn btn-info">
+                                        确定
+                                    </button>
+                                </div>
+                                <div class="col-md-2">
+                                    <button type="button" class="btn btn-success">
+                                        取消
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--发送通知结束userNotification-->
+
     <!--退出登录-->
     <div id="login" class="bounced displayNone">
     </div>
@@ -2355,7 +2393,8 @@
     let titleArray = [];
     let taskProgress;
     let token = getCookie("token");
-    if (token == "") {
+    console.log(token);
+    if (token == "" || token == null) {
         window.location.href = "../login/login.html";
     }
 
@@ -2463,12 +2502,24 @@
         });
     }
 
-    function PersonalInformation() {
-        let informations = document.getElementById('informations').innerHTML;
-        let information = document.getElementById('information');
+    $(function () {
+        topicSelected();
+        queryProgress();
+        showRoleInfo();
+    });
+
+    function indexQuery() {
+        topicSelected();
+        queryProgress();
+    }
+
+    //查看个人信息
+    function showRoleInfo() {
         let informationsDetailed = document.getElementById('informationsDetailed').innerHTML;
         let informationDetailed = document.getElementById('informationDetailed');
-        let url = "http://www.yuanbw.cn:20086/gpms/rol/loginRoleInfo";
+        let informations = document.getElementById('informations').innerHTML;
+        let information = document.getElementById('information');
+        let url = "http://www.yuanbw.cn:20086/gpms/rol/showRoleInfo";
         $.ajax({
             url: url,
             type: "POST",
@@ -2481,7 +2532,7 @@
                 Token: token
             },
             success: function (responseStr) {
-                if (responseStr.msg == "获取用户信息成功") {
+                if(responseStr.msg == "查询成功") {
                     information.innerHTML = ejs.render(informations, {informations: responseStr.data});
                     informationDetailed.innerHTML = ejs.render(informationsDetailed, {informations: responseStr.data});
                 }
@@ -2491,17 +2542,6 @@
                 console.log(responseStr);
             }
         });
-    }
-
-    $(function () {
-        topicSelected();
-        queryProgress();
-        PersonalInformation();
-    });
-
-    function indexQuery() {
-        topicSelected();
-        queryProgress();
     }
 
     //修改个人信息
@@ -2540,7 +2580,7 @@
             success: function (responseStr) {
                 alert(responseStr.msg);
                 if(responseStr.msg == "修改成功") {
-                    PersonalInformation();
+                    showRoleInfo();
                 }
             },
             error: function (responseStr) {
@@ -2583,7 +2623,6 @@
                 Token: token
             },
             success: function (responseStr) {
-                console.log(responseStr);
                 let msg = responseStr.msg;
                 if (msg == "查询成功") {
                     pageCount = Math.ceil(responseStr.data.count / limit);
