@@ -257,12 +257,11 @@
                     let authority = responseStr.data.authority;
                     let token = responseStr.data.jwtToken;
                     setCookie("token",token,"d1");
+                    setCookie("authority",authority,"d1");
                     // document.cookie = token;
                     if (authority == 1) {
                         window.location.href = "../student/studentIndex.html";
-                    } else if (authority == 2) {
-                        window.location.href = "../teacher/teacherIndex.html";
-                    } else if (authority == 3) {
+                    } else if (authority == 2 || authority == 3) {
                         window.location.href = "../dean/deanIndex.html";
                     } else if (authority == 4) {
                         window.location.href = "../admin/adminIndex.html";

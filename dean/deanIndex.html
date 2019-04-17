@@ -134,7 +134,7 @@
                         <span class="iconfont icon-lunwentimu iconColor fontSize14 naviconpadding"></span>题目管理
                     </a>
                 </li>
-                <li><a href="#" id="management_two">
+                <li class="isDean"><a href="#" id="management_two">
                     <span class="iconfont icon-tongjibaobiao iconColorWhite fontSize14 naviconpadding"></span>统计报表
                 </a>
                 </li>
@@ -173,8 +173,8 @@
                                 <li><a href="#upload_Title" role="tab"
                                        data-toggle="tab">上传题目</a></li>
                                 <li><a href="#audit_Students_Topics" role="tab" data-toggle="tab">审核学生选题</a></li>
-                                <li><a href="#draw" role="tab" data-toggle="tab">出题审核</a></li>
-                                <li><a href="#topic_Selection" role="tab" data-toggle="tab">选题审核</a></li>
+                                <li class="isDean"><a href="#draw" role="tab" data-toggle="tab">出题审核</a></li>
+                                <li class="isDean"><a href="#topic_Selection" role="tab" data-toggle="tab">选题审核</a></li>
                             </ul>
                         </div>
                         <div class="tab-content">
@@ -302,44 +302,9 @@
                             <!--出题审核结束-->
                             <!--选题审核开始-->
                             <div class="tab-pane panel-body" id="topic_Selection">
-                                <div class="alert alert-info textEllipsis">
-                                    <div style="padding-bottom: 15px" class="col-md-12">
-                                        <div class="col-md-12">
-                                            <h4 class="font_bold">设定选题时间</h4>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="col-md-3 padding0">开始选题时间：</div>
-                                            <div class="col-md-6">
-                                                <input style="padding-left: 2px;padding-right: 30px"
-                                                       class="form-control"
-                                                       type="date">
-                                            </div>
-                                            <div class="col-md-3">
-                                                <input style="padding-left: 16px;padding-right: 6px"
-                                                       class="form-control" type="time">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="col-md-3 padding0">结束选题时间：</div>
-                                            <div class="col-md-6">
-                                                <input style="padding-left: 2px;padding-right: 30px"
-                                                       class="form-control"
-                                                       type="date">
-                                            </div>
-                                            <div class="col-md-3">
-                                                <input style="padding-left: 16px;padding-right: 6px"
-                                                       class="form-control" type="time">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <button type="button" class="btn btn-info btn-ms">确定
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
                                 <div style="padding-left:0px;padding-bottom: 15px" class="col-md-12">
-                                    <div style="padding-left: 0px" class="col-md-1 padding0">
-                                        审核状态：
+                                    <div style="padding-left: 0px" class="col-md-2 padding0">
+                                        系主任审核状态：
                                     </div>
                                     <div style="padding-left: 0px" class="col-md-2">
                                         <select class="form-control">
@@ -1522,21 +1487,21 @@
                     <div class="panel panel-default">
                         <div style="background-color: #f5f5f5">
                             <ul class="nav nav-tabs" role="tablist">
-                                <li class="active"><a href="#teachers_Group" role="tab"
-                                                      data-toggle="tab">教师分组</a></li>
-                                <li><a href="#students_Group" role="tab" data-toggle="tab">学生分组</a></li>
-                                <li><a href="#reply_arrange" role="tab"
+                                <li class="active"><a href="#reply_arrange" role="tab"
                                                       data-toggle="tab">查看指导学生答辩安排</a></li>
-                                <li><a href="#reply_arrange_self" role="tab" data-toggle="tab">查看答辩安排</a></li>
+                                <li><a href="#reply_arrange_self" role="tab" data-toggle="tab">查看教师答辩安排</a></li>
                                 <li><a href="#defense_rating" role="tab" data-toggle="tab">答辩打分</a></li>
                                 <li><a href="#defense_Situation" role="tab" data-toggle="tab">答辩组长提交答辩打分情况</a></li>
                                 <li><a href="#reply_results" role="tab" data-toggle="tab">答辩结果</a></li>
                                 <li><a href="#grade_Papers" role="tab" data-toggle="tab">答辩论文打分</a></li>
+                                <li class="isDean"><a href="#teachers_Group" role="tab"
+                                                      data-toggle="tab">教师分组</a></li>
+                                <li class="isDean"><a href="#students_Group" role="tab" data-toggle="tab">学生分组</a></li>
                             </ul>
                         </div>
                         <div class="tab-content">
                             <!--教师分组开始-->
-                            <div class="tab-pane active" id="teachers_Group">
+                            <div class="tab-pane" id="teachers_Group">
                                 <div class="panel-body">
                                     <div style="padding-left:0px;padding-bottom: 15px" class="col-md-12">
                                         <div style="padding-left:0px;" class="col-md-4">
@@ -1829,13 +1794,13 @@
                                 </div>
                             </div>
                             <!--查看指导学生答辩安排结束-->
-                            <!--查看答辩安排开始-->
+                            <!--查看教师答辩安排开始-->
                             <div class="tab-pane panel-body" id="reply_arrange_self">
+                                <div class="col-md-12">
+                                    <h4 class="font_bold">教师信息</h4>
+                                </div>
                                 <div class="alert alert-success textEllipsis border_radius marginBottom0">
                                     <div class="col-md-3 textAlign">
-                                        答辩学生
-                                    </div>
-                                    <div class="col-md-2 textAlign">
                                         答辩时间
                                     </div>
                                     <div class="col-md-1 textAlign">
@@ -1847,20 +1812,16 @@
                                     <div class="col-md-1 textAlign">
                                         分组
                                     </div>
-                                    <div class="col-md-4 textAlign">
+                                    <div class="col-md-6 textAlign">
                                         答辩教师
                                     </div>
                                 </div>
                                 <div class="alert alert-danger textEllipsis border_radius marginBottom0">
                                     <div class="col-md-3 textAlign">
-                                        <span class="clickColor cursorPointer" data-toggle="modal"
-                                              data-target="#student_details">廖永衡（3120150905119）</span>
-                                    </div>
-                                    <div class="col-md-2 textAlign">
-                                        2019-01-05 17:47:28
+                                        2019-4-17 上午 8：30
                                     </div>
                                     <div class="col-md-1 textAlign">
-                                        6A-404
+                                        6A-309
                                     </div>
                                     <div class="col-md-1 textAlign">
                                         <span class="clickColor cursorPointer" data-toggle="modal"
@@ -1869,13 +1830,46 @@
                                     <div class="col-md-1 textAlign">
                                         第一组
                                     </div>
-                                    <div class="col-md-4 textAlign">
+                                    <div class="col-md-6 textAlign">
+                                        <span class="clickColor cursorPointer" data-toggle="modal"
+                                              data-target="#teacherDetails">廖永衡</span>
+                                        <span class="clickColor cursorPointer" data-toggle="modal"
+                                              data-target="#teacherDetails">廖永衡</span>
+                                        <span class="clickColor cursorPointer" data-toggle="modal"
+                                              data-target="#teacherDetails">廖永衡</span>
+                                        <span class="clickColor cursorPointer" data-toggle="modal"
+                                              data-target="#teacherDetails">廖永衡</span>
                                         <span class="clickColor cursorPointer" data-toggle="modal"
                                               data-target="#teacherDetails">廖永衡</span>
                                     </div>
                                 </div>
+                                <div class="col-md-12">
+                                    <h4 class="font_bold">学生信息</h4>
+                                </div>
+                                <div class="alert alert-success textEllipsis border_radius marginBottom0">
+                                    <div class="col-md-4 textAlign">
+                                        答辩学生（学号）
+                                    </div>
+                                    <div class="col-md-4 textAlign">
+                                        课题题目
+                                    </div>
+                                    <div class="col-md-4 textAlign">
+                                        指导教师（工号）
+                                    </div>
+                                </div>
+                                <div class="alert alert-danger textEllipsis border_radius marginBottom0">
+                                    <div class="col-md-4 textAlign">
+                                        王珊珊（3120150905111）
+                                    </div>
+                                    <div class="col-md-4 textAligntextEllipsis">
+                                        课题题目PMMA灯具基于moldfl课题题目课题题目
+                                    </div>
+                                    <div class="col-md-4 textAlign">
+                                        廖永衡（1212121212）
+                                    </div>
+                                </div>
                             </div>
-                            <!--查看答辩安排结束-->
+                            <!--查看教师答辩安排结束-->
                             <!--答辩打分开始-->
                             <div class="tab-pane panel-body" id="defense_rating">
                                 <div class="alert alert-success textEllipsis border_radius marginBottom0">
@@ -3865,244 +3859,11 @@
 
 
     <!--历届优秀浏览开始-->
-    <div id="good" class="page-wrapper displayNone">
-        <div style="margin: 0px" class="page-inner">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="panel panel-default">
-                        <div style="background-color: #f5f5f5">
-                            <ul class="nav nav-tabs" role="tablist">
-                                <li class="active"><a href="#review_Good" role="tab"
-                                                      data-toggle="tab">查看优秀毕业设计</a></li>
-                                <li><a href="#release_Good" role="tab" data-toggle="tab">发布优秀毕业设计</a></li>
-                            </ul>
-                        </div>
-                        <div class="tab-content">
-                            <!--查看优秀毕业设计开始-->
-                            <div class="tab-pane active panel-body" id="review_Good">
-                                <div style="padding-bottom: 15px" class="col-md-12">
-                                    <div style="padding-bottom: 15px;padding-left: 0px" class="col-md-12">
-                                        <div style="padding-left: 0px" class="col-md-12">
-                                            <div class="col-md-1 col-xs-1" style="padding-right: 0px">
-                                                条件：
-                                            </div>
-                                            <div class="col-md-3 col-xs-3" style="padding: 0px">
-                                                <select style="margin:0px 5px" class="form-control">
-                                                    <option value="title">题目</option>
-                                                    <option value="period">届</option>
-                                                    <option value="honorStudent">优秀生姓名</option>
-                                                    <option value="professional">专业</option>
-                                                </select>
-                                            </div>
-                                            <div class="col-md-6 col-xs-6">
-                                                <input type="text" class="form-control">
-                                            </div>
-                                            <div class="col-md-2 col-xs-2" style="padding-left: 5px">
-                                                <button type="button" class="btn btn-info">查询</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="alert alert-success textEllipsis border_radius marginBottom0">
-                                        <div class="col-md-4 textAlign">
-                                            题目
-                                        </div>
-                                        <div class="col-md-2 textAlign">
-                                            届
-                                        </div>
-                                        <div class="col-md-2 textAlign">
-                                            优秀生
-                                        </div>
-                                        <div class="col-md-2 textAlign">
-                                            专业
-                                        </div>
-                                        <div class="col-md-2 textAlign">
-                                            操作
-                                        </div>
-                                    </div>
-                                    <div class="alert alert-warning textEllipsis border_radius marginBottom0">
-                                        <div title="PMMA灯具基于moldflow三维流动优化的注塑模设计"
-                                             class="col-md-4 textEllipsis textAlign">
-                                            PMMA灯具基于moldflow三维流动优化的注塑模设计
-                                        </div>
-                                        <div class="col-md-2 textEllipsis textAlign">
-                                            2018届
-                                        </div>
-                                        <div title="6A-405" class="col-md-2 textEllipsis textAlign">
-                                            张三
-                                        </div>
-                                        <div title="廖永衡（系主任）" class="col-md-2 textAlign textEllipsis">
-                                            软件工程
-                                        </div>
-                                        <div class="col-md-2 textEllipsis textAlign">
-                                            <button type="button"
-                                                    class="management_goodDetails newPage btn btn-info btn-xs">查看
-                                            </button>
-                                            <button type="button" class="btn btn-danger btn-xs" data-toggle="modal"
-                                                    data-target="#deleteGood">删除
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <div class="alert alert-danger textEllipsis border_radius marginBottom0">
-                                        <div title="PMMA灯具基于moldflow三维流动优化的注塑模设计"
-                                             class="col-md-4 textEllipsis textAlign">
-                                            PMMA灯具基于moldflow三维流动优化的注塑模设计
-                                        </div>
-                                        <div class="col-md-2 textEllipsis textAlign">
-                                            2018届
-                                        </div>
-                                        <div title="6A-405" class="col-md-2 textEllipsis textAlign">
-                                            张三
-                                        </div>
-                                        <div title="廖永衡（系主任）" class="col-md-2 textAlign textEllipsis">
-                                            软件工程
-                                        </div>
-                                        <div class="col-md-2 textEllipsis textAlign">
-                                            <button type="button"
-                                                    class="management_goodDetails newPage btn btn-info btn-xs">查看
-                                            </button>
-                                            <button type="button" class="btn btn-danger btn-xs" data-toggle="modal"
-                                                    data-target="#deleteGood">删除
-                                            </button>
-                                        </div>
-                                    </div>
-
-                                    <!--分页开始-->
-                                    <div style="margin-top: 15px" class="m-style"></div>
-                                    <!--分页结束-->
-                                </div>
-                            </div>
-                            <!--查看优秀毕业设计结束-->
-                            <!--发布优秀毕业设计开始-->
-                            <div class="tab-pane panel-body" id="release_Good">
-                                <div class="col-md-12 openingReport">
-                                    <h5 class="font_bold">题目</h5>
-                                    <div class="col-md-12 padding0">
-                                        <textarea rows="1" class="form-control textContent"></textarea>
-                                    </div>
-                                    <h5 class="font_bold paddingTop60">届</h5>
-                                    <div class="col-md-12 padding0">
-                                        <textarea rows="1" class="form-control textContent"></textarea>
-                                    </div>
-                                    <h5 class="font_bold paddingTop60">优秀生姓名</h5>
-                                    <div class="col-md-12 padding0">
-                                        <textarea rows="1" class="form-control textContent"></textarea>
-                                    </div>
-                                    <h5 class="font_bold paddingTop60">专业</h5>
-                                    <div class="col-md-12 padding0">
-                                        <textarea rows="1" class="form-control textContent"></textarea>
-                                    </div>
-                                    <h5 class="font_bold paddingTop60">毕业设计简介</h5>
-                                    <div class="col-md-12 padding0" style="margin-bottom: 10px">
-                                        <textarea rows="4" class="form-control textContent"></textarea>
-                                    </div>
-                                    <h5 class="font_bold">添加附件</h5>
-                                    <input id="paperChooseTitle" type="file" style="display: none">
-                                    <div class="row">
-                                        <div class="col-md-5 paddingRightt0">
-                                            <input id="paperNameTitle" class="form-control textContent" type="text">
-                                        </div>
-                                        <div class="col-md-5 paddingLeft0">
-                                            <button type="button"
-                                                    class="btn btn-info border_bottom_left_radius border_top_left_radius"
-                                                    onclick="fileClick('paperChooseTitle','paperNameTitle')">
-                                                浏览
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <div class="row" style="margin-top: 10px">
-                                        <div class="col-md-2">
-                                            <button type="button" class="management_good newPage btn btn-info">
-                                                提交
-                                            </button>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <button type="button" class="management_good newPage btn btn-success"
-                                                    onclick="cancelTitle()">
-                                                取消
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--发布优秀毕业设计结束-->
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div id="pastExcellent" class="commmon good displayNone" style="height: 100%">
     </div>
-    <!--历届优秀浏览详情开始-->
-    <div id="goodDetails" class="page-wrapper displayNone">
-        <div style="margin: 0px" class="page-inner">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            优秀浏览详情
-                        </div>
-                        <div class="panel-body">
-                            <div class="col-md-12 openingReport">
-                                <h5 class="font_bold">题目</h5>
-                                <div class="whiteColor padding10">
-                                    毕设题目
-                                </div>
-                                <h5 class="font_bold">届</h5>
-                                <div class="whiteColor padding10">
-                                    2018届
-                                </div>
-                                <h5 class="font_bold">优秀生</h5>
-                                <div class="whiteColor padding10">
-                                    张三
-                                </div>
-                                <h5 class="font_bold">专业</h5>
-                                <div class="whiteColor padding10">
-                                    软件工程
-                                </div>
-                                <h5 class="font_bold">简介</h5>
-                                <div class="whiteColor padding10">
-                                    毕设简介
-                                </div>
-                                <h5 class="font_bold">附件</h5>
-                                <div class="whiteColor" style="padding:10px;">
-                                    附件：开题报告.docx <a style="padding-left: 20px" href="#">点击下载</a>
-                                </div>
-                                <div class="row" style="margin-top: 10px">
-                                    <div class="col-md-2">
-                                        <button type="button" class="management_good newPage  btn btn-info">
-                                            返回
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--历届优秀浏览详情开始-->
-    <!--确认删除优秀毕业设计开始-->
-    <div class="modal fade" id="deleteGood" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                            aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">提示</h4>
-                </div>
-                <div class="modal-body">
-                    <div class="container-fluid">
-                        确定删除该优秀毕业设计！
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-xs btn-white" data-dismiss="modal">取 消</button>
-                    <button type="button" class="btn btn-xs btn-danger">保 存</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--确认删除优秀毕业设计结束-->
+    <script>
+        $("#pastExcellent").load("../commonHtml/pastExcellent.html");
+    </script>
     <!--历届优秀浏览结束-->
 
     <!--通知公告-->
@@ -4150,11 +3911,24 @@
 <script src="../assets/js/easypiechart.js"></script>
 <!--分页开始-->
 <script>
+
+    $(function () {
+        let authority = getCookie("authority");
+        if(authority == 2){
+            let isDean = document.getElementsByClassName('isDean');
+            while(isDean.length > 0){
+                isDean[0].parentNode.removeChild(isDean[0]);
+            }
+            console.log(isDean);
+        }
+    });
+
     $("#element").hover(function () {
         $('#element').popover('show');
     }, function () {
         $('#element').popover('hide');
     });
+
     $('.m-style').pagination({
         pageCount: 5,
         jump: true,
