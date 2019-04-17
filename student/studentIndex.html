@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" panel="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="Access-Control-Allow-Origin" content="*">
     <title>四川工商学院毕业设计管理系统</title>
     <link rel="icon" href="../assets/img/bitbug_favicon.ico" type="img/x-ico"/>
     <!-- Bootstrap Styles-->
@@ -2393,7 +2394,7 @@
     let titleArray = [];
     let taskProgress;
     let token = getCookie("token");
-    console.log(token);
+    console.log("token "+token);
     if (token == "" || token == null) {
         window.location.href = "../login/login.html";
     }
