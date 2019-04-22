@@ -12,16 +12,12 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="panel panel-default">
-                    <div style="background-color: #f5f5f5">
-                        <ul class="nav nav-tabs" role="tablist">
-                            <li class="active"><a href="#review_Good" role="tab"
-                                                  data-toggle="tab">查看优秀毕业设计</a></li>
-                            <li class="release_Dean"><a href="#release_Good" role="tab" data-toggle="tab">发布优秀毕业设计</a></li>
-                        </ul>
+                    <div class="panel-heading">
+                        查看优秀毕业设计
                     </div>
-                    <div class="tab-content">
+                    <div class="panel-body">
                         <!--查看优秀毕业设计开始-->
-                        <div class="tab-pane active panel-body" id="review_Good">
+                        <div class="tab-pane active panel-body goodOne" id="review_Good">
                             <div style="padding-bottom: 15px" class="col-md-12">
                                 <div style="padding-bottom: 15px;padding-left: 0px" class="col-md-12">
                                     <div style="padding-left: 0px" class="col-md-12">
@@ -114,59 +110,6 @@
                             </div>
                         </div>
                         <!--查看优秀毕业设计结束-->
-                        <!--发布优秀毕业设计开始-->
-                        <div class="tab-pane panel-body" id="release_Good">
-                            <div class="col-md-12 openingReport">
-                                <h5 class="font_bold">题目</h5>
-                                <div class="col-md-12 padding0">
-                                    <textarea rows="1" class="form-control textContent"></textarea>
-                                </div>
-                                <h5 class="font_bold paddingTop60">届</h5>
-                                <div class="col-md-12 padding0">
-                                    <textarea rows="1" class="form-control textContent"></textarea>
-                                </div>
-                                <h5 class="font_bold paddingTop60">优秀生姓名</h5>
-                                <div class="col-md-12 padding0">
-                                    <textarea rows="1" class="form-control textContent"></textarea>
-                                </div>
-                                <h5 class="font_bold paddingTop60">专业</h5>
-                                <div class="col-md-12 padding0">
-                                    <textarea rows="1" class="form-control textContent"></textarea>
-                                </div>
-                                <h5 class="font_bold paddingTop60">毕业设计简介</h5>
-                                <div class="col-md-12 padding0" style="margin-bottom: 10px">
-                                    <textarea rows="4" class="form-control textContent"></textarea>
-                                </div>
-                                <h5 class="font_bold">添加附件</h5>
-                                <input id="paperChooseTitle" type="file" style="display: none">
-                                <div class="row">
-                                    <div class="col-md-5 paddingRightt0">
-                                        <input id="paperNameTitle" class="form-control textContent" type="text">
-                                    </div>
-                                    <div class="col-md-5 paddingLeft0">
-                                        <button type="button"
-                                                class="btn btn-info border_bottom_left_radius border_top_left_radius"
-                                                onclick="fileClick('paperChooseTitle','paperNameTitle')">
-                                            浏览
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="row" style="margin-top: 10px">
-                                    <div class="col-md-2">
-                                        <button type="button" class="management_good newPage btn btn-info">
-                                            提交
-                                        </button>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <button type="button" class="management_good newPage btn btn-success"
-                                                onclick="cancelTitle()">
-                                            取消
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--发布优秀毕业设计结束-->
                     </div>
                 </div>
             </div>
@@ -223,28 +166,6 @@
     </div>
 </div>
 <!--历届优秀浏览详情开始-->
-<!--确认删除优秀毕业设计开始-->
-<div class="modal fade" id="deleteGood" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                        aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">提示</h4>
-            </div>
-            <div class="modal-body">
-                <div class="container-fluid">
-                    确定删除该优秀毕业设计！
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-xs btn-white" data-dismiss="modal">取 消</button>
-                <button type="button" class="btn btn-xs btn-danger">保 存</button>
-            </div>
-        </div>
-    </div>
-</div>
-<!--确认删除优秀毕业设计结束-->
 <!--历届优秀浏览结束-->
 </body>
 
