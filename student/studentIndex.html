@@ -2434,6 +2434,10 @@
                 Token: token
             },
             success: function (responseStr) {
+                if(responseStr.msg == "请先登录！") {
+                    window.location.href = "../login/login.html";
+                }
+                console.log(responseStr);
                 taskProgress = [
                     {
                         progress: responseStr.data[0],
