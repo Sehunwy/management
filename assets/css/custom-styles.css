@@ -299,6 +299,11 @@ p {
     color: #225081;
 }
 
+.spanStyle:hover {
+    cursor: pointer;
+    opacity: 0.8;
+}
+
 .noticeContent {
     position: absolute;
     background-color: #ffffff;
