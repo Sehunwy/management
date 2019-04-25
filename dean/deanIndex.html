@@ -376,7 +376,7 @@
                                         </div>
                                         <div class="col-md-2">
                                             <button type="button" class="management_one newPage btn btn-success"
-                                                    onclick="cancelTitle()">
+                                            onclick="Unupload('classOne','classOther','textContent')">
                                                 取消
                                             </button>
                                         </div>
@@ -1221,8 +1221,8 @@
                                                       data-toggle="tab">查看教师答辩安排</a></li>
                                 <li><a href="#defense_rating" role="tab" data-toggle="tab">答辩打分</a></li>
                                 <li><a href="#defense_Situation" role="tab" data-toggle="tab">答辩组长提交答辩打分情况</a></li>
-                                <li><a href="#grade_Papers" role="tab" data-toggle="tab">答辩论文打分</a></li>
-                                <li><a href="#thesis_Situation" role="tab" data-toggle="tab">答辩组长提交论文打分情况</a></li>
+                                <li><a href="#grade_Papers" role="tab" data-toggle="tab">毕业设计评审</a></li>
+                                <li><a href="#thesis_Situation" role="tab" data-toggle="tab">答辩组长提交毕业设计评审情况</a></li>
                             </ul>
                         </div>
                         <div class="tab-content">
@@ -1232,7 +1232,7 @@
                                     <h4 class="font_bold">教师信息</h4>
                                 </div>
                                 <div class="alert alert-success textEllipsis border_radius marginBottom0">
-                                    <div class="col-md-3 textAlign">
+                                    <div class="col-md-4 textAlign">
                                         答辩时间
                                     </div>
                                     <div class="col-md-1 textAlign">
@@ -1244,13 +1244,13 @@
                                     <div class="col-md-1 textAlign">
                                         分组
                                     </div>
-                                    <div class="col-md-6 textAlign">
+                                    <div class="col-md-5 textAlign">
                                         答辩教师
                                     </div>
                                 </div>
                                 <div class="alert alert-danger textEllipsis border_radius marginBottom0">
-                                    <div class="col-md-3 textAlign">
-                                        2019-4-17 上午 8：30
+                                    <div class="col-md-4 textAlign">
+                                        2019-4-17/第九周星期五 上午 8：30
                                     </div>
                                     <div class="col-md-1 textAlign">
                                         6A-309
@@ -1262,7 +1262,7 @@
                                     <div class="col-md-1 textAlign">
                                         第一组
                                     </div>
-                                    <div class="col-md-6 textAlign">
+                                    <div class="col-md-5 textAlign">
                                         <span class="clickColor cursorPointer" data-toggle="modal"
                                               data-target="#teacherDetails">廖永衡</span>
                                         <span class="clickColor cursorPointer" data-toggle="modal"
@@ -1305,57 +1305,59 @@
                             <!--答辩打分开始-->
                             <div class="tab-pane panel-body" id="defense_rating">
                                 <div class="alert alert-success textEllipsis border_radius marginBottom0">
-                                    <div class="col-md-6 textAlign">
+                                    <div class="col-md-4 textAlign">
                                         课题题目
                                     </div>
-                                    <div class="col-md-1 textAlign">
-                                        学生姓名
+                                    <div class="col-md-3 textAlign">
+                                        学生姓名(学号)
                                     </div>
-                                    <div class="col-md-2 textAlign">
-                                        学生学号
+                                    <div class="col-md-3 textAlign">
+                                        指导教师（工号）
                                     </div>
                                     <div class="col-md-1 textAlign">
                                         分数
                                     </div>
-                                    <div class="col-md-2 textAlign">
+                                    <div class="col-md-1 textAlign">
                                         操作
                                     </div>
                                 </div>
                                 <div class="alert alert-warning textEllipsis border_radius marginBottom0">
-                                    <div class="col-md-6 textAlign textEllipsis">
+                                    <div class="col-md-4 textAlign textEllipsis">
                                         PMMA灯具基于moldflow三维流动优化的注塑模设计
                                     </div>
-                                    <div class="col-md-1 textAlign">
-                                        王珊珊
+                                    <div class="col-md-3 textAlign">
+                                        王珊珊（3120150905111）
                                     </div>
-                                    <div class="col-md-2 textAlign">
-                                        3120150905111
+                                    <div class="col-md-3 textAlign">
+                                        廖永衡（123456788900）
                                     </div>
                                     <div class="col-md-1 textAlign">
                                         90
                                     </div>
-                                    <div class="col-md-2 textAlign">
-                                        <button type="button" class="btn btn-info btn-xs" data-toggle="modal"
-                                                data-target="#score">打分
+                                    <div class="col-md-1 textAlign">
+                                        <button type="button"
+                                                class="management_score newPage btn btn-info btn-xs">
+                                            打分
                                         </button>
                                     </div>
                                 </div>
                                 <div class="alert alert-warning textEllipsis border_radius marginBottom0">
-                                    <div class="col-md-6 textAlign textEllipsis">
+                                    <div class="col-md-4 textAlign textEllipsis">
                                         PMMA灯具基于moldflow三维流动优化的注塑模设计
                                     </div>
-                                    <div class="col-md-1 textAlign">
-                                        王珊珊
+                                    <div class="col-md-3 textAlign">
+                                        王珊珊（3120150905111）
                                     </div>
-                                    <div class="col-md-2 textAlign">
-                                        3120150905111
+                                    <div class="col-md-3 textAlign">
+                                        廖永衡（123456788900）
                                     </div>
                                     <div class="col-md-1 textAlign">
                                         90
                                     </div>
-                                    <div class="col-md-2 textAlign">
-                                        <button type="button" class="btn btn-info btn-xs" data-toggle="modal"
-                                                data-target="#score">打分
+                                    <div class="col-md-1 textAlign">
+                                        <button type="button"
+                                                class="management_score newPage btn btn-info btn-xs">
+                                            打分
                                         </button>
                                     </div>
                                 </div>
@@ -1668,86 +1670,286 @@
             <!--题目管理结束-->
         </div>
     </div>
-    <!--打分开始 -->
-    <div class="modal fade" id="score" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                            aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">打分</h4>
-                </div>
-                <div class="modal-body">
-                    <div class="alert alert-success col-md-12">
-                        <strong>
-                            <span>姓名（学号）:</span>
-                        </strong>
-                        <span>
-                            王晓霞（12000002000）
-                        </span>
-                        <hr>
-                        <div class="col-md-12 padding0">
-                            <div class="col-md-3 padding0 lineHeight">
-                                <strong>答辩情况打分:</strong>
-                            </div>
-                            <div class="col-md-4">
-                                <input type="text" class="form-control">
-                            </div>
+    <!--答辩打分开始 -->
+    <div id="score" class="page-wrapper displayNone">
+        <div style="margin: 0px" class="page-inner">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            答辩打分
                         </div>
-                        <div class="col-md-12 padding0">
-                            <hr>
-                        </div>
-                        <div class="col-md-12 padding0">
-                            <div class="col-md-3 padding0 lineHeight">
-                                <strong>时间把握打分:</strong>
+                        <div class="panel-body">
+                            <div class="alert alert-danger textEllipsis border_radius marginBottom0">
+                                <div class="col-md-12 textEllipsis">
+                                    课题题目：PMMA灯具基于moldflow三维流动优化的注塑模设计
+                                </div>
                             </div>
-                            <div class="col-md-4">
-                                <input type="text" class="form-control">
+                            <div class="alert alert-danger textEllipsis border_radius marginBottom0">
+                                <div class="col-md-3">
+                                    学生姓名：王晓霞
+                                </div>
+                                <div class="col-md-4">
+                                    学生学号：3120150909000
+                                </div>
+                                <div class="col-md-5">
+                                    指导教师姓名：廖永衡
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-12 padding0">
-                            <hr>
-                        </div>
-                        <div class="col-md-12 padding0">
-                            <div class="col-md-3 padding0 lineHeight">
-                                <strong>提问环节打分:</strong>
+                            <div class="alert alert-success textEllipsis border_radius marginBottom0">
+                                <div class="col-md-1 textAlign">
+                                    序号
+                                </div>
+                                <div class="col-md-2 textAlign">
+                                    评审事项
+                                </div>
+                                <div class="col-md-6 textAlign">
+                                    指标
+                                </div>
+                                <div class="col-md-1 textAlign">
+                                    满分
+                                </div>
+                                <div class="col-md-2 textAlign">
+                                    评分
+                                </div>
                             </div>
-                            <div class="col-md-4">
-                                <input type="text" class="form-control">
+                            <div class="alert alert-warning textEllipsis border_radius marginBottom0">
+                                <div class="col-md-1 textAlign">
+                                    1
+                                </div>
+                                <div class="col-md-2 textAlign">
+                                    报告过程
+                                </div>
+                                <div class="col-md-6 textAlign textEllipsis">
+                                    准备工作充分，时间符合要求
+                                </div>
+                                <div class="col-md-1 textAlign">
+                                    5
+                                </div>
+                                <div class="col-md-2 textAlign">
+                                    <input type="text" class="form-control pleaScoreinput">
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-12 padding0">
-                            <hr>
-                        </div>
-                        <div class="col-md-12 padding0">
-                            <div class="col-md-3 padding0 lineHeight">
-                                <strong>PPT展示打分:</strong>
+                            <div class="alert alert-warning textEllipsis border_radius marginBottom0">
+                                <div class="col-md-1 textAlign">
+                                    2
+                                </div>
+                                <div class="col-md-2 textAlign">
+                                    报告过程
+                                </div>
+                                <div class="col-md-6 textAlign textEllipsis">
+                                    思路清晰；语言表达准确，概念清楚；报告内容简介扼要；分析归纳合理
+                                </div>
+                                <div class="col-md-1 textAlign">
+                                    10
+                                </div>
+                                <div class="col-md-2 textAlign">
+                                    <input type="text" class="form-control pleaScoreinput">
+                                </div>
                             </div>
-                            <div class="col-md-4">
-                                <input type="text" class="form-control">
+                            <div class="alert alert-warning textEllipsis border_radius marginBottom0">
+                                <div class="col-md-1 textAlign">
+                                    3
+                                </div>
+                                <div class="col-md-2 textAlign">
+                                    适用价值
+                                </div>
+                                <div class="col-md-6 textAlign textEllipsis">
+                                    对前人的工作有改进或突破，有一定的实用背景和实用价值
+                                </div>
+                                <div class="col-md-1 textAlign">
+                                    5
+                                </div>
+                                <div class="col-md-2 textAlign">
+                                    <input type="text" class="form-control pleaScoreinput">
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-12 padding0">
-                            <hr>
-                        </div>
-                        <div class="col-md-12 padding0">
-                            <div class="col-md-3 padding0 lineHeight">
-                                <strong>答辩组长评语:</strong>
+                            <div class="alert alert-warning textEllipsis border_radius marginBottom0">
+                                <div class="col-md-1 textAlign">
+                                    4
+                                </div>
+                                <div class="col-md-2 textAlign">
+                                    答辩
+                                </div>
+                                <div class="col-md-6 textAlign textEllipsis">
+                                    回答内容有理论依据，基本概念清楚。主要问题回答准确，深入
+                                </div>
+                                <div class="col-md-1 textAlign">
+                                    20
+                                </div>
+                                <div class="col-md-2 textAlign">
+                                    <input type="text" class="form-control pleaScoreinput">
+                                </div>
+
                             </div>
-                            <div class="col-md-9">
-                                <textarea rows="4" style="width: 100%" class="form-control"></textarea>
+                            <div class="alert alert-warning textEllipsis border_radius marginBottom0">
+                                <div class="col-md-12 textAlign">
+                                    <textarea rows="4" class="form-control pleaScoreinput" style="width: 100%"
+                                              placeholder="答辩简要记录及评语"></textarea>
+                                </div>
+                            </div>
+                            <div class="row" style="margin-top: 10px">
+                                <div class="col-md-2">
+                                    <button type="button" class="management_three newPage btn btn-info">
+                                        确定
+                                    </button>
+                                </div>
+                                <div class="col-md-2">
+                                    <button type="button" class="management_three newPage  btn btn-success"
+                                            onclick="cancelTitle('pleaScoreinput')">
+                                        返回
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-sm btn-success" data-dismiss="modal">确认</button>
-                    <button type="button" class="btn btn-sm btn-info" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+    <!--答辩打分结束-->
+    <!--毕业设计评审开始-->
+    <div id="scorePlea" class="page-wrapper displayNone">
+        <div style="margin: 0px" class="page-inner">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            毕业设计评审
+                        </div>
+                        <div class="panel-body">
+                            <div class="alert alert-danger textEllipsis border_radius marginBottom0">
+                                <div class="col-md-12 textEllipsis">
+                                    课题题目：PMMA灯具基于moldflow三维流动优化的注塑模设计
+                                </div>
+                            </div>
+                            <div class="alert alert-danger textEllipsis border_radius marginBottom0">
+                                <div class="col-md-3">
+                                    学生姓名：王晓霞
+                                </div>
+                                <div class="col-md-4">
+                                    学生学号：3120150909000
+                                </div>
+                                <div class="col-md-5">
+                                    指导教师姓名：廖永衡
+                                </div>
+                            </div>
+                            <div class="alert alert-success textEllipsis border_radius marginBottom0">
+                                <div class="col-md-1 textAlign">
+                                    序号
+                                </div>
+                                <div class="col-md-2 textAlign">
+                                    评审项目
+                                </div>
+                                <div class="col-md-6 textAlign">
+                                    指标
+                                </div>
+                                <div class="col-md-1 textAlign">
+                                    满分
+                                </div>
+                                <div class="col-md-2 textAlign">
+                                    评分
+                                </div>
+                            </div>
+                            <div class="alert alert-warning textEllipsis border_radius marginBottom0">
+                                <div class="col-md-1 textAlign">
+                                    1
+                                </div>
+                                <div class="col-md-2 textAlign normalSpace">
+                                    翻译资料、综述材料
+                                </div>
+                                <div class="col-md-6 normalSpace">
+                                    查阅的文献比较广泛；翻译准确、通顺、文字流畅；综述材料充分，使用正确、合理；
+                                    文理通顺，语言流畅，用语准确、规范；有综合归纳资料的能力。
+                                </div>
+                                <div class="col-md-1 textAlign">
+                                    3
+                                </div>
+                                <div class="col-md-2 textAlign">
+                                    <input type="text" class="form-control pleaScoreinput">
+                                </div>
+                            </div>
+                            <div class="alert alert-warning textEllipsis border_radius marginBottom0">
+                                <div class="col-md-1 textAlign">
+                                    2
+                                </div>
+                                <div class="col-md-2 normalSpace">
+                                    设计质量及设计说明书质量。
+                                </div>
+                                <div class="col-md-6 normalSpace">
+                                    方案设计合理，方案综合比较论证充分，切实可行，有较详细的实施措施；
+                                    技术路线正确，数据采集、计算、处理方式正确；结构设计合理、工艺可行、推导正确或程序运行可靠；
+                                    设计说明书文理通顺，语言流畅、技术用语准确，符号统一、规范，编号齐全、书写工整规范；
+                                    图表完备、整洁、正确；绘图符合国家标准。
+                                </div>
+                                <div class="col-md-1 textAlign">
+                                    10
+                                </div>
+                                <div class="col-md-2 textAlign">
+                                    <input type="text" class="form-control pleaScoreinput">
+                                </div>
+                            </div>
+                            <div class="alert alert-warning textEllipsis border_radius marginBottom0">
+                                <div class="col-md-1 textAlign">
+                                    3
+                                </div>
+                                <div class="col-md-2 textAlign">
+                                    工作量、难度
+                                </div>
+                                <div class="col-md-6 normalSpace">
+                                    完成的工作达到了教学基本要求，工作量饱满，难度系数较大。
+                                </div>
+                                <div class="col-md-1 textAlign">
+                                    5
+                                </div>
+                                <div class="col-md-2 textAlign">
+                                    <input type="text" class="form-control pleaScoreinput">
+                                </div>
+                            </div>
+                            <div class="alert alert-warning textEllipsis border_radius marginBottom0">
+                                <div class="col-md-1 textAlign">
+                                    4
+                                </div>
+                                <div class="col-md-2 textAlign">
+                                    创新
+                                </div>
+                                <div class="col-md-6 normalSpace">
+                                    有重大改进或独特见解；有一定应用价值。
+                                </div>
+                                <div class="col-md-1 textAlign">
+                                    2
+                                </div>
+                                <div class="col-md-2 textAlign">
+                                    <input type="text" class="form-control pleaScoreinput">
+                                </div>
+
+                            </div>
+                            <div class="alert alert-warning textEllipsis border_radius marginBottom0">
+                                <div class="col-md-12 textAlign">
+                                    <textarea rows="4" class="form-control pleaScoreinput" style="width: 100%"
+                                              placeholder="评语"></textarea>
+                                </div>
+                            </div>
+                            <div class="row" style="margin-top: 10px">
+                                <div class="col-md-2">
+                                    <button type="button" class="management_three newPage btn btn-info">
+                                        确定
+                                    </button>
+                                </div>
+                                <div class="col-md-2">
+                                    <button type="button" class="management_three newPage  btn btn-success"
+                                            onclick="cancelTitle('pleaScoreinput')">
+                                        返回
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <!--打分结束 -->
+    <!--毕业设计评审结束-->
     <!--查看答辩分数详细信息开始-->
     <div class="modal fade" id="defenseScore" role="dialog">
         <div class="modal-dialog">
@@ -1843,58 +2045,6 @@
         </div>
     </div>
     <!--重置答辩教师论文分数结束-->
-    <!--答辩打分开始-->
-    <div id="scorePlea" class="page-wrapper displayNone">
-        <div style="margin: 0px" class="page-inner">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            答辩打分
-                        </div>
-                        <div class="panel-body">
-                            <div class="col-md-12 openingReport">
-                                <h5 class="font_bold">课题题目</h5>
-                                <div class="whiteColor padding10">
-                                    PMMA灯具基于moldflow三维流动优化的注塑模设计
-                                </div>
-                                <h5 class="font_bold">学生姓名</h5>
-                                <div class="whiteColor padding10">
-                                    张三
-                                </div>
-                                <h5 class="font_bold">学生学号</h5>
-                                <div class="whiteColor padding10">
-                                    3120150905909
-                                </div>
-                                <h5 class="font_bold">分数</h5>
-                                <input type="text" class="form-control margin0 textContent">
-                                <h5 style="padding-top: 50px" class="font_bold">评语</h5>
-                                <textarea rows="3" type="text" class="form-control margin0 textContent"></textarea>
-                                <h5 class="font_bold">附件</h5>
-                                <div class="whiteColor" style="padding:10px;">
-                                    附件：开题报告.docx <a style="padding-left: 20px" href="#">点击下载</a>
-                                </div>
-                                <div class="row" style="margin-top: 10px">
-                                    <div class="col-md-2">
-                                        <button type="button" class="management_three newPage  btn btn-info">
-                                            确定
-                                        </button>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <button type="button" class="management_three newPage  btn btn-success"
-                                                onclick="cancelTitle()">
-                                            返回
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--答辩打分开始-->
     <!--查看答辩打分详细信息开始-->
     <div class="modal fade" id="viewScore" role="dialog">
         <div class="modal-dialog">
@@ -1967,7 +2117,7 @@
                                 <li><a href="#reply_arrange" role="tab"
                                        data-toggle="tab">查看指导学生答辩安排</a></li>
                                 <li><a href="#review_Material" role="tab" data-toggle="tab">审核材料</a></li>
-                                <li><a href="#tutor_grade_Papers" role="tab" data-toggle="tab">论文打分</a></li>
+                                <li><a href="#tutor_grade_Papers" role="tab" data-toggle="tab">毕业设计指导教师评审</a></li>
                                 <li><a href="#reply_results" role="tab" data-toggle="tab">成绩公示</a></li>
                             </ul>
                         </div>
@@ -2185,7 +2335,7 @@
                                 </div>
                             </div>
                             <!--审核材料结束-->
-                            <!--答辩打分开始-->
+                            <!--毕业设计指导教师评审开始-->
                             <div class="tab-pane panel-body" id="tutor_grade_Papers">
                                 <div class="alert alert-success textEllipsis border_radius marginBottom0">
                                     <div class="col-md-4 textAlign">
@@ -2260,7 +2410,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <!--答辩打分安排结束-->
+                            <!--毕业设计指导教师评审结束-->
                             <!--成绩公示开始-->
                             <div class="tab-pane panel-body" id="reply_results">
                                 <div style="padding-left:0px;padding-bottom: 15px" class="col-md-12">
@@ -2371,49 +2521,186 @@
         </div>
     </div>
     <!--发送通知内容结束-->
-    <!--答辩打分开始-->
+    <!--毕业设计指导教师评审开始-->
     <div id="tutor_scorePlea" class="page-wrapper displayNone">
         <div style="margin: 0px" class="page-inner">
             <div class="row">
                 <div class="col-md-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            答辩打分
+                            毕业设计指导教师评审
                         </div>
                         <div class="panel-body">
-                            <div class="col-md-12 openingReport">
-                                <h5 class="font_bold">课题题目</h5>
-                                <div class="whiteColor padding10">
-                                    PMMA灯具基于moldflow三维流动优化的注塑模设计
+                            <div class="alert alert-danger textEllipsis border_radius marginBottom0">
+                                <div class="col-md-12 textEllipsis">
+                                    课题题目：PMMA灯具基于moldflow三维流动优化的注塑模设计
                                 </div>
-                                <h5 class="font_bold">学生姓名</h5>
-                                <div class="whiteColor padding10">
-                                    张三
+                            </div>
+                            <div class="alert alert-danger textEllipsis border_radius marginBottom0">
+                                <div class="col-md-3">
+                                    学生姓名：王晓霞
                                 </div>
-                                <h5 class="font_bold">学生学号</h5>
-                                <div class="whiteColor padding10">
-                                    3120150905909
+                                <div class="col-md-4">
+                                    学生学号：3120150909000
                                 </div>
-                                <h5 class="font_bold">分数</h5>
-                                <input type="text" class="form-control margin0 textContent">
-                                <h5 style="padding-top: 50px" class="font_bold">评语</h5>
-                                <textarea rows="3" type="text" class="form-control margin0 textContent"></textarea>
-                                <h5 class="font_bold">附件</h5>
-                                <div class="whiteColor" style="padding:10px;">
-                                    附件：开题报告.docx <a style="padding-left: 20px" href="#">点击下载</a>
+                                <div class="col-md-5">
+                                    指导教师姓名：廖永衡
                                 </div>
-                                <div class="row" style="margin-top: 10px">
-                                    <div class="col-md-2">
-                                        <button type="button" class="management_three newPage  btn btn-info">
-                                            确定
-                                        </button>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <button type="button" class="management_student newPage  btn btn-success"
-                                                onclick="cancelTitle()">
-                                            返回
-                                        </button>
-                                    </div>
+                            </div>
+                            <div class="alert alert-success textEllipsis border_radius marginBottom0">
+                                <div class="col-md-1 textAlign">
+                                    序号
+                                </div>
+                                <div class="col-md-2 textAlign">
+                                    评审项目
+                                </div>
+                                <div class="col-md-6 textAlign">
+                                    指标
+                                </div>
+                                <div class="col-md-1 textAlign">
+                                    满分
+                                </div>
+                                <div class="col-md-2 textAlign">
+                                    评分
+                                </div>
+                            </div>
+                            <div class="alert alert-warning textEllipsis border_radius marginBottom0">
+                                <div class="col-md-1 textAlign">
+                                    1
+                                </div>
+                                <div class="col-md-2 textAlign normalSpace">
+                                    调查、论证
+                                </div>
+                                <div class="col-md-6 normalSpace">
+                                    能独立查阅文献和调研；能正确翻译外文资料；能较好地写出开题报告；
+                                    有收集、综合及正确利用各种信息及获取新知识的能力。
+                                </div>
+                                <div class="col-md-1 textAlign">
+                                    4
+                                </div>
+                                <div class="col-md-2 textAlign">
+                                    <input type="text" class="form-control pleaScoreinput">
+                                </div>
+                            </div>
+                            <div class="alert alert-warning textEllipsis border_radius marginBottom0">
+                                <div class="col-md-1 textAlign">
+                                    2
+                                </div>
+                                <div class="col-md-2 normalSpace">
+                                    方案设计与技术路线
+                                </div>
+                                <div class="col-md-6 normalSpace">
+                                    方案设计合理，方案综合比较论证充分，切实可行，有较详细的实施措施；
+                                    技术路线正确，拟采用数据采集、计算、处理方式正确；
+                                    结构设计合理、工艺具有可行性、推导正确或程序运行具有可靠性；
+                                </div>
+                                <div class="col-md-1 textAlign">
+                                    8
+                                </div>
+                                <div class="col-md-2 textAlign">
+                                    <input type="text" class="form-control pleaScoreinput">
+                                </div>
+                            </div>
+                            <div class="alert alert-warning textEllipsis border_radius marginBottom0">
+                                <div class="col-md-1 textAlign">
+                                    3
+                                </div>
+                                <div class="col-md-2 textAlign">
+                                    分析与解决问题的能力
+                                </div>
+                                <div class="col-md-6 normalSpace">
+                                    能运用所学知识和技能去发现问题，分析问题思路清晰、严谨，
+                                    数据处理正确，理论分析文理清楚。
+                                </div>
+                                <div class="col-md-1 textAlign">
+                                    8
+                                </div>
+                                <div class="col-md-2 textAlign">
+                                    <input type="text" class="form-control pleaScoreinput">
+                                </div>
+                            </div>
+                            <div class="alert alert-warning textEllipsis border_radius marginBottom0">
+                                <div class="col-md-1 textAlign">
+                                    4
+                                </div>
+                                <div class="col-md-2 textAlign">
+                                    工作量、工作态度
+                                </div>
+                                <div class="col-md-6 normalSpace">
+                                    按期完成规定的任务，认真记录了毕业设计（论文）过程中存在的问题、相关数据及处理方式，
+                                    难易程度和工作量符合教学要求；工作努力，遵守纪律；工作作风严谨务实；善于与他人合作。
+                                </div>
+                                <div class="col-md-1 textAlign">
+                                    6
+                                </div>
+                                <div class="col-md-2 textAlign">
+                                    <input type="text" class="form-control pleaScoreinput">
+                                </div>
+
+                            </div>
+                            <div class="alert alert-warning textEllipsis border_radius marginBottom0">
+                                <div class="col-md-1 textAlign">
+                                    5
+                                </div>
+                                <div class="col-md-2 textAlign normalSpace">
+                                    设计质量及设计说明书质量
+                                </div>
+                                <div class="col-md-6 normalSpace">
+                                    方案设计合理，切实可行，技术路线正确，所用的数据采集、计算、处理方式正确，
+                                    数据真实可信，结构、工艺设计合理，设计说明书文理通顺，语言流畅、技术用语准确，
+                                    符号统一、规范，编号齐全；图表完备、整洁、正确；绘图符合国家标准。
+                                </div>
+                                <div class="col-md-1 textAlign">
+                                    10
+                                </div>
+                                <div class="col-md-2 textAlign">
+                                    <input type="text" class="form-control pleaScoreinput">
+                                </div>
+
+                            </div>
+                            <div class="alert alert-warning textEllipsis border_radius marginBottom0">
+                                <div class="col-md-1 textAlign">
+                                    6
+                                </div>
+                                <div class="col-md-2 textAlign">
+                                    创新
+                                </div>
+                                <div class="col-md-6 normalSpace">
+                                    工作中有创新意识；对前人工作有改进、突破，或立意新颖、见解独特，有一定应用价值。
+                                </div>
+                                <div class="col-md-1 textAlign">
+                                    4
+                                </div>
+                                <div class="col-md-2 textAlign">
+                                    <input type="text" class="form-control pleaScoreinput">
+                                </div>
+                            </div>
+                            <div class="alert alert-warning textEllipsis border_radius marginBottom0">
+                                <div class="col-md-1 padding0">是否同意答辩</div>
+                                <div class="col-md-2">
+                                    <select class="form-control">
+                                        <option value="">是</option>
+                                        <option value="">否</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="alert alert-warning textEllipsis border_radius marginBottom0">
+                                <div class="col-md-12 textAlign">
+                                    <textarea rows="4" class="form-control pleaScoreinput" style="width: 100%"
+                                              placeholder="评语"></textarea>
+                                </div>
+                            </div>
+                            <div class="row" style="margin-top: 10px">
+                                <div class="col-md-2">
+                                    <button type="button" class="management_three newPage btn btn-info">
+                                        确定
+                                    </button>
+                                </div>
+                                <div class="col-md-2">
+                                    <button type="button" class="management_three newPage  btn btn-success"
+                                            onclick="cancelTitle('pleaScoreinput')">
+                                        返回
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -2422,7 +2709,7 @@
             </div>
         </div>
     </div>
-    <!--答辩打分开始-->
+    <!--毕业设计指导教师评审开始-->
     <!--查看答辩打分详细信息开始-->
     <div class="modal fade" id="tutor_viewScore" role="dialog">
         <div class="modal-dialog">
@@ -3447,6 +3734,8 @@
                             <ul class="nav nav-tabs" role="tablist">
                                 <li class="active"><a href="#teachers_Group" role="tab"
                                                       data-toggle="tab">答辩分组</a></li>
+                                <li><a href="#students_Group" role="tab"
+                                       data-toggle="tab">学生答辩分组列表</a></li>
                                 <li><a href="#Calculate_defense_score" role="tab" data-toggle="tab">计算答辩总评成绩</a></li>
                             </ul>
                         </div>
@@ -3454,16 +3743,18 @@
                             <!--教师分组开始-->
                             <div class="tab-pane active" id="teachers_Group">
                                 <div class="panel-body">
+                                    <!--答辩教师分组开始-->
                                     <div class="col-md-12 alert alert-info">
                                         答辩起止日期：2019-5-1 -- 2019-5-20 / 第九周星期四 -- 第十周星期四
                                     </div>
                                     <div class="col-md-12">
-                                        <h4 class="font_bold">答辩分组</h4>
+                                        <h4 class="font_bold">答辩教师分组</h4>
                                     </div>
                                     <div class="col-md-12" style="padding-bottom: 8px">
                                         <button type="button" class="btn btn-info" data-toggle="modal"
-                                                data-target="#modify_Teachers_Group">新增<span class="iconfont icon-add"
-                                                                                             style="padding-left: 4px;font-size:12px"></span>
+                                                data-target="#modify_Teachers_Group" onclick="newDefense()">新增<span
+                                                class="iconfont icon-add"
+                                                style="padding-left: 4px;font-size:12px"></span>
                                         </button>
                                     </div>
                                     <div class="alert alert-success textEllipsis border_radius marginBottom0">
@@ -3527,26 +3818,130 @@
                                             第1组
                                         </div>
                                         <div class="col-md-1 textAlign padding0">
-                                            <!--<div class="col-md-3 textAlign"></div>-->
                                             <div class="col-md-3 textAlign">
                                                 <span class="iconfont icon-xiugai2 iconColor spanStyle"
-                                                      style="padding-left: 4px;"></span>
+                                                      style="padding-left: 4px;" data-toggle="modal"
+                                                      data-target="#modify_Teachers_Group"></span>
                                             </div>
                                             <div class="col-md-3 textAlign">
                                                 <span class="iconfont icon-shanchu1 iconColor spanStyle"
-                                                      style="padding-left: 4px;"></span>
+                                                      style="padding-left: 4px;" data-toggle="modal"
+                                                      data-target="#delete_Teachers_Group"></span>
                                             </div>
-                                            <!--<button type="button" class="btn btn-info btn-xs" data-toggle="modal"-->
-                                            <!--data-target="#modify_Teachers_Group">修改-->
-                                            <!--</button>-->
-                                            <!--<button type="button" class="btn btn-info btn-xs" data-toggle="modal"-->
-                                            <!--data-target="#modify_Teachers_Group">删除-->
-                                            <!--</button>-->
+                                        </div>
+                                    </div>
+                                    <!--答辩教师分组结束-->
+                                    <!--指导教师分组开始-->
+                                    <div class="col-md-12">
+                                        <h4 style="display: inline-block" class="font_bold">指导教师分组</h4>
+                                        <span class="colorf44">（点击分配学生按钮对已分配的指导教师指导的学生进行答辩组的分配）</span>
+                                    </div>
+                                    <div class="col-md-12" style="padding-bottom: 8px">
+                                        <button type="button" class="btn btn-info" data-toggle="modal"
+                                                data-target="#Tutor_Group" onclick="newTutor()">新增<span
+                                                class="iconfont icon-add"
+                                                style="padding-left: 4px;font-size:12px"></span>
+                                        </button>
+                                    </div>
+                                    <div class="alert alert-success textEllipsis border_radius marginBottom0">
+                                        <div class="col-md-8 textAlign">
+                                            指导教师（指导人数）
+                                        </div>
+                                        <div class="col-md-1 textAlign">
+                                            分组
+                                        </div>
+                                        <div class="col-md-2 textAlign">
+                                            答辩人数限制/目前人数
+                                        </div>
+                                        <div class="col-md-1 textAlign">
+                                            操作
+                                        </div>
+                                    </div>
+                                    <div class="alert alert-warning textEllipsis border_radius marginBottom0">
+                                        <div class="col-md-8 textAlign">
+                                            王晓霞（8） 王晓霞（8） 王晓霞（8） 王晓霞（8）
+                                        </div>
+                                        <div class="col-md-1 textAlign">
+                                            第1组
+                                        </div>
+                                        <div class="col-md-2 textAlign">
+                                            20/10
+                                        </div>
+                                        <div class="col-md-1 textAlign padding0">
+                                            <div class="col-md-3 textAlign">
+                                                <span class="iconfont icon-xiugai2 iconColor spanStyle"
+                                                      style="padding-left: 4px;" data-toggle="modal"
+                                                      data-target="#Tutor_Group"></span>
+                                            </div>
+                                            <div class="col-md-3 textAlign">
+                                                <span class="iconfont icon-shanchu1 iconColor spanStyle"
+                                                      style="padding-left: 4px;" data-toggle="modal"
+                                                      data-target="#delete_Tutor_Group"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12" style="padding-top: 8px">
+                                        <div class="col-md-10">
+                                        </div>
+                                        <div class="col-md-2">
+                                            <button type="button" class="btn btn-success">分配学生
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <!--指导教师分组结束-->
+                                </div>
+                            </div>
+                            <!--教师分组结束-->
+                            <!--学生答辩分组列表开始-->
+                            <div class="tab-pane" id="students_Group">
+                                <div class="panel-body">
+                                    <div class="col-md-12">
+                                        <h4 class="font_bold" style="display: inline-block;padding-right: 10px">学生答辩分组列表</h4>
+                                        <span class="clickColor cursorPointer">导出表格</span>
+                                    </div>
+                                    <div class="alert alert-success textEllipsis border_radius marginBottom0">
+                                        <div class="col-md-3 textAlign">
+                                            学生姓名（学号）
+                                        </div>
+                                        <div class="col-md-1 textAlign">
+                                            答辩组长
+                                        </div>
+                                        <div class="col-md-3 textAlign">
+                                            答辩教师
+                                        </div>
+                                        <div class="col-md-1 textAlign">
+                                            指导教师
+                                        </div>
+                                        <div class="col-md-1 textAlign">
+                                            分组
+                                        </div>
+                                        <div class="col-md-3 textAlign">
+                                            答辩时间
+                                        </div>
+                                    </div>
+                                    <div class="alert alert-warning textEllipsis border_radius marginBottom0">
+                                        <div class="col-md-3 textAlign">
+                                            王晓霞（3120150905000）
+                                        </div>
+                                        <div class="col-md-1 normalSpace">
+                                            梁永辉
+                                        </div>
+                                        <div class="col-md-3 normalSpace">
+                                            廖永衡 廖永衡 廖永衡 廖永衡
+                                        </div>
+                                        <div class="col-md-1 textAlign">
+                                            廖永衡
+                                        </div>
+                                        <div class="col-md-1 textAlign">
+                                            第一组
+                                        </div>
+                                        <div class="col-md-3 textAlign padding0">
+                                            2019.05.05/第九周星期五 上午8:30
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <!--教师分组结束-->
+                            <!--学生答辩分组列表结束-->
                             <!--计算答辩总评成绩开始-->
                             <div class="tab-pane panel-body" id="Calculate_defense_score">
                                 <div class="alert alert-success textEllipsis border_radius marginBottom0">
@@ -3556,17 +3951,20 @@
                                     <div class="col-md-3 textAlign">
                                         课题题目
                                     </div>
-                                    <div class="col-md-1 textAlign">
-                                        平均分数
-                                    </div>
-                                    <div class="col-md-2 textAlign">
-                                        指导教师评阅论文
-                                    </div>
-                                    <div class="col-md-2 textAlign">
-                                        评阅教师评阅论文
+                                    <div class="col-md-1 textAlign padding0">
+                                        指导教师评分
                                     </div>
                                     <div class="col-md-1 textAlign">
-                                        答辩过程分
+                                        评阅人评分
+                                    </div>
+                                    <div class="col-md-1 textAlign">
+                                        答辩评分
+                                    </div>
+                                    <div class="col-md-1 textAlign">
+                                        综合评定成绩
+                                    </div>
+                                    <div class="col-md-2 textAlign">
+                                        毕业设计成绩等级
                                     </div>
                                 </div>
                                 <div class="alert alert-warning textEllipsis border_radius marginBottom0">
@@ -3583,17 +3981,6 @@
                                         </span>
                                     </div>
                                     <div class="col-md-1 textAlign">
-                                        90
-                                    </div>
-                                    <div class="col-md-2 textAlign">
-                                        <div style="padding-bottom: 2px">
-                                            90
-                                            <span class="iconfont icon-zhongzhi iconColor fontSize18"
-                                                  data-toggle="modal"
-                                                  data-target="#score_reset"></span>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2 textAlign">
                                         <div style="padding-bottom: 2px">
                                             90
                                             <span class="iconfont icon-zhongzhi iconColor fontSize18"
@@ -3608,6 +3995,20 @@
                                                   data-toggle="modal"
                                                   data-target="#score_reset"></span>
                                         </div>
+                                    </div>
+                                    <div class="col-md-1 textAlign">
+                                        <div style="padding-bottom: 2px">
+                                            90
+                                            <span class="iconfont icon-zhongzhi iconColor fontSize18"
+                                                  data-toggle="modal"
+                                                  data-target="#score_reset"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1 textAlign">
+                                        90
+                                    </div>
+                                    <div class="col-md-2 textAlign">
+                                        B
                                     </div>
                                 </div>
                                 <div class="alert alert-warning textEllipsis border_radius marginBottom0">
@@ -3624,17 +4025,6 @@
                                         </span>
                                     </div>
                                     <div class="col-md-1 textAlign">
-                                        90
-                                    </div>
-                                    <div class="col-md-2 textAlign">
-                                        <div style="padding-bottom: 2px">
-                                            90
-                                            <span class="iconfont icon-zhongzhi iconColor fontSize18"
-                                                  data-toggle="modal"
-                                                  data-target="#score_reset"></span>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2 textAlign">
                                         <div style="padding-bottom: 2px">
                                             90
                                             <span class="iconfont icon-zhongzhi iconColor fontSize18"
@@ -3649,6 +4039,20 @@
                                                   data-toggle="modal"
                                                   data-target="#score_reset"></span>
                                         </div>
+                                    </div>
+                                    <div class="col-md-1 textAlign">
+                                        <div style="padding-bottom: 2px">
+                                            90
+                                            <span class="iconfont icon-zhongzhi iconColor fontSize18"
+                                                  data-toggle="modal"
+                                                  data-target="#score_reset"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1 textAlign">
+                                        90
+                                    </div>
+                                    <div class="col-md-2 textAlign">
+                                        B
                                     </div>
                                 </div>
                                 <div style="margin-top: 10px">
@@ -3688,7 +4092,7 @@
                             <div style="padding-left:0px;margin-top: -10px" class="col-md-7 col-xs-7">
                                 <div class="col-md-7 col-xs-7">
                                     <input style="padding-left: 2px;padding-right: 30px"
-                                           class="form-control"
+                                           class="form-control textContent"
                                            type="date" id="date_Teachers_Group">
                                 </div>
                             </div>
@@ -3738,7 +4142,7 @@
                             </div>
 
                             <div style="margin-top: -10px" class="col-md-6 col-xs-6">
-                                <input type="text" class="form-control"
+                                <input type="text" class="form-control textContent"
                                        placeholder="6A-405">
                             </div>
                         </div>
@@ -3751,7 +4155,7 @@
                                     </strong>
                                 </div>
                                 <div style="margin-top: -10px" class="col-md-4 col-xs-4">
-                                    <input type="text" class="form-control" placeholder="10">
+                                    <input type="text" class="form-control textContent" placeholder="10">
                                 </div>
                             </div>
                         </div>
@@ -3777,11 +4181,11 @@
                                 </div>
                                 <div style="margin-top: -10px" class="col-md-4 col-xs-4">
                                     <select style="margin:0px 5px" class="form-control" id="teamLeaderSelect">
-                                        <option value="李龙12">李龙</option>
-                                        <option value="王国志33">王国志</option>
-                                        <option value="董刚强33">董刚强</option>
-                                        <option value="吴松3">吴松</option>
-                                        <option value="张宗豪3">张宗豪</option>
+                                        <option value="11">李龙</option>
+                                        <option value="22">王国志</option>
+                                        <option value="33">董刚强</option>
+                                        <option value="44">吴松</option>
+                                        <option value="55">张宗豪</option>
                                     </select>
                                 </div>
                                 <div style="margin-top: -11px" class="col-md-2  col-xs-2">
@@ -3836,6 +4240,170 @@
         </div>
     </div>
     <!--修改教师答辩安排结束-->
+    <!--增加指导教师答辩安排开始-->
+    <div class="modal fade" id="Tutor_Group" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">指导教师分组安排信息</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-success textEllipsis">
+                        <div style="height: 18px">
+                            <div class="col-md-2 col-xs-2">
+                                <strong>
+                                    <span>填写说明:</span>
+                                </strong>
+                            </div>
+                            <div style="margin-top: -10px" class="col-md-10 col-xs-10">
+                                <div>1.组数括号里的数字为当前组答辩人数限制</div>
+                                2.指导教师括号里的数字为当前指导教师指导学生的人数
+                            </div>
+                        </div>
+                        <hr>
+                        <div style="height: 18px">
+                            <div class="col-md-2 col-xs-2">
+                                <strong>
+                                    <span>分组:</span>
+                                </strong>
+                            </div>
+                            <div style="margin-top: -10px" class="col-md-4 col-xs-4">
+                                <select style="margin:0px 5px" class="form-control">
+                                    <option value="11">第一组(10)</option>
+                                    <option value="22">第二组(10)</option>
+                                    <option value="33">第三组(10)</option>
+                                    <option value="44">第四组(10)</option>
+                                    <option value="55">第五组(10)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <hr>
+                        <div style="height: 18px">
+                            <div class="col-md-12">
+                                <div style="padding-left: 0px" class="col-md-2  col-xs-2">
+                                    <strong>
+                                        <span>指导教师:</span>
+                                    </strong>
+                                </div>
+                                <div id="choose_tutor">
+                                </div>
+                            </div>
+                        </div>
+                        <div style="margin-top: 10px; height: 18px">
+                            <div style="margin-top: 20px;" class="col-md-12">
+                                <div style="padding-left: 0px" class="col-md-2  col-xs-2">
+                                    <strong>
+                                        <span>选择指导教师:</span>
+                                    </strong>
+                                </div>
+                                <div style="margin-top: -10px" class="col-md-4 col-xs-4">
+                                    <select style="margin:0px 5px" class="form-control" id="guide_Teacher">
+                                        <option value="11">李龙（8）</option>
+                                        <option value="22">王国志（8）</option>
+                                        <option value="33">董刚强（8）</option>
+                                        <option value="44">吴松（8）</option>
+                                        <option value="55">张宗豪（8）</option>
+                                    </select>
+                                </div>
+                                <div style="margin-top: -11px" class="col-md-2  col-xs-2">
+                                    <button type="button" class="btn btn-info" onclick="chooseTutor()">确定
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-xs btn-white" data-dismiss="modal">取 消</button>
+                    <button type="button" class="btn btn-xs btn-danger">保 存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--增加指导教师答辩安排结束-->
+    <!--修改学生答辩安排开始-->
+    <div class="modal fade" id="modify_Students_Group" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">修改学生答辩分组</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-success textEllipsis">
+                        <div style="height: 18px">
+                            <div class="col-md-2 col-xs-2">
+                                <strong>
+                                    <span>分组:</span>
+                                </strong>
+                            </div>
+                            <div style="margin-top: -10px" class="col-md-4 col-xs-4">
+                                <select style="margin:0px 5px" class="form-control">
+                                    <option value="11">第一组(10)</option>
+                                    <option value="22">第二组(10)</option>
+                                    <option value="33">第三组(10)</option>
+                                    <option value="44">第四组(10)</option>
+                                    <option value="55">第五组(10)</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-xs btn-white" data-dismiss="modal">取 消</button>
+                        <button type="button" class="btn btn-xs btn-danger">保 存</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--修改学生答辩安排结束-->
+        <!--删除答辩安排开始-->
+        <div class="modal fade" id="delete_Teachers_Group" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">提示</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container-fluid">
+                            确定要删除该答辩安排？
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-xs btn-white" data-dismiss="modal">取 消</button>
+                        <button type="button" class="btn btn-xs btn-danger">保 存</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--删除答辩安排结束-->
+        <!--删除指导教师安排开始-->
+        <div class="modal fade" id="delete_Tutor_Group" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">提示</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container-fluid">
+                            确定要删除该指导教师分组？
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-xs btn-white" data-dismiss="modal">取 消</button>
+                        <button type="button" class="btn btn-xs btn-danger">保 存</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--删除指导教师安排结束-->
     <!--答辩管理（系主任）结束-->
 
 
@@ -4007,6 +4575,7 @@
     </div>
     <!--查看课题详细信息结束-->
 
+
     <!--新闻浏览-->
     <div id="new" class="commmon news displayNone" style="height: 100%">
     </div>
@@ -4113,6 +4682,51 @@
             console.log(api.getCurrent());
         }
     });
+    let teacherInfo = [];
+
+    //新增答辩分组
+    function newDefense() {
+        leader = [];
+        teachers = [];
+        teacherInfo = [
+            {
+                id: '12345678900',
+                name: '廖永亮'
+            },
+            {
+                id: '12345678901',
+                name: '张三'
+            },
+            {
+                id: '12345678902',
+                name: '李四'
+            },
+            {
+                id: '12345678903',
+                name: '王五'
+            },
+            {
+                id: '12345678904',
+                name: '王四'
+            },
+            {
+                id: '12345678905',
+                name: '王国志'
+            },
+            {
+                id: '12345678906',
+                name: '吴淞'
+            }
+        ];
+        let teamLeaderSelect = document.getElementById('teamLeaderSelect');
+
+        $("#choose_teacher").children().remove();
+        $("#teamLeader").children().remove();
+        let textContent = document.getElementsByClassName('textContent');
+        for (let i = 0; i < textContent.length; i++) {
+            textContent[i].value = "";
+        }
+    }
 
     //答辩管理设定日期显示
     function showDate() {
@@ -4134,16 +4748,20 @@
         let index = teamLeaderSelect.selectedIndex;//获取被选中的option的索引
         let textsel = teamLeaderSelect.options[index].text;//获取相应的option的内容
         let teamLeader = document.getElementById('teamLeader');
-        let divrow = document.createElement('div');
-        divrow.setAttribute('id', 'teamLeader' + leader.length);
-        divrow.setAttribute('class', 'newTeacher');
+        let value = teamLeaderSelect.value;
         if (leader.length < 1) {
-            leader.push(textsel);
+            let divrow = document.createElement('div');
+            divrow.setAttribute('id', 'teamLeader' + value);
+            divrow.setAttribute('class', 'newTeacher');
+            leader.push({
+                value: value,
+                text: textsel
+            });
             divrow.innerHTML = '<div style="margin-bottom:10px;margin-left:4px;padding:0px;" class="col-md-2 col-xs-2">\n' +
-                '                                        <input readonly value=' + leader[0] + ' type="text" class="form-control"/>\n' +
+                '                                        <input readonly value=' + textsel + ' type="text" class="form-control"/>\n' +
                 '                                    </div>\n' +
                 '                                    <div style="padding: 0px" class="col-md-1  col-xs-1">\n' +
-                '                                        <span style="position: absolute;left: -8px;top: -10px;font-size: 20px" class="iconfont icon-shanchu" onclick="deleteLeader(' + (leader.length - 1) + ')"></span>\n' +
+                '                                        <span style="position: absolute;left: -8px;top: -10px;font-size: 20px" class="iconfont icon-shanchu" onclick="deleteLeader(' + value + ')"></span>\n' +
                 '                                    </div>';
             teamLeader.appendChild(divrow);
 
@@ -4156,11 +4774,12 @@
     function deleteLeader(id) {
         let teacher_id = document.getElementById('teamLeader' + id);
         $(teacher_id).remove();
-        leader.splice(id, 1);
+        leader.splice(0, 1);
     }
 
     //添加答辩教师
     let teachers = [];
+
     function chooseTeacer() {
         let teamLeaderSelect = document.getElementById('plea_Teacher');
         let index = teamLeaderSelect.selectedIndex;//获取被选中的option的索引
@@ -4168,14 +4787,19 @@
         let value = teamLeaderSelect.value;
         let choose_teacher = document.getElementById('choose_teacher');
         let indexCommon = 0;
+        let leaderIndex = 0
         if (teachers.length < 4) {
             teachers.forEach(function (teacher) {
                 if (teacher.value == value) {
                     indexCommon++;
-                    return;
                 }
             });
-            if (indexCommon == 0) {
+            leader.forEach(function (leaderTutor) {
+                if (leaderTutor.value == value) {
+                    leaderIndex++;
+                }
+            });
+            if (indexCommon == 0 && leaderIndex == 0) {
                 let divrow = document.createElement('div');
                 divrow.setAttribute('id', 'teacher' + value);
                 teachers.push({
@@ -4189,41 +4813,93 @@
                     '                                        <span style="position: absolute;left: -8px;top: -10px;font-size: 20px" class="iconfont icon-shanchu" onclick="deleteTeacer(' + value + ')"></span>\n' +
                     '                                    </div>';
                 choose_teacher.appendChild(divrow);
-            } else {
+            } else if (indexCommon == 1) {
                 alert("不能重复添加同一答辩教师!");
+            } else if (leaderIndex == 1) {
+                alert("答辩教师不能与答辩组长相同!");
             }
         } else if (teachers.length == 4) {
             alert("选项个数达到最大,不能再添加!");
         }
-
     }
 
     //删除答辩教师
     function deleteTeacer(value) {
         let teacher_id = document.getElementById('teacher' + value);
         $(teacher_id).remove();
-        console.log(value);
-        for(let i=0;i<teachers.length;i++){
-            if(teachers[i].value == value){
-                teachers.splice(i,1);
+        for (let i = 0; i < teachers.length; i++) {
+            if (teachers[i].value == value) {
+                teachers.splice(i, 1);
                 break;
             }
         }
-        console.log(teachers);
+    }
+
+    //新增指导教师分组
+    function newTutor() {
+        tutor = [];
+        $("#choose_tutor").children().remove();
+    }
+
+    //添加指导教师
+    let tutor = [];
+    function chooseTutor() {
+        let guide_Teacher = document.getElementById('guide_Teacher');
+        let index = guide_Teacher.selectedIndex;//获取被选中的option的索引
+        let textsel = guide_Teacher.options[index].text;//获取相应的option的内容
+        let value = guide_Teacher.value;
+        let choose_tutor = document.getElementById('choose_tutor');
+        let indexCommon = 0;
+        if (tutor.length < 4) {
+            tutor.forEach(function (tutors) {
+                if (tutors.value == value) {
+                    indexCommon++;
+                    return;
+                }
+            });
+            if (indexCommon == 0) {
+                let divrow = document.createElement('div');
+                divrow.setAttribute('id', 'tutor' + value);
+                tutor.push({
+                    value: value,
+                    text: textsel
+                });
+                divrow.innerHTML = '<div class="col-md-4 col-xs-4"><div style="margin-bottom:10px;margin-left:4px;padding:0px;" class="col-md-10 col-xs-10">\n' +
+                    '                                        <input readonly value=' + textsel + ' type="text" class="form-control"/>\n' +
+                    '                                    </div>\n' +
+                    '                                    <div style="padding: 0px" class="col-md-2 col-xs-2">\n' +
+                    '                                        <span style="position: absolute;left: 110px;top: -64px;font-size: 20px" class="iconfont icon-shanchu" onclick="deleteTutor(' + value + ')"></span>\n' +
+                    '                                    </div></div>';
+                choose_tutor.appendChild(divrow);
+            } else {
+                alert("不能重复添加同一指导教师!");
+            }
+        } else if (tutor.length == 4) {
+            alert("选项个数达到最大,不能再添加!");
+        }
+    }
+
+    function deleteTutor(value) {
+        let tutor_id = document.getElementById('tutor' + value);
+        $(tutor_id).remove();
+        for (let i = 0; i < tutor.length; i++) {
+            if (tutor[i].value == value) {
+                tutor.splice(i, 1);
+                break;
+            }
+        }
     }
 
 </script>
 
 <script>
-    function returnFirst(class1, class2) {
-        let classOne = document.getElementsByClassName(class1);
-        let classOther = document.getElementsByClassName(class2);
-        classOne[0].classList.add("active");
-        classOne[1].classList.add("active");
-        classOther[0].classList.remove("active");
-        classOther[1].classList.remove("active");
+    //取消上传题目
+    function Unupload(classOne,classOther,textContent) {
+        returnFirst(classOne,classOther);
+        cancelTitle(textContent);
     }
 </script>
+
 
 
 </body>

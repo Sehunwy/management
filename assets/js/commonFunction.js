@@ -10,19 +10,28 @@ function fileClick(fileChoose, fileName) {
 <!--获取上传文件名称结束-->
 
 // 取消输入框的值开始
-function cancelTitle() {
-    let textContent = document.getElementsByClassName('textContent');
+function cancelTitle(classInput) {
+    let textContent = document.getElementsByClassName(classInput);
     for (let i = 0; i < textContent.length; i++) {
         textContent[i].value = "";
     }
 }
-
 // 取消输入框的值结束
 
 function showMaxImg(obj) {
     var src = $(obj).attr("src");
     $("#imgModal").find("#imgshow").html("<img src='" + src + "' class='carousel-inner img-responsive img-rounded' data-dismiss='modal'>");
     $("#imgModal").modal('show');
+}
+
+//激活第一个tab
+function returnFirst(class1, class2) {
+    let classOne = document.getElementsByClassName(class1);
+    let classOther = document.getElementsByClassName(class2);
+    classOne[0].classList.add("active");
+    classOne[1].classList.add("active");
+    classOther[0].classList.remove("active");
+    classOther[1].classList.remove("active");
 }
 
 //全选

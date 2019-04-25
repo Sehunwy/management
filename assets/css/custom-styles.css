@@ -237,6 +237,14 @@ p {
     cursor: pointer;
 }
 
+.textIndent {
+    text-indent: 2em !important;
+}
+
+.normalSpace {
+    white-space:normal
+}
+
 .icon-shenhe:hover {
     color: #f09b22;
 }
