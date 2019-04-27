@@ -376,7 +376,7 @@
                                         </div>
                                         <div class="col-md-2">
                                             <button type="button" class="management_one newPage btn btn-success"
-                                            onclick="Unupload('classOne','classOther','textContent')">
+                                                    onclick="Unupload('classOne','classOther','textContent')">
                                                 取消
                                             </button>
                                         </div>
@@ -1727,7 +1727,7 @@
                                     5
                                 </div>
                                 <div class="col-md-2 textAlign">
-                                    <input type="text" class="form-control pleaScoreinput">
+                                    <input type="text" class="form-control pleaScoreinput" id="reportingProcess" onkeyup="reportingProcessScore('reportingProcess',5)">
                                 </div>
                             </div>
                             <div class="alert alert-warning textEllipsis border_radius marginBottom0">
@@ -1735,7 +1735,7 @@
                                     2
                                 </div>
                                 <div class="col-md-2 textAlign">
-                                    报告过程
+                                    报告内容
                                 </div>
                                 <div class="col-md-6 textAlign textEllipsis">
                                     思路清晰；语言表达准确，概念清楚；报告内容简介扼要；分析归纳合理
@@ -1744,7 +1744,7 @@
                                     10
                                 </div>
                                 <div class="col-md-2 textAlign">
-                                    <input type="text" class="form-control pleaScoreinput">
+                                    <input type="text" class="form-control pleaScoreinput"  id="reportingContent" onkeyup="reportingContentScore('reportingContent',10)">
                                 </div>
                             </div>
                             <div class="alert alert-warning textEllipsis border_radius marginBottom0">
@@ -1761,7 +1761,7 @@
                                     5
                                 </div>
                                 <div class="col-md-2 textAlign">
-                                    <input type="text" class="form-control pleaScoreinput">
+                                    <input type="text" class="form-control pleaScoreinput" id="applicableValue" onkeyup="applicableValueScore('applicableValue',5)">
                                 </div>
                             </div>
                             <div class="alert alert-warning textEllipsis border_radius marginBottom0">
@@ -1778,7 +1778,7 @@
                                     20
                                 </div>
                                 <div class="col-md-2 textAlign">
-                                    <input type="text" class="form-control pleaScoreinput">
+                                    <input type="text" class="form-control pleaScoreinput" id="plea" onkeyup="pleaScore('plea',20)">
                                 </div>
 
                             </div>
@@ -1866,7 +1866,7 @@
                                     3
                                 </div>
                                 <div class="col-md-2 textAlign">
-                                    <input type="text" class="form-control pleaScoreinput">
+                                    <input type="text" class="form-control pleaScoreinput" id="reviewTranslation" onkeyup="reviewTranslationScore('reviewTranslation',3)">
                                 </div>
                             </div>
                             <div class="alert alert-warning textEllipsis border_radius marginBottom0">
@@ -1874,7 +1874,7 @@
                                     2
                                 </div>
                                 <div class="col-md-2 normalSpace">
-                                    设计质量及设计说明书质量。
+                                    设计质量及设计说明书质量
                                 </div>
                                 <div class="col-md-6 normalSpace">
                                     方案设计合理，方案综合比较论证充分，切实可行，有较详细的实施措施；
@@ -1886,7 +1886,7 @@
                                     10
                                 </div>
                                 <div class="col-md-2 textAlign">
-                                    <input type="text" class="form-control pleaScoreinput">
+                                    <input type="text" class="form-control pleaScoreinput"  id="designQuality" onkeyup="designQualityScore('designQuality',10)">
                                 </div>
                             </div>
                             <div class="alert alert-warning textEllipsis border_radius marginBottom0">
@@ -1903,7 +1903,7 @@
                                     5
                                 </div>
                                 <div class="col-md-2 textAlign">
-                                    <input type="text" class="form-control pleaScoreinput">
+                                    <input type="text" class="form-control pleaScoreinput" id="workloadDifficulty" onkeyup="designQualityScore('workloadDifficulty',5)">
                                 </div>
                             </div>
                             <div class="alert alert-warning textEllipsis border_radius marginBottom0">
@@ -1920,7 +1920,7 @@
                                     2
                                 </div>
                                 <div class="col-md-2 textAlign">
-                                    <input type="text" class="form-control pleaScoreinput">
+                                    <input type="text" class="form-control pleaScoreinput"  id="innovation" onkeyup="innovationScore('innovation',2)">
                                 </div>
 
                             </div>
@@ -2358,7 +2358,7 @@
                                     </div>
                                 </div>
                                 <div class="alert alert-warning textEllipsis border_radius marginBottom0">
-                                    <div title="PMMA灯具基于moldflow三维流动优化的注塑模设计" class="col-md-4 textAlign textEllipsis">
+                                    <div class="col-md-4 textAlign textEllipsis">
                                         PMMA灯具基于moldflow三维流动优化的注塑模设计
                                     </div>
                                     <div class="col-md-1 textAlign textEllipsis">
@@ -2368,10 +2368,13 @@
                                         3120150905909
                                     </div>
                                     <div class="col-md-1 textAlign textEllipsis">
-                                        未完成
+                                        已完成
                                     </div>
                                     <div class="col-md-2 textAlign textEllipsis">
-                                        暂无分数
+                                        <span class="clickColor cursorPointer" data-toggle="modal"
+                                              data-target="#tutor_reviewPapers">
+                                            90
+                                        </span>
                                     </div>
                                     <div class="col-md-2 textAlign">
                                         <button type="button" class="btn btn-info btn-xs" data-toggle="modal"
@@ -2380,11 +2383,15 @@
                                         <button type="button"
                                                 class="management_tutor_scorePlea newPage btn btn-info btn-xs">
                                             打分
+                                        </button>
+                                        <button type="button" class="btn btn-danger btn-xs" data-toggle="modal"
+                                                data-target="#tutor_scorereset">
+                                            重置分数
                                         </button>
                                     </div>
                                 </div>
                                 <div class="alert alert-warning textEllipsis border_radius marginBottom0">
-                                    <div title="PMMA灯具基于moldflow三维流动优化的注塑模设计" class="col-md-4 textAlign textEllipsis">
+                                    <div class="col-md-4 textAlign textEllipsis">
                                         PMMA灯具基于moldflow三维流动优化的注塑模设计
                                     </div>
                                     <div class="col-md-1 textAlign textEllipsis">
@@ -2394,10 +2401,13 @@
                                         3120150905909
                                     </div>
                                     <div class="col-md-1 textAlign textEllipsis">
-                                        未完成
+                                        已完成
                                     </div>
                                     <div class="col-md-2 textAlign textEllipsis">
-                                        暂无分数
+                                        <span class="clickColor cursorPointer" data-toggle="modal"
+                                              data-target="#tutor_reviewPapers">
+                                            90
+                                        </span>
                                     </div>
                                     <div class="col-md-2 textAlign">
                                         <button type="button" class="btn btn-info btn-xs" data-toggle="modal"
@@ -2406,6 +2416,10 @@
                                         <button type="button"
                                                 class="management_tutor_scorePlea newPage btn btn-info btn-xs">
                                             打分
+                                        </button>
+                                        <button type="button" class="btn btn-danger btn-xs" data-toggle="modal"
+                                                data-target="#tutor_scorereset">
+                                            重置分数
                                         </button>
                                     </div>
                                 </div>
@@ -2521,6 +2535,72 @@
         </div>
     </div>
     <!--发送通知内容结束-->
+    <!--查看毕业设计指导教师评审分数详情开始-->
+    <div class="modal fade" id="tutor_reviewPapers" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">毕业设计指导教师评审分数详情</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-success">
+                        <strong>
+                            <span>课题题目:</span>
+                        </strong>
+                        <span>PMMA灯具基于moldflow三维流动优化的注</span>
+                        <hr>
+                        <strong>
+                            <span>姓名（学号）:</span>
+                        </strong>
+                        <span>张珊珊（3120150905111）</span>
+                        <hr>
+                        <strong>
+                            <span>调查、论证（4）:</span>
+                        </strong>
+                        <span>4</span>
+                        <hr>
+                        <strong>
+                            <span>方案设计与技术路线（8）:</span>
+                        </strong>
+                        <span>
+                            7
+                        </span>
+                        <hr>
+                        <strong>
+                            <span>分析与解决问题的能力（8）:</span>
+                        </strong>
+                        <span>6</span>
+                        <hr>
+                        <strong>
+                            <span>工作量、工作态度（6）:</span>
+                        </strong>
+                        <span>6</span>
+                        <hr>
+                        <strong>
+                            <span>设计质量及设计说明书质量（10）:</span>
+                        </strong>
+                        <span>9</span>
+                        <hr>
+                        <strong>
+                            <span>创新（4）：</span>
+                        </strong>
+                        <span>4</span>
+                        <hr>
+                        <strong>
+                            <span>总分：</span>
+                        </strong>
+                        <span>90</span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm btn-info" data-dismiss="modal">关闭</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--查看毕业设计指导教师评审分数详情结束-->
     <!--毕业设计指导教师评审开始-->
     <div id="tutor_scorePlea" class="page-wrapper displayNone">
         <div style="margin: 0px" class="page-inner">
@@ -2579,7 +2659,7 @@
                                     4
                                 </div>
                                 <div class="col-md-2 textAlign">
-                                    <input type="text" class="form-control pleaScoreinput">
+                                    <input type="text" class="form-control pleaScoreinput" id="investigationDemonstration" onkeyup="investigationDemonstrationScore('investigationDemonstration',4)">
                                 </div>
                             </div>
                             <div class="alert alert-warning textEllipsis border_radius marginBottom0">
@@ -2598,7 +2678,7 @@
                                     8
                                 </div>
                                 <div class="col-md-2 textAlign">
-                                    <input type="text" class="form-control pleaScoreinput">
+                                    <input type="text" class="form-control pleaScoreinput" id="technicalRoute" onkeyup="technicalRouteScore('technicalRoute',8)">
                                 </div>
                             </div>
                             <div class="alert alert-warning textEllipsis border_radius marginBottom0">
@@ -2616,7 +2696,7 @@
                                     8
                                 </div>
                                 <div class="col-md-2 textAlign">
-                                    <input type="text" class="form-control pleaScoreinput">
+                                    <input type="text" class="form-control pleaScoreinput" id="analyzeSolve" onkeyup="analyzeSolveScore('analyzeSolve',8)">
                                 </div>
                             </div>
                             <div class="alert alert-warning textEllipsis border_radius marginBottom0">
@@ -2634,7 +2714,7 @@
                                     6
                                 </div>
                                 <div class="col-md-2 textAlign">
-                                    <input type="text" class="form-control pleaScoreinput">
+                                    <input type="text" class="form-control pleaScoreinput" id="workAttitude" onkeyup="workAttitudeScore('workAttitude',6)">
                                 </div>
 
                             </div>
@@ -2654,7 +2734,7 @@
                                     10
                                 </div>
                                 <div class="col-md-2 textAlign">
-                                    <input type="text" class="form-control pleaScoreinput">
+                                    <input type="text" class="form-control pleaScoreinput" id="designSpecification" onkeyup="designSpecificationScore('designSpecification',10)">
                                 </div>
 
                             </div>
@@ -2672,7 +2752,7 @@
                                     4
                                 </div>
                                 <div class="col-md-2 textAlign">
-                                    <input type="text" class="form-control pleaScoreinput">
+                                    <input type="text" class="form-control pleaScoreinput" id="designInnovation" onkeyup="designInnovationScore('designInnovation',10)">
                                 </div>
                             </div>
                             <div class="alert alert-warning textEllipsis border_radius marginBottom0">
@@ -2710,6 +2790,28 @@
         </div>
     </div>
     <!--毕业设计指导教师评审开始-->
+    <!--重置毕业设计指导教师评审分数开始-->
+    <div class="modal fade" id="tutor_scorereset" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">提示</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        确定要重置该指导教师评审的打分，重置将通知管理员？
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-xs btn-white" data-dismiss="modal">取 消</button>
+                    <button type="button" class="btn btn-xs btn-danger">保 存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--重置毕业设计指导教师评审分数结束-->
     <!--查看答辩打分详细信息开始-->
     <div class="modal fade" id="tutor_viewScore" role="dialog">
         <div class="modal-dialog">
@@ -3808,7 +3910,7 @@
                                         <div class="col-md-1 textAlign">
                                             廖永衡
                                         </div>
-                                        <div class="col-md-3 textAlign padding0">
+                                        <div class="col-md-3 textAlign padding0 normalSpace">
                                             廖永衡 廖永衡 廖永衡 廖永衡
                                         </div>
                                         <div class="col-md-1 textAlign">
@@ -3834,7 +3936,7 @@
                                     <!--指导教师分组开始-->
                                     <div class="col-md-12">
                                         <h4 style="display: inline-block" class="font_bold">指导教师分组</h4>
-                                        <span class="colorf44">（点击分配学生按钮对已分配的指导教师指导的学生进行答辩组的分配）</span>
+                                        <span class="colorf44">（点击分配学生按钮对已分配的指导教师指导的学生进行答辩组以及毕业设计评审的分配）</span>
                                     </div>
                                     <div class="col-md-12" style="padding-bottom: 8px">
                                         <button type="button" class="btn btn-info" data-toggle="modal"
@@ -3895,12 +3997,16 @@
                             <!--学生答辩分组列表开始-->
                             <div class="tab-pane" id="students_Group">
                                 <div class="panel-body">
-                                    <div class="col-md-12">
-                                        <h4 class="font_bold" style="display: inline-block;padding-right: 10px">学生答辩分组列表</h4>
-                                        <span class="clickColor cursorPointer">导出表格</span>
+                                    <div class="col-md-12" style="padding-bottom: 10px">
+                                        <h4 class="font_bold" style="display: inline-block;padding-right: 10px">
+                                            学生答辩分组列表</h4>
+                                        <button type="button" class="btn btn-danger">导出表格<span
+                                            class="iconfont icon-excel"
+                                            style="padding-left: 4px;font-size:12px"></span>
+                                        </button>
                                     </div>
                                     <div class="alert alert-success textEllipsis border_radius marginBottom0">
-                                        <div class="col-md-3 textAlign">
+                                        <div class="col-md-2 textAlign">
                                             学生姓名（学号）
                                         </div>
                                         <div class="col-md-1 textAlign">
@@ -3908,6 +4014,9 @@
                                         </div>
                                         <div class="col-md-3 textAlign">
                                             答辩教师
+                                        </div>
+                                        <div class="col-md-1 textAlign">
+                                            评阅教师
                                         </div>
                                         <div class="col-md-1 textAlign">
                                             指导教师
@@ -3920,7 +4029,7 @@
                                         </div>
                                     </div>
                                     <div class="alert alert-warning textEllipsis border_radius marginBottom0">
-                                        <div class="col-md-3 textAlign">
+                                        <div class="col-md-2 textAlign padding0 normalSpace">
                                             王晓霞（3120150905000）
                                         </div>
                                         <div class="col-md-1 normalSpace">
@@ -3928,6 +4037,9 @@
                                         </div>
                                         <div class="col-md-3 normalSpace">
                                             廖永衡 廖永衡 廖永衡 廖永衡
+                                        </div>
+                                        <div class="col-md-1 textAlign">
+                                            廖永衡
                                         </div>
                                         <div class="col-md-1 textAlign">
                                             廖永衡
@@ -4403,7 +4515,7 @@
             </div>
         </div>
     </div>
-    <!--删除指导教师安排结束-->
+    <!--修改指导教师安排结束-->
     <!--答辩管理（系主任）结束-->
 
 
@@ -4651,12 +4763,6 @@
         idHover('subjectOpinion1');
     });
 
-    // $(".element").hover(function () {
-    //     $('.element').popover('show');
-    // }, function () {
-    //     $('.element').popover('hide');
-    // });
-
     function idHover(id) {
         $("#" + id).hover(function () {
             $("#" + id).popover('show');
@@ -4843,6 +4949,7 @@
 
     //添加指导教师
     let tutor = [];
+
     function chooseTutor() {
         let guide_Teacher = document.getElementById('guide_Teacher');
         let index = guide_Teacher.selectedIndex;//获取被选中的option的索引
@@ -4892,14 +4999,99 @@
 
 </script>
 
+
+
 <script>
+
+    //答辩打分报告过程input输入框值限定
+    function reportingProcessScore(reportingProcess,score) {
+        ScoreTop(reportingProcess,score)
+    }
+
+    //答辩打分报告内容input输入框值限定
+    function reportingContentScore(reportingContent,score) {
+        ScoreTop(reportingContent,score)
+    }
+
+    //答辩打分实用价值input输入框值限定
+    function applicableValueScore(applicableValue,score) {
+        ScoreTop(applicableValue,score)
+    }
+
+    //答辩打分答辩input输入框值限定
+    function pleaScore(plea,score) {
+        ScoreTop(plea,score)
+    }
+
+    //毕业设计评审翻译资料、综述材料input输入框值限定
+    function reviewTranslationScore(reviewTranslation,score) {
+        ScoreTop(reviewTranslation,score)
+    }
+
+    //毕业设计评审设计质量及设计说明书质量input输入框值限定
+    function designQualityScore(designQuality,score) {
+        ScoreTop(designQuality,score)
+    }
+
+    //毕业设计评审创新input输入框值限定
+    function innovationScore(innovation,score) {
+        ScoreTop(innovation,score)
+    }
+
+    //毕业设计评审工作量、难度input输入框值限定
+    function designQualityScore(workloadDifficulty,score) {
+        ScoreTop(workloadDifficulty,score)
+    }
+
+    //毕业设计指导教师评审调查、论证input输入框值限定
+    function investigationDemonstrationScore(investigationDemonstration,score) {
+        ScoreTop(investigationDemonstration,score)
+    }
+
+    //毕业设计指导教师评审方案设计与技术路线input输入框值限定
+    function technicalRouteScore(technicalRoute,score) {
+        ScoreTop(technicalRoute,score)
+    }
+
+    //毕业设计指导教师评审分析与解决问题的能力input输入框值限定
+    function analyzeSolveScore( analyzeSolve,score) {
+        ScoreTop(analyzeSolve,score)
+    }
+
+    //毕业设计指导教师评审工作量、工作态度input输入框值限定
+    function workAttitudeScore( workAttitude,score) {
+        ScoreTop(workAttitude,score)
+    }
+
+    //毕业设计指导教师评审设计质量及设计说明书质量input输入框值限定
+    function designSpecificationScore(designSpecification,score) {
+        ScoreTop(designSpecification,score)
+    }
+
+    //毕业设计指导教师评审创新input输入框值限定
+    function designInnovationScore(designInnovation,score) {
+        ScoreTop(designInnovation,score)
+    }
+
+    function ScoreTop(idIput,top) {
+        let text = document.getElementById(idIput);
+        if(text.value>top){
+            text.value = top;
+        }
+        else if(text.value<0) {
+            text.value = 0;
+        }
+        else if(isNaN(text.value)) {
+            text.value = "";
+        }
+    }
+
     //取消上传题目
-    function Unupload(classOne,classOther,textContent) {
-        returnFirst(classOne,classOther);
+    function Unupload(classOne, classOther, textContent) {
+        returnFirst(classOne, classOther);
         cancelTitle(textContent);
     }
 </script>
-
 
 
 </body>
