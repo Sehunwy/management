@@ -367,6 +367,32 @@
                                         <option value="five">5</option>
                                         <option value="six">6</option>
                                     </select>
+                                    <h5 class="font_bold">可选专业</h5>
+                                    <select style="margin:0px 5px" class="form-control">
+                                        <option value="one">全校</option>
+                                        <option value="two">本系</option>
+                                    </select>
+                                    <h4 class="font_bold" style="color: #f09b22">任务书（选填）</h4>
+                                    <h5 class="font_bold">毕业设计（论文）的主要任务和要求</h5>
+                                    <textarea style="margin:0px 5px" rows="5" type="text"
+                                              class="form-control textContent"></textarea>
+                                    <h5 class="font_bold">推荐的主要参考文献和资料</h5>
+                                    <textarea style="margin:0px 5px" rows="8" type="text"
+                                              class="form-control textContent"></textarea>
+                                    <h5 class="font_bold">添加附件</h5>
+                                    <input id="fileChoose" type="file" style="display: none">
+                                    <div class="row">
+                                        <div class="col-md-5 paddingRightt0">
+                                            <input id="fileName" class="form-control" type="text">
+                                        </div>
+                                        <div class="col-md-5 paddingLeft0">
+                                            <button type="button"
+                                                    class="btn btn-info border_bottom_left_radius border_top_left_radius"
+                                                    onclick="fileClick('fileChoose','fileName')">
+                                                浏览
+                                            </button>
+                                        </div>
+                                    </div>
                                     <div class="row" style="margin-top: 10px">
                                         <div class="col-md-2">
                                             <button type="button" class="btn btn-info"
@@ -1364,7 +1390,7 @@
                                     <div class="col-md-10">
                                     </div>
                                     <div class="col-md-2">
-                                        <button type="button" class="btn btn-info">
+                                        <button style="float: right;" type="button" class="btn btn-info">
                                             提交
                                         </button>
                                     </div>
@@ -1477,7 +1503,7 @@
                                     <div class="col-md-10">
                                     </div>
                                     <div class="col-md-2">
-                                        <button type="button" class="btn btn-info">
+                                        <button style="float: right;" type="button" class="btn btn-info">
                                             提交
                                         </button>
                                     </div>
@@ -1553,6 +1579,15 @@
                                         </button>
                                         <button type="button" class="management_scorePlea newPage btn btn-info btn-xs">
                                             打分
+                                        </button>
+                                    </div>
+                                </div>
+                                <div style="margin-top: 10px">
+                                    <div class="col-md-10">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <button style="float: right;" type="button" class="btn btn-info">
+                                            提交
                                         </button>
                                     </div>
                                 </div>

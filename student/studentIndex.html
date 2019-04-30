@@ -189,7 +189,7 @@
                     <span class="iconfont icon-xuanti-mingcheng iconColorWhite fontSize14 naviconpadding"></span>学生选题
                 </a>
                 </li>
-                <li><a href="#" id="management_three">
+                <li onclick="queryOpeningReport()"><a href="#" id="management_three">
                     <span class="iconfont icon-wendang iconColorWhite fontSize14 naviconpadding"></span>过程文档管理
                 </a>
                 </li>
@@ -696,7 +696,8 @@
     </script>
     <!--已选课题-->
     <script id="selectedTopics" type="text/template">
-        <% titles.forEach(function(array){ %>
+        <% if(titles != "查询记录为空") {
+        titles.forEach(function(array){ %>
         <div class="alert alert-danger textEllipsis border_radius marginBottom0">
             <div title="<%= array.project.title %>" class="col-md-3 textEllipsis textAlign">
                 <%= array.project.title %>
@@ -741,7 +742,8 @@
                 <% } %>
             </div>
         </div>
-        <% }) %>
+        <% })
+        } %>
     </script>
     <!--查看选题详情开始-->
     <div class="modal fade" id="viewTopic" role="dialog">
@@ -935,11 +937,13 @@
                             <ul class="nav nav-tabs" role="tablist">
                                 <li class="active"><a href="#openingReport" role="tab"
                                                       data-toggle="tab">提交开题报告</a></li>
-                                <li><a href="#intermediateInspection" role="tab" data-toggle="tab">提交中期检查</a>
+                                <li onclick="submiInterimInspection()"><a href="#intermediateInspection" role="tab"
+                                                                          data-toggle="tab">提交中期检查</a>
                                 </li>
-                                <li><a href="#guideRecord" role="tab" data-toggle="tab">提交指导记录</a>
+                                <li onclick="submitGuideRecord()"><a href="#guideRecord" role="tab" data-toggle="tab">提交指导记录</a>
                                 </li>
-                                <li><a href="#foreignTranslation" role="tab" data-toggle="tab">提交外文译文和原文</a>
+                                <li onclick="submitForeignOriginal()"><a href="#foreignTranslation" role="tab"
+                                                                         data-toggle="tab">提交外文译文和原文</a>
                                 </li>
                                 <li><a href="#literatureReview" role="tab"
                                        data-toggle="tab">提交文献综述</a></li>
@@ -950,98 +954,138 @@
                         <div class="tab-content">
                             <!--提交开题报告开始-->
                             <div class="tab-pane active panel-body" id="openingReport">
-                                <div class="alert alert-info textEllipsis">
-                                    <div>
-                                        <span style="color: #333333;">最新提交时间：2018-11-25 15:49:48</span>
-                                        <span style="padding-left: 100px"><a href="#reviewDetails">查看审核详情</a></span>
-                                    </div>
-                                </div>
-                                <div style="padding-left:0px;padding-bottom: 15px"
-                                     class="col-md-12">
-                                    <div style="padding-left: 0px" class="col-md-4">
-                                        <h4 class="font_bold">开题报告详情</h4>
-                                    </div>
-                                </div>
+
                                 <div id="writeOpeningReport"
                                      class="col-md-12 displayNone openingReport">
-                                    <h5 class="font_bold">课题研究的目的和意义</h5>
-                                    <textarea class="form-control" rows="10" name="textarea"
-                                              style="background-color: #fff"></textarea>
-                                    <h5 class="font_bold">课题研究方案和主要内容</h5>
-                                    <textarea class="form-control" rows="10" name="textarea"
-                                              style="background-color: #fff"></textarea>
-                                    <h5 class="font_bold">研究方法及技术途径</h5>
-                                    <textarea class="form-control" rows="10" name="textarea"
-                                              style="background-color: #fff"></textarea>
-                                    <h5 class="font_bold">实施计划</h5>
-                                    <textarea class="form-control" rows="10" name="textarea"
-                                              style="background-color: #fff"></textarea>
-                                    <h5 class="font_bold">添加附件</h5>
-                                    <input id="fileChoose" type="file" style="display: none">
-                                    <div class="row">
-                                        <div class="col-md-5 paddingRightt0">
-                                            <input id="fileName" class="form-control" type="text">
-                                        </div>
-                                        <div class="col-md-5 paddingLeft0">
-                                            <button type="button"
-                                                    class="btn btn-info border_bottom_left_radius border_top_left_radius"
-                                                    onclick="fileClick('fileChoose','fileName')">
-                                                浏览
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <div class="row" style="margin-top: 10px">
-                                        <div class="col-md-2">
-                                            <button type="button" class="btn btn-info"
-                                                    onclick="submitOpeningReport()">
-                                                提交
-                                            </button>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <button type="button" class="btn btn-success"
-                                                    onclick="cancelOpeningReport()">
-                                                取消
-                                            </button>
-                                        </div>
-                                    </div>
+
                                 </div>
+                                <script id="writeOpeningReports" type="text/template">
+                                    <form id="fileUpload">
+                                        <h5 class="font_bold">课题研究的目的和意义</h5>
+                                        <%
+                                        let aim="",content="",tech="",plan="";
+                                        if(data != ""){
+                                        aim = data.aim;
+                                        content = data.content;
+                                        tech = data.tech;
+                                        plan = data.plan
+                                        }
+                                        %>
+                                        <textarea class="form-control OpeningInput" rows="10" name="aim"
+                                                  style="background-color: #fff"><%=aim %></textarea>
+                                        <h5 class="font_bold">课题研究方案和主要内容</h5>
+                                        <textarea class="form-control OpeningInput" rows="10" name="content"
+                                                  style="background-color: #fff"><%=content %></textarea>
+                                        <h5 class="font_bold">研究方法及技术途径</h5>
+                                        <textarea class="form-control OpeningInput" rows="10" name="tech"
+                                                  style="background-color: #fff"><%=tech %></textarea>
+                                        <h5 class="font_bold">实施计划</h5>
+                                        <textarea class="form-control OpeningInput" rows="10" name="plan"
+                                                  style="background-color: #fff"><%=plan %></textarea>
+                                        <h5 class="font_bold">添加附件</h5>
+                                        <input id="fileChoose" type="file" style="display: none" name="uploadfile">
+                                        <div class="row">
+                                            <div class="col-md-5 paddingRightt0">
+                                                <% let fileNames;
+                                                if(data.fileId==0 || data=="") {
+                                                fileNames = "";
+                                                } else {
+                                                fileNames = data.file.fileName } %>
+                                                <input id="fileName" class="form-control OpeningInput" type="text"
+                                                       value="<%=fileNames %>">
+                                            </div>
+                                            <div class="col-md-5 paddingLeft0">
+                                                <button type="button"
+                                                        class="btn btn-info border_bottom_left_radius border_top_left_radius"
+                                                        onclick="fileClick('fileChoose','fileName')">
+                                                    浏览
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="row" style="margin-top: 10px">
+                                            <div class="col-md-2">
+                                                <% let fileId;
+                                                if(data!="") {
+                                                fileId = data.fileId;}
+                                                else {
+                                                fileId = 0;
+                                                }
+                                                %>
+                                                <button type="button" class="btn btn-info"
+                                                        onclick="submitOpeningReport('<%=fileId%>')">
+                                                    提交
+                                                </button>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <button type="button" class="btn btn-success"
+                                                        onclick="cancelOpeningReport()">
+                                                    取消
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </script>
 
                                 <div id="modifyOpeningReport" class="col-md-12 openingReport">
+
+                                </div>
+                                <script id="modifyOpeningReports" type="text/template">
+                                    <div class="alert alert-info textEllipsis">
+                                        <div>
+                                            <span style="color: #333333;">最新提交时间：
+                                            <%
+                                                var unixTimestamp = new Date( data.submitDate ) ;
+                                                commonTime = unixTimestamp.toLocaleString();
+                                            %>
+                                            <%= commonTime %>
+                                            </span>
+                                            <span style="padding-left: 100px"><a href="#reviewDetails">查看审核详情</a></span>
+                                        </div>
+                                    </div>
+                                    <div style="padding-left:0px;padding-bottom: 15px"
+                                         class="col-md-12">
+                                        <div style="padding-left: 0px" class="col-md-4">
+                                            <h4 class="font_bold">开题报告详情</h4>
+                                        </div>
+                                    </div>
                                     <h5 class="font_bold">课题研究的目的和意义</h5>
                                     <div class="whiteColor">
                                         <div class="reportContent">
-                                            提交内容
+                                            <%=data.aim %>
                                         </div>
                                     </div>
                                     <h5 class="font_bold">课题研究方案和主要内容</h5>
                                     <div class="whiteColor">
                                         <div class="reportContent">
-                                            提交内容
+                                            <%=data.content %>
                                         </div>
                                     </div>
                                     <h5 class="font_bold">研究方法及技术途径</h5>
                                     <div class="whiteColor">
                                         <div class="reportContent">
-                                            提交内容
+                                            <%=data.tech %>
                                         </div>
                                     </div>
                                     <h5 class="font_bold">实施计划</h5>
                                     <div class="whiteColor">
                                         <div class="reportContent">
-                                            提交内容
+                                            <%=data.plan %>
                                         </div>
                                     </div>
                                     <h5 class="font_bold">批注内容</h5>
                                     <div class="whiteColor">
                                         <div class="reportContent">
-                                            提交内容提交内容提交内容提交内容提交内容提交内容提交内容提交内容提交内容
-                                            提交内容提交内容提交内容提交内容提交内容提交内容提交内容提交内容提交内容
-                                            提交内容提交内容提交内容提交内容提交内容提交内容
+                                            <%=data.annotation %>
                                         </div>
                                     </div>
                                     <h5 class="font_bold">附件</h5>
                                     <div class="whiteColor" style="padding:10px;">
-                                        附件：开题报告.docx <a style="padding-left: 20px" href="#">点击下载</a>
+                                        <% if(data.fileId == 0) { %>
+                                        暂未上传中期检查相关附件
+                                        <% } else { %>
+                                        附件：<%=data.file.fileName %> <a style="padding-left: 20px"
+                                                                       href="http://www.yuanbw.cn:20086/gpms/rol/downloadFile?fileId=<%=data.fileId %>">点击下载</a>
+                                        <% } %>
                                     </div>
                                     <div class="row" style="margin-top: 10px">
                                         <div class="col-md-2">
@@ -1051,101 +1095,138 @@
                                             </button>
                                         </div>
                                     </div>
-                                </div>
+                                    <div style="padding-left:0px;padding-bottom: 15px"
+                                         class="col-md-12">
+                                        <div style="padding-left: 0px" class="col-md-4">
+                                            <h4 id="reviewDetails" class="font_bold">开题报告审核情况</h4>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 alert alert-danger">
+                                        <div>
+                                            <span class="notSubmit">审核状态：</span>
+                                            <% let msg;
+                                            if(data.cStatus==0) {
+                                            msg = "审核不通过";
+                                            }
+                                            else if(data.cStatus==1) {
+                                            msg = "审核通过";
+                                            }
+                                            else {
+                                            msg = "审核中";
+                                            }
+                                            %>
+                                            <%=msg%>
+                                        </div>
+                                        <div>
+                                            <span class="notSubmit">审核建议：</span>
+                                            <%= data.cSuggest%>
+                                        </div>
+                                    </div>
+                                </script>
 
-                                <div style="padding-left:0px;padding-bottom: 15px"
-                                     class="col-md-12">
-                                    <div style="padding-left: 0px" class="col-md-4">
-                                        <h4 id="reviewDetails" class="font_bold">开题报告审核情况</h4>
-                                    </div>
-                                </div>
-                                <div class="col-md-12 alert alert-danger">
-                                    <div>
-                                        <span class="notSubmit">审核状态：</span>已审核
-                                    </div>
-                                    <div>
-                                        <span class="notSubmit">审核教师姓名：</span>廖永衡（0120080001）
-                                    </div>
-                                    <div>
-                                        <span class="notSubmit">审核时间：</span>2018-11-25 15:49:48
-                                    </div>
-                                    <div>
-                                        <span class="notSubmit">审核建议：</span>审核建议审核建议审核建议审核建议审核建议审核建议审核建议
-                                        审核建议审核建议审核建议审核建议审核建议审核建议审核建议审核建议审核建议
-                                        审核建议审核建议审核建议审核建议审核建议审核建议审核建议审核建议审核建议
-                                    </div>
-                                </div>
                             </div>
                             <!--提交开题报告结束-->
                             <!--提交中期报告开始-->
                             <div class="tab-pane panel-body" id="intermediateInspection">
-                                <div class="alert alert-info textEllipsis">
-                                    <div>
-                                        <span style="color: #333333;">最新提交时间：2018-11-25 15:49:48</span>
-                                        <span style="padding-left: 100px"><a
-                                                href="#intermediateInspectionDetails">查看审核详情</a></span>
-                                    </div>
-                                </div>
-                                <div style="padding-left:0px;padding-bottom: 15px"
-                                     class="col-md-12">
-                                    <div style="padding-left: 0px" class="col-md-4">
-                                        <h4 class="font_bold">中期报告详情</h4>
-                                    </div>
-                                </div>
                                 <div id="writeIntermediateInspection"
                                      class="col-md-12 displayNone openingReport">
-                                    <h5 class="font_bold">中期检查需要填写的内容</h5>
-                                    <textarea class="form-control" rows="10" name="textarea"
-                                              style="background-color: #fff"></textarea>
-                                    <h5 class="font_bold">添加附件</h5>
-                                    <input id="fileChooseIntermediate" type="file"
-                                           style="display: none">
-                                    <div class="row">
-                                        <div class="col-md-5 paddingRightt0">
-                                            <input id="fileNameIntermediate" class="form-control"
-                                                   type="text">
-                                        </div>
-                                        <div class="col-md-5 paddingLeft0">
-                                            <button type="button"
-                                                    class="btn btn-info border_bottom_left_radius border_top_left_radius"
-                                                    onclick="fileClick('fileChooseIntermediate','fileNameIntermediate')">
-                                                浏览
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <div class="row" style="margin-top: 10px">
-                                        <div class="col-md-2">
-                                            <button type="button" class="btn btn-info"
-                                                    onclick="submitIntermediate()">
-                                                提交
-                                            </button>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <button type="button" class="btn btn-success"
-                                                    onclick="cancelIntermediate()">
-                                                取消
-                                            </button>
-                                        </div>
-                                    </div>
+
                                 </div>
+                                <script id="writeIntermediateInspections" type="text/template">
+                                    <form id="IntermediateForm">
+                                        <h5 class="font_bold">中期检查需要填写的内容</h5>
+                                        <textarea class="form-control InspectionInput" rows="10" name="intro"
+                                                  style="background-color: #fff"><% if(data!="") {%><%=data.intro %><% } %></textarea>
+                                        <h5 class="font_bold">添加附件</h5>
+                                        <input name="uploadfile" id="fileChooseIntermediate" type="file"
+                                               style="display: none">
+                                        <div class="row">
+                                            <div class="col-md-5 paddingRightt0">
+                                                <% let fileNames;
+                                                if(data.fileId==0 || data=="") {
+                                                fileNames = "";
+                                                } else {
+                                                fileNames = data.file.fileName } %>
+                                                <input id="fileNameIntermediate" class="form-control InspectionInput"
+                                                       type="text"
+                                                       value="<%=fileNames %>">
+                                            </div>
+                                            <div class="col-md-5 paddingLeft0">
+                                                <button type="button"
+                                                        class="btn btn-info border_bottom_left_radius border_top_left_radius"
+                                                        onclick="fileClick('fileChooseIntermediate','fileNameIntermediate')">
+                                                    浏览
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="row" style="margin-top: 10px">
+                                            <div class="col-md-2">
+                                                <% let fileId;
+                                                if(data!="") {
+                                                fileId = data.fileId;}
+                                                else {
+                                                fileId = 0;
+                                                }
+                                                %>
+                                                <button type="button" class="btn btn-info"
+                                                        onclick="submitIntermediate('<%=fileId%>')">
+                                                    提交
+                                                </button>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <button type="button" class="btn btn-success"
+                                                        onclick="cancelIntermediate()">
+                                                    取消
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </script>
 
                                 <div id="modifyIntermediateInspection"
                                      class="col-md-12 openingReport">
+                                </div>
+                                <script id="modifyIntermediateInspections" type="text/template">
+                                    <div class="alert alert-info textEllipsis">
+                                        <div>
+                                            <span style="color: #333333;">最新提交时间：
+                                            <%
+                                                var unixTimestamp = new Date( data.submitDate ) ;
+                                                commonTime = unixTimestamp.toLocaleString();
+                                            %>
+                                            <%= commonTime %>
+                                            </span>
+                                            <span style="padding-left: 100px"><a
+                                                    href="#intermediateInspectionDetails">查看审核详情</a></span>
+                                        </div>
+                                    </div>
+                                    <div style="padding-left:0px;padding-bottom: 15px"
+                                         class="col-md-12">
+                                        <div style="padding-left: 0px" class="col-md-4">
+                                            <h4 class="font_bold">中期报告详情</h4>
+                                        </div>
+                                    </div>
                                     <h5 class="font_bold">中期检查内容</h5>
                                     <div class="whiteColor">
                                         <div class="reportContent">
-                                            提交内容
+                                            <!--提交内容-->
+                                            <%= data.intro %>
                                         </div>
                                     </div>
                                     <h5 class="font_bold">批注内容</h5>
                                     <div class="whiteColor">
                                         <div class="reportContent">
-                                            提交内容
+                                            <%= data.annotation %>
                                         </div>
                                     </div>
                                     <h5 class="font_bold">附件</h5>
                                     <div class="whiteColor" style="padding:10px;">
-                                        附件：开题报告.docx <a style="padding-left: 20px" href="#">点击下载</a>
+                                        <% if(data.fileId == 0) { %>
+                                        暂未上传中期检查相关附件
+                                        <% } else { %>
+                                        附件：<%=data.file.fileName %> <a style="padding-left: 20px"
+                                                                       href="http://www.yuanbw.cn:20086/gpms/rol/downloadFile?fileId=<%=data.fileId %>">点击下载</a>
+                                        <% } %>
                                     </div>
                                     <div class="row" style="margin-top: 10px">
                                         <div class="col-md-2">
@@ -1155,46 +1236,54 @@
                                             </button>
                                         </div>
                                     </div>
-                                </div>
-                                <div style="padding-left:0px;padding-bottom: 15px"
-                                     class="col-md-12">
-                                    <div style="padding-left: 0px" class="col-md-4">
-                                        <h4 id="intermediateInspectionDetails" class="font_bold">
-                                            中期报告审核情况</h4>
+                                    <div style="padding-left:0px;padding-bottom: 15px"
+                                         class="col-md-12">
+                                        <div style="padding-left: 0px" class="col-md-4">
+                                            <h4 id="intermediateInspectionDetails" class="font_bold">
+                                                中期报告审核情况</h4>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-12 alert alert-danger">
-                                    <div>
-                                        <span class="notSubmit">审核状态：</span>已审核
+                                    <div class="col-md-12 alert alert-danger">
+                                        <div>
+                                            <span class="notSubmit">审核状态：</span>
+                                            <% let msg;
+                                            if(data.cStatus==0) {
+                                            msg = "审核不通过";
+                                            }
+                                            else if(data.cStatus==1) {
+                                            msg = "审核通过";
+                                            }
+                                            else {
+                                            msg = "审核中";
+                                            }
+                                            %>
+                                            <%=msg%>
+                                        </div>
+                                        <div>
+                                            <span class="notSubmit">审核建议：</span>
+                                            <%= data.cSuggest%>
+                                        </div>
                                     </div>
-                                    <div>
-                                        <span class="notSubmit">审核教师姓名：</span>廖永衡（0120080001）
-                                    </div>
-                                    <div>
-                                        <span class="notSubmit">审核时间：</span>2018-11-25 15:49:48
-                                    </div>
-                                    <div>
-                                        <span class="notSubmit">审核建议：</span>审核建议审核建议审核建议审核建议审核建议审核建议审核建议
-                                        审核建议审核建议审核建议审核建议审核建议审核建议审核建议审核建议审核建议
-                                        审核建议审核建议审核建议审核建议审核建议审核建议审核建议审核建议审核建议
-                                    </div>
-                                </div>
+                                </script>
                             </div>
                             <!--提交中期报告结束-->
                             <!--提交指导记录开始-->
                             <div class="tab-pane panel-body" id="guideRecord">
                                 <div style="padding-left:0px;padding-bottom: 15px"
                                      class="col-md-12">
-                                    <div style="padding-left: 0px" class="col-md-4">
-                                        <div class="col-md-10 col-xs-10" style="padding: 0px">
-                                            <h4 class="font_bold">学生指导记录列表</h4>
-                                        </div>
+                                    <!--<div style="padding-left: 0px" class="col-md-4">-->
+                                    <div class="col-md-10 col-xs-10" style="padding: 0px">
+                                        <h4 class="font_bold">学生指导记录列表（需提交10次指导记录）</h4>
                                     </div>
+                                    <!--</div>-->
                                 </div>
                                 <button style="margin-bottom: 10px;" type="button"
-                                        class="management_guide newPage btn btn-info">
+                                        class="management_guide newPage btn btn-info" onclick="submitGuide('FirstGuide')">
                                     提交指导记录
                                 </button>
+                                <div id="InstructionRecordList"></div>
+                            </div>
+                            <script id="InstructionRecordLists" type="text/template">
                                 <div class="alert alert-success textEllipsis border_radius marginBottom0">
                                     <div class="col-md-3 textAlign">
                                         课题题目
@@ -1212,118 +1301,66 @@
                                         操作
                                     </div>
                                 </div>
-                                <div class="alert alert-danger textEllipsis border_radius marginBottom0">
-                                    <div title="PMMA灯具基于moldflow三维流动优化的注塑模设计"
-                                         class="col-md-3 textEllipsis textAlign">
-                                        PMMA灯具基于moldflow三维流动优化的注塑模设计
-                                    </div>
-                                    <div class="col-md-3 textEllipsis textAlign">
-                                        2018-11-25 15:49:48
-                                    </div>
-                                    <div class="col-md-1 textEllipsis textAlign">
-                                        1
-                                    </div>
-                                    <div class="col-md-3 textAlign textEllipsis">
-                                        等待指导教师审核
-                                    </div>
-                                    <div class="col-md-2 textEllipsis textAlign">
-                                        <button style="margin-bottom: 10px" type="button"
-                                                class="management_guideView newPage btn btn-info btn-xs">
-                                            查看
-                                        </button>
-                                        <button style="margin-bottom: 10px" type="button"
-                                                class="management_guide newPage btn btn-info btn-xs">
-                                            修改
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="alert alert-warning textEllipsis border_radius marginBottom0">
-                                    <div title="PMMA灯具基于moldflow三维流动优化的注塑模设计"
-                                         class="col-md-3 textEllipsis textAlign">
-                                        PMMA灯具基于moldflow三维流动优化的注塑模设计
-                                    </div>
-                                    <div class="col-md-3 textEllipsis textAlign">
-                                        2018-11-25 15:49:48
-                                    </div>
-                                    <div class="col-md-1 textEllipsis textAlign">
-                                        1
-                                    </div>
-                                    <div class="col-md-3 textAlign textEllipsis">
-                                        等待指导教师审核
-                                    </div>
-                                    <div class="col-md-2 textEllipsis textAlign">
-                                        <button style="margin-bottom: 10px" type="button"
-                                                class="management_guideView newPage btn btn-info btn-xs">
-                                            查看
-                                        </button>
-                                        <button style="margin-bottom: 10px" type="button"
-                                                class="management_guide newPage btn btn-info btn-xs">
-                                            修改
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="alert alert-warning textEllipsis border_radius marginBottom0">
-                                    <div title="PMMA灯具基于moldflow三维流动优化的注塑模设计"
-                                         class="col-md-3 textEllipsis textAlign">
-                                        PMMA灯具基于moldflow三维流动优化的注塑模设计
-                                    </div>
-                                    <div class="col-md-3 textEllipsis textAlign">
-                                        2018-11-25 15:49:48
-                                    </div>
-                                    <div class="col-md-1 textEllipsis textAlign">
-                                        1
-                                    </div>
-                                    <div class="col-md-3 textAlign textEllipsis">
-                                        审核通过
-                                    </div>
-                                    <div class="col-md-2 textEllipsis textAlign">
-                                        <button style="margin-bottom: 10px" type="button"
-                                                class="management_guideView newPage btn btn-info btn-xs">
-                                            查看
-                                        </button>
-                                    </div>
-                                </div>
+                                <%
+                                if(data!="") {
+                                for(let i=0;i
+                                <data.length;i++) {
+                                %>
                                 <div class="alert alert-danger textEllipsis border_radius marginBottom0">
                                     <div class="col-md-3 textEllipsis textAlign">
+                                        <%=topicName%>
                                     </div>
                                     <div class="col-md-3 textEllipsis textAlign">
-
+                                        <%
+                                        var unixTimestamp = new Date( data[i].submitDate ) ;
+                                        commonTime = unixTimestamp.toLocaleString();
+                                        %>
+                                        <%= commonTime %>
                                     </div>
                                     <div class="col-md-1 textEllipsis textAlign">
-                                        4
+                                        <%=(i+1)%>
                                     </div>
                                     <div class="col-md-3 textAlign textEllipsis">
-
+                                        <% let msg;
+                                        if(data[i].cStatus==0) {
+                                        msg = "审核不通过";
+                                        }
+                                        else if(data[i].cStatus==1) {
+                                        msg = "审核通过";
+                                        }
+                                        else {
+                                        msg = "审核中";
+                                        }
+                                        %>
+                                        <%=msg%>
                                     </div>
                                     <div class="col-md-2 textEllipsis textAlign">
                                         <button style="margin-bottom: 10px" type="button"
-                                                class="management_guide newPage btn btn-info btn-xs">
-                                            提交
+                                                class="management_guideView newPage btn btn-info btn-xs">
+                                            查看
                                         </button>
+                                        <% if(data[i].cStatus==1) {%>
+                                        <button style="margin-bottom: 10px" type="button"
+                                                class="btn btn-info btn-xs" disabled>
+                                            修改
+                                        </button>
+                                        <%} else{%>
+                                        <button style="margin-bottom: 10px" type="button"
+                                                class="management_guide newPage btn btn-info btn-xs"  onclick="submitGuide('<%=data[i].id%>')">
+                                            修改
+                                        </button>
+                                        <%}%>
                                     </div>
                                 </div>
-                                <!--分页开始-->
-                                <div style="margin-top: 15px" class="m-style"></div>
-                                <!--分页结束-->
-                            </div>
+                                <% } } %>
+                            </script>
                             <!--提交指导记录结束-->
                             <!--提交外文译文和原文开始-->
                             <div class="tab-pane panel-body" id="foreignTranslation">
-                                <div class="alert alert-info textEllipsis">
-                                    <div>
-                                        <span style="color: #333333;">最新提交时间：2018-11-25 15:49:48</span>
-                                        <span style="padding-left: 100px"><a
-                                                href="#foreignTranslationDetails">查看审核详情</a></span>
-                                    </div>
-                                </div>
-                                <div style="padding-left:0px;padding-bottom: 15px"
-                                     class="col-md-12">
-                                    <div style="padding-left: 0px" class="col-md-4">
-                                        <h4 class="font_bold">外文译文和原文详情</h4>
-                                    </div>
-                                </div>
                                 <div id="writeForeignTranslation"
                                      class="col-md-12 displayNone openingReport">
+                                </div>
+                                <script id="writeForeignTranslations" type="text/template">
                                     <div style="width: 49%; display: inline-block">
                                         <h5 class="font_bold">外文译文内容</h5>
                                         <textarea class="form-control" rows="10" name="textarea"
@@ -1381,9 +1418,25 @@
                                             </button>
                                         </div>
                                     </div>
-                                </div>
+                                </script>
 
                                 <div id="modifyForeignTranslation" class="col-md-12 openingReport">
+
+                                </div>
+                                <script id="modifyForeignTranslations" type="text/template">
+                                    <div class="alert alert-info textEllipsis">
+                                        <div>
+                                            <span style="color: #333333;">最新提交时间：2018-11-25 15:49:48</span>
+                                            <span style="padding-left: 100px"><a
+                                                    href="#foreignTranslationDetails">查看审核详情</a></span>
+                                        </div>
+                                    </div>
+                                    <div style="padding-left:0px;padding-bottom: 15px"
+                                         class="col-md-12">
+                                        <div style="padding-left: 0px" class="col-md-4">
+                                            <h4 class="font_bold">外文译文和原文详情</h4>
+                                        </div>
+                                    </div>
                                     <h5 class="font_bold">外文译文内容</h5>
                                     <div class="whiteColor">
                                         <div class="reportContent">
@@ -1418,30 +1471,31 @@
                                             </button>
                                         </div>
                                     </div>
-                                </div>
-                                <div style="padding-left:0px;padding-bottom: 15px"
-                                     class="col-md-12">
-                                    <div style="padding-left: 0px" class="col-md-4">
-                                        <h4 id="foreignTranslationDetails" class="font_bold">
-                                            中期报告审核情况</h4>
+                                    <div style="padding-left:0px;padding-bottom: 15px"
+                                         class="col-md-12">
+                                        <div style="padding-left: 0px" class="col-md-4">
+                                            <h4 id="foreignTranslationDetails" class="font_bold">
+                                                中期报告审核情况</h4>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-12 alert alert-danger">
-                                    <div>
-                                        <span class="notSubmit">审核状态：</span>已审核
+                                    <div class="col-md-12 alert alert-danger">
+                                        <div>
+                                            <span class="notSubmit">审核状态：</span>已审核
+                                        </div>
+                                        <div>
+                                            <span class="notSubmit">审核教师姓名：</span>廖永衡（0120080001）
+                                        </div>
+                                        <div>
+                                            <span class="notSubmit">审核时间：</span>2018-11-25 15:49:48
+                                        </div>
+                                        <div>
+                                            <span class="notSubmit">审核建议：</span>审核建议审核建议审核建议审核建议审核建议审核建议审核建议
+                                            审核建议审核建议审核建议审核建议审核建议审核建议审核建议审核建议审核建议
+                                            审核建议审核建议审核建议审核建议审核建议审核建议审核建议审核建议审核建议
+                                        </div>
                                     </div>
-                                    <div>
-                                        <span class="notSubmit">审核教师姓名：</span>廖永衡（0120080001）
-                                    </div>
-                                    <div>
-                                        <span class="notSubmit">审核时间：</span>2018-11-25 15:49:48
-                                    </div>
-                                    <div>
-                                        <span class="notSubmit">审核建议：</span>审核建议审核建议审核建议审核建议审核建议审核建议审核建议
-                                        审核建议审核建议审核建议审核建议审核建议审核建议审核建议审核建议审核建议
-                                        审核建议审核建议审核建议审核建议审核建议审核建议审核建议审核建议审核建议
-                                    </div>
-                                </div>
+                                </script>
+
                             </div>
                             <!--提交外文译文和原文结束-->
                             <!--提交文献综述开始-->
@@ -1666,42 +1720,58 @@
                         <div class="panel-body">
                             <div id="writeGuide"
                                  class="col-md-12 openingReport">
-                                <h5 class="font_bold">主题</h5>
-                                <input type="text" class="form-control">
-                                <h5 style="padding-top: 60px" class="font_bold">指导时间</h5>
-                                <input type="text" class="form-control">
-                                <h5 style="padding-top: 60px" class="font_bold">主要工作</h5>
-                                <textarea class="form-control" rows="5" name="textarea"></textarea>
-                                <h5 class="font_bold">添加附件</h5>
-                                <input id="fileChooseGuide" type="file" style="display: none">
-                                <div class="row">
-                                    <div class="col-md-5 paddingRightt0">
-                                        <input id="fileNameGuide" class="form-control" type="text">
-                                    </div>
-                                    <div class="col-md-5 paddingLeft0">
-                                        <button type="button"
-                                                class="btn btn-info border_bottom_left_radius border_top_left_radius"
-                                                onclick="fileClick('fileChooseGuide','fileNameGuide')">
-                                            浏览
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="row" style="margin-top: 10px">
-                                    <div class="col-md-2">
-                                        <button type="button"
-                                                class="management_guideView newPage btn btn-info">
-                                            提交
-                                        </button>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <button type="button"
-                                                class="management_three newPage btn btn-success">
-                                            取消
-                                        </button>
-                                    </div>
-                                </div>
+
                             </div>
                         </div>
+                        <script  id="writeGuides" type="text/template">
+                            <%
+                            let theme="",date="",work="",fileName="";
+                            if(data!="") {
+                            theme = data.theme;
+                            date = data.date;
+                            work = data.work;
+                            if(fileId != 0) {
+                            fileName = data.file.fileName;
+                            }
+                            }
+                            %>
+                            <form id="guideForm">
+                                <h5 class="font_bold">主题</h5>
+                                <input type="text" class="form-control" name="theme" value="<%=theme%>">
+                                <h5 style="padding-top: 60px" class="font_bold">指导时间</h5>
+                                <input type="text" class="form-control"  name="date" value="<%=date%>">
+                                <h5 style="padding-top: 60px" class="font_bold">主要工作</h5>
+                                <textarea class="form-control" rows="5" name="textarea" name="work"> <%=work%></textarea>
+                                <h5 class="font_bold">添加附件</h5>
+                                <input id="fileChooseGuide" type="file" style="display: none" name="uploadfile">
+                                <div class="row">
+                                <div class="col-md-5 paddingRightt0">
+                                <input id="fileNameGuide" class="form-control" type="text" value="<%=fileName%>">
+                                </div>
+                                <div class="col-md-5 paddingLeft0">
+                                <button type="button"
+                            class="btn btn-info border_bottom_left_radius border_top_left_radius"
+                            onclick="fileClick('fileChooseGuide','fileNameGuide')">
+                                浏览
+                                </button>
+                                </div>
+                                </div>
+                                <div class="row" style="margin-top: 10px">
+                                <div class="col-md-2">
+                                <button type="button"
+                            class="management_guideView newPage btn btn-info">
+                                提交
+                                </button>
+                                </div>
+                                <div class="col-md-2">
+                                <button type="button"
+                            class="management_three newPage btn btn-success">
+                                取消
+                                </button>
+                                </div>
+                                </div>
+                                </form>
+                        </script>
                     </div>
                 </div>
             </div>
@@ -2158,7 +2228,9 @@
                                     </div>
                                 </div>
                                 <div style="margin-top: 74px" class="alert alert-info">
-                                    <div><span class="notSubmit">最终成绩 ：</span>90</div>
+                                    <div><span class="notSubmit">综合评定成绩 ：</span>90</div>
+                                    <div><span class="notSubmit">综合评定成绩提交教师 ：</span>陈红红</div>
+                                    <div><span class="notSubmit">评定日期 ：</span>2019-10-10</div>
                                 </div>
                             </div>
                             <!--查看成绩结束-->
@@ -2363,7 +2435,7 @@
     let titleArray = [];
     let taskProgress;
     let token = getCookie("token");
-    console.log("token "+token);
+    console.log("token " + token);
     if (token == "" || token == null) {
         window.location.href = "../login/login.html";
     }
@@ -2405,10 +2477,9 @@
                 Token: token
             },
             success: function (responseStr) {
-                if(responseStr.msg == "请先登录！") {
+                if (responseStr.msg == "请先登录！") {
                     window.location.href = "../login/login.html";
                 }
-                console.log(responseStr);
                 taskProgress = [
                     {
                         progress: responseStr.data[0],
@@ -2488,6 +2559,8 @@
     }
 
     //查看个人信息
+    let topicName;
+
     function showRoleInfo() {
         let informationsDetailed = document.getElementById('informationsDetailed').innerHTML;
         let informationDetailed = document.getElementById('informationDetailed');
@@ -2506,7 +2579,8 @@
                 Token: token
             },
             success: function (responseStr) {
-                if(responseStr.msg == "查询成功") {
+                if (responseStr.msg == "查询成功") {
+                    topicName = responseStr.data.pName;
                     information.innerHTML = ejs.render(informations, {informations: responseStr.data});
                     informationDetailed.innerHTML = ejs.render(informationsDetailed, {informations: responseStr.data});
                 }
@@ -2553,7 +2627,7 @@
             },
             success: function (responseStr) {
                 alert(responseStr.msg);
-                if(responseStr.msg == "修改成功") {
+                if (responseStr.msg == "修改成功") {
                     showRoleInfo();
                 }
             },
@@ -2827,6 +2901,8 @@
             },
             success: function (responseStr) {
                 titleArray = responseStr.data;
+                console.log("responseStr");
+                console.log(responseStr)
                 if (responseStr.msg == "查询成功") {
                     let data = responseStr.data[0];
                     html = ejs.render(selectedTopics, {titles: responseStr.data});
@@ -2839,6 +2915,167 @@
                     indexSelectedTopic.innerHTML = ejs.render(indexSelectedTopics, {titles: data});
                 } else if (responseStr.msg == "查询记录为空") {
                     indexSelectedTopic.innerHTML = ejs.render(indexSelectedTopics, {titles: responseStr.msg});
+                }
+            },
+            error: function (responseStr) {
+                console.log("failed");
+                console.log(responseStr);
+            }
+        });
+    }
+
+    //过程文档管理提交开题报告
+    let OpeningReportdata;
+    let OpeningReportdataFirst = "NotFirst";
+
+    function queryOpeningReport() {
+        let url = "http://www.yuanbw.cn:20086/gpms/stu/showOpeningReport";
+        $.ajax({
+            url: url,
+            type: "POST",
+            data: {},
+            xhrFields: {
+                withCredentials: true
+            },
+            crossDomain: true,
+            headers: {
+                Token: token
+            },
+            success: function (responseStr) {
+                if (responseStr.statusCode == 101) {
+                    submitBlock('writeOpeningReport', 'modifyOpeningReport');
+                    let writeOpeningReports = document.getElementById('writeOpeningReports').innerHTML;
+                    let writeOpeningReport = document.getElementById('writeOpeningReport');
+                    writeOpeningReport.innerHTML = ejs.render(writeOpeningReports, {data: ""});
+                    OpeningReportdataFirst = "First";
+                } else if (responseStr.statusCode == 100) {
+                    OpeningReportdata = responseStr.data;
+                    submitNone('writeOpeningReport', 'modifyOpeningReport');
+                    let modifyOpeningReports = document.getElementById('modifyOpeningReports').innerHTML;
+                    let modifyOpeningReport = document.getElementById('modifyOpeningReport');
+                    modifyOpeningReport.innerHTML = ejs.render(modifyOpeningReports, {data: responseStr.data});
+                }
+                console.log(responseStr);
+            },
+            error: function (responseStr) {
+                console.log("failed");
+                console.log(responseStr);
+            }
+        });
+    }
+
+    //过程文档管理提交中期检查
+    let InterimInspectiondata;
+    let InterimInspectiondataFirst = "NotFirst";
+
+    function submiInterimInspection() {
+        let url = "http://www.yuanbw.cn:20086/gpms/stu/showMidInspection";
+        $.ajax({
+            url: url,
+            type: "POST",
+            data: {},
+            xhrFields: {
+                withCredentials: true
+            },
+            crossDomain: true,
+            headers: {
+                Token: token
+            },
+            success: function (responseStr) {
+                console.log("responseStr");
+                console.log(responseStr);
+                if (responseStr.statusCode == 101) {
+                    submitBlock('writeIntermediateInspection', 'modifyIntermediateInspection');
+                    let writeIntermediateInspections = document.getElementById('writeIntermediateInspections').innerHTML;
+                    let writeIntermediateInspection = document.getElementById('writeIntermediateInspection');
+                    writeIntermediateInspection.innerHTML = ejs.render(writeIntermediateInspections, {data: ""});
+                    InterimInspectiondataFirst = "First";
+                } else if (responseStr.statusCode == 100) {
+                    InterimInspectiondata = responseStr.data;
+                    submitNone('writeIntermediateInspection', 'modifyIntermediateInspection');
+                    let modifyIntermediateInspections = document.getElementById('modifyIntermediateInspections').innerHTML;
+                    let modifyIntermediateInspection = document.getElementById('modifyIntermediateInspection');
+                    modifyIntermediateInspection.innerHTML = ejs.render(modifyIntermediateInspections, {data: responseStr.data});
+                }
+            },
+            error: function (responseStr) {
+                console.log("failed");
+                console.log(responseStr);
+            }
+        });
+    }
+
+    //过程文档管理提交指导记录
+    let GuideRecorddata;
+    let GuideRecordFirst = "NotFirst";
+
+    function submitGuideRecord() {
+        let url = "http://www.yuanbw.cn:20086/gpms/stu/showGuidanceRecord";
+        $.ajax({
+            url: url,
+            type: "POST",
+            data: {},
+            xhrFields: {
+                withCredentials: true
+            },
+            crossDomain: true,
+            headers: {
+                Token: token
+            },
+            success: function (responseStr) {
+                console.log("responseStr");
+                console.log(responseStr);
+                let InstructionRecordLists = document.getElementById('InstructionRecordLists').innerHTML;
+                let InstructionRecordList = document.getElementById('InstructionRecordList');
+                if (responseStr.statusCode == 101) {
+                    InstructionRecordList.innerHTML = ejs.render(InstructionRecordLists, {data: ""});
+                } else if (responseStr.statusCode == 100) {
+                    GuideRecorddata = responseStr.data;
+                    InstructionRecordList.innerHTML = ejs.render(InstructionRecordLists, {
+                        data: responseStr.data,
+                        topicName: topicName
+                    });
+                }
+            },
+            error: function (responseStr) {
+                console.log("failed");
+                console.log(responseStr);
+            }
+        });
+    }
+
+    //过程文档管理提交外文译文和原文
+    let ForeignOriginaldata;
+    let ForeignOriginaldataFirst = "NotFirst";
+
+    function submitForeignOriginal() {
+        let url = "http://www.yuanbw.cn:20086/gpms/stu/showForeignOriginal";
+        $.ajax({
+            url: url,
+            type: "POST",
+            data: {},
+            xhrFields: {
+                withCredentials: true
+            },
+            crossDomain: true,
+            headers: {
+                Token: token
+            },
+            success: function (responseStr) {
+                console.log("responseStr");
+                console.log(responseStr);
+                if (responseStr.statusCode == 101) {
+                    submitBlock('writeIntermediateInspection', 'modifyIntermediateInspection');
+                    let writeIntermediateInspections = document.getElementById('writeIntermediateInspections').innerHTML;
+                    let writeIntermediateInspection = document.getElementById('writeIntermediateInspection');
+                    writeIntermediateInspection.innerHTML = ejs.render(writeIntermediateInspections, {data: ""});
+                    InterimInspectiondataFirst = "First";
+                } else if (responseStr.statusCode == 100) {
+                    InterimInspectiondata = responseStr.data;
+                    submitNone('writeIntermediateInspection', 'modifyIntermediateInspection');
+                    let modifyIntermediateInspections = document.getElementById('modifyIntermediateInspections').innerHTML;
+                    let modifyIntermediateInspection = document.getElementById('modifyIntermediateInspection');
+                    modifyIntermediateInspection.innerHTML = ejs.render(modifyIntermediateInspections, {data: responseStr.data});
                 }
             },
             error: function (responseStr) {
@@ -2862,29 +3099,119 @@
     }
 
     // 开题报告
-    function submitOpeningReport() {
-        this.submitNone('writeOpeningReport', 'modifyOpeningReport');
+    function submitOpeningReport(id) {
+        let formdata = new FormData($('#fileUpload')[0]);
+        formdata.append("fileId", id);
+        let url = "http://www.yuanbw.cn:20086/gpms/stu/commitOpeningReport";
+        $.ajax({
+            url: url,
+            type: "POST",
+            data: formdata,
+            cache: false,
+            processData: false,
+            contentType: false,
+            xhrFields: {
+                withCredentials: true
+            },
+            crossDomain: true,
+            headers: {
+                Token: token
+            },
+            success: function (responseStr) {
+                alert(responseStr.msg);
+                submitNone('writeOpeningReport', 'modifyOpeningReport');
+                queryOpeningReport();
+            },
+            error: function (responseStr) {
+                console.log("failed");
+                console.log(responseStr);
+            }
+        });
     }
 
     function cancelOpeningReport() {
-        this.submitNone('writeOpeningReport', 'modifyOpeningReport');
+        cancelTitle('OpeningInput');
+        console.log(OpeningReportdataFirst)
+        if (OpeningReportdataFirst == "NotFirst") {
+            submitNone('writeOpeningReport', 'modifyOpeningReport');
+        }
     }
 
+    //修改开题报告
     function modifyReport() {
+        let writeOpeningReports = document.getElementById('writeOpeningReports').innerHTML;
+        let writeOpeningReport = document.getElementById('writeOpeningReport');
         this.submitBlock('writeOpeningReport', 'modifyOpeningReport');
+        console.log(OpeningReportdata);
+        writeOpeningReport.innerHTML = ejs.render(writeOpeningReports, {data: OpeningReportdata});
     }
 
-    // 中期检查
-    function submitIntermediate() {
-        this.submitNone('writeIntermediateInspection', 'modifyIntermediateInspection');
+    // 修改或提交中期检查
+    function submitIntermediate(id) {
+        let formdata = new FormData($('#IntermediateForm')[0]);
+        formdata.append("fileId", id);
+        let url = "http://www.yuanbw.cn:20086/gpms/stu/commitMidInspection";
+        $.ajax({
+            url: url,
+            type: "POST",
+            data: formdata,
+            cache: false,
+            processData: false,
+            contentType: false,
+            xhrFields: {
+                withCredentials: true
+            },
+            crossDomain: true,
+            headers: {
+                Token: token
+            },
+            success: function (responseStr) {
+                alert(responseStr.msg);
+                submiInterimInspection();
+                submitNone('writeIntermediateInspection', 'modifyIntermediateInspection');
+            },
+            error: function (responseStr) {
+                console.log("failed");
+                console.log(responseStr);
+            }
+        });
     }
 
     function cancelIntermediate() {
-        this.submitNone('writeIntermediateInspection', 'modifyIntermediateInspection');
+        cancelTitle('InspectionInput');
+        if (InterimInspectiondataFirst == "NotFirst") {
+            submitNone('writeIntermediateInspection', 'modifyIntermediateInspection');
+        }
     }
 
+    //修改中期检查
     function modifyIntermediate() {
         this.submitBlock('writeIntermediateInspection', 'modifyIntermediateInspection');
+        let writeIntermediateInspections = document.getElementById('writeIntermediateInspections').innerHTML;
+        let writeIntermediateInspection = document.getElementById('writeIntermediateInspection');
+        writeIntermediateInspection.innerHTML = ejs.render(writeIntermediateInspections, {data: InterimInspectiondata});
+    }
+
+    //提交、修改指导记录
+    function submitGuide(isSubmit) {
+        let writeGuides = document.getElementById('writeGuides').innerHTML;
+        let writeGuide = document.getElementById('writeGuide');
+
+        console.log(isSubmit);
+        console.log(GuideRecorddata);
+        let Guidedata;
+        if(isSubmit=="FirstGuide") {
+            Guidedata = "";
+        }
+        else {
+            for(let i=0;i<GuideRecorddata.length;i++) {
+                if(isSubmit == GuideRecorddata[i].id){
+                    Guidedata = GuideRecorddata[i];
+                }
+            }
+        }
+        writeGuide.innerHTML = ejs.render(writeGuides, {data: Guidedata});
+        console.log(Guidedata)
     }
 
     // 外文译文和原文

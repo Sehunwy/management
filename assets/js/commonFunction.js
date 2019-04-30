@@ -1,11 +1,14 @@
 <!--获取上传文件名称开始-->
+let formdata;
 function fileClick(fileChoose, fileName) {
     $('#' + fileChoose).click();
     $('#' + fileChoose).change(function () {
         let files = document.getElementById(fileChoose).files;
+        console.log("files "+files);
         $('#' + fileName).val(files[0].name);
     });
 }
+
 
 <!--获取上传文件名称结束-->
 
@@ -41,7 +44,6 @@ function selectAll(id, className) {
         this.checked = isCheck;       //循环赋值给每个复选框是否选中
     });
 }
-
 
 //cookies
 function setCookie(name,value,time)
