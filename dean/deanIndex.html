@@ -977,66 +977,66 @@
                                 </div>
                             </div>
                             <!--教师答辩分组结束-->
-                            <!--学生答辩分组开始-->
-                            <div class="tab-pane panel-body" id="replyStudent">
+                            <!--学生答辩分组列表开始-->
+                            <div class="tab-pane" id="replyStudent">
                                 <div class="panel-body">
-                                    <div style="padding-left:0px;padding-bottom: 15px" class="col-md-12">
-                                        <div class="col-md-1 col-xs-1" style="padding: 0px">
-                                            学生姓名：
-                                        </div>
-                                        <div style="padding-left:0px;" class="col-md-4">
-                                            <div class="col-md-10 col-xs-10" style="padding: 0px">
-                                                <input style="border-bottom-right-radius: 0px;border-top-right-radius: 0px"
-                                                       type="text" class="form-control">
-                                            </div>
-                                            <div class="col-md-2 col-xs-2" style="padding-left: 5px">
-                                                <button style="border-bottom-left-radius: 0px;border-top-left-radius: 0px;float: left"
-                                                        type="button" class="btn btn-info">
-                                                    <span class="iconfont icon-sousuo fontSize14"></span>
-                                                </button>
-                                            </div>
-                                        </div>
+                                    <div class="col-md-12" style="padding-bottom: 10px">
+                                        <h4 class="font_bold" style="display: inline-block;padding-right: 10px">
+                                            学生答辩分组列表</h4>
+                                        <button type="button" class="btn btn-danger">导出表格<span
+                                                class="iconfont icon-excel"
+                                                style="padding-left: 4px;font-size:12px"></span>
+                                        </button>
                                     </div>
                                     <div class="alert alert-success textEllipsis border_radius marginBottom0">
-                                        <div class="col-md-5 textAlign">
-                                            课题题目
-                                        </div>
                                         <div class="col-md-2 textAlign">
-                                            答辩学生
-                                        </div>
-                                        <div class="col-md-3 textAlign">
-                                            答辩时间
+                                            学生姓名（学号）
                                         </div>
                                         <div class="col-md-1 textAlign">
-                                            答辩教室
+                                            答辩组长
+                                        </div>
+                                        <div class="col-md-3 textAlign">
+                                            答辩教师
+                                        </div>
+                                        <div class="col-md-1 textAlign">
+                                            评阅教师
+                                        </div>
+                                        <div class="col-md-1 textAlign">
+                                            指导教师
                                         </div>
                                         <div class="col-md-1 textAlign">
                                             分组
                                         </div>
-                                    </div>
-                                    <div class="alert alert-danger textEllipsis border_radius marginBottom0">
-                                        <div class="col-md-5 textAlign">
-                                            PMMA灯具基于moldflow三维
-                                        </div>
-                                        <div class="col-md-2 textAlign">
-                                            王晓霞
-                                        </div>
                                         <div class="col-md-3 textAlign">
-                                            2019-01-05 17:47:28
+                                            答辩时间
+                                        </div>
+                                    </div>
+                                    <div class="alert alert-warning textEllipsis border_radius marginBottom0">
+                                        <div class="col-md-2 textAlign padding0 normalSpace">
+                                            王晓霞（3120150905000）
+                                        </div>
+                                        <div class="col-md-1 normalSpace">
+                                            梁永辉
+                                        </div>
+                                        <div class="col-md-3 normalSpace">
+                                            廖永衡 廖永衡 廖永衡 廖永衡
                                         </div>
                                         <div class="col-md-1 textAlign">
-                                            6A-404
+                                            廖永衡
+                                        </div>
+                                        <div class="col-md-1 textAlign">
+                                            廖永衡
                                         </div>
                                         <div class="col-md-1 textAlign">
                                             第一组
                                         </div>
+                                        <div class="col-md-3 textAlign padding0">
+                                            2019.05.05/第九周星期五 上午8:30
+                                        </div>
                                     </div>
-                                    <!--分页开始-->
-                                    <div style="margin-top: 15px" class="m-style"></div>
-                                    <!--分页结束-->
                                 </div>
                             </div>
-                            <!--学生答辩分组结束-->
+                            <!--学生答辩分组列表结束-->
                             <!--成绩汇总开始-->
                             <div class="tab-pane panel-body" id="results_Summary">
                                 <div style="padding-bottom: 15px;padding-left: 0px" class="col-md-12">
@@ -3857,8 +3857,6 @@
                             <ul class="nav nav-tabs" role="tablist">
                                 <li class="active"><a href="#teachers_Group" role="tab"
                                                       data-toggle="tab">答辩分组</a></li>
-                                <li><a href="#students_Group" role="tab"
-                                       data-toggle="tab">学生答辩分组列表</a></li>
                                 <li><a href="#Calculate_defense_score" role="tab" data-toggle="tab">计算答辩总评成绩</a></li>
                             </ul>
                         </div>
@@ -4015,66 +4013,6 @@
                                 </div>
                             </div>
                             <!--教师分组结束-->
-                            <!--学生答辩分组列表开始-->
-                            <div class="tab-pane" id="students_Group">
-                                <div class="panel-body">
-                                    <div class="col-md-12" style="padding-bottom: 10px">
-                                        <h4 class="font_bold" style="display: inline-block;padding-right: 10px">
-                                            学生答辩分组列表</h4>
-                                        <button type="button" class="btn btn-danger">导出表格<span
-                                            class="iconfont icon-excel"
-                                            style="padding-left: 4px;font-size:12px"></span>
-                                        </button>
-                                    </div>
-                                    <div class="alert alert-success textEllipsis border_radius marginBottom0">
-                                        <div class="col-md-2 textAlign">
-                                            学生姓名（学号）
-                                        </div>
-                                        <div class="col-md-1 textAlign">
-                                            答辩组长
-                                        </div>
-                                        <div class="col-md-3 textAlign">
-                                            答辩教师
-                                        </div>
-                                        <div class="col-md-1 textAlign">
-                                            评阅教师
-                                        </div>
-                                        <div class="col-md-1 textAlign">
-                                            指导教师
-                                        </div>
-                                        <div class="col-md-1 textAlign">
-                                            分组
-                                        </div>
-                                        <div class="col-md-3 textAlign">
-                                            答辩时间
-                                        </div>
-                                    </div>
-                                    <div class="alert alert-warning textEllipsis border_radius marginBottom0">
-                                        <div class="col-md-2 textAlign padding0 normalSpace">
-                                            王晓霞（3120150905000）
-                                        </div>
-                                        <div class="col-md-1 normalSpace">
-                                            梁永辉
-                                        </div>
-                                        <div class="col-md-3 normalSpace">
-                                            廖永衡 廖永衡 廖永衡 廖永衡
-                                        </div>
-                                        <div class="col-md-1 textAlign">
-                                            廖永衡
-                                        </div>
-                                        <div class="col-md-1 textAlign">
-                                            廖永衡
-                                        </div>
-                                        <div class="col-md-1 textAlign">
-                                            第一组
-                                        </div>
-                                        <div class="col-md-3 textAlign padding0">
-                                            2019.05.05/第九周星期五 上午8:30
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--学生答辩分组列表结束-->
                             <!--计算答辩总评成绩开始-->
                             <div class="tab-pane panel-body" id="Calculate_defense_score">
                                 <div class="alert alert-success textEllipsis border_radius marginBottom0">
