@@ -672,6 +672,7 @@
                                         <div style="padding-left: 0px" class="col-md-12">
                                             <div class="col-md-3 col-xs-3">
                                                 <select style="margin:0px 5px" class="form-control">
+                                                    <option value="topicTitle">全部教师</option>
                                                     <option value="topicTitle">出题教师</option>
                                                     <option value="reviewStatus">未出题教师</option>
                                                 </select>
@@ -683,7 +684,12 @@
                                     </div>
                                     <div style="padding-left: 0px" class="col-md-4">
                                         <div class="col-md-10 col-xs-10" style="padding: 0px">
-                                            <h4 class="font_bold">教师列表</h4>
+                                            <h4 class="font_bold" style="display: inline-block;padding-right: 10px">
+                                                教师列表</h4>
+                                            <button type="button" class="btn btn-danger">导出表格<span
+                                                    class="iconfont icon-excel"
+                                                    style="padding-left: 4px;font-size:12px"></span>
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
@@ -768,6 +774,7 @@
                                         <div style="padding-left: 0px" class="col-md-12">
                                             <div class="col-md-3 col-xs-3">
                                                 <select style="margin:0px 5px" class="form-control">
+                                                    <option value="topicTitle">全部学生</option>
                                                     <option value="topicTitle">选题学生</option>
                                                     <option value="reviewStatus">未选题学生</option>
                                                 </select>
@@ -779,7 +786,12 @@
                                     </div>
                                     <div style="padding-left: 0px" class="col-md-4">
                                         <div class="col-md-10 col-xs-10" style="padding: 0px">
-                                            <h4 class="font_bold">学生列表</h4>
+                                            <h4 class="font_bold" style="display: inline-block;padding-right: 10px">
+                                                学生列表</h4>
+                                            <button type="button" class="btn btn-danger">导出表格<span
+                                                    class="iconfont icon-excel"
+                                                    style="padding-left: 4px;font-size:12px"></span>
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
@@ -839,7 +851,12 @@
                                     </div>
                                     <div style="padding-left: 0px" class="col-md-4">
                                         <div class="col-md-10 col-xs-10" style="padding: 0px">
-                                            <h4 class="font_bold">题目列表</h4>
+                                            <h4 class="font_bold" style="display: inline-block;padding-right: 10px">
+                                                题目列表</h4>
+                                            <button type="button" class="btn btn-danger">导出表格<span
+                                                    class="iconfont icon-excel"
+                                                    style="padding-left: 4px;font-size:12px"></span>
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
@@ -909,6 +926,14 @@
                                                     <span class="iconfont icon-sousuo fontSize14"></span>
                                                 </button>
                                             </div>
+                                        </div>
+                                        <div class="col-md-12 col-xs-12">
+                                            <h4 class="font_bold" style="display: inline-block;padding-right: 10px">
+                                                教师列表</h4>
+                                            <button type="button" class="btn btn-danger">导出表格<span
+                                                    class="iconfont icon-excel"
+                                                    style="padding-left: 4px;font-size:12px"></span>
+                                            </button>
                                         </div>
                                     </div>
                                     <div class="alert alert-success textEllipsis border_radius marginBottom0">
@@ -1051,11 +1076,14 @@
                                             <button type="button" class="btn btn-info">查询</button>
                                         </div>
                                     </div>
-                                </div>
-                                <div style="padding-left:0px;padding-bottom: 15px" class="col-md-12">
-                                    <div style="padding-left: 0px" class="col-md-4">
-                                        <div class="col-md-10 col-xs-10" style="padding: 0px">
-                                            <h4 class="font_bold">学生答辩成绩列表</h4>
+                                    <div style="padding-left:0px;padding-bottom: 15px" class="col-md-12">
+                                        <div style="padding-left: 0px" class="col-md-4">
+                                            <h4 class="font_bold" style="display: inline-block;padding-right: 10px">
+                                                学生答辩成绩列表</h4>
+                                            <button type="button" class="btn btn-danger">导出表格<span
+                                                    class="iconfont icon-excel"
+                                                    style="padding-left: 4px;font-size:12px"></span>
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
@@ -1108,6 +1136,18 @@
                             <!--成绩汇总结束-->
                             <!--材料归档开始-->
                             <div class="tab-pane panel-body" id="material_Archive">
+                                <div style="padding-left:0px;padding-bottom: 15px" class="col-md-12">
+                                    <div style="padding-left: 0px" class="col-md-4">
+                                        <div class="col-md-10 col-xs-10" style="padding: 0px">
+                                            <h4 class="font_bold" style="display: inline-block;padding-right: 10px">
+                                                材料归档列表</h4>
+                                            <button type="button" class="btn btn-danger">导出表格<span
+                                                    class="iconfont icon-excel"
+                                                    style="padding-left: 4px;font-size:12px"></span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="alert alert-success textEllipsis border_radius marginBottom0">
                                     <div class="col-md-3 textAlign">
                                         学生姓名（学号）
@@ -1657,7 +1697,8 @@
                                     5
                                 </div>
                                 <div class="col-md-2 textAlign">
-                                    <input type="text" class="form-control pleaScoreinput" id="reportingProcess" onkeyup="reportingProcessScore('reportingProcess',5)">
+                                    <input type="text" class="form-control pleaScoreinput" id="reportingProcess"
+                                           onkeyup="reportingProcessScore('reportingProcess',5)">
                                 </div>
                             </div>
                             <div class="alert alert-warning textEllipsis border_radius marginBottom0">
@@ -1674,7 +1715,8 @@
                                     10
                                 </div>
                                 <div class="col-md-2 textAlign">
-                                    <input type="text" class="form-control pleaScoreinput"  id="reportingContent" onkeyup="reportingContentScore('reportingContent',10)">
+                                    <input type="text" class="form-control pleaScoreinput" id="reportingContent"
+                                           onkeyup="reportingContentScore('reportingContent',10)">
                                 </div>
                             </div>
                             <div class="alert alert-warning textEllipsis border_radius marginBottom0">
@@ -1691,7 +1733,8 @@
                                     5
                                 </div>
                                 <div class="col-md-2 textAlign">
-                                    <input type="text" class="form-control pleaScoreinput" id="applicableValue" onkeyup="applicableValueScore('applicableValue',5)">
+                                    <input type="text" class="form-control pleaScoreinput" id="applicableValue"
+                                           onkeyup="applicableValueScore('applicableValue',5)">
                                 </div>
                             </div>
                             <div class="alert alert-warning textEllipsis border_radius marginBottom0">
@@ -1708,7 +1751,8 @@
                                     20
                                 </div>
                                 <div class="col-md-2 textAlign">
-                                    <input type="text" class="form-control pleaScoreinput" id="plea" onkeyup="pleaScore('plea',20)">
+                                    <input type="text" class="form-control pleaScoreinput" id="plea"
+                                           onkeyup="pleaScore('plea',20)">
                                 </div>
 
                             </div>
@@ -1716,6 +1760,11 @@
                                 <div class="col-md-12 textAlign">
                                     <textarea rows="4" class="form-control pleaScoreinput" style="width: 100%"
                                               placeholder="答辩简要记录及评语"></textarea>
+                                </div>
+                            </div>
+                            <div class="alert alert-warning textEllipsis border_radius marginBottom0">
+                                <div class="col-md-12">
+                                    总分：<span class="colorf44">20</span>
                                 </div>
                             </div>
                             <div class="row" style="margin-top: 10px">
@@ -1796,7 +1845,8 @@
                                     3
                                 </div>
                                 <div class="col-md-2 textAlign">
-                                    <input type="text" class="form-control pleaScoreinput" id="reviewTranslation" onkeyup="reviewTranslationScore('reviewTranslation',3)">
+                                    <input type="text" class="form-control pleaScoreinput" id="reviewTranslation"
+                                           onkeyup="reviewTranslationScore('reviewTranslation',3)">
                                 </div>
                             </div>
                             <div class="alert alert-warning textEllipsis border_radius marginBottom0">
@@ -1816,7 +1866,8 @@
                                     10
                                 </div>
                                 <div class="col-md-2 textAlign">
-                                    <input type="text" class="form-control pleaScoreinput"  id="designQuality" onkeyup="designQualityScore('designQuality',10)">
+                                    <input type="text" class="form-control pleaScoreinput" id="designQuality"
+                                           onkeyup="designQualityScore('designQuality',10)">
                                 </div>
                             </div>
                             <div class="alert alert-warning textEllipsis border_radius marginBottom0">
@@ -1833,7 +1884,8 @@
                                     5
                                 </div>
                                 <div class="col-md-2 textAlign">
-                                    <input type="text" class="form-control pleaScoreinput" id="workloadDifficulty" onkeyup="designQualityScore('workloadDifficulty',5)">
+                                    <input type="text" class="form-control pleaScoreinput" id="workloadDifficulty"
+                                           onkeyup="designQualityScore('workloadDifficulty',5)">
                                 </div>
                             </div>
                             <div class="alert alert-warning textEllipsis border_radius marginBottom0">
@@ -1850,7 +1902,8 @@
                                     2
                                 </div>
                                 <div class="col-md-2 textAlign">
-                                    <input type="text" class="form-control pleaScoreinput"  id="innovation" onkeyup="innovationScore('innovation',2)">
+                                    <input type="text" class="form-control pleaScoreinput" id="innovation"
+                                           onkeyup="innovationScore('innovation',2)">
                                 </div>
 
                             </div>
@@ -1858,6 +1911,11 @@
                                 <div class="col-md-12 textAlign">
                                     <textarea rows="4" class="form-control pleaScoreinput" style="width: 100%"
                                               placeholder="评语"></textarea>
+                                </div>
+                            </div>
+                            <div class="alert alert-warning textEllipsis border_radius marginBottom0">
+                                <div class="col-md-12">
+                                    总分：<span class="colorf44">20</span>
                                 </div>
                             </div>
                             <div class="row" style="margin-top: 10px">
@@ -2136,10 +2194,10 @@
                             <!--查看指导学生答辩安排开始-->
                             <div class="tab-pane panel-body" id="reply_arrange">
                                 <div class="alert alert-success textEllipsis border_radius marginBottom0">
-                                    <div class="col-md-3 textAlign">
+                                    <div class="col-md-1 textAlign">
                                         学生姓名
                                     </div>
-                                    <div class="col-md-3 textAlign">
+                                    <div class="col-md-5 textAlign">
                                         答辩时间
                                     </div>
                                     <div class="col-md-1 textAlign">
@@ -2156,31 +2214,11 @@
                                     </div>
                                 </div>
                                 <div class="alert alert-warning textEllipsis border_radius marginBottom0">
-                                    <div class="col-md-3 textEllipsis textAlign">
-                                        廖永衡（3120150905119）
-                                    </div>
-                                    <div class="col-md-3 textEllipsis textAlign">
-                                        2019-01-05 17:47:28
-                                    </div>
-                                    <div class="col-md-1 textEllipsis textAlign">
-                                        6A-404
-                                    </div>
-                                    <div class="col-md-1 textAlign textEllipsis">
+                                    <div class="col-md-1 padding0 textEllipsis textAlign">
                                         廖永衡
                                     </div>
-                                    <div class="col-md-3 textAlign textEllipsis">
-                                        廖永衡 廖永衡 廖永衡 何太碧
-                                    </div>
-                                    <div class="col-md-1 textAlign textEllipsis">
-                                        第一组
-                                    </div>
-                                </div>
-                                <div class="alert alert-warning textEllipsis border_radius marginBottom0">
-                                    <div class="col-md-3 textEllipsis textAlign">
-                                        廖永衡（3120150905119）
-                                    </div>
-                                    <div class="col-md-3 textEllipsis textAlign">
-                                        2019-01-05 17:47:28
+                                    <div class="col-md-5 textEllipsis textAlign">
+                                        2019年5月31日上午8:00 / 第14周 星期5
                                     </div>
                                     <div class="col-md-1 textEllipsis textAlign">
                                         6A-404
@@ -2351,7 +2389,7 @@
                                     </div>
                                 </div>
                                 <div class="alert alert-info textEllipsis">
-                                    评分 = 毕设/论文材料*30% + 答辩*30% + 系统*40%
+                                    综合评定成绩 = 指导成绩成绩*40% + 评阅成绩成绩*20% + 答辩成绩成绩*40%
                                 </div>
                                 <div style="padding-bottom: 15px;padding-left: 0px" class="col-md-12">
                                     <div style="padding-left: 0px" class="col-md-12">
@@ -2592,7 +2630,9 @@
                                     4
                                 </div>
                                 <div class="col-md-2 textAlign">
-                                    <input type="text" class="form-control pleaScoreinput" id="investigationDemonstration" onkeyup="investigationDemonstrationScore('investigationDemonstration',4)">
+                                    <input type="text" class="form-control pleaScoreinput"
+                                           id="investigationDemonstration"
+                                           onkeyup="investigationDemonstrationScore('investigationDemonstration',4)">
                                 </div>
                             </div>
                             <div class="alert alert-warning textEllipsis border_radius marginBottom0">
@@ -2611,7 +2651,8 @@
                                     8
                                 </div>
                                 <div class="col-md-2 textAlign">
-                                    <input type="text" class="form-control pleaScoreinput" id="technicalRoute" onkeyup="technicalRouteScore('technicalRoute',8)">
+                                    <input type="text" class="form-control pleaScoreinput" id="technicalRoute"
+                                           onkeyup="technicalRouteScore('technicalRoute',8)">
                                 </div>
                             </div>
                             <div class="alert alert-warning textEllipsis border_radius marginBottom0">
@@ -2629,7 +2670,8 @@
                                     8
                                 </div>
                                 <div class="col-md-2 textAlign">
-                                    <input type="text" class="form-control pleaScoreinput" id="analyzeSolve" onkeyup="analyzeSolveScore('analyzeSolve',8)">
+                                    <input type="text" class="form-control pleaScoreinput" id="analyzeSolve"
+                                           onkeyup="analyzeSolveScore('analyzeSolve',8)">
                                 </div>
                             </div>
                             <div class="alert alert-warning textEllipsis border_radius marginBottom0">
@@ -2647,7 +2689,8 @@
                                     6
                                 </div>
                                 <div class="col-md-2 textAlign">
-                                    <input type="text" class="form-control pleaScoreinput" id="workAttitude" onkeyup="workAttitudeScore('workAttitude',6)">
+                                    <input type="text" class="form-control pleaScoreinput" id="workAttitude"
+                                           onkeyup="workAttitudeScore('workAttitude',6)">
                                 </div>
 
                             </div>
@@ -2667,7 +2710,8 @@
                                     10
                                 </div>
                                 <div class="col-md-2 textAlign">
-                                    <input type="text" class="form-control pleaScoreinput" id="designSpecification" onkeyup="designSpecificationScore('designSpecification',10)">
+                                    <input type="text" class="form-control pleaScoreinput" id="designSpecification"
+                                           onkeyup="designSpecificationScore('designSpecification',10)">
                                 </div>
 
                             </div>
@@ -2685,7 +2729,8 @@
                                     4
                                 </div>
                                 <div class="col-md-2 textAlign">
-                                    <input type="text" class="form-control pleaScoreinput" id="designInnovation" onkeyup="designInnovationScore('designInnovation',10)">
+                                    <input type="text" class="form-control pleaScoreinput" id="designInnovation"
+                                           onkeyup="designInnovationScore('designInnovation',10)">
                                 </div>
                             </div>
                             <div class="alert alert-warning textEllipsis border_radius marginBottom0">
@@ -4941,88 +4986,85 @@
 </script>
 
 
-
 <script>
 
     //答辩打分报告过程input输入框值限定
-    function reportingProcessScore(reportingProcess,score) {
-        ScoreTop(reportingProcess,score)
+    function reportingProcessScore(reportingProcess, score) {
+        ScoreTop(reportingProcess, score)
     }
 
     //答辩打分报告内容input输入框值限定
-    function reportingContentScore(reportingContent,score) {
-        ScoreTop(reportingContent,score)
+    function reportingContentScore(reportingContent, score) {
+        ScoreTop(reportingContent, score)
     }
 
     //答辩打分实用价值input输入框值限定
-    function applicableValueScore(applicableValue,score) {
-        ScoreTop(applicableValue,score)
+    function applicableValueScore(applicableValue, score) {
+        ScoreTop(applicableValue, score)
     }
 
     //答辩打分答辩input输入框值限定
-    function pleaScore(plea,score) {
-        ScoreTop(plea,score)
+    function pleaScore(plea, score) {
+        ScoreTop(plea, score)
     }
 
     //毕业设计评审翻译资料、综述材料input输入框值限定
-    function reviewTranslationScore(reviewTranslation,score) {
-        ScoreTop(reviewTranslation,score)
+    function reviewTranslationScore(reviewTranslation, score) {
+        ScoreTop(reviewTranslation, score)
     }
 
     //毕业设计评审设计质量及设计说明书质量input输入框值限定
-    function designQualityScore(designQuality,score) {
-        ScoreTop(designQuality,score)
+    function designQualityScore(designQuality, score) {
+        ScoreTop(designQuality, score)
     }
 
     //毕业设计评审创新input输入框值限定
-    function innovationScore(innovation,score) {
-        ScoreTop(innovation,score)
+    function innovationScore(innovation, score) {
+        ScoreTop(innovation, score)
     }
 
     //毕业设计评审工作量、难度input输入框值限定
-    function designQualityScore(workloadDifficulty,score) {
-        ScoreTop(workloadDifficulty,score)
+    function designQualityScore(workloadDifficulty, score) {
+        ScoreTop(workloadDifficulty, score)
     }
 
     //毕业设计指导教师评审调查、论证input输入框值限定
-    function investigationDemonstrationScore(investigationDemonstration,score) {
-        ScoreTop(investigationDemonstration,score)
+    function investigationDemonstrationScore(investigationDemonstration, score) {
+        ScoreTop(investigationDemonstration, score)
     }
 
     //毕业设计指导教师评审方案设计与技术路线input输入框值限定
-    function technicalRouteScore(technicalRoute,score) {
-        ScoreTop(technicalRoute,score)
+    function technicalRouteScore(technicalRoute, score) {
+        ScoreTop(technicalRoute, score)
     }
 
     //毕业设计指导教师评审分析与解决问题的能力input输入框值限定
-    function analyzeSolveScore( analyzeSolve,score) {
-        ScoreTop(analyzeSolve,score)
+    function analyzeSolveScore(analyzeSolve, score) {
+        ScoreTop(analyzeSolve, score)
     }
 
     //毕业设计指导教师评审工作量、工作态度input输入框值限定
-    function workAttitudeScore( workAttitude,score) {
-        ScoreTop(workAttitude,score)
+    function workAttitudeScore(workAttitude, score) {
+        ScoreTop(workAttitude, score)
     }
 
     //毕业设计指导教师评审设计质量及设计说明书质量input输入框值限定
-    function designSpecificationScore(designSpecification,score) {
-        ScoreTop(designSpecification,score)
+    function designSpecificationScore(designSpecification, score) {
+        ScoreTop(designSpecification, score)
     }
 
     //毕业设计指导教师评审创新input输入框值限定
-    function designInnovationScore(designInnovation,score) {
-        ScoreTop(designInnovation,score)
+    function designInnovationScore(designInnovation, score) {
+        ScoreTop(designInnovation, score)
     }
 
-    function ScoreTop(idIput,top) {
+    function ScoreTop(idIput, top) {
         let text = document.getElementById(idIput);
-        if(text.value>top){
+        if (text.value > top) {
             text.value = top;
-        }
-        else if(text.value<0) {
+        } else if (text.value < 0) {
             text.value = 0;
-        }
-        else if(isNaN(text.value)) {
+        } else if (isNaN(text.value)) {
             text.value = "";
         }
     }
