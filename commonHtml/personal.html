@@ -25,107 +25,136 @@
                     <div class="panel-heading">
                         个人信息维护
                     </div>
-                    <div class="panel-body">
-                        <div class="row">
-                            <div class="col-md-3"></div>
-                            <div class="col-md-6">
-                                <div class="panel-body">
-                                    <div class="row">
-                                        <div class="col-md-12" style="padding-bottom: 10px">
-                                            <div class="col-md-2"></div>
-                                            <div style="height: 41px;line-height: 41px"
-                                                 class="col-md-2 paddingRightt0">
-                                                姓名：
-                                            </div>
-                                            <div class="col-md-6 paddingLeft0 paddingRightt0">
-                                                <input placeholder="wangXxx" class="form-control whiteBgColor"
-                                                       type="text" readonly>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12" style="padding-bottom: 10px">
-                                            <div class="col-md-2"></div>
-                                            <div style="height: 41px;line-height: 41px"
-                                                 class="col-md-2 paddingRightt0">
-                                                职工号：
-                                            </div>
-                                            <div class="col-md-6 paddingLeft0 paddingRightt0">
-                                                <input placeholder="3242324232" class="form-control whiteBgColor"
-                                                       type="text" readonly>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12" style="padding-bottom: 10px">
-                                            <div class="col-md-2"></div>
-                                            <div style="height: 41px;line-height: 41px"
-                                                 class="col-md-2 paddingRightt0">
-                                                院系：
-                                            </div>
-                                            <div class="col-md-6 paddingLeft0 paddingRightt0">
-                                                <input placeholder="计算机与软件工程学院" class="form-control whiteBgColor"
-                                                       type="text" readonly>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12" style="padding-bottom: 10px">
-                                            <div class="col-md-2"></div>
-                                            <div style="height: 41px;line-height: 41px"
-                                                 class="col-md-2 paddingRightt0">
-                                                职称：
-                                            </div>
-                                            <div class="col-md-6 paddingLeft0 paddingRightt0">
-                                                <input placeholder="教授" class="form-control whiteBgColor"
-                                                       type="text"
-                                                       readonly>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12" style="padding-bottom: 10px">
-                                            <div class="col-md-2"></div>
-                                            <div style="height: 41px;line-height: 41px"
-                                                 class="col-md-2 paddingRightt0">
-                                                性别：
-                                            </div>
-                                            <div class="col-md-6 paddingLeft0 paddingRightt0">
-                                                <input placeholder="女" class="form-control whiteBgColor"
-                                                       type="text" readonly>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12" style="padding-bottom: 10px">
-                                            <div class="col-md-2"></div>
-                                            <div style="height: 41px;line-height: 41px"
-                                                 class="col-md-2 paddingRightt0">
-                                                邮箱：
-                                            </div>
-                                            <div class="col-md-6 paddingLeft0 paddingRightt0">
-                                                <input class="form-control" type="email">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12" style="padding-bottom: 10px">
-                                            <div class="col-md-2"></div>
-                                            <div style="height: 41px;line-height: 41px"
-                                                 class="col-md-2 paddingRightt0">
-                                                手机号：
-                                            </div>
-                                            <div class="col-md-6 paddingLeft0 paddingRightt0">
-                                                <input class="form-control" type="tel">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12" style="padding-bottom: 10px">
-                                            <div class="col-md-4"></div>
-                                            <div class="col-md-6 paddingLeft0 paddingRightt0">
-                                                <button style="margin: 0 5px" type="button"
-                                                        class="btn btn-info">
-                                                    确认修改
-                                                </button>
-                                            </div>
-                                        </div>
+                    <div class="panel-body" id="informationDetailed">
 
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
+        <script id="informationsDetailed" type="text/template">
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6">
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-12" style="padding-bottom: 10px">
+                                <div class="col-md-2"></div>
+                                <div style="height: 41px;line-height: 41px"
+                                     class="col-md-2 paddingRightt0">
+                                    姓名：
+                                </div>
+                                <div class="col-md-6 paddingLeft0 paddingRightt0">
+                                    <input placeholder="<%=informations.name%>" class="form-control whiteBgColor"
+                                           type="text" readonly>
+                                </div>
+                            </div>
+                            <div class="col-md-12" style="padding-bottom: 10px">
+                                <div class="col-md-2"></div>
+                                <div style="height: 41px;line-height: 41px"
+                                     class="col-md-2 paddingRightt0">
+                                    职工号：
+                                </div>
+                                <div class="col-md-6 paddingLeft0 paddingRightt0">
+                                    <input placeholder="<%=informations.identifier%>" class="form-control whiteBgColor"
+                                           type="text" readonly>
+                                </div>
+                            </div>
+                            <div class="col-md-12" style="padding-bottom: 10px">
+                                <div class="col-md-2"></div>
+                                <div style="height: 41px;line-height: 41px"
+                                     class="col-md-2 paddingRightt0">
+                                    学院：
+                                </div>
+                                <div class="col-md-6 paddingLeft0 paddingRightt0">
+                                    <input placeholder="<%=informations.college%>" class="form-control whiteBgColor"
+                                           type="text" readonly>
+                                </div>
+                            </div>
+                            <div class="col-md-12" style="padding-bottom: 10px">
+                                <div class="col-md-2"></div>
+                                <div style="height: 41px;line-height: 41px"
+                                     class="col-md-2 paddingRightt0">
+                                    系：
+                                </div>
+                                <div class="col-md-6 paddingLeft0 paddingRightt0">
+                                    <input placeholder="<%=informations.department%>" class="form-control whiteBgColor"
+                                           type="text" readonly>
+                                </div>
+                            </div>
+                            <div class="col-md-12" style="padding-bottom: 10px">
+                                <div class="col-md-2"></div>
+                                <div style="height: 41px;line-height: 41px"
+                                     class="col-md-2 paddingRightt0">
+                                    职称：
+                                </div>
+                                <div class="col-md-6 paddingLeft0 paddingRightt0">
+                                    <input placeholder="<%=informations.title%>" class="form-control whiteBgColor"
+                                           type="text"
+                                           readonly>
+                                </div>
+                            </div>
+                            <div class="col-md-12" style="padding-bottom: 10px">
+                                <div class="col-md-2"></div>
+                                <div style="height: 41px;line-height: 41px"
+                                     class="col-md-2 paddingRightt0">
+                                    性别：
+                                </div>
+                                <div class="col-md-6 paddingLeft0 paddingRightt0">
+                                    <input placeholder="<%=informations.sex%>" class="form-control whiteBgColor"
+                                           type="text" readonly>
+                                </div>
+                            </div>
+                            <div class="col-md-12" style="padding-bottom: 10px">
+                                <div class="col-md-2"></div>
+                                <div style="height: 41px;line-height: 41px"
+                                     class="col-md-2 paddingRightt0">
+                                    邮箱：
+                                </div>
+                                <div class="col-md-6 paddingLeft0 paddingRightt0">
+                                    <input class="form-control" type="email" id="email" placeholder="<%=informations.email%>">
+                                </div>
+                            </div>
+                            <div class="col-md-12" style="padding-bottom: 10px">
+                                <div class="col-md-2"></div>
+                                <div style="height: 41px;line-height: 41px"
+                                     class="col-md-2 padding0">
+                                    绑定手机：
+                                </div>
+                                <div class="col-md-6 paddingLeft0 paddingRightt0">
+                                    <input id="bindTel" class="form-control" type="tel"
+                                           placeholder="<%= informations.bindTel %>">
+                                </div>
+                                <div class="col-md-2 paddingRightt0" style="font-size: 12px;color: #f00;">
+                                    用于登录或找回密码
+                                </div>
+                            </div>
+                            <div class="col-md-12" style="padding-bottom: 10px">
+                                <div class="col-md-2"></div>
+                                <div style="height: 41px;line-height: 41px"
+                                     class="col-md-2 padding0">
+                                    联系方式：
+                                </div>
+                                <div class="col-md-6 paddingLeft0 paddingRightt0">
+                                    <input id="contactTel" class="form-control" type="text"
+                                           placeholder="<%= informations.contactTel %>">
+                                </div>
+                            </div>
+                            <div class="col-md-12" style="padding-bottom: 10px">
+                                <div class="col-md-4"></div>
+                                <div class="col-md-6 paddingLeft0 paddingRightt0">
+                                    <button style="margin: 0 5px" type="button"
+                                            class="btn btn-info" onclick="modifyInformation()">
+                                        确认修改
+                                    </button>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </script>
         <!--个人信息结束-->
     </div>
 </div>
@@ -133,4 +162,78 @@
 </body>
 
 <script src="../assets/js/common.js"></script>
+<script>
+    function showRoleInfo() {
+        let informationsDetailed = document.getElementById('informationsDetailed').innerHTML;
+        let informationDetailed = document.getElementById('informationDetailed');
+        let url = "http://www.yuanbw.cn:20086/gpms/rol/showRoleInfo";
+        $.ajax({
+            url: url,
+            type: "POST",
+            data: {},
+            xhrFields: {
+                withCredentials: true
+            },
+            crossDomain: true,
+            headers: {
+                Token: token
+            },
+            success: function (responseStr) {
+                console.log(responseStr)
+                if (responseStr.msg == "查询成功") {
+                    informationDetailed.innerHTML = ejs.render(informationsDetailed, {informations: responseStr.data});
+                }
+            },
+            error: function (responseStr) {
+                console.log("failed");
+                console.log(responseStr);
+            }
+        });
+    }
+    //修改个人信息
+    function modifyInformation() {
+        let email = document.getElementById('email').value;
+        let bindTel = document.getElementById('bindTel').value;
+        let contactTel = document.getElementById('contactTel').value;
+        let emailplaceholder = $("#email").attr('placeholder');
+        let bindTelplaceholder = $("#bindTel").attr('placeholder');
+        let contactTelplaceholder = $("#contactTel").attr('placeholder');
+        if (email == "") {
+            email = emailplaceholder;
+        }
+        if (bindTel == "") {
+            bindTel = bindTelplaceholder;
+        }
+        if (contactTel == "") {
+            contactTel = contactTelplaceholder;
+        }
+        let url = "http://www.yuanbw.cn:20086/gpms/rol/modifyRoleInfo";
+        $.ajax({
+            url: url,
+            type: "POST",
+            data: {
+                bindTel: bindTel,
+                contactTel: contactTel,
+                email: email
+            },
+            xhrFields: {
+                withCredentials: true
+            },
+            crossDomain: true,
+            headers: {
+                Token: token
+            },
+            success: function (responseStr) {
+                alert(responseStr.msg);
+                if (responseStr.msg == "修改成功") {
+                    showRoleInfo();
+                }
+            },
+            error: function (responseStr) {
+                console.log("failed");
+                console.log(responseStr);
+            }
+        });
+    }
+</script>
 </html>

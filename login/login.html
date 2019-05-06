@@ -64,10 +64,10 @@
                     <label><input name="category" type="radio" value="1" checked/>学生 </label>
                 </div>
                 <div class="col-md-4 padding0">
-                    <label><input name="category" type="radio" value="2"/>教师/系主任 </label>
+                    <label><input name="category" type="radio" value="2"/>教师</label>
                 </div>
                 <div class="col-md-2 padding0">
-                    <label><input name="category" type="radio" value="4"/>管理员 </label>
+                    <label><input name="category" type="radio" value="3"/>系主任 </label>
                 </div>
             </div>
             <div style="padding-bottom: 20px" class="col-md-12">
@@ -258,13 +258,12 @@
                     let token = responseStr.data.jwtToken;
                     setCookie("token",token,"d1");
                     setCookie("authority",authority,"d1");
-                    // document.cookie = token;
                     if (authority == 1) {
                         window.location.href = "../student/studentIndex.html";
-                    } else if (authority == 2 || authority == 3) {
+                    } else if (authority == 2) {
+                        window.location.href = "../teacher/teacherIndex.html";
+                    } else if (authority == 3) {
                         window.location.href = "../dean/deanIndex.html";
-                    } else if (authority == 4) {
-                        window.location.href = "../admin/adminIndex.html";
                     }
                 } else if (msg == "密码长度不符") {
 

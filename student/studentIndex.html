@@ -657,7 +657,11 @@
     </div>
     <!--选题-->
     <script id="topics" type="text/template">
-        <% arrays.forEach(function(array){ %>
+        <% if(arrays=="") { %>
+        <div class="alert alert-warning textEllipsis border_radius marginBottom0 textAlign">
+            暂无数据
+        </div>
+        <%} else { arrays.forEach(function(array){ %>
         <div class="alert alert-warning textEllipsis border_radius marginBottom0">
             <div title="<%= array.project.title %>"
                  class="col-md-2 textEllipsis textAlign">
@@ -692,7 +696,7 @@
                 </button>
             </div>
         </div>
-        <% }) %>
+        <% }) }%>
     </script>
     <!--已选课题-->
     <script id="selectedTopics" type="text/template">
@@ -1311,7 +1315,7 @@
                                         提交时间
                                     </div>
                                     <div class="col-md-1 textAlign">
-                                        提交次数
+                                        记录编号
                                     </div>
                                     <div class="col-md-3 textAlign">
                                         审核状态
@@ -1730,7 +1734,7 @@
                                         提交时间
                                     </div>
                                     <div class="col-md-1 textAlign">
-                                        提交次数
+                                        记录编号
                                     </div>
                                     <div class="col-md-3 textAlign">
                                         审核状态
@@ -2281,7 +2285,7 @@
                                         let date = unixTimestamp.getDate();
                                         commonTime = year+"年"+month+"月"+date+"日"
                                         %>
-                                        <%= commonTime %>上午8:00 /
+                                        <%= commonTime %>上午8:00
                                         第<%=data.defWeek%>周
                                         星期<%=data.defDay%>
                                     </div>
@@ -2370,9 +2374,9 @@
                                     </div>
                                 </div>
                                 <div style="margin-top: 74px" class="alert alert-info">
+                                    <% if(data.hasReviewed) {%>
                                     <div><span class="notSubmit">综合评定成绩 ：</span><%=data.scoreTotal%></div>
                                     <div><span class="notSubmit">综合评定等级 ：</span><%=data.grade%></div>
-                                    <% if(data.hasReviewed) {%>
                                     <div><span class="notSubmit">评定日期 ：</span><%
                                         var unixTimestamp = new Date(data.reviewDate ) ;
                                         commonTime = unixTimestamp.toLocaleString();
@@ -2380,6 +2384,8 @@
                                         <%= commonTime %>
                                     </div>
                                     <div><span class="notSubmit">综合评定成绩提交教师 ：</span><%=data.dean.name%></div>
+                                    <%} else {%>
+                                    <div><span class="notSubmit">暂无综合评定成绩 </span>
                                     <%}%>
                                 </div>
                             </script>
@@ -2588,7 +2594,6 @@
     if (token == "" || token == null) {
         window.location.href = "../login/login.html";
     }
-
     function notice() {
         $('.page-wrapper').addClass('displayNone');
         $('.page-wrapper').removeClass('displayBlock');
@@ -2880,6 +2885,9 @@
                         }
                     });
                 }
+                else if(msg == "查询记录为空") {
+                    topic.innerHTML = ejs.render(topics, {arrays: ""});
+                }
             },
             error: function (responseStr) {
                 console.log("failed");
@@ -2896,7 +2904,7 @@
     function queryTopic() {
         let topicTitle = document.getElementById('topicTitle').value;
         let tutor = document.getElementById('tutor').value;
-        let teacherNumber = document.getElementById('tutor').value;
+        let teacherNumber = document.getElementById('teacherNumber').value;
         let titleSource = document.getElementById('titleSource').value;
         let titleType = document.getElementById('titleType').value;
         selectTopic(topicTitle, titleType, titleSource, teacherNumber, tutor);
