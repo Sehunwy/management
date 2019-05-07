@@ -446,7 +446,7 @@
             </div>
             <script id="indexSelectedTopics" type="text/template">
                 <div class="whiteBgColor">
-                    <% if(titles == "查询记录为空") { %>
+                    <% if(titles == "") { %>
                     <div class="titleContent">
                         <span class="fontColor847a7a">课题题目：</span>
                         <span class="newline">
@@ -482,10 +482,10 @@
                     <span class="color07c160">
                                     <% if(titles.cStatus==0){ %>
                                     审核不通过，请重新选择课题
-                                    <% } else if(titles.cStatus==2){ %>
-                                    审核中，请耐心等待教师审核
-                                    <% } else{ %>
+                                    <% } else if(titles.cStatus==1){ %>
                                     审核通过，指导教师确认通过学生选题
+                                    <% } else{ %>
+                                    审核中，请耐心等待教师审核
                                     <% } %>
                                 </span>
                 </div>
@@ -700,7 +700,7 @@
     </script>
     <!--已选课题-->
     <script id="selectedTopics" type="text/template">
-        <% if(titles != "查询记录为空") {
+        <% if(titles != "") {
         titles.forEach(function(array){ %>
         <div class="alert alert-danger textEllipsis border_radius marginBottom0">
             <div title="<%= array.project.title %>" class="col-md-3 textEllipsis textAlign">
@@ -725,7 +725,7 @@
                 <% }
                 else if(array.cStatus==1) { %>
                 审核通过
-                <% } else if(array.cStatus==2) { %>
+                <% } else { %>
                 审核中
                 <% } %>
             </div>
@@ -734,7 +734,7 @@
                         data-target="#viewTopic"
                         onclick="titleDetails('<%= array.project.id %>')">查看
                 </button>
-                <% if(array.cStatus==2) { %>
+                <% if(array.cStatus>=2) { %>
                 <button type="button" class="btn btn-danger btn-xs" data-toggle="modal"
                         data-target="#cancelTopic" onclick="titleCancel('<%= array.project.id %>')">取消选题
                 </button>
@@ -747,7 +747,11 @@
             </div>
         </div>
         <% })
-        } %>
+        }else{ %>
+        <div class="alert alert-danger textAlign border_radius marginBottom0">
+            暂无数据
+        </div>
+        <%}%>
     </script>
     <!--查看选题详情开始-->
     <div class="modal fade" id="viewTopic" role="dialog">
@@ -2279,7 +2283,6 @@
                                     <div class="col-md-4 textEllipsis textAlign padding0">
                                         <%
                                         let unixTimestamp = new Date(data.defDate ) ;
-                                        <!--commonTime1 = unixTimestamp.toLocaleString();-->
                                         let year = unixTimestamp.getFullYear();
                                         let month = unixTimestamp.getMonth()+1;
                                         let date = unixTimestamp.getDate();
@@ -2923,7 +2926,6 @@
                 }
             })
         }
-
     }
 
     //选题查看课题
@@ -3059,19 +3061,19 @@
                 Token: token
             },
             success: function (responseStr) {
-                titleArray = responseStr.data;
                 if (responseStr.msg == "查询成功") {
+                    titleArray = responseStr.data;
                     let data = responseStr.data[0];
-                    html = ejs.render(selectedTopics, {titles: responseStr.data});
-                    selectedTopic.innerHTML = html;
                     for (let i = 0; i < responseStr.data.length; i++) {
                         if (responseStr.data[i].cStatus == 1) {
                             data = responseStr.data[i];
                         }
                     }
+                    selectedTopic.innerHTML = ejs.render(selectedTopics, {titles: responseStr.data});
                     indexSelectedTopic.innerHTML = ejs.render(indexSelectedTopics, {titles: data});
                 } else if (responseStr.msg == "查询记录为空") {
-                    indexSelectedTopic.innerHTML = ejs.render(indexSelectedTopics, {titles: responseStr.msg});
+                    selectedTopic.innerHTML = ejs.render(selectedTopics, {titles: ""});
+                    indexSelectedTopic.innerHTML = ejs.render(indexSelectedTopics, {titles: ""});
                 }
             },
             error: function (responseStr) {
