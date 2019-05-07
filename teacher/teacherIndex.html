@@ -301,7 +301,8 @@
                                     </div>
                                     <div class="col-md-1 textEllipsis textAlign padding0">
                                         <% if(typeof(subject.project.taskBook)=="undefined" ||
-                                        typeof(subject.project.taskBook.file)=="undefined" || subject.project.taskBook.fileId==0)
+                                        typeof(subject.project.taskBook.file)=="undefined" ||
+                                        subject.project.taskBook.fileId==0)
                                         {%>
                                         未上传
                                         <%} else {%>
@@ -796,16 +797,24 @@
                     <div class="panel panel-default">
                         <div style="background-color: #f5f5f5">
                             <ul class="nav nav-tabs" role="tablist">
-                                <li class="active"><a href="#reply_arrange_self" role="tab"
-                                                      data-toggle="tab">查看教师答辩安排</a></li>
-                                <li onclick="DefenseRating()"><a href="#defense_rating" role="tab" data-toggle="tab">答辩打分</a></li>
-                                <li onclick="queryDefenseScore()"><a href="#defense_Situation" role="tab" data-toggle="tab">答辩组长提交答辩打分情况</a></li>
-                                <li><a href="#grade_Papers" role="tab" data-toggle="tab">毕业设计评审</a></li>
+                                <li class="active queryArrange"><a href="#reply_arrange_self" role="tab"
+                                                                   data-toggle="tab">查看教师答辩安排</a></li>
+                                <li class="RatingArrange" onclick="DefenseRating()"><a href="#defense_rating" role="tab"
+                                                                                       data-toggle="tab">答辩打分</a>
+                                </li>
+                                <li class="leaderDefense" onclick="queryDefenseScore()"><a href="#defense_Situation"
+                                                                                           role="tab"
+                                                                                           data-toggle="tab">答辩组长提交答辩打分情况</a>
+                                </li>
+                                <li class="graduationDesign" onclick="queryGraduationDesign()"><a href="#grade_Papers"
+                                                                                                  role="tab"
+                                                                                                  data-toggle="tab">毕业设计评审</a>
+                                </li>
                             </ul>
                         </div>
                         <div class="tab-content">
                             <!--查看教师答辩安排开始-->
-                            <div class="tab-pane active panel-body" id="reply_arrange_self">
+                            <div class="tab-pane active panel-body queryArrange" id="reply_arrange_self">
                             </div>
                             <script id="reply_arrange_selfs" type="text/template">
                                 <div class="col-md-12">
@@ -856,7 +865,6 @@
                                               data-target="#teacherDetails"
                                               onclick="queryTeacherPlea('<%=tea.teaAuth.id%>')"><%=tea.teaAuth.name%></span>
                                         <%}})%>
-
                                     </div>
                                     <div class="col-md-1 textAlign">
                                         第<%=data.groupNum%>组
@@ -911,7 +919,7 @@
                             </script>
                             <!--查看教师答辩安排结束-->
                             <!--答辩打分开始-->
-                            <div class="tab-pane panel-body" id="defense_rating">
+                            <div class="tab-pane panel-body RatingArrange" id="defense_rating">
                             </div>
                             <script id="defense_ratinges" type="text/template">
                                 <div class="alert alert-success textEllipsis border_radius marginBottom0">
@@ -955,11 +963,12 @@
                                     <div class="col-md-1 textAlign">
                                         <%if(student.defScore.hasScored) {%>
                                         <button type="button"
-                                                class="btn btn-info btn-xs" disabled>
+                                                class="btn btn-info btn-xs" disabled>打分
                                         </button>
                                         <%} else{%>
                                         <button type="button"
-                                                class="management_score newPage btn btn-info btn-xs">
+                                                class="management_score newPage btn btn-info btn-xs"
+                                                onclick="DefenseRatingId('<%=student.pName%>','<%=student.name%>','<%=student.identifier%>','<%=student.gt.name%>')">
                                             打分
                                         </button>
                                         <%}%>
@@ -969,7 +978,14 @@
                             </script>
                             <!--答辩打分安排结束-->
                             <!--答辩组长提交答辩打分情况开始-->
-                            <div class="tab-pane panel-body" id="defense_Situation">
+                            <div class="tab-pane panel-body leaderDefense" id="defense_Situation">
+                            </div>
+                            <script id="defense_Situations" type="text/template">
+                                <%if(data=="") {%>
+                                <div class="alert alert-success textAlign border_radius marginBottom0">
+                                    暂无数据
+                                </div>
+                                <%}else {%>
                                 <div class="alert alert-success textEllipsis border_radius marginBottom0">
                                     <div class="col-md-3 textAlign">
                                         学生姓名（学号）
@@ -978,98 +994,46 @@
                                         课题题目
                                     </div>
                                     <div class="col-md-1 textAlign">
-                                        平均分数
+                                        答辩分数
                                     </div>
+                                    <%teachers.forEach(function(teacher){%>
                                     <div class="col-md-1 textAlign">
-                                        陈红红
+                                        <%=teacher.tea.name%>
                                     </div>
-                                    <div class="col-md-1 textAlign">
-                                        陈红红
-                                    </div>
-                                    <div class="col-md-1 textAlign">
-                                        陈红红
-                                    </div>
-                                    <div class="col-md-1 textAlign">
-                                        陈红红
-                                    </div>
-                                    <div class="col-md-1 textAlign">
-                                        陈红红
-                                    </div>
+                                    <%})%>
                                 </div>
+                                <%data.forEach(function(item){%>
                                 <div class="alert alert-warning textEllipsis border_radius marginBottom0">
                                     <div class="col-md-3 textAlign textEllipsis">
-                                        王珊珊（3120150905119）
+                                        <%=item.name%>（<%=item.identifier%>）
                                     </div>
-                                    <div class="col-md-3 textAlign textEllipsis">
-                                        课题题目PMMA灯具基于moldflow三维
+                                    <div title="<%=item.pName%>" class="col-md-3 textAlign textEllipsis">
+                                        <%=item.pName%>
                                     </div>
+                                    <%if(typeof(item.defenceScore)=="undefined") {%>
+                                    <div class="col-md-6 textAlign">
+                                        暂无打分信息
+                                    </div>
+                                    <%}else {%>
                                     <div class="col-md-1 textAlign">
-                                        90
+                                        <%=item.defenceScore.scoreDefence%>
                                     </div>
-                                    <div class="col-md-1 textAlign">
-                                        <div style="padding-bottom: 2px">
-                                            90
-                                        </div>
-                                    </div>
-                                    <div class="col-md-1 textAlign">
-                                        <div style="padding-bottom: 2px">
-                                            90
-                                        </div>
-                                    </div>
+                                    <%item.defenceScore.defScoreList.forEach(function(score){%>
                                     <div class="col-md-1 textAlign">
                                         <div style="padding-bottom: 2px">
-                                            90
+                                            <%if(score.hasScored){%>
+                                            <%=score.scoreTotal%>
+                                            <%} else {%>
+                                            未打分
+                                            <%}%>
                                         </div>
                                     </div>
-                                    <div class="col-md-1 textAlign">
-                                        <div style="padding-bottom: 2px">
-                                            90
-                                        </div>
-                                    </div>
-                                    <div class="col-md-1 textAlign">
-                                        <div style="padding-bottom: 2px">
-                                            90
-                                        </div>
-                                    </div>
+                                    <%})%>
+                                    <%}%>
 
                                 </div>
-                                <div class="alert alert-warning textEllipsis border_radius marginBottom0">
-                                    <div class="col-md-3 textAlign textEllipsis">
-                                        王珊珊（3120150905119）
-                                    </div>
-                                    <div class="col-md-3 textAlign textEllipsis">
-                                        课题题目PMMA灯具基于moldflow三维
-                                    </div>
-                                    <div class="col-md-1 textAlign">
-                                        90
-                                    </div>
-                                    <div class="col-md-1 textAlign">
-                                        <div style="padding-bottom: 2px">
-                                            90
-                                        </div>
-                                    </div>
-                                    <div class="col-md-1 textAlign">
-                                        <div style="padding-bottom: 2px">
-                                            90
-                                        </div>
-                                    </div>
-                                    <div class="col-md-1 textAlign">
-                                        <div style="padding-bottom: 2px">
-                                            90
-                                        </div>
-                                    </div>
-                                    <div class="col-md-1 textAlign">
-                                        <div style="padding-bottom: 2px">
-                                            90
-                                        </div>
-                                    </div>
-                                    <div class="col-md-1 textAlign">
-                                        <div style="padding-bottom: 2px">
-                                            90
-                                        </div>
-                                    </div>
+                                <%})%>
 
-                                </div>
                                 <div style="margin-top: 10px">
                                     <div class="col-md-10">
                                     </div>
@@ -1079,12 +1043,15 @@
                                         </button>
                                     </div>
                                 </div>
-                            </div>
+                                <%}%>
+                            </script>
                             <!--答辩组长提交答辩打分情况结束-->
                             <!--答辩论文打分开始-->
-                            <div class="tab-pane panel-body" id="grade_Papers">
+                            <div class="tab-pane panel-body graduationDesign" id="grade_Papers">
+                            </div>
+                            <script id="grade_Paperses" type="text/template">
                                 <div class="alert alert-success textEllipsis border_radius marginBottom0">
-                                    <div class="col-md-4 textAlign">
+                                    <div class="col-md-5 textAlign">
                                         课题题目
                                     </div>
                                     <div class="col-md-1 textAlign">
@@ -1093,9 +1060,6 @@
                                     <div class="col-md-2 textAlign">
                                         学生学号
                                     </div>
-                                    <div class="col-md-1 textAlign">
-                                        状态
-                                    </div>
                                     <div class="col-md-2 textAlign">
                                         分数
                                     </div>
@@ -1103,66 +1067,46 @@
                                         操作
                                     </div>
                                 </div>
+                                <%if(data==""){%>
+                                <div class="alert alert-warning textAlign border_radius marginBottom0">
+                                    暂无数据
+                                </div>
+                                <%}else{%>
                                 <div class="alert alert-warning textEllipsis border_radius marginBottom0">
-                                    <div title="PMMA灯具基于moldflow三维流动优化的注塑模设计" class="col-md-4 textAlign textEllipsis">
-                                        PMMA灯具基于moldflow三维流动优化的注塑模设计
+                                    <div title="<%=data[0].pName%>" class="col-md-5 textAlign textEllipsis">
+                                        <%=data[0].pName%>
                                     </div>
                                     <div class="col-md-1 textAlign textEllipsis">
-                                        张珊珊
+                                        <%=data[0].name%>
                                     </div>
                                     <div class="col-md-2 textAlign textEllipsis">
-                                        3120150905909
-                                    </div>
-                                    <div class="col-md-1 textAlign textEllipsis">
-                                        未完成
+                                        <%=data[0].identifier%>
                                     </div>
                                     <div class="col-md-2 textAlign textEllipsis">
+                                        <%if(data[0].hasReviewed){%>
+                                        <%=data[0].scoreTotal%>
+                                        <%}else{%>
                                         暂无分数
+                                        <%}%>
                                     </div>
                                     <div class="col-md-2 textAlign">
                                         <button type="button" class="btn btn-info btn-xs" data-toggle="modal"
-                                                data-target="#viewScore">查看
+                                                data-target="#viewScore"
+                                                onclick="ViewEssayScores('<%=data[0].identifier%>')">查看
                                         </button>
+                                        <%if(data[0].hasReviewed){%>
+                                        <button type="button" class="btn btn-info btn-xs" disabled>
+                                            打分
+                                        </button>
+                                        <%}else{%>
                                         <button type="button" class="management_scorePlea newPage btn btn-info btn-xs">
                                             打分
                                         </button>
+                                        <%}%>
                                     </div>
                                 </div>
-                                <div class="alert alert-warning textEllipsis border_radius marginBottom0">
-                                    <div title="PMMA灯具基于moldflow三维流动优化的注塑模设计" class="col-md-4 textAlign textEllipsis">
-                                        PMMA灯具基于moldflow三维流动优化的注塑模设计
-                                    </div>
-                                    <div class="col-md-1 textAlign textEllipsis">
-                                        张珊珊
-                                    </div>
-                                    <div class="col-md-2 textAlign textEllipsis">
-                                        3120150905909
-                                    </div>
-                                    <div class="col-md-1 textAlign textEllipsis">
-                                        未完成
-                                    </div>
-                                    <div class="col-md-2 textAlign textEllipsis">
-                                        暂无分数
-                                    </div>
-                                    <div class="col-md-2 textAlign">
-                                        <button type="button" class="btn btn-info btn-xs" data-toggle="modal"
-                                                data-target="#viewScore">查看
-                                        </button>
-                                        <button type="button" class="management_scorePlea newPage btn btn-info btn-xs">
-                                            打分
-                                        </button>
-                                    </div>
-                                </div>
-                                <div style="margin-top: 10px">
-                                    <div class="col-md-10">
-                                    </div>
-                                    <div class="col-md-2">
-                                        <button style="float: right;" type="button" class="btn btn-info">
-                                            提交
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
+                                <%}%>
+                            </script>
                             <!--答辩论文打分结束-->
                         </div>
                     </div>
@@ -1173,6 +1117,8 @@
     </div>
     <!--答辩打分开始 -->
     <div id="score" class="page-wrapper displayNone">
+    </div>
+    <script id="scores" type="text/template">
         <div style="margin: 0px" class="page-inner">
             <div class="row">
                 <div class="col-md-12">
@@ -1183,18 +1129,18 @@
                         <div class="panel-body">
                             <div class="alert alert-danger textEllipsis border_radius marginBottom0">
                                 <div class="col-md-12 textEllipsis">
-                                    课题题目：PMMA灯具基于moldflow三维流动优化的注塑模设计
+                                    课题题目：<%=pName%>
                                 </div>
                             </div>
                             <div class="alert alert-danger textEllipsis border_radius marginBottom0">
                                 <div class="col-md-3">
-                                    学生姓名：王晓霞
+                                    学生姓名：<%=name%>
                                 </div>
                                 <div class="col-md-4">
-                                    学生学号：3120150909000
+                                    学生学号：<%=identifier%>
                                 </div>
                                 <div class="col-md-5">
-                                    指导教师姓名：廖永衡
+                                    指导教师姓名：<%=teacherName%>
                                 </div>
                             </div>
                             <div class="alert alert-success textEllipsis border_radius marginBottom0">
@@ -1289,18 +1235,15 @@
                             </div>
                             <div class="alert alert-warning textEllipsis border_radius marginBottom0">
                                 <div class="col-md-12 textAlign">
-                                    <textarea rows="4" class="form-control pleaScoreinput" style="width: 100%"
+                                    <textarea id="comment" rows="4" class="form-control pleaScoreinput"
+                                              style="width: 100%"
                                               placeholder="答辩简要记录及评语"></textarea>
-                                </div>
-                            </div>
-                            <div class="alert alert-warning textEllipsis border_radius marginBottom0">
-                                <div class="col-md-12">
-                                    总分：<span class="colorf44">20</span>
                                 </div>
                             </div>
                             <div class="row" style="margin-top: 10px">
                                 <div class="col-md-2">
-                                    <button type="button" class="management_three newPage btn btn-info">
+                                    <button type="button" onclick="DetermineDefenseScore('<%=identifier%>')"
+                                            class="btn btn-info">
                                         确定
                                     </button>
                                 </div>
@@ -1316,7 +1259,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </script>
     <!--答辩打分结束-->
     <!--毕业设计评审开始-->
     <div id="scorePlea" class="page-wrapper displayNone">
@@ -1566,6 +1509,8 @@
     <!--重置答辩教师论文分数结束-->
     <!--查看答辩打分详细信息开始-->
     <div class="modal fade" id="viewScore" role="dialog">
+    </div>
+    <script id="viewScores" type="text/template">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -1578,35 +1523,73 @@
                         <strong>
                             <span>课题题目:</span>
                         </strong>
-                        <span>PMMA灯具基于moldflow三维流动优化的注塑模设计</span>
+                        <span><%=data.pName%></span>
                         <hr>
                         <strong>
                             <span>学生姓名:</span>
                         </strong>
                         <span>
-                            张珊珊
+                            <%=data.name%>
                         </span>
                         <hr>
                         <strong>
                             <span>学生学号:</span>
                         </strong>
-                        <span>3120150905909</span>
+                        <span><%=data.identifier%></span>
+                        <hr>
+                        <%if(data.reviewTeaGroup.hasReviewed){%>
+                        <strong>
+                            <span>评阅成绩</span>
+                        </strong>
+                        <span>
+                            <%=data.reviewTeaGroup.scoreTotal%>
+                        </span>
                         <hr>
                         <strong>
-                            <span>打分分类:</span>
+                            <span>综述材料得分</span>
                         </strong>
-                        <span>论文</span>
+                        <span>
+                            <%=data.reviewTeaGroup.scoreLiterature%>
+                        </span>
                         <hr>
                         <strong>
-                            <span>状态:</span>
+                            <span>说明书得分</span>
                         </strong>
-                        <span>未完成</span>
+                        <span>
+                            <%=data.reviewTeaGroup.scoreInstruction%>
+                        </span>
                         <hr>
                         <strong>
-                            <span>分数</span>
+                            <span>工作量得分</span>
                         </strong>
-                        <span>暂无分数</span>
+                        <span>
+                            <%=data.reviewTeaGroup.scoreWorkload%>
+                        </span>
                         <hr>
+                        <strong>
+                            <span>创新得分</span>
+                        </strong>
+                        <span>
+                            <%=data.reviewTeaGroup.scoreInnovate%>
+                        </span>
+                        <hr>
+                        <strong>
+                            <span>评语</span>
+                        </strong>
+                        <span>
+                            <%=data.reviewTeaGroup.comment%>
+                        </span>
+                        <hr>
+                        <%}else{%>
+                        <strong>
+                            <span>评阅成绩</span>
+                        </strong>
+                        <span>
+                            暂无分数
+                        </span>
+                        <hr>
+                        <%}%>
+
                         <strong>
                             <span>附件</span>
                         </strong>
@@ -1619,7 +1602,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </script>
     <!--查看答辩打分详细信息结束-->
     <!--答辩管理（教师）结束-->
 
@@ -3409,7 +3392,6 @@
 <!-- Bootstrap Js -->
 <script src="../assets/js/bootstrap.js"></script>
 <script src="../assets/js/sideCloseOpen.js"></script>
-
 <!-- 自定义函数 Js -->
 <script src="../assets/js/commonFunction.js"></script>
 <!--圆形进度条-->
@@ -3843,8 +3825,6 @@
 
     //查看教师答辩安排
     function viewReply() {
-        let reply_arrange_selfs = document.getElementById('reply_arrange_selfs').innerHTML;
-        let reply_arrange_self = document.getElementById('reply_arrange_self');
         let url = "http://www.yuanbw.cn:20086/gpms/tea/showDefPlan";
         $.ajax({
             url: url,
@@ -3861,7 +3841,7 @@
                 if (responseStr.msg == "查询成功") {
                     queryStudentplea(responseStr.data);
                 } else if (responseStr.msg == "查询记录为空") {
-                    reply_arrange_self.innerHTML = ejs.render(reply_arrange_selfs, {data: ""});
+                    queryStudentplea("");
                 }
             },
             error: function (responseStr) {
@@ -3873,6 +3853,8 @@
 
     //查询答辩学生
     let students;
+
+    //查看学生答辩安排
     function queryStudentplea(teachers) {
         let url = "http://www.yuanbw.cn:20086/gpms/tea/showDefStudents";
         let reply_arrange_selfs = document.getElementById('reply_arrange_selfs').innerHTML;
@@ -3952,7 +3934,7 @@
     //查看答辩学生
     function studentPleaId(id) {
         students.forEach(function (student) {
-            if(student.identifier==id) {
+            if (student.identifier == id) {
                 let studentDetailses = document.getElementById('studentDetailses').innerHTML;
                 let studentDetails = document.getElementById('studentDetails');
                 studentDetails.innerHTML = ejs.render(studentDetailses, {
@@ -3974,6 +3956,7 @@
     //答辩打分
     function DefenseRating() {
         let url = "http://www.yuanbw.cn:20086/gpms/tea/showDefStudents";
+        console.log(document.getElementById('defense_ratinges'))
         let defense_ratinges = document.getElementById('defense_ratinges').innerHTML;
         let defense_rating = document.getElementById('defense_rating');
         $.ajax({
@@ -3990,17 +3973,17 @@
                 Token: token
             },
             success: function (responseStr) {
-                console.log(responseStr)
                 if (responseStr.msg == "查询成功") {
-                    // students = responseStr.data.studentList;
                     defense_rating.innerHTML = ejs.render(defense_ratinges, {
                         data: responseStr.data.studentList
                     });
-                }
-                else if(responseStr.msg == "查询结果为空") {
+                } else if (responseStr.msg == "查询结果为空") {
                     defense_rating.innerHTML = ejs.render(defense_ratinges, {
                         data: ""
                     });
+                } else {
+                    alert(responseStr.msg + "，请稍后重试！");
+                    returnFirst('queryArrange', 'RatingArrange');
                 }
             },
             error: function (responseStr) {
@@ -4008,6 +3991,160 @@
                 console.log(responseStr);
             }
         });
+    }
+
+    //传入学生id显示打分页面
+    function DefenseRatingId(pName, name, identifier, teacherName) {
+        let scores = document.getElementById('scores').innerHTML;
+        let score = document.getElementById('score');
+        score.innerHTML = ejs.render(scores, {
+            pName: pName,
+            name: name,
+            identifier: identifier,
+            teacherName: teacherName
+        });
+        $('#three').removeClass('displayBlock');
+        $('#three').addClass('displayNone');
+        $('#score').addClass('displayBlock');
+        $('#score').removeClass('displayNone');
+    }
+
+    //确定答辩打分
+    function DetermineDefenseScore(id) {
+        let url = "http://www.yuanbw.cn:20086/gpms/tea/scoringDefence";
+        let reportingProcess = document.getElementById('reportingProcess').value;
+        let scoreReport = document.getElementById('reportingContent').value;
+        let scoreWorth = document.getElementById('applicableValue').value;
+        let scoreDefence = document.getElementById('plea').value;
+        let comment = document.getElementById('comment').value;
+        $.ajax({
+            url: url,
+            type: "POST",
+            data: {
+                sid: id,
+                scoreProcess: reportingProcess,
+                scoreReport: scoreReport,
+                scoreWorth: scoreWorth,
+                scoreDefence: scoreDefence,
+                comment: comment
+            },
+            xhrFields: {
+                withCredentials: true
+            },
+            crossDomain: true,
+            headers: {
+                Token: token
+            },
+            success: function (responseStr) {
+                alert(responseStr.msg);
+                DefenseRating();
+                $('#score').removeClass('displayBlock');
+                $('#score').addClass('displayNone');
+                $('#three').addClass('displayBlock');
+                $('#three').removeClass('displayNone');
+            },
+            error: function (responseStr) {
+                console.log("failed");
+                console.log(responseStr);
+            }
+        });
+    }
+
+    //答辩组长查看组内答辩打分
+    function queryDefenseScore() {
+        let url = "http://www.yuanbw.cn:20086/gpms/tea/showDefStudentsAndScores";
+        let defense_Situations = document.getElementById('defense_Situations').innerHTML;
+        let defense_Situation = document.getElementById('defense_Situation');
+        $.ajax({
+            url: url,
+            type: "POST",
+            data: {
+                limit: 20
+            },
+            xhrFields: {
+                withCredentials: true
+            },
+            crossDomain: true,
+            headers: {
+                Token: token
+            },
+            success: function (responseStr) {
+                if (responseStr.msg == "查询成功") {
+                    defense_Situation.innerHTML = ejs.render(defense_Situations, {
+                        teachers: responseStr.data.studentList[0].defenceScore.defScoreList,
+                        data: responseStr.data.studentList
+                    });
+                } else if (responseStr.msg == "查询结果为空") {
+                    defense_Situation.innerHTML = ejs.render(defense_Situations, {
+                        data: ""
+                    });
+                } else {
+                    alert(responseStr.msg + "，请稍后重试！");
+                    returnFirst('queryArrange', 'leaderDefense');
+                }
+            },
+            error: function (responseStr) {
+                console.log("failed");
+                console.log(responseStr);
+            }
+        });
+    }
+
+    //教师查看毕业评审学生列表
+    let GraduationDesignStudents;
+
+    function queryGraduationDesign() {
+        let url = "http://www.yuanbw.cn:20086/gpms/tea/showMtStudentList";
+        let grade_Paperses = document.getElementById('grade_Paperses').innerHTML;
+        let grade_Papers = document.getElementById('grade_Papers');
+        $.ajax({
+            url: url,
+            type: "POST",
+            data: {},
+            xhrFields: {
+                withCredentials: true
+            },
+            crossDomain: true,
+            headers: {
+                Token: token
+            },
+            success: function (responseStr) {
+                if (responseStr.msg == "查询成功") {
+                    console.log(responseStr.data);
+                    GraduationDesignStudents = responseStr.data;
+                    grade_Papers.innerHTML = ejs.render(grade_Paperses, {
+                        data: responseStr.data
+                    });
+                } else if (responseStr.msg == "查询记录为空") {
+                    grade_Papers.innerHTML = ejs.render(grade_Paperses, {
+                        data: ""
+                    });
+                } else {
+                    alert(responseStr.msg + "，请稍后重试！");
+                    returnFirst('queryArrange', 'graduationDesign');
+                }
+            },
+            error: function (responseStr) {
+                console.log("failed");
+                console.log(responseStr);
+            }
+        });
+    }
+
+    //传入id查看毕业设计评审
+    let EssayScoresId;
+
+    function ViewEssayScores(id) {
+        EssayScoresId = id;
+        let viewScores = document.getElementById('viewScores').innerHTML;
+        let viewScore = document.getElementById('viewScore');
+        GraduationDesignStudents.forEach(function (student) {
+            if (student.identifier == id) {
+                viewScore.innerHTML = ejs.render(viewScores, {
+                    data: student
+                });
+            }
+        })
     }
 
 </script>

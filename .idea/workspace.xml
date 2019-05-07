@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="052ba203-d1a5-4375-a979-95894d897f00" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/student/studentIndex.html" beforeDir="false" afterPath="$PROJECT_DIR$/student/studentIndex.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/teacher/teacherIndex.html" beforeDir="false" afterPath="$PROJECT_DIR$/teacher/teacherIndex.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -20,8 +18,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/assets/js/commonFunction.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="716">
-              <caret line="28" column="36" selection-start-line="28" selection-start-column="9" selection-end-line="28" selection-end-column="36" />
+            <state relative-caret-position="180">
+              <caret line="30" column="61" lean-forward="true" selection-start-line="29" selection-start-column="4" selection-end-line="30" selection-end-column="61" />
             </state>
           </provider>
         </entry>
@@ -29,8 +27,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/teacher/teacherIndex.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="409">
-              <caret line="963" column="49" selection-start-line="963" selection-start-column="49" selection-end-line="963" selection-end-column="49" />
+            <state relative-caret-position="176">
+              <caret line="923" column="56" lean-forward="true" selection-start-line="923" selection-start-column="56" selection-end-line="923" selection-end-column="56" />
               <folding>
                 <element signature="n#nav#0;n#div#0;n#body#0;n#html#0;n#!!top" />
                 <element signature="n#ul#0;n#nav#0;n#div#0;n#body#0;n#html#0;n#!!top" />
@@ -48,9 +46,8 @@
                 <element signature="n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" />
                 <element signature="n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#5;n#div#0;n#body#0;n#html#0;n#!!top" />
                 <element signature="n#script#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#5;n#div#0;n#body#0;n#html#0;n#!!top" />
-                <element signature="n#div#2;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#5;n#div#0;n#body#0;n#html#0;n#!!top" />
-                <element signature="n#div#3;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#5;n#div#0;n#body#0;n#html#0;n#!!top" />
-                <element signature="n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="e#64235#64325#0" />
+                <element signature="e#69670#77417#0" />
                 <element signature="n#div#7;n#div#0;n#body#0;n#html#0;n#!!top" />
                 <element signature="n#div#8;n#div#0;n#body#0;n#html#0;n#!!top" />
                 <element signature="n#div#9;n#div#0;n#body#0;n#html#0;n#!!top" />
@@ -74,11 +71,16 @@
                 <element signature="e#182376#182770#0" />
                 <element signature="e#183255#184004#0" />
                 <element signature="e#184062#186371#0" />
+                <element signature="e#186414#186641#0" />
+                <element signature="e#186742#192030#0" />
                 <element signature="e#191015#191136#0" />
                 <element signature="e#196594#196610#0" />
                 <element signature="e#197951#198525#0" />
                 <element signature="e#204681#206273#0" />
                 <element signature="e#206622#206638#0" />
+                <element signature="e#208282#208298#0" />
+                <element signature="e#209090#209106#0" />
+                <element signature="e#210767#210783#0" />
                 <element signature="n#script#9;n#body#0;n#html#0;n#!!top" />
               </folding>
             </state>
@@ -135,7 +137,7 @@
         <entry file="file://$PROJECT_DIR$/student/studentIndex.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="176">
-              <caret line="2183" column="38" selection-start-line="2183" selection-start-column="36" selection-end-line="2183" selection-end-column="38" />
+              <caret line="866" column="52" selection-start-line="866" selection-start-column="11" selection-end-line="866" selection-end-column="52" />
               <folding>
                 <element signature="n#style#0;n#li#0;n#ul#0;n#nav#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#li#2;n#ul#0;n#nav#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -233,29 +235,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>console.log(</find>
-      <find>titlePage</find>
-      <find>audit_Students_Topics</find>
-      <find>studentDetailses</find>
-      <find>CONSOLE</find>
-      <find>value</find>
-      <find>value;</find>
-      <find>templ</find>
-      <find>确定要通过该学生的选题？</find>
-      <find>url</find>
-      <find>教师审核</find>
-      <find>确定不通过该学生的选题？</find>
-      <find>不通过</find>
-      <find>tem</find>
-      <find>innerh</find>
-      <find>答辩时间</find>
-      <find>教师信息</find>
-      <find>teacherDetailses</find>
-      <find>联系邮箱</find>
-      <find>暂无</find>
-      <find>暂未</find>
-      <find>reply_arrange_self</find>
-      <find>console</find>
       <find>upload_TitleForm</find>
       <find>data[0].project.taskBook</find>
       <find>upload_TitleFor</find>
@@ -263,6 +242,29 @@
       <find>fileName</find>
       <find>conso</find>
       <find>defense_rating</find>
+      <find>addClass('displayNone')</find>
+      <find>DefenseRatingId</find>
+      <find>scores</find>
+      <find>reportingProcess</find>
+      <find>applicableValue</find>
+      <find>DefenseRating()</find>
+      <find>commonF</find>
+      <find>queryArrange</find>
+      <find>defense_Situations</find>
+      <find>scoreDefence</find>
+      <find>unde</find>
+      <find>class=&quot;leaderDefense&quot;</find>
+      <find>毕业设计评审</find>
+      <find>class=&quot;graduationDesign&quot;</find>
+      <find>graduationDesign</find>
+      <find>reply_arrange_self</find>
+      <find>console</find>
+      <find>grade_Papers</find>
+      <find>temp</find>
+      <find>学生答辩打分详细信息</find>
+      <find>defense_ratinges</find>
+      <find>DefenseRating</find>
+      <find>defense_ratinges</find>
     </findStrings>
     <replaceStrings>
       <replace>content</replace>
@@ -502,7 +504,7 @@
       <workItem from="1557040252468" duration="1425000" />
       <workItem from="1557055001686" duration="13062000" />
       <workItem from="1557123672683" duration="24739000" />
-      <workItem from="1557191397316" duration="21155000" />
+      <workItem from="1557191397316" duration="30556000" />
     </task>
     <task id="LOCAL-00001" summary="删除多余文件">
       <created>1549955361421</created>
@@ -522,11 +524,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="790831000" />
+    <option name="totallyTimeSpent" value="800232000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16294643" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -850,13 +851,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/js/commonFunction.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="716">
-          <caret line="28" column="36" selection-start-line="28" selection-start-column="9" selection-end-line="28" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/login/login.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="510">
@@ -910,10 +904,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/assets/js/commonFunction.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="30" column="61" lean-forward="true" selection-start-line="29" selection-start-column="4" selection-end-line="30" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/student/studentIndex.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="176">
-          <caret line="2183" column="38" selection-start-line="2183" selection-start-column="36" selection-end-line="2183" selection-end-column="38" />
+          <caret line="866" column="52" selection-start-line="866" selection-start-column="11" selection-end-line="866" selection-end-column="52" />
           <folding>
             <element signature="n#style#0;n#li#0;n#ul#0;n#nav#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#li#2;n#ul#0;n#nav#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -999,8 +1000,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/teacher/teacherIndex.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="409">
-          <caret line="963" column="49" selection-start-line="963" selection-start-column="49" selection-end-line="963" selection-end-column="49" />
+        <state relative-caret-position="176">
+          <caret line="923" column="56" lean-forward="true" selection-start-line="923" selection-start-column="56" selection-end-line="923" selection-end-column="56" />
           <folding>
             <element signature="n#nav#0;n#div#0;n#body#0;n#html#0;n#!!top" />
             <element signature="n#ul#0;n#nav#0;n#div#0;n#body#0;n#html#0;n#!!top" />
@@ -1018,9 +1019,8 @@
             <element signature="n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" />
             <element signature="n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#5;n#div#0;n#body#0;n#html#0;n#!!top" />
             <element signature="n#script#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#5;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#2;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#5;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#3;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#5;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="e#64235#64325#0" />
+            <element signature="e#69670#77417#0" />
             <element signature="n#div#7;n#div#0;n#body#0;n#html#0;n#!!top" />
             <element signature="n#div#8;n#div#0;n#body#0;n#html#0;n#!!top" />
             <element signature="n#div#9;n#div#0;n#body#0;n#html#0;n#!!top" />
@@ -1044,11 +1044,16 @@
             <element signature="e#182376#182770#0" />
             <element signature="e#183255#184004#0" />
             <element signature="e#184062#186371#0" />
+            <element signature="e#186414#186641#0" />
+            <element signature="e#186742#192030#0" />
             <element signature="e#191015#191136#0" />
             <element signature="e#196594#196610#0" />
             <element signature="e#197951#198525#0" />
             <element signature="e#204681#206273#0" />
             <element signature="e#206622#206638#0" />
+            <element signature="e#208282#208298#0" />
+            <element signature="e#209090#209106#0" />
+            <element signature="e#210767#210783#0" />
             <element signature="n#script#9;n#body#0;n#html#0;n#!!top" />
           </folding>
         </state>
