@@ -36,6 +36,9 @@
             <span id="sideNav" class="iconfont icon-right-s packUpIcon"></span>
         </div>
         <ul class="nav navbar-top-links navbar-right">
+            <li style="color: #fff" id="information">
+
+            </li>
             <!--通知公告开始-->
             <li class="noticeIcon">
                 <a href="#">
@@ -894,7 +897,7 @@
                                         指导教师（工号）
                                     </div>
                                 </div>
-                                <%if(data==""){%>
+                                <%if(data=="" || students==""){%>
                                 <div class="alert alert-danger textAlign border_radius marginBottom0">
                                     暂无数据
                                 </div>
@@ -940,6 +943,7 @@
                                         操作
                                     </div>
                                 </div>
+                                <%=data%>
                                 <%if(data=="") {%>
                                 <div class="alert alert-warning textAlign border_radius marginBottom0">暂无数据</div>
                                 <%} else{
@@ -3424,6 +3428,7 @@
         // }
         CheckOutProject();
         PersonalInfo();
+    //    information
     });
 
     let teacherInfo;
@@ -3443,6 +3448,8 @@
             },
             success: function (responseStr) {
                 if (responseStr.msg == "查询成功") {
+                    let html = responseStr.data.name+'('+responseStr.data.identifier+')，欢迎使用系统';
+                    $('#information').html(html);
                     teacherInfo = responseStr.data.identifier;
                 }
             },
@@ -3885,7 +3892,7 @@
                     })
                     queryStudentplea(responseStr.data);
                 } else if (responseStr.msg == "查询记录为空") {
-                    queryStudentplea("");
+                    queryStudentplea('');
                 }
             },
             error: function (responseStr) {
@@ -3922,6 +3929,12 @@
                     reply_arrange_self.innerHTML = ejs.render(reply_arrange_selfs, {
                         data: teachers,
                         students: responseStr.data.studentList
+                    });
+                }
+                else if(responseStr.statusCode=="101") {
+                    reply_arrange_self.innerHTML = ejs.render(reply_arrange_selfs, {
+                        data: teachers,
+                        students: ""
                     });
                 }
             },
@@ -4038,7 +4051,6 @@
 
     //查看学生答辩分数详情
     function ViewPleaScore(id) {
-        console.log(id)
         let url = "http://www.yuanbw.cn:20086/gpms/tea/showDefStudents";
         let defenseScores = document.getElementById('defenseScores').innerHTML;
         let defenseScore = document.getElementById('defenseScore');
@@ -4058,7 +4070,6 @@
             },
             success: function (responseStr) {
                 if (responseStr.msg == "查询成功") {
-                    console.log(responseStr.data.studentList);
                     defenseScore.innerHTML = ejs.render(defenseScores, {
                         data: responseStr.data.studentList
                     });

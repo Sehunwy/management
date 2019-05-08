@@ -1379,7 +1379,11 @@
                                         <%}%>
                                     </div>
                                 </div>
-                                <% } } %>
+                                <% } }else{ %>
+                                <div class="alert alert-danger textAlign border_radius marginBottom0">
+                                    暂无记录
+                                </div>
+                                <%}%>
                             </script>
                             <!--提交指导记录结束-->
                             <!--提交外文译文和原文开始-->
@@ -1797,10 +1801,11 @@
                                         <%}%>
                                     </div>
                                 </div>
-                                <% }
-                                }
-                                %>
-
+                                <% }} else {%>
+                                <div class="alert alert-danger textAlign border_radius marginBottom0">
+                                    暂无记录
+                                </div>
+                                <%}%>
                             </script>
                             <!--提交毕业设计结束-->
                         </div>
@@ -2275,6 +2280,11 @@
                                         分组
                                     </div>
                                 </div>
+                                <%if(data=="") {%>
+                                <div class="alert alert-warning textAlign border_radius marginBottom0">
+                                    暂无查找到答辩安排
+                                </div>
+                                <%} else{%>
                                 <div class="alert alert-warning textEllipsis border_radius marginBottom0">
                                     <div title="<%=topicName%>"
                                          class="col-md-2 textEllipsis textAlign padding0">
@@ -2311,6 +2321,7 @@
                                         第<%=data.groupNum%>组
                                     </div>
                                 </div>
+                                <%}%>
                             </script>
                             <!--查看答辩安排结束-->
                             <!--查看成绩开始-->
@@ -2911,6 +2922,11 @@
         let titleSource = document.getElementById('titleSource').value;
         let titleType = document.getElementById('titleType').value;
         selectTopic(topicTitle, titleType, titleSource, teacherNumber, tutor);
+        document.getElementById('topicTitle').value = "";
+        document.getElementById('tutor').value = "";
+        document.getElementById('teacherNumber').value = "";
+        document.getElementById('titleSource').options[0].selected = true;
+        document.getElementById('titleType').options[0].selected = true;
     }
 
     //已选选题查看课题
@@ -3106,6 +3122,11 @@
                         topicName: topicName
                     });
                 }
+                else if(responseStr.statusCode=="101") {
+                    reply_arrange.innerHTML = ejs.render(reply_arranges, {
+                        data: ""
+                    });
+                }
             },
             error: function (responseStr) {
                 console.log("failed");
@@ -3135,6 +3156,11 @@
                     reply_results.innerHTML = ejs.render(reply_resultses, {
                         data: responseStr.data,
                         taskProgress: taskProgress
+                    });
+                }
+                else if(responseStr.statusCode=="101"){
+                    reply_results.innerHTML = ejs.render(reply_resultses, {
+                        data: ""
                     });
                 }
             },
