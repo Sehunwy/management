@@ -802,9 +802,10 @@
                                 <li class="RatingArrange" onclick="DefenseRating()"><a href="#defense_rating" role="tab"
                                                                                        data-toggle="tab">答辩打分</a>
                                 </li>
-                                <li class="leaderDefense" onclick="queryDefenseScore()"><a href="#defense_Situation"
-                                                                                           role="tab"
-                                                                                           data-toggle="tab">答辩组长提交答辩打分情况</a>
+                                <li id="DefenseLeader" class="leaderDefense" onclick="queryDefenseScore()"><a
+                                        href="#defense_Situation"
+                                        role="tab"
+                                        data-toggle="tab">答辩组长提交答辩打分情况</a>
                                 </li>
                                 <li class="graduationDesign" onclick="queryGraduationDesign()"><a href="#grade_Papers"
                                                                                                   role="tab"
@@ -923,7 +924,7 @@
                             </div>
                             <script id="defense_ratinges" type="text/template">
                                 <div class="alert alert-success textEllipsis border_radius marginBottom0">
-                                    <div class="col-md-4 textAlign">
+                                    <div class="col-md-3 textAlign">
                                         课题题目
                                     </div>
                                     <div class="col-md-3 textAlign">
@@ -935,7 +936,7 @@
                                     <div class="col-md-1 textAlign">
                                         分数
                                     </div>
-                                    <div class="col-md-1 textAlign">
+                                    <div class="col-md-2 textAlign">
                                         操作
                                     </div>
                                 </div>
@@ -944,7 +945,7 @@
                                 <%} else{
                                 data.forEach(function(student){%>
                                 <div class="alert alert-warning textEllipsis border_radius marginBottom0">
-                                    <div title="<%=student.pName%>" class="col-md-4 textAlign textEllipsis">
+                                    <div title="<%=student.pName%>" class="col-md-3 textAlign textEllipsis">
                                         <%=student.pName%>
                                     </div>
                                     <div class="col-md-3 textAlign">
@@ -960,7 +961,11 @@
                                         未打分
                                         <%}%>
                                     </div>
-                                    <div class="col-md-1 textAlign">
+                                    <div class="col-md-2 textAlign">
+                                        <button type="button" class="btn btn-info btn-xs" data-toggle="modal"
+                                                data-target="#defenseScore"
+                                                onclick="ViewPleaScore('<%=student.identifier%>')">查看
+                                        </button>
                                         <%if(student.defScore.hasScored) {%>
                                         <button type="button"
                                                 class="btn btn-info btn-xs" disabled>打分
@@ -1033,12 +1038,12 @@
 
                                 </div>
                                 <%})%>
-
                                 <div style="margin-top: 10px">
                                     <div class="col-md-10">
                                     </div>
                                     <div class="col-md-2">
-                                        <button style="float: right;" type="button" class="btn btn-info">
+                                        <button style="float: right;" type="button" class="btn btn-info"
+                                                onclick="submitScoreGroup()">
                                             提交
                                         </button>
                                     </div>
@@ -1083,8 +1088,8 @@
                                         <%=data[0].identifier%>
                                     </div>
                                     <div class="col-md-2 textAlign textEllipsis">
-                                        <%if(data[0].hasReviewed){%>
-                                        <%=data[0].scoreTotal%>
+                                        <%if(data[0].reviewTeaGroup.hasReviewed){%>
+                                        <%=data[0].reviewTeaGroup.scoreTotal%>
                                         <%}else{%>
                                         暂无分数
                                         <%}%>
@@ -1099,7 +1104,9 @@
                                             打分
                                         </button>
                                         <%}else{%>
-                                        <button type="button" class="management_scorePlea newPage btn btn-info btn-xs">
+                                        <button type="button"
+                                                onclick="scorePleaStudents('<%=data[0].pName%>','<%=data[0].name%>','<%=data[0].identifier%>','<%=data[0].gt.name%>')"
+                                                class="btn btn-info btn-xs">
                                             打分
                                         </button>
                                         <%}%>
@@ -1249,7 +1256,7 @@
                                 </div>
                                 <div class="col-md-2">
                                     <button type="button" class="management_three newPage  btn btn-success"
-                                            onclick="cancelTitle('pleaScoreinput')">
+                                            onclick="gobackThree('score')">
                                         返回
                                     </button>
                                 </div>
@@ -1263,6 +1270,8 @@
     <!--答辩打分结束-->
     <!--毕业设计评审开始-->
     <div id="scorePlea" class="page-wrapper displayNone">
+    </div>
+    <script id="scorePleas" type="text/template">
         <div style="margin: 0px" class="page-inner">
             <div class="row">
                 <div class="col-md-12">
@@ -1273,18 +1282,18 @@
                         <div class="panel-body">
                             <div class="alert alert-danger textEllipsis border_radius marginBottom0">
                                 <div class="col-md-12 textEllipsis">
-                                    课题题目：PMMA灯具基于moldflow三维流动优化的注塑模设计
+                                    课题题目：<%=pName%>
                                 </div>
                             </div>
                             <div class="alert alert-danger textEllipsis border_radius marginBottom0">
                                 <div class="col-md-3">
-                                    学生姓名：王晓霞
+                                    学生姓名：<%=name%>
                                 </div>
                                 <div class="col-md-4">
-                                    学生学号：3120150909000
+                                    学生学号：<%=identifier%>
                                 </div>
                                 <div class="col-md-5">
-                                    指导教师姓名：廖永衡
+                                    指导教师姓名：<%=teacherName%>
                                 </div>
                             </div>
                             <div class="alert alert-success textEllipsis border_radius marginBottom0">
@@ -1384,23 +1393,19 @@
                             <div class="alert alert-warning textEllipsis border_radius marginBottom0">
                                 <div class="col-md-12 textAlign">
                                     <textarea rows="4" class="form-control pleaScoreinput" style="width: 100%"
-                                              placeholder="评语"></textarea>
-                                </div>
-                            </div>
-                            <div class="alert alert-warning textEllipsis border_radius marginBottom0">
-                                <div class="col-md-12">
-                                    总分：<span class="colorf44">20</span>
+                                              placeholder="评语" id="commentGraduation"></textarea>
                                 </div>
                             </div>
                             <div class="row" style="margin-top: 10px">
                                 <div class="col-md-2">
-                                    <button type="button" class="management_three newPage btn btn-info">
+                                    <button type="button" onclick="SubmitGraduationEvaluation('<%=identifier%>')"
+                                            class="btn btn-info">
                                         确定
                                     </button>
                                 </div>
                                 <div class="col-md-2">
-                                    <button type="button" class="management_three newPage  btn btn-success"
-                                            onclick="cancelTitle('pleaScoreinput')">
+                                    <button type="button" class="btn btn-success"
+                                            onclick="gobackThree('scorePlea')">
                                         返回
                                     </button>
                                 </div>
@@ -1410,50 +1415,90 @@
                 </div>
             </div>
         </div>
-    </div>
+    </script>
     <!--毕业设计评审结束-->
     <!--查看答辩分数详细信息开始-->
     <div class="modal fade" id="defenseScore" role="dialog">
+    </div>
+    <script id="defenseScores" type="text/template">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                             aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">学生答辩成绩详细信息</h4>
+                    <h4 class="modal-title">学生答辩打分详细信息</h4>
                 </div>
                 <div class="modal-body">
                     <div class="alert alert-success">
                         <strong>
-                            <span>毕设/论文材料:</span>
+                            <span>课题题目:</span>
                         </strong>
-                        <span>90</span>
+                        <span><%=data[0].pName%></span>
                         <hr>
                         <strong>
-                            <span>评语:</span>
+                            <span>学生姓名:</span>
                         </strong>
                         <span>
-                            评语
+                            <%=data[0].name%>
                         </span>
                         <hr>
                         <strong>
-                            <span>答辩:</span>
+                            <span>学生学号:</span>
                         </strong>
-                        <span>90</span>
+                        <span><%=data[0].identifier%></span>
+                        <hr>
+                        <%if(data[0].defScore.hasScored){%>
+                        <strong>
+                            <span>答辩成绩</span>
+                        </strong>
+                        <span>
+                            <%=data[0].defScore.scoreTotal%>
+                        </span>
                         <hr>
                         <strong>
-                            <span>评语:</span>
+                            <span>报告过程得分</span>
                         </strong>
-                        <span>评语</span>
+                        <span>
+                            <%=data[0].defScore.scoreProcess%>
+                        </span>
                         <hr>
                         <strong>
-                            <span>系统:</span>
+                            <span>报告内容得分</span>
                         </strong>
-                        <span>90</span>
+                        <span>
+                            <%=data[0].defScore.scoreReport%>
+                        </span>
+                        <hr>
+                        <strong>
+                            <span>实用价值得分</span>
+                        </strong>
+                        <span>
+                            <%=data[0].defScore.scoreWorth%>
+                        </span>
+                        <hr>
+                        <strong>
+                            <span>答辩得分</span>
+                        </strong>
+                        <span>
+                            <%=data[0].defScore.scoreDefence%>
+                        </span>
                         <hr>
                         <strong>
                             <span>评语</span>
                         </strong>
-                        <span>评语</span>
+                        <span>
+                            <%=data[0].defScore.comment%>
+                        </span>
+                        <hr>
+                        <%}else{%>
+                        <strong>
+                            <span>答辩成绩</span>
+                        </strong>
+                        <span>
+                            暂无分数
+                        </span>
+                        <hr>
+                        <%}%>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -1461,53 +1506,9 @@
                 </div>
             </div>
         </div>
-    </div>
+    </script>
     <!--查看答辩分数详细信息结束-->
-    <!--重置答辩教师分数开始-->
-    <div class="modal fade" id="score_reset" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                            aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">提示</h4>
-                </div>
-                <div class="modal-body">
-                    <div class="container-fluid">
-                        确定要重置该答辩教师的打分？
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-xs btn-white" data-dismiss="modal">取 消</button>
-                    <button type="button" class="btn btn-xs btn-danger">保 存</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--重置答辩教师分数结束-->
-    <!--重置答辩教师论文分数开始-->
-    <div class="modal fade" id="thesis_score_reset" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                            aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">提示</h4>
-                </div>
-                <div class="modal-body">
-                    <div class="container-fluid">
-                        确定要重置该答辩教师的打分？
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-xs btn-white" data-dismiss="modal">取 消</button>
-                    <button type="button" class="btn btn-xs btn-danger">保 存</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--重置答辩教师论文分数结束-->
-    <!--查看答辩打分详细信息开始-->
+    <!--查看毕业评审打分详细信息开始-->
     <div class="modal fade" id="viewScore" role="dialog">
     </div>
     <script id="viewScores" type="text/template">
@@ -1516,7 +1517,7 @@
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                             aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">学生答辩打分详细信息</h4>
+                    <h4 class="modal-title">学生毕业评审分数详细信息</h4>
                 </div>
                 <div class="modal-body">
                     <div class="alert alert-success">
@@ -1593,8 +1594,14 @@
                         <strong>
                             <span>附件</span>
                         </strong>
-                        <span>附件：开题报告.docx <a style="padding-left: 20px" href="#">点击下载</a></span>
-
+                        <span>
+                            <% if(data.graduationProject.docFileId == 0 || typeof(data.graduationProject.docFile)=="undefined") { %>
+                                    暂未上传毕业设计论文
+                                    <% } else { %>
+                                    附件：<%=data.graduationProject.docFile.fileName %> <a style="padding-left: 20px"
+                                                                                        href="http://www.yuanbw.cn:20086/gpms/rol/downloadFile?fileId=<%=data.graduationProject.docFileId %>">点击下载</a>
+                                    <% } %>
+                        </span>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -1603,7 +1610,7 @@
             </div>
         </div>
     </script>
-    <!--查看答辩打分详细信息结束-->
+    <!--查看毕业评审打分详细信息结束-->
     <!--答辩管理（教师）结束-->
 
     <!--学生管理开始-->
@@ -3408,15 +3415,43 @@
     }
 
     $(function () {
-        let authority = getCookie("authority");
-        if (authority == 2) {
-            let isDean = document.getElementsByClassName('isDean');
-            while (isDean.length > 0) {
-                isDean[0].parentNode.removeChild(isDean[0]);
-            }
-        }
+        // let authority = getCookie("authority");
+        // if (authority == 2) {
+        //     let isDean = document.getElementsByClassName('isDean');
+        //     while (isDean.length > 0) {
+        //         isDean[0].parentNode.removeChild(isDean[0]);
+        //     }
+        // }
         CheckOutProject();
+        PersonalInfo();
     });
+
+    let teacherInfo;
+
+    function PersonalInfo() {
+        let url = "http://www.yuanbw.cn:20086/gpms/rol/showRoleInfo";
+        $.ajax({
+            url: url,
+            type: "POST",
+            data: {},
+            xhrFields: {
+                withCredentials: true
+            },
+            crossDomain: true,
+            headers: {
+                Token: token
+            },
+            success: function (responseStr) {
+                if (responseStr.msg == "查询成功") {
+                    teacherInfo = responseStr.data.identifier;
+                }
+            },
+            error: function (responseStr) {
+                console.log("failed");
+                console.log(responseStr);
+            }
+        });
+    }
 
 
     $('.m-style').pagination({
@@ -3825,6 +3860,7 @@
 
     //查看教师答辩安排
     function viewReply() {
+        let answerTeacher;
         let url = "http://www.yuanbw.cn:20086/gpms/tea/showDefPlan";
         $.ajax({
             url: url,
@@ -3839,6 +3875,14 @@
             },
             success: function (responseStr) {
                 if (responseStr.msg == "查询成功") {
+                    answerTeacher = responseStr.data.teaGroup;
+                    answerTeacher.forEach(function (teacher) {
+                        if (teacher.leader) {
+                            if (teacherInfo != teacher.teaAuth.id) {
+                                $('#DefenseLeader').addClass('hide');
+                            }
+                        }
+                    })
                     queryStudentplea(responseStr.data);
                 } else if (responseStr.msg == "查询记录为空") {
                     queryStudentplea("");
@@ -3956,7 +4000,6 @@
     //答辩打分
     function DefenseRating() {
         let url = "http://www.yuanbw.cn:20086/gpms/tea/showDefStudents";
-        console.log(document.getElementById('defense_ratinges'))
         let defense_ratinges = document.getElementById('defense_ratinges').innerHTML;
         let defense_rating = document.getElementById('defense_rating');
         $.ajax({
@@ -3984,6 +4027,41 @@
                 } else {
                     alert(responseStr.msg + "，请稍后重试！");
                     returnFirst('queryArrange', 'RatingArrange');
+                }
+            },
+            error: function (responseStr) {
+                console.log("failed");
+                console.log(responseStr);
+            }
+        });
+    }
+
+    //查看学生答辩分数详情
+    function ViewPleaScore(id) {
+        console.log(id)
+        let url = "http://www.yuanbw.cn:20086/gpms/tea/showDefStudents";
+        let defenseScores = document.getElementById('defenseScores').innerHTML;
+        let defenseScore = document.getElementById('defenseScore');
+        $.ajax({
+            url: url,
+            type: "POST",
+            data: {
+                sid: id,
+                limit: "20"
+            },
+            xhrFields: {
+                withCredentials: true
+            },
+            crossDomain: true,
+            headers: {
+                Token: token
+            },
+            success: function (responseStr) {
+                if (responseStr.msg == "查询成功") {
+                    console.log(responseStr.data.studentList);
+                    defenseScore.innerHTML = ejs.render(defenseScores, {
+                        data: responseStr.data.studentList
+                    });
                 }
             },
             error: function (responseStr) {
@@ -4090,6 +4168,30 @@
         });
     }
 
+    //答辩组长提交组内答辩打分
+    function submitScoreGroup() {
+        let url = "http://www.yuanbw.cn:20086/gpms/tea/commitDefence";
+        $.ajax({
+            url: url,
+            type: "POST",
+            data: {},
+            xhrFields: {
+                withCredentials: true
+            },
+            crossDomain: true,
+            headers: {
+                Token: token
+            },
+            success: function (responseStr) {
+                alert(responseStr.msg);
+            },
+            error: function (responseStr) {
+                console.log("failed");
+                console.log(responseStr);
+            }
+        });
+    }
+
     //教师查看毕业评审学生列表
     let GraduationDesignStudents;
 
@@ -4110,7 +4212,6 @@
             },
             success: function (responseStr) {
                 if (responseStr.msg == "查询成功") {
-                    console.log(responseStr.data);
                     GraduationDesignStudents = responseStr.data;
                     grade_Papers.innerHTML = ejs.render(grade_Paperses, {
                         data: responseStr.data
@@ -4147,9 +4248,74 @@
         })
     }
 
+    //答辩教师毕业评审
+    function scorePleaStudents(pName, name, identifier, teacherName) {
+        $('#three').removeClass('displayBlock');
+        $('#three').addClass('displayNone');
+        $('#scorePlea').addClass('displayBlock');
+        $('#scorePlea').removeClass('displayNone');
+        let scorePleas = document.getElementById('scorePleas').innerHTML;
+        let scorePlea = document.getElementById('scorePlea');
+        scorePlea.innerHTML = ejs.render(scorePleas, {
+            pName: pName,
+            name: name,
+            identifier: identifier,
+            teacherName: teacherName
+        });
+    }
+
+    //确认提交毕业评审
+    function SubmitGraduationEvaluation(id) {
+        let url = "http://www.yuanbw.cn:20086/gpms/tea/markingMtDoc";
+        let scoreLiterature = document.getElementById('reviewTranslation').value;
+        let scoreInstruction = document.getElementById('designQuality').value;
+        let scoreWorkload = document.getElementById('workloadDifficulty').value;
+        let scoreInnovate = document.getElementById('innovation').value;
+        let comment = document.getElementById('commentGraduation').value;
+        $.ajax({
+            url: url,
+            type: "POST",
+            data: {
+                sid: id,
+                scoreLiterature: scoreLiterature,
+                scoreInstruction: scoreInstruction,
+                scoreWorkload: scoreWorkload,
+                scoreInnovate: scoreInnovate,
+                comment: comment
+            },
+            xhrFields: {
+                withCredentials: true
+            },
+            crossDomain: true,
+            headers: {
+                Token: token
+            },
+            success: function (responseStr) {
+                alert(responseStr.msg);
+                queryGraduationDesign();
+                $('#scorePlea').removeClass('displayBlock');
+                $('#scorePlea').addClass('displayNone');
+                $('#three').addClass('displayBlock');
+                $('#three').removeClass('displayNone');
+            },
+            error: function (responseStr) {
+                console.log("failed");
+                console.log(responseStr);
+            }
+        });
+    }
+
 </script>
 
 <script>
+
+    function gobackThree(gobackClass) {
+        $('#' + gobackClass).removeClass('displayBlock');
+        $('#' + gobackClass).addClass('displayNone');
+        $('#three').addClass('displayBlock');
+        $('#three').removeClass('displayNone');
+    }
+
     //答辩打分报告过程input输入框值限定
     function reportingProcessScore(reportingProcess, score) {
         ScoreTop(reportingProcess, score)

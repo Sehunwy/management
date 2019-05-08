@@ -179,7 +179,7 @@
                 Token: token
             },
             success: function (responseStr) {
-                console.log(responseStr)
+                console.log(responseStr);
                 if (responseStr.msg == "查询成功") {
                     informationDetailed.innerHTML = ejs.render(informationsDetailed, {informations: responseStr.data});
                 }
