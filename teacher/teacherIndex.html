@@ -141,7 +141,7 @@
                     <span class="iconfont icon-dabian iconColorWhite fontSize14 naviconpadding"></span>答辩管理
                 </a>
                 </li>
-                <li><a href="#" id="management_student">
+                <li onclick="studentList()"><a href="#" id="management_student">
                     <span class="iconfont icon-xuesheng iconColorWhite fontSize14 naviconpadding"></span>学生管理
                 </a>
                 </li>
@@ -943,7 +943,6 @@
                                         操作
                                     </div>
                                 </div>
-                                <%=data%>
                                 <%if(data=="") {%>
                                 <div class="alert alert-warning textAlign border_radius marginBottom0">暂无数据</div>
                                 <%} else{
@@ -1627,16 +1626,21 @@
                             <ul class="nav nav-tabs" role="tablist">
                                 <li class="active"><a href="#send_Ntification" role="tab"
                                                       data-toggle="tab">发送通知</a></li>
-                                <li><a href="#reply_arrange" role="tab"
-                                       data-toggle="tab">查看指导学生答辩安排</a></li>
-                                <li><a href="#review_Material" role="tab" data-toggle="tab">审核材料</a></li>
-                                <li><a href="#tutor_grade_Papers" role="tab" data-toggle="tab">毕业设计指导教师评审</a></li>
-                                <li><a href="#reply_results" role="tab" data-toggle="tab">成绩公示</a></li>
+                                <li onclick="studentReply()"><a href="#reply_arrange" role="tab"
+                                                                data-toggle="tab">查看指导学生答辩安排</a></li>
+                                <li onclick="queryMaterial()"><a href="#review_Material" role="tab" data-toggle="tab">审核材料</a>
+                                </li>
+                                <li onclick="grade_Papers()"><a href="#tutor_grade_Papers" role="tab" data-toggle="tab">毕业设计指导教师评审</a>
+                                </li>
+                                <li onclick="PerformancePublic()"><a href="#reply_results" role="tab" data-toggle="tab">成绩公示</a>
+                                </li>
                             </ul>
                         </div>
                         <div class="tab-content">
                             <!--发送通知开始-->
                             <div class="tab-pane active panel-body" id="send_Ntification">
+                            </div>
+                            <script id="send_Ntifications" type="text/template">
                                 <div style="padding-bottom: 10px">
                                     <button type="button" class="btn btn-info" data-toggle="modal"
                                             data-target="#notificationContent">发送通知
@@ -1658,71 +1662,62 @@
                                         课题题目
                                     </div>
                                 </div>
+                                <%if(data=="") {%>
+                                <div class="alert alert-danger textAlign border_radius marginBottom0">暂无数据</div>
+                                <%}else{
+                                data.forEach(function(student){%>
                                 <div class="alert alert-danger textEllipsis border_radius marginBottom0">
                                     <div class="col-md-1 textEllipsis textAlign">
                                         <input class="checkbox_notice" type="checkbox" value="2"/>
                                     </div>
                                     <div class="col-md-3 textEllipsis">
-                                        王XX
+                                        <%=student.name%>
                                     </div>
                                     <div class="col-md-3 textEllipsis textAlign">
-                                        3120150905119
+                                        <%=student.identifier%>
                                     </div>
                                     <div class="col-md-5 textEllipsis textAlign">
-                                        PMMA灯具基于moldflow三维流动优化的注塑模设计
+                                        <%=student.pName%>
                                     </div>
                                 </div>
-                                <div class="alert alert-warning textEllipsis border_radius marginBottom0">
-                                    <div class="col-md-1 textEllipsis textAlign">
-                                        <input class="checkbox_notice" type="checkbox" value="2"/>
-                                    </div>
-                                    <div class="col-md-3 textEllipsis">
-                                        王XX
-                                    </div>
-                                    <div class="col-md-3 textEllipsis textAlign">
-                                        3120150905119
-                                    </div>
-                                    <div class="col-md-5 textEllipsis textAlign">
-                                        PMMA灯具基于moldflow三维流动优化的注塑模设计
-                                    </div>
-                                </div>
-                                <div class="alert alert-danger textEllipsis border_radius marginBottom0">
-                                    <div class="col-md-1 textEllipsis textAlign">
-                                        <input class="checkbox_notice" type="checkbox" value="2"/>
-                                    </div>
-                                    <div class="col-md-3 textEllipsis">
-                                        王XX
-                                    </div>
-                                    <div class="col-md-3 textEllipsis textAlign">
-                                        3120150905119
-                                    </div>
-                                    <div class="col-md-5 textEllipsis textAlign">
-                                        PMMA灯具基于moldflow三维流动优化的注塑模设计
-                                    </div>
-                                </div>
-                                <div class="alert alert-warning textEllipsis border_radius marginBottom0">
-                                    <div class="col-md-1 textEllipsis textAlign">
-                                        <input class="checkbox_notice" type="checkbox" value="2"/>
-                                    </div>
-                                    <div class="col-md-3 textEllipsis">
-                                        王XX
-                                    </div>
-                                    <div class="col-md-3 textEllipsis textAlign">
-                                        3120150905119
-                                    </div>
-                                    <div class="col-md-5 textEllipsis textAlign">
-                                        PMMA灯具基于moldflow三维流动优化的注塑模设计
-                                    </div>
-                                </div>
-                            </div>
+                                <%})}%>
+                            </script>
                             <!--发送通知结束-->
                             <!--查看指导学生答辩安排开始-->
                             <div class="tab-pane panel-body" id="reply_arrange">
+                                <div style="padding-bottom: 15px;padding-left: 0px" class="col-md-12">
+                                    <div style="padding-left: 0px" class="col-md-12">
+                                        <div class="col-md-12 col-xs-12">
+                                            <div class="col-md-1 col-xs-1 padding0">
+                                                学生姓名：
+                                            </div>
+                                            <div class="col-md-2 col-xs-2">
+                                                <input id="studentName" type="text" class="form-control">
+                                            </div>
+                                            <div class="col-md-1 col-xs-1"></div>
+                                            <div class="col-md-1 col-xs-1 padding0">
+                                                学生学号：
+                                            </div>
+                                            <div class="col-md-3 col-xs-3">
+                                                <input id="studentIds" type="text" class="form-control">
+                                            </div>
+                                            <div class="col-md-2 col-xs-2"></div>
+                                            <div class="col-md-1 col-xs-1" style="padding-left: 5px">
+                                                <button type="button" class="btn btn-info"
+                                                        onclick="studentReply()">查询
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="students_Reply"></div>
+                            </div>
+                            <script id="students_Replys" type="text/template">
                                 <div class="alert alert-success textEllipsis border_radius marginBottom0">
                                     <div class="col-md-1 textAlign">
                                         学生姓名
                                     </div>
-                                    <div class="col-md-5 textAlign">
+                                    <div class="col-md-4 textAlign">
                                         答辩时间
                                     </div>
                                     <div class="col-md-1 textAlign">
@@ -1735,33 +1730,73 @@
                                         答辩教师
                                     </div>
                                     <div class="col-md-1 textAlign">
+                                        评审教师
+                                    </div>
+                                    <div class="col-md-1 textAlign">
                                         分组
                                     </div>
                                 </div>
+                                <%if(data=="") {%>
+                                <div class="alert alert-warning textAlign border_radius marginBottom0">
+                                    暂无数据
+                                </div>
+                                <%}else{
+                                data.forEach(function(student){%>
                                 <div class="alert alert-warning textEllipsis border_radius marginBottom0">
                                     <div class="col-md-1 padding0 textEllipsis textAlign">
-                                        廖永衡
+                                        <%=student.name%>
                                     </div>
-                                    <div class="col-md-5 textEllipsis textAlign">
-                                        2019年5月31日上午8:00 / 第14周 星期5
+                                    <%if(typeof(student.defInfo)=="undefined") {%>
+                                    <div class="col-md-11 textEllipsis textAlign">
+                                        暂无答辩安排
+                                    </div>
+                                    <%} else {%>
+                                    <div class="col-md-4 textEllipsis textAlign padding0">
+                                        <%
+                                        let unixTimestamp = new Date(student.defInfo.defDate ) ;
+                                        let year = unixTimestamp.getFullYear();
+                                        let month = unixTimestamp.getMonth()+1;
+                                        let date = unixTimestamp.getDate();
+                                        commonTime = year+"年"+month+"月"+date+"日"
+                                        %>
+                                        <%= commonTime %>上午8:00
+                                        第<%=student.defInfo.defWeek%>周
+                                        星期<%=student.defInfo.defDay%>
                                     </div>
                                     <div class="col-md-1 textEllipsis textAlign">
-                                        6A-404
+                                        <%=student.defInfo.defClass%>
                                     </div>
                                     <div class="col-md-1 textAlign textEllipsis">
-                                        廖永衡
+                                        <% student.defInfo.teaGroup.forEach(function(group){
+                                        if(group.leader) {%>
+                                        <%=group.teaAuth.name%>
+                                        <% }
+                                        }
+                                        )%>
                                     </div>
                                     <div class="col-md-3 textAlign textEllipsis">
-                                        廖永衡 廖永衡 廖永衡 何太碧
+                                        <% student.defInfo.teaGroup.forEach(function(group){
+                                        if(!group.leader) {%>
+                                        <%=group.teaAuth.name%>
+                                        <% }
+                                        }
+                                        )%>
                                     </div>
                                     <div class="col-md-1 textAlign textEllipsis">
-                                        第一组
+                                        <%=student.mt.name%>
                                     </div>
+                                    <div class="col-md-1 textAlign textEllipsis">
+                                        第<%=student.defInfo.groupNum%>组
+                                    </div>
+                                    <%}%>
                                 </div>
-                            </div>
+                                <%})}%>
+                            </script>
                             <!--查看指导学生答辩安排结束-->
                             <!--审核材料开始-->
                             <div class="tab-pane panel-body" id="review_Material">
+                            </div>
+                            <script id="review_Materials" type="text/template">
                                 <div class="alert alert-success textEllipsis border_radius marginBottom0">
                                     <div class="col-md-1 textAlign">
                                         学生姓名
@@ -1788,50 +1823,68 @@
                                         毕业设计（论文）
                                     </div>
                                 </div>
+                                <%if(data=="") {%>
+                                <div class="alert alert-warning textAlign border_radius marginBottom0">暂无数据</div>
+                                <%}else {
+                                data.forEach(function(student){%>
+                                <% let title="";
+                                student.proChooseList.forEach(function(titles){
+                                if(titles.cStatus==1) {
+                                title = titles.project.title
+                                }});%>
                                 <div class="alert alert-warning textEllipsis border_radius marginBottom0">
                                     <div class="col-md-1 textAlign">
-                                        王晓霞
+                                        <%=student.name%>
                                     </div>
                                     <div class="col-md-2 textAlign">
-                                        3120150905111
+                                        <%=student.identifier%>
                                     </div>
                                     <div class="col-md-1 textAlign">
-                                        <span class="management_openingReport newPage clickColor cursorPointer">
-                                            完成 100%
+                                        <span onclick="openingReportDocument('<%=student.identifier%>','1','<%=student.name%>','<%=title%>')"
+                                              class="newPage clickColor cursorPointer">
+                                            完成 <%=student.progressList[0]%>%
                                         </span>
                                     </div>
                                     <div class="col-md-1 textAlign">
-                                        <span class="management_Intermediate newPage clickColor cursorPointer">
-                                            完成 100%
+                                        <span onclick="IntermediateDocument('<%=student.identifier%>','2','<%=student.name%>','<%=title%>')"
+                                              class="clickColor cursorPointer">
+                                            完成 <%=student.progressList[1]%>%
                                         </span>
                                     </div>
                                     <div class="col-md-1 textAlign">
-                                        <span class="management_GuideRecord newPage clickColor cursorPointer">
-                                            完成 100%
+                                        <span onclick="queryGuideRecord('<%=student.identifier%>','<%=student.name%>','<%=title%>')"
+                                              class="clickColor cursorPointer">
+                                            完成 <%=student.progressList[2]%>%
                                         </span>
                                     </div>
                                     <div class="col-md-3 textAlign">
-                                        <span class="management_ForeignTranslation newPage clickColor cursorPointer">
-                                            完成 100%
+                                        <span onclick="ForeignTranslationDocument('<%=student.identifier%>','3','<%=student.name%>','<%=title%>')"
+                                              class="clickColor cursorPointer">
+                                            完成 <%=student.progressList[3]%>%
                                         </span>
                                     </div>
                                     <div class="col-md-1 textAlign">
-                                        <span class="management_LiteratureReview newPage clickColor cursorPointer">
-                                            完成 100%
+                                        <span onclick="LiteratureReviewDocument('<%=student.identifier%>','4','<%=student.name%>','<%=title%>')"
+                                              class="clickColor cursorPointer">
+                                            完成 <%=student.progressList[4]%>%
                                         </span>
                                     </div>
                                     <div class="col-md-2 textAlign">
-                                        <span class="management_GraduationDesign newPage clickColor cursorPointer">
-                                            完成 100%
+                                        <span onclick="queryGraduationDesign('<%=student.identifier%>','<%=student.name%>','<%=title%>')"
+                                              class="clickColor cursorPointer">
+                                            完成 <%=student.progressList[5]%>%
                                         </span>
                                     </div>
                                 </div>
-                            </div>
+                                <%})}%>
+                            </script>
                             <!--审核材料结束-->
                             <!--毕业设计指导教师评审开始-->
                             <div class="tab-pane panel-body" id="tutor_grade_Papers">
+                            </div>
+                            <script id="tutor_grade_Paperses" type="text/template">
                                 <div class="alert alert-success textEllipsis border_radius marginBottom0">
-                                    <div class="col-md-4 textAlign">
+                                    <div class="col-md-3 textAlign">
                                         课题题目
                                     </div>
                                     <div class="col-md-1 textAlign">
@@ -1840,69 +1893,67 @@
                                     <div class="col-md-2 textAlign">
                                         学生学号
                                     </div>
-                                    <div class="col-md-1 textAlign">
-                                        状态
+                                    <div class="col-md-2 textAlign">
+                                        评审分数
                                     </div>
                                     <div class="col-md-2 textAlign">
-                                        分数
+                                        是否同意答辩
                                     </div>
                                     <div class="col-md-2 textAlign">
                                         操作
                                     </div>
                                 </div>
+                                <%if(data==""){%>
+                                <div class="alert alert-warning textAlign border_radius marginBottom0">
+                                    暂无数据
+                                </div>
+                                <%}else{
+                                data.forEach(function(student){%>
                                 <div class="alert alert-warning textEllipsis border_radius marginBottom0">
-                                    <div class="col-md-4 textAlign textEllipsis">
-                                        PMMA灯具基于moldflow三维流动优化的注塑模设计
+                                    <div title="<%=student.pName%>" class="col-md-3 textAlign textEllipsis">
+                                        <%=student.pName%>
                                     </div>
                                     <div class="col-md-1 textAlign textEllipsis">
-                                        张珊珊
+                                        <%=student.name%>
                                     </div>
                                     <div class="col-md-2 textAlign textEllipsis">
-                                        3120150905909
-                                    </div>
-                                    <div class="col-md-1 textAlign textEllipsis">
-                                        已完成
+                                        <%=student.identifier%>
                                     </div>
                                     <div class="col-md-2 textAlign textEllipsis">
-                                        90
+                                        <%if(student.guidanceTeaGroup.hasReviewed) {%>
+                                        <%=student.guidanceTeaGroup.scoreTotal%>
+                                        <%}else {%>
+                                        暂无分数
+                                        <%}%>
+                                    </div>
+                                    <div class="col-md-2 textAlign textEllipsis">
+                                        <%if(student.guidanceTeaGroup.attendDefence) {%>
+                                        同意答辩
+                                        <%}else {%>
+                                        不同意答辩
+                                        <%}%>
                                     </div>
                                     <div class="col-md-2 textAlign">
                                         <button type="button" class="btn btn-info btn-xs" data-toggle="modal"
-                                                data-target="#tutor_viewScore">查看
+                                                data-target="#tutor_viewScore"
+                                                onclick="viewScoreId('<%=student.identifier%>')">查看
                                         </button>
-                                        <button type="button"
-                                                class="management_tutor_scorePlea newPage btn btn-info btn-xs">
+                                        <%if(student.guidanceTeaGroup.hasReviewed) {%>
+                                        <button type="button" class="btn btn-info btn-xs" disabled>
                                             打分
                                         </button>
-                                    </div>
-                                </div>
-                                <div class="alert alert-warning textEllipsis border_radius marginBottom0">
-                                    <div class="col-md-4 textAlign textEllipsis">
-                                        PMMA灯具基于moldflow三维流动优化的注塑模设计
-                                    </div>
-                                    <div class="col-md-1 textAlign textEllipsis">
-                                        张珊珊
-                                    </div>
-                                    <div class="col-md-2 textAlign textEllipsis">
-                                        3120150905909
-                                    </div>
-                                    <div class="col-md-1 textAlign textEllipsis">
-                                        已完成
-                                    </div>
-                                    <div class="col-md-2 textAlign textEllipsis">
-                                        90
-                                    </div>
-                                    <div class="col-md-2 textAlign">
-                                        <button type="button" class="btn btn-info btn-xs" data-toggle="modal"
-                                                data-target="#tutor_viewScore">查看
-                                        </button>
+                                        <%}else{%>
                                         <button type="button"
-                                                class="management_tutor_scorePlea newPage btn btn-info btn-xs">
+                                                onclick="tutor_scorePleaOfStudent('<%=student.identifier%>')"
+                                                class="btn btn-info btn-xs">
                                             打分
                                         </button>
+                                        <%}%>
+
                                     </div>
                                 </div>
-                            </div>
+                                <%})}%>
+                            </script>
                             <!--毕业设计指导教师评审结束-->
                             <!--成绩公示开始-->
                             <div class="tab-pane panel-body" id="reply_results">
@@ -1922,10 +1973,16 @@
                                             学生姓名：
                                         </div>
                                         <div class="col-md-4 col-xs-4">
-                                            <input type="text" class="form-control">
+                                            <input type="text" class="form-control" id="stuName">
+                                        </div>
+                                        <div class="col-md-1 col-xs-1" style="padding: 0px">
+                                            学生学号：
+                                        </div>
+                                        <div class="col-md-4 col-xs-4">
+                                            <input type="text" class="form-control" id="StuId">
                                         </div>
                                         <div class="col-md-2 col-xs-2" style="padding-left: 5px">
-                                            <button type="button" class="btn btn-info">查询</button>
+                                            <button type="button" class="btn btn-info" onclick="resultsRankQuery()">查询</button>
                                         </div>
                                     </div>
                                 </div>
@@ -1936,6 +1993,9 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div id="scoresRanking"></div>
+                            </div>
+                            <script id="scoresRankings" type="text/template">
                                 <div class="alert alert-success textEllipsis border_radius marginBottom0">
                                     <div class="col-md-1 textAlign">
                                         成绩排名
@@ -1943,17 +2003,8 @@
                                     <div class="col-md-3 textAlign">
                                         学生姓名（学号）
                                     </div>
-                                    <div class="col-md-2 textAlign">
+                                    <div class="col-md-5 textAlign">
                                         课题题目
-                                    </div>
-                                    <div class="col-md-1 textAlign padding0">
-                                        指导教师评分
-                                    </div>
-                                    <div class="col-md-1 textAlign">
-                                        评阅人评分
-                                    </div>
-                                    <div class="col-md-1 textAlign">
-                                        答辩评分
                                     </div>
                                     <div class="col-md-1 textAlign">
                                         综合评定成绩
@@ -1962,39 +2013,35 @@
                                         毕业设计成绩等级
                                     </div>
                                 </div>
+                                <%if(data=="") {%>
+                                <div class="alert alert-warning textAlign border_radius marginBottom0">暂无数据</div>
+                                <%} else{
+                                let index = 0;
+                                data.forEach(function(student){
+                                index++; %>
                                 <div class="alert alert-warning textEllipsis border_radius marginBottom0">
                                     <div class="col-md-1 textAlign">
-                                        1
+                                        <%=index%>
                                     </div>
                                     <div class="col-md-3 textAlign textEllipsis">
-                                        王珊珊（3120150905119）
+                                        <%=student.name%>（<%=student.identifier%>）
                                     </div>
-                                    <div class="col-md-2 textAlign textEllipsis">
-                                        PMMA灯具基于moldflow三维 PMMA灯具基于moldflow三维 PMMA灯具基于moldflow三维 PMM
+                                    <div class="col-md-5 textAlign textEllipsis">
+                                        <%=student.pName%>
                                     </div>
+                                    <%if(typeof(student.proScore)=="undefined"||!student.proScore.hasReviewed) {%>
+                                    <div class="col-md-2 textAlign padding0">暂无综合评定成绩</div>
+                                    <%}else{%>
                                     <div class="col-md-1 textAlign">
-                                        <div style="padding-bottom: 2px">
-                                            90
-                                        </div>
-                                    </div>
-                                    <div class="col-md-1 textAlign">
-                                        <div style="padding-bottom: 2px">
-                                            90
-                                        </div>
-                                    </div>
-                                    <div class="col-md-1 textAlign">
-                                        <div style="padding-bottom: 2px">
-                                            90
-                                        </div>
-                                    </div>
-                                    <div class="col-md-1 textAlign">
-                                        90
+                                        <%=student.proScore.scoreTotal%>
                                     </div>
                                     <div class="col-md-2 textAlign">
-                                        B
+                                        <%=student.proScore.grade%>
                                     </div>
+                                    <%}%>
                                 </div>
-                            </div>
+                                <%})}%>
+                            </script>
                             <!--成绩公示结束-->
                         </div>
                     </div>
@@ -2099,6 +2146,9 @@
     <!--查看毕业设计指导教师评审分数详情结束-->
     <!--毕业设计指导教师评审开始-->
     <div id="tutor_scorePlea" class="page-wrapper displayNone">
+
+    </div>
+    <script id="tutor_scorePleas" type="text/template">
         <div style="margin: 0px" class="page-inner">
             <div class="row">
                 <div class="col-md-12">
@@ -2109,18 +2159,15 @@
                         <div class="panel-body">
                             <div class="alert alert-danger textEllipsis border_radius marginBottom0">
                                 <div class="col-md-12 textEllipsis">
-                                    课题题目：PMMA灯具基于moldflow三维流动优化的注塑模设计
+                                    课题题目：<%=data.pName%>
                                 </div>
                             </div>
                             <div class="alert alert-danger textEllipsis border_radius marginBottom0">
                                 <div class="col-md-3">
-                                    学生姓名：王晓霞
+                                    学生姓名：<%=data.name%>
                                 </div>
                                 <div class="col-md-4">
-                                    学生学号：3120150909000
-                                </div>
-                                <div class="col-md-5">
-                                    指导教师姓名：廖永衡
+                                    学生学号：<%=data.identifier%>
                                 </div>
                             </div>
                             <div class="alert alert-success textEllipsis border_radius marginBottom0">
@@ -2261,23 +2308,22 @@
                             <div class="alert alert-warning textEllipsis border_radius marginBottom0">
                                 <div class="col-md-1 padding0">是否同意答辩</div>
                                 <div class="col-md-2">
-                                    <select class="form-control">
-                                        <option value="">是</option>
-                                        <option value="">否</option>
+                                    <select class="form-control" id="agreeReply">
+                                        <option value="1">是</option>
+                                        <option value="0">否</option>
                                     </select>
                                 </div>
-                                <div class="col-md-6"></div>
-                                <div class="col-md-2">总分 <span class="colorf44">20</span></div>
                             </div>
                             <div class="alert alert-warning textEllipsis border_radius marginBottom0">
                                 <div class="col-md-12 textAlign">
                                     <textarea rows="4" class="form-control pleaScoreinput" style="width: 100%"
-                                              placeholder="评语"></textarea>
+                                              placeholder="评语" id="paperComment"></textarea>
                                 </div>
                             </div>
                             <div class="row" style="margin-top: 10px">
                                 <div class="col-md-2">
-                                    <button type="button" class="management_student newPage btn btn-info">
+                                    <button type="button" onclick="graduationDesignReview('<%=data.identifier%>')"
+                                            class="btn btn-info">
                                         确定
                                     </button>
                                 </div>
@@ -2293,10 +2339,12 @@
                 </div>
             </div>
         </div>
-    </div>
+    </script>
     <!--毕业设计指导教师评审开始-->
     <!--查看答辩打分详细信息开始-->
     <div class="modal fade" id="tutor_viewScore" role="dialog">
+    </div>
+    <script id="tutor_viewScores" type="text/template">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -2309,54 +2357,83 @@
                         <strong>
                             <span>课题题目:</span>
                         </strong>
-                        <span>PMMA灯具基于moldflow三维流动优化的注塑模设计</span>
+                        <span><%=data.pName%></span>
                         <hr>
                         <strong>
                             <span>学生姓名（学号）:</span>
                         </strong>
                         <span>
-                            张珊珊（3120150905909）
+                            <%=data.name%>（<%=data.identifier%>）
                         </span>
                         <hr>
+                        <%if(data.guidanceTeaGroup.hasReviewed) {%>
                         <strong>
                             <span>调查、论证</span>
                         </strong>
-                        <span>4</span>
+                        <span><%=data.guidanceTeaGroup.scoreInnovate%></span>
                         <hr>
                         <strong>
                             <span>方案设计与技术路线</span>
                         </strong>
-                        <span>4</span>
+                        <span><%=data.guidanceTeaGroup.scoreInnovate%></span>
                         <hr>
                         <strong>
                             <span>分析与解决问题的能力</span>
                         </strong>
-                        <span>4</span>
+                        <span><%=data.guidanceTeaGroup.scoreInnovate%></span>
                         <hr>
                         <strong>
                             <span>工作量、工作态度</span>
                         </strong>
-                        <span>4</span>
+                        <span><%=data.guidanceTeaGroup.scoreWorkload%></span>
                         <hr>
                         <strong>
                             <span>设计质量及设计说明书质量</span>
                         </strong>
-                        <span>4</span>
+                        <span><%=data.guidanceTeaGroup.scoreInnovate%></span>
                         <hr>
                         <strong>
                             <span>创新</span>
                         </strong>
-                        <span>4</span>
+                        <span><%=data.guidanceTeaGroup.scoreInnovate%></span>
                         <hr>
                         <strong>
-                            <span>总分</span>
+                            <span>评审分数</span>
                         </strong>
-                        <span>4</span>
+                        <span><%=data.guidanceTeaGroup.scoreTotal%></span>
                         <hr>
+                        <strong>
+                            <span>评语</span>
+                        </strong>
+                        <span><%=data.guidanceTeaGroup.comment%></span>
+                        <hr>
+                        <strong>
+                            <span>评审日期</span>
+                        </strong>
+                        <span><%
+                                        var unixTimestamp = new Date( data.guidanceTeaGroup.reviewDate ) ;
+                                        commonTime = unixTimestamp.toLocaleString();
+                                        %>
+                                        <%= commonTime %></span>
+                        <hr>
+                        <%} else{%>
+                        <strong>
+                            <span>评审分数</span>
+                        </strong>
+                        <span>暂无评审分数</span>
+                        <hr>
+                        <%}%>
                         <strong>
                             <span>附件</span>
                         </strong>
-                        <span>附件：开题报告.docx <a style="padding-left: 20px" href="#">点击下载</a></span>
+                        <span>
+                            <% if(typeof(data.graduationProject)=="undefined" || data.graduationProject.docFileId == 0) { %>
+                                        暂未上传毕业设计（论文）相关附件
+                                        <% } else { %>
+                                        <%=data.graduationProject.docFile.fileName %> <a style="padding-left: 20px"
+                                                                                         href="http://www.yuanbw.cn:20086/gpms/rol/downloadFile?fileId=<%=data.graduationProject.docFileId %>">点击下载</a>
+                                        <% } %>
+                        </span>
 
                     </div>
                 </div>
@@ -2365,10 +2442,12 @@
                 </div>
             </div>
         </div>
-    </div>
+    </script>
     <!--查看答辩打分详细信息结束-->
     <!--在线批注开题报告开始-->
     <div id="openingReport" class="page-wrapper displayNone">
+    </div>
+    <script id="openingReports" type="text/template">
         <div style="margin: 0px" class="page-inner">
             <div class="row">
                 <div class="col-md-12">
@@ -2385,9 +2464,15 @@
                             <div class="col-md-12 openingReport">
                                 <div class="col-md-12">
                                     <div class="alert alert-info textEllipsis" style="padding:10px;">
-                                        <div>姓名：王晓霞</div>
-                                        <div>学号：3120150905000</div>
-                                        <div>题目：PMMA灯具基于moldflow三维流动优化的注塑模设计</div>
+                                        <div>姓名：<%=name%></div>
+                                        <div>学号：<%=id%></div>
+                                        <div>题目：<%=title%></div>
+                                        <div>提交日期：<%
+                                            var unixTimestamp = new Date( data.submitDate ) ;
+                                            commonTime = unixTimestamp.toLocaleString();
+                                            %>
+                                            <%= commonTime %>
+                                        </div>
                                     </div>
 
                                 </div>
@@ -2396,16 +2481,15 @@
                                 </div>
                                 <div class="col-md-12">
                                     <textarea class="form-control readOnlyStyle" style="width: 100%;"
-                                              rows="10" readonly>课题研究方案和主要内容
+                                              rows="10" readonly><%=data.aim%>
                                     </textarea>
                                 </div>
-
                                 <div class="col-md-12">
                                     <h5 class="font_bold">课题研究方案和主要内容</h5>
                                 </div>
                                 <div class="col-md-12">
                                     <textarea class="form-control readOnlyStyle" style="width: 100%;"
-                                              rows="10" readonly>课题研究方案和主要内容
+                                              rows="10" readonly><%=data.content%>
                                     </textarea>
                                 </div>
 
@@ -2414,7 +2498,7 @@
                                 </div>
                                 <div class="col-md-12">
                                     <textarea class="form-control readOnlyStyle" style="width: 100%;"
-                                              rows="10" readonly>研究方法及技术途径
+                                              rows="10" readonly><%=data.tech%>
                                     </textarea>
                                 </div>
 
@@ -2423,51 +2507,90 @@
                                 </div>
                                 <div class="col-md-12">
                                     <textarea class="form-control readOnlyStyle" style="width: 100%;"
-                                              rows="10" readonly>实施计划
+                                              rows="10" readonly><%=data.plan%>
                                     </textarea>
                                 </div>
-
-                                <div class="col-md-12">
-                                    <h5 class="font_bold">批注内容</h5>
-                                </div>
-                                <div class="col-md-12">
-                                    <textarea class="form-control" style="width: 100%;"
-                                              rows="10"></textarea>
-                                </div>
-
                                 <div class="col-md-12">
                                     <h5 class="font_bold">附件</h5>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="whiteColor" style="padding:10px;">
-                                        附件：开题报告.docx <a style="padding-left: 20px" href="#">点击下载</a>
+                                        <% if(data.fileId == 0 || typeof(data.file)=="undefined") { %>
+                                        暂未上传开题报告相关附件
+                                        <% } else { %>
+                                        附件：<%=data.file.fileName %> <a style="padding-left: 20px"
+                                                                       href="http://www.yuanbw.cn:20086/gpms/rol/downloadFile?fileId=<%=data.fileId %>">点击下载</a>
+                                        <% } %>
                                     </div>
                                 </div>
+                                <%if(data.cStatus==2) {%>
                                 <div class="col-md-12">
-                                    <h5 class="font_bold">开题报告审核</h5>
+                                    <h5 class="font_bold">批注内容</h5>
                                 </div>
                                 <div class="col-md-12">
-                                    <textarea class="form-control" style="width: 100%" rows="1"></textarea>
+                                    <textarea class="form-control" style="width: 100%;"
+                                              rows="4" id="annotationReport"></textarea>
+                                </div>
+                                <div class="col-md-12">
+                                    <h5 class="font_bold">开题报告审核建议</h5>
+                                </div>
+                                <div class="col-md-12">
+                                    <textarea id="suggestReport" class="form-control" style="width: 100%"
+                                              rows="1"></textarea>
                                 </div>
                                 <div class="col-md-12">
                                     <h5 class="font_bold">开题报告审核结果</h5>
                                 </div>
                                 <div class="col-md-12">
-                                    <select class="form-control">
-                                        <option value="topicTitle">审核通过</option>
-                                        <option value="reviewStatus">审核不通过</option>
+                                    <select id="statusReport" class="form-control">
+                                        <option value="1">审核通过</option>
+                                        <option value="0">审核不通过</option>
                                     </select>
                                 </div>
+                                <%}else {%>
+                                <div class="col-md-12">
+                                    <h5 class="font_bold">批注内容</h5>
+                                </div>
+                                <div class="col-md-12">
+                                    <textarea class="form-control readOnlyStyle" style="width: 100%;"
+                                              rows="4" readonly><%=data.annotation%></textarea>
+                                </div>
+                                <div class="col-md-12">
+                                    <h5 class="font_bold">开题报告审核建议</h5>
+                                </div>
+                                <div class="col-md-12">
+                                    <textarea class="form-control readOnlyStyle" style="width: 100%" rows="1" readonly><%=data.cSuggest%></textarea>
+                                </div>
+                                <div class="col-md-12">
+                                    <h5 class="font_bold">开题报告审核结果</h5>
+                                </div>
+                                <div class="col-md-12">
+                                    <% let cStatus;
+                                    if(data.cStatus==1) {
+                                    cStatus = "审核通过";
+                                    }else {
+                                    cStatus = "审核不通过";
+                                    }
+                                    %>
+                                    <textarea class="form-control readOnlyStyle" style="width: 100%" rows="1" readonly><%=cStatus%></textarea>
+                                </div>
+                                <%}%>
                                 <div class="col-md-12" style="margin-top: 10px">
                                     <div class="col-md-2 padding0">
-                                        <button onclick="modifyOpeningReport()" type="button"
+                                        <%if(data.cStatus==2) {%>
+                                        <button onclick="reviewReport('<%=id%>','1')" type="button"
                                                 class="management_student newPage btn btn-info">
                                             确定
                                         </button>
+                                        <%}else {%>
+                                        <button type="button" class="btn btn-info" disabled>
+                                            确定
+                                        </button>
+                                        <%}%>
                                     </div>
                                     <div class="col-md-1 padding0">
-                                        <button type="button"
-                                                class="management_student newPage btn btn-success ">
+                                        <button type="button" onclick="returnStudent('openingReport')"
+                                                class="btn btn-success ">
                                             取消
                                         </button>
                                     </div>
@@ -2478,10 +2601,12 @@
                 </div>
             </div>
         </div>
-    </div>
+    </script>
     <!--在线批注开题报告结束-->
     <!--在线批注中期检查开始-->
     <div id="Intermediate" class="page-wrapper displayNone">
+    </div>
+    <script id="Intermediates" type="text/template">
         <div style="margin: 0px" class="page-inner">
             <div class="row">
                 <div class="col-md-12">
@@ -2498,9 +2623,15 @@
                             <div class="col-md-12 openingReport">
                                 <div class="col-md-12">
                                     <div class="alert alert-info textEllipsis" style="padding:10px;">
-                                        <div>姓名：王晓霞</div>
-                                        <div>学号：3120150905000</div>
-                                        <div>题目：PMMA灯具基于moldflow三维流动优化的注塑模设计</div>
+                                        <div>姓名：<%=name%></div>
+                                        <div>学号：<%=id%></div>
+                                        <div>题目：<%=title%></div>
+                                        <div>提交日期：<%
+                                            var unixTimestamp = new Date( data.submitDate ) ;
+                                            commonTime = unixTimestamp.toLocaleString();
+                                            %>
+                                            <%= commonTime %>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
@@ -2508,49 +2639,90 @@
                                 </div>
                                 <div class="col-md-12">
                                     <textarea class="form-control readOnlyStyle" style="width: 100%;"
-                                              rows="10" readonly>中期检查内容
+                                              rows="10" readonly><%=data.intro%>
                                     </textarea>
-                                </div>
-                                <div class="col-md-12">
-                                    <h5 class="font_bold">批注内容</h5>
-                                </div>
-                                <div class="col-md-12">
-                                    <textarea class="form-control" style="width: 100%;"
-                                              rows="10"></textarea>
                                 </div>
                                 <div class="col-md-12">
                                     <h5 class="font_bold">附件</h5>
                                 </div>
                                 <div class="col-md-12" style="margin-top: 10px">
                                     <div class="whiteColor" style="padding:10px;">
-                                        附件：开题报告.docx <a style="padding-left: 20px" href="#">点击下载</a>
+                                        <% if(data.fileId == 0 || typeof(data.file)=="undefined") { %>
+                                        暂未上传开中期检查相关附件
+                                        <% } else { %>
+                                        附件：<%=data.file.fileName %> <a style="padding-left: 20px"
+                                                                       href="http://www.yuanbw.cn:20086/gpms/rol/downloadFile?fileId=<%=data.fileId %>">点击下载</a>
+                                        <% } %>
                                     </div>
                                 </div>
+                                <%if(data.cStatus==2) {%>
                                 <div class="col-md-12">
-                                    <h5 class="font_bold">中期检查审核</h5>
+                                    <h5 class="font_bold">批注内容</h5>
                                 </div>
                                 <div class="col-md-12">
-                                    <textarea class="form-control" style="width: 100%" rows="1"></textarea>
+                                    <textarea class="form-control" style="width: 100%;"
+                                              rows="4" id="annotationIntermediate"></textarea>
+                                </div>
+                                <div class="col-md-12">
+                                    <h5 class="font_bold">开题报告审核建议</h5>
+                                </div>
+                                <div class="col-md-12">
+                                    <textarea id="suggestIntermediate" class="form-control" style="width: 100%"
+                                              rows="1"></textarea>
+                                </div>
+                                <div class="col-md-12">
+                                    <h5 class="font_bold">开题报告审核结果</h5>
+                                </div>
+                                <div class="col-md-12">
+                                    <select id="statusIntermediate" class="form-control">
+                                        <option value="1">审核通过</option>
+                                        <option value="0">审核不通过</option>
+                                    </select>
+                                </div>
+                                <%}else {%>
+                                <div class="col-md-12">
+                                    <h5 class="font_bold">批注内容</h5>
+                                </div>
+                                <div class="col-md-12">
+                                    <textarea class="form-control readOnlyStyle" style="width: 100%;"
+                                              rows="4" readonly><%=data.annotation%></textarea>
+                                </div>
+                                <div class="col-md-12">
+                                    <h5 class="font_bold">中期检查审核建议</h5>
+                                </div>
+                                <div class="col-md-12">
+                                    <textarea class="form-control readOnlyStyle" style="width: 100%" rows="1" readonly><%=data.cSuggest%></textarea>
                                 </div>
                                 <div class="col-md-12">
                                     <h5 class="font_bold">中期检查审核结果</h5>
                                 </div>
                                 <div class="col-md-12">
-                                    <select class="form-control">
-                                        <option value="topicTitle">审核通过</option>
-                                        <option value="reviewStatus">审核不通过</option>
-                                    </select>
+                                    <% let cStatus;
+                                    if(data.cStatus==1) {
+                                    cStatus = "审核通过";
+                                    }else {
+                                    cStatus = "审核不通过";
+                                    }
+                                    %>
+                                    <textarea class="form-control readOnlyStyle" style="width: 100%" rows="1" readonly><%=cStatus%></textarea>
                                 </div>
+                                <%}%>
                                 <div class="col-md-12" style="margin-top: 10px">
                                     <div class="col-md-2 padding0">
-                                        <button onclick="modifyOpeningReport()" type="button"
+                                        <%if(data.cStatus==2) {%>
+                                        <button onclick="reviewIntermediate('<%=id%>','2')" type="button"
                                                 class="management_student newPage btn btn-info">
                                             确定
                                         </button>
+                                        <%}else {%>
+                                        <button type="button" class="btn btn-info" disabled>
+                                            确定
+                                        </button>
+                                        <%}%>
                                     </div>
                                     <div class="col-md-1 padding0">
-                                        <button type="button"
-                                                class="management_student newPage btn btn-success ">
+                                        <button type="button" onclick="returnStudent('Intermediate')"
+                                                class="btn btn-success ">
                                             取消
                                         </button>
                                     </div>
@@ -2561,10 +2733,12 @@
                 </div>
             </div>
         </div>
-    </div>
+    </script>
     <!--在线批注中期检查结束-->
     <!--在线批注指导记录开始-->
     <div id="GuideRecord" class="page-wrapper displayNone">
+    </div>
+    <script id="GuideRecords" type="text/template">
         <div style="margin: 0px" class="page-inner">
             <div class="row">
                 <div class="col-md-12">
@@ -2581,9 +2755,9 @@
                             <div class="col-md-12 openingReport">
                                 <div class="col-md-12">
                                     <div class="alert alert-info textEllipsis" style="padding:10px;">
-                                        <div>姓名：王晓霞</div>
-                                        <div>学号：3120150905000</div>
-                                        <div>题目：PMMA灯具基于moldflow三维流动优化的注塑模设计</div>
+                                        <div>姓名：<%=name%></div>
+                                        <div>学号：<%=id%></div>
+                                        <div>题目：<%=title%></div>
                                     </div>
                                 </div>
                                 <div class="alert alert-success textEllipsis border_radius marginBottom0">
@@ -2594,7 +2768,7 @@
                                         提交时间
                                     </div>
                                     <div class="col-md-1 textAlign">
-                                        提交次数
+                                        记录编号
                                     </div>
                                     <div class="col-md-3 textAlign">
                                         审核状态
@@ -2603,23 +2777,59 @@
                                         操作
                                     </div>
                                 </div>
+                                <% let index=0;
+                                data.forEach(function(guide){
+                                index++; %>
                                 <div class="alert alert-danger textEllipsis border_radius marginBottom0">
-                                    <div title="PMMA灯具基于moldflow三维流动优化的注塑模设计" class="col-md-3 textEllipsis textAlign">
-                                        PMMA灯具基于moldflow三维流动优化的注塑模设计
+                                    <div title="<%=title%>" class="col-md-3 textEllipsis textAlign">
+                                        <%=title%>
                                     </div>
                                     <div class="col-md-3 textEllipsis textAlign">
-                                        2018-11-25 15:49:48
+                                        <%
+                                        var unixTimestamp = new Date( guide.submitDate ) ;
+                                        commonTime = unixTimestamp.toLocaleString();
+                                        %>
+                                        <%= commonTime %>
                                     </div>
                                     <div class="col-md-1 textEllipsis textAlign">
-                                        1
+                                        <%=index%>
                                     </div>
                                     <div class="col-md-3 textAlign textEllipsis">
+                                        <%if(guide.cStatus==1){%>
+                                        审核通过
+                                        <%}else if(guide.cStatus==0) {%>
+                                        审核不通过
+                                        <%}else {%>
                                         等待指导教师审核
+                                        <%}%>
                                     </div>
                                     <div class="col-md-2 textEllipsis textAlign">
-                                        <button style="margin-bottom: 10px" type="button"
+                                        <button onclick="queryguideView('<%=id%>','<%=guide.id%>','query')"
+                                                style="margin-bottom: 10px" type="button"
                                                 class="management_guideView newPage btn btn-info btn-xs">
                                             查看
+                                        </button>
+                                        <%if(guide.cStatus==1||guide.cStatus==0) {%>
+                                        <button style="margin-bottom: 10px" type="button"
+                                                class="btn btn-info btn-xs" disabled>
+                                            审核
+                                        </button>
+                                        <%}else{%>
+                                        <button style="margin-bottom: 10px" type="button"
+                                                onclick="queryguideView('<%=id%>','<%=guide.id%>','notQuery')"
+                                                class="newPage btn btn-info btn-xs">
+                                            审核
+                                        </button>
+                                        <%}%>
+                                    </div>
+                                </div>
+                                <%})%>
+                                <div class="col-md-12" style="margin-top: 10px">
+                                    <div class="col-md-11"></div>
+                                    <div class="col-md-1">
+                                        <button type="button" onclick="returnStudent('GuideRecord')"
+                                                class="btn btn-success ">
+                                            返回
                                         </button>
                                     </div>
                                 </div>
@@ -2629,10 +2839,12 @@
                 </div>
             </div>
         </div>
-    </div>
+    </script>
     <!--在线批注指导记录结束-->
     <!--查看指导记录开始-->
     <div id="guideView" class="page-wrapper displayNone">
+    </div>
+    <script id="guideViews" type="text/template">
         <div style="margin: 0px" class="page-inner">
             <div class="row">
                 <div class="col-md-12">
@@ -2649,9 +2861,16 @@
                             <div class="col-md-12 openingReport">
                                 <div class="col-md-12">
                                     <div class="alert alert-info textEllipsis" style="padding:10px;">
-                                        <div>姓名：王晓霞</div>
-                                        <div>学号：3120150905000</div>
-                                        <div>题目：PMMA灯具基于moldflow三维流动优化的注塑模设计</div>
+                                        <div>姓名：<%=name%></div>
+                                        <div>学号：<%=id%></div>
+                                        <div>题目：<%=title%></div>
+                                        <div>提交时间：
+                                            <%
+                                            var unixTimestamp = new Date( data.submitDate ) ;
+                                            commonTime = unixTimestamp.toLocaleString();
+                                            %>
+                                            <%= commonTime %>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
@@ -2659,7 +2878,7 @@
                                 </div>
                                 <div class="col-md-12">
                                     <textarea class="form-control readOnlyStyle" style="width: 100%;"
-                                              rows="10" readonly>主题
+                                              rows="10" readonly><%=data.theme%>
                                     </textarea>
                                 </div>
                                 <div class="col-md-12">
@@ -2667,7 +2886,7 @@
                                 </div>
                                 <div class="col-md-12">
                                     <textarea class="form-control readOnlyStyle" style="width: 100%;"
-                                              rows="10" readonly>指导时间
+                                              rows="10" readonly><%=data.date%>
                                     </textarea>
                                 </div>
                                 <div class="col-md-12">
@@ -2675,63 +2894,112 @@
                                 </div>
                                 <div class="col-md-12">
                                     <textarea class="form-control readOnlyStyle" style="width: 100%;"
-                                              rows="10" readonly>主要工作
+                                              rows="10" readonly><%=data.work%>
                                     </textarea>
-                                </div>
-                                <div class="col-md-12">
-                                    <h5 class="font_bold">批注内容</h5>
-                                </div>
-                                <div class="col-md-12">
-                                    <textarea class="form-control" style="width: 100%;"
-                                              rows="10"></textarea>
                                 </div>
                                 <div class="col-md-12">
                                     <h5 class="font_bold">附件</h5>
                                 </div>
                                 <div class="col-md-12" style="margin-top: 10px">
                                     <div class="whiteColor" style="padding:10px;">
-                                        附件：开题报告.docx <a style="padding-left: 20px" href="#">点击下载</a>
+                                        <% if(data.fileId == 0 || typeof(data.file)=="undefined") { %>
+                                        暂未上传指导记录相关附件
+                                        <% } else { %>
+                                        附件：<%=data.file.fileName %> <a style="padding-left: 20px"
+                                                                       href="http://www.yuanbw.cn:20086/gpms/rol/downloadFile?fileId=<%=data.fileId %>">点击下载</a>
+                                        <% } %>
                                     </div>
+                                </div>
+                                <%if(isQuery=="notQuery") {%>
+                                <div class="col-md-12">
+                                    <h5 class="font_bold">批注内容</h5>
+                                </div>
+                                <div class="col-md-12">
+                                    <textarea id="annotationGuideView" class="form-control" style="width: 100%;"
+                                              rows="4"></textarea>
                                 </div>
                                 <div class="col-md-12">
                                     <h5 class="font_bold">指导记录审核</h5>
                                 </div>
                                 <div class="col-md-12">
-                                    <textarea class="form-control" style="width: 100%" rows="1"></textarea>
+                                    <textarea id="suggestGuideView" class="form-control" style="width: 100%"
+                                              rows="1"></textarea>
                                 </div>
                                 <div class="col-md-12">
                                     <h5 class="font_bold">指导记录审核结果</h5>
                                 </div>
                                 <div class="col-md-12">
-                                    <select class="form-control">
-                                        <option value="topicTitle">审核通过</option>
-                                        <option value="reviewStatus">审核不通过</option>
+                                    <select id="statusGuideView" class="form-control">
+                                        <option value="1">审核通过</option>
+                                        <option value="0">审核不通过</option>
                                     </select>
                                 </div>
                                 <div class="col-md-12" style="margin-top: 10px">
                                     <div class="col-md-2 padding0">
-                                        <button onclick="modifyOpeningReport()" type="button"
-                                                class="management_student newPage btn btn-info">
+                                        <button onclick="auditGuidanceRecords('<%=id%>','<%=data.id%>')" type="button"
+                                                class="btn btn-info">
                                             确定
                                         </button>
                                     </div>
                                     <div class="col-md-1 padding0">
-                                        <button type="button"
-                                                class="management_student newPage btn btn-success ">
+                                        <button type="button" onclick="noneOrBlock('guideView', 'GuideRecord')"
+                                                class="btn btn-success ">
                                             取消
                                         </button>
                                     </div>
                                 </div>
+                                <%}else {if(data.cStatus==0||data.cStatus==1) {%>
+                                <div class="col-md-12">
+                                    <h5 class="font_bold">批注内容</h5>
+                                </div>
+                                <div class="col-md-12">
+                                    <textarea class="form-control readOnlyStyle" style="width: 100%;"
+                                              rows="4"><%=data.annotation%></textarea>
+                                </div>
+                                <div class="col-md-12">
+                                    <h5 class="font_bold">指导记录审核意见</h5>
+                                </div>
+                                <div class="col-md-12">
+                                    <textarea class="form-control readOnlyStyle" style="width: 100%"
+                                              rows="1"><%=data.cSuggest%></textarea>
+                                </div>
+                                <%}%>
+                                <div class="col-md-12">
+                                    <h5 class="font_bold">指导记录审核结果</h5>
+                                </div>
+                                <div class="col-md-12">
+                                    <% let cStatus;
+                                    if(data.cStatus==1) {
+                                    cStatus = "审核通过";
+                                    }else if(data.cStatus==0){
+                                    cStatus = "审核不通过";
+                                    }else {
+                                    cStatus = "审核中";
+                                    }
+                                    %>
+                                    <textarea class="form-control readOnlyStyle" style="width: 100%" rows="1" readonly><%=cStatus%></textarea>
+                                </div>
+                                <div class="col-md-12" style="margin-top: 10px">
+                                    <div class="col-md-1 padding0">
+                                        <button type="button" onclick="noneOrBlock('guideView', 'GuideRecord')"
+                                                class="btn btn-success ">
+                                            返回
+                                        </button>
+                                    </div>
+                                </div>
+                                <%}%>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </script>
     <!--查看指导记录结束-->
     <!--在线批注外文译文和原文开始-->
     <div id="ForeignTranslation" class="page-wrapper displayNone">
+    </div>
+    <script id="ForeignTranslations" type="text/template">
         <div style="margin: 0px" class="page-inner">
             <div class="row">
                 <div class="col-md-12">
@@ -2748,9 +3016,15 @@
                             <div class="col-md-12 openingReport">
                                 <div class="col-md-12">
                                     <div class="alert alert-info textEllipsis" style="padding:10px;">
-                                        <div>姓名：王晓霞</div>
-                                        <div>学号：3120150905000</div>
-                                        <div>题目：PMMA灯具基于moldflow三维流动优化的注塑模设计</div>
+                                        <div>姓名：<%=name%></div>
+                                        <div>学号：<%=id%></div>
+                                        <div>题目：<%=title%></div>
+                                        <div>提交日期：<%
+                                            var unixTimestamp = new Date( data.submitDate ) ;
+                                            commonTime = unixTimestamp.toLocaleString();
+                                            %>
+                                            <%= commonTime %>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
@@ -2758,7 +3032,7 @@
                                 </div>
                                 <div class="col-md-12">
                                     <textarea class="form-control readOnlyStyle" style="width: 100%;"
-                                              rows="10" readonly>外文译文内容
+                                              rows="10" readonly><%=data.foreign%>
                                     </textarea>
                                 </div>
                                 <div class="col-md-12">
@@ -2766,22 +3040,20 @@
                                 </div>
                                 <div class="col-md-12">
                                     <textarea class="form-control readOnlyStyle" style="width: 100%;"
-                                              rows="10" readonly>原文内容
+                                              rows="10" readonly><%=data.original%>
                                     </textarea>
-                                </div>
-                                <div class="col-md-12">
-                                    <h5 class="font_bold">批注内容</h5>
-                                </div>
-                                <div class="col-md-12">
-                                    <textarea class="form-control" style="width: 100%;"
-                                              rows="10"></textarea>
                                 </div>
                                 <div class="col-md-12">
                                     <h5 class="font_bold">外文译文附件</h5>
                                 </div>
                                 <div class="col-md-12" style="margin-top: 10px">
                                     <div class="whiteColor" style="padding:10px;">
-                                        附件：开题报告.docx <a style="padding-left: 20px" href="#">点击下载</a>
+                                        <% if(data.forFileId == 0 || typeof(data.forFile)=="undefined") { %>
+                                        暂未上传外文译文附件相关附件
+                                        <% } else { %>
+                                        附件：<%=data.forFile.fileName %> <a style="padding-left: 20px"
+                                                                          href="http://www.yuanbw.cn:20086/gpms/rol/downloadFile?fileId=<%=data.forFileId %>">点击下载</a>
+                                        <% } %>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
@@ -2789,34 +3061,82 @@
                                 </div>
                                 <div class="col-md-12" style="margin-top: 10px">
                                     <div class="whiteColor" style="padding:10px;">
-                                        附件：开题报告.docx <a style="padding-left: 20px" href="#">点击下载</a>
+                                        <% if(data.oriFileId == 0 || typeof(data.oriFile)=="undefined") { %>
+                                        原文附件
+                                        <% } else { %>
+                                        附件：<%=data.oriFile.fileName %> <a style="padding-left: 20px"
+                                                                          href="http://www.yuanbw.cn:20086/gpms/rol/downloadFile?fileId=<%=data.oriFileId %>">点击下载</a>
+                                        <% } %>
                                     </div>
                                 </div>
+                                <%if(data.cStatus==2) {%>
                                 <div class="col-md-12">
-                                    <h5 class="font_bold">外文译文和原文审核</h5>
+                                    <h5 class="font_bold">批注内容</h5>
                                 </div>
                                 <div class="col-md-12">
-                                    <textarea class="form-control" style="width: 100%" rows="1"></textarea>
+                                    <textarea class="form-control" style="width: 100%;"
+                                              rows="4" id="annotationForeignTranslation"></textarea>
                                 </div>
                                 <div class="col-md-12">
-                                    <h5 class="font_bold">外文译文和原文审核结果</h5>
+                                    <h5 class="font_bold">开题报告审核建议</h5>
                                 </div>
                                 <div class="col-md-12">
-                                    <select class="form-control">
-                                        <option value="topicTitle">审核通过</option>
-                                        <option value="reviewStatus">审核不通过</option>
+                                    <textarea id="suggestForeignTranslation" class="form-control" style="width: 100%"
+                                              rows="1"></textarea>
+                                </div>
+                                <div class="col-md-12">
+                                    <h5 class="font_bold">开题报告审核结果</h5>
+                                </div>
+                                <div class="col-md-12">
+                                    <select id="statusForeignTranslation" class="form-control">
+                                        <option value="1">审核通过</option>
+                                        <option value="0">审核不通过</option>
                                     </select>
                                 </div>
+                                <%}else {%>
+                                <div class="col-md-12">
+                                    <h5 class="font_bold">批注内容</h5>
+                                </div>
+                                <div class="col-md-12">
+                                    <textarea class="form-control readOnlyStyle" style="width: 100%;"
+                                              rows="4" readonly><%=data.annotation%></textarea>
+                                </div>
+                                <div class="col-md-12">
+                                    <h5 class="font_bold">中期检查审核建议</h5>
+                                </div>
+                                <div class="col-md-12">
+                                    <textarea class="form-control readOnlyStyle" style="width: 100%" rows="1" readonly><%=data.cSuggest%></textarea>
+                                </div>
+                                <div class="col-md-12">
+                                    <h5 class="font_bold">中期检查审核结果</h5>
+                                </div>
+                                <div class="col-md-12">
+                                    <% let cStatus;
+                                    if(data.cStatus==1) {
+                                    cStatus = "审核通过";
+                                    }else {
+                                    cStatus = "审核不通过";
+                                    }
+                                    %>
+                                    <textarea class="form-control readOnlyStyle" style="width: 100%" rows="1" readonly><%=cStatus%></textarea>
+                                </div>
+                                <%}%>
                                 <div class="col-md-12" style="margin-top: 10px">
                                     <div class="col-md-2 padding0">
-                                        <button onclick="modifyOpeningReport()" type="button"
+                                        <%if(data.cStatus==2) {%>
+                                        <button onclick="reviewForeignTranslation('<%=id%>','3')" type="button"
                                                 class="management_student newPage btn btn-info">
                                             确定
                                         </button>
+                                        <%}else {%>
+                                        <button type="button" class="btn btn-info" disabled>
+                                            确定
+                                        </button>
+                                        <%}%>
                                     </div>
                                     <div class="col-md-1 padding0">
-                                        <button type="button"
-                                                class="management_student newPage btn btn-success ">
+                                        <button type="button" onclick="returnStudent('ForeignTranslation')"
+                                                class="btn btn-success ">
                                             取消
                                         </button>
                                     </div>
@@ -2827,10 +3147,12 @@
                 </div>
             </div>
         </div>
-    </div>
+    </script>
     <!--在线批注外文译文和原文结束-->
     <!--在线批注文献综述开始-->
     <div id="LiteratureReview" class="page-wrapper displayNone">
+    </div>
+    <script id="LiteratureReviews" type="text/template">
         <div style="margin: 0px" class="page-inner">
             <div class="row">
                 <div class="col-md-12">
@@ -2847,9 +3169,15 @@
                             <div class="col-md-12 openingReport">
                                 <div class="col-md-12">
                                     <div class="alert alert-info textEllipsis" style="padding:10px;">
-                                        <div>姓名：王晓霞</div>
-                                        <div>学号：3120150905000</div>
-                                        <div>题目：PMMA灯具基于moldflow三维流动优化的注塑模设计</div>
+                                        <div>姓名：<%=name%></div>
+                                        <div>学号：<%=id%></div>
+                                        <div>题目：<%=title%></div>
+                                        <div>提交日期：<%
+                                            var unixTimestamp = new Date( data.submitDate ) ;
+                                            commonTime = unixTimestamp.toLocaleString();
+                                            %>
+                                            <%= commonTime %>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
@@ -2857,49 +3185,90 @@
                                 </div>
                                 <div class="col-md-12">
                                     <textarea class="form-control readOnlyStyle" style="width: 100%;"
-                                              rows="10" readonly>文献综述内容
+                                              rows="10" readonly><%=data.intro%>
                                     </textarea>
-                                </div>
-                                <div class="col-md-12">
-                                    <h5 class="font_bold">批注内容</h5>
-                                </div>
-                                <div class="col-md-12">
-                                    <textarea class="form-control" style="width: 100%;"
-                                              rows="10"></textarea>
                                 </div>
                                 <div class="col-md-12">
                                     <h5 class="font_bold">附件</h5>
                                 </div>
                                 <div class="col-md-12" style="margin-top: 10px">
                                     <div class="whiteColor" style="padding:10px;">
-                                        附件：开题报告.docx <a style="padding-left: 20px" href="#">点击下载</a>
+                                        <% if(data.fileId == 0 || typeof(data.file)=="undefined") { %>
+                                        暂未上传文献综述相关附件
+                                        <% } else { %>
+                                        附件：<%=data.file.fileName %> <a style="padding-left: 20px"
+                                                                       href="http://www.yuanbw.cn:20086/gpms/rol/downloadFile?fileId=<%=data.fileId %>">点击下载</a>
+                                        <% } %>
                                     </div>
                                 </div>
+                                <%if(data.cStatus==2) {%>
                                 <div class="col-md-12">
-                                    <h5 class="font_bold">文献综述审核</h5>
+                                    <h5 class="font_bold">批注内容</h5>
                                 </div>
                                 <div class="col-md-12">
-                                    <textarea class="form-control" style="width: 100%" rows="1"></textarea>
+                                    <textarea class="form-control" style="width: 100%;"
+                                              rows="4" id="annotationLiteratureReview"></textarea>
                                 </div>
                                 <div class="col-md-12">
-                                    <h5 class="font_bold">文献综述审核结果</h5>
+                                    <h5 class="font_bold">开题报告审核建议</h5>
                                 </div>
                                 <div class="col-md-12">
-                                    <select class="form-control">
-                                        <option value="topicTitle">审核通过</option>
-                                        <option value="reviewStatus">审核不通过</option>
+                                    <textarea id="suggestLiteratureReview" class="form-control" style="width: 100%"
+                                              rows="1"></textarea>
+                                </div>
+                                <div class="col-md-12">
+                                    <h5 class="font_bold">开题报告审核结果</h5>
+                                </div>
+                                <div class="col-md-12">
+                                    <select id="statusLiteratureReview" class="form-control">
+                                        <option value="1">审核通过</option>
+                                        <option value="0">审核不通过</option>
                                     </select>
                                 </div>
+                                <%}else {%>
+                                <div class="col-md-12">
+                                    <h5 class="font_bold">批注内容</h5>
+                                </div>
+                                <div class="col-md-12">
+                                    <textarea class="form-control readOnlyStyle" style="width: 100%;"
+                                              rows="4" readonly><%=data.annotation%></textarea>
+                                </div>
+                                <div class="col-md-12">
+                                    <h5 class="font_bold">中期检查审核建议</h5>
+                                </div>
+                                <div class="col-md-12">
+                                    <textarea class="form-control readOnlyStyle" style="width: 100%" rows="1" readonly><%=data.cSuggest%></textarea>
+                                </div>
+                                <div class="col-md-12">
+                                    <h5 class="font_bold">中期检查审核结果</h5>
+                                </div>
+                                <div class="col-md-12">
+                                    <% let cStatus;
+                                    if(data.cStatus==1) {
+                                    cStatus = "审核通过";
+                                    }else {
+                                    cStatus = "审核不通过";
+                                    }
+                                    %>
+                                    <textarea class="form-control readOnlyStyle" style="width: 100%" rows="1" readonly><%=cStatus%></textarea>
+                                </div>
+                                <%}%>
                                 <div class="col-md-12" style="margin-top: 10px">
                                     <div class="col-md-2 padding0">
-                                        <button onclick="modifyOpeningReport()" type="button"
-                                                class="management_student newPage btn btn-info">
+                                        <%if(data.cStatus==2) {%>
+                                        <button onclick="reviewLiteratureReview('<%=id%>','4')" type="button"
+                                                class="btn btn-info">
                                             确定
                                         </button>
+                                        <%}else {%>
+                                        <button type="button" class="btn btn-info" disabled>
+                                            确定
+                                        </button>
+                                        <%}%>
                                     </div>
                                     <div class="col-md-1 padding0">
-                                        <button type="button"
-                                                class="management_student newPage btn btn-success ">
+                                        <button type="button" onclick="returnStudent('LiteratureReview')"
+                                                class="btn btn-success ">
                                             取消
                                         </button>
                                     </div>
@@ -2910,10 +3279,12 @@
                 </div>
             </div>
         </div>
-    </div>
+    </script>
     <!--在线批注文献综述结束-->
     <!--在线批注毕业设计（论文）开始-->
     <div id="GraduationDesign" class="page-wrapper displayNone">
+    </div>
+    <script id="GraduationDesigns" type="text/template">
         <div style="margin: 0px" class="page-inner">
             <div class="row">
                 <div class="col-md-12">
@@ -2930,45 +3301,81 @@
                             <div class="col-md-12 openingReport">
                                 <div class="col-md-12">
                                     <div class="alert alert-info textEllipsis" style="padding:10px;">
-                                        <div>姓名：王晓霞</div>
-                                        <div>学号：3120150905000</div>
-                                        <div>题目：PMMA灯具基于moldflow三维流动优化的注塑模设计</div>
+                                        <div>姓名：<%=name%></div>
+                                        <div>学号：<%=id%></div>
+                                        <div>题目：<%=title%></div>
                                     </div>
                                 </div>
                                 <div class="alert alert-success textEllipsis border_radius marginBottom0">
-                                    <div class="col-md-4 textAlign">
+                                    <div class="col-md-3 textAlign">
                                         课题题目
                                     </div>
                                     <div class="col-md-3 textAlign">
                                         提交时间
                                     </div>
                                     <div class="col-md-1 textAlign">
-                                        提交次数
+                                        记录编号
                                     </div>
                                     <div class="col-md-3 textAlign">
                                         审核状态
                                     </div>
-                                    <div class="col-md-1 textAlign">
+                                    <div class="col-md-2 textAlign">
                                         操作
                                     </div>
                                 </div>
+                                <%data.forEach(function(student){
+                                let index = 0;
+                                index++;%>
                                 <div class="alert alert-danger textEllipsis border_radius marginBottom0">
-                                    <div title="PMMA灯具基于moldflow三维流动优化的注塑模设计" class="col-md-4 textEllipsis textAlign">
-                                        PMMA灯具基于moldflow三维流动优化的注塑模设计
+                                    <div title="<%=title%>" class="col-md-3 textEllipsis textAlign">
+                                        <%=title%>
                                     </div>
                                     <div class="col-md-3 textEllipsis textAlign">
-                                        2018-11-25 15:49:48
+                                        <%
+                                        var unixTimestamp = new Date( student.submitDate ) ;
+                                        commonTime = unixTimestamp.toLocaleString();
+                                        %>
+                                        <%= commonTime %>
                                     </div>
                                     <div class="col-md-1 textEllipsis textAlign">
-                                        1
+                                        <%=index%>
                                     </div>
                                     <div class="col-md-3 textAlign textEllipsis">
+                                        <%if(student.cStatus==1){%>
+                                        审核通过
+                                        <%}else if(student.cStatus==0) {%>
+                                        审核不通过
+                                        <%}else {%>
                                         等待指导教师审核
+                                        <%}%>
                                     </div>
-                                    <div class="col-md-1 textEllipsis textAlign">
+                                    <div class="col-md-2 textEllipsis textAlign">
                                         <button style="margin-bottom: 10px" type="button"
-                                                class="management_graduationView newPage btn btn-info btn-xs">
+                                                onclick="queryGraduationView('<%=id%>','<%=student.id%>','query')"
+                                                class="btn btn-info btn-xs">
                                             查看
+                                        </button>
+                                        <%if(student.cStatus==1||student.cStatus==0) {%>
+                                        <button style="margin-bottom: 10px" type="button"
+                                                class="btn btn-info btn-xs" disabled>
+                                            审核
+                                        </button>
+                                        <%} else{%>
+                                        <button style="margin-bottom: 10px" type="button"
+                                                onclick="queryGraduationView('<%=id%>','<%=student.id%>','notQuery')"
+                                                class="btn btn-info btn-xs">
+                                            审核
+                                        </button>
+                                        <%}%>
+                                    </div>
+                                </div>
+                                <%})%>
+                                <div class="col-md-12" style="margin-top: 10px">
+                                    <div class="col-md-11"></div>
+                                    <div class="col-md-1">
+                                        <button type="button" onclick="returnStudent('GraduationDesign')"
+                                                class="btn btn-success ">
+                                            返回
                                         </button>
                                     </div>
                                 </div>
@@ -2978,10 +3385,12 @@
                 </div>
             </div>
         </div>
-    </div>
+    </script>
     <!--在线批注毕业设计（论文）结束-->
     <!--查看毕业设计（论文）开始-->
     <div id="graduationView" class="page-wrapper displayNone">
+    </div>
+    <script id="graduationViews" type="text/template">
         <div style="margin: 0px" class="page-inner">
             <div class="row">
                 <div class="col-md-12">
@@ -2998,110 +3407,174 @@
                             <div class="col-md-12 openingReport">
                                 <div class="col-md-12">
                                     <div class="alert alert-info textEllipsis" style="padding:10px;">
-                                        <div>姓名：王晓霞</div>
-                                        <div>学号：3120150905000</div>
-                                        <div>题目：PMMA灯具基于moldflow三维流动优化的注塑模设计</div>
+                                        <div>姓名：<%=name%></div>
+                                        <div>学号：<%=id%></div>
+                                        <div>题目：<%=title%></div>
+                                        <div>提交时间：
+                                            <%
+                                            var unixTimestamp = new Date( data.submitDate ) ;
+                                            commonTime = unixTimestamp.toLocaleString();
+                                            %>
+                                            <%= commonTime %>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <h5 class="font_bold">关键词</h5>
-                                </div>
-                                <div class="col-md-12">
-                                    <textarea class="form-control readOnlyStyle" style="width: 100%;"
-                                              rows="2" readonly>关键词
-                                    </textarea>
-                                </div>
-                                <div class="col-md-12">
-                                    <h5 class="font_bold">创新点</h5>
-                                </div>
-                                <div class="col-md-12">
-                                    <textarea class="form-control readOnlyStyle" style="width: 100%;"
-                                              rows="5" readonly>创新点
-                                    </textarea>
-                                </div>
-                                <div class="col-md-12">
-                                    <h5 class="font_bold">中文摘要</h5>
-                                </div>
-                                <div class="col-md-12">
-                                    <textarea class="form-control readOnlyStyle" style="width: 100%;"
-                                              rows="10" readonly>中文摘要
-                                    </textarea>
-                                </div>
-                                <div class="col-md-12">
-                                    <h5 class="font_bold">英文摘要</h5>
-                                </div>
-                                <div class="col-md-12">
-                                    <textarea class="form-control readOnlyStyle" style="width: 100%;"
-                                              rows="10" readonly>英文摘要
-                                    </textarea>
-                                </div>
-                                <div class="col-md-12">
-                                    <h5 class="font_bold">其他</h5>
-                                </div>
-                                <div class="col-md-12">
-                                    <textarea class="form-control readOnlyStyle" style="width: 100%;"
-                                              rows="6" readonly>其他
-                                    </textarea>
-                                </div>
-                                <div class="col-md-12">
-                                    <h5 class="font_bold">批注内容</h5>
-                                </div>
-                                <div class="col-md-12">
-                                    <textarea class="form-control" style="width: 100%;"
-                                              rows="10"></textarea>
-                                </div>
-                                <div class="col-md-12">
-                                    <h5 class="font_bold">论文文档</h5>
-                                </div>
-                                <div class="col-md-12" style="margin-top: 10px">
-                                    <div class="whiteColor" style="padding:10px;">
-                                        附件：开题报告.docx <a style="padding-left: 20px" href="#">点击下载</a>
+                                    <div class="col-md-12">
+                                        <h5 class="font_bold">关键词</h5>
                                     </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <h5 class="font_bold">附件</h5>
-                                </div>
-                                <div class="col-md-12" style="margin-top: 10px">
-                                    <div class="whiteColor" style="padding:10px;">
-                                        附件：开题报告.docx <a style="padding-left: 20px" href="#">点击下载</a>
+                                    <div class="col-md-12">
+                                    <textarea class="form-control readOnlyStyle" style="width: 100%;"
+                                              rows="2" readonly><%=data.keywords%>
+                                    </textarea>
                                     </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <h5 class="font_bold">毕业设计（论文）审核</h5>
-                                </div>
-                                <div class="col-md-12">
-                                    <textarea class="form-control" style="width: 100%" rows="1"></textarea>
-                                </div>
-                                <div class="col-md-12">
-                                    <h5 class="font_bold">毕业设计（论文）审核结果</h5>
-                                </div>
-                                <div class="col-md-12">
-                                    <select class="form-control">
-                                        <option value="topicTitle">审核通过</option>
-                                        <option value="reviewStatus">审核不通过</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-12" style="margin-top: 10px">
-                                    <div class="col-md-2 padding0">
-                                        <button onclick="modifyOpeningReport()" type="button"
-                                                class="management_student newPage btn btn-info">
-                                            确定
-                                        </button>
+                                    <div class="col-md-12">
+                                        <h5 class="font_bold">创新点</h5>
                                     </div>
-                                    <div class="col-md-1 padding0">
-                                        <button type="button"
-                                                class="management_student newPage btn btn-success ">
-                                            取消
-                                        </button>
+                                    <div class="col-md-12">
+                                    <textarea class="form-control readOnlyStyle" style="width: 100%;"
+                                              rows="5" readonly><%=data.innovatePoint%>
+                                    </textarea>
                                     </div>
+                                    <div class="col-md-12">
+                                        <h5 class="font_bold">中文摘要</h5>
+                                    </div>
+                                    <div class="col-md-12">
+                                    <textarea class="form-control readOnlyStyle" style="width: 100%;"
+                                              rows="10" readonly><%=data.cnSummary%>
+                                    </textarea>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <h5 class="font_bold">英文摘要</h5>
+                                    </div>
+                                    <div class="col-md-12">
+                                    <textarea class="form-control readOnlyStyle" style="width: 100%;"
+                                              rows="10" readonly><%=data.enSummary%>
+                                    </textarea>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <h5 class="font_bold">其他</h5>
+                                    </div>
+                                    <div class="col-md-12">
+                                    <textarea class="form-control readOnlyStyle" style="width: 100%;"
+                                              rows="6" readonly><%=data.other%>
+                                    </textarea>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <h5 class="font_bold">论文文档</h5>
+                                    </div>
+                                    <div class="col-md-12" style="margin-top: 10px">
+                                        <div class="whiteColor" style="padding:10px;">
+                                            <% if(data.docFileId == 0||typeof(data.docFile)=="undefined") { %>
+                                            暂未上传毕业设计论文
+                                            <% } else { %>
+                                            附件：<%=data.docFile.fileName %> <a style="padding-left: 20px"
+                                                                              href="http://www.yuanbw.cn:20086/gpms/rol/downloadFile?fileId=<%=data.docFileId %>">点击下载</a>
+                                            <% } %>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <h5 class="font_bold">附件</h5>
+                                    </div>
+                                    <div class="col-md-12" style="margin-top: 10px">
+                                        <div class="whiteColor" style="padding:10px;">
+                                            <% if(data.fileId == 0||typeof(data.file)=="undefined") { %>
+                                            暂未上传毕业设计相关附件
+                                            <% } else { %>
+                                            附件：<%=data.file.fileName %> <a style="padding-left: 20px"
+                                                                           href="http://www.yuanbw.cn:20086/gpms/rol/downloadFile?fileId=<%=data.fileId %>">点击下载</a>
+                                            <% } %>
+                                        </div>
+                                    </div>
+                                    <%if(query=="notQuery") {%>
+                                    <div class="col-md-12">
+                                        <h5 class="font_bold">批注内容</h5>
+                                    </div>
+                                    <div class="col-md-12">
+                                    <textarea id="annotationGraduation" class="form-control" style="width: 100%;"
+                                              rows="4"></textarea>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <h5 class="font_bold">毕业设计（论文）审核</h5>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <textarea id="suggestGraduation" class="form-control" style="width: 100%"
+                                                  rows="1"></textarea>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <h5 class="font_bold">毕业设计（论文）审核结果</h5>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <select id="statusGraduation" class="form-control">
+                                            <option value="1">审核通过</option>
+                                            <option value="0">审核不通过</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-12" style="margin-top: 10px">
+                                        <div class="col-md-2 padding0">
+                                            <button onclick="auditGraduationDesign('<%=id%>','<%=data.id%>')"
+                                                    type="button"
+                                                    class="btn btn-info">
+                                                确定
+                                            </button>
+                                        </div>
+                                        <div class="col-md-1 padding0">
+                                            <button type="button"
+                                                    onclick="noneOrBlock('graduationView', 'GraduationDesign')"
+                                                    class="btn btn-success ">
+                                                取消
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <%}else{
+                                    if(data.cStatus==1||data.cStatus==0){
+                                    %>
+                                    <div class="col-md-12">
+                                        <h5 class="font_bold">批注内容</h5>
+                                    </div>
+                                    <div class="col-md-12">
+                                    <textarea class="form-control readOnlyStyle" style="width: 100%;"
+                                              rows="4" readonly><%=data.annotation%></textarea>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <h5 class="font_bold">毕业设计（论文）审核</h5>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <textarea class="form-control readOnlyStyle" style="width: 100%" rows="1"
+                                                  readonly><%=data.cSuggest%></textarea>
+                                    </div>
+                                    <%}%>
+                                    <div class="col-md-12">
+                                        <h5 class="font_bold">毕业设计（论文）审核结果</h5>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <% let cStatus;
+                                        if(data.cStatus==1) {
+                                        cStatus = "审核通过";
+                                        }else if(data.cStatus==0){
+                                        cStatus = "审核不通过";
+                                        }else {
+                                        cStatus = "审核中";
+                                        }
+                                        %>
+                                        <textarea class="form-control readOnlyStyle" style="width: 100%" rows="1"
+                                                  readonly><%=cStatus%></textarea>
+                                    </div>
+                                    <div class="col-md-12" style="margin-top: 10px">
+                                        <div class="col-md-1 padding0">
+                                            <button type="button"
+                                                    onclick="noneOrBlock('graduationView', 'GraduationDesign')"
+                                                    class="btn btn-success ">
+                                                返回
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <%}%>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+    </script>
     <!--查看毕业设计（论文）结束-->
     <!--学生管理结束-->
 
@@ -3428,7 +3901,7 @@
         // }
         CheckOutProject();
         PersonalInfo();
-    //    information
+        //    information
     });
 
     let teacherInfo;
@@ -3448,7 +3921,7 @@
             },
             success: function (responseStr) {
                 if (responseStr.msg == "查询成功") {
-                    let html = responseStr.data.name+'('+responseStr.data.identifier+')，欢迎使用系统';
+                    let html = responseStr.data.name + '(' + responseStr.data.identifier + ')，欢迎使用系统';
                     $('#information').html(html);
                     teacherInfo = responseStr.data.identifier;
                 }
@@ -3930,8 +4403,7 @@
                         data: teachers,
                         students: responseStr.data.studentList
                     });
-                }
-                else if(responseStr.statusCode=="101") {
+                } else if (responseStr.statusCode == "101") {
                     reply_arrange_self.innerHTML = ejs.render(reply_arrange_selfs, {
                         data: teachers,
                         students: ""
@@ -4316,6 +4788,583 @@
         });
     }
 
+    //学生管理指导教师查看学生列表
+    function studentList() {
+        studentInfo("", "", 'send_Ntifications', 'send_Ntification');
+    }
+
+    function studentInfo(id, name, htmlDom, normalDom) {
+        let url = "http://www.yuanbw.cn:20086/gpms/tea/showTeaStudentDefInfos";
+        let htmlDom1 = document.getElementById(htmlDom).innerHTML;
+        let normalDom1 = document.getElementById(normalDom);
+        let data = {};
+        if (id != "") {
+            data.id = id;
+        }
+        if (name != "") {
+            data.name = name;
+        }
+        $.ajax({
+            url: url,
+            type: "POST",
+            data: data,
+            xhrFields: {
+                withCredentials: true
+            },
+            crossDomain: true,
+            headers: {
+                Token: token
+            },
+            success: function (responseStr) {
+                if (responseStr.msg == "查询成功") {
+                    if (id == "" && name == "") {
+                        normalDom1.innerHTML = ejs.render(htmlDom1, {
+                            data: responseStr.data
+                        });
+                    }
+                } else {
+                    normalDom1.innerHTML = ejs.render(htmlDom1, {
+                        data: ""
+                    });
+                }
+            },
+            error: function (responseStr) {
+                console.log("failed");
+                console.log(responseStr);
+            }
+        });
+    }
+
+    //查看指导学生答辩安排
+    function studentReply() {
+        let studentIds = document.getElementById('studentIds').value;
+        let studentName = document.getElementById('studentName').value;
+        studentInfo(studentIds, studentName, "students_Replys", "students_Reply");
+        document.getElementById('studentIds').value = "";
+        document.getElementById('studentName').value = "";
+    }
+
+    //指导教师毕业设计评审
+    let grade_Papers_Students;
+
+    function grade_Papers() {
+        let url = "http://www.yuanbw.cn:20086/gpms/tea/showGtStudentList";
+        let tutor_grade_Paperses = document.getElementById('tutor_grade_Paperses').innerHTML;
+        let tutor_grade_Papers = document.getElementById('tutor_grade_Papers');
+        $.ajax({
+            url: url,
+            type: "POST",
+            data: {},
+            xhrFields: {
+                withCredentials: true
+            },
+            crossDomain: true,
+            headers: {
+                Token: token
+            },
+            success: function (responseStr) {
+                if (responseStr.msg == "查询成功") {
+                    grade_Papers_Students = responseStr.data;
+                    tutor_grade_Papers.innerHTML = ejs.render(tutor_grade_Paperses, {
+                        data: responseStr.data
+                    });
+                } else {
+                    tutor_grade_Papers.innerHTML = ejs.render(tutor_grade_Paperses, {
+                        data: ""
+                    });
+                }
+            },
+            error: function (responseStr) {
+                console.log("failed");
+                console.log(responseStr);
+            }
+        });
+    }
+
+    //指导教师通过id查看学生毕业评审的详细信息
+    function viewScoreId(id) {
+        let tutor_viewScores = document.getElementById('tutor_viewScores').innerHTML;
+        let tutor_viewScore = document.getElementById('tutor_viewScore');
+        grade_Papers_Students.forEach(function (student) {
+            if (student.identifier == id) {
+                tutor_viewScore.innerHTML = ejs.render(tutor_viewScores, {
+                    data: student
+                });
+            }
+        })
+    }
+
+    //指导教师评审论文
+    function tutor_scorePleaOfStudent(id) {
+        let tutor_scorePleas = document.getElementById('tutor_scorePleas').innerHTML;
+        let tutor_scorePlea = document.getElementById('tutor_scorePlea');
+        $('#student').removeClass('displayBlock');
+        $('#student').addClass('displayNone');
+        $('#tutor_scorePlea').addClass('displayBlock');
+        $('#tutor_scorePlea').removeClass('displayNone');
+        grade_Papers_Students.forEach(function (student) {
+            if (student.identifier == id) {
+                tutor_scorePlea.innerHTML = ejs.render(tutor_scorePleas, {
+                    data: student
+                });
+            }
+        })
+    }
+
+    //指导教师查看指导学生材料
+    function queryMaterial() {
+        let url = "http://www.yuanbw.cn:20086/gpms/tea/showGuideStuDocProcessList";
+        let review_Materials = document.getElementById('review_Materials').innerHTML;
+        let review_Material = document.getElementById('review_Material');
+        $.ajax({
+            url: url,
+            type: "POST",
+            data: {},
+            xhrFields: {
+                withCredentials: true
+            },
+            crossDomain: true,
+            headers: {
+                Token: token
+            },
+            success: function (responseStr) {
+                if (responseStr.msg == "查询成功") {
+                    review_Material.innerHTML = ejs.render(review_Materials, {
+                        data: responseStr.data
+                    });
+                } else {
+                    review_Material.innerHTML = ejs.render(review_Materials, {
+                        data: ""
+                    });
+                }
+            },
+            error: function (responseStr) {
+                console.log("failed");
+                console.log(responseStr);
+            }
+        });
+    }
+
+    //查看过程报告
+    function showStudentDocument(id, documentId, documentations, documentation, name, title) {
+        let url = "http://www.yuanbw.cn:20086/gpms/tea/showStudentDocument";
+        let documentsDoc = document.getElementById(documentations).innerHTML;
+        let documentDoc = document.getElementById(documentation);
+        $.ajax({
+            url: url,
+            type: "POST",
+            data: {
+                sid: id,
+                docType: documentId
+            },
+            xhrFields: {
+                withCredentials: true
+            },
+            crossDomain: true,
+            headers: {
+                Token: token
+            },
+            success: function (responseStr) {
+                if (responseStr.msg == "查询成功") {
+                    noneOrBlock('student', documentation);
+                    documentDoc.innerHTML = ejs.render(documentsDoc, {
+                        data: responseStr.data,
+                        name: name,
+                        title: title,
+                        id: id
+                    });
+                } else if (responseStr.msg == "查询结果为空") {
+                    alert("该学生尚未提交材料，暂不能审核！");
+                }
+            },
+            error: function (responseStr) {
+                console.log("failed");
+                console.log(responseStr);
+            }
+        });
+    }
+
+    //查看开题报告
+    function openingReportDocument(id, documentId, name, title) {
+        showStudentDocument(id, documentId, 'openingReports', 'openingReport', name, title);
+    }
+
+    //查看中期检查
+    function IntermediateDocument(id, documentId, name, title) {
+        showStudentDocument(id, documentId, 'Intermediates', 'Intermediate', name, title);
+    }
+
+    //查看外文译文和原文
+    function ForeignTranslationDocument(id, documentId, name, title) {
+        showStudentDocument(id, documentId, 'ForeignTranslations', 'ForeignTranslation', name, title);
+    }
+
+    //查看文献综述
+    function LiteratureReviewDocument(id, documentId, name, title) {
+        showStudentDocument(id, documentId, 'LiteratureReviews', 'LiteratureReview', name, title)
+    }
+
+    //查看指导记录
+    let guides;
+    let Stuname;
+    let Stutitle;
+
+    function queryGuideRecord(id, name, title) {
+        Stuname = name;
+        Stutitle = title;
+        let url = "http://www.yuanbw.cn:20086/gpms/tea/showStuGuidanceRecords";
+        let GuideRecords = document.getElementById('GuideRecords').innerHTML;
+        let GuideRecord = document.getElementById('GuideRecord');
+        $.ajax({
+            url: url,
+            type: "POST",
+            data: {
+                sid: id
+            },
+            xhrFields: {
+                withCredentials: true
+            },
+            crossDomain: true,
+            headers: {
+                Token: token
+            },
+            success: function (responseStr) {
+                if (responseStr.msg == "查询成功") {
+                    noneOrBlock('student', 'GuideRecord');
+                    guides = responseStr.data;
+                    GuideRecord.innerHTML = ejs.render(GuideRecords, {
+                        data: responseStr.data,
+                        name: name,
+                        title: title,
+                        id: id
+                    });
+                } else if (responseStr.statusCode == "101") {
+                    alert("该学生尚未提交材料，暂不能审核！");
+                }
+            },
+            error: function (responseStr) {
+                console.log("failed");
+                console.log(responseStr);
+            }
+        });
+    }
+
+    //查看具体的指导记录
+    function queryguideView(id, guideId, query) {
+        let guideViews = document.getElementById('guideViews').innerHTML;
+        let guideView = document.getElementById('guideView');
+        guides.forEach(function (guide) {
+            if (guide.id == guideId) {
+                noneOrBlock('GuideRecord', 'guideView');
+                guideView.innerHTML = ejs.render(guideViews, {
+                    data: guide,
+                    name: Stuname,
+                    title: Stutitle,
+                    id: id,
+                    isQuery: query
+                });
+            }
+        })
+    }
+
+    //返回审核材料页面
+    function returnStudent(report) {
+        noneOrBlock(report, 'student');
+        queryMaterial();
+    }
+
+    //查看指导学生毕业设计（论文）
+    let designs;
+    let designName;
+    let designTitle;
+
+    function queryGraduationDesign(id, name, title) {
+        designName = name;
+        designTitle = title;
+        let url = "http://www.yuanbw.cn:20086/gpms/tea/showStuGraduationProject";
+        let GraduationDesigns = document.getElementById('GraduationDesigns').innerHTML;
+        let GraduationDesign = document.getElementById('GraduationDesign');
+        $.ajax({
+            url: url,
+            type: "POST",
+            data: {
+                sid: id
+            },
+            xhrFields: {
+                withCredentials: true
+            },
+            crossDomain: true,
+            headers: {
+                Token: token
+            },
+            success: function (responseStr) {
+                if (responseStr.msg == "查询成功") {
+                    designs = responseStr.data;
+                    noneOrBlock('student', 'GraduationDesign');
+                    GraduationDesign.innerHTML = ejs.render(GraduationDesigns, {
+                        data: responseStr.data,
+                        name: name,
+                        title: title,
+                        id: id
+                    });
+                } else if (responseStr.statusCode == "101") {
+                    alert("该学生尚未提交材料，暂不能审核！");
+                }
+            },
+            error: function (responseStr) {
+                console.log("failed");
+                console.log(responseStr);
+            }
+        });
+    }
+
+    //查看具体的毕业设计（论文）
+    function queryGraduationView(id, GraduationId, query) {
+        let graduationViews = document.getElementById('graduationViews').innerHTML;
+        let graduationView = document.getElementById('graduationView');
+        designs.forEach(function (design) {
+            if (design.id == GraduationId) {
+                noneOrBlock('GraduationDesign', 'graduationView');
+                graduationView.innerHTML = ejs.render(graduationViews, {
+                    data: design,
+                    name: designName,
+                    title: designTitle,
+                    id: id,
+                    query: query
+                });
+            }
+        })
+    }
+
+    //审核过程文档
+    function auditProcessDocument(id, doc, docNone, annotation, suggest, status) {
+        let annotationReport = document.getElementById(annotation).value;
+        let suggestReport = document.getElementById(suggest).value;
+        let statusReport = document.getElementById(status).value;
+        let url = "http://www.yuanbw.cn:20086/gpms/tea/verifyDocument";
+        $.ajax({
+            url: url,
+            type: "POST",
+            data: {
+                sid: id,
+                docType: doc,
+                annotation: annotationReport,
+                status: statusReport,
+                suggest: suggestReport
+            },
+            xhrFields: {
+                withCredentials: true
+            },
+            crossDomain: true,
+            headers: {
+                Token: token
+            },
+            success: function (responseStr) {
+                alert(responseStr.msg);
+                queryMaterial();
+                noneOrBlock(docNone, 'student');
+            },
+            error: function (responseStr) {
+                console.log("failed");
+                console.log(responseStr);
+            }
+        });
+    }
+
+    //审核开题报告
+    function reviewReport(id, doc) {
+        auditProcessDocument(id, doc, 'openingReport', 'annotationReport', 'suggestReport', 'statusReport');
+    }
+
+    //审核中期检查
+    function reviewIntermediate(id, doc) {
+        auditProcessDocument(id, doc, 'Intermediate', 'annotationIntermediate', 'suggestIntermediate', 'statusIntermediate');
+    }
+
+    //审核外文译文和原文
+    function reviewForeignTranslation(id, doc) {
+        auditProcessDocument(id, doc, 'ForeignTranslation', 'annotationForeignTranslation', 'suggestForeignTranslation', 'statusForeignTranslation');
+    }
+
+    //审核文献综述
+    function reviewLiteratureReview(id, doc) {
+        auditProcessDocument(id, doc, 'LiteratureReview', 'annotationLiteratureReview', 'suggestLiteratureReview', 'statusLiteratureReview');
+    }
+
+    //审核指导记录
+    function auditGuidanceRecords(id, docId) {
+        let annotationGuideView = document.getElementById('annotationGuideView').value;
+        let suggestGuideView = document.getElementById('suggestGuideView').value;
+        let statusGuideView = document.getElementById('statusGuideView').value;
+        let url = "http://www.yuanbw.cn:20086/gpms/tea/verifyGuidanceRecord";
+        $.ajax({
+            url: url,
+            type: "POST",
+            data: {
+                sid: id,
+                docId: docId,
+                annotation: annotationGuideView,
+                status: statusGuideView,
+                suggest: suggestGuideView
+            },
+            xhrFields: {
+                withCredentials: true
+            },
+            crossDomain: true,
+            headers: {
+                Token: token
+            },
+            success: function (responseStr) {
+                alert(responseStr.msg);
+                queryGuideRecord(id, Stuname, Stutitle);
+                noneOrBlock('guideView', 'GuideRecord');
+            },
+            error: function (responseStr) {
+                console.log("failed");
+                console.log(responseStr);
+            }
+        });
+    }
+
+    //审核毕业设计论文
+    function auditGraduationDesign(id, docId) {
+        let annotationGraduation = document.getElementById('annotationGraduation').value;
+        let suggestGraduation = document.getElementById('suggestGraduation').value;
+        let statusGraduation = document.getElementById('statusGraduation').value;
+        let url = "http://www.yuanbw.cn:20086/gpms/tea/verifyGraduationProject";
+        $.ajax({
+            url: url,
+            type: "POST",
+            data: {
+                sid: id,
+                docId: docId,
+                annotation: annotationGraduation,
+                status: statusGraduation,
+                suggest: suggestGraduation
+            },
+            xhrFields: {
+                withCredentials: true
+            },
+            crossDomain: true,
+            headers: {
+                Token: token
+            },
+            success: function (responseStr) {
+                alert(responseStr.msg);
+                queryGraduationDesign(id, designName, designTitle)
+                noneOrBlock('graduationView', 'GraduationDesign')
+            },
+            error: function (responseStr) {
+                console.log("failed");
+                console.log(responseStr);
+            }
+        });
+    }
+
+    //毕业设计指导教师评审
+    function graduationDesignReview(id) {
+        let investigationDemonstration = document.getElementById('investigationDemonstration').value;
+        let technicalRoute = document.getElementById('technicalRoute').value;
+        let analyzeSolve = document.getElementById('analyzeSolve').value;
+        let workAttitude = document.getElementById('workAttitude').value;
+        let designSpecification = document.getElementById('designSpecification').value;
+        let designInnovation = document.getElementById('designInnovation').value;
+        let agreeReply = document.getElementById('agreeReply').value;
+        let paperComment = document.getElementById('paperComment').value;
+        let url = "http://www.yuanbw.cn:20086/gpms/tea/markingGtDoc";
+        $.ajax({
+            url: url,
+            type: "POST",
+            data: {
+                sid: id,
+                scoreInvestigation: investigationDemonstration,
+                scoreTechnology: technicalRoute,
+                scoreAnalysis: analyzeSolve,
+                scoreWorkload: workAttitude,
+                scoreInstruction: designSpecification,
+                scoreInnovate: designInnovation,
+                attendDefence: agreeReply,
+                comment: paperComment
+            },
+            xhrFields: {
+                withCredentials: true
+            },
+            crossDomain: true,
+            headers: {
+                Token: token
+            },
+            success: function (responseStr) {
+                alert(responseStr.msg);
+                grade_Papers();
+                $('#tutor_scorePlea').removeClass('displayBlock');
+                $('#tutor_scorePlea').addClass('displayNone');
+                $('#student').addClass('displayBlock');
+                $('#student').removeClass('displayNone');
+
+            },
+            error: function (responseStr) {
+                console.log("failed");
+                console.log(responseStr);
+            }
+        });
+    }
+
+    //成绩公示
+    function PerformancePublicInfo(id,name) {
+        let data = {};
+        if (id != "") {
+            data.id = id;
+        }
+        if (name != "") {
+            data.name = name;
+        }
+        let url = "http://www.yuanbw.cn:20086/gpms/tea/showGtStuTotalScoreList";
+        let scoresRankings = document.getElementById('scoresRankings').innerHTML;
+        let scoresRanking = document.getElementById('scoresRanking');
+        $.ajax({
+            url: url,
+            type: "POST",
+            data: data,
+            xhrFields: {
+                withCredentials: true
+            },
+            crossDomain: true,
+            headers: {
+                Token: token
+            },
+            success: function (responseStr) {
+                console.log(responseStr);
+                if (responseStr.msg == "查询成功") {
+                    scoresRanking.innerHTML = ejs.render(scoresRankings, {
+                        data: responseStr.data
+                    });
+                } else {
+                    scoresRanking.innerHTML = ejs.render(scoresRankings, {
+                        data: ""
+                    });
+                }
+            },
+            error: function (responseStr) {
+                console.log("failed");
+                console.log(responseStr);
+            }
+        });
+    }
+    function PerformancePublic() {
+        PerformancePublicInfo("","");
+    }
+
+    //成绩排名条件查询
+    function resultsRankQuery() {
+        let stuNames = document.getElementById('stuName')
+        let stuId = document.getElementById('StuId');
+        let stuNameValue = stuNames.value;
+        let stuIdValue = stuId.value;
+        PerformancePublicInfo(stuIdValue,stuNameValue);
+        stuNames.value = "";
+        stuId.value = "";
+    }
+
 </script>
 
 <script>
@@ -4325,6 +5374,13 @@
         $('#' + gobackClass).addClass('displayNone');
         $('#three').addClass('displayBlock');
         $('#three').removeClass('displayNone');
+    }
+
+    function noneOrBlock(none, show) {
+        $('#' + none).removeClass('displayBlock');
+        $('#' + none).addClass('displayNone');
+        $('#' + show).addClass('displayBlock');
+        $('#' + show).removeClass('displayNone');
     }
 
     //答辩打分报告过程input输入框值限定

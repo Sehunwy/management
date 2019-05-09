@@ -148,7 +148,6 @@
             password.setAttribute('data-content', "密码不能为空");
             classChange('passwordParent', 'has-info', 'has-error');
         } else if (length < 6 || length > 16) {
-            console.log(passwordValue.length + "   " + passwordValue);
             password.setAttribute('data-content', "密码长度为6-16位");
             classChange('passwordParent', 'has-info', 'has-error');
         } else {
@@ -284,7 +283,6 @@
     $(document).ready(function () {
         let $tab_li = $('#content ul li');
         $tab_li.click(function () {
-            console.log(111);
             $(this).addClass('selected').siblings().removeClass('selected');
             let index = $tab_li.index(this);
             $('.type').addClass('hide');
@@ -319,7 +317,6 @@
         time(btn);
         let url = "http://www.yuanbw.cn:20086/gpms/rol/sendBindCode";
         telNumber = document.getElementById('telNumber').value;
-        console.log(telNumber);
         $.ajax({
             url: url,
             type: "POST",
@@ -331,7 +328,7 @@
             },
             crossDomain: true,
             success: function (responseStr) {
-                console.log(responseStr);
+
             },
             error: function (responseStr) {
                 console.log("failed");
@@ -342,9 +339,7 @@
 
     function phoneLogin() {
         let url = "http://www.yuanbw.cn:20086/gpms/rol/telLogin";
-        console.log(telNumber);
         code = document.getElementById('telCode').value;
-        console.log(code);
         $.ajax({
             url: url,
             type: "POST",
@@ -357,12 +352,9 @@
             },
             crossDomain: true,
             success: function (responseStr) {
-                console.log(responseStr);
                 let msg = responseStr.msg;
-                console.log("success");
                 if (msg == "验证成功") {
                     let authority = responseStr.data.authority;
-                    console.log(authority);
                     if (authority == 1) {
                         window.location.href = "../student/studentIndex.html";
                     } else if (authority == 2) {
