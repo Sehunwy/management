@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>404 - Not found</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
+    <link rel="stylesheet" href="../assets/css/main.css" type="text/css" media="screen, projection" /> <!-- main stylesheet -->
+    <link rel="stylesheet" type="text/css" media="all" href="../assets/css/tipsy.css" /> <!-- Tipsy implementation -->
+
+    <!--[if lt IE 9]>
+    <link rel="stylesheet" type="text/css" href="../assets/css/ie8.css" />
+    <![endif]-->
+
+    <script type="text/javascript" src="../assets/js/jquery-1.10.2.js"></script> <!-- uiToTop implementation -->
+    <script type="text/javascript" src="../assets/js/custom-scripts.js"></script>
+    <script type="text/javascript" src="../assets/js/jquery.tipsy.js"></script> <!-- Tipsy -->
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            universalPreloader();
+        });
+
+        $(window).load(function(){
+            universalPreloaderRemove();
+            rotate();
+            dogRun();
+            dogTalk();
+            $('.with-tooltip').tipsy({gravity: $.fn.tipsy.autoNS});
+        });
+    </script>
+<body>
+<div id="universal-preloader">
+    <div class="preloader">
+        <img src="../assets/img/universal-preloader.gif" alt="universal-preloader" class="universal-preloader-preloader" />
+    </div>
+</div>
+<div id="wrapper">
+    <div class="graphic"></div>
+    <div class="top-menu">
+        <a href="../login/login.html">返回登录页面</a>
+    </div>
+    <div class="dog-wrapper">
+        <div class="dog"></div>
+        <div class="dog-bubble">
+        </div>
+        <div class="bubble-options">
+            <p class="dog-bubble">
+                哦噢，您所访问的页面已经去浪迹天涯了！
+            </p>
+        </div>
+    </div>
+    <div class="planet"></div>
+</div>
+</body>
+</html>

@@ -3892,16 +3892,8 @@
     }
 
     $(function () {
-        // let authority = getCookie("authority");
-        // if (authority == 2) {
-        //     let isDean = document.getElementsByClassName('isDean');
-        //     while (isDean.length > 0) {
-        //         isDean[0].parentNode.removeChild(isDean[0]);
-        //     }
-        // }
         CheckOutProject();
         PersonalInfo();
-        //    information
     });
 
     let teacherInfo;
@@ -3929,6 +3921,7 @@
             error: function (responseStr) {
                 console.log("failed");
                 console.log(responseStr);
+                window.location.href = "../404/404.html";
             }
         });
     }

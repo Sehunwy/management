@@ -36,6 +36,9 @@
             <span id="sideNav" class="iconfont icon-right-s packUpIcon"></span>
         </div>
         <ul class="nav navbar-top-links navbar-right">
+            <li style="color: #fff" id="information">
+
+            </li>
             <!--通知公告开始-->
             <li class="noticeIcon">
                 <a href="#">
@@ -98,7 +101,7 @@
                 </a>
                 <div class="noticeContent">
                     <ul>
-                        <li class="liStyle liBorderBottom">
+                        <li class="liStyle liBorderBottom" onclick="showRoleInfo()">
                             <a href="#" class="management_personal newPage topPage aStyle">
                                 <span class="paddingIco iconfont icon-wode"></span>
                                 个人信息维护
@@ -162,15 +165,15 @@
                         <div style="background-color: #f5f5f5">
                             <ul class="nav nav-tabs" role="tablist">
                                 <li class="active"><a href="#review_Questions" role="tab"
-                                                               data-toggle="tab">出题审核</a></li>
+                                                      data-toggle="tab">出题审核</a></li>
                                 <li><a href="#subjectReview" role="tab"
-                                                          data-toggle="tab">选题审核</a></li>
-                                <li><a href="#assign_Topic" role="tab"
-                                       data-toggle="tab">出题情况统计报表</a></li>
-                                <li><a href="#select_Topic" role="tab"
-                                       data-toggle="tab">选题情况统计报表</a></li>
-                                <li><a href="#Topic_situation" role="tab"
-                                       data-toggle="tab">题目情况统计报表</a></li>
+                                       data-toggle="tab">选题审核</a></li>
+                                <li onclick="statisticalTopic()"><a href="#assign_Topic" role="tab"
+                                                                    data-toggle="tab">出题情况统计报表</a></li>
+                                <li onclick="statisticalSelect()"><a href="#select_Topic" role="tab"
+                                                                     data-toggle="tab">选题情况统计报表</a></li>
+                                <li onclick="statisticalTitle()"><a href="#Topic_situation" role="tab"
+                                                                    data-toggle="tab">题目情况统计报表</a></li>
                             </ul>
                         </div>
                         <div class="tab-content">
@@ -381,22 +384,27 @@
                             <!--选题审核结束-->
                             <!--查看出题情况开始-->
                             <div class="tab-pane panel-body" id="assign_Topic">
-                                <div class="alert alert-info">
-                                    <div>本系出题教师数量：10</div>
-                                    <div>本系未出题教师数量：10</div>
+                                <div class="alert alert-info" id="hasDraw">
                                 </div>
                                 <div style="padding-left:0px;padding-bottom: 15px" class="col-md-12">
                                     <div style="padding-bottom: 15px;padding-left: 0px" class="col-md-12">
                                         <div style="padding-left: 0px" class="col-md-12">
                                             <div class="col-md-3 col-xs-3">
-                                                <select style="margin:0px 5px" class="form-control">
-                                                    <option value="topicTitle">全部教师</option>
-                                                    <option value="topicTitle">出题教师</option>
-                                                    <option value="reviewStatus">未出题教师</option>
+                                                <input id="teaName" type="text" class="form-control" placeholder="教师姓名">
+                                            </div>
+                                            <div class="col-md-3 col-xs-3">
+                                                <input id="teaId" type="text" class="form-control" placeholder="教师工号">
+                                            </div>
+                                            <div class="col-md-3 col-xs-3">
+                                                <select id="hasSet" style="margin:0px 5px" class="form-control">
+                                                    <option value="">全部教师</option>
+                                                    <option value="1">出题教师</option>
+                                                    <option value="0">未出题教师</option>
                                                 </select>
                                             </div>
                                             <div class="col-md-2 col-xs-2" style="padding-left: 5px">
-                                                <button type="button" class="btn btn-info">查询</button>
+                                                <button onclick="queryDraw()" type="button" class="btn btn-info">查询
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
@@ -411,6 +419,23 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div id="titleList"></div>
+                                <!--分页开始-->
+                                <div class="col-md-12 col-xs-12" style="margin-top: 10px">
+                                    <div class="m-style" id="teachersPage"></div>
+                                </div>
+                                <!--分页结束-->
+                            </div>
+                            <script id="hasDraws" type="text/template">
+                                <%if(data=="") {%>
+                                <div>本系出题教师数量：暂无数据</div>
+                                <div>本系未出题教师数量：暂无数据</div>
+                                <%}else{%>
+                                <div>本系出题教师数量：<%=data.has_set%></div>
+                                <div>本系未出题教师数量：<%=data.has_not_set%></div>
+                                <%}%>
+                            </script>
+                            <script id="titleLists" type="text/template">
                                 <div class="alert alert-success textEllipsis border_radius marginBottom0">
                                     <div class="col-md-2 textAlign">
                                         教师姓名（编号）
@@ -428,77 +453,71 @@
                                         操作
                                     </div>
                                 </div>
+                                <%if(data==""){%>
+                                <div class="alert alert-danger textAlign border_radius marginBottom0">暂无数据</div>
+                                <%}else{data.forEach(function(teacher){%>
                                 <div class="alert alert-danger textEllipsis border_radius marginBottom0">
                                     <div class="col-md-2 textAlign">
                                         <span class="clickColor cursorPointer" data-toggle="modal"
-                                              data-target="#teacherDetails">
-                                            廖永衡（1112221112）
+                                              data-target="#teacherDetails"
+                                              onclick="teacherById('<%=teacher.identifier%>')">
+                                            <%=teacher.name%>（<%=teacher.identifier%>）
                                         </span>
                                     </div>
+                                    <%if(teacher.proSetList.length==0) {%>
+                                    <div class="col-md-1 textAlign">
+                                        否
+                                    </div>
+                                    <div class="col-md-1 textAlign">
+                                        0
+                                    </div>
+                                    <div class="col-md-8 textAlign">暂无出题信息</div>
+                                    <%} else {%>
                                     <div class="col-md-1 textAlign">
                                         是
                                     </div>
                                     <div class="col-md-1 textAlign">
-                                        3
+                                        <%=teacher.proSetList.length%>
                                     </div>
                                     <div class="col-md-6 textAlign textEllipsis">
-                                        基于moldflow三维流动优化的注塑模设计
+                                        <%=teacher.proSetList[0].project.title%>
                                     </div>
                                     <div class="col-md-2 textAlign">
                                         <span class="clickColor cursorPointer" data-toggle="modal"
-                                              data-target="#moreTopics">
+                                              data-target="#moreTopics" onclick="moreTitles('<%=teacher.identifier%>')">
                                             查看更多题目<span
                                                 class="iconfont icon-chakangengduo clickColor fontSize14"></span>
                                         </span>
                                     </div>
+                                    <%}%>
                                 </div>
-                                <div class="alert alert-danger textEllipsis border_radius marginBottom0">
-                                    <div class="col-md-2 textAlign">
-                                        <span class="clickColor cursorPointer" data-toggle="modal"
-                                              data-target="#teacherDetails">
-                                            廖永衡（1112221112）
-                                        </span>
-                                    </div>
-                                    <div class="col-md-1 textAlign">
-                                        是
-                                    </div>
-                                    <div class="col-md-1 textAlign">
-                                        3
-                                    </div>
-                                    <div class="col-md-6 textAlign textEllipsis">
-                                        基于moldflow三维流动优化的注塑模设计
-                                    </div>
-                                    <div class="col-md-2 textAlign">
-                                        <span class="clickColor cursorPointer" data-toggle="modal"
-                                              data-target="#moreTopics">
-                                            查看更多题目<span
-                                                class="iconfont icon-chakangengduo clickColor fontSize14"></span>
-                                        </span>
-                                    </div>
-                                </div>
-                                <!--分页开始-->
-                                <div style="margin-top: 15px" class="m-style"></div>
-                                <!--分页结束-->
-                            </div>
+                                <%})}%>
+                            </script>
                             <!--查看出题情况结束-->
                             <!--查看选题情况开始-->
                             <div class="tab-pane panel-body" id="select_Topic">
-                                <div class="alert alert-info">
-                                    <div>本系选题学生数量：10</div>
-                                    <div>本系未选题学生数量：10</div>
+                                <div class="alert alert-info" id="hasSelect">
                                 </div>
                                 <div style="padding-left:0px;padding-bottom: 15px" class="col-md-12">
                                     <div style="padding-bottom: 15px;padding-left: 0px" class="col-md-12">
                                         <div style="padding-left: 0px" class="col-md-12">
                                             <div class="col-md-3 col-xs-3">
-                                                <select style="margin:0px 5px" class="form-control">
-                                                    <option value="topicTitle">全部学生</option>
-                                                    <option value="topicTitle">选题学生</option>
-                                                    <option value="reviewStatus">未选题学生</option>
+                                                <input id="stuName" type="text" class="form-control" placeholder="学生姓名">
+                                            </div>
+                                            <div class="col-md-3 col-xs-3">
+                                                <input id="stuId" type="text" class="form-control" placeholder="学生学号">
+                                            </div>
+                                            <div class="col-md-3 col-xs-3">
+                                                <select id="hasChoose" style="margin:0px 5px" class="form-control">
+                                                    <option value="">全部学生</option>
+                                                    <option value="1">选题学生</option>
+                                                    <option value="0">未选题学生</option>
                                                 </select>
                                             </div>
                                             <div class="col-md-2 col-xs-2" style="padding-left: 5px">
-                                                <button type="button" class="btn btn-info">查询</button>
+                                                <button type="button" class="btn btn-info" onclick="queryIsChoose()">
+                                                    查询
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
@@ -513,6 +532,21 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div id="studentList"></div>
+                                <!--分页开始-->
+                                <div style="margin-top: 15px" class="m-style" id="studentPage"></div>
+                                <!--分页结束-->
+                            </div>
+                            <script id="hasSelects" type="text/template">
+                                <%if(data=="") {%>
+                                <div>本系选题学生数量：暂无数据</div>
+                                <div>本系未选题学生数量：暂无数据</div>
+                                <%}else{%>
+                                <div>本系选题学生数量：<%=data.has_choose%></div>
+                                <div>本系未选题学生数量：<%=data.has_not_choose%></div>
+                                <%}%>
+                            </script>
+                            <script id="studentLists" type="text/template">
                                 <div class="alert alert-success textEllipsis border_radius marginBottom0">
                                     <div class="col-md-3 textAlign">
                                         学生姓名（学号）
@@ -524,60 +558,133 @@
                                         课题题目
                                     </div>
                                 </div>
+                                <%if(data==""){%>
+                                <div class="alert alert-danger textAlign border_radius marginBottom0">暂无数据</div>
+                                <%}else{ data.forEach(function(student){%>
                                 <div class="alert alert-danger textEllipsis border_radius marginBottom0">
                                     <div class="col-md-3 textAlign">
                                         <span class="clickColor cursorPointer" data-toggle="modal"
-                                              data-target="#studentDetails">
-                                            廖永衡（1112221112）
+                                              data-target="#studentDetails"
+                                              onclick="queryStudentInfo('<%=student.identifier%>')">
+                                            <%=student.name%>（<%=student.identifier%>）
                                         </span>
                                     </div>
+                                    <%if(typeof(student.checkedPro)=="undefined") {%>
+                                    <div class="col-md-1 textAlign">
+                                        否
+                                    </div>
+                                    <div class="col-md-8 textAlign textEllipsis">
+                                        暂无选题
+                                    </div>
+                                    <%}else{%>
                                     <div class="col-md-1 textAlign">
                                         是
                                     </div>
                                     <div class="col-md-8 textAlign textEllipsis">
-                                        PMMA灯具基于moldflow三维
+                                        <span class="clickColor cursorPointer" data-toggle="modal"
+                                              data-target="#topicDetails"
+                                              onclick="studentProjectDetails('<%=student.identifier%>')">
+                                            <%=student.checkedPro.title%>
+                                        </span>
                                     </div>
+                                    <%}%>
                                 </div>
-                                <!--分页开始-->
-                                <div style="margin-top: 15px" class="m-style"></div>
-                                <!--分页结束-->
-                            </div>
+                                <%})}%>
+
+                            </script>
                             <!--查看选题情况结束-->
                             <!--查看题目情况开始-->
                             <div class="tab-pane panel-body" id="Topic_situation">
-                                <div class="alert alert-info">
-                                    <div>本系出题题目数量：10</div>
-                                    <div>本系已选题目数量：10</div>
-                                    <div>本系未被选择题目数量：10</div>
-                                    <div>本系未被选完题目数量：10</div>
+                                <div class="alert alert-info" id="numberOfTitle">
                                 </div>
                                 <div style="padding-left:0px;padding-bottom: 15px" class="col-md-12">
                                     <div style="padding-bottom: 15px;padding-left: 0px" class="col-md-12">
                                         <div style="padding-left: 0px" class="col-md-12">
-                                            <div class="col-md-3 col-xs-3">
-                                                <select style="margin:0px 5px" class="form-control">
-                                                    <option value="topicTitle">全部</option>
-                                                    <option value="reviewStatus">已选题目</option>
-                                                    <option value="reviewStatus">未被选择题目</option>
-                                                    <option value="reviewStatus">未被选完题目</option>
+                                            <div class="col-md-4 col-xs-4">
+                                                <input id="pName" type="text" class="form-control" placeholder="课题题目">
+                                            </div>
+                                            <div class="col-md-1 col-xs-1">
+                                            </div>
+                                            <div class="col-md-1 col-xs-1 padding0">
+                                                可选专业：
+                                            </div>
+                                            <div class="col-md-2 col-xs-2 padding0">
+                                                <select id="range" style="margin:0px 5px" class="form-control">
+                                                    <option value="">全部</option>
+                                                    <option value="0">本系</option>
+                                                    <option value="1">全院</option>
                                                 </select>
                                             </div>
-                                            <div class="col-md-2 col-xs-2" style="padding-left: 5px">
-                                                <button type="button" class="btn btn-info">查询</button>
+                                            <div class="col-md-1 col-xs-1">
+                                            </div>
+                                            <div class="col-md-1 col-xs-1 padding0">
+                                                题目类型：
+                                            </div>
+                                            <div class="col-md-2 col-xs-2 padding0">
+                                                <select id="genre" style="margin:0px 5px" class="form-control">
+                                                    <option value="">全部</option>
+                                                    <option value="艺美设计">艺美设计</option>
+                                                    <option value="工程工业设计">工程工业设计</option>
+                                                    <option value="应用研究">应用研究</option>
+                                                    <option value="理论研究">理论研究</option>
+                                                    <option value="其他">其他</option>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
-                                    <div style="padding-left: 0px" class="col-md-4">
-                                        <div class="col-md-10 col-xs-10" style="padding: 0px">
-                                            <h4 class="font_bold" style="display: inline-block;padding-right: 10px">
-                                                题目列表</h4>
-                                            <button type="button" class="btn btn-danger">导出表格<span
-                                                    class="iconfont icon-excel"
-                                                    style="padding-left: 4px;font-size:12px"></span>
+                                    <div class="col-md-12 col-xs-12">
+                                        <div class="col-md-1 col-xs-1 padding0">
+                                            题目来源：
+                                        </div>
+                                        <div class="col-md-3 col-xs-3 padding0">
+                                            <select id="source" style="margin:0px 5px" class="form-control">
+                                                <option value="">全部</option>
+                                                <option value="生产实际（社会实践）题">生产实际（社会实践）题</option>
+                                                <option value="教师科研课题">教师科研课题</option>
+                                                <option value="其他">其他</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-1 col-xs-1">
+                                        </div>
+                                        <div class="col-md-1 col-xs-1 padding0">
+                                            题目被选情况:
+                                        </div>
+                                        <div class="col-md-3 col-xs-3">
+                                            <select id="status" style="margin:0px 5px" class="form-control">
+                                                <option value="">全部</option>
+                                                <option value="0">未被选择的题目</option>
+                                                <option value="1">未选完的题目</option>
+                                                <option value="2">已选完的题目</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-2 col-xs-2" style="padding-left: 5px">
+                                            <button type="button" class="btn btn-info" onclick="queryTitle()">查询
                                             </button>
                                         </div>
                                     </div>
                                 </div>
+                                <div style="padding-left: 0px;margin-bottom: 10px" class="col-md-12">
+                                    <div class="col-md-10 col-xs-10" style="padding: 0px">
+                                        <h4 class="font_bold" style="display: inline-block;padding-right: 10px">
+                                            题目列表</h4>
+                                        <button type="button" class="btn btn-danger">导出表格<span
+                                                class="iconfont icon-excel"
+                                                style="padding-left: 4px;font-size:12px"></span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div id="listOfTitle"></div>
+                                <!--分页开始-->
+                                <div style="margin-top: 15px" class="m-style" id="titlePage"></div>
+                                <!--分页结束-->
+                            </div>
+                            <script id="numberOfTitles" type="text/template">
+                                <div>本系出题题目数量：<%=data.total_count%></div>
+                                <div>本系已选完题目数量：<%=data.choose_not_rest_count%></div>
+                                <div>本系未被选择题目数量：<%=data.not_choose_count%></div>
+                                <div>本系未被选完题目数量：<%=data.choose_not_rest_count%></div>
+                            </script>
+                            <script id="listOfTitles" type="text/template">
                                 <div class="alert alert-success textEllipsis border_radius marginBottom0">
                                     <div class="col-md-4 textAlign">
                                         课题题目
@@ -586,51 +693,62 @@
                                         选题学生姓名（学号）
                                     </div>
                                     <div class="col-md-3 textAlign">
-                                        出题教师姓名（工号号）
+                                        出题教师姓名（工号）
                                     </div>
                                     <div class="col-md-1 textAlign">
                                         容纳总人数
                                     </div>
                                     <div class="col-md-1 textAlign">
-                                        已选人数
+                                        可选人数
                                     </div>
                                 </div>
+                                <%if(data==""){%>
+                                <div class="alert alert-danger textAlign border_radius marginBottom0">暂无数据</div>
+                                <%} else{
+                                data.forEach(function(title){%>
                                 <div class="alert alert-danger textEllipsis border_radius marginBottom0">
                                     <div class="col-md-4 textAlign textEllipsis">
                                         <span class="clickColor cursorPointer" data-toggle="modal"
-                                              data-target="#topicDetails">
-                                            PMMA灯具基于moldflow三维
+                                              data-target="#topicDetails" onclick="TitleById('<%=title.id%>','title')">
+                                            <%=title.title%>
                                         </span>
                                     </div>
-                                    <div class="col-md-3 textAlign">
-                                        <span class="clickColor cursorPointer" data-toggle="modal"
-                                              data-target="#studentDetails">
-                                            廖永衡（1112221112）
+                                    <%if(title.choose_stu_list.length==0) {%>
+                                    <div class="col-md-3 textAlign normalSpace">暂无学生选题</div>
+                                    <%}else{%>
+                                    <div class="col-md-3 textAlign normalSpace">
+                                        <%title.choose_stu_list.forEach(function(student){%>
+                                        <span class="clickColor cursorPointer" style="margin-right: 10px"
+                                              data-toggle="modal"
+                                              data-target="#studentDetails"
+                                              onclick="TitleByStudent('<%=title.id%>','student','<%=student.identifier%>')">
+                                            <%=student.name%>
                                         </span>
+                                        <%})%>
                                     </div>
+                                    <%}%>
                                     <div class="col-md-3 textAlign">
                                         <span class="clickColor cursorPointer" data-toggle="modal"
-                                              data-target="#teacherDetails">
-                                            廖永衡（1112221112）
+                                              data-target="#teacherDetails"
+                                              onclick="TitleById('<%=title.id%>','teacher')">
+                                            <%=title.set_tea.name%>（<%=title.set_tea.identifier%>）
                                         </span>
                                     </div>
                                     <div class="col-md-1 textAlign">
-                                        10
+                                        <%=title.number%>
                                     </div>
                                     <div class="col-md-1 textAlign">
-                                        2
+                                        <%=title.rest%>
                                     </div>
                                 </div>
-                                <!--分页开始-->
-                                <div style="margin-top: 15px" class="m-style"></div>
-                                <!--分页结束-->
-                            </div>
+                                <%})}%>
+                            </script>
                             <!--查看题目情况结束-->
                         </div>
                     </div>
                 </div>
+                <!--题目管理结束-->
             </div>
-            <!--题目管理结束-->
         </div>
     </div>
     <!--审核出题开始-->
@@ -762,6 +880,8 @@
     <!--不通过选题结束-->
     <!--查看更多题目开始 -->
     <div class="modal fade" id="moreTopics" role="dialog">
+    </div>
+    <script id="moreTopicses" type="text/template">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -774,24 +894,15 @@
                         <strong>
                             <span>课题题目:</span>
                         </strong>
+                        <%data.forEach(function(title){%>
                         <p style="font-size: 14px">
                             <span class="clickColor cursorPointer" data-toggle="modal"
-                                  data-target="#topicDetails" onclick="popupClose('moreTopics')">
-                                            PMMA灯具基于moldflow三维流动优化的注塑模设计
+                                  data-target="#topicDetails"
+                                  onclick="projectDetails('moreTopics','<%=title.project.id%>')">
+                                            <%=title.project.title%>
                                         </span>
                         </p>
-                        <p style="font-size: 14px">
-                            <span class="clickColor cursorPointer" data-toggle="modal"
-                                  data-target="#topicDetails" onclick="popupClose('moreTopics')">
-                                            PMMA灯具基于moldflow三维流动优化的注塑模设计
-                                        </span>
-                        </p>
-                        <p style="font-size: 14px">
-                            <span class="clickColor cursorPointer" data-toggle="modal"
-                                  data-target="#topicDetails" onclick="popupClose('moreTopics')">
-                                            PMMA灯具基于moldflow三维流动优化的注塑模设计
-                                        </span>
-                        </p>
+                        <%})%>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -799,7 +910,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </script>
     <!--查看更多题目结束 -->
     <!--题目管理结束-->
 
@@ -813,7 +924,8 @@
                             <ul class="nav nav-tabs" role="tablist">
                                 <li class="active"><a href="#teachers_Group" role="tab"
                                                       data-toggle="tab">答辩分组</a></li>
-                                <li><a href="#Calculate_defense_score" role="tab" data-toggle="tab">计算答辩总评成绩</a></li>
+                                <li><a href="#Calculate_defense_score" role="tab" data-toggle="tab">计算答辩总评成绩</a>
+                                </li>
                                 <li><a href="#replyTeacher" role="tab" data-toggle="tab">教师答辩分组统计报表</a></li>
                                 <li><a href="#replyStudent" role="tab" data-toggle="tab">学生答辩分组统计报表</a></li>
                                 <li><a href="#results_Summary" role="tab" data-toggle="tab">成绩汇总统计报表</a></li>
@@ -1737,6 +1849,8 @@
 
     <!--查看学生详细信息开始-->
     <div class="modal fade" id="studentDetails" role="dialog">
+    </div>
+    <script id="studentDetailses" type="text/template">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -1749,32 +1863,53 @@
                         <strong>
                             <span>学生姓名:</span>
                         </strong>
-                        <span>王晓霞</span>
+                        <span><%=name%></span>
                         <hr>
                         <strong>
                             <span>学号:</span>
                         </strong>
-                        <span>3120150905119</span>
+                        <span><%=identifier%></span>
                         <hr>
                         <strong>
-                            <span>院系:</span>
+                            <span>联系电话:</span>
                         </strong>
-                        <span>计算机与软件工程学院</span>
+                        <span>
+                            <%if(contactTel=="") {%>
+                            暂未填写联系电话
+                            <%}else {%>
+                            <%=contactTel%>
+                            <%}%>
+                        </span>
                         <hr>
                         <strong>
-                            <span>专业:</span>
+                            <span>联系邮箱:</span>
                         </strong>
-                        <span>软件工程</span>
+                        <span>
+                            <%if(email=="") {%>
+                            暂未填写联系邮箱
+                            <%}else {%>
+                            <%=email%>
+                            <%}%></span>
+                        <hr>
+                        <strong>
+                            <span>学院:</span>
+                        </strong>
+                        <span><%=college%></span>
+                        <hr>
+                        <strong>
+                            <span>系:</span>
+                        </strong>
+                        <span><%=major%></span>
                         <hr>
                         <strong>
                             <span>班级:</span>
                         </strong>
-                        <span>软件设计15-1</span>
+                        <span><%=grade%>级 - <%=classNo%>班</span>
                         <hr>
                         <strong>
                             <span>性别:</span>
                         </strong>
-                        <span>女</span>
+                        <span><%=sex%></span>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -1782,10 +1917,12 @@
                 </div>
             </div>
         </div>
-    </div>
+    </script>
     <!--查看学生详细信息结束-->
     <!--教师详细信息开始 -->
     <div class="modal fade" id="teacherDetails" role="dialog">
+    </div>
+    <script id="teacherDetailses" type="text/template">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -1796,31 +1933,53 @@
                 <div class="modal-body">
                     <div class="alert alert-success">
                         <strong>
-                            <span>答辩教师（工号）:</span>
+                            <span>教师姓名（工号）:</span>
                         </strong>
                         <span>
-                            李月卉（12000002000）
+                            <%=name%>（<%=identifier%>）
                         </span>
                         <hr>
                         <strong>
                             <span>教师职称:</span>
                         </strong>
-                        <span>教师职称</span>
+                        <span><%=title%></span>
                         <hr>
                         <strong>
-                            <span>答辩教师联系邮箱:</span>
+                            <span>教师联系邮箱:</span>
                         </strong>
-                        <span>答辩教师联系邮箱</span>
+                        <span>
+                            <%if(email=="") {%>
+                            该教师暂未填写联系邮箱
+                            <%}else{%>
+                            <%=email%>
+                            <%}%>
+                        </span>
                         <hr>
                         <strong>
-                            <span>答辩教师联系电话:</span>
+                            <span>教师联系电话:</span>
                         </strong>
-                        <span>15208224067</span>
+                        <span>
+                            <%if(contactTel=="") {%>
+                            该教师暂未填写联系电话
+                            <%}else{%>
+                            <%=contactTel%>
+                            <%}%>
+                        </span>
                         <hr>
                         <strong>
                             <span>学院:</span>
                         </strong>
-                        <span>计算机与软件工程</span>
+                        <span><%=college%></span>
+                        <hr>
+                        <strong>
+                            <span>系:</span>
+                        </strong>
+                        <span><%=department%></span>
+                        <hr>
+                        <strong>
+                            <span>性别:</span>
+                        </strong>
+                        <span><%=sex%></span>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -1828,71 +1987,92 @@
                 </div>
             </div>
         </div>
-    </div>
+    </script>
     <!--教师详细信息结束 -->
     <!--查看课题详细信息开始-->
     <div style="overflow-y:scroll" class="modal fade" id="topicDetails" role="dialog">
+    </div>
+    <script id="topicDetailses" type="text/template">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                             aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">已出课题详细信息</h4>
+                    <h4 class="modal-title">课题详细信息</h4>
                 </div>
                 <div class="modal-body">
                     <div class="alert alert-success">
                         <strong>
                             <span>课题题目:</span>
                         </strong>
-                        <span>课题题目</span>
+                        <span><%=data.title%></span>
                         <hr>
                         <strong>
                             <span>题目简介:</span>
                         </strong>
                         <span>
-                            题目简介题目简介题目简介题目简介题目简介题目简介题目简介题目简介题目简介
-                            题目简介题目简介题目简介题目简介题目简介题目简介题目简介题目简介题目简介
+                            <%=data.briefIntro%>
                         </span>
                         <hr>
                         <strong>
                             <span>题目来源:</span>
                         </strong>
-                        <span>生产实际</span>
+                        <span><%=data.source%></span>
                         <hr>
                         <strong>
                             <span>题目类型:</span>
                         </strong>
-                        <span>工程工业设计</span>
+                        <span><%=data.genre%></span>
                         <hr>
+                        <%if(typeof(setDate)!="undefined") {%>
                         <strong>
                             <span>出题时间:</span>
                         </strong>
-                        <span>2018-12-12 12:12:12</span>
+                        <span><%
+                                        var unixTimestamp = new Date( setDate ) ;
+                                        commonTime = unixTimestamp.toLocaleString();
+                                        %>
+                                        <%= commonTime %></span>
+                        <hr>
+                        <%}%>
+                        <strong>
+                            <span>已选人数/容纳人数:</span>
+                        </strong>
+                        <span><%=data.rest%>/<%=data.number%></span>
                         <hr>
                         <strong>
-                            <span>已选人数/可选人数:</span>
+                            <span>可选范围:</span>
                         </strong>
-                        <span>4/6</span>
+                        <span><%=data.range%></span>
                         <hr>
                         <strong>
-                            <span>是否真题真做的题目:</span>
+                            <span>所属专业:</span>
                         </strong>
-                        <span>是</span>
+                        <span><%=data.major%></span>
                         <hr>
                         <strong>
-                            <span>委托方名称:</span>
+                            <span>附件:</span>
                         </strong>
-                        <span>西华大学</span>
+                        <span>
+                            <% if(data.fileId == 0 || typeof(data.file)=="undefined") { %>
+                                        暂未上传题目相关附件
+                                        <% } else { %>
+                                        附件：<%=data.file.fileName %> <a style="padding-left: 20px"
+                                                                       href="http://www.yuanbw.cn:20086/gpms/rol/downloadFile?fileId=<%=data.fileId %>">点击下载</a>
+                                        <% } %>
+                        </span>
                         <hr>
                         <strong>
                             <span>任务书:</span>
                         </strong>
-                        <span>未上传</span>
-                        <hr>
-                        <strong>
-                            <span>审核状态:</span>
-                        </strong>
-                        <span>不通过</span>
+                        <span>
+                            <% if(typeof(data.taskBook)=="undefined" || data.taskBook.fileId == 0) { %>
+                                        暂未上传任务书
+                                        <% } else { %>
+                                        附件：<%=data.taskBook.file.fileName %> <a style="padding-left: 20px"
+                                                                                href="http://www.yuanbw.cn:20086/gpms/rol/downloadFile?fileId=<%=data.taskBook.fileId %>">点击下载</a>
+                                        <% } %>
+                        </span>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -1900,7 +2080,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </script>
     <!--查看课题详细信息结束-->
 
     <!--新闻浏览-->
@@ -1953,7 +2133,6 @@
 <!-- Bootstrap Js -->
 <script src="../assets/js/bootstrap.js"></script>
 <script src="../assets/js/sideCloseOpen.js"></script>
-
 <!-- 自定义函数 Js -->
 <script src="../assets/js/commonFunction.js"></script>
 <!--圆形进度条-->
@@ -1961,47 +2140,620 @@
 <script src="../assets/js/easypiechart-data.js"></script>
 <!-- easypiechart Js -->
 <script src="../assets/js/easypiechart.js"></script>
+<script src="../assets/js/ejs.js"></script>
 
 <script>
-
+    let token = getCookie("token");
+    if (token == "" || token == null) {
+        window.location.href = "../login/login.html";
+    }
     $(function () {
-        let authority = getCookie("authority");
-        if (authority == 2) {
-            let isDean = document.getElementsByClassName('isDean');
-            while (isDean.length > 0) {
-                isDean[0].parentNode.removeChild(isDean[0]);
-            }
-            console.log(isDean);
-        }
-        idHover('subjectOpinion');
-        idHover('subjectOpinion1');
+        PersonalInfo();
     });
 
-    function idHover(id) {
-        $("#" + id).hover(function () {
-            $("#" + id).popover('show');
-        }, function () {
-            $("#" + id).popover('hide');
+    function PersonalInfo() {
+        let url = "http://www.yuanbw.cn:20086/gpms/rol/showRoleInfo";
+        $.ajax({
+            url: url,
+            type: "POST",
+            data: {},
+            xhrFields: {
+                withCredentials: true
+            },
+            crossDomain: true,
+            headers: {
+                Token: token
+            },
+            success: function (responseStr) {
+                if (responseStr.msg == "查询成功") {
+                    let html = responseStr.data.name + '(' + responseStr.data.identifier + ')，欢迎使用系统';
+                    $('#information').html(html);
+                    teacherInfo = responseStr.data.identifier;
+                }
+            },
+            error: function (responseStr) {
+                console.log("failed");
+                console.log(responseStr);
+                window.location.href = "../404/404.html";
+            }
+        });
+    }
+</script>
+
+<script>
+    //出题情况统计表
+    function statisticalTopic() {
+        whetherTitle();
+        statisticalTopicConditions("", "", "", "notOne");
+    }
+
+    //查询出题与未出题教师数量
+    function whetherTitle() {
+        let hasDraws = document.getElementById('hasDraws').innerHTML;
+        let hasDraw = document.getElementById('hasDraw');
+        let url = "http://www.yuanbw.cn:20086/gpms/tea/showDepTeaCount";
+        $.ajax({
+            url: url,
+            type: "POST",
+            data: {},
+            xhrFields: {
+                withCredentials: true
+            },
+            crossDomain: true,
+            headers: {
+                Token: token
+            },
+            success: function (responseStr) {
+                if (responseStr.msg == "查询成功") {
+                    hasDraw.innerHTML = ejs.render(hasDraws, {data: responseStr.data});
+                } else {
+                    hasDraw.innerHTML = ejs.render(hasDraws, {data: ""});
+                }
+            },
+            error: function (responseStr) {
+                console.log("failed");
+                console.log(responseStr);
+                window.location.href = "../404/404.html";
+            }
         });
     }
 
-    function popupClose(id) {
-        $('#' + id).modal('hide');
+    //条件查询出题情况
+    let pageCount = 1;
+    let titles;
+
+    function statisticalTopicConditions(tid, tName, hasSet, isOne) {
+        let url = "http://www.yuanbw.cn:20086/gpms/tea/showDepTeachers";
+        let limit = 4;
+        let offset = 0;
+        let data = {limit: limit, offset: offset};
+        if (tid != "") {
+            data.tid = tid;
+        }
+        if (tName != "") {
+            data.tName = tName;
+        }
+        if (hasSet != "") {
+            data.hasSet = hasSet;
+        }
+        $.ajax({
+            url: url,
+            type: "POST",
+            data: data,
+            xhrFields: {
+                withCredentials: true
+            },
+            crossDomain: true,
+            headers: {
+                Token: token
+            },
+            success: function (responseStr) {
+                if (isOne == "one") {
+                    let teacherDetailses = document.getElementById('teacherDetailses').innerHTML;
+                    let teacherDetails = document.getElementById('teacherDetails');
+                    let teacher = responseStr.data.teacherList[0];
+                    teacherDetails.innerHTML = ejs.render(teacherDetailses, {
+                        identifier: teacher.identifier,
+                        name: teacher.name,
+                        title: teacher.title,
+                        email: teacher.email,
+                        contactTel: teacher.contactTel,
+                        college: teacher.college,
+                        department: teacher.department,
+                        sex: teacher.sex
+                    });
+                } else if (isOne == "titles") {
+                    let moreTopicses = document.getElementById('moreTopicses').innerHTML;
+                    let moreTopics = document.getElementById('moreTopics');
+                    let proSetList = responseStr.data.teacherList[0].proSetList;
+                    titles = proSetList;
+                    moreTopics.innerHTML = ejs.render(moreTopicses, {
+                        data: proSetList
+                    });
+                } else {
+                    let titleLists = document.getElementById('titleLists').innerHTML;
+                    let titleList = document.getElementById('titleList');
+                    let msg = responseStr.msg;
+                    if (msg == "查询成功") {
+                        pageCount = Math.ceil(responseStr.data.count / limit);
+                        titleList.innerHTML = ejs.render(titleLists, {data: responseStr.data.teacherList});
+                        $('#teachersPage').pagination({
+                            pageCount: pageCount,
+                            jump: true,
+                            coping: true,
+                            homePage: '首页',
+                            endPage: '末页',
+                            prevContent: '上页',
+                            nextContent: '下页',
+                            callback: function (api) {
+                                let page = api.getCurrent();
+                                offset = (page - 1) * limit;
+                                data.offset = offset;
+                                $.ajax({
+                                    url: url,
+                                    type: "POST",
+                                    data: data,
+                                    xhrFields: {
+                                        withCredentials: true
+                                    },
+                                    crossDomain: true,
+                                    headers: {
+                                        Token: token
+                                    },
+                                    success: function (responseStr) {
+                                        let msg = responseStr.msg;
+                                        if (msg == "查询成功") {
+                                            pageCount = Math.ceil(responseStr.data.count / limit);
+                                            if (responseStr.data.teacherList.length > 0) {
+                                                titleList.innerHTML = ejs.render(titleLists, {data: responseStr.data.teacherList});
+                                            }
+                                        }
+                                        if (msg == "系统繁忙") {
+                                            alert("系统繁忙,请不要点击过快！");
+                                        }
+                                    },
+                                    error: function (responseStr) {
+                                        console.log("failed");
+                                        console.log(responseStr);
+                                    }
+                                });
+                            }
+                        });
+                    } else if (responseStr.statusCode == "101") {
+                        titleList.innerHTML = ejs.render(titleLists, {data: ""});
+                    }
+                }
+            },
+            error: function (responseStr) {
+                console.log("failed");
+                console.log(responseStr);
+            }
+        });
+    }
+
+    //条件查询教师出题
+    function queryDraw() {
+        let hasSet = document.getElementById('hasSet').value;
+        let teaName = document.getElementById('teaName').value;
+        let teaId = document.getElementById('teaId').value;
+        statisticalTopicConditions(teaId, teaName, hasSet, "notOne");
+        document.getElementById('teaId').value = "";
+        document.getElementById('teaName').value = "";
+        document.getElementById('hasSet').options[0].selected = true;
+    }
+
+    //查看教师详细信息传入id
+    function teacherById(id) {
+        statisticalTopicConditions(id, "", "", "one");
+    }
+
+    //查看教师更多题目
+    function moreTitles(id) {
+        statisticalTopicConditions(id, "", "", "titles")
+    }
+
+    //查看课题详细信息
+    function projectDetails(moreTopics, titleid) {
+        $('#' + moreTopics).modal('hide');
+        titles.forEach(function (title) {
+            if (title.project.id == titleid) {
+                let topicDetailses = document.getElementById('topicDetailses').innerHTML;
+                let topicDetails = document.getElementById('topicDetails');
+                topicDetails.innerHTML = ejs.render(topicDetailses, {
+                    data: title.project,
+                    setDate: title.setDate
+                });
+            }
+        })
+    }
+
+    //学生选题统计表
+    function statisticalSelect() {
+        whetherSelect();
+        statisticalSelectConditions("", "", "", "notOne");
+    }
+
+    //查询选题与未选题学生数量
+    function whetherSelect() {
+        let hasSelects = document.getElementById('hasSelects').innerHTML;
+        let hasSelect = document.getElementById('hasSelect');
+        let url = "http://www.yuanbw.cn:20086/gpms/tea/showDepStuCount";
+        $.ajax({
+            url: url,
+            type: "POST",
+            data: {},
+            xhrFields: {
+                withCredentials: true
+            },
+            crossDomain: true,
+            headers: {
+                Token: token
+            },
+            success: function (responseStr) {
+                if (responseStr.msg == "查询成功") {
+                    hasSelect.innerHTML = ejs.render(hasSelects, {data: responseStr.data});
+                } else {
+                    hasSelect.innerHTML = ejs.render(hasSelects, {data: ""});
+                }
+            },
+            error: function (responseStr) {
+                console.log("failed");
+                console.log(responseStr);
+                window.location.href = "../404/404.html";
+            }
+        });
+    }
+
+    //条件查询选题、未选题学生
+    function statisticalSelectConditions(sid, sName, hasChoose, isOne) {
+        let url = "http://www.yuanbw.cn:20086/gpms/tea/showDepStudents";
+        let limit = 4;
+        let offset = 0;
+        let data = {limit: limit, offset: offset};
+        if (sid != "") {
+            data.sid = sid;
+        }
+        if (sName != "") {
+            data.sName = sName;
+        }
+        if (hasChoose != "") {
+            data.hasChoose = hasChoose;
+        }
+        $.ajax({
+            url: url,
+            type: "POST",
+            data: data,
+            xhrFields: {
+                withCredentials: true
+            },
+            crossDomain: true,
+            headers: {
+                Token: token
+            },
+            success: function (responseStr) {
+                if (isOne == "one") {
+                    let studentDetailses = document.getElementById('studentDetailses').innerHTML;
+                    let studentDetails = document.getElementById('studentDetails');
+                    let student = responseStr.data.studentList[0];
+                    studentDetails.innerHTML = ejs.render(studentDetailses, {
+                        identifier: student.identifier,
+                        name: student.name,
+                        email: student.email,
+                        contactTel: student.contactTel,
+                        college: student.college,
+                        major: student.major,
+                        sex: student.sex,
+                        grade: student.grade,
+                        classNo: student.classNo
+                    });
+                } else if (isOne == "title") {
+                    let topicDetailses = document.getElementById('topicDetailses').innerHTML;
+                    let topicDetails = document.getElementById('topicDetails');
+                    topicDetails.innerHTML = ejs.render(topicDetailses, {
+                        data: responseStr.data.studentList[0].checkedPro
+                    });
+                } else {
+                    let studentLists = document.getElementById('studentLists').innerHTML;
+                    let studentList = document.getElementById('studentList');
+                    let msg = responseStr.msg;
+                    if (msg == "查询成功") {
+                        pageCount = Math.ceil(responseStr.data.count / limit);
+                        studentList.innerHTML = ejs.render(studentLists, {data: responseStr.data.studentList});
+                        $('#studentPage').pagination({
+                            pageCount: pageCount,
+                            jump: true,
+                            coping: true,
+                            homePage: '首页',
+                            endPage: '末页',
+                            prevContent: '上页',
+                            nextContent: '下页',
+                            callback: function (api) {
+                                let page = api.getCurrent();
+                                offset = (page - 1) * limit;
+                                data.offset = offset;
+                                $.ajax({
+                                    url: url,
+                                    type: "POST",
+                                    data: data,
+                                    xhrFields: {
+                                        withCredentials: true
+                                    },
+                                    crossDomain: true,
+                                    headers: {
+                                        Token: token
+                                    },
+                                    success: function (responseStr) {
+                                        let msg = responseStr.msg;
+                                        if (msg == "查询成功") {
+                                            pageCount = Math.ceil(responseStr.data.count / limit);
+                                            if (responseStr.data.studentList.length > 0) {
+                                                studentList.innerHTML = ejs.render(studentLists, {data: responseStr.data.studentList});
+                                            }
+                                        }
+                                        if (msg == "系统繁忙") {
+                                            alert("系统繁忙,请不要点击过快！");
+                                        }
+                                    },
+                                    error: function (responseStr) {
+                                        console.log("failed");
+                                        console.log(responseStr);
+                                    }
+                                });
+                            }
+                        });
+                    } else if (responseStr.statusCode == "101") {
+                        studentList.innerHTML = ejs.render(studentLists, {data: ""});
+                    }
+                }
+            },
+            error: function (responseStr) {
+                console.log("failed");
+                console.log(responseStr);
+            }
+        });
+    }
+
+    //根据id查询学生信息
+    function queryStudentInfo(id) {
+        statisticalSelectConditions(id, "", "", "one");
+    }
+
+    //根据id查询学生选题课题信息
+    function studentProjectDetails(id) {
+        statisticalSelectConditions(id, "", "", "title")
+    }
+
+    //根据条件查询学生选题信息
+    function queryIsChoose() {
+        let hasChoose = document.getElementById('hasChoose').value;
+        let stuName = document.getElementById('stuName').value;
+        let stuId = document.getElementById('stuId').value;
+        statisticalSelectConditions(stuId, stuName, hasChoose, "notOne");
+        document.getElementById('stuId').value = "";
+        document.getElementById('stuName').value = "";
+        document.getElementById('hasChoose').options[0].selected = true;
+    }
+
+    //题目统计报表
+    function statisticalTitle() {
+        titleNumber();
+        titleList("", "", "", "", "", "", "notOne")
+    }
+
+    //系主任查看题目数量情况
+    function titleNumber() {
+        let numberOfTitles = document.getElementById('numberOfTitles').innerHTML;
+        let numberOfTitle = document.getElementById('numberOfTitle');
+        let url = "http://www.yuanbw.cn:20086/gpms/tea/showDepProCount";
+        $.ajax({
+            url: url,
+            type: "POST",
+            data: {},
+            xhrFields: {
+                withCredentials: true
+            },
+            crossDomain: true,
+            headers: {
+                Token: token
+            },
+            success: function (responseStr) {
+                if (responseStr.msg == "查询成功") {
+                    numberOfTitle.innerHTML = ejs.render(numberOfTitles, {data: responseStr.data});
+                } else {
+                    numberOfTitle.innerHTML = ejs.render(numberOfTitles, {data: ""});
+                }
+            },
+            error: function (responseStr) {
+                console.log("failed");
+                console.log(responseStr);
+                window.location.href = "../404/404.html";
+            }
+        });
+    }
+
+    //根据条件查询题目列表
+    function titleList(pid, pName, range, genre, source, status, isOne) {
+        let url = "http://www.yuanbw.cn:20086/gpms/tea/showDepProjects";
+        let limit = 4;
+        let offset = 0;
+        let data = {limit: limit, offset: offset};
+        if (pid != "") {
+            data.pid = pid;
+        }
+        if (pName != "") {
+            data.pName = pName;
+        }
+        if (range != "") {
+            data.rangeType = range;
+        }
+        if (genre != "") {
+            data.genre = genre;
+        }
+        if (source != "") {
+            data.source = source;
+        }
+        if (status != "") {
+            data.status = status;
+        }
+        $.ajax({
+            url: url,
+            type: "POST",
+            data: data,
+            xhrFields: {
+                withCredentials: true
+            },
+            crossDomain: true,
+            headers: {
+                Token: token
+            },
+            success: function (responseStr) {
+                if (isOne == "student") {
+                    let studentDetailses = document.getElementById('studentDetailses').innerHTML;
+                    let studentDetails = document.getElementById('studentDetails');
+                    let students = responseStr.data.projectList[0].choose_stu_list;
+                    let student;
+                    students.forEach(function (studentI) {
+                        if (studentI.identifier == studentById) {
+                            student = studentI;
+                        }
+                    })
+                    studentDetails.innerHTML = ejs.render(studentDetailses, {
+                        identifier: student.identifier,
+                        name: student.name,
+                        email: student.email,
+                        contactTel: student.contactTel,
+                        college: student.college,
+                        major: student.major,
+                        sex: student.sex,
+                        grade: student.grade,
+                        classNo: student.classNo
+                    });
+                } else if (isOne == "teacher") {
+                    let teacherDetailses = document.getElementById('teacherDetailses').innerHTML;
+                    let teacherDetails = document.getElementById('teacherDetails');
+                    let teacher = responseStr.data.projectList[0].set_tea;
+                    teacherDetails.innerHTML = ejs.render(teacherDetailses, {
+                        identifier: teacher.identifier,
+                        name: teacher.name,
+                        title: teacher.title,
+                        email: teacher.email,
+                        contactTel: teacher.contactTel,
+                        college: teacher.college,
+                        department: teacher.department,
+                        sex: teacher.sex
+                    });
+                } else if (isOne == "title") {
+                    let topicDetailses = document.getElementById('topicDetailses').innerHTML;
+                    let topicDetails = document.getElementById('topicDetails');
+                    topicDetails.innerHTML = ejs.render(topicDetailses, {
+                        data: responseStr.data.projectList[0]
+                    });
+                } else {
+                    let listOfTitles = document.getElementById('listOfTitles').innerHTML;
+                    let listOfTitle = document.getElementById('listOfTitle');
+                    let msg = responseStr.msg;
+                    if (msg == "查询成功") {
+                        pageCount = Math.ceil(responseStr.data.count / limit);
+                        listOfTitle.innerHTML = ejs.render(listOfTitles, {data: responseStr.data.projectList});
+                        $('#titlePage').pagination({
+                            pageCount: pageCount,
+                            jump: true,
+                            coping: true,
+                            homePage: '首页',
+                            endPage: '末页',
+                            prevContent: '上页',
+                            nextContent: '下页',
+                            callback: function (api) {
+                                let page = api.getCurrent();
+                                offset = (page - 1) * limit;
+                                data.offset = offset;
+                                $.ajax({
+                                    url: url,
+                                    type: "POST",
+                                    data: data,
+                                    xhrFields: {
+                                        withCredentials: true
+                                    },
+                                    crossDomain: true,
+                                    headers: {
+                                        Token: token
+                                    },
+                                    success: function (responseStr) {
+                                        let msg = responseStr.msg;
+                                        if (msg == "查询成功") {
+                                            pageCount = Math.ceil(responseStr.data.count / limit);
+                                            if (responseStr.data.projectList.length > 0) {
+                                                listOfTitle.innerHTML = ejs.render(listOfTitles, {data: responseStr.data.projectList});
+                                            }
+                                        }
+                                        if (msg == "系统繁忙") {
+                                            alert("系统繁忙,请不要点击过快！");
+                                        }
+                                    },
+                                    error: function (responseStr) {
+                                        console.log("failed");
+                                        console.log(responseStr);
+                                    }
+                                });
+                            }
+                        });
+                    } else if (responseStr.statusCode == "101") {
+                        listOfTitle.innerHTML = ejs.render(listOfTitles, {data: ""});
+                    }
+                }
+            },
+            error: function (responseStr) {
+                console.log("failed");
+                console.log(responseStr);
+            }
+        });
+    }
+
+    //根据题目id查询题目信息
+    function TitleById(id, info) {
+        titleList(id, "", "", "", "", "", info)
+    }
+
+    //根据id查看学生信息
+    let studentById;
+
+    function TitleByStudent(id, student, identifier) {
+        studentById = identifier;
+        titleList(id, "", "", "", "", "", student);
+    }
+
+    //根据条件查询题目信息
+    function queryTitle() {
+        let pName = document.getElementById('pName').value;
+        let range = document.getElementById('range').value;
+        let genre = document.getElementById('genre').value;
+        let source = document.getElementById('source').value;
+        let status = document.getElementById('status').value;
+        titleList("", pName, range, genre, source, status, "notOne");
+        document.getElementById('pName').value = "";
+        document.getElementById('range').options[0].selected = true;
+        document.getElementById('genre').options[0].selected = true;
+        document.getElementById('source').options[0].selected = true;
+        document.getElementById('status').options[0].selected = true;
     }
 
 
-    $('.m-style').pagination({
-        pageCount: 5,
-        jump: true,
-        coping: true,
-        homePage: '首页',
-        endPage: '末页',
-        prevContent: '上页',
-        nextContent: '下页',
-        callback: function (api) {
-            console.log(api.getCurrent());
-        }
-    });
+</script>
+
+<script>
+
+    // $('.m-style').pagination({
+    //     pageCount: 5,
+    //     jump: true,
+    //     coping: true,
+    //     homePage: '首页',
+    //     endPage: '末页',
+    //     prevContent: '上页',
+    //     nextContent: '下页',
+    //     callback: function (api) {
+    //         console.log(api.getCurrent());
+    //     }
+    // });
     let teacherInfo = [];
 
     //新增答辩分组
@@ -2076,7 +2828,7 @@
                     indexCommon++;
                 }
             });
-            if(indexCommon==0) {
+            if (indexCommon == 0) {
                 let divrow = document.createElement('div');
                 divrow.setAttribute('id', 'teamLeader' + value);
                 divrow.setAttribute('class', 'newTeacher');
