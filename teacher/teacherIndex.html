@@ -805,12 +805,12 @@
                                 <li class="RatingArrange" onclick="DefenseRating()"><a href="#defense_rating" role="tab"
                                                                                        data-toggle="tab">答辩打分</a>
                                 </li>
-                                <li id="DefenseLeader" class="leaderDefense" onclick="queryDefenseScore()"><a
+                                <li id="DefenseLeader" class="leaderDefense displayNone" onclick="queryDefenseScore()"><a
                                         href="#defense_Situation"
                                         role="tab"
                                         data-toggle="tab">答辩组长提交答辩打分情况</a>
                                 </li>
-                                <li class="graduationDesign" onclick="queryGraduationDesign()"><a href="#grade_Papers"
+                                <li class="graduationDesign" onclick="queryGraduationDesignReview()"><a href="#grade_Papers"
                                                                                                   role="tab"
                                                                                                   data-toggle="tab">毕业设计评审</a>
                                 </li>
@@ -4343,8 +4343,8 @@
                     answerTeacher = responseStr.data.teaGroup;
                     answerTeacher.forEach(function (teacher) {
                         if (teacher.leader) {
-                            if (teacherInfo != teacher.teaAuth.id) {
-                                $('#DefenseLeader').addClass('hide');
+                            if (teacherInfo == teacher.teaAuth.id) {
+                                $('#DefenseLeader').addClass('displayBlock');
                             }
                         }
                     })
@@ -4655,7 +4655,7 @@
     //教师查看毕业评审学生列表
     let GraduationDesignStudents;
 
-    function queryGraduationDesign() {
+    function queryGraduationDesignReview() {
         let url = "http://www.yuanbw.cn:20086/gpms/tea/showMtStudentList";
         let grade_Paperses = document.getElementById('grade_Paperses').innerHTML;
         let grade_Papers = document.getElementById('grade_Papers');
@@ -4751,7 +4751,7 @@
             },
             success: function (responseStr) {
                 alert(responseStr.msg);
-                queryGraduationDesign();
+                queryGraduationDesignReview();
                 $('#scorePlea').removeClass('displayBlock');
                 $('#scorePlea').addClass('displayNone');
                 $('#three').addClass('displayBlock');

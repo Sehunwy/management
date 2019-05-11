@@ -17,6 +17,7 @@ function cancelTitle(classInput) {
         textContent[i].value = "";
     }
 }
+
 // 取消输入框的值结束
 
 function showMaxImg(obj) {
@@ -44,36 +45,29 @@ function selectAll(id, className) {
 }
 
 //cookies
-function setCookie(name,value,time)
-{
+function setCookie(name, value, time) {
     let strsec = getsec(time);
     let exp = new Date();
-    exp.setTime(exp.getTime() + strsec*1);
-    document.cookie = name + "="+ escape (value) + ";expires=" + exp.toGMTString() +";path=/";
+    exp.setTime(exp.getTime() + strsec * 1);
+    document.cookie = name + "=" + escape(value) + ";expires=" + exp.toGMTString() + ";path=/";
 }
-function getsec(str)
-{
-    let str1=str.substring(1,str.length)*1;
-    let str2=str.substring(0,1);
-    if (str2=="s")
-    {
-        return str1*1000;
-    }
-    else if (str2=="h")
-    {
-        return str1*60*60*1000;
-    }
-    else if (str2=="d")
-    {
-        return str1*24*60*60*1000;
+
+function getsec(str) {
+    let str1 = str.substring(1, str.length) * 1;
+    let str2 = str.substring(0, 1);
+    if (str2 == "s") {
+        return str1 * 1000;
+    } else if (str2 == "h") {
+        return str1 * 60 * 60 * 1000;
+    } else if (str2 == "d") {
+        return str1 * 24 * 60 * 60 * 1000;
     }
 }
 
-function getCookie(name)
-{
-    let arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+function getCookie(name) {
+    let arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
 
-    if(arr=document.cookie.match(reg))
+    if (arr = document.cookie.match(reg))
 
         return unescape(arr[2]);
     else
@@ -85,9 +79,9 @@ function getCookie(name)
 function clearCookie(name) {
     let exp = new Date();
     exp.setTime(exp.getTime() - 1);
-    let cval=getCookie(name);
-    if(cval!=null)
-        document.cookie= name + "="+cval+";expires="+exp.toGMTString();
+    let cval = getCookie(name);
+    if (cval != null)
+        document.cookie = name + "=" + cval + ";expires=" + exp.toGMTString();
 }
 
 function loginOutFunction() {
@@ -105,13 +99,14 @@ function loginOutFunction() {
             Token: token
         },
         success: function (responseStr) {
-            if(responseStr.msg == "注销成功") {
-                setCookie("token","","d1");
+            if (responseStr.msg == "注销成功") {
+                setCookie("token", "", "d1");
                 window.location.href = "../login/login.html";
             }
         },
         error: function (responseStr) {
-            window.location.href = "../404/404.html";
+            setCookie("token", "", "d1");
+            window.location.href = "../login/login.html";
         }
     });
 }

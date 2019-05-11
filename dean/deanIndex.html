@@ -2668,7 +2668,7 @@
     //题目统计报表
     function statisticalTitle() {
         titleNumber();
-        titleList("", "", "", "", "", "", "notOne")
+        titleLists("", "", "", "", "", "", "notOne")
     }
 
     //系主任查看题目数量情况
@@ -2701,7 +2701,7 @@
     }
 
     //根据条件查询题目列表
-    function titleList(pid, pName, range, genre, source, status, isOne) {
+    function titleLists(pid, pName, range, genre, source, status, isOne) {
         let url = "http://www.yuanbw.cn:20086/gpms/tea/showDepProjects";
         let limit = 4;
         let offset = 0;
@@ -2838,7 +2838,7 @@
 
     //根据题目id查询题目信息
     function TitleById(id, info) {
-        titleList(id, "", "", "", "", "", info)
+        titleLists(id, "", "", "", "", "", info)
     }
 
     //根据id查看学生信息
@@ -2846,7 +2846,7 @@
 
     function TitleByStudent(id, student, identifier) {
         studentById = identifier;
-        titleList(id, "", "", "", "", "", student);
+        titleLists(id, "", "", "", "", "", student);
     }
 
     //根据条件查询题目信息
@@ -2856,7 +2856,7 @@
         let genre = document.getElementById('genre').value;
         let source = document.getElementById('source').value;
         let status = document.getElementById('status').value;
-        titleList("", pName, range, genre, source, status, "notOne");
+        titleLists("", pName, range, genre, source, status, "notOne");
         document.getElementById('pName').value = "";
         document.getElementById('range').options[0].selected = true;
         document.getElementById('genre').options[0].selected = true;

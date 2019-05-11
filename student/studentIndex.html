@@ -675,13 +675,17 @@
                  class="col-md-2 textEllipsis textAlign">
                 <%= array.project.source %>
             </div>
-            <div title="<%= array.teacher.name %>（<%= array.teacher.identifier %>）"
+            <div title="<%= array.setRole.name %>（<%= array.setRole.id %>）"
                  class="col-md-3 textAlign textEllipsis">
-                                        <span class="clickColor cursorPointer" data-toggle="modal"
-                                              data-target="#teacherDetails"
-                                              onclick="teacherDetails('<%= array.teacher.identifier %>')">
-                                            <%= array.teacher.name %>（<%= array.teacher.identifier %>）
+                <%if(array.setRole.authority==4) {%>
+                <%= array.setRole.name %>（<%= array.setRole.id %>）
+                <%}else{%>
+                <span class="clickColor cursorPointer" data-toggle="modal"
+                      data-target="#teacherDetails"
+                      onclick="teacherDetails('<%= array.teacher.identifier %>')">
+                                            <%= array.setRole.name %>（<%= array.setRole.id %>）
                                         </span>
+                <%}%>
             </div>
             <div class="col-md-1 textAlign textEllipsis">
                 <%= array.project.rest %>人
@@ -879,12 +883,23 @@
             <strong>
                 <span>导师联系邮箱:</span>
             </strong>
-            <span><%= teacher.email %></span>
+            <span>
+                <%if(teacher.email=="") {%>
+                暂无填写联系邮箱
+                <%}else{%>
+                <%= teacher.email %>
+                <%}%>
+            </span>
             <hr>
             <strong>
                 <span>导师联系电话:</span>
             </strong>
-            <span><%= teacher.contactTel %></span>
+            <span>
+                <%if(teacher.email=="") {%>
+                暂无填写联系电话
+                <%}else{%>
+                <%= teacher.contactTel %>
+                <%}%></span>
             <hr>
             <strong>
                 <span>学院:</span>
@@ -2359,7 +2374,7 @@
                                         <% if(taskProgress[i].progress==100) {%>
                                         <span class="submit"> 已提交</span>
                                         <% } else {%>
-                                         <span class="colorf44"> 未提交</span>
+                                        <span class="colorf44"> 未提交</span>
                                         <%}%>
                                     </div>
                                     <div class="col-md-8 textEllipsis textAlign">
@@ -2400,8 +2415,8 @@
                                     <div><span class="notSubmit">综合评定成绩提交教师 ：</span><%=data.dean.name%></div>
                                     <%} else {%>
                                     <div><span class="notSubmit">暂无综合评定成绩 </span>
-                                    <%}%>
-                                </div>
+                                        <%}%>
+                                    </div>
                             </script>
                             <!--查看成绩结束-->
                         </div>
@@ -2608,6 +2623,7 @@
     if (token == "" || token == null) {
         window.location.href = "../login/login.html";
     }
+
     function notice() {
         $('.page-wrapper').addClass('displayNone');
         $('.page-wrapper').removeClass('displayBlock');
@@ -2887,7 +2903,7 @@
                                             topic.innerHTML = html;
                                         }
                                     }
-                                    if(msg=="系统繁忙") {
+                                    if (msg == "系统繁忙") {
                                         alert("系统繁忙,请不要点击过快！");
                                     }
                                 },
@@ -2898,8 +2914,7 @@
                             });
                         }
                     });
-                }
-                else if(msg == "查询记录为空") {
+                } else if (msg == "查询记录为空") {
                     topic.innerHTML = ejs.render(topics, {arrays: ""});
                 }
             },
@@ -2983,9 +2998,10 @@
         let teachersDetail = document.getElementById('teachersDetail').innerHTML;
         let teacherDetail = document.getElementById('teacherDetail');
         let html;
+        console.log(array)
         if (array.length > 0) {
             array.forEach(function (arr) {
-                if (arr.teacher.identifier == id) {
+                if (typeof(arr.teacher)!="undefined"&&arr.teacher.identifier == id) {
                     html = ejs.render(teachersDetail, {teacher: arr.teacher});
                     teacherDetail.innerHTML = html;
                 }
@@ -3121,8 +3137,7 @@
                         data: responseStr.data,
                         topicName: topicName
                     });
-                }
-                else if(responseStr.statusCode=="101") {
+                } else if (responseStr.statusCode == "101") {
                     reply_arrange.innerHTML = ejs.render(reply_arranges, {
                         data: ""
                     });
@@ -3157,8 +3172,7 @@
                         data: responseStr.data,
                         taskProgress: taskProgress
                     });
-                }
-                else if(responseStr.statusCode=="101"){
+                } else if (responseStr.statusCode == "101") {
                     reply_results.innerHTML = ejs.render(reply_resultses, {
                         data: ""
                     });
