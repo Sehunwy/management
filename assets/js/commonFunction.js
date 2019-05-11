@@ -111,8 +111,7 @@ function loginOutFunction() {
             }
         },
         error: function (responseStr) {
-            console.log("failed");
-            console.log(responseStr);
+            window.location.href = "../404/404.html";
         }
     });
 }

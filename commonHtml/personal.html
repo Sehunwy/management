@@ -179,14 +179,12 @@
                 Token: token
             },
             success: function (responseStr) {
-                console.log(responseStr);
                 if (responseStr.msg == "查询成功") {
                     informationDetailed.innerHTML = ejs.render(informationsDetailed, {informations: responseStr.data});
                 }
             },
             error: function (responseStr) {
-                console.log("failed");
-                console.log(responseStr);
+                window.location.href = "../404/404.html";
             }
         });
     }
@@ -230,8 +228,7 @@
                 }
             },
             error: function (responseStr) {
-                console.log("failed");
-                console.log(responseStr);
+                window.location.href = "../404/404.html";
             }
         });
     }

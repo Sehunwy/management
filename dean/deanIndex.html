@@ -137,7 +137,7 @@
                         <span class="iconfont icon-lunwentimu iconColor fontSize14 naviconpadding"></span>题目管理
                     </a>
                 </li>
-                <li><a href="#" id="management_Defense">
+                <li onclick="defensemTeacher()"><a href="#" id="management_Defense">
                     <span class="iconfont icon-dabian iconColorWhite fontSize14 naviconpadding"></span>答辩管理
                 </a>
                 </li>
@@ -927,9 +927,14 @@
                                 <li><a href="#Calculate_defense_score" role="tab" data-toggle="tab">计算答辩总评成绩</a>
                                 </li>
                                 <li><a href="#replyTeacher" role="tab" data-toggle="tab">教师答辩分组统计报表</a></li>
-                                <li><a href="#replyStudent" role="tab" data-toggle="tab">学生答辩分组统计报表</a></li>
-                                <li><a href="#results_Summary" role="tab" data-toggle="tab">成绩汇总统计报表</a></li>
-                                <li><a href="#material_Archive" role="tab" data-toggle="tab">材料归档统计报表</a></li>
+                                <li onclick="queryStudentsPleaConditions('','')"><a href="#replyStudent" role="tab"
+                                                                                    data-toggle="tab">学生答辩分组统计报表</a>
+                                </li>
+                                <li onclick="summaryReportResults('','','ranking')"><a href="#results_Summary"
+                                                                                       role="tab" data-toggle="tab">成绩汇总统计报表</a>
+                                </li>
+                                <li onclick="archivingStatistics('','')"><a href="#material_Archive" role="tab"
+                                                                       data-toggle="tab">材料归档统计报表</a></li>
                             </ul>
                         </div>
                         <div class="tab-content">
@@ -941,88 +946,50 @@
                                         答辩起止日期：2019-5-1 -- 2019-5-20 / 第九周星期四 -- 第十周星期四
                                     </div>
                                     <div class="col-md-12">
-                                        <h4 class="font_bold">答辩教师分组</h4>
-                                    </div>
-                                    <div class="col-md-12" style="padding-bottom: 8px">
+                                        <h4 class="font_bold" style="display: inline-block">答辩教师分组</h4>
+                                        <button type="button" class="btn btn-danger">导出表格<span
+                                                class="iconfont icon-excel"
+                                                style="padding-left: 4px;font-size:12px"></span>
+                                        </button>
                                         <button type="button" class="btn btn-info" data-toggle="modal"
                                                 data-target="#modify_Teachers_Group" onclick="newDefense()">新增<span
                                                 class="iconfont icon-add"
                                                 style="padding-left: 4px;font-size:12px"></span>
                                         </button>
+                                        <span class="colorf44">查询说明：对于答辩周数、答辩星期、现有人数输入阿拉伯数字，对于答辩教室输入例如：6A-101</span>
                                     </div>
-                                    <div class="alert alert-success textEllipsis border_radius marginBottom0">
-                                        <div class="col-md-1 textAlign">
-                                            答辩周数
-                                        </div>
-                                        <div class="col-md-1 textAlign">
-                                            答辩星期
-                                        </div>
-                                        <div class="col-md-1 textAlign">
-                                            答辩日期
-                                        </div>
-                                        <div class="col-md-1 textAlign">
-                                            答辩时间
-                                        </div>
-                                        <div class="col-md-1 textAlign">
-                                            答辩教室
-                                        </div>
-                                        <div class="col-md-1 textAlign">
-                                            答辩组长
-                                        </div>
-                                        <div class="col-md-3 textAlign">
-                                            答辩教师
-                                        </div>
-                                        <div class="col-md-1 textAlign">
-                                            答辩人数限制
-                                        </div>
-                                        <div class="col-md-1 textAlign">
-                                            分组
-                                        </div>
-                                        <div class="col-md-1 textAlign">
-                                            操作
-                                        </div>
-                                    </div>
-                                    <div class="alert alert-warning textEllipsis border_radius marginBottom0">
-                                        <div class="col-md-1 textAlign">
-                                            第9周
-                                        </div>
-                                        <div class="col-md-1 textAlign">
-                                            星期4
-                                        </div>
-                                        <div class="col-md-1 textAlign">
-                                            2019-05-01
-                                        </div>
-                                        <div class="col-md-1 textAlign">
-                                            上午 8:30
-                                        </div>
-                                        <div class="col-md-1 textAlign">
-                                            6A-404
-                                        </div>
-                                        <div class="col-md-1 textAlign">
-                                            廖永衡
-                                        </div>
-                                        <div class="col-md-3 textAlign padding0 normalSpace">
-                                            廖永衡 廖永衡 廖永衡 廖永衡
-                                        </div>
-                                        <div class="col-md-1 textAlign">
-                                            10
-                                        </div>
-                                        <div class="col-md-1 textAlign">
-                                            第1组
-                                        </div>
-                                        <div class="col-md-1 textAlign padding0">
-                                            <div class="col-md-3 textAlign">
-                                                <span class="iconfont icon-xiugai2 iconColor spanStyle"
-                                                      style="padding-left: 4px;" data-toggle="modal"
-                                                      data-target="#modify_Teachers_Group"></span>
+                                    <div class="col-md-12" style="padding: 8px 0px">
+                                        <div class="col-md-12" style="padding: 0">
+                                            <div class="col-md-3">
+                                                <input id="tid" type="text" class="form-control" placeholder="教师工号">
                                             </div>
-                                            <div class="col-md-3 textAlign">
-                                                <span class="iconfont icon-shanchu1 iconColor spanStyle"
-                                                      style="padding-left: 4px;" data-toggle="modal"
-                                                      data-target="#delete_Teachers_Group"></span>
+                                            <div class="col-md-3">
+                                                <input id="tName" type="text" class="form-control" placeholder="教师姓名">
+                                            </div>
+                                            <div class="col-md-3">
+                                                <input id="defClass" type="text" class="form-control"
+                                                       placeholder="答辩教室">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12" style="padding:10px 0">
+                                            <div class="col-md-2">
+                                                <input id="defWeek" type="text" class="form-control" placeholder="答辩周数">
+                                            </div>
+                                            <div class="col-md-2">
+                                                <input id="day" type="text" class="form-control" placeholder="答辩星期">
+                                            </div>
+                                            <div class="col-md-2">
+                                                <input id="groupNum" type="text" class="form-control"
+                                                       placeholder="现有人数">
+                                            </div>
+                                            <div class="col-md-3">
+                                                <button type="button" class="btn btn-info"
+                                                        onclick="queryTeachersPlea()">查询
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
+                                    <div id="teachersGroup"></div>
                                     <!--答辩教师分组结束-->
                                     <!--指导教师分组开始-->
                                     <div class="col-md-12">
@@ -1084,6 +1051,103 @@
                                     <!--指导教师分组结束-->
                                 </div>
                             </div>
+                            <!--教师-->
+                            <script id="teachersGroups" type="text/template">
+                                <div class="alert alert-success textEllipsis border_radius marginBottom0">
+                                    <div class="col-md-1 textAlign">
+                                        答辩周数
+                                    </div>
+                                    <div class="col-md-1 textAlign">
+                                        答辩星期
+                                    </div>
+                                    <div class="col-md-1 textAlign">
+                                        答辩日期
+                                    </div>
+                                    <div class="col-md-1 textAlign">
+                                        答辩时间
+                                    </div>
+                                    <div class="col-md-1 textAlign">
+                                        答辩教室
+                                    </div>
+                                    <div class="col-md-1 textAlign">
+                                        答辩组长
+                                    </div>
+                                    <div class="col-md-3 textAlign">
+                                        答辩教师
+                                    </div>
+                                    <div class="col-md-1 textAlign">
+                                        人数限制/
+                                        <div>现有人数</div>
+                                    </div>
+                                    <div class="col-md-1 textAlign">
+                                        分组
+                                    </div>
+                                    <div class="col-md-1 textAlign">
+                                        操作
+                                    </div>
+                                </div>
+                                <%if(data=="") {%>
+                                <div class="alert alert-warning textAlign border_radius marginBottom0">暂无数据</div>
+                                <%}else{
+                                data.forEach(function(teacher){%>
+                                <div class="alert alert-warning textEllipsis border_radius marginBottom0">
+                                    <div class="col-md-1 textAlign">
+                                        第<%=teacher.defWeek%>周
+                                    </div>
+                                    <div class="col-md-1 textAlign">
+                                        星期<%=teacher.defDay%>
+                                    </div>
+                                    <div class="col-md-1 textAlign">
+                                        <%
+                                        let unixTimestamp = new Date(teacher.defDate ) ;
+                                        let year = unixTimestamp.getFullYear();
+                                        let month = unixTimestamp.getMonth()+1;
+                                        let date = unixTimestamp.getDate();
+                                        commonTime = year+"/"+month+"/"+date
+                                        %>
+                                        <%= commonTime %>
+                                    </div>
+                                    <div class="col-md-1 textAlign">
+                                        上午 8:00
+                                    </div>
+                                    <div class="col-md-1 textAlign">
+                                        <%=teacher.defClass%>
+                                    </div>
+                                    <div class="col-md-1 textAlign">
+                                        <%teacher.teaGroup.forEach(function(tea){%>
+                                        <%if(tea.leader){%>
+                                        <%=tea.teaAuth.name%>
+                                        <%}
+                                        })%>
+                                    </div>
+                                    <div class="col-md-3 textAlign padding0 normalSpace">
+                                        <%teacher.teaGroup.forEach(function(tea){%>
+                                        <%if(!tea.leader){%>
+                                        <%=tea.teaAuth.name%>
+                                        <%}
+                                        })%>
+                                    </div>
+                                    <div class="col-md-1 textAlign">
+                                        <%=teacher.groupSize%> / <%=teacher.groupNum%>
+                                    </div>
+                                    <div class="col-md-1 textAlign">
+                                        第<%=teacher.groupId%>组
+                                    </div>
+                                    <div class="col-md-1 textAlign padding0">
+                                        <div class="col-md-3 textAlign">
+                                                <span class="iconfont icon-xiugai2 iconColor spanStyle"
+                                                      style="padding-left: 4px;" data-toggle="modal"
+                                                      data-target="#modify_Teachers_Group"></span>
+                                        </div>
+                                        <div class="col-md-3 textAlign">
+                                                <span class="iconfont icon-shanchu1 iconColor spanStyle"
+                                                      style="padding-left: 4px;" data-toggle="modal"
+                                                      data-target="#delete_Teachers_Group"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <%})}%>
+                            </script>
                             <!--教师分组结束-->
                             <!--计算答辩总评成绩开始-->
                             <div class="tab-pane panel-body" id="Calculate_defense_score">
@@ -1296,67 +1360,110 @@
                                                 style="padding-left: 4px;font-size:12px"></span>
                                         </button>
                                     </div>
-                                    <div class="alert alert-success textEllipsis border_radius marginBottom0">
-                                        <div class="col-md-2 textAlign">
-                                            学生姓名（学号）
+                                    <div class="col-md-12" style="padding-bottom: 10px">
+                                        <div class="col-md-3">
+                                            <input id="stuPleaName" type="text" class="form-control" placeholder="学生姓名">
                                         </div>
-                                        <div class="col-md-1 textAlign">
-                                            答辩组长
+                                        <div class="col-md-3">
+                                            <input id="stuPleaId" type="text" class="form-control" placeholder="学生学号">
                                         </div>
-                                        <div class="col-md-3 textAlign">
-                                            答辩教师
-                                        </div>
-                                        <div class="col-md-1 textAlign">
-                                            评阅教师
-                                        </div>
-                                        <div class="col-md-1 textAlign">
-                                            指导教师
-                                        </div>
-                                        <div class="col-md-1 textAlign">
-                                            分组
-                                        </div>
-                                        <div class="col-md-3 textAlign">
-                                            答辩时间
+                                        <div class="col-md-3">
+                                            <button type="button" class="btn btn-info" onclick="queryStudentsPlea()">查询
+                                            </button>
                                         </div>
                                     </div>
-                                    <div class="alert alert-warning textEllipsis border_radius marginBottom0">
-                                        <div class="col-md-2 textAlign padding0 normalSpace">
-                                            王晓霞（3120150905000）
-                                        </div>
-                                        <div class="col-md-1 normalSpace">
-                                            梁永辉
-                                        </div>
-                                        <div class="col-md-3 normalSpace">
-                                            廖永衡 廖永衡 廖永衡 廖永衡
-                                        </div>
-                                        <div class="col-md-1 textAlign">
-                                            廖永衡
-                                        </div>
-                                        <div class="col-md-1 textAlign">
-                                            廖永衡
-                                        </div>
-                                        <div class="col-md-1 textAlign">
-                                            第一组
-                                        </div>
-                                        <div class="col-md-3 textAlign padding0">
-                                            2019.05.05/第九周星期五 上午8:30
-                                        </div>
-                                    </div>
+                                    <div id="studentsGroup"></div>
+                                    <!--分页开始-->
+                                    <div style="margin-top: 15px" class="m-style" id="studentPleaPage"></div>
+                                    <!--分页结束-->
                                 </div>
                             </div>
+                            <script id="studentsGroups" type="text/template">
+                                <div class="alert alert-success textEllipsis border_radius marginBottom0">
+                                    <div class="col-md-2 textAlign">
+                                        学生姓名（学号）
+                                    </div>
+                                    <div class="col-md-1 textAlign">
+                                        指导教师
+                                    </div>
+                                    <div class="col-md-1 textAlign">
+                                        答辩组长
+                                    </div>
+                                    <div class="col-md-3 textAlign">
+                                        答辩教师
+                                    </div>
+                                    <div class="col-md-1 textAlign">
+                                        评阅教师
+                                    </div>
+                                    <div class="col-md-1 textAlign">
+                                        分组
+                                    </div>
+                                    <div class="col-md-3 textAlign">
+                                        答辩时间
+                                    </div>
+                                </div>
+                                <%if(data==""){%>
+                                <div class="alert alert-warning textAlign border_radius marginBottom0">
+                                    暂无数据
+                                </div>
+                                <%}else {
+                                data.forEach(function(student){%>
+                                <div class="alert alert-warning textEllipsis border_radius marginBottom0">
+                                    <div class="col-md-2 textAlign padding0 normalSpace">
+                                        <%=student.name%>（<%=student.identifier%>）
+                                    </div>
+                                    <div class="col-md-1 normalSpace">
+                                        <%if(typeof(student.gt)=="undefined") {%>
+                                        暂无数据
+                                        <%}else{%>
+                                        <%=student.gt.name%>
+                                        <%}%>
+                                    </div>
+                                    <%if(typeof(student.defInfo)=="undefined") {%>
+                                    <div class="col-md-6 textAlign">
+                                        暂无数据
+                                    </div>
+                                    <%}else{%>
+                                    <div class="col-md-1 textAlign">
+                                        <%student.defInfo.teaGroup.forEach(function(tea){
+                                        if(tea.leader){%>
+                                        <%=tea.teaAuth.name%>
+                                        <%}})%>
+                                    </div>
+                                    <div class="col-md-3 normalSpace textAlign">
+                                        <%student.defInfo.teaGroup.forEach(function(tea){
+                                        if(!tea.leader){%>
+                                        <%=tea.teaAuth.name%>
+                                        <%}})%>
+                                    </div>
+                                    <div class="col-md-1 textAlign">
+                                        <%=student.mt.name%>
+                                    </div>
+                                    <div class="col-md-1 textAlign">
+                                        第<%=student.defInfo.groupId%>组
+                                    </div>
+                                    <div class="col-md-3 textAlign padding0">
+                                        2019.05.05/第九周星期五 上午8:30
+                                    </div>
+                                    <%}%>
+                                </div>
+                                <%})}%>
+                            </script>
                             <!--学生答辩分组列表结束-->
                             <!--成绩汇总开始-->
                             <div class="tab-pane panel-body" id="results_Summary">
                                 <div style="padding-bottom: 15px;padding-left: 0px" class="col-md-12">
                                     <div style="padding-left: 0px" class="col-md-12">
-                                        <div class="col-md-1 col-xs-1" style="padding: 0px">
-                                            学生姓名：
+                                        <div class="col-md-4 col-xs-4">
+                                            <input id="stuResultName" type="text" class="form-control"
+                                                   placeholder="学生姓名">
                                         </div>
                                         <div class="col-md-4 col-xs-4">
-                                            <input type="text" class="form-control">
+                                            <input id="stuResultId" type="text" class="form-control" placeholder="学生学号">
                                         </div>
                                         <div class="col-md-2 col-xs-2" style="padding-left: 5px">
-                                            <button type="button" class="btn btn-info">查询</button>
+                                            <button type="button" class="btn btn-info" onclick="queryResultList()">查询
+                                            </button>
                                         </div>
                                     </div>
                                     <div style="padding-left:0px;padding-bottom: 15px" class="col-md-12">
@@ -1370,6 +1477,12 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div id="studentsScore"></div>
+                                <!--分页开始-->
+                                <div style="margin-top: 15px" class="m-style" id="scorePage"></div>
+                                <!--分页结束-->
+                            </div>
+                            <script id="studentsScores" type="text/template">
                                 <div class="alert alert-success textEllipsis border_radius marginBottom0">
                                     <div class="col-md-1 textAlign">
                                         成绩排名
@@ -1377,45 +1490,73 @@
                                     <div class="col-md-3 textAlign">
                                         姓名（学号）
                                     </div>
-                                    <div class="col-md-6 textAlign">
+                                    <div class="col-md-2 textAlign">
                                         题目
                                     </div>
                                     <div class="col-md-1 textAlign">
-                                        分数
+                                        指导成绩
+                                    </div>
+                                    <div class="col-md-1 textAlign">
+                                        评阅成绩
+                                    </div>
+                                    <div class="col-md-1 textAlign">
+                                        答辩成绩
+                                    </div>
+                                    <div class="col-md-1 textAlign">
+                                        综合评定成绩
+                                    </div>
+                                    <div class="col-md-1 textAlign">
+                                        综合评定等级
                                     </div>
                                     <div class="col-md-1 textAlign">
                                         操作
                                     </div>
                                 </div>
+                                <%if(data==""){%>
+                                <div class="alert alert-danger textAlign border_radius marginBottom0">暂无数据</div>
+                                <%} else{
+                                let index = 0;
+                                data.forEach(function(score){
+                                index++;%>
                                 <div class="alert alert-danger textEllipsis border_radius marginBottom0">
                                     <div class="col-md-1 textEllipsis textAlign">
-                                        1
+                                        <%=(index+offset)%>
                                     </div>
                                     <div class="col-md-3 textEllipsis textAlign">
                                         <span class="clickColor cursorPointer" data-toggle="modal"
-                                              data-target="#studentDetails">
-                                            王XX（3120150905111）
+                                              data-target="#studentDetails"
+                                              onclick="summaryReportResults('<%=score.identifier%>','','student')">
+                                            <%=score.name%>（<%=score.identifier%>）
                                         </span>
                                     </div>
-                                    <div class="col-md-6 textAlign textEllipsis">
+                                    <div class="col-md-2 textAlign textEllipsis padding0">
+                                        <%if(typeof(score.checkedPro)=="undefined") {%>
+                                        暂无数据
+                                        <%} else{%>
                                         <span class="clickColor cursorPointer" data-toggle="modal"
-                                              data-target="#topicDetails">
-                                            PMMA灯具基于moldflow三维流动优化的注塑模设计
-                                        </span>
+                                              data-target="#topicDetails"
+                                              onclick="summaryReportResults('<%=score.identifier%>','','title')">
+                                        <%=score.checkedPro.title%>
+                                            </span>
+                                        <%}%>
                                     </div>
-                                    <div class="col-md-1 textAlign">
-                                        90
-                                    </div>
+                                    <%if(typeof(score.proScore)=="undefined") {%>
+                                    <div class="col-md-5 textAlign">暂无分数</div>
+                                    <%} else {%>
+                                    <div class="col-md-1 textAlign"><%=score.proScore.scoreGt%></div>
+                                    <div class="col-md-1 textAlign"><%=score.proScore.scoreMt%></div>
+                                    <div class="col-md-1 textAlign"><%=score.proScore.scoreDef%></div>
+                                    <div class="col-md-1 textAlign"><%=score.proScore.scoreTotal%></div>
+                                    <div class="col-md-1 textAlign"><%=score.proScore.grade%></div>
+                                    <%}%>
                                     <div class="col-md-1 textAlign">
                                         <button type="button" class="btn btn-info btn-xs" data-toggle="modal"
                                                 data-target="#setGood">设为优秀
                                         </button>
                                     </div>
                                 </div>
-                                <!--分页开始-->
-                                <div style="margin-top: 15px" class="m-style"></div>
-                                <!--分页结束-->
-                            </div>
+                                <%})}%>
+                            </script>
                             <!--成绩汇总结束-->
                             <!--材料归档开始-->
                             <div class="tab-pane panel-body" id="material_Archive">
@@ -2172,8 +2313,6 @@
                 }
             },
             error: function (responseStr) {
-                console.log("failed");
-                console.log(responseStr);
                 window.location.href = "../404/404.html";
             }
         });
@@ -2211,8 +2350,6 @@
                 }
             },
             error: function (responseStr) {
-                console.log("failed");
-                console.log(responseStr);
                 window.location.href = "../404/404.html";
             }
         });
@@ -2313,8 +2450,7 @@
                                         }
                                     },
                                     error: function (responseStr) {
-                                        console.log("failed");
-                                        console.log(responseStr);
+                                        window.location.href = "../404/404.html";
                                     }
                                 });
                             }
@@ -2325,8 +2461,7 @@
                 }
             },
             error: function (responseStr) {
-                console.log("failed");
-                console.log(responseStr);
+                window.location.href = "../404/404.html";
             }
         });
     }
@@ -2397,8 +2532,6 @@
                 }
             },
             error: function (responseStr) {
-                console.log("failed");
-                console.log(responseStr);
                 window.location.href = "../404/404.html";
             }
         });
@@ -2495,8 +2628,7 @@
                                         }
                                     },
                                     error: function (responseStr) {
-                                        console.log("failed");
-                                        console.log(responseStr);
+                                        window.location.href = "../404/404.html";
                                     }
                                 });
                             }
@@ -2507,8 +2639,7 @@
                 }
             },
             error: function (responseStr) {
-                console.log("failed");
-                console.log(responseStr);
+                window.location.href = "../404/404.html";
             }
         });
     }
@@ -2564,8 +2695,6 @@
                 }
             },
             error: function (responseStr) {
-                console.log("failed");
-                console.log(responseStr);
                 window.location.href = "../404/404.html";
             }
         });
@@ -2691,8 +2820,7 @@
                                         }
                                     },
                                     error: function (responseStr) {
-                                        console.log("failed");
-                                        console.log(responseStr);
+                                        window.location.href = "../404/404.html";
                                     }
                                 });
                             }
@@ -2703,8 +2831,7 @@
                 }
             },
             error: function (responseStr) {
-                console.log("failed");
-                console.log(responseStr);
+                window.location.href = "../404/404.html";
             }
         });
     }
@@ -2735,6 +2862,424 @@
         document.getElementById('genre').options[0].selected = true;
         document.getElementById('source').options[0].selected = true;
         document.getElementById('status').options[0].selected = true;
+    }
+
+    //查询系内教师答辩分组
+    function defensemTeacher() {
+        defensemManagement("", "", "", "", "", "", "", "", "");
+    }
+
+    //根据条件查询教师答辩分组
+    function defensemManagement(tid, tName, groupId, groupSize, groupNum, defDate, week, day, defClass) {
+        let url = "http://www.yuanbw.cn:20086/gpms/tea/showDepTeaDefGroup";
+        let teachersGroups = document.getElementById('teachersGroups').innerHTML;
+        let teachersGroup = document.getElementById('teachersGroup');
+        let data = {};
+        if (tid != "") {
+            data.tid = tid;
+        }
+        if (tName != "") {
+            data.tName = tName;
+        }
+        if (groupId != "") {
+            data.groupId = groupId;
+        }
+        if (groupSize != "") {
+            data.groupSize = groupSize;
+        }
+        if (groupNum != "") {
+            data.groupNum = groupNum;
+        }
+        if (defDate != "") {
+            data.defDate = defDate;
+        }
+        if (week != "") {
+            data.week = week;
+        }
+        if (day != "") {
+            data.day = day;
+        }
+        if (defClass != "") {
+            data.defClass = defClass;
+        }
+        $.ajax({
+            url: url,
+            type: "POST",
+            data: data,
+            xhrFields: {
+                withCredentials: true
+            },
+            crossDomain: true,
+            headers: {
+                Token: token
+            },
+            success: function (responseStr) {
+                if (responseStr.statusCode == "100") {
+                    teachersGroup.innerHTML = ejs.render(teachersGroups, {data: responseStr.data});
+                } else if (responseStr.statusCode == "102") {
+                    alert(responseStr.msg);
+                    window.location.href = "../login/login.html";
+                } else {
+                    teachersGroup.innerHTML = ejs.render(teachersGroups, {data: ""});
+                }
+
+            },
+            error: function (responseStr) {
+                window.location.href = "../404/404.html";
+            }
+        });
+    }
+
+    //根据条件查询教师答辩分组
+    function queryTeachersPlea() {
+        let tid = document.getElementById('tid');
+        let tName = document.getElementById('tName');
+        let groupNum = document.getElementById('groupNum');
+        let week = document.getElementById('defWeek');
+        let day = document.getElementById('day');
+        let defClass = document.getElementById('defClass');
+        let tidValue = tid.value;
+        let tNameValue = tName.value;
+        let groupNumValue = groupNum.value;
+        let weekValue = week.value;
+        let dayValue = day.value;
+        let defClassValue = defClass.value;
+        defensemManagement(tidValue, tNameValue, "", "", groupNumValue, "", weekValue, dayValue, defClassValue);
+        tid.value = "";
+        tName.value = "";
+        groupNum.value = "";
+        week.value = "";
+        day.value = "";
+        defClass.value = "";
+    }
+
+    //根据条件查询学生分组
+    function queryStudentsPleaConditions(id, name) {
+        let url = "http://www.yuanbw.cn:20086/gpms/tea/showDepStuDefGroup";
+        let studentsGroups = document.getElementById('studentsGroups').innerHTML;
+        let studentsGroup = document.getElementById('studentsGroup');
+        let limit = 4;
+        let offset = 0;
+        let data = {limit: limit, offset: offset};
+        if (id != "") {
+            data.id = id;
+        }
+        if (name != "") {
+            data.name = name;
+        }
+        $.ajax({
+            url: url,
+            type: "POST",
+            data: data,
+            xhrFields: {
+                withCredentials: true
+            },
+            crossDomain: true,
+            headers: {
+                Token: token
+            },
+            success: function (responseStr) {
+                if (responseStr.statusCode == "100") {
+                    pageCount = Math.ceil(responseStr.data.count / limit);
+                    studentsGroup.innerHTML = ejs.render(studentsGroups, {data: responseStr.data.studentLists});
+                    $('#studentPleaPage').pagination({
+                        pageCount: pageCount,
+                        jump: true,
+                        coping: true,
+                        homePage: '首页',
+                        endPage: '末页',
+                        prevContent: '上页',
+                        nextContent: '下页',
+                        callback: function (api) {
+                            let page = api.getCurrent();
+                            offset = (page - 1) * limit;
+                            data.offset = offset;
+                            $.ajax({
+                                url: url,
+                                type: "POST",
+                                data: data,
+                                xhrFields: {
+                                    withCredentials: true
+                                },
+                                crossDomain: true,
+                                headers: {
+                                    Token: token
+                                },
+                                success: function (responseStr) {
+                                    let msg = responseStr.msg;
+                                    if (msg == "查询成功") {
+                                        pageCount = Math.ceil(responseStr.data.count / limit);
+                                        if (responseStr.data.studentLists.length > 0) {
+                                            studentsGroup.innerHTML = ejs.render(studentsGroups, {data: responseStr.data.studentLists});
+                                        }
+                                    }
+                                    if (msg == "系统繁忙") {
+                                        alert("系统繁忙,请不要点击过快！");
+                                    }
+                                },
+                                error: function (responseStr) {
+                                    window.location.href = "../404/404.html";
+                                }
+                            });
+                        }
+                    });
+                } else if (responseStr.statusCode == "102") {
+                    alert(responseStr.msg);
+                    window.location.href = "../login/login.html";
+                } else {
+                    studentsGroup.innerHTML = ejs.render(studentsGroups, {data: ""});
+                }
+
+            },
+            error: function (responseStr) {
+                window.location.href = "../404/404.html";
+            }
+        });
+    }
+
+    //根据条件查询学生列表
+    function queryStudentsPlea() {
+        let stuPleaName = document.getElementById('stuPleaName').value;
+        let stuPleaId = document.getElementById('stuPleaId').value;
+        queryStudentsPleaConditions(stuPleaId, stuPleaName);
+        document.getElementById('stuPleaName').value = "";
+        document.getElementById('stuPleaId').value = "";
+    }
+
+    //成绩汇总统计报表
+    function summaryReportResults(id, name, isRanking) {
+        let url = "http://www.yuanbw.cn:20086/gpms/tea/showDepStuScoreSummaryList";
+        let studentsScores = document.getElementById('studentsScores').innerHTML;
+        let studentsScore = document.getElementById('studentsScore');
+        let limit = 4;
+        let offset = 0;
+        let data = {limit: limit, offset: offset};
+        if (id != "") {
+            data.id = id;
+        }
+        if (name != "") {
+            data.name = name;
+        }
+        $.ajax({
+            url: url,
+            type: "POST",
+            data: data,
+            xhrFields: {
+                withCredentials: true
+            },
+            crossDomain: true,
+            headers: {
+                Token: token
+            },
+            success: function (responseStr) {
+                if (responseStr.statusCode == "100") {
+                    if (isRanking == "ranking") {
+                        pageCount = Math.ceil(responseStr.data.count / limit);
+                        studentsScore.innerHTML = ejs.render(studentsScores, {
+                            data: responseStr.data.studentLists,
+                            offset: offset
+                        });
+                        $('#scorePage').pagination({
+                            pageCount: pageCount,
+                            jump: true,
+                            coping: true,
+                            homePage: '首页',
+                            endPage: '末页',
+                            prevContent: '上页',
+                            nextContent: '下页',
+                            callback: function (api) {
+                                let page = api.getCurrent();
+                                offset = (page - 1) * limit;
+                                data.offset = offset;
+                                $.ajax({
+                                    url: url,
+                                    type: "POST",
+                                    data: data,
+                                    xhrFields: {
+                                        withCredentials: true
+                                    },
+                                    crossDomain: true,
+                                    headers: {
+                                        Token: token
+                                    },
+                                    success: function (responseStr) {
+                                        let msg = responseStr.msg;
+                                        if (msg == "查询成功") {
+                                            pageCount = Math.ceil(responseStr.data.count / limit);
+                                            if (responseStr.data.studentLists.length > 0) {
+                                                studentsScore.innerHTML = ejs.render(studentsScores, {
+                                                    data: responseStr.data.studentLists,
+                                                    offset: offset
+                                                });
+                                            }
+                                        }
+                                        if (msg == "系统繁忙") {
+                                            alert("系统繁忙,请不要点击过快！");
+                                        }
+                                    },
+                                    error: function (responseStr) {
+                                        window.location.href = "../404/404.html";
+                                    }
+                                });
+                            }
+                        });
+                    } else if (isRanking == "student") {
+                        let studentDetailses = document.getElementById('studentDetailses').innerHTML;
+                        let studentDetails = document.getElementById('studentDetails');
+                        let student = responseStr.data.studentLists[0];
+                        studentDetails.innerHTML = ejs.render(studentDetailses, {
+                            identifier: student.identifier,
+                            name: student.name,
+                            email: student.email,
+                            contactTel: student.contactTel,
+                            college: student.college,
+                            major: student.major,
+                            sex: student.sex,
+                            grade: student.grade,
+                            classNo: student.classNo
+                        });
+                    } else if (isRanking == "title") {
+                        let topicDetailses = document.getElementById('topicDetailses').innerHTML;
+                        let topicDetails = document.getElementById('topicDetails');
+                        topicDetails.innerHTML = ejs.render(topicDetailses, {
+                            data: responseStr.data.studentLists[0].checkedPro
+                        });
+                    }
+                } else if (responseStr.statusCode == "102") {
+                    alert(responseStr.msg);
+                    window.location.href = "../login/login.html";
+                } else {
+                    studentsScore.innerHTML = ejs.render(studentsScores, {data: ""});
+                }
+
+            },
+            error: function (responseStr) {
+                window.location.href = "../404/404.html";
+            }
+        });
+    }
+
+    //根据条件查询成绩列表
+    function queryResultList() {
+        let stuResultName = document.getElementById('stuResultName').value;
+        let stuResultId = document.getElementById('stuResultId').value;
+        summaryReportResults(stuResultId, stuResultName, "ranking");
+        document.getElementById('stuResultName').value = "";
+        document.getElementById('stuResultId').value = "";
+    }
+
+    //材料归档统计报表
+    function archivingStatistics(id,name) {
+        let url = "http://www.yuanbw.cn:20086/gpms/tea/materialFiling";
+        // let studentsScores = document.getElementById('studentsScores').innerHTML;
+        // let studentsScore = document.getElementById('studentsScore');
+        let limit = 4;
+        let offset = 0;
+        let data = {limit: limit, offset: offset};
+        if (id != "") {
+            data.id = id;
+        }
+        if (name != "") {
+            data.name = name;
+        }
+        $.ajax({
+            url: url,
+            type: "POST",
+            data: data,
+            xhrFields: {
+                withCredentials: true
+            },
+            crossDomain: true,
+            headers: {
+                Token: token
+            },
+            success: function (responseStr) {
+                if (responseStr.statusCode == "100") {
+                    console.log(responseStr);
+                    if (isRanking == "ranking") {
+                        pageCount = Math.ceil(responseStr.data.count / limit);
+                        studentsScore.innerHTML = ejs.render(studentsScores, {
+                            data: responseStr.data.studentLists,
+                            offset: offset
+                        });
+                        $('#scorePage').pagination({
+                            pageCount: pageCount,
+                            jump: true,
+                            coping: true,
+                            homePage: '首页',
+                            endPage: '末页',
+                            prevContent: '上页',
+                            nextContent: '下页',
+                            callback: function (api) {
+                                let page = api.getCurrent();
+                                offset = (page - 1) * limit;
+                                data.offset = offset;
+                                $.ajax({
+                                    url: url,
+                                    type: "POST",
+                                    data: data,
+                                    xhrFields: {
+                                        withCredentials: true
+                                    },
+                                    crossDomain: true,
+                                    headers: {
+                                        Token: token
+                                    },
+                                    success: function (responseStr) {
+                                        let msg = responseStr.msg;
+                                        if (msg == "查询成功") {
+                                            pageCount = Math.ceil(responseStr.data.count / limit);
+                                            if (responseStr.data.studentLists.length > 0) {
+                                                studentsScore.innerHTML = ejs.render(studentsScores, {
+                                                    data: responseStr.data.studentLists,
+                                                    offset: offset
+                                                });
+                                            }
+                                        }
+                                        if (msg == "系统繁忙") {
+                                            alert("系统繁忙,请不要点击过快！");
+                                        }
+                                    },
+                                    error: function (responseStr) {
+                                        window.location.href = "../404/404.html";
+                                    }
+                                });
+                            }
+                        });
+                    } else if (isRanking == "student") {
+                        let studentDetailses = document.getElementById('studentDetailses').innerHTML;
+                        let studentDetails = document.getElementById('studentDetails');
+                        let student = responseStr.data.studentLists[0];
+                        studentDetails.innerHTML = ejs.render(studentDetailses, {
+                            identifier: student.identifier,
+                            name: student.name,
+                            email: student.email,
+                            contactTel: student.contactTel,
+                            college: student.college,
+                            major: student.major,
+                            sex: student.sex,
+                            grade: student.grade,
+                            classNo: student.classNo
+                        });
+                    } else if (isRanking == "title") {
+                        let topicDetailses = document.getElementById('topicDetailses').innerHTML;
+                        let topicDetails = document.getElementById('topicDetails');
+                        topicDetails.innerHTML = ejs.render(topicDetailses, {
+                            data: responseStr.data.studentLists[0].checkedPro
+                        });
+                    }
+                } else if (responseStr.statusCode == "102") {
+                    alert(responseStr.msg);
+                    window.location.href = "../login/login.html";
+                } else {
+                    studentsScore.innerHTML = ejs.render(studentsScores, {data: ""});
+                }
+
+            },
+            error: function (responseStr) {
+                window.location.href = "../404/404.html";
+            }
+        });
     }
 
 
