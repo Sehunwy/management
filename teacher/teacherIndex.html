@@ -360,7 +360,7 @@
                                         task = data[0].project.taskBook.task;
                                         referData = data[0].project.taskBook.referData;
                                         }
-                                        if(data[0].project.fileId!=0||typeof(data[0].project.file)!="undefined") {
+                                        if(data[0].project.fileId!=0&&typeof(data[0].project.file)!="undefined") {
                                         uploadFile = data[0].project.file.fileName;
                                         }
                                         if(typeof(data[0].project.taskBook)!="undefined"&&data[0].project.taskBook.fileId!=0&&typeof(data[0].project.taskBook.file)!="undefined")

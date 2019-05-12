@@ -492,7 +492,17 @@
                 <div class="dividerDiv"></div>
                 <div class="titleContent">
                     <span class="fontColor847a7a">任务书：</span>
-                    <a href="#" class="colorf44 commitments">查看任务书</a>
+                    <% if(typeof(titles.project.taskBook) == "undefined" || titles.project.taskBook.fileId==0) { %>
+                    <span>
+                    暂无任务书
+                </span>
+                    <% } else { %>
+                    <span>
+                    <%=titles.project.taskBook.file.fileName %>
+                </span>
+                    <a style="padding-left: 20px"
+                       href="http://www.yuanbw.cn:20086/gpms/rol/downloadFile?fileId=<%=titles.project.taskBook.fileId %>">点击下载</a>
+                    <% } %>
                 </div>
                 </div>
                 <% } %>
@@ -717,11 +727,15 @@
                 <%= array.project.source %>
             </div>
             <div class="col-md-3 textAlign textEllipsis">
-                                        <span class="clickColor cursorPointer" data-toggle="modal"
-                                              data-target="#teacherDetails"
-                                              onclick="teacherInformation('<%= array.setRole.identifier %>')">
+                <%if(array.setRoleInfo.authority==4) {%>
+                <%= array.setRoleInfo.name %>（<%= array.setRoleInfo.id %>）
+                <%}else {%>
+                <span class="clickColor cursorPointer" data-toggle="modal"
+                      data-target="#teacherDetails"
+                      onclick="teacherInformation('<%= array.setRole.identifier %>')">
                                             <%= array.setRole.name %>（<%= array.setRole.identifier %>）
                                         </span>
+                <%}%>
             </div>
             <div class="col-md-1 textEllipsis textAlign padding0">
                 <% if(array.cStatus==0) { %>
@@ -824,22 +838,36 @@
                             <%= commonTime %></span>
             <hr>
             <strong>
-                任务书:
+                附件:
             </strong>
             <% let fileNames;
             if(title.fileId==0 || typeof(title.file) == "undefined") { %>
             <span>
-                    暂无任务书
+                    暂无附件
                 </span>
             <%
             } else { %>
             <span>
-                    任务书:<%=title.file.fileName %>
+                    <%=title.file.fileName %>
                 </span>
             <a style="padding-left: 20px"
-               href="http://www.yuanbw.cn:20086/gpms/rol/downloadFile?fileId=<%=data.fileId %>">点击下载</a>
+               href="http://www.yuanbw.cn:20086/gpms/rol/downloadFile?fileId=<%=title.fileId %>">点击下载</a>
             <% } %>
-
+            <hr>
+            <strong>
+                任务书:
+            </strong>
+            <% if(typeof(title.taskBook) == "undefined" || title.taskBook.fileId==0) { %>
+            <span>
+                    暂无任务书
+                </span>
+            <% } else { %>
+            <span>
+                    <%=title.taskBook.file.fileName %>
+                </span>
+            <a style="padding-left: 20px"
+               href="http://www.yuanbw.cn:20086/gpms/rol/downloadFile?fileId=<%=title.taskBook.fileId %>">点击下载</a>
+            <% } %>
             <hr>
             <strong>
                 <span>题目简介:</span>
@@ -2998,10 +3026,9 @@
         let teachersDetail = document.getElementById('teachersDetail').innerHTML;
         let teacherDetail = document.getElementById('teacherDetail');
         let html;
-        console.log(array)
         if (array.length > 0) {
             array.forEach(function (arr) {
-                if (typeof(arr.teacher)!="undefined"&&arr.teacher.identifier == id) {
+                if (typeof (arr.teacher) != "undefined" && arr.teacher.identifier == id) {
                     html = ejs.render(teachersDetail, {teacher: arr.teacher});
                     teacherDetail.innerHTML = html;
                 }
