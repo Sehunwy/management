@@ -977,7 +977,9 @@
                             <ul class="nav nav-tabs" role="tablist">
                                 <li class="active"><a href="#teachers_Group" role="tab"
                                                       data-toggle="tab">答辩分组</a></li>
-                                <li onclick="computationalResults('','','not')"><a href="#Calculate_defense_score" role="tab" data-toggle="tab">计算答辩总评成绩</a>
+                                <li onclick="computationalResults('','','not')"><a href="#Calculate_defense_score"
+                                                                                   role="tab"
+                                                                                   data-toggle="tab">计算答辩总评成绩</a>
                                 </li>
                                 <li><a href="#replyTeacher" role="tab" data-toggle="tab">教师答辩分组统计报表</a></li>
                                 <li onclick="queryStudentsPleaConditions('','')"><a href="#replyStudent" role="tab"
@@ -1024,13 +1026,13 @@
                                             </div>
                                         </div>
                                         <div class="col-md-12" style="padding:10px 0">
-                                            <div class="col-md-2">
+                                            <div class="col-md-3">
                                                 <input id="defWeek" type="text" class="form-control" placeholder="答辩周数">
                                             </div>
-                                            <div class="col-md-2">
+                                            <div class="col-md-3">
                                                 <input id="day" type="text" class="form-control" placeholder="答辩星期">
                                             </div>
-                                            <div class="col-md-2">
+                                            <div class="col-md-3">
                                                 <input id="groupNum" type="text" class="form-control"
                                                        placeholder="现有人数">
                                             </div>
@@ -1048,55 +1050,12 @@
                                         <h4 style="display: inline-block" class="font_bold">指导教师分组</h4>
                                         <span class="colorf44">（点击分配学生按钮对已分配的指导教师指导的学生进行答辩组以及毕业设计评审的分配）</span>
                                     </div>
-                                    <div class="col-md-12" style="padding-bottom: 8px">
-                                        <button type="button" class="btn btn-info" data-toggle="modal"
-                                                data-target="#Tutor_Group" onclick="newTutor()">新增<span
-                                                class="iconfont icon-add"
-                                                style="padding-left: 4px;font-size:12px"></span>
-                                        </button>
-                                    </div>
-                                    <div class="alert alert-success textEllipsis border_radius marginBottom0">
-                                        <div class="col-md-8 textAlign">
-                                            指导教师（指导人数）
-                                        </div>
-                                        <div class="col-md-1 textAlign">
-                                            分组
-                                        </div>
-                                        <div class="col-md-2 textAlign">
-                                            答辩人数限制/目前人数
-                                        </div>
-                                        <div class="col-md-1 textAlign">
-                                            操作
-                                        </div>
-                                    </div>
-                                    <div class="alert alert-warning textEllipsis border_radius marginBottom0">
-                                        <div class="col-md-8 textAlign">
-                                            王晓霞（8） 王晓霞（8） 王晓霞（8） 王晓霞（8）
-                                        </div>
-                                        <div class="col-md-1 textAlign">
-                                            第1组
-                                        </div>
-                                        <div class="col-md-2 textAlign">
-                                            20/10
-                                        </div>
-                                        <div class="col-md-1 textAlign padding0">
-                                            <div class="col-md-3 textAlign">
-                                                <span class="iconfont icon-xiugai2 iconColor spanStyle"
-                                                      style="padding-left: 4px;" data-toggle="modal"
-                                                      data-target="#Tutor_Group"></span>
-                                            </div>
-                                            <div class="col-md-3 textAlign">
-                                                <span class="iconfont icon-shanchu1 iconColor spanStyle"
-                                                      style="padding-left: 4px;" data-toggle="modal"
-                                                      data-target="#delete_Tutor_Group"></span>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <div id="instructorGrouping"></div>
                                     <div class="col-md-12" style="padding-top: 8px">
                                         <div class="col-md-10">
                                         </div>
                                         <div class="col-md-2">
-                                            <button type="button" class="btn btn-success">分配学生
+                                            <button onclick="distributionStudents()" type="button" class="btn btn-success">分配学生
                                             </button>
                                         </div>
                                     </div>
@@ -1209,6 +1168,60 @@
                                 答辩起止日期： 第<%=data.beginDate.week%>周星期<%=data.beginDate.day%> -- 第<%=data.endDate.week%>周星期<%=data.endDate.day%>
                                 <%}%>
                             </script>
+                            <!--指导教师-->
+                            <script id="instructorGroupings" type="text/template">
+                                <div class="alert alert-success textEllipsis border_radius marginBottom0">
+                                    <div class="col-md-8 textAlign">
+                                        指导教师（指导人数）
+                                    </div>
+                                    <div class="col-md-1 textAlign">
+                                        分组
+                                    </div>
+                                    <div class="col-md-2 textAlign">
+                                        答辩人数限制/目前人数
+                                    </div>
+                                    <div class="col-md-1 textAlign">
+                                        操作
+                                    </div>
+                                </div>
+                                <%if(data==""){%>
+                                <div class="alert alert-warning textAlign border_radius marginBottom0">
+                                    暂无数据
+                                </div>
+                                <%}else{
+                                data.forEach(function(teacher){%>
+                                <div class="alert alert-warning textEllipsis border_radius marginBottom0">
+                                    <div class="col-md-8 textAlign">
+                                        <%if(teacher.gtGroup.length==0){%>
+                                        暂无数据
+                                        <%}else{
+                                        teacher.gtGroup.forEach(function(tea){%>
+                                        <%=tea.teacher.name%>(<%=tea.teacher.stuListCount%>)
+                                        <%})}%>
+                                    </div>
+                                    <div class="col-md-1 textAlign">
+                                        第<%=teacher.groupId%>组
+                                    </div>
+                                    <div class="col-md-2 textAlign">
+                                        <%=teacher.groupSize%>/<%=teacher.groupNum%>
+                                    </div>
+                                    <div class="col-md-1 textAlign padding0">
+                                        <div class="col-md-3 textAlign">
+                                                <span class="iconfont icon-xiugai2 iconColor spanStyle"
+                                                      style="padding-left: 4px;" data-toggle="modal"
+                                                      data-target="#Tutor_Group"
+                                                      onclick="NewTutorGroup('<%=teacher.id%>')"></span>
+                                        </div>
+                                        <div class="col-md-3 textAlign">
+                                                <span onclick="deleTutorGroup('<%=teacher.id%>')"
+                                                      class="iconfont icon-shanchu1 iconColor spanStyle"
+                                                      style="padding-left: 4px;" data-toggle="modal"
+                                                      data-target="#delete_Tutor_Group"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <%})}%>
+                            </script>
                             <!--教师分组结束-->
                             <!--计算答辩总评成绩开始-->
                             <div class="tab-pane panel-body" id="Calculate_defense_score">
@@ -1220,7 +1233,8 @@
                                         <input type="text" class="form-control" id="stuIdList" placeholder="学生学号">
                                     </div>
                                     <div class="col-md-2 col-xs-2" style="padding-left: 5px">
-                                        <button type="button" class="btn btn-info" onclick="studentListQuery()">查询</button>
+                                        <button type="button" class="btn btn-info" onclick="studentListQuery()">查询
+                                        </button>
                                     </div>
                                 </div>
                                 <div id="scoreList"></div>
@@ -1270,7 +1284,8 @@
                                 <div class="alert alert-warning textEllipsis border_radius marginBottom0">
                                     <div class="col-md-3 textAlign textEllipsis">
                                         <span class="clickColor cursorPointer" data-toggle="modal"
-                                              data-target="#studentDetails" onclick="computationalResults('<%=student.identifier%>','','student')">
+                                              data-target="#studentDetails"
+                                              onclick="computationalResults('<%=student.identifier%>','','student')">
                                             <%=student.name%>（<%=student.identifier%>）
                                         </span>
                                     </div>
@@ -1320,7 +1335,7 @@
                                     </div>
                                 </div>
                                 <%})}%>
-</script>
+                            </script>
                             <!--计算答辩总评成绩结束-->
                             <!--教师答辩分组开始-->
                             <div class="tab-pane panel-body" id="replyTeacher">
@@ -1774,7 +1789,8 @@
                                 </strong>
                             </div>
                             <div style="margin-top: -10px" class="col-md-4 col-xs-4">
-                                <input id="classroom" value="<%=classroom%>" type="text" class="form-control textContent">
+                                <input id="classroom" value="<%=classroom%>" type="text"
+                                       class="form-control textContent">
                             </div>
                             <div style="margin-top: -10px" class="col-md-6 col-xs-6">
                                 <span class="colorf44">（填写说明：例如 6a-151）</span>
@@ -1789,7 +1805,8 @@
                                     </strong>
                                 </div>
                                 <div style="margin-top: -10px" class="col-md-4 col-xs-4">
-                                    <input id="numbeLimit" value="<%=numbeLimit%>" type="text" class="form-control textContent">
+                                    <input id="numbeLimit" value="<%=numbeLimit%>" type="text"
+                                           class="form-control textContent">
                                 </div>
                                 <div style="margin-top: -10px" class="col-md-6 col-xs-6">
                                     <span class="colorf44">（填写说明：填写阿拉伯数字）</span>
@@ -1852,7 +1869,7 @@
                                 <div id="choose_teacher">
                                     <%if(teachers.length>0) {
                                     teachers.forEach(function(teacher){%>
-                                    <div id="teamLeader<%=teacher.value%>" class="newTeacher">
+                                    <div id="teacher<%=teacher.value%>" class="newTeacher">
                                         <div style="margin-bottom:10px;margin-left:4px;padding:0px;"
                                              class="col-md-2 col-xs-2">
                                             <input readonly value="<%=teacher.text%>" type="text" class="form-control"/>
@@ -1860,7 +1877,7 @@
                                         <div style="padding: 0px" class="col-md-1  col-xs-1">
                                                                               <span style="position: absolute;left: -8px;top: -10px;font-size: 20px"
                                                                                     class="iconfont icon-shanchu"
-                                                                                    onclick="deleteLeader('<%=teacher.value%>')"></span>
+                                                                                    onclick="deleteTeacer('<%=teacher.value%>')"></span>
                                         </div>
                                     </div>
                                     <%})}%>
@@ -1888,7 +1905,9 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-xs btn-white" data-dismiss="modal">取 消</button>
-                    <button onclick="newDefenseArrangements('<%=id%>')" type="button" class="btn btn-xs btn-danger" data-dismiss="modal">保 存</button>
+                    <button onclick="newDefenseArrangements('<%=id%>')" type="button" class="btn btn-xs btn-danger"
+                            data-dismiss="modal">保 存
+                    </button>
                 </div>
             </div>
         </div>
@@ -1896,6 +1915,8 @@
     <!--修改教师答辩安排结束-->
     <!--增加指导教师答辩安排开始-->
     <div class="modal fade" id="Tutor_Group" role="dialog">
+    </div>
+    <script id="Tutor_Groups" type="text/template">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -1911,9 +1932,8 @@
                                     <span>填写说明:</span>
                                 </strong>
                             </div>
-                            <div style="margin-top: -10px" class="col-md-10 col-xs-10">
-                                <div>1.组数括号里的数字为当前组答辩人数限制</div>
-                                2.指导教师括号里的数字为当前指导教师指导学生的人数
+                            <div class="col-md-10 col-xs-10">
+                                <span class="colorf44">指导教师括号里的数字为当前指导教师指导学生的人数</span>
                             </div>
                         </div>
                         <hr>
@@ -1923,14 +1943,36 @@
                                     <span>分组:</span>
                                 </strong>
                             </div>
-                            <div style="margin-top: -10px" class="col-md-4 col-xs-4">
-                                <select style="margin:0px 5px" class="form-control">
-                                    <option value="11">第一组(10)</option>
-                                    <option value="22">第二组(10)</option>
-                                    <option value="33">第三组(10)</option>
-                                    <option value="44">第四组(10)</option>
-                                    <option value="55">第五组(10)</option>
-                                </select>
+                            <div class="col-md-4 col-xs-4">
+                                第<%=data.groupId%>组
+                            </div>
+                        </div>
+                        <hr>
+                        <div style="height: 18px">
+                            <div class="col-md-4 col-xs-4">
+                                <strong>
+                                    <span>答辩人数限制/现有人数:</span>
+                                </strong>
+                            </div>
+                            <div class="col-md-4 col-xs-4">
+                                <%=data.groupSize%>/<%=data.groupNum%>
+                            </div>
+                        </div>
+                        <hr>
+                        <div style="height: 18px">
+                            <div class="col-md-2 col-xs-2">
+                                <strong>
+                                    <span>答辩教师:</span>
+                                </strong>
+                            </div>
+                            <div class="col-md-4 col-xs-4">
+                                <%data.teaGroup.forEach(function(tea){
+                                if(tea.leader){%>
+                                <%=tea.teaAuth.name%>（答辩组长）
+                                <%}
+                                else{%>
+                                <%=tea.teaAuth.name%>
+                                <%}})%>
                             </div>
                         </div>
                         <hr>
@@ -1942,6 +1984,22 @@
                                     </strong>
                                 </div>
                                 <div id="choose_tutor">
+                                    <%tutor.forEach(function(tea){%>
+                                    <div id="tutor<%=tea.value%>">
+                                        <div class="col-md-4 col-xs-4">
+                                            <div style="margin-bottom:10px;margin-left:4px;padding:0px;"
+                                                 class="col-md-10 col-xs-10">
+                                                <input readonly value="<%=tea.text%>(<%=tea.stuListCount%>)" type="text"
+                                                       class="form-control"/>
+                                            </div>
+                                            <div style="padding: 0px" class="col-md-2 col-xs-2">
+                                                <span style="position: absolute;left: 110px;top: -64px;font-size: 20px"
+                                                      class="iconfont icon-shanchu"
+                                                      onclick="deleteTutor('<%=tea.value%>')"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <%})%>
                                 </div>
                             </div>
                         </div>
@@ -1954,11 +2012,6 @@
                                 </div>
                                 <div style="margin-top: -10px" class="col-md-4 col-xs-4">
                                     <select style="margin:0px 5px" class="form-control" id="guide_Teacher">
-                                        <option value="11">李龙（8）</option>
-                                        <option value="22">王国志（8）</option>
-                                        <option value="33">董刚强（8）</option>
-                                        <option value="44">吴松（8）</option>
-                                        <option value="55">张宗豪（8）</option>
                                     </select>
                                 </div>
                                 <div style="margin-top: -11px" class="col-md-2  col-xs-2">
@@ -1971,11 +2024,13 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-xs btn-white" data-dismiss="modal">取 消</button>
-                    <button type="button" class="btn btn-xs btn-danger">保 存</button>
+                    <button onclick="saveTutor('<%=data.id%>')" type="button" class="btn btn-xs btn-danger"
+                            data-dismiss="modal">保 存
+                    </button>
                 </div>
             </div>
         </div>
-    </div>
+    </script>
     <!--增加指导教师答辩安排结束-->
     <!--修改学生答辩安排开始-->
     <div class="modal fade" id="modify_Students_Group" role="dialog">
@@ -2055,7 +2110,8 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-xs btn-white" data-dismiss="modal">取 消</button>
-                    <button type="button" class="btn btn-xs btn-danger">保 存</button>
+                    <button id="confirmDeleTutor" type="button" class="btn btn-xs btn-danger" data-dismiss="modal">保 存
+                    </button>
                 </div>
             </div>
         </div>
@@ -2421,6 +2477,9 @@
     let teachers = [];
     //添加答辩组长
     let leader = [];
+    //添加指导教师
+    let tutor = [];
+
 
     //出题情况统计表
     function statisticalTopic() {
@@ -2970,9 +3029,12 @@
     function defensemTeacher() {
         defensemManagement("", "", "", "", "", "", "", "", "");
         showDepDefDate();
+        showDefInfoLists();
     }
 
     //根据条件查询教师答辩分组
+    let leaderOriginal = [];
+    let teachersOriginal = [];
     function defensemManagement(tid, tName, groupId, groupSize, groupNum, defDate, week, day, defClass) {
         let url = "http://www.yuanbw.cn:20086/gpms/tea/showDepTeaDefGroup";
         let teachersGroups = document.getElementById('teachersGroups').innerHTML;
@@ -3021,14 +3083,24 @@
                     if (groupId != "") {
                         leader = [];
                         teachers = [];
+                        leaderOriginal = [];
+                        teachersOriginal = [];
                         responseStr.data[0].teaGroup.forEach(function (teacher) {
                             if (teacher.leader) {
                                 leader.push({
                                     value: teacher.teaAuth.id,
                                     text: teacher.teaAuth.name
                                 });
+                                leaderOriginal.push({
+                                    value: teacher.teaAuth.id,
+                                    text: teacher.teaAuth.name
+                                });
                             } else {
                                 teachers.push({
+                                    value: teacher.teaAuth.id,
+                                    text: teacher.teaAuth.name
+                                });
+                                teachersOriginal.push({
                                     value: teacher.teaAuth.id,
                                     text: teacher.teaAuth.name
                                 });
@@ -3183,7 +3255,7 @@
     }
 
     //计算答辩总评成绩
-    function computationalResults(id,name,isOther) {
+    function computationalResults(id, name, isOther) {
         let url = "http://www.yuanbw.cn:20086/gpms/tea/showDepStuScoreList";
         let scoreLists = document.getElementById('scoreLists').innerHTML;
         let scoreList = document.getElementById('scoreList');
@@ -3209,7 +3281,7 @@
             },
             success: function (responseStr) {
                 if (responseStr.statusCode == "100") {
-                    if(isOther=="not") {
+                    if (isOther == "not") {
                         pageCount = Math.ceil(responseStr.data.count / limit);
                         scoreList.innerHTML = ejs.render(scoreLists, {data: responseStr.data.studentList});
                         $('#studentsPage').pagination({
@@ -3253,8 +3325,7 @@
                                 });
                             }
                         });
-                    }
-                    else if(isOther=="student"){
+                    } else if (isOther == "student") {
                         let studentDetailses = document.getElementById('studentDetailses').innerHTML;
                         let studentDetails = document.getElementById('studentDetails');
                         let student = responseStr.data.studentList[0];
@@ -3279,18 +3350,16 @@
 
             },
             error: function (responseStr) {
-                console.log(responseStr)
-                // window.location.href = "../404/404.html";
+                window.location.href = "../404/404.html";
             }
         });
     }
 
     //条件查询答辩总评成绩
-    function  studentListQuery() {
+    function studentListQuery() {
         let stuNameList = document.getElementById('stuNameList');
         let stuIdList = document.getElementById('stuIdList');
-        computationalResults(stuIdList.value,stuNameList.value,'not');
-        console.log(stuIdList.value,stuNameList.value)
+        computationalResults(stuIdList.value, stuNameList.value, 'not');
         stuNameList.value = "";
         stuIdList.value = "";
     }
@@ -3899,7 +3968,7 @@
                 },
                 success: function (responseStr) {
                     alert(responseStr.msg);
-                    defensemManagement("", "", "", "", "", "", "", "", "");
+                    defensemTeacher();
                 },
                 error: function (responseStr) {
                     window.location.href = "../404/404.html";
@@ -3915,12 +3984,12 @@
 
     //修改、新增答辩组
     function newDefenseArrangements(id) {
-        let newData ={};
+        let newData = {};
         let modifyData = {};
-        let data ;
+        let data;
         let date_Teachers_Group = document.getElementById('date_Teachers_Group').value;
         let weeks = document.getElementById('weeks').value;
-        let  whatDay = document.getElementById('whatDay').value;
+        let whatDay = document.getElementById('whatDay').value;
         let classroom = document.getElementById('classroom').value;
         let numbeLimit = document.getElementById('numbeLimit').value;
         let week = $("#week").hasClass("displayBlock");
@@ -3930,52 +3999,52 @@
         newData.groupSize = numbeLimit;
         newData.defClass = classroom;
         modifyData.gid = id;
-        if(numbeLimit!="") {
+        if (numbeLimit != "") {
             modifyData.groupSize = numbeLimit;
         }
-        if(classroom!="") {
+        if (classroom != "") {
             modifyData.defClass = classroom;
         }
-        if(week) {
+        if (week) {
             newData.defWeek = weeks;
             newData.defDay = whatDay;
             modifyData.defWeek = weeks;
             modifyData.defDay = whatDay;
         }
-        if(date) {
+        if (date) {
             newData.defDate = date_Teachers_Group;
             modifyData.defDate = date_Teachers_Group;
         }
-        if(leader.length>0) {
+        if (leader.length > 0) {
             teaIdList.push({
-                tid:leader[0].value,
-                leader:1
+                tid: parseInt(leader[0].value),
+                leader: 1
             })
         }
-        if(teachers.length>0) {
+        if (teachers.length > 0) {
             teachers.forEach(function (teacher) {
                 teaIdList.push({
-                    tid:teacher.value,
-                    leader:0
+                    tid: parseInt(teacher.value),
+                    leader: 0
                 })
             })
         }
         newData.teaIdList = teaIdList;
-        if(teaIdList.length>0) {
+        if (teaIdList.length > 0) {
             modifyData.teaIdList = teaIdList;
         }
-        if(id=="") {
+        console.log(teaIdList)
+        if (id == "") {
             url = "http://www.yuanbw.cn:20086/gpms/tea/addDefGroup";
             data = newData;
-        }
-        else {
+        } else {
             url = "http://www.yuanbw.cn:20086/gpms/tea/modifyDefGroup";
             data = modifyData;
         }
         $.ajax({
             url: url,
             type: "POST",
-            contentType:"application/json",
+            contentType: "application/json",
             data: JSON.stringify(data),
             xhrFields: {
                 withCredentials: true
@@ -3986,17 +4055,181 @@
             },
             success: function (responseStr) {
                 alert(responseStr.msg);
-                defensemManagement("", "", "", "", "", "", "", "", "");
+                defensemTeacher();
+            },
+            error: function (responseStr) {
+                console.log(responseStr)
+                // window.location.href = "../404/404.html";
+            }
+        });
+    }
+
+    //查看系内答辩组
+    let DefenseGroups;
+
+    function showDefInfoLists() {
+        let url = "http://www.yuanbw.cn:20086/gpms/tea/showDefInfoList";
+        let instructorGroupings = document.getElementById('instructorGroupings').innerHTML;
+        let instructorGrouping = document.getElementById('instructorGrouping');
+        $.ajax({
+            url: url,
+            type: "POST",
+            data: {},
+            xhrFields: {
+                withCredentials: true
+            },
+            crossDomain: true,
+            headers: {
+                Token: token
+            },
+            success: function (responseStr) {
+                if (responseStr.statusCode == "100") {
+                    DefenseGroups = responseStr.data;
+                    instructorGrouping.innerHTML = ejs.render(instructorGroupings, {
+                        data: responseStr.data
+                    });
+                } else if (responseStr.statusCode == "101") {
+                    instructorGrouping.innerHTML = ejs.render(instructorGroupings, {
+                        data: ""
+                    });
+                }
             },
             error: function (responseStr) {
                 window.location.href = "../404/404.html";
             }
         });
     }
+
+    //删除指导教师分组
+    function deleTutorGroup(id) {
+        $("#confirmDeleTutor").unbind("click").click(function () {
+            let url = "http://www.yuanbw.cn:20086/gpms/tea/deleteDefTeaGroup";
+            $.ajax({
+                url: url,
+                type: "POST",
+                data: {
+                    gid: id
+                },
+                xhrFields: {
+                    withCredentials: true
+                },
+                crossDomain: true,
+                headers: {
+                    Token: token
+                },
+                success: function (responseStr) {
+                    alert(responseStr.msg);
+                    defensemTeacher();
+                },
+                error: function (responseStr) {
+                    window.location.href = "../404/404.html";
+                }
+            });
+        })
+    }
+
+    //添加、修改指导教师分组
+    let originaltTutor = [];
+
+    function NewTutorGroup(id) {
+        tutor = [];
+        originaltTutor = [];
+        DefenseGroups.forEach(function (group) {
+            if (id == group.id) {
+                let Tutor_Groups = document.getElementById('Tutor_Groups').innerHTML;
+                let Tutor_Group = document.getElementById('Tutor_Group');
+                group.gtGroup.forEach(function (tea) {
+                    tutor.push({
+                        value: tea.teacher.id,
+                        text: tea.teacher.name,
+                        stuListCount: tea.teacher.stuListCount
+                    });
+                    originaltTutor.push({
+                        value: tea.teacher.id,
+                        text: tea.teacher.name,
+                        stuListCount: tea.teacher.stuListCount
+                    });
+                });
+
+                Tutor_Group.innerHTML = ejs.render(Tutor_Groups, {
+                    data: group,
+                    tutor: tutor
+                });
+            }
+        });
+        showUnAssignedGtList(id);
+    }
+
+    //查看可分配的指导教师
+    function showUnAssignedGtList(id) {
+        let url = "http://www.yuanbw.cn:20086/gpms/tea/showUnAssignedGtList";
+        $.ajax({
+            url: url,
+            type: "POST",
+            data: {
+                gid: id
+            },
+            xhrFields: {
+                withCredentials: true
+            },
+            crossDomain: true,
+            headers: {
+                Token: token
+            },
+            success: function (responseStr) {
+                let guide_Teacher = document.getElementById('guide_Teacher');
+                responseStr.data.forEach(function (tea) {
+                    guide_Teacher.innerHTML += '<option value=' + tea.id + '>' + tea.name + '(' + tea.stuListCount + ')</option>';
+                })
+            },
+            error: function (responseStr) {
+                window.location.href = "../404/404.html";
+            }
+        });
+    }
+
+    //保存修改、添加指导教师
+    function saveTutor(id) {
+        let data = {};
+        let teaIdList = [];
+        let url = "http://www.yuanbw.cn:20086/gpms/tea/modifyDefTeaGroup";
+        tutor.forEach(function (teacher) {
+            teaIdList.push(teacher.value.toString())
+        });
+        data.gid = id;
+        data.gtList = teaIdList;
+        $.ajax({
+            url: url,
+            type: "POST",
+            contentType: "application/json",
+            data: JSON.stringify(data),
+            xhrFields: {
+                withCredentials: true
+            },
+            crossDomain: true,
+            headers: {
+                Token: token
+            },
+            success: function (responseStr) {
+                alert(responseStr.msg);
+                defensemTeacher();
+            },
+            error: function (responseStr) {
+                window.location.href = "../404/404.html";
+            }
+        });
+    }
+    
+    //分配学生
+    function distributionStudents() {
+        
+    }
+
+
 </script>
 
 <script>
-    let teacherInfo = [];
+    // let teacherInfo = [];
 
     //答辩下拉框选择
     function optionalDefenseTeacher() {
@@ -4055,14 +4288,14 @@
 
     //答辩管理设定日期显示
     function showDate() {
-        $("#date").attr("class","displayBlock");
-        $("#week").attr("class","displayNone");
+        $("#date").attr("class", "displayBlock");
+        $("#week").attr("class", "displayNone");
     }
 
     //答辩管理设定周数显示
     function showWeek() {
-        $("#date").attr("class","displayNone");
-        $("#week").attr("class","displayBlock");
+        $("#date").attr("class", "displayNone");
+        $("#week").attr("class", "displayBlock");
     }
 
     function chooseteamLeader() {
@@ -4104,6 +4337,13 @@
     //删除答辩组长
     function deleteLeader(id) {
         let teacher_id = document.getElementById('teamLeader' + id);
+        let teamLeaderSelect = document.getElementById('teamLeaderSelect');
+        for(let i=0;i<leaderOriginal.length;i++) {
+            if(leaderOriginal[i].value==id) {
+                teamLeaderSelect.innerHTML += '<option value=' + leaderOriginal[i].value + '>' + leaderOriginal[i].text + '</option>';
+                leaderOriginal.splice(i, 1);
+            }
+        }
         $(teacher_id).remove();
         leader.splice(0, 1);
     }
@@ -4155,9 +4395,16 @@
     //删除答辩教师
     function deleteTeacer(value) {
         let teacher_id = document.getElementById('teacher' + value);
+        let plea_Teacher = document.getElementById('plea_Teacher');
         $(teacher_id).remove();
         for (let i = 0; i < teachers.length; i++) {
             if (teachers[i].value == value) {
+                for(let j=0;j<teachersOriginal.length;j++) {
+                    if(teachersOriginal[j].value==value) {
+                        plea_Teacher.innerHTML += '<option value=' + teachersOriginal[j].value + '>' + teachersOriginal[j].text + '</option>';
+                        teachersOriginal.splice(j, 1);
+                    }
+                }
                 teachers.splice(i, 1);
                 break;
             }
@@ -4169,9 +4416,6 @@
         tutor = [];
         $("#choose_tutor").children().remove();
     }
-
-    //添加指导教师
-    let tutor = [];
 
     function chooseTutor() {
         let guide_Teacher = document.getElementById('guide_Teacher');
@@ -4211,9 +4455,16 @@
 
     function deleteTutor(value) {
         let tutor_id = document.getElementById('tutor' + value);
+        let guide_Teacher = document.getElementById('guide_Teacher');
         $(tutor_id).remove();
         for (let i = 0; i < tutor.length; i++) {
             if (tutor[i].value == value) {
+                for (let j = 0; j < originaltTutor.length; j++) {
+                    if (originaltTutor[j].value == value) {
+                        guide_Teacher.innerHTML += '<option value=' + tutor[i].value + '>' + tutor[i].text + '(' + tutor[i].stuListCount + ')</option>';
+                        originaltTutor.splice(j, 1);
+                    }
+                }
                 tutor.splice(i, 1);
                 break;
             }
