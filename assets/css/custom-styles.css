@@ -233,6 +233,14 @@ p {
 /*初始化样式结束*/
 
 /*公用样式开始*/
+.tableTh {
+    color: #3c763d;
+}
+
+.tableTd {
+    color: #8a6d3b;
+}
+
 .icon-shenhe {
     cursor: pointer;
 }
@@ -242,7 +250,7 @@ p {
 }
 
 .normalSpace {
-    white-space:normal
+    white-space: normal
 }
 
 .icon-shenhe:hover {

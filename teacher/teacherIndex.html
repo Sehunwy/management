@@ -225,7 +225,7 @@
                                                         <option value="">全部</option>
                                                         <option value="1">审核通过</option>
                                                         <option value="0">审核不通过</option>
-                                                        <option value="2">审核中</option>
+                                                        <option value="3">审核中</option>
                                                     </select>
                                                 </div>
                                                 <div class="col-md-1 col-xs-1" style="padding-left: 5px">
@@ -531,7 +531,7 @@
                                             <div class="col-md-3 col-xs-3">
                                                 <select id="scStatus" style="margin:0px 5px" class="form-control">
                                                     <option value="">全部</option>
-                                                    <option value="2">审核通过</option>
+                                                    <option value="1">审核通过</option>
                                                     <option value="0">审核不通过</option>
                                                     <option value="3">审核中</option>
                                                 </select>
@@ -598,15 +598,11 @@
                                     <div class="col-md-1 textEllipsis textAlign padding0">
                                         <% if(item.cStatus==0){ %>
                                         不通过
-                                        <% } else if(item.cStatus==2){ %>
-                                        教师通过
-                                        <% } else if(item.cStatus==3){ %>
+                                        <% } else if(item.cStatus==1){ %>
+                                        审核通过
+                                        <% } else { %>
                                         审核中
-                                        <% }
-                                        else if(item.cStatus==1){%>
-                                        系主任通过
-                                        <%}
-                                        %>
+                                        <% } %>
                                     </div>
                                     <div class="col-md-2 textEllipsis textAlign">
                                         <%if(item.cStatus==3) {%>
@@ -911,7 +907,7 @@
                                             <%=student.name%>(<%=student.identifier%>)
                                         </span>
                                     </div>
-                                    <div class="col-md-4 textAligntextEllipsis">
+                                    <div class="col-md-4 textAlign textEllipsis">
                                         <%=student.pName%>
                                     </div>
                                     <div class="col-md-4 textAlign">
@@ -3924,20 +3920,6 @@
         });
     }
 
-
-    $('.m-style').pagination({
-        pageCount: 5,
-        jump: true,
-        coping: true,
-        homePage: '首页',
-        endPage: '末页',
-        prevContent: '上页',
-        nextContent: '下页',
-        callback: function (api) {
-            console.log(api.getCurrent());
-        }
-    });
-
 </script>
 
 
@@ -4792,11 +4774,9 @@
             },
             success: function (responseStr) {
                 if (responseStr.msg == "查询成功") {
-                    if (id == "" && name == "") {
-                        normalDom1.innerHTML = ejs.render(htmlDom1, {
-                            data: responseStr.data
-                        });
-                    }
+                    normalDom1.innerHTML = ejs.render(htmlDom1, {
+                        data: responseStr.data
+                    });
                 } else {
                     normalDom1.innerHTML = ejs.render(htmlDom1, {
                         data: ""
