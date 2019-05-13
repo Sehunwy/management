@@ -365,7 +365,7 @@
                                     </div>
                                     <div class="col-md-1 textAlign textEllipsis">
                                         <span class="clickColor cursorPointer" data-toggle="modal"
-                                              data-target="#studentDetails">
+                                              data-target="#studentDetails" onclick="TopicSelectionAudit('<%=title.student.identifier%>', '', '', '', '', 'student')">
                                             <%=title.student.name%>
                                         </span>
                                     </div>
@@ -981,14 +981,13 @@
                                                                                    role="tab"
                                                                                    data-toggle="tab">计算答辩总评成绩</a>
                                 </li>
-                                <li><a href="#replyTeacher" role="tab" data-toggle="tab">教师答辩分组统计报表</a></li>
                                 <li onclick="queryStudentsPleaConditions('','')"><a href="#replyStudent" role="tab"
                                                                                     data-toggle="tab">学生答辩分组统计报表</a>
                                 </li>
                                 <li onclick="summaryReportResults('','','ranking')"><a href="#results_Summary"
                                                                                        role="tab" data-toggle="tab">成绩汇总统计报表</a>
                                 </li>
-                                <li onclick="archivingStatistics('','')"><a href="#material_Archive" role="tab"
+                                <li onclick="archivingStatistics('','','ranking')"><a href="#material_Archive" role="tab"
                                                                             data-toggle="tab">材料归档统计报表</a></li>
                             </ul>
                         </div>
@@ -1242,7 +1241,7 @@
                                     <div class="col-md-10">
                                     </div>
                                     <div class="col-md-2">
-                                        <button type="button" class="btn btn-info">
+                                        <button onclick="calculateDefenseScore()" type="button" class="btn btn-info">
                                             提交
                                         </button>
                                     </div>
@@ -1519,7 +1518,11 @@
                                         <%}})%>
                                     </div>
                                     <div class="col-md-1 textAlign">
+                                        <%if(typeof(student.mt)=="undefined") {%>
+                                        暂无数据
+                                        <%}else{%>
                                         <%=student.mt.name%>
+                                        <%}%>
                                     </div>
                                     <div class="col-md-1 textAlign">
                                         第<%=student.defInfo.groupId%>组
@@ -3487,7 +3490,7 @@
     }
 
     //材料归档统计报表
-    function archivingStatistics(id, name) {
+    function archivingStatistics(id, name,isRanking) {
         let url = "http://www.yuanbw.cn:20086/gpms/tea/materialFiling";
         // let studentsScores = document.getElementById('studentsScores').innerHTML;
         // let studentsScore = document.getElementById('studentsScore');
@@ -3512,13 +3515,14 @@
                 Token: token
             },
             success: function (responseStr) {
+                console.log(responseStr)
                 if (responseStr.statusCode == "100") {
                     if (isRanking == "ranking") {
                         pageCount = Math.ceil(responseStr.data.count / limit);
-                        studentsScore.innerHTML = ejs.render(studentsScores, {
-                            data: responseStr.data.studentLists,
-                            offset: offset
-                        });
+                        // studentsScore.innerHTML = ejs.render(studentsScores, {
+                        //     data: responseStr.data.studentLists,
+                        //     offset: offset
+                        // });
                         $('#scorePage').pagination({
                             pageCount: pageCount,
                             jump: true,
@@ -3848,6 +3852,22 @@
                             }
                         });
                     }
+                    else if(isQuery == "student"){
+                        let studentDetailses = document.getElementById('studentDetailses').innerHTML;
+                        let studentDetails = document.getElementById('studentDetails');
+                        let student = responseStr.data.proChooseList[0].student;
+                        studentDetails.innerHTML = ejs.render(studentDetailses, {
+                            identifier: student.identifier,
+                            name: student.name,
+                            email: student.email,
+                            contactTel: student.contactTel,
+                            college: student.college,
+                            major: student.major,
+                            sex: student.sex,
+                            grade: student.grade,
+                            classNo: student.classNo
+                        });
+                    }
                 } else if (responseStr.statusCode == "102") {
                     alert(responseStr.msg);
                     window.location.href = "../login/login.html";
@@ -4033,7 +4053,6 @@
         if (teaIdList.length > 0) {
             modifyData.teaIdList = teaIdList;
         }
-        console.log(teaIdList)
         if (id == "") {
             url = "http://www.yuanbw.cn:20086/gpms/tea/addDefGroup";
             data = newData;
@@ -4222,7 +4241,81 @@
     
     //分配学生
     function distributionStudents() {
-        
+        assignDefStuGroup();
+        assignReviewTeaGroup();
+    }
+
+    //根据指导老师的分组来确定学生的分组情况(自动生成学生分组信息)
+    function assignDefStuGroup() {
+        let url = "http://www.yuanbw.cn:20086/gpms/tea/assignDefStuGroup";
+        $.ajax({
+            url: url,
+            type: "POST",
+            data: {},
+            xhrFields: {
+                withCredentials: true
+            },
+            crossDomain: true,
+            headers: {
+                Token: token
+            },
+            success: function (responseStr) {
+                console.log("11");
+                console.log(responseStr)
+            },
+            error: function (responseStr) {
+                console.log(responseStr)
+                // window.location.href = "../404/404.html";
+            }
+        });
+    }
+
+    //根据答辩分组自动生成评阅分组，以及插入评审表
+    function assignReviewTeaGroup() {
+        let url = "http://www.yuanbw.cn:20086/gpms/tea/assignReviewTeaGroup";
+        $.ajax({
+            url: url,
+            type: "POST",
+            data: {},
+            xhrFields: {
+                withCredentials: true
+            },
+            crossDomain: true,
+            headers: {
+                Token: token
+            },
+            success: function (responseStr) {
+                console.log("22");
+                console.log(responseStr)
+            },
+            error: function (responseStr) {
+                console.log(responseStr)
+                // window.location.href = "../404/404.html";
+            }
+        });
+    }
+
+    //计算答辩总评成绩提交
+    function calculateDefenseScore() {
+        let url = "http://www.yuanbw.cn:20086/gpms/tea/commitStuTotalScore";
+        $.ajax({
+            url: url,
+            type: "POST",
+            data: {},
+            xhrFields: {
+                withCredentials: true
+            },
+            crossDomain: true,
+            headers: {
+                Token: token
+            },
+            success: function (responseStr) {
+                alert(responseStr.msg);
+            },
+            error: function (responseStr) {
+                window.location.href = "../404/404.html";
+            }
+        });
     }
 
 
