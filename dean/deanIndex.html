@@ -569,8 +569,8 @@
                                 </div>
                                 <div id="studentList"></div>
                                 <!--分页开始-->
-                                <div style="margin-top: 15px" class="m-style" id="studentPage"></div>
                                 <!--分页结束-->
+                                <div style="margin-top: 15px" class="m-style" id="studentPage"></div>
                             </div>
                             <script id="hasSelects" type="text/template">
                                 <%if(data=="") {%>
@@ -702,7 +702,7 @@
                                     <div class="col-md-10 col-xs-10" style="padding: 0px">
                                         <h4 class="font_bold" style="display: inline-block;padding-right: 10px">
                                             题目列表</h4>
-                                        <button type="button" class="btn btn-danger">导出表格<span
+                                        <button type="button" class="btn btn-danger" onclick="exportTitle()">导出表格<span
                                                 class="iconfont icon-excel"
                                                 style="padding-left: 4px;font-size:12px"></span>
                                         </button>
@@ -984,8 +984,8 @@
                                                                                    role="tab"
                                                                                    data-toggle="tab">计算答辩总评成绩</a>
                                 </li>
-                                <li onclick="queryStudentsPleaConditions('','')"><a href="#replyStudent" role="tab"
-                                                                                    data-toggle="tab">学生答辩分组统计报表</a>
+                                <li onclick="queryStudentsPleaConditions('','','')"><a href="#replyStudent" role="tab"
+                                                                                       data-toggle="tab">学生答辩分组统计报表</a>
                                 </li>
                                 <li onclick="summaryReportResults('','','ranking')"><a href="#results_Summary"
                                                                                        role="tab" data-toggle="tab">成绩汇总统计报表</a>
@@ -1005,7 +1005,8 @@
                                     </div>
                                     <div class="col-md-12">
                                         <h4 class="font_bold" style="display: inline-block">答辩教师分组</h4>
-                                        <button type="button" class="btn btn-danger">导出表格<span
+                                        <button type="button" class="btn btn-danger" onclick="exportAnswerTeacher()">
+                                            导出表格<span
                                                 class="iconfont icon-excel"
                                                 style="padding-left: 4px;font-size:12px"></span>
                                         </button>
@@ -1442,7 +1443,8 @@
                                     <div class="col-md-12" style="padding-bottom: 10px">
                                         <h4 class="font_bold" style="display: inline-block;padding-right: 10px">
                                             学生答辩分组列表</h4>
-                                        <button type="button" class="btn btn-danger">导出表格<span
+                                        <button type="button" class="btn btn-danger" onclick="exportDefenseStudents()">
+                                            导出表格<span
                                                 class="iconfont icon-excel"
                                                 style="padding-left: 4px;font-size:12px"></span>
                                         </button>
@@ -1558,10 +1560,11 @@
                                         </div>
                                     </div>
                                     <div style="padding-left:0px;padding-bottom: 15px" class="col-md-12">
-                                        <div style="padding-left: 0px" class="col-md-4">
+                                        <div style="padding-left: 0px" class="col-md-12">
                                             <h4 class="font_bold" style="display: inline-block;padding-right: 10px">
                                                 学生综合评定成绩列表</h4>
-                                            <button type="button" class="btn btn-danger">导出表格<span
+                                            <button type="button" class="btn btn-danger" onclick="exportScore()">
+                                                导出表格<span
                                                     class="iconfont icon-excel"
                                                     style="padding-left: 4px;font-size:12px"></span>
                                             </button>
@@ -2447,12 +2450,36 @@
 <script src="../assets/js/xlsx.full.min.js"></script>
 <script src="../assets/js/export.js"></script>
 <script>
+
+    //出题情况统计报表导出
     function btn_export() {
         statisticalTopicConditions(teaId, teaName, hasSet, "count" + teacherCount);
     }
 
+    //选题情况统计报表导出
     function exportStudent() {
         statisticalSelectConditions(stuIdChoose, stuNameChoose, hasChoose, "count" + studentCount);
+    }
+
+    //题目情况统计报表导出
+    function exportTitle() {
+        titleLists("", pNameTitle, rangeTitle, genreTitle, sourceTitle, statusTitle, "count" + titleCount);
+    }
+
+    //答辩教师统计报表
+    function exportAnswerTeacher() {
+        defensemManagement(tidValue, tNameValue, "", "", groupNumValue, "", weekValue, dayValue, defClassValue, "export");
+    }
+
+    //答辩学生统计报表
+    function exportDefenseStudents() {
+        queryStudentsPleaConditions(stuPleaId, stuPleaName, "count" + studentPleaCount);
+    }
+
+    //成绩汇总统计报表
+    function exportScore() {
+        summaryReportResults(stuResultId, stuResultName, "count" + scoreCount);
+        console.log(stuResultId, stuResultName, scoreCount)
     }
 
     function exportTable(data, name) {
@@ -2614,7 +2641,7 @@
                             index++;
                             let pros = "";
                             data.proSetList.forEach(function (pro) {
-                                pros = pros + pro.project.title + " , ";
+                                pros = pros + pro.project.title + "   ";
                             })
                             dataList.push({
                                 "编号": index,
@@ -2624,7 +2651,7 @@
                                 "出题数量": data.proSetList.length,
                             })
                         })
-                        exportTable(dataList, "出题情况统计报表")
+                        exportTable(dataList, "出题情况统计报表");
                     } else {
                         let titleLists = document.getElementById('titleLists').innerHTML;
                         let titleList = document.getElementById('titleList');
@@ -2974,10 +3001,18 @@
     }
 
     //根据条件查询题目列表
+    let titleCount;
+
     function titleLists(pid, pName, range, genre, source, status, isOne) {
+        let len = isOne.length;
+        let end = isOne.slice(5, len);
+        let start = isOne.substring(0, 5);
         let url = "http://www.yuanbw.cn:20086/gpms/tea/showDepProjects";
         let limit = 4;
         let offset = 0;
+        if (start == "count") {
+            limit = end;
+        }
         let data = {limit: limit, offset: offset};
         if (pid != "") {
             data.pid = pid;
@@ -3009,98 +3044,130 @@
                 Token: token
             },
             success: function (responseStr) {
-                if (isOne == "student") {
-                    let studentDetailses = document.getElementById('studentDetailses').innerHTML;
-                    let studentDetails = document.getElementById('studentDetails');
-                    let students = responseStr.data.projectList[0].choose_stu_list;
-                    let student;
-                    students.forEach(function (studentI) {
-                        if (studentI.identifier == studentById) {
-                            student = studentI;
+                if (responseStr.statusCode == "100") {
+                    titleCount = responseStr.data.count;
+                    if (isOne == "student") {
+                        let studentDetailses = document.getElementById('studentDetailses').innerHTML;
+                        let studentDetails = document.getElementById('studentDetails');
+                        let students = responseStr.data.projectList[0].choose_stu_list;
+                        let student;
+                        students.forEach(function (studentI) {
+                            if (studentI.identifier == studentById) {
+                                student = studentI;
+                            }
+                        })
+                        studentDetails.innerHTML = ejs.render(studentDetailses, {
+                            identifier: student.identifier,
+                            name: student.name,
+                            email: student.email,
+                            contactTel: student.contactTel,
+                            college: student.college,
+                            major: student.major,
+                            sex: student.sex,
+                            grade: student.grade,
+                            classNo: student.classNo
+                        });
+                    } else if (isOne == "teacher") {
+                        let teacherDetailses = document.getElementById('teacherDetailses').innerHTML;
+                        let teacherDetails = document.getElementById('teacherDetails');
+                        let teacher = responseStr.data.projectList[0].set_tea;
+                        teacherDetails.innerHTML = ejs.render(teacherDetailses, {
+                            identifier: teacher.identifier,
+                            name: teacher.name,
+                            title: teacher.title,
+                            email: teacher.email,
+                            contactTel: teacher.contactTel,
+                            college: teacher.college,
+                            department: teacher.department,
+                            sex: teacher.sex
+                        });
+                    } else if (isOne == "title") {
+                        let topicDetailses = document.getElementById('topicDetailses').innerHTML;
+                        let topicDetails = document.getElementById('topicDetails');
+                        topicDetails.innerHTML = ejs.render(topicDetailses, {
+                            data: responseStr.data.projectList[0]
+                        });
+                    } else if (start == "count") {
+                        let dataList = [];
+                        let index = 0;
+                        datas = responseStr.data.projectList;
+                        datas.forEach(function (data) {
+                            let students = "";
+                            data.choose_stu_list.forEach(function (stu) {
+                                students = students + stu.name + '(' + stu.identifier + ') ';
+                            })
+                            index++;
+                            dataList.push({
+                                "编号": index,
+                                "课题题目": data.title,
+                                "题目来源": data.source,
+                                "题目类型": data.genre,
+                                "可选专业": data.range,
+                                "已选人数": data.choose_stu_list.length,
+                                "选题学生（学号）": students,
+                                "出题教师姓名": data.set_tea.name,
+                                "出题教师工号": data.set_tea.identifier,
+                                "容纳总人数": data.number,
+                                "目前可选人数": data.rest,
+                            })
+                        })
+                        exportTable(dataList, "题目情况统计报表")
+                    } else {
+                        let listOfTitles = document.getElementById('listOfTitles').innerHTML;
+                        let listOfTitle = document.getElementById('listOfTitle');
+                        let msg = responseStr.msg;
+                        if (msg == "查询成功") {
+                            pageCount = Math.ceil(responseStr.data.count / limit);
+                            listOfTitle.innerHTML = ejs.render(listOfTitles, {data: responseStr.data.projectList});
+                            $('#titlePage').pagination({
+                                pageCount: pageCount,
+                                jump: true,
+                                coping: true,
+                                homePage: '首页',
+                                endPage: '末页',
+                                prevContent: '上页',
+                                nextContent: '下页',
+                                callback: function (api) {
+                                    let page = api.getCurrent();
+                                    offset = (page - 1) * limit;
+                                    data.offset = offset;
+                                    $.ajax({
+                                        url: url,
+                                        type: "POST",
+                                        data: data,
+                                        xhrFields: {
+                                            withCredentials: true
+                                        },
+                                        crossDomain: true,
+                                        headers: {
+                                            Token: token
+                                        },
+                                        success: function (responseStr) {
+                                            let msg = responseStr.msg;
+                                            if (msg == "查询成功") {
+                                                pageCount = Math.ceil(responseStr.data.count / limit);
+                                                if (responseStr.data.projectList.length > 0) {
+                                                    listOfTitle.innerHTML = ejs.render(listOfTitles, {data: responseStr.data.projectList});
+                                                }
+                                            }
+                                            if (msg == "系统繁忙") {
+                                                alert("系统繁忙,请不要点击过快！");
+                                            }
+                                        },
+                                        error: function (responseStr) {
+                                            window.location.href = "../404/404.html";
+                                        }
+                                    });
+                                }
+                            });
+                        } else if (responseStr.statusCode == "101") {
+                            listOfTitle.innerHTML = ejs.render(listOfTitles, {data: ""});
                         }
-                    })
-                    studentDetails.innerHTML = ejs.render(studentDetailses, {
-                        identifier: student.identifier,
-                        name: student.name,
-                        email: student.email,
-                        contactTel: student.contactTel,
-                        college: student.college,
-                        major: student.major,
-                        sex: student.sex,
-                        grade: student.grade,
-                        classNo: student.classNo
-                    });
-                } else if (isOne == "teacher") {
-                    let teacherDetailses = document.getElementById('teacherDetailses').innerHTML;
-                    let teacherDetails = document.getElementById('teacherDetails');
-                    let teacher = responseStr.data.projectList[0].set_tea;
-                    teacherDetails.innerHTML = ejs.render(teacherDetailses, {
-                        identifier: teacher.identifier,
-                        name: teacher.name,
-                        title: teacher.title,
-                        email: teacher.email,
-                        contactTel: teacher.contactTel,
-                        college: teacher.college,
-                        department: teacher.department,
-                        sex: teacher.sex
-                    });
-                } else if (isOne == "title") {
-                    let topicDetailses = document.getElementById('topicDetailses').innerHTML;
-                    let topicDetails = document.getElementById('topicDetails');
-                    topicDetails.innerHTML = ejs.render(topicDetailses, {
-                        data: responseStr.data.projectList[0]
-                    });
+                    }
                 } else {
                     let listOfTitles = document.getElementById('listOfTitles').innerHTML;
                     let listOfTitle = document.getElementById('listOfTitle');
-                    let msg = responseStr.msg;
-                    if (msg == "查询成功") {
-                        pageCount = Math.ceil(responseStr.data.count / limit);
-                        listOfTitle.innerHTML = ejs.render(listOfTitles, {data: responseStr.data.projectList});
-                        $('#titlePage').pagination({
-                            pageCount: pageCount,
-                            jump: true,
-                            coping: true,
-                            homePage: '首页',
-                            endPage: '末页',
-                            prevContent: '上页',
-                            nextContent: '下页',
-                            callback: function (api) {
-                                let page = api.getCurrent();
-                                offset = (page - 1) * limit;
-                                data.offset = offset;
-                                $.ajax({
-                                    url: url,
-                                    type: "POST",
-                                    data: data,
-                                    xhrFields: {
-                                        withCredentials: true
-                                    },
-                                    crossDomain: true,
-                                    headers: {
-                                        Token: token
-                                    },
-                                    success: function (responseStr) {
-                                        let msg = responseStr.msg;
-                                        if (msg == "查询成功") {
-                                            pageCount = Math.ceil(responseStr.data.count / limit);
-                                            if (responseStr.data.projectList.length > 0) {
-                                                listOfTitle.innerHTML = ejs.render(listOfTitles, {data: responseStr.data.projectList});
-                                            }
-                                        }
-                                        if (msg == "系统繁忙") {
-                                            alert("系统繁忙,请不要点击过快！");
-                                        }
-                                    },
-                                    error: function (responseStr) {
-                                        window.location.href = "../404/404.html";
-                                    }
-                                });
-                            }
-                        });
-                    } else if (responseStr.statusCode == "101") {
-                        listOfTitle.innerHTML = ejs.render(listOfTitles, {data: ""});
-                    }
+                    listOfTitle.innerHTML = ejs.render(listOfTitles, {data: ""});
                 }
             },
             error: function (responseStr) {
@@ -3123,13 +3190,19 @@
     }
 
     //根据条件查询题目信息
+    let pNameTitle;
+    let rangeTitle;
+    let genreTitle;
+    let sourceTitle;
+    let statusTitle;
+
     function queryTitle() {
-        let pName = document.getElementById('pName').value;
-        let range = document.getElementById('range').value;
-        let genre = document.getElementById('genre').value;
-        let source = document.getElementById('source').value;
-        let status = document.getElementById('status').value;
-        titleLists("", pName, range, genre, source, status, "notOne");
+        pNameTitle = document.getElementById('pName').value;
+        rangeTitle = document.getElementById('range').value;
+        genreTitle = document.getElementById('genre').value;
+        sourceTitle = document.getElementById('source').value;
+        statusTitle = document.getElementById('status').value;
+        titleLists("", pNameTitle, rangeTitle, genreTitle, sourceTitle, statusTitle, "notOne");
         document.getElementById('pName').value = "";
         document.getElementById('range').options[0].selected = true;
         document.getElementById('genre').options[0].selected = true;
@@ -3139,7 +3212,7 @@
 
     //查询系内教师答辩分组
     function defensemTeacher() {
-        defensemManagement("", "", "", "", "", "", "", "", "");
+        defensemManagement("", "", "", "", "", "", "", "", "", "");
         showDepDefDate();
         showDefInfoLists();
     }
@@ -3148,7 +3221,7 @@
     let leaderOriginal = [];
     let teachersOriginal = [];
 
-    function defensemManagement(tid, tName, groupId, groupSize, groupNum, defDate, week, day, defClass) {
+    function defensemManagement(tid, tName, groupId, groupSize, groupNum, defDate, week, day, defClass, isOne) {
         let url = "http://www.yuanbw.cn:20086/gpms/tea/showDepTeaDefGroup";
         let teachersGroups = document.getElementById('teachersGroups').innerHTML;
         let teachersGroup = document.getElementById('teachersGroup');
@@ -3234,6 +3307,45 @@
                         let month = ("0" + (time.getMonth() + 1)).slice(-2);
                         let today = time.getFullYear() + "-" + (month) + "-" + (day);
                         $('#date_Teachers_Group').val(today);
+                    } else if (isOne == "export") {
+                        let dataList = [];
+                        let index = 0;
+                        let datas = responseStr.data;
+                        datas.forEach(function (data) {
+                            index++;
+                            let leaderTea = "";
+                            let teachersTea = "";
+                            data.teaGroup.forEach(function (tea) {
+                                if (tea.leader) {
+                                    leaderTea = leaderTea + tea.teaAuth.name + '(' + tea.teaAuth.id + ')' + '(组长) ';
+                                } else {
+                                    teachersTea = teachersTea + tea.teaAuth.name + '(' + tea.teaAuth.id + ') ';
+                                }
+                            })
+                            teachersTea = leaderTea + teachersTea;
+                            let defWeek = '第' + data.defWeek + '周';
+                            let defDay = '星期' + data.defDay;
+                            let unixTimestamp = new Date(data.defDate);
+                            let year = unixTimestamp.getFullYear();
+                            let month = unixTimestamp.getMonth() + 1;
+                            let date = unixTimestamp.getDate();
+                            let defDate = year + "年" + month + "月" + date + "日";
+                            let peopleNum = data.groupSize + ' / ' + data.groupNum;
+                            let groupId = '第' + data.groupId + '组';
+                            dataList.push({
+                                "编号": index,
+                                "分组": groupId,
+                                "答辩教师人数": data.teaGroup.length,
+                                "答辩教师（工号）": teachersTea,
+                                "答辩周数": defWeek,
+                                "答辩星期": defDay,
+                                "答辩日期": defDate,
+                                "答辩时间": '上午 8:00',
+                                "答辩教室": data.defClass,
+                                "人数限制 / 现有人数": peopleNum
+                            })
+                        })
+                        exportTable(dataList, "答辩教师分组情况统计报表")
                     } else {
                         teachersGroup.innerHTML = ejs.render(teachersGroups, {data: responseStr.data});
                     }
@@ -3252,6 +3364,8 @@
     }
 
     //根据条件查询教师答辩分组
+    let tidValue, tNameValue, groupNumValue, weekValue, dayValue, defClassValue;
+
     function queryTeachersPlea() {
         let tid = document.getElementById('tid');
         let tName = document.getElementById('tName');
@@ -3259,13 +3373,13 @@
         let week = document.getElementById('defWeek');
         let day = document.getElementById('day');
         let defClass = document.getElementById('defClass');
-        let tidValue = tid.value;
-        let tNameValue = tName.value;
-        let groupNumValue = groupNum.value;
-        let weekValue = week.value;
-        let dayValue = day.value;
-        let defClassValue = defClass.value;
-        defensemManagement(tidValue, tNameValue, "", "", groupNumValue, "", weekValue, dayValue, defClassValue);
+        tidValue = tid.value;
+        tNameValue = tName.value;
+        groupNumValue = groupNum.value;
+        weekValue = week.value;
+        dayValue = day.value;
+        defClassValue = defClass.value;
+        defensemManagement(tidValue, tNameValue, "", "", groupNumValue, "", weekValue, dayValue, defClassValue, "");
         tid.value = "";
         tName.value = "";
         groupNum.value = "";
@@ -3275,12 +3389,21 @@
     }
 
     //根据条件查询学生分组
-    function queryStudentsPleaConditions(id, name) {
+    let studentPleaCount;
+
+    function queryStudentsPleaConditions(id, name, isOne) {
+        let len = isOne.length;
+        let end = isOne.slice(5, len);
+        let start = isOne.substring(0, 5);
+        let datas = [];
         let url = "http://www.yuanbw.cn:20086/gpms/tea/showDepStuDefGroup";
         let studentsGroups = document.getElementById('studentsGroups').innerHTML;
         let studentsGroup = document.getElementById('studentsGroup');
         let limit = 4;
         let offset = 0;
+        if (start == "count") {
+            limit = end;
+        }
         let data = {limit: limit, offset: offset};
         if (id != "") {
             data.id = id;
@@ -3301,49 +3424,120 @@
             },
             success: function (responseStr) {
                 if (responseStr.statusCode == "100") {
-                    pageCount = Math.ceil(responseStr.data.count / limit);
-                    studentsGroup.innerHTML = ejs.render(studentsGroups, {data: responseStr.data.studentLists});
-                    $('#studentPleaPage').pagination({
-                        pageCount: pageCount,
-                        jump: true,
-                        coping: true,
-                        homePage: '首页',
-                        endPage: '末页',
-                        prevContent: '上页',
-                        nextContent: '下页',
-                        callback: function (api) {
-                            let page = api.getCurrent();
-                            offset = (page - 1) * limit;
-                            data.offset = offset;
-                            $.ajax({
-                                url: url,
-                                type: "POST",
-                                data: data,
-                                xhrFields: {
-                                    withCredentials: true
-                                },
-                                crossDomain: true,
-                                headers: {
-                                    Token: token
-                                },
-                                success: function (responseStr) {
-                                    let msg = responseStr.msg;
-                                    if (msg == "查询成功") {
-                                        pageCount = Math.ceil(responseStr.data.count / limit);
-                                        if (responseStr.data.studentLists.length > 0) {
-                                            studentsGroup.innerHTML = ejs.render(studentsGroups, {data: responseStr.data.studentLists});
+                    if (start == "count") {
+                        let dataList = [];
+                        let index = 0;
+                        datas = responseStr.data.studentLists;
+                        datas.forEach(function (data) {
+                            index++;
+                            let gtName = "";
+                            let gtId = "";
+                            let leaderTea = "";
+                            let teachersTea = "";
+                            let pleaNumber = 0;
+                            let defWeek = "";
+                            let defDay = "";
+                            let defDate = "";
+                            let peopleNum = "";
+                            let groupId = "";
+                            let mtName = "";
+                            let mtId = "";
+                            let time = "";
+                            let defClass = "";
+                            if (typeof (data.defInfo) != "undefined") {
+                                data.defInfo.teaGroup.forEach(function (tea) {
+                                    if (tea.leader) {
+                                        leaderTea = leaderTea + tea.teaAuth.name + '(' + tea.teaAuth.id + ')' + '(组长) ';
+                                    } else {
+                                        teachersTea = teachersTea + tea.teaAuth.name + '(' + tea.teaAuth.id + ') ';
+                                    }
+                                })
+                                pleaNumber = data.defInfo.teaGroup.length;
+                                teachersTea = leaderTea + teachersTea;
+                                defWeek = '第' + data.defInfo.defWeek + '周';
+                                defDay = '星期' + data.defInfo.defDay;
+                                let unixTimestamp = new Date(data.defInfo.defDate);
+                                let year = unixTimestamp.getFullYear();
+                                let month = unixTimestamp.getMonth() + 1;
+                                let date = unixTimestamp.getDate();
+                                defDate = year + "年" + month + "月" + date + "日";
+                                time = defWeek + " " + defDay + " " + defDate;
+                                peopleNum = data.defInfo.groupSize + ' / ' + data.defInfo.groupNum;
+                                groupId = '第' + data.defInfo.groupId + '组';
+                                defClass = data.defInfo.defClass;
+                            }
+                            if (typeof (data.gt) != "undefined") {
+                                gtName = data.gt.name;
+                                gtId = data.gt.id;
+                            }
+                            if (typeof (data.mt) != "undefined") {
+                                mtName = data.mt.name;
+                                mtId = data.mt.id;
+                            }
+                            dataList.push({
+                                "编号": index,
+                                "分组": groupId,
+                                "学生姓名": data.name,
+                                "学生学号": data.identifier,
+                                "指导教师姓名": gtName,
+                                "指导教师工号": gtId,
+                                "答辩时间": time,
+                                "答辩教师数量": pleaNumber,
+                                "答辩教师（工号）": teachersTea,
+                                "答辩教室": defClass,
+                                "答辩教室": defClass,
+                                "人数限制/现有人数": peopleNum,
+                                "评阅教师姓名": mtName,
+                                "评阅教师工号": mtId,
+                            })
+                        })
+                        exportTable(dataList, "学生答辩情况统计报表");
+                    } else {
+                        studentPleaCount = responseStr.data.count;
+                        pageCount = Math.ceil(responseStr.data.count / limit);
+                        studentsGroup.innerHTML = ejs.render(studentsGroups, {data: responseStr.data.studentLists});
+                        $('#studentPleaPage').pagination({
+                            pageCount: pageCount,
+                            jump: true,
+                            coping: true,
+                            homePage: '首页',
+                            endPage: '末页',
+                            prevContent: '上页',
+                            nextContent: '下页',
+                            callback: function (api) {
+                                let page = api.getCurrent();
+                                offset = (page - 1) * limit;
+                                data.offset = offset;
+                                $.ajax({
+                                    url: url,
+                                    type: "POST",
+                                    data: data,
+                                    xhrFields: {
+                                        withCredentials: true
+                                    },
+                                    crossDomain: true,
+                                    headers: {
+                                        Token: token
+                                    },
+                                    success: function (responseStr) {
+                                        let msg = responseStr.msg;
+                                        if (msg == "查询成功") {
+                                            pageCount = Math.ceil(responseStr.data.count / limit);
+                                            if (responseStr.data.studentLists.length > 0) {
+                                                studentsGroup.innerHTML = ejs.render(studentsGroups, {data: responseStr.data.studentLists});
+                                            }
                                         }
+                                        if (msg == "系统繁忙") {
+                                            alert("系统繁忙,请不要点击过快！");
+                                        }
+                                    },
+                                    error: function (responseStr) {
+                                        window.location.href = "../404/404.html";
                                     }
-                                    if (msg == "系统繁忙") {
-                                        alert("系统繁忙,请不要点击过快！");
-                                    }
-                                },
-                                error: function (responseStr) {
-                                    window.location.href = "../404/404.html";
-                                }
-                            });
-                        }
-                    });
+                                });
+                            }
+                        });
+                    }
                 } else if (responseStr.statusCode == "102") {
                     alert(responseStr.msg);
                     window.location.href = "../login/login.html";
@@ -3359,10 +3553,12 @@
     }
 
     //根据条件查询学生列表
+    let stuPleaName, stuPleaId;
+
     function queryStudentsPlea() {
-        let stuPleaName = document.getElementById('stuPleaName').value;
-        let stuPleaId = document.getElementById('stuPleaId').value;
-        queryStudentsPleaConditions(stuPleaId, stuPleaName);
+        stuPleaName = document.getElementById('stuPleaName').value;
+        stuPleaId = document.getElementById('stuPleaId').value;
+        queryStudentsPleaConditions(stuPleaId, stuPleaName, "");
         document.getElementById('stuPleaName').value = "";
         document.getElementById('stuPleaId').value = "";
     }
@@ -3478,12 +3674,21 @@
     }
 
     //成绩汇总统计报表
+    let scoreCount;
+
     function summaryReportResults(id, name, isRanking) {
+        let len = isRanking.length;
+        let end = isRanking.slice(5, len);
+        let start = isRanking.substring(0, 5);
+        let datas = [];
         let url = "http://www.yuanbw.cn:20086/gpms/tea/showDepStuScoreSummaryList";
         let studentsScores = document.getElementById('studentsScores').innerHTML;
         let studentsScore = document.getElementById('studentsScore');
         let limit = 4;
         let offset = 0;
+        if (start == "count") {
+            limit = end;
+        }
         let data = {limit: limit, offset: offset};
         if (id != "") {
             data.id = id;
@@ -3504,6 +3709,7 @@
             },
             success: function (responseStr) {
                 if (responseStr.statusCode == "100") {
+                    scoreCount = responseStr.data.count;
                     if (isRanking == "ranking") {
                         pageCount = Math.ceil(responseStr.data.count / limit);
                         studentsScore.innerHTML = ejs.render(studentsScores, {
@@ -3554,6 +3760,40 @@
                                 });
                             }
                         });
+                    } else if (start == "count") {
+                        console.log(responseStr.data.studentLists)
+                        let dataList = [];
+                        let index = 0;
+                        datas = responseStr.data.studentLists;
+                        datas.forEach(function (data) {
+                            index++;
+                            let scoreTotal = "";
+                            let scoreGt = "";
+                            let scoreMt = "";
+                            let scoreDef = "";
+                            let grade = "";
+                            if (typeof (data.proScore) != "undefined") {
+                                if (data.proScore.hasReviewed) {
+                                    scoreTotal = data.proScore.scoreTotal;
+                                    scoreGt = data.proScore.scoreGt;
+                                    scoreMt = data.proScore.scoreMt;
+                                    scoreDef = data.proScore.scoreDef;
+                                    grade = data.proScore.grade;
+                                }
+                            }
+                            dataList.push({
+                                "成绩排名": index,
+                                "学生姓名": data.name,
+                                "学生学号": data.identifier,
+                                "课题题目": data.pName,
+                                "指导成绩": scoreGt,
+                                "评阅成绩": scoreMt,
+                                "答辩成绩": scoreDef,
+                                "综合评定成绩": scoreTotal,
+                                "综合评定等级": grade
+                            })
+                        })
+                        exportTable(dataList, "成绩汇总报表");
                     } else if (isRanking == "student") {
                         let studentDetailses = document.getElementById('studentDetailses').innerHTML;
                         let studentDetails = document.getElementById('studentDetails');
@@ -3591,9 +3831,11 @@
     }
 
     //根据条件查询成绩列表
+    let stuResultName = "", stuResultId = "";
+
     function queryResultList() {
-        let stuResultName = document.getElementById('stuResultName').value;
-        let stuResultId = document.getElementById('stuResultId').value;
+        stuResultName = document.getElementById('stuResultName').value;
+        stuResultId = document.getElementById('stuResultId').value;
         summaryReportResults(stuResultId, stuResultName, "ranking");
         document.getElementById('stuResultName').value = "";
         document.getElementById('stuResultId').value = "";
@@ -4103,7 +4345,7 @@
 
     //修改答辩组
     function modifyGroup(groupId) {
-        defensemManagement("", "", groupId, "", "", "", "", "", "");
+        defensemManagement("", "", groupId, "", "", "", "", "", "", "");
     }
 
     //修改、新增答辩组
