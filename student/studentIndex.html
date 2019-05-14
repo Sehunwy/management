@@ -334,7 +334,7 @@
                             邮箱：
                         </div>
                         <div class="col-md-6 paddingLeft0 paddingRightt0">
-                            <input id="email" class="form-control" type="email" placeholder="<%= informations.email %>">
+                            <input id="email" class="form-control" type="email" value="<%= informations.email %>" placeholder="<%= informations.email %>">
                         </div>
                     </div>
                     <div class="col-md-12" style="padding-bottom: 10px">
@@ -345,7 +345,7 @@
                         </div>
                         <div class="col-md-6 paddingLeft0 paddingRightt0">
                             <input id="bindTel" class="form-control" type="tel"
-                                   placeholder="<%= informations.bindTel %>">
+                                   value="<%=informations.bindTel %>" placeholder="<%=informations.bindTel %>">
                         </div>
                         <div class="col-md-2 paddingRightt0" style="font-size: 12px;color: #f00;">
                             用于登录或找回密码
@@ -359,7 +359,7 @@
                         </div>
                         <div class="col-md-6 paddingLeft0 paddingRightt0">
                             <input id="contactTel" class="form-control" type="text"
-                                   placeholder="<%= informations.contactTel %>">
+                                   value="<%= informations.contactTel %>" placeholder="<%= informations.contactTel %>">
                         </div>
                     </div>
                     <div class="col-md-12" style="padding-bottom: 10px">
@@ -546,7 +546,7 @@
                                         <div class="col-md-1 col-xs-1"></div>
                                         <div style="margin-bottom: 10px" class="col-md-4 col-xs-4">
                                             <div class="col-md-3 col-xs-3" style="padding: 0px">
-                                                指导教师：
+                                                出题教师：
                                             </div>
                                             <div class="col-md-9 col-xs-9" style="padding: 0px">
                                                 <input type="text" class="form-control" id="tutor"/>
@@ -609,7 +609,7 @@
                                         题目来源
                                     </div>
                                     <div class="col-md-3 textAlign">
-                                        指导老师
+                                        出题教师（工号）
                                     </div>
                                     <div class="col-md-1 textAlign">
                                         可选人数
@@ -646,7 +646,7 @@
                                         题目来源
                                     </div>
                                     <div class="col-md-3 textAlign">
-                                        指导教师（编号）
+                                        出题教师（编号）
                                     </div>
                                     <div class="col-md-1 textAlign">
                                         确认状态
@@ -1452,7 +1452,8 @@
                                         %>
                                         <div style="width: 49%; display: inline-block">
                                             <h5 class="font_bold">外文译文内容</h5>
-                                            <textarea name="foreign" class="form-control foreigntext" rows="10" name="textarea"
+                                            <textarea name="foreign" class="form-control foreigntext" rows="10"
+                                                      name="textarea"
                                                       style="background-color: #fff"><%=foreign%></textarea>
                                             <h5 class="font_bold">添加附件</h5>
                                             <input name="uploadForfile" id="fileChooseForeign" type="file"
@@ -1473,7 +1474,8 @@
                                         </div>
                                         <div style="width: 49%; float: right">
                                             <h5 class="font_bold">原文内容 </h5>
-                                            <textarea name="original" class="form-control foreigntext" rows="10" name="textarea"
+                                            <textarea name="original" class="form-control foreigntext" rows="10"
+                                                      name="textarea"
                                                       style="background-color: #fff"><%=original%></textarea>
                                             <h5 class="font_bold">添加附件</h5>
                                             <input name="uploadOrifile" id="fileChooseOriginal" type="file"
@@ -2522,37 +2524,40 @@
                                             data-target="#notificationContent">发送消息
                                     </button>
                                 </div>
+                                <div id="tutorList"></div>
+                            </div>
+                            <script id="tutorLists" type="text/template">
                                 <div class="alert alert-success textEllipsis border_radius marginBottom0">
                                     <div class="col-md-1 textAlign">
                                         <input id="student_notice"
                                                onchange="selectAll('student_notice','checkbox_notice')" type="checkbox"
                                                value="1"/>
                                     </div>
-                                    <div class="col-md-4">
-                                        指导教师姓名（工号）
+                                    <div class="col-md-5 textAlign">
+                                        指导教师姓名
                                     </div>
-                                    <div class="col-md-2">
-                                        职称
-                                    </div>
-                                    <div class="col-md-5">
-                                        院系
+                                    <div class="col-md-6 textAlign">
+                                        指导教师工号
                                     </div>
                                 </div>
+                                <%if(gName==""){%>
+                                <div class="alert alert-danger textAlign border_radius marginBottom0">
+                                    暂无数据
+                                </div>
+                                <%}else{%>
                                 <div class="alert alert-danger textEllipsis border_radius marginBottom0">
                                     <div class="col-md-1 textEllipsis textAlign">
-                                        <input class="checkbox_notice" type="checkbox" value="2"/>
+                                        <input name="checkboxs" class="checkbox_notice" type="checkbox" value="<%=gId%>"/>
                                     </div>
-                                    <div class="col-md-4 textEllipsis">
-                                        王XX（12345678900）
+                                    <div class="col-md-5 textAlign">
+                                        <%=gName%>
                                     </div>
-                                    <div class="col-md-2">
-                                        副教授
-                                    </div>
-                                    <div class="col-md-5 textEllipsis">
-                                        计算机与软件工程学院
+                                    <div class="col-md-6 textAlign">
+                                        <%=gId%>
                                     </div>
                                 </div>
-                            </div>
+                                <%}%>
+                            </script>
                             <!--发送通知结束-->
                         </div>
                     </div>
@@ -2582,7 +2587,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-sm btn-success" data-dismiss="modal">确定</button>
+                    <button onclick="sendNotification()" type="button" class="btn btn-sm btn-success" data-dismiss="modal">确定</button>
                     <button type="button" class="btn btn-sm btn-info" data-dismiss="modal">关闭</button>
                 </div>
             </div>
@@ -2758,8 +2763,7 @@
                 });
             },
             error: function (responseStr) {
-                console.log("failed");
-                console.log(responseStr);
+                window.location.href = "../404/404.html";
             }
         });
     }
@@ -2783,6 +2787,10 @@
         let informationDetailed = document.getElementById('informationDetailed');
         let informations = document.getElementById('informations').innerHTML;
         let information = document.getElementById('information');
+        let tutorLists = document.getElementById('tutorLists').innerHTML;
+        let tutorList = document.getElementById('tutorList');
+        let gName = "";
+        let gId = "";
         let url = "http://www.yuanbw.cn:20086/gpms/rol/showRoleInfo";
         $.ajax({
             url: url,
@@ -2796,8 +2804,15 @@
                 Token: token
             },
             success: function (responseStr) {
-                console.log(responseStr.data)
                 if (responseStr.msg == "查询成功") {
+                    if(typeof(responseStr.data.tName)!="undefined"&&responseStr.data.tName!=""&&typeof(responseStr.data.tId)!="undefined"&&responseStr.data.tId!="") {
+                        gName = responseStr.data.tName;
+                        gId = responseStr.data.tId;
+                    }
+                    tutorList.innerHTML = ejs.render(tutorLists, {
+                        gName:gName,
+                        gId:gId
+                    });
                     topicName = responseStr.data.pName;
                     information.innerHTML = ejs.render(informations, {informations: responseStr.data});
                     informationDetailed.innerHTML = ejs.render(informationsDetailed, {informations: responseStr.data});
@@ -2817,24 +2832,18 @@
         let emailplaceholder = $("#email").attr('placeholder');
         let bindTelplaceholder = $("#bindTel").attr('placeholder');
         let contactTelplaceholder = $("#contactTel").attr('placeholder');
-        if (email == "") {
-            email = emailplaceholder;
-        }
-        if (bindTel == "") {
-            bindTel = bindTelplaceholder;
-        }
-        if (contactTel == "") {
-            contactTel = contactTelplaceholder;
+        let data = {
+            email:email,
+            contactTel:contactTel
+        };
+        if(bindTel!=bindTelplaceholder){
+            data.bindTel = bindTel;
         }
         let url = "http://www.yuanbw.cn:20086/gpms/rol/modifyRoleInfo";
         $.ajax({
             url: url,
             type: "POST",
-            data: {
-                bindTel: bindTel,
-                contactTel: contactTel,
-                email: email
-            },
+            data: data,
             xhrFields: {
                 withCredentials: true
             },
@@ -2849,8 +2858,8 @@
                 }
             },
             error: function (responseStr) {
-                console.log("failed");
-                console.log(responseStr);
+                console.log(responseStr)
+                // window.location.href = "../404/404.html";
             }
         });
     }
@@ -2941,8 +2950,7 @@
                                     }
                                 },
                                 error: function (responseStr) {
-                                    console.log("failed");
-                                    console.log(responseStr);
+                                    window.location.href = "../404/404.html";
                                 }
                             });
                         }
@@ -2952,8 +2960,7 @@
                 }
             },
             error: function (responseStr) {
-                console.log("failed");
-                console.log(responseStr);
+                window.location.href = "../404/404.html";
             }
         });
     }
@@ -3063,8 +3070,7 @@
                     selectTopic(null, null, null, null, null);
                 },
                 error: function (responseStr) {
-                    console.log("failed");
-                    console.log(responseStr);
+                    window.location.href = "../404/404.html";
                 }
             });
             let miss = document.getElementById('saveTopicMiss');
@@ -3096,8 +3102,7 @@
                     topicSelected();
                 },
                 error: function (responseStr) {
-                    console.log("failed");
-                    console.log(responseStr);
+                    window.location.href = "../404/404.html";
                 }
             });
             let miss = document.getElementById('cancelTopicMiss');
@@ -3141,8 +3146,7 @@
                 }
             },
             error: function (responseStr) {
-                console.log("failed");
-                console.log(responseStr);
+                window.location.href = "../404/404.html";
             }
         });
     }
@@ -3176,8 +3180,7 @@
                 }
             },
             error: function (responseStr) {
-                console.log("failed");
-                console.log(responseStr);
+                window.location.href = "../404/404.html";
             }
         });
     }
@@ -3199,7 +3202,6 @@
                 Token: token
             },
             success: function (responseStr) {
-                console.log(responseStr)
                 if (responseStr.msg == "查询成功") {
                     reply_results.innerHTML = ejs.render(reply_resultses, {
                         data: responseStr.data,
@@ -3212,8 +3214,7 @@
                 }
             },
             error: function (responseStr) {
-                console.log("failed");
-                console.log(responseStr);
+                window.location.href = "../404/404.html";
             }
         });
     }
@@ -3252,8 +3253,7 @@
                 }
             },
             error: function (responseStr) {
-                console.log("failed");
-                console.log(responseStr);
+                window.location.href = "../404/404.html";
             }
         });
     }
@@ -3292,8 +3292,7 @@
                 }
             },
             error: function (responseStr) {
-                console.log("failed");
-                console.log(responseStr);
+                window.location.href = "../404/404.html";
             }
         });
     }
@@ -3329,8 +3328,7 @@
                 }
             },
             error: function (responseStr) {
-                console.log("failed");
-                console.log(responseStr);
+                window.location.href = "../404/404.html";
             }
         });
     }
@@ -3369,8 +3367,7 @@
                 }
             },
             error: function (responseStr) {
-                console.log("failed");
-                console.log(responseStr);
+                window.location.href = "../404/404.html";
             }
         });
     }
@@ -3409,8 +3406,7 @@
                 }
             },
             error: function (responseStr) {
-                console.log("failed");
-                console.log(responseStr);
+                window.location.href = "../404/404.html";
             }
         });
     }
@@ -3446,8 +3442,7 @@
                 }
             },
             error: function (responseStr) {
-                console.log("failed");
-                console.log(responseStr);
+                window.location.href = "../404/404.html";
             }
         });
     }
@@ -3490,8 +3485,7 @@
                 queryOpeningReport();
             },
             error: function (responseStr) {
-                console.log("failed");
-                console.log(responseStr);
+                window.location.href = "../404/404.html";
             }
         });
     }
@@ -3536,8 +3530,7 @@
                 submitNone('writeIntermediateInspection', 'modifyIntermediateInspection');
             },
             error: function (responseStr) {
-                console.log("failed");
-                console.log(responseStr);
+                window.location.href = "../404/404.html";
             }
         });
     }
@@ -3628,8 +3621,7 @@
                 $('#three').removeClass('displayNone');
             },
             error: function (responseStr) {
-                console.log("failed");
-                console.log(responseStr);
+                window.location.href = "../404/404.html";
             }
         });
     }
@@ -3675,15 +3667,14 @@
                 submitNone('writeForeignTranslation', 'modifyForeignTranslation');
             },
             error: function (responseStr) {
-                console.log("failed");
-                console.log(responseStr);
+                window.location.href = "../404/404.html";
             }
         });
     }
 
     function cancelForeign() {
         cancelTitle("foreigntext");
-        if(ForeignOriginaldataFirst == "NotFirst") {
+        if (ForeignOriginaldataFirst == "NotFirst") {
             submitNone('writeForeignTranslation', 'modifyForeignTranslation');
         }
     }
@@ -3720,15 +3711,14 @@
                 submitNone('writeLiterature', 'modifyLiterature');
             },
             error: function (responseStr) {
-                console.log("failed");
-                console.log(responseStr);
+                window.location.href = "../404/404.html";
             }
         });
     }
 
     function cancelLiterature() {
         cancelTitle("Literaturetext");
-        if(LiteratureReviewdataFirst == "NotFirst") {
+        if (LiteratureReviewdataFirst == "NotFirst") {
             submitNone('writeLiterature', 'modifyLiterature');
         }
     }
@@ -3809,10 +3799,17 @@
                 $('#three').removeClass('displayNone');
             },
             error: function (responseStr) {
-                console.log("failed");
-                console.log(responseStr);
+                window.location.href = "../404/404.html";
             }
         });
+    }
+
+    //发送通知
+    function sendNotification() {
+        let ids = [];
+        $("input[name='checkboxs']:checked").each(function(i){
+            ids.push($(this).val())
+        })
     }
 </script>
 
