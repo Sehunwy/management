@@ -1654,18 +1654,39 @@
                             <!--成绩汇总结束-->
                             <!--材料归档开始-->
                             <div class="tab-pane panel-body" id="material_Archive">
+                                <div style="padding-left: 0px" class="col-md-12">
+                                    <div class="col-md-4 col-xs-4">
+                                        <input id="stuMaterialName" type="text" class="form-control"
+                                               placeholder="学生姓名">
+                                    </div>
+                                    <div class="col-md-4 col-xs-4">
+                                        <input id="stuMaterialId" type="text" class="form-control" placeholder="学生学号">
+                                    </div>
+                                    <div class="col-md-2 col-xs-2" style="padding-left: 5px">
+                                        <button type="button" class="btn btn-info" onclick="queryMaterialArchive()">查询
+                                        </button>
+                                    </div>
+                                </div>
                                 <div style="padding-left:0px;padding-bottom: 15px" class="col-md-12">
                                     <div style="padding-left: 0px" class="col-md-4">
                                         <div class="col-md-10 col-xs-10" style="padding: 0px">
                                             <h4 class="font_bold" style="display: inline-block;padding-right: 10px">
                                                 材料归档列表</h4>
-                                            <button type="button" class="btn btn-danger">导出表格<span
+                                            <button type="button" class="btn btn-danger" onclick="exportMaterial()">导出表格<span
                                                     class="iconfont icon-excel"
                                                     style="padding-left: 4px;font-size:12px"></span>
                                             </button>
                                         </div>
                                     </div>
                                 </div>
+                                <div id="materialArchive"></div>
+                                <!--分页开始-->
+                                <div class="col-md-12 col-xs-12" style="padding-top: 10px">
+                                    <div class="m-style" id="studentMaterialPage"></div>
+                                </div>
+                                <!--分页结束-->
+                            </div>
+                            <script id="materialArchives" type="text/template">
                                 <div class="alert alert-success textEllipsis border_radius marginBottom0">
                                     <div class="col-md-3 textAlign">
                                         学生姓名（学号）
@@ -1673,52 +1694,55 @@
                                     <div class="col-md-3 textAlign">
                                         指导教师（编号）
                                     </div>
-                                    <div class="col-md-1 textAlign">
-                                        开题报告
+                                    <div class="col-md-3 textAlign">
+                                        课题题目
+                                    </div>
+                                    <div class="col-md-2 textAlign">
+                                        过程文档
                                     </div>
                                     <div class="col-md-1 textAlign">
-                                        中期检查
-                                    </div>
-                                    <div class="col-md-1 textAlign">
-                                        指导记录
-                                    </div>
-                                    <div class="col-md-1 textAlign textEllipsis padding0">
-                                        外文译文和原文
-                                    </div>
-                                    <div class="col-md-1 textAlign">
-                                        文献综述
-                                    </div>
-                                    <div class="col-md-1 textAlign textEllipsis padding0">
-                                        毕业设计（论文）
+                                        成绩
                                     </div>
                                 </div>
+                                <%if(data==""){%>
+                                <div class="alert alert-warning textAlign border_radius marginBottom0">暂无数据</div>
+                                <%}else{
+                                data.forEach(function(stu){%>
                                 <div class="alert alert-warning textEllipsis border_radius marginBottom0">
                                     <div class="col-md-3 textAlign">
-                                        王晓霞（3120150905111）
+                                        <span class="clickColor cursorPointer" data-toggle="modal"
+                                              data-target="#studentDetails"
+                                              onclick="archivingStatistics('<%=stu.identifier%>','','student')">
+                                            <%=stu.name%>（<%=stu.identifier%>）
+                                        </span>
                                     </div>
                                     <div class="col-md-3 textAlign">
-                                        王晓霞（3120150905111）
+                                        <%if(typeof(stu.gt)=="undefined"){%>
+                                        暂无数据
+                                        <%}else{%>
+                                        <%=stu.gt.name%>（<%=stu.gt.id%>）
+                                        <%}%>
+                                    </div>
+                                    <div class="col-md-3 textAlign textEllipsis">
+                                        <%=stu.pName%>
+                                    </div>
+                                    <div class="col-md-2 textAlign">
+                                        <span class="clickColor cursorPointer" data-toggle="modal"
+                                              data-target="#documentationDetails"
+                                              onclick="archivingStatistics('<%=stu.identifier%>','','documentation')">
+                                            过程文档提交情况
+                                        </span>
                                     </div>
                                     <div class="col-md-1 textAlign">
-                                        已提交
-                                    </div>
-                                    <div class="col-md-1 textAlign">
-                                        已提交
-                                    </div>
-                                    <div class="col-md-1 textAlign">
-                                        已提交
-                                    </div>
-                                    <div class="col-md-1 textAlign">
-                                        已提交
-                                    </div>
-                                    <div class="col-md-1 textAlign">
-                                        已提交
-                                    </div>
-                                    <div class="col-md-1 textAlign">
-                                        已提交
+                                        <span class="clickColor cursorPointer" data-toggle="modal"
+                                              data-target="#score"
+                                              onclick="archivingStatistics('<%=stu.identifier%>','','score')">
+                                            成绩情况
+                                        </span>
                                     </div>
                                 </div>
-                            </div>
+                                <%})}%>
+                            </script>
                             <!--材料归档结束-->
                         </div>
                     </div>
@@ -2224,6 +2248,175 @@
         </div>
     </script>
     <!--查看学生详细信息结束-->
+    <!--过程文档提交情况开始-->
+    <div class="modal fade" id="documentationDetails" role="dialog">
+    </div>
+    <script id="documentationDetailses" type="text/template">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">过程文档提交情况</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-success">
+                        <strong>
+                            <span>姓名（学号）:</span>
+                        </strong>
+                        <span>
+                            <%=data.name%>(<%=data.identifier%>)
+                        </span>
+                        <hr>
+                        <strong>
+                            <span>课题题目:</span>
+                        </strong>
+                        <span>
+                            <%=data.pName%>
+                        </span>
+                        <hr>
+                        <strong>
+                            <span>开题报告:</span>
+                        </strong>
+                        <span>
+                            <%if(typeof(data.openingReport)=="undefined"){%>
+                            <span class="colorf44">未提交</span>
+                            <%}else{%>
+                            <span class="color07c160">已提交</span>
+                            <%}%>
+                        </span>
+                        <hr>
+                        <strong>
+                            <span>中期检查:</span>
+                        </strong>
+                        <span>
+                            <%if(typeof(data.midInspection)=="undefined"){%>
+                            <span class="colorf44">未提交</span>
+                            <%}else{%>
+                            <span class="color07c160">已提交</span>
+                            <%}%>
+                        </span>
+                        <hr>
+                        <strong>
+                            <span>指导记录:</span>
+                        </strong>
+                        <span>
+                            <%if(typeof(data.guidanceRecordList)=="undefined"||data.guidanceRecordList.length==0){%>
+                            <span class="colorf44">未提交</span>
+                            <%}else{%>
+                            <%
+                            let guide = (data.guidanceRecordList.length)/10*100;
+                            %>
+                            <span class="color07c160">已提交<span class="colorf44"><%=guide%>%</span></span>
+                            <%}%>
+                        </span>
+                        <hr>
+                        <strong>
+                            <span>外文译文和原文:</span>
+                        </strong>
+                        <span>
+                            <%if(typeof(data.foreignOriginal)=="undefined"){%>
+                            <span class="colorf44">未提交</span>
+                            <%}else{%>
+                            <span class="color07c160">已提交</span>
+                            <%}%>
+                        </span>
+                        <hr>
+                        <strong>
+                            <span>文献综述:</span>
+                        </strong>
+                        <span>
+                            <%if(typeof(data.literatureReview)=="undefined"){%>
+                            <span class="colorf44">未提交</span>
+                            <%}else{%>
+                            <span class="color07c160">已提交</span>
+                            <%}%>
+                        </span>
+                        <hr>
+                        <strong>
+                            <span>毕业设计（论文）:</span>
+                        </strong>
+                        <span>
+                            <%if(typeof(data.graduationProject)=="undefined"){%>
+                            <span class="colorf44">未提交</span>
+                            <%}else{%>
+                            <span class="color07c160">已提交</span>
+                            <%}%>
+                        </span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm btn-info" data-dismiss="modal">关闭</button>
+                </div>
+            </div>
+        </div>
+    </script>
+    <!--过程文档提交情况结束-->
+    <!--成绩情况开始-->
+    <div class="modal fade" id="score" role="dialog">
+    </div>
+    <script id="scores" type="text/template">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">成绩情况</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-success">
+                        <strong>
+                            <span>姓名（学号）:</span>
+                        </strong>
+                        <span>
+
+                        </span>
+                        <hr>
+                        <strong>
+                            <span>课题题目:</span>
+                        </strong>
+                        <span>
+
+                        </span>
+                        <hr>
+                        <strong>
+                            <span>指导成绩:</span>
+                        </strong>
+                        <span>
+                        </span>
+                        <hr>
+                        <strong>
+                            <span>评阅成绩:</span>
+                        </strong>
+                        <span>
+                        </span>
+                        <hr>
+                        <strong>
+                            <span>答辩成绩:</span>
+                        </strong>
+                        <span>
+                        </span>
+                        <hr>
+                        <strong>
+                            <span>综合评定成绩:</span>
+                        </strong>
+                        <span>
+                        </span>
+                        <hr>
+                        <strong>
+                            <span>综合评定等级:</span>
+                        </strong>
+                        <span>
+                        </span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm btn-info" data-dismiss="modal">关闭</button>
+                </div>
+            </div>
+        </div>
+    </script>
+    <!--成绩情况结束-->
     <!--教师详细信息开始 -->
     <div class="modal fade" id="teacherDetails" role="dialog">
     </div>
@@ -2446,9 +2639,7 @@
 <!-- easypiechart Js -->
 <script src="../assets/js/easypiechart.js"></script>
 <script src="../assets/js/ejs.js"></script>
-
 <script src="../assets/js/xlsx.full.min.js"></script>
-<script src="../assets/js/export.js"></script>
 <script>
 
     //出题情况统计报表导出
@@ -2479,7 +2670,11 @@
     //成绩汇总统计报表
     function exportScore() {
         summaryReportResults(stuResultId, stuResultName, "count" + scoreCount);
-        console.log(stuResultId, stuResultName, scoreCount)
+    }
+
+    //材料归档统计报表
+    function exportMaterial() {
+        archivingStatistics(stuMaterialId, stuMaterialName, "count" + materialCount);
     }
 
     function exportTable(data, name) {
@@ -2708,7 +2903,6 @@
                     if (start == "count") {
                         alert("数据为空，暂不支持导出！");
                     }
-                    // exportTable(datas,"出题情况统计报表")
                     let titleLists = document.getElementById('titleLists').innerHTML;
                     let titleList = document.getElementById('titleList');
                     titleList.innerHTML = ejs.render(titleLists, {data: ""});
@@ -2925,10 +3119,16 @@
                                 }
                             });
                         } else if (responseStr.statusCode == "101") {
+                            if (start == "count") {
+                                alert("数据为空，暂不支持导出！");
+                            }
                             studentList.innerHTML = ejs.render(studentLists, {data: ""});
                         }
                     }
                 } else {
+                    if (start == "count") {
+                        alert("数据为空，暂不支持导出！")
+                    }
                     let studentLists = document.getElementById('studentLists').innerHTML;
                     let studentList = document.getElementById('studentList');
                     studentList.innerHTML = ejs.render(studentLists, {data: ""});
@@ -3165,6 +3365,9 @@
                         }
                     }
                 } else {
+                    if (start == "count") {
+                        alert("数据为空，暂不支持导出！");
+                    }
                     let listOfTitles = document.getElementById('listOfTitles').innerHTML;
                     let listOfTitle = document.getElementById('listOfTitle');
                     listOfTitle.innerHTML = ejs.render(listOfTitles, {data: ""});
@@ -3353,6 +3556,9 @@
                     alert(responseStr.msg);
                     window.location.href = "../login/login.html";
                 } else {
+                    if (isOne == "export") {
+                        alert("数据为空，暂不支持导出！");
+                    }
                     teachersGroup.innerHTML = ejs.render(teachersGroups, {data: ""});
                 }
 
@@ -3541,7 +3747,10 @@
                 } else if (responseStr.statusCode == "102") {
                     alert(responseStr.msg);
                     window.location.href = "../login/login.html";
-                } else {
+                } else if (responseStr.statusCode == "101") {
+                    if (start == "count") {
+                        alert("数据为空，暂不支持导出！");
+                    }
                     studentsGroup.innerHTML = ejs.render(studentsGroups, {data: ""});
                 }
 
@@ -3761,7 +3970,6 @@
                             }
                         });
                     } else if (start == "count") {
-                        console.log(responseStr.data.studentLists)
                         let dataList = [];
                         let index = 0;
                         datas = responseStr.data.studentLists;
@@ -3819,7 +4027,10 @@
                 } else if (responseStr.statusCode == "102") {
                     alert(responseStr.msg);
                     window.location.href = "../login/login.html";
-                } else {
+                } else if (responseStr.statusCode == "101") {
+                    if (start == "count") {
+                        alert("数据为空，暂不支持导出！");
+                    }
                     studentsScore.innerHTML = ejs.render(studentsScores, {data: ""});
                 }
 
@@ -3842,12 +4053,20 @@
     }
 
     //材料归档统计报表
+    let materialCount;
+
     function archivingStatistics(id, name, isRanking) {
+        let len = isRanking.length;
+        let end = isRanking.slice(5, len);
+        let start = isRanking.substring(0, 5);
         let url = "http://www.yuanbw.cn:20086/gpms/tea/materialFiling";
-        // let studentsScores = document.getElementById('studentsScores').innerHTML;
-        // let studentsScore = document.getElementById('studentsScore');
+        let materialArchives = document.getElementById('materialArchives').innerHTML;
+        let materialArchive = document.getElementById('materialArchive');
         let limit = 4;
         let offset = 0;
+        if (start == "count") {
+            limit = end;
+        }
         let data = {limit: limit, offset: offset};
         if (id != "") {
             data.id = id;
@@ -3868,9 +4087,13 @@
             },
             success: function (responseStr) {
                 if (responseStr.statusCode == "100") {
+                    materialCount = responseStr.data.count;
                     if (isRanking == "ranking") {
+                        materialArchive.innerHTML = ejs.render(materialArchives, {
+                            data: responseStr.data.studentLists
+                        });
                         pageCount = Math.ceil(responseStr.data.count / limit);
-                        $('#scorePage').pagination({
+                        $('#studentMaterialPage').pagination({
                             pageCount: pageCount,
                             jump: true,
                             coping: true,
@@ -3898,9 +4121,8 @@
                                         if (msg == "查询成功") {
                                             pageCount = Math.ceil(responseStr.data.count / limit);
                                             if (responseStr.data.studentLists.length > 0) {
-                                                studentsScore.innerHTML = ejs.render(studentsScores, {
-                                                    data: responseStr.data.studentLists,
-                                                    offset: offset
+                                                materialArchive.innerHTML = ejs.render(materialArchives, {
+                                                    data: responseStr.data.studentLists
                                                 });
                                             }
                                         }
@@ -3919,13 +4141,13 @@
                         let studentDetails = document.getElementById('studentDetails');
                         let student = responseStr.data.studentLists[0];
                         studentDetails.innerHTML = ejs.render(studentDetailses, {
-
                             email: student.email,
                             contactTel: student.contactTel,
                             college: student.college,
                             major: student.major,
                             sex: student.sex,
-                            grade: student.grade, identifier: student.identifier,
+                            grade: student.grade,
+                            identifier: student.identifier,
                             name: student.name,
                             classNo: student.classNo
                         });
@@ -3935,12 +4157,82 @@
                         topicDetails.innerHTML = ejs.render(topicDetailses, {
                             data: responseStr.data.studentLists[0].checkedPro
                         });
+                    } else if (isRanking == "documentation") {
+                        let documentationDetailses = document.getElementById('documentationDetailses').innerHTML;
+                        let documentationDetails = document.getElementById('documentationDetails');
+                        documentationDetails.innerHTML = ejs.render(documentationDetailses, {
+                            data: responseStr.data.studentLists[0]
+                        });
+                    } else if (start == "count") {
+                        let dataList = [];
+                        let index = 0;
+                        let datas = responseStr.data.studentLists;
+                        datas.forEach(function (data) {
+                            let gtName = "";
+                            let gtId = "";
+                            if (typeof (data.gt) != "undefined") {
+                                gtName = data.gt.name;
+                                gtId = data.gt.id;
+                            }
+                            let openingReport = "未提交";
+                            let midInspection = "未提交";
+                            let guidanceRecordList = "未提交";
+                            let foreignOriginal = "未提交";
+                            let literatureReview = "未提交";
+                            let graduationProject = "未提交";
+                            if (typeof (data.openingReport) != "undefined") {
+                                openingReport = "已提交";
+                            }
+                            if (typeof (data.midInspection) != "undefined") {
+                                midInspection = "已提交";
+                            }
+                            if (typeof (data.guidanceRecordList) != "undefined" && data.guidanceRecordList.length != 0) {
+                                let guide = (data.guidanceRecordList.length) / 10 * 100;
+                                guidanceRecordList = "已提交" + guide + "%";
+                            }
+                            if (typeof (data.foreignOriginal) != "undefined") {
+                                foreignOriginal = "已提交";
+                            }
+                            if (typeof (data.literatureReview) != "undefined") {
+                                literatureReview = "已提交";
+                            }
+                            if (typeof (data.graduationProject) != "undefined") {
+                                graduationProject = "已提交";
+                            }
+                            index++;
+                            dataList.push({
+                                "编号": index,
+                                "学生姓名": data.name,
+                                "学生学号": data.identifier,
+                                "专业": data.major,
+                                "班级": data.grade + "级 - " + data.classNo + "班",
+                                "性别": data.sex,
+                                "课题题目": data.pName,
+                                "指导教师姓名": gtName,
+                                "指导教师工号": gtId,
+                                "开题报告": openingReport,
+                                "中期检查": midInspection,
+                                "指导记录": guidanceRecordList,
+                                "外文译文和原文": foreignOriginal,
+                                "文献综述": literatureReview,
+                                "毕业设计（论文）": graduationProject,
+                            })
+                        })
+                        exportTable(dataList, "材料归档统计报表");
+                    } else if (isRanking == "score") {
+                        let scores = document.getElementById('scores').innerHTML;
+                        let score = document.getElementById('score');
+                        score.innerHTML = ejs.render(scores, {
+                            data: responseStr.data.studentLists[0]
+                        });
                     }
                 } else if (responseStr.statusCode == "102") {
                     alert(responseStr.msg);
                     window.location.href = "../login/login.html";
-                } else {
-                    studentsScore.innerHTML = ejs.render(studentsScores, {data: ""});
+                } else if (responseStr.statusCode == "104") {
+                    alert("系统繁忙，请不要点击过快！");
+                } else if (responseStr.statusCode == "101") {
+                    materialArchive.innerHTML = ejs.render(materialArchives, {data: ""});
                 }
 
             },
@@ -3948,6 +4240,17 @@
                 window.location.href = "../404/404.html";
             }
         });
+    }
+
+    //根据条件查询材料归档统计报表
+    let stuMaterialId = "", stuMaterialName = "";
+
+    function queryMaterialArchive() {
+        stuMaterialId = document.getElementById('stuMaterialId').value;
+        stuMaterialName = document.getElementById('stuMaterialName').value;
+        archivingStatistics(stuMaterialId, stuMaterialName, "ranking");
+        document.getElementById('stuMaterialId').value = "";
+        document.getElementById('stuMaterialName').value = "";
     }
 
     //查询教师出题
@@ -4080,7 +4383,7 @@
         let titleTeaId = document.getElementById('titleTeaId');
         let titleTeaName = document.getElementById('titleTeaName');
         let titleName = document.getElementById('titleName');
-        reviewQuestions(titleTeaId.value, titleTeaName.value, titleName.value, titleStatus.value, 'not', "")
+        reviewQuestions(titleTeaId.value, titleTeaName.value, titleName.value, titleStatus.value, 'not', "");
         titleTeaId.value = "";
         titleTeaName.value = "";
         titleName.value = "";

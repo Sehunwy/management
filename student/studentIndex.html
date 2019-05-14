@@ -1452,14 +1452,14 @@
                                         %>
                                         <div style="width: 49%; display: inline-block">
                                             <h5 class="font_bold">外文译文内容</h5>
-                                            <textarea name="foreign" class="form-control" rows="10" name="textarea"
+                                            <textarea name="foreign" class="form-control foreigntext" rows="10" name="textarea"
                                                       style="background-color: #fff"><%=foreign%></textarea>
                                             <h5 class="font_bold">添加附件</h5>
                                             <input name="uploadForfile" id="fileChooseForeign" type="file"
                                                    style="display: none">
                                             <div class="row">
                                                 <div class="col-md-5 paddingRightt0">
-                                                    <input id="fileNameForeign" class="form-control"
+                                                    <input id="fileNameForeign" class="form-control foreigntext"
                                                            type="text" value="<%=forFile %>">
                                                 </div>
                                                 <div class="col-md-5 paddingLeft0">
@@ -1473,14 +1473,14 @@
                                         </div>
                                         <div style="width: 49%; float: right">
                                             <h5 class="font_bold">原文内容 </h5>
-                                            <textarea name="original" class="form-control" rows="10" name="textarea"
+                                            <textarea name="original" class="form-control foreigntext" rows="10" name="textarea"
                                                       style="background-color: #fff"><%=original%></textarea>
                                             <h5 class="font_bold">添加附件</h5>
                                             <input name="uploadOrifile" id="fileChooseOriginal" type="file"
                                                    style="display: none">
                                             <div class="row">
                                                 <div class="col-md-5 paddingRightt0">
-                                                    <input id="fileNameOriginal" class="form-control"
+                                                    <input id="fileNameOriginal" class="form-control foreigntext"
                                                            type="text" value="<%=oriFile%>">
                                                 </div>
                                                 <div class="col-md-5 paddingLeft0">
@@ -1492,7 +1492,6 @@
                                                 </div>
                                             </div>
                                         </div>
-
                                         <div class="row" style="margin-top: 10px">
                                             <div class="col-md-2">
                                                 <button type="button" class="btn btn-info"
@@ -1635,7 +1634,7 @@
                                         }
                                         %>
                                         <h5 class="font_bold">文献综述需要填写的内容</h5>
-                                        <textarea class="form-control" rows="10" name="intro"
+                                        <textarea class="form-control Literaturetext" rows="10" name="intro"
                                                   style="background-color: #fff"><%=intro%></textarea>
                                         <h5 class="font_bold">添加附件</h5>
                                         <input name="uploadfile" id="fileChooseLiterature" type="file"
@@ -1643,7 +1642,7 @@
                                         <div class="row">
                                             <div class="col-md-5 paddingRightt0">
                                                 <input value="<%=fileName%>" id="fileNameLiterature"
-                                                       class="form-control"
+                                                       class="form-control Literaturetext"
                                                        type="text">
                                             </div>
                                             <div class="col-md-5 paddingLeft0">
@@ -2797,6 +2796,7 @@
                 Token: token
             },
             success: function (responseStr) {
+                console.log(responseStr.data)
                 if (responseStr.msg == "查询成功") {
                     topicName = responseStr.data.pName;
                     information.innerHTML = ejs.render(informations, {informations: responseStr.data});
@@ -2804,8 +2804,7 @@
                 }
             },
             error: function (responseStr) {
-                console.log("failed");
-                console.log(responseStr);
+                window.location.href = "../404/404.html";
             }
         });
     }
@@ -3683,7 +3682,10 @@
     }
 
     function cancelForeign() {
-        submitNone('writeForeignTranslation', 'modifyForeignTranslation');
+        cancelTitle("foreigntext");
+        if(ForeignOriginaldataFirst == "NotFirst") {
+            submitNone('writeForeignTranslation', 'modifyForeignTranslation');
+        }
     }
 
     function modifyForeign() {
@@ -3725,7 +3727,10 @@
     }
 
     function cancelLiterature() {
-        submitNone('writeLiterature', 'modifyLiterature');
+        cancelTitle("Literaturetext");
+        if(LiteratureReviewdataFirst == "NotFirst") {
+            submitNone('writeLiterature', 'modifyLiterature');
+        }
     }
 
     function modifyLiterature() {

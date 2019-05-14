@@ -867,7 +867,7 @@
                                         <%}})%>
                                     </div>
                                     <div class="col-md-1 textAlign">
-                                        第<%=data.groupNum%>组
+                                        第<%=data.groupId%>组
                                     </div>
                                     <div class="col-md-5 textAlign">
                                         <%data.teaGroup.forEach(function(tea){
@@ -954,7 +954,7 @@
                                         <%=student.gt.name%>（<%=student.gt.id%>）
                                     </div>
                                     <div class="col-md-1 textAlign">
-                                        <%if(student.defScore.hasScored) {%>
+                                        <%if(typeof(student.defScore)!="undefined"&&student.defScore.hasScored) {%>
                                         <%=student.defScore.scoreTotal%>
                                         <%} else{%>
                                         未打分
@@ -965,7 +965,7 @@
                                                 data-target="#defenseScore"
                                                 onclick="ViewPleaScore('<%=student.identifier%>')">查看
                                         </button>
-                                        <%if(student.defScore.hasScored) {%>
+                                        <%if(typeof(student.defScore)!="undefined"&&student.defScore.hasScored) {%>
                                         <button type="button"
                                                 class="btn btn-info btn-xs" disabled>打分
                                         </button>
@@ -1446,7 +1446,7 @@
                         </strong>
                         <span><%=data[0].identifier%></span>
                         <hr>
-                        <%if(data[0].defScore.hasScored){%>
+                        <%if(typeof(data[0].defScore)!="undefined"&&data[0].defScore.hasScored){%>
                         <strong>
                             <span>答辩成绩</span>
                         </strong>
@@ -1664,7 +1664,7 @@
                                 data.forEach(function(student){%>
                                 <div class="alert alert-danger textEllipsis border_radius marginBottom0">
                                     <div class="col-md-1 textEllipsis textAlign">
-                                        <input class="checkbox_notice" type="checkbox" value="2"/>
+                                        <input class="checkbox_notice" name="checkboxs" type="checkbox" value="<%=student.identifier%>"/>
                                     </div>
                                     <div class="col-md-3 textEllipsis">
                                         <%=student.name%>
@@ -1778,8 +1778,12 @@
                                         }
                                         )%>
                                     </div>
-                                    <div class="col-md-1 textAlign textEllipsis">
+                                    <div class="col-md-1 textAlign textEllipsis padding0">
+                                        <%if(typeof(student.mt)=="undefined") {%>
+                                        暂无数据
+                                        <%}else{%>
                                         <%=student.mt.name%>
+                                        <%}%>
                                     </div>
                                     <div class="col-md-1 textAlign textEllipsis">
                                         第<%=student.defInfo.groupNum%>组
@@ -2067,7 +2071,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-sm btn-success" data-dismiss="modal">确定</button>
+                    <button type="button" onclick="sendNotification()" class="btn btn-sm btn-success" data-dismiss="modal">确定</button>
                     <button type="button" class="btn btn-sm btn-info" data-dismiss="modal">关闭</button>
                 </div>
             </div>
@@ -4465,6 +4469,7 @@
                 Token: token
             },
             success: function (responseStr) {
+                console.log(responseStr)
                 if (responseStr.msg == "查询成功") {
                     defense_rating.innerHTML = ejs.render(defense_ratinges, {
                         data: responseStr.data.studentList
@@ -5306,6 +5311,15 @@
         PerformancePublicInfo(stuIdValue,stuNameValue);
         stuNames.value = "";
         stuId.value = "";
+    }
+    
+    //发送通知
+    function sendNotification() {
+        let ids = [];
+        $("input[name='checkboxs']:checked").each(function(i){
+            ids.push($(this).val())
+        })
+        console.log(ids)
     }
 
 </script>
