@@ -801,14 +801,16 @@
                                 <li class="RatingArrange" onclick="DefenseRating()"><a href="#defense_rating" role="tab"
                                                                                        data-toggle="tab">答辩打分</a>
                                 </li>
-                                <li id="DefenseLeader" class="leaderDefense displayNone" onclick="queryDefenseScore()"><a
-                                        href="#defense_Situation"
-                                        role="tab"
-                                        data-toggle="tab">答辩组长提交答辩打分情况</a>
+                                <li id="DefenseLeader" class="leaderDefense displayNone" onclick="queryDefenseScore()">
+                                    <a
+                                            href="#defense_Situation"
+                                            role="tab"
+                                            data-toggle="tab">答辩组长提交答辩打分情况</a>
                                 </li>
-                                <li class="graduationDesign" onclick="queryGraduationDesignReview()"><a href="#grade_Papers"
-                                                                                                  role="tab"
-                                                                                                  data-toggle="tab">毕业设计评审</a>
+                                <li class="graduationDesign" onclick="queryGraduationDesignReview()"><a
+                                        href="#grade_Papers"
+                                        role="tab"
+                                        data-toggle="tab">毕业设计评审</a>
                                 </li>
                             </ul>
                         </div>
@@ -1000,11 +1002,12 @@
                                     <div class="col-md-1 textAlign">
                                         答辩分数
                                     </div>
+                                    <%if(teachers!=""){%>
                                     <%teachers.forEach(function(teacher){%>
                                     <div class="col-md-1 textAlign">
                                         <%=teacher.tea.name%>
                                     </div>
-                                    <%})%>
+                                    <%})}%>
                                 </div>
                                 <%data.forEach(function(item){%>
                                 <div class="alert alert-warning textEllipsis border_radius marginBottom0">
@@ -1594,7 +1597,7 @@
                             <span>附件</span>
                         </strong>
                         <span>
-                            <% if(data.graduationProject.docFileId == 0 || typeof(data.graduationProject.docFile)=="undefined") { %>
+                            <% if(typeof(data.graduationProject)=="undefined" || typeof(data.graduationProject.docFile)=="undefined" || data.graduationProject.docFileId == 0) { %>
                                     暂未上传毕业设计论文
                                     <% } else { %>
                                     附件：<%=data.graduationProject.docFile.fileName %> <a style="padding-left: 20px"
@@ -1664,7 +1667,8 @@
                                 data.forEach(function(student){%>
                                 <div class="alert alert-danger textEllipsis border_radius marginBottom0">
                                     <div class="col-md-1 textEllipsis textAlign">
-                                        <input class="checkbox_notice" name="checkboxs" type="checkbox" value="<%=student.identifier%>"/>
+                                        <input class="checkbox_notice" name="checkboxs" type="checkbox"
+                                               value="<%=student.identifier%>"/>
                                     </div>
                                     <div class="col-md-3 textEllipsis">
                                         <%=student.name%>
@@ -1982,7 +1986,8 @@
                                             <input type="text" class="form-control" id="StuId">
                                         </div>
                                         <div class="col-md-2 col-xs-2" style="padding-left: 5px">
-                                            <button type="button" class="btn btn-info" onclick="resultsRankQuery()">查询</button>
+                                            <button type="button" class="btn btn-info" onclick="resultsRankQuery()">查询
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
@@ -2071,7 +2076,9 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" onclick="sendNotification()" class="btn btn-sm btn-success" data-dismiss="modal">确定</button>
+                    <button type="button" onclick="sendNotification()" class="btn btn-sm btn-success"
+                            data-dismiss="modal">确定
+                    </button>
                     <button type="button" class="btn btn-sm btn-info" data-dismiss="modal">关闭</button>
                 </div>
             </div>
@@ -4469,7 +4476,6 @@
                 Token: token
             },
             success: function (responseStr) {
-                console.log(responseStr)
                 if (responseStr.msg == "查询成功") {
                     defense_rating.innerHTML = ejs.render(defense_ratinges, {
                         data: responseStr.data.studentList
@@ -4597,8 +4603,15 @@
             },
             success: function (responseStr) {
                 if (responseStr.msg == "查询成功") {
+                    let PleaTeachers = "";
+                    responseStr.data.studentList.forEach(function (plea) {
+                        if(typeof(plea.defenceScore)!="undefined"){
+                            PleaTeachers = plea.defenceScore.defScoreList;
+                            return;
+                        }
+                    })
                     defense_Situation.innerHTML = ejs.render(defense_Situations, {
-                        teachers: responseStr.data.studentList[0].defenceScore.defScoreList,
+                        teachers: PleaTeachers,
                         data: responseStr.data.studentList
                     });
                 } else if (responseStr.msg == "查询结果为空") {
@@ -4687,6 +4700,7 @@
         let viewScore = document.getElementById('viewScore');
         GraduationDesignStudents.forEach(function (student) {
             if (student.identifier == id) {
+                console.log(student)
                 viewScore.innerHTML = ejs.render(viewScores, {
                     data: student
                 });
@@ -5260,7 +5274,7 @@
     }
 
     //成绩公示
-    function PerformancePublicInfo(id,name) {
+    function PerformancePublicInfo(id, name) {
         let data = {};
         if (id != "") {
             data.id = id;
@@ -5298,8 +5312,9 @@
             }
         });
     }
+
     function PerformancePublic() {
-        PerformancePublicInfo("","");
+        PerformancePublicInfo("", "");
     }
 
     //成绩排名条件查询
@@ -5308,15 +5323,15 @@
         let stuId = document.getElementById('StuId');
         let stuNameValue = stuNames.value;
         let stuIdValue = stuId.value;
-        PerformancePublicInfo(stuIdValue,stuNameValue);
+        PerformancePublicInfo(stuIdValue, stuNameValue);
         stuNames.value = "";
         stuId.value = "";
     }
-    
+
     //发送通知
     function sendNotification() {
         let ids = [];
-        $("input[name='checkboxs']:checked").each(function(i){
+        $("input[name='checkboxs']:checked").each(function (i) {
             ids.push($(this).val())
         })
         console.log(ids)
