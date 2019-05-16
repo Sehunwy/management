@@ -1432,6 +1432,9 @@
                 </div>
                 <div class="modal-body">
                     <div class="alert alert-success">
+                        <%if(data==""){%>
+                        <span>暂无数据</span>
+                        <%} else{%>
                         <strong>
                             <span>课题题目:</span>
                         </strong>
@@ -1500,7 +1503,7 @@
                             暂无分数
                         </span>
                         <hr>
-                        <%}%>
+                        <%}}%>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -3894,7 +3897,8 @@
 
 <script>
     let token = getCookie("token");
-    if (token == "" || token == null) {
+    let authority = getCookie("authority");
+    if (token == "" || token == null || authority != 2) {
         window.location.href = "../login/login.html";
     }
 
@@ -3903,7 +3907,7 @@
         PersonalInfo();
     });
 
-    let teacherInfo;
+    let teacherInfo = "";
 
     function PersonalInfo() {
         let url = "http://www.yuanbw.cn:20086/gpms/rol/showRoleInfo";
@@ -3919,10 +3923,16 @@
                 Token: token
             },
             success: function (responseStr) {
-                if (responseStr.msg == "查询成功") {
+                if (responseStr.statusCode == "100") {
                     let html = responseStr.data.name + '(' + responseStr.data.identifier + ')，欢迎使用系统';
                     $('#information').html(html);
                     teacherInfo = responseStr.data.identifier;
+                } else if (responseStr.statusCode == "102") {
+                    alert(responseStr.msg);
+                    window.location.href = "../login/login.html";
+                } else {
+                    let html = "暂无数据";
+                    $('#information').html(html);
                 }
             },
             error: function (responseStr) {
@@ -3978,11 +3988,7 @@
                 Token: token
             },
             success: function (responseStr) {
-                if (responseStr.msg == "查询记录为空") {
-                    let view_Subjects = document.getElementById('view_Subjects').innerHTML;
-                    let view_Subject = document.getElementById('view_Subject');
-                    view_Subject.innerHTML = ejs.render(view_Subjects, {data: ""});
-                } else if (responseStr.msg == "查询成功") {
+                if (responseStr.statusCode == "100") {
                     if (id == "") {
                         let view_Subjects = document.getElementById('view_Subjects').innerHTML;
                         let view_Subject = document.getElementById('view_Subject');
@@ -3997,8 +4003,14 @@
                         let upload_Title = document.getElementById('upload_Title');
                         upload_Title.innerHTML = ejs.render(upload_Titles, {data: projectId});
                     }
+                } else if (responseStr.statusCode == "102") {
+                    alert(responseStr.msg);
+                    window.location.href = "../login/login.html";
+                } else {
+                    let view_Subjects = document.getElementById('view_Subjects').innerHTML;
+                    let view_Subject = document.getElementById('view_Subject');
+                    view_Subject.innerHTML = ejs.render(view_Subjects, {data: ""});
                 }
-
             },
             error: function (responseStr) {
                 window.location.href = "../404/404.html";
@@ -4162,31 +4174,28 @@
                 Token: token
             },
             success: function (responseStr) {
-                if (sid != "") {
-                    let studentDetailses = document.getElementById('studentDetailses').innerHTML;
-                    let studentDetails = document.getElementById('studentDetails');
-                    let student = responseStr.data.chooseList[0].student;
-                    studentDetails.innerHTML = ejs.render(studentDetailses, {
-                        name: student.name,
-                        identifier: student.identifier,
-                        college: student.college,
-                        department: student.department,
-                        major: student.major,
-                        grade: student.grade,
-                        classNo: student.classNo,
-                        sex: student.sex,
-                        contactTel: student.contactTel,
-                        email: student.email
-                    });
-                } else {
-                    let audit_Students_Topicses = document.getElementById('audit_Students_Topicses').innerHTML;
-                    let audit_Students_Topic = document.getElementById('audit_Students_Topic');
-                    let msg = responseStr.msg;
-                    if (msg == "查询成功") {
+                if (responseStr.statusCode == "100") {
+                    if (sid != "") {
+                        let studentDetailses = document.getElementById('studentDetailses').innerHTML;
+                        let studentDetails = document.getElementById('studentDetails');
+                        let student = responseStr.data.chooseList[0].student;
+                        studentDetails.innerHTML = ejs.render(studentDetailses, {
+                            name: student.name,
+                            identifier: student.identifier,
+                            college: student.college,
+                            department: student.department,
+                            major: student.major,
+                            grade: student.grade,
+                            classNo: student.classNo,
+                            sex: student.sex,
+                            contactTel: student.contactTel,
+                            email: student.email
+                        });
+                    } else {
+                        let audit_Students_Topicses = document.getElementById('audit_Students_Topicses').innerHTML;
+                        let audit_Students_Topic = document.getElementById('audit_Students_Topic');
                         pageCount = Math.ceil(responseStr.data.count / limit);
-                        if (responseStr.msg == "查询成功") {
-                            audit_Students_Topic.innerHTML = ejs.render(audit_Students_Topicses, {data: responseStr.data.chooseList});
-                        }
+                        audit_Students_Topic.innerHTML = ejs.render(audit_Students_Topicses, {data: responseStr.data.chooseList});
                         $('#studentsPage').pagination({
                             pageCount: pageCount,
                             jump: true,
@@ -4212,7 +4221,7 @@
                                     },
                                     success: function (responseStr) {
                                         let msg = responseStr.msg;
-                                        if (msg == "查询成功") {
+                                        if (responseStr.statusCode == "100") {
                                             pageCount = Math.ceil(responseStr.data.count / limit);
                                             if (responseStr.data.chooseList.length > 0) {
                                                 audit_Students_Topic.innerHTML = ejs.render(audit_Students_Topicses, {data: responseStr.data.chooseList});
@@ -4228,9 +4237,14 @@
                                 });
                             }
                         });
-                    } else if (msg == "查询结果为空") {
-                        audit_Students_Topic.innerHTML = ejs.render(audit_Students_Topicses, {data: ""});
                     }
+                } else if (responseStr.statusCode == "102") {
+                    alert(responseStr.msg);
+                    window.location.href = "../login/login.html";
+                } else {
+                    let audit_Students_Topicses = document.getElementById('audit_Students_Topicses').innerHTML;
+                    let audit_Students_Topic = document.getElementById('audit_Students_Topic')
+                    audit_Students_Topic.innerHTML = ejs.render(audit_Students_Topicses, {data: ""});
                 }
             },
             error: function (responseStr) {
@@ -4332,7 +4346,7 @@
                 Token: token
             },
             success: function (responseStr) {
-                if (responseStr.msg == "查询成功") {
+                if (responseStr.statusCode == "100") {
                     answerTeacher = responseStr.data.teaGroup;
                     answerTeacher.forEach(function (teacher) {
                         if (teacher.leader) {
@@ -4342,7 +4356,10 @@
                         }
                     })
                     queryStudentplea(responseStr.data);
-                } else if (responseStr.msg == "查询记录为空") {
+                } else if (responseStr.statusCode == "102") {
+                    alert(responseStr.msg);
+                    window.location.href = "../login/login.html";
+                } else {
                     queryStudentplea('');
                 }
             },
@@ -4374,13 +4391,16 @@
                 Token: token
             },
             success: function (responseStr) {
-                if (responseStr.msg == "查询成功") {
+                if (responseStr.statusCode == "100") {
                     students = responseStr.data.studentList;
                     reply_arrange_self.innerHTML = ejs.render(reply_arrange_selfs, {
                         data: teachers,
                         students: responseStr.data.studentList
                     });
-                } else if (responseStr.statusCode == "101") {
+                }  else if (responseStr.statusCode == "102") {
+                    alert(responseStr.msg);
+                    window.location.href = "../login/login.html";
+                }else {
                     reply_arrange_self.innerHTML = ejs.render(reply_arrange_selfs, {
                         data: teachers,
                         students: ""
@@ -4411,7 +4431,7 @@
                 Token: token
             },
             success: function (responseStr) {
-                if (responseStr.msg == "查询成功") {
+                if (responseStr.statusCode == "100") {
                     teachers = responseStr.data;
                     teachers.forEach(function (teacher) {
                         if (teacher.identifier == id) {
@@ -4427,6 +4447,9 @@
                             });
                         }
                     })
+                }else if (responseStr.statusCode == "102") {
+                    alert(responseStr.msg);
+                    window.location.href = "../login/login.html";
                 }
             },
             error: function (responseStr) {
@@ -4519,6 +4542,13 @@
                     defenseScore.innerHTML = ejs.render(defenseScores, {
                         data: responseStr.data.studentList
                     });
+                }else if (responseStr.statusCode == "102") {
+                    alert(responseStr.msg);
+                    window.location.href = "../login/login.html";
+                }else {
+                    defenseScore.innerHTML = ejs.render(defenseScores, {
+                        data: ""
+                    });
                 }
             },
             error: function (responseStr) {
@@ -4605,7 +4635,7 @@
                 if (responseStr.msg == "查询成功") {
                     let PleaTeachers = "";
                     responseStr.data.studentList.forEach(function (plea) {
-                        if(typeof(plea.defenceScore)!="undefined"){
+                        if (typeof (plea.defenceScore) != "undefined") {
                             PleaTeachers = plea.defenceScore.defScoreList;
                             return;
                         }
@@ -4618,6 +4648,9 @@
                     defense_Situation.innerHTML = ejs.render(defense_Situations, {
                         data: ""
                     });
+                } else if (responseStr.statusCode == "102") {
+                    alert(responseStr.msg);
+                    window.location.href = "../login/login.html";
                 } else {
                     alert(responseStr.msg + "，请稍后重试！");
                     returnFirst('queryArrange', 'leaderDefense');
@@ -4680,6 +4713,9 @@
                     grade_Papers.innerHTML = ejs.render(grade_Paperses, {
                         data: ""
                     });
+                } else if (responseStr.statusCode == "102") {
+                    alert(responseStr.msg);
+                    window.location.href = "../login/login.html";
                 } else {
                     alert(responseStr.msg + "，请稍后重试！");
                     returnFirst('queryArrange', 'graduationDesign');
@@ -4796,6 +4832,9 @@
                     normalDom1.innerHTML = ejs.render(htmlDom1, {
                         data: responseStr.data
                     });
+                } else if (responseStr.statusCode == "102") {
+                    alert(responseStr.msg);
+                    window.location.href = "../login/login.html";
                 } else {
                     normalDom1.innerHTML = ejs.render(htmlDom1, {
                         data: ""
@@ -4841,7 +4880,10 @@
                     tutor_grade_Papers.innerHTML = ejs.render(tutor_grade_Paperses, {
                         data: responseStr.data
                     });
-                } else {
+                }else if (responseStr.statusCode == "102") {
+                    alert(responseStr.msg);
+                    window.location.href = "../login/login.html";
+                }  else {
                     tutor_grade_Papers.innerHTML = ejs.render(tutor_grade_Paperses, {
                         data: ""
                     });
@@ -4904,7 +4946,10 @@
                     review_Material.innerHTML = ejs.render(review_Materials, {
                         data: responseStr.data
                     });
-                } else {
+                }else if (responseStr.statusCode == "102") {
+                    alert(responseStr.msg);
+                    window.location.href = "../login/login.html";
+                }  else {
                     review_Material.innerHTML = ejs.render(review_Materials, {
                         data: ""
                     });
@@ -4944,7 +4989,10 @@
                         title: title,
                         id: id
                     });
-                } else if (responseStr.msg == "查询结果为空") {
+                }else if (responseStr.statusCode == "102") {
+                    alert(responseStr.msg);
+                    window.location.href = "../login/login.html";
+                }  else if (responseStr.msg == "查询结果为空") {
                     alert("该学生尚未提交材料，暂不能审核！");
                 }
             },
@@ -5008,7 +5056,10 @@
                         title: title,
                         id: id
                     });
-                } else if (responseStr.statusCode == "101") {
+                }else if (responseStr.statusCode == "102") {
+                    alert(responseStr.msg);
+                    window.location.href = "../login/login.html";
+                }  else if (responseStr.statusCode == "101") {
                     alert("该学生尚未提交材料，暂不能审核！");
                 }
             },
@@ -5076,6 +5127,9 @@
                         title: title,
                         id: id
                     });
+                } else if (responseStr.statusCode == "102") {
+                    alert(responseStr.msg);
+                    window.location.href = "../login/login.html";
                 } else if (responseStr.statusCode == "101") {
                     alert("该学生尚未提交材料，暂不能审核！");
                 }
@@ -5301,6 +5355,9 @@
                     scoresRanking.innerHTML = ejs.render(scoresRankings, {
                         data: responseStr.data
                     });
+                } else if (responseStr.statusCode == "102") {
+                    alert(responseStr.msg);
+                    window.location.href = "../login/login.html";
                 } else {
                     scoresRanking.innerHTML = ejs.render(scoresRankings, {
                         data: ""

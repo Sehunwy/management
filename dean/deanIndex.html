@@ -2687,7 +2687,8 @@
     }
 
     let token = getCookie("token");
-    if (token == "" || token == null) {
+    let authority = getCookie("authority");
+    if (token == "" || token == null || authority!=3) {
         window.location.href = "../login/login.html";
     }
     $(function () {
@@ -2709,10 +2710,16 @@
                 Token: token
             },
             success: function (responseStr) {
-                if (responseStr.msg == "查询成功") {
+                if (responseStr.statusCode == "100") {
                     let html = responseStr.data.name + '(' + responseStr.data.identifier + ')，欢迎使用系统';
                     $('#information').html(html);
-                    teacherInfo = responseStr.data.identifier;
+                    // teacherInfo = responseStr.data.identifier;
+                }else if (responseStr.statusCode == "102") {
+                    alert(responseStr.msg);
+                    window.location.href = "../login/login.html";
+                }else {
+                    let html = "暂无数据";
+                    $('#information').html(html);
                 }
             },
             error: function (responseStr) {
@@ -2729,7 +2736,6 @@
     let leader = [];
     //添加指导教师
     let tutor = [];
-
 
     //出题情况统计表
     function statisticalTopic() {
@@ -2754,9 +2760,12 @@
                 Token: token
             },
             success: function (responseStr) {
-                if (responseStr.msg == "查询成功") {
+                if (responseStr.statusCode == "100") {
                     hasDraw.innerHTML = ejs.render(hasDraws, {data: responseStr.data});
-                } else {
+                } else if (responseStr.statusCode == "102") {
+                    alert(responseStr.msg);
+                    window.location.href = "../login/login.html";
+                }else {
                     hasDraw.innerHTML = ejs.render(hasDraws, {data: ""});
                 }
             },
@@ -2879,7 +2888,7 @@
                                         },
                                         success: function (responseStr) {
                                             let msg = responseStr.msg;
-                                            if (msg == "查询成功") {
+                                            if (responseStr.statusCode == "100") {
                                                 pageCount = Math.ceil(responseStr.data.count / limit);
                                                 if (responseStr.data.teacherList.length > 0) {
                                                     titleList.innerHTML = ejs.render(titleLists, {data: responseStr.data.teacherList});
@@ -2895,11 +2904,18 @@
                                     });
                                 }
                             });
-                        } else if (responseStr.statusCode == "101") {
+                        } else if (responseStr.statusCode == "102") {
+                            alert(responseStr.msg);
+                            window.location.href = "../login/login.html";
+                        }
+                        else  {
                             titleList.innerHTML = ejs.render(titleLists, {data: ""});
                         }
                     }
-                } else {
+                } else if (responseStr.statusCode == "102") {
+                    alert(responseStr.msg);
+                    window.location.href = "../login/login.html";
+                }else {
                     if (start == "count") {
                         alert("数据为空，暂不支持导出！");
                     }
@@ -2978,9 +2994,12 @@
                 Token: token
             },
             success: function (responseStr) {
-                if (responseStr.msg == "查询成功") {
+                if (responseStr.statusCode == "100") {
                     hasSelect.innerHTML = ejs.render(hasSelects, {data: responseStr.data});
-                } else {
+                } else if (responseStr.statusCode == "102") {
+                    alert(responseStr.msg);
+                    window.location.href = "../login/login.html";
+                }else {
                     hasSelect.innerHTML = ejs.render(hasSelects, {data: ""});
                 }
             },
@@ -3118,13 +3137,19 @@
                                     });
                                 }
                             });
-                        } else if (responseStr.statusCode == "101") {
+                        }else if (responseStr.statusCode == "102") {
+                            alert(responseStr.msg);
+                            window.location.href = "../login/login.html";
+                        } else  {
                             if (start == "count") {
                                 alert("数据为空，暂不支持导出！");
                             }
                             studentList.innerHTML = ejs.render(studentLists, {data: ""});
                         }
                     }
+                }else if (responseStr.statusCode == "102") {
+                    alert(responseStr.msg);
+                    window.location.href = "../login/login.html";
                 } else {
                     if (start == "count") {
                         alert("数据为空，暂不支持导出！")
@@ -3188,9 +3213,12 @@
                 Token: token
             },
             success: function (responseStr) {
-                if (responseStr.msg == "查询成功") {
+                if (responseStr.statusCode == "100") {
                     numberOfTitle.innerHTML = ejs.render(numberOfTitles, {data: responseStr.data});
-                } else {
+                } else if (responseStr.statusCode == "102") {
+                    alert(responseStr.msg);
+                    window.location.href = "../login/login.html";
+                }else {
                     numberOfTitle.innerHTML = ejs.render(numberOfTitles, {data: ""});
                 }
             },
@@ -3344,7 +3372,7 @@
                                         },
                                         success: function (responseStr) {
                                             let msg = responseStr.msg;
-                                            if (msg == "查询成功") {
+                                            if (responseStr.statusCode == "100") {
                                                 pageCount = Math.ceil(responseStr.data.count / limit);
                                                 if (responseStr.data.projectList.length > 0) {
                                                     listOfTitle.innerHTML = ejs.render(listOfTitles, {data: responseStr.data.projectList});
@@ -3352,6 +3380,13 @@
                                             }
                                             if (msg == "系统繁忙") {
                                                 alert("系统繁忙,请不要点击过快！");
+                                            }
+                                            else if (responseStr.statusCode == "102") {
+                                                alert(responseStr.msg);
+                                                window.location.href = "../login/login.html";
+                                            }
+                                            else {
+                                                listOfTitle.innerHTML = ejs.render(listOfTitles, {data: ""});
                                             }
                                         },
                                         error: function (responseStr) {
@@ -3364,7 +3399,10 @@
                             listOfTitle.innerHTML = ejs.render(listOfTitles, {data: ""});
                         }
                     }
-                } else {
+                } else if (responseStr.statusCode == "102") {
+                    alert(responseStr.msg);
+                    window.location.href = "../login/login.html";
+                }else {
                     if (start == "count") {
                         alert("数据为空，暂不支持导出！");
                     }
@@ -4606,7 +4644,10 @@
                     replyDate.innerHTML = ejs.render(replyDates, {
                         data: responseStr.data
                     });
-                } else if (responseStr.statusCode == "101") {
+                }else if (responseStr.statusCode == "102") {
+                    alert(responseStr.msg);
+                    window.location.href = "../login/login.html";
+                } else  {
                     replyDate.innerHTML = ejs.render(replyDates, {
                         data: ""
                     });
@@ -4755,7 +4796,10 @@
                     instructorGrouping.innerHTML = ejs.render(instructorGroupings, {
                         data: responseStr.data
                     });
-                } else if (responseStr.statusCode == "101") {
+                }else if (responseStr.statusCode == "102") {
+                    alert(responseStr.msg);
+                    window.location.href = "../login/login.html";
+                } else {
                     instructorGrouping.innerHTML = ejs.render(instructorGroupings, {
                         data: ""
                     });
@@ -5000,8 +5044,9 @@
                         teamLeaderSelect.innerHTML += '<option value=' + teacher.id + '>' + teacher.name + '</option>';
                         plea_Teacher.innerHTML += '<option value=' + teacher.id + '>' + teacher.name + '</option>';
                     })
-                } else if (responseStr.statusCode == "101") {
-
+                } else if (responseStr.statusCode == "102") {
+                    alert(responseStr.msg);
+                    window.location.href = "../login/login.html";
                 }
             },
             error: function (responseStr) {

@@ -255,14 +255,12 @@
                     let token = responseStr.data.jwtToken;
                     setCookie("token",token,"d1");
                     setCookie("authority",value,"d1");
-                    if(msg=="登录成功") {
-                        if (value == 1) {
-                            window.location.href = "../student/studentIndex.html";
-                        } else if (value == 2) {
-                            window.location.href = "../teacher/teacherIndex.html";
-                        } else if (value == 3) {
-                            window.location.href = "../dean/deanIndex.html";
-                        }
+                    if (value == 1) {
+                        window.location.href = "../student/studentIndex.html";
+                    } else if (value == 2) {
+                        window.location.href = "../teacher/teacherIndex.html";
+                    } else if (value == 3) {
+                        window.location.href = "../dean/deanIndex.html";
                     }
 
                 } else if (msg == "密码长度不符") {
