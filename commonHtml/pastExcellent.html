@@ -75,9 +75,6 @@
                                         <button type="button"
                                                 class="management_goodDetails newPage btn btn-info btn-xs">查看
                                         </button>
-                                        <button type="button" class="btn btn-danger btn-xs release_Dean" data-toggle="modal"
-                                                data-target="#deleteGood">删除
-                                        </button>
                                     </div>
                                 </div>
                                 <div class="alert alert-danger textEllipsis border_radius marginBottom0">
@@ -98,12 +95,8 @@
                                         <button type="button"
                                                 class="management_goodDetails newPage btn btn-info btn-xs">查看
                                         </button>
-                                        <button type="button" class="btn btn-danger btn-xs release_Dean" data-toggle="modal"
-                                                data-target="#deleteGood">删除
-                                        </button>
                                     </div>
                                 </div>
-
                                 <!--分页开始-->
                                 <div style="margin-top: 15px" class="m-style"></div>
                                 <!--分页结束-->
@@ -190,12 +183,12 @@
     $(function () {
         let authority = getCookie("authority");
         console.log("authority "+authority);
-        if(authority != 3){
-            let release_Dean = document.getElementsByClassName('release_Dean');
-            while(release_Dean.length > 0){
-                release_Dean[0].parentNode.removeChild(release_Dean[0]);
-            }
-        }
+        // if(authority != 3){
+        //     let release_Dean = document.getElementsByClassName('release_Dean');
+        //     while(release_Dean.length > 0){
+        //         release_Dean[0].parentNode.removeChild(release_Dean[0]);
+        //     }
+        // }
     });
 </script>
 </html>

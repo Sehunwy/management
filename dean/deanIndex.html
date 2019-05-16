@@ -1584,7 +1584,7 @@
                                     <div class="col-md-3 textAlign">
                                         姓名（学号）
                                     </div>
-                                    <div class="col-md-2 textAlign">
+                                    <div class="col-md-3 textAlign">
                                         题目
                                     </div>
                                     <div class="col-md-1 textAlign">
@@ -1623,7 +1623,7 @@
                                             <%=score.name%>（<%=score.identifier%>）
                                         </span>
                                     </div>
-                                    <div class="col-md-2 textAlign textEllipsis padding0">
+                                    <div class="col-md-3 textAlign textEllipsis padding0">
                                         <%if(typeof(score.checkedPro)=="undefined") {%>
                                         暂无数据
                                         <%} else{%>
@@ -1643,11 +1643,6 @@
                                     <div class="col-md-1 textAlign"><%=score.proScore.scoreTotal%></div>
                                     <div class="col-md-1 textAlign"><%=score.proScore.grade%></div>
                                     <%}%>
-                                    <div class="col-md-1 textAlign">
-                                        <button type="button" class="btn btn-info btn-xs" data-toggle="modal"
-                                                data-target="#setGood">设为优秀
-                                        </button>
-                                    </div>
                                 </div>
                                 <%})}%>
                             </script>
@@ -1694,14 +1689,11 @@
                                     <div class="col-md-3 textAlign">
                                         指导教师（编号）
                                     </div>
-                                    <div class="col-md-3 textAlign">
+                                    <div class="col-md-4 textAlign">
                                         课题题目
                                     </div>
                                     <div class="col-md-2 textAlign">
                                         过程文档
-                                    </div>
-                                    <div class="col-md-1 textAlign">
-                                        成绩
                                     </div>
                                 </div>
                                 <%if(data==""){%>
@@ -1723,7 +1715,7 @@
                                         <%=stu.gt.name%>（<%=stu.gt.id%>）
                                         <%}%>
                                     </div>
-                                    <div class="col-md-3 textAlign textEllipsis">
+                                    <div class="col-md-4 textAlign textEllipsis">
                                         <%=stu.pName%>
                                     </div>
                                     <div class="col-md-2 textAlign">
@@ -1731,13 +1723,6 @@
                                               data-target="#documentationDetails"
                                               onclick="archivingStatistics('<%=stu.identifier%>','','documentation')">
                                             过程文档提交情况
-                                        </span>
-                                    </div>
-                                    <div class="col-md-1 textAlign">
-                                        <span class="clickColor cursorPointer" data-toggle="modal"
-                                              data-target="#score"
-                                              onclick="archivingStatistics('<%=stu.identifier%>','','score')">
-                                            成绩情况
                                         </span>
                                     </div>
                                 </div>
@@ -2352,71 +2337,6 @@
         </div>
     </script>
     <!--过程文档提交情况结束-->
-    <!--成绩情况开始-->
-    <div class="modal fade" id="score" role="dialog">
-    </div>
-    <script id="scores" type="text/template">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                            aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">成绩情况</h4>
-                </div>
-                <div class="modal-body">
-                    <div class="alert alert-success">
-                        <strong>
-                            <span>姓名（学号）:</span>
-                        </strong>
-                        <span>
-
-                        </span>
-                        <hr>
-                        <strong>
-                            <span>课题题目:</span>
-                        </strong>
-                        <span>
-
-                        </span>
-                        <hr>
-                        <strong>
-                            <span>指导成绩:</span>
-                        </strong>
-                        <span>
-                        </span>
-                        <hr>
-                        <strong>
-                            <span>评阅成绩:</span>
-                        </strong>
-                        <span>
-                        </span>
-                        <hr>
-                        <strong>
-                            <span>答辩成绩:</span>
-                        </strong>
-                        <span>
-                        </span>
-                        <hr>
-                        <strong>
-                            <span>综合评定成绩:</span>
-                        </strong>
-                        <span>
-                        </span>
-                        <hr>
-                        <strong>
-                            <span>综合评定等级:</span>
-                        </strong>
-                        <span>
-                        </span>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-sm btn-info" data-dismiss="modal">关闭</button>
-                </div>
-            </div>
-        </div>
-    </script>
-    <!--成绩情况结束-->
     <!--教师详细信息开始 -->
     <div class="modal fade" id="teacherDetails" role="dialog">
     </div>
@@ -4257,12 +4177,6 @@
                             })
                         })
                         exportTable(dataList, "材料归档统计报表");
-                    } else if (isRanking == "score") {
-                        let scores = document.getElementById('scores').innerHTML;
-                        let score = document.getElementById('score');
-                        score.innerHTML = ejs.render(scores, {
-                            data: responseStr.data.studentLists[0]
-                        });
                     }
                 } else if (responseStr.statusCode == "102") {
                     alert(responseStr.msg);
@@ -4272,7 +4186,6 @@
                 } else if (responseStr.statusCode == "101") {
                     materialArchive.innerHTML = ejs.render(materialArchives, {data: ""});
                 }
-
             },
             error: function (responseStr) {
                 window.location.href = "../404/404.html";

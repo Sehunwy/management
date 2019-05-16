@@ -1777,7 +1777,7 @@
                                         }
                                         )%>
                                     </div>
-                                    <div class="col-md-3 textAlign textEllipsis">
+                                    <div class="col-md-3 textAlign textEllipsis padding0">
                                         <% student.defInfo.teaGroup.forEach(function(group){
                                         if(!group.leader) {%>
                                         <%=group.teaAuth.name%>
@@ -1793,7 +1793,7 @@
                                         <%}%>
                                     </div>
                                     <div class="col-md-1 textAlign textEllipsis">
-                                        第<%=student.defInfo.groupNum%>组
+                                        第<%=student.defInfo.groupId%>组
                                     </div>
                                     <%}%>
                                 </div>
