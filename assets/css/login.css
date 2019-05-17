@@ -168,11 +168,11 @@ ul, li, ol {
     color: #3c763d
 }
 
-label,label input {
+label, label input {
     cursor: pointer;
 }
 
 .popover {
-    width:fit-content !important;
-    width:-moz-fit-content !important;
+    width: fit-content !important;
+    width: -moz-fit-content !important;
 }

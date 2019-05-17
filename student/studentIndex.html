@@ -65,7 +65,6 @@
                 </a>
                 <div class="noticeContent">
                     <ul id="progress">
-
                     </ul>
                 </div>
             </li>
@@ -104,45 +103,51 @@
                     </ul>
                     <div class="horizontal"></div>
                     <div id="type0" class="type">
-                        <ul>
-                            <li class="liStyle liBorderBottom textEllipsis">
-                                公告公告公告公告公告
-                            </li>
-                            <li class="liStyle liBorderBottom textEllipsis">
-                                公告公告公告公告公告
-                            </li>
-                            <li class="liStyle liBorderBottom textEllipsis">
-                                公告公告公告公告公告公告公告公告公告公告
-                            </li>
-                            <li class="liStyle liBorderBottom textEllipsis  text-center">
-                                <a class="management_messageNotice text-center newPage topPage" href="#">
-                                    <strong>查看更多公告</strong>
-                                    <i class="fa fa-angle-right"></i>
-                                </a>
-                            </li>
-                        </ul>
+                        <div id="publicAannouncement"></div>
                     </div>
                     <div id="type1" class="type hide">
-                        <ul>
-                            <li class="liStyle liBorderBottom textEllipsis">
-                                通知通知通知通知通知通知通知
-                            </li>
-                            <li class="liStyle liBorderBottom textEllipsis">
-                                通知通知通知通知通知通知通知通知通知
-                            </li>
-                            <li class="liStyle liBorderBottom textEllipsis">
-                                公通知通知通知通知通知通知通知通知通知通知
-                            </li>
-                            <li class="liStyle liBorderBottom textEllipsis  text-center">
-                                <a class="management_messageNotice text-center newPage topPage" href="#">
-                                    <strong>查看更多通知</strong>
-                                    <i class="fa fa-angle-right"></i>
-                                </a>
-                            </li>
-                        </ul>
+                        <div id="publicNotice"></div>
                     </div>
                 </div>
             </li>
+            <script id="publicAannouncements" type="text/template">
+                <ul>
+                    <li class="liStyle liBorderBottom textEllipsis">
+                        公告公告公告公告公告
+                    </li>
+                    <li class="liStyle liBorderBottom textEllipsis">
+                        公告公告公告公告公告
+                    </li>
+                    <li class="liStyle liBorderBottom textEllipsis">
+                        公告公告公告公告公告公告公告公告公告公告
+                    </li>
+                    <li class="liStyle liBorderBottom textEllipsis  text-center">
+                        <a class="management_messageNotice text-center newPage topPage" href="#">
+                            <strong>查看更多公告</strong>
+                            <i class="fa fa-angle-right"></i>
+                        </a>
+                    </li>
+                </ul>
+            </script>
+            <script id="publicNotices" type="text/template">
+                <ul>
+                    <li class="liStyle liBorderBottom textEllipsis">
+                        通知通知通知通知通知通知通知
+                    </li>
+                    <li class="liStyle liBorderBottom textEllipsis">
+                        通知通知通知通知通知通知通知通知通知
+                    </li>
+                    <li class="liStyle liBorderBottom textEllipsis">
+                        公通知通知通知通知通知通知通知通知通知通知
+                    </li>
+                    <li class="liStyle liBorderBottom textEllipsis  text-center">
+                        <a class="management_messageNotice text-center newPage topPage" href="#">
+                            <strong>查看更多通知</strong>
+                            <i class="fa fa-angle-right"></i>
+                        </a>
+                    </li>
+                </ul>
+            </script>
             <!--通知公告结束-->
             <!--个人信息开始-->
             <li class="noticeIcon">
@@ -209,7 +214,7 @@
                     <span class="iconfont icon-icon-test iconColorWhite fontSize14 naviconpadding"></span>历届优秀浏览
                 </a>
                 </li>
-                <li><a href="#" id="management_news">
+                <li onclick="newsBrowse()"><a href="#" id="management_news">
                     <span class="iconfont icon-xinwenguanli iconColorWhite fontSize14 naviconpadding"></span>新闻浏览
                 </a>
                 </li>
@@ -2692,6 +2697,47 @@
         $('#five').addClass('displayBlock');
     }
 
+    //未读通知
+    function UnReadNotifications() {
+        let url = "http://www.yuanbw.cn:20086/gpms/rol/showUnReadNotifications";
+        let offset = 0;
+        let limit = 4;
+        $.ajax({
+            url: url,
+            type: "POST",
+            data: {
+                offset: offset,
+                limit: limit
+            },
+            xhrFields: {
+                withCredentials: true
+            },
+            crossDomain: true,
+            headers: {
+                Token: token
+            },
+            success: function (responseStr) {
+                if (responseStr.statusCode == "100") {
+                    console.log(responseStr)
+                } else if (responseStr.statusCode == "102") {
+                    alert(responseStr.msg);
+                    window.location.href = "../login/login.html";
+                } else {
+                    tutorList.innerHTML = ejs.render(tutorLists, {
+                        gName: "",
+                        gId: ""
+                    });
+                    information.innerHTML = ejs.render(informations, {informations: ""});
+                    informationDetailed.innerHTML = ejs.render(informationsDetailed, {informations: ""});
+                }
+
+            },
+            error: function (responseStr) {
+                window.location.href = "../404/404.html";
+            }
+        });
+    }
+
     function colorOfProgress(progress) {
         if (progress == 0) {
             return 'easypiechart easypiechart-red';
@@ -2829,6 +2875,7 @@
         topicSelected();
         queryProgress();
         showRoleInfo();
+        UnReadNotifications();
     });
 
     function indexQuery() {
@@ -3059,7 +3106,11 @@
         if (titleArray.length > 0) {
             titleArray.forEach(function (arr) {
                 if (arr.project.id == id) {
-                    topicDetails.innerHTML = ejs.render(topicsDetails, {title: arr.project, dates: arr.chooseDate, setDate: "true"});
+                    topicDetails.innerHTML = ejs.render(topicsDetails, {
+                        title: arr.project,
+                        dates: arr.chooseDate,
+                        setDate: "true"
+                    });
                 }
             })
         }
@@ -3072,7 +3123,11 @@
         if (array.length > 0) {
             array.forEach(function (arr) {
                 if (arr.project.id == id) {
-                    topicDetails.innerHTML = ejs.render(topicsDetails, {title: arr.project, dates: arr.setDate, setDate: ""});
+                    topicDetails.innerHTML = ejs.render(topicsDetails, {
+                        title: arr.project,
+                        dates: arr.setDate,
+                        setDate: ""
+                    });
                 }
             })
         }
@@ -3196,11 +3251,10 @@
                     }
                     selectedTopic.innerHTML = ejs.render(selectedTopics, {titles: responseStr.data});
                     indexSelectedTopic.innerHTML = ejs.render(indexSelectedTopics, {titles: data});
-                }
-                else if (responseStr.statusCode == "102") {
+                } else if (responseStr.statusCode == "102") {
                     alert(responseStr.msg);
                     window.location.href = "../login/login.html";
-                }else {
+                } else {
                     selectedTopic.innerHTML = ejs.render(selectedTopics, {titles: ""});
                     indexSelectedTopic.innerHTML = ejs.render(indexSelectedTopics, {titles: ""});
                 }
@@ -3236,7 +3290,7 @@
                 } else if (responseStr.statusCode == "102") {
                     alert(responseStr.msg);
                     window.location.href = "../login/login.html";
-                }else {
+                } else {
                     reply_arrange.innerHTML = ejs.render(reply_arranges, {
                         data: ""
                     });
@@ -3273,7 +3327,7 @@
                 } else if (responseStr.statusCode == "102") {
                     alert(responseStr.msg);
                     window.location.href = "../login/login.html";
-                }else {
+                } else {
                     reply_results.innerHTML = ejs.render(reply_resultses, {
                         data: ""
                     });
@@ -3316,7 +3370,7 @@
                     let modifyOpeningReport = document.getElementById('modifyOpeningReport');
                     modifyOpeningReport.innerHTML = ejs.render(modifyOpeningReports, {data: responseStr.data});
                     OpeningReportdataFirst = "NotFirst";
-                }else if (responseStr.statusCode == "102") {
+                } else if (responseStr.statusCode == "102") {
                     alert(responseStr.msg);
                     window.location.href = "../login/login.html";
                 }
@@ -3358,7 +3412,7 @@
                     let modifyIntermediateInspection = document.getElementById('modifyIntermediateInspection');
                     modifyIntermediateInspection.innerHTML = ejs.render(modifyIntermediateInspections, {data: responseStr.data});
                     InterimInspectiondataFirst = "NotFirst";
-                }else if (responseStr.statusCode == "102") {
+                } else if (responseStr.statusCode == "102") {
                     alert(responseStr.msg);
                     window.location.href = "../login/login.html";
                 }
@@ -3397,7 +3451,7 @@
                         data: responseStr.data,
                         topicName: topicName
                     });
-                }else if (responseStr.statusCode == "102") {
+                } else if (responseStr.statusCode == "102") {
                     alert(responseStr.msg);
                     window.location.href = "../login/login.html";
                 }
@@ -3439,7 +3493,7 @@
                     let modifyForeignTranslation = document.getElementById('modifyForeignTranslation');
                     modifyForeignTranslation.innerHTML = ejs.render(modifyForeignTranslations, {data: responseStr.data});
                     ForeignOriginaldataFirst = "NotFirst";
-                }else if (responseStr.statusCode == "102") {
+                } else if (responseStr.statusCode == "102") {
                     alert(responseStr.msg);
                     window.location.href = "../login/login.html";
                 }
@@ -3481,7 +3535,7 @@
                     let modifyLiterature = document.getElementById('modifyLiterature');
                     modifyLiterature.innerHTML = ejs.render(modifyLiteratures, {data: responseStr.data});
                     LiteratureReviewdataFirst = "NotFirst";
-                }else if (responseStr.statusCode == "102") {
+                } else if (responseStr.statusCode == "102") {
                     alert(responseStr.msg);
                     window.location.href = "../login/login.html";
                 }
@@ -3520,7 +3574,7 @@
                         data: responseStr.data,
                         topicName: topicName
                     });
-                }else if (responseStr.statusCode == "102") {
+                } else if (responseStr.statusCode == "102") {
                     alert(responseStr.msg);
                     window.location.href = "../login/login.html";
                 }

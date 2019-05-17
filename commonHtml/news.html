@@ -16,43 +16,10 @@
                         新闻浏览
                     </div>
                     <div class="panel-body">
-                        <div class="col-md-12" style="padding-bottom: 20px;border-bottom: 1px solid #ccc">
-                            <div class="col-md-12">
-                                <h4 class="management_newsDetails newPage font_bold titlehover">本周前期热起来周末又降温</h4>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="col-md-3">
-                                    <img class="imgheight width100 hovered" src="../assets/img/news.jpg" alt=""
-                                         onclick="showMaxImg(this)">
-                                </div>
-                                <div class="col-md-3">
-                                    <img class="imgheight width100 hovered" src="../assets/img/news.jpg" alt=""
-                                         onclick="showMaxImg(this)">
-                                </div>
-                                <div class="col-md-3">
-                                    <img class="imgheight width100 hovered" src="../assets/img/news.jpg" alt=""
-                                         onclick="showMaxImg(this)">
-                                </div>
-                                <div class="col-md-3">
-                                    <img class="imgheight width100 hovered" src="../assets/img/news.jpg" alt=""
-                                         onclick="showMaxImg(this)">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-12" style="padding-bottom: 20px;border-bottom: 1px solid #ccc">
-                            <div class="col-md-12">
-                                <h4 class="management_newsDetails newPage font_bold titlehover">本周前期热起来周末又降温</h4>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="col-md-3">
-                                    <img class="imgheight width100 hovered" src="../assets/img/cloud.jpg" alt=""
-                                         onclick="showMaxImg(this)">
-                                </div>
-                            </div>
-                        </div>
+                        <div id="viewNew"></div>
                         <!--分页开始-->
                         <div class="col-md-12" style="padding-top: 20px">
-                            <div class="m-style"></div>
+                            <div class="m-style" id="newsPage"></div>
                         </div>
                         <!--分页结束-->
                     </div>
@@ -61,6 +28,31 @@
         </div>
     </div>
 </div>
+<script id="viewNews" type="text/template">
+    <div class="col-md-12" style="padding-bottom: 20px;border-bottom: 1px solid #ccc">
+        <div class="col-md-12">
+            <h4 class="management_newsDetails newPage font_bold titlehover">本周前期热起来周末又降温</h4>
+        </div>
+        <div class="col-md-12">
+            <div class="col-md-3">
+                <img class="imgheight width100 hovered" src="../assets/img/news.jpg" alt=""
+                     onclick="showMaxImg(this)">
+            </div>
+            <div class="col-md-3">
+                <img class="imgheight width100 hovered" src="../assets/img/news.jpg" alt=""
+                     onclick="showMaxImg(this)">
+            </div>
+            <div class="col-md-3">
+                <img class="imgheight width100 hovered" src="../assets/img/news.jpg" alt=""
+                     onclick="showMaxImg(this)">
+            </div>
+            <div class="col-md-3">
+                <img class="imgheight width100 hovered" src="../assets/img/news.jpg" alt=""
+                     onclick="showMaxImg(this)">
+            </div>
+        </div>
+    </div>
+</script>
 <!--查看新闻详情开始-->
 <div id="newsDetails" class="page-wrapper displayNone">
     <div style="margin: 0px" class="page-inner">
@@ -134,4 +126,93 @@
     });
 </script>
 <!--分页结束-->
+<script>
+    let pageCount = 0;
+    function newsBrowse() {
+        let viewNews = document.getElementById('viewNews').innerHTML;
+        let viewNew = document.getElementById('viewNew');
+        let limit = 4;
+        let offset = 0;
+        let url = "http://www.yuanbw.cn:20086/gpms/rol/showAllNews";
+        $.ajax({
+            url: url,
+            type: "POST",
+            data: {
+                offset: offset,
+                limit: limit
+            },
+            xhrFields: {
+                withCredentials: true
+            },
+            crossDomain: true,
+            headers: {
+                Token: token
+            },
+            success: function (responseStr) {
+                if (responseStr.statusCode == "100") {
+                    console.log(responseStr)
+                    pageCount = Math.ceil(responseStr.data.count / limit);
+                    console.log(responseStr.data)
+                    viewNew.innerHTML = ejs.render(viewNews, {data:responseStr.data});
+                    $('#newsPage').pagination({
+                        pageCount: pageCount,
+                        jump: true,
+                        coping: true,
+                        homePage: '首页',
+                        endPage: '末页',
+                        prevContent: '上页',
+                        nextContent: '下页',
+                        callback: function (api) {
+                            let page = api.getCurrent();
+                            offset = (page - 1) * limit;
+                            $.ajax({
+                                url: url,
+                                type: "POST",
+                                data: {
+                                    offset: offset,
+                                    limit: limit
+                                },
+                                xhrFields: {
+                                    withCredentials: true
+                                },
+                                crossDomain: true,
+                                headers: {
+                                    Token: token
+                                },
+                                success: function (responseStr) {
+                                    let msg = responseStr.msg;
+                                    if (responseStr.statusCode == "100") {
+                                        pageCount = Math.ceil(responseStr.data.count / limit);
+                                        array = responseStr.data.projects;
+                                        if (array.length > 0) {
+                                            viewNew.innerHTML = ejs.render(viewNews, {data:responseStr.data});
+                                        }
+                                    } else if (msg == "系统繁忙") {
+                                        alert("系统繁忙,请不要点击过快！");
+                                    } else if (responseStr.statusCode == "102") {
+                                        alert(responseStr.msg);
+                                        window.location.href = "../login/login.html";
+                                    } else {
+                                        topic.innerHTML = ejs.render(topics, {arrays: ""});
+                                    }
+                                },
+                                error: function (responseStr) {
+                                    window.location.href = "../404/404.html";
+                                }
+                            });
+                        }
+                    });
+                } else if (responseStr.statusCode == "102") {
+                    alert(responseStr.msg);
+                    window.location.href = "../login/login.html";
+                } else {
+                    topic.innerHTML = ejs.render(topics, {arrays: ""});
+                }
+            },
+            error: function (responseStr) {
+                window.location.href = "../404/404.html";
+            }
+        });
+    }
+</script>
 </html>

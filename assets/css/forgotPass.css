@@ -1,0 +1,97 @@
+
+body {
+    background-image: url('../img/background.png');
+    width: 100%;
+    height: 100%;
+}
+
+.colorf44 {
+    color: #ef4040;
+}
+
+.displayBlock {
+    display: block;
+}
+
+.displayNone {
+    display: none;
+}
+
+.circle {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    opacity: 0.8;
+    text-align: center;
+    line-height: 50px;
+    font-weight: bold;
+    font-size: 20px;
+    color: #fff;
+    margin-left: -5px;
+}
+
+.circleFontActive {
+    background-color: #22B3C8;
+}
+
+.circleFont {
+    background-color: #999;
+}
+
+.stepLine {
+    display: inline-block;
+    width: 300px;
+    height: 4px;
+    background-color: #999;
+    margin-left: -5px;
+}
+
+.stepLineNotActive {
+    background-color: #999;
+}
+
+.stepLineActive {
+    background-color: #22B3C8;
+}
+
+.stepWid {
+    display: inline-block;
+    width: 150px;
+    color: #666;
+}
+
+.marginLeft {
+    margin-left: 200px;
+}
+
+.active {
+    font-weight: bold;
+}
+
+.inputStyle {
+    width: 360px;
+    height: 40px;
+    line-height: 40px;
+    background-color: rgba(0, 0, 0, 0);
+    border: 0px;
+    border-bottom: 1px solid #e8e8e8;
+    outline: none;
+}
+
+.buttonSt {
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+    width: 360px;
+    height: 40px;
+    background-color: #22B3C8;
+    margin: 30px 0 0 0;
+    padding: 0;
+    border: 1px solid transparent;
+    outline: none;
+}
+
+.buttonSt:hover {
+    background-color: #008c93;
+}
