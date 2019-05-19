@@ -3929,31 +3929,36 @@
             val = parseInt(val);
             ids.push(val)
         });
-        let contentNotification = document.getElementById('contentNotification').value;
+        if(ids.length==0){
+            alert("请选择用户！");
+        } else {
+            let contentNotification = document.getElementById('contentNotification').value;
+            let url = "http://www.yuanbw.cn:20086/gpms/rol/sendRoleNotification";
+            $.ajax({
+                url: url,
+                type: "POST",
+                contentType: "application/json",
+                data: JSON.stringify({
+                    content:contentNotification,
+                    recvIds:ids
+                }),
+                xhrFields: {
+                    withCredentials: true
+                },
+                crossDomain: true,
+                headers: {
+                    Token: token
+                },
+                success: function (responseStr) {
+                    alert(responseStr.msg);
+                },
+                error: function (responseStr) {
+                    window.location.href = "../404/404.html";
+                }
+            });
+        }
         document.getElementById('contentNotification').value = "";
-        let url = "http://www.yuanbw.cn:20086/gpms/rol/sendRoleNotification";
-        $.ajax({
-            url: url,
-            type: "POST",
-            contentType: "application/json",
-            data: JSON.stringify({
-                content:contentNotification,
-                recvIds:ids
-            }),
-            xhrFields: {
-                withCredentials: true
-            },
-            crossDomain: true,
-            headers: {
-                Token: token
-            },
-            success: function (responseStr) {
-                alert(responseStr.msg);
-            },
-            error: function (responseStr) {
-                window.location.href = "../404/404.html";
-            }
-        });
+        $("input:checkbox").removeAttr("checked");
     }
 
     //取消发送通知

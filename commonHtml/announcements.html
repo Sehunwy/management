@@ -325,7 +325,6 @@
     }
     let ids = []
     function checkboxs(){
-        // let ids = [];
         $("input[name='checkboxs']:checked").each(function (i) {
             let val = $(this).val();
             val = parseInt(val);
@@ -336,29 +335,35 @@
     //删除通知
     function saveDele() {
         checkboxs();
-        let url = "http://www.yuanbw.cn:20086/gpms/rol/delNotices";
-        $.ajax({
-            url: url,
-            type: "POST",
-            contentType: "application/json",
-            data: JSON.stringify({
-                msgIdList:ids
-            }),
-            xhrFields: {
-                withCredentials: true
-            },
-            crossDomain: true,
-            headers: {
-                Token: token
-            },
-            success: function (responseStr) {
-                alert(responseStr.msg);
-                showAllNotifications("");
-            },
-            error: function (responseStr) {
-                window.location.href = "../404/404.html";
-            }
-        });
+        $("input:checkbox").removeAttr("checked");
+        if(ids.length==0) {
+            alert("请选择通知");
+        }
+        else {
+            let url = "http://www.yuanbw.cn:20086/gpms/rol/delNotices";
+            $.ajax({
+                url: url,
+                type: "POST",
+                contentType: "application/json",
+                data: JSON.stringify({
+                    msgIdList:ids
+                }),
+                xhrFields: {
+                    withCredentials: true
+                },
+                crossDomain: true,
+                headers: {
+                    Token: token
+                },
+                success: function (responseStr) {
+                    alert(responseStr.msg);
+                    showAllNotifications("");
+                },
+                error: function (responseStr) {
+                    window.location.href = "../404/404.html";
+                }
+            });
+        }
     }
     
     //标为未读
@@ -366,29 +371,33 @@
         checkboxs();
         $("[name='checkboxs']").removeAttr("checked");
         $("[name='checkboxsAll ']").removeAttr("checked");
-        let url = "http://www.yuanbw.cn:20086/gpms/rol/setNoticeReadBatch";
-        $.ajax({
-            url: url,
-            type: "POST",
-            contentType: "application/json",
-            data: JSON.stringify({
-                msgIdList:ids
-            }),
-            xhrFields: {
-                withCredentials: true
-            },
-            crossDomain: true,
-            headers: {
-                Token: token
-            },
-            success: function (responseStr) {
-                alert(responseStr.msg);
-                showAllNotifications("");
-            },
-            error: function (responseStr) {
-                window.location.href = "../404/404.html";
-            }
-        });
+        if(ids.length==0){
+            alert("请选择通知");
+        }else{
+            let url = "http://www.yuanbw.cn:20086/gpms/rol/setNoticeReadBatch";
+            $.ajax({
+                url: url,
+                type: "POST",
+                contentType: "application/json",
+                data: JSON.stringify({
+                    msgIdList:ids
+                }),
+                xhrFields: {
+                    withCredentials: true
+                },
+                crossDomain: true,
+                headers: {
+                    Token: token
+                },
+                success: function (responseStr) {
+                    alert(responseStr.msg);
+                    showAllNotifications("");
+                },
+                error: function (responseStr) {
+                    window.location.href = "../404/404.html";
+                }
+            });
+        }
     }
 
     //条件查询

@@ -308,29 +308,34 @@
         checkboxs();
         $("[name='checkboxs']").removeAttr("checked");
         $("[name='checkboxsAll ']").removeAttr("checked");
-        let url = "http://www.yuanbw.cn:20086/gpms/rol/setAnnounceReadBatch";
-        $.ajax({
-            url: url,
-            type: "POST",
-            contentType: "application/json",
-            data: JSON.stringify({
-                msgIdList:ids
-            }),
-            xhrFields: {
-                withCredentials: true
-            },
-            crossDomain: true,
-            headers: {
-                Token: token
-            },
-            success: function (responseStr) {
-                alert(responseStr.msg);
-                showProclamation("");
-            },
-            error: function (responseStr) {
-                window.location.href = "../404/404.html";
-            }
-        });
+        if(ids.length==0){
+            alert("请选择公告！");
+        }
+        else {
+            let url = "http://www.yuanbw.cn:20086/gpms/rol/setAnnounceReadBatch";
+            $.ajax({
+                url: url,
+                type: "POST",
+                contentType: "application/json",
+                data: JSON.stringify({
+                    msgIdList:ids
+                }),
+                xhrFields: {
+                    withCredentials: true
+                },
+                crossDomain: true,
+                headers: {
+                    Token: token
+                },
+                success: function (responseStr) {
+                    alert(responseStr.msg);
+                    showProclamation("");
+                },
+                error: function (responseStr) {
+                    window.location.href = "../404/404.html";
+                }
+            });
+        }
     }
 
     //条件查询
