@@ -6,9 +6,94 @@ function fileClick(fileChoose, fileName) {
         $('#' + fileName).val(files[0].name);
     });
 }
-
-
 <!--获取上传文件名称结束-->
+
+let NotificationsCount = "";
+let NoticesCount = "";
+//未读通知
+function UnReadNotifications() {
+    let url = "http://www.yuanbw.cn:20086/gpms/rol/showUnReadNotifications";
+    let offset = 0;
+    let limit = 5;
+    let publicNotices = document.getElementById('publicNotices').innerHTML;
+    let publicNotice = document.getElementById('publicNotice');
+    $.ajax({
+        url: url,
+        type: "POST",
+        data: {
+            offset: offset,
+            limit: limit
+        },
+        xhrFields: {
+            withCredentials: true
+        },
+        crossDomain: true,
+        headers: {
+            Token: token
+        },
+        success: function (responseStr) {
+            if (responseStr.statusCode == "100") {
+                NotificationsCount = responseStr.data.count;
+                publicNotice.innerHTML = ejs.render(publicNotices, {data:responseStr.data.notifications});
+            } else if (responseStr.statusCode == "102") {
+                alert(responseStr.msg);
+                window.location.href = "../login/login.html";
+            } else {
+                publicNotice.innerHTML = ejs.render(publicNotices, {data:""});
+            }
+        },
+        error: function (responseStr) {
+            window.location.href = "../404/404.html";
+        }
+    });
+    console.log(NotificationsCount)
+    count()
+}
+
+//未读公告
+function showUnReadNotices() {
+    let url = "http://www.yuanbw.cn:20086/gpms/rol/showUnReadNotices";
+    let offset = 0;
+    let limit = 5;
+    let publicAannouncements = document.getElementById('publicAannouncements').innerHTML;
+    let publicAannouncement = document.getElementById('publicAannouncement');
+    $.ajax({
+        url: url,
+        type: "POST",
+        data: {
+            offset: offset,
+            limit: limit
+        },
+        xhrFields: {
+            withCredentials: true
+        },
+        crossDomain: true,
+        headers: {
+            Token: token
+        },
+        success: function (responseStr) {
+            if (responseStr.statusCode == "100") {
+                NoticesCount = responseStr.data.count;
+                publicAannouncement.innerHTML = ejs.render(publicAannouncements, {data:responseStr.data.noticeList});
+            } else if (responseStr.statusCode == "102") {
+                alert(responseStr.msg);
+                window.location.href = "../login/login.html";
+            } else {
+                publicAannouncement.innerHTML = ejs.render(publicAannouncements, {data:""});
+            }
+        },
+        error: function (responseStr) {
+            window.location.href = "../404/404.html";
+        }
+    });
+}
+
+function count() {
+    // UnReadNotifications();
+    // showUnReadNotices();
+    console.log(NotificationsCount)
+}
+
 
 // 取消输入框的值开始
 function cancelTitle(classInput) {

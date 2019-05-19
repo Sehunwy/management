@@ -29,29 +29,34 @@
     </div>
 </div>
 <script id="viewNews" type="text/template">
+    <%if(data==""){%>
     <div class="col-md-12" style="padding-bottom: 20px;border-bottom: 1px solid #ccc">
         <div class="col-md-12">
-            <h4 class="management_newsDetails newPage font_bold titlehover">本周前期热起来周末又降温</h4>
-        </div>
-        <div class="col-md-12">
-            <div class="col-md-3">
-                <img class="imgheight width100 hovered" src="../assets/img/news.jpg" alt=""
-                     onclick="showMaxImg(this)">
-            </div>
-            <div class="col-md-3">
-                <img class="imgheight width100 hovered" src="../assets/img/news.jpg" alt=""
-                     onclick="showMaxImg(this)">
-            </div>
-            <div class="col-md-3">
-                <img class="imgheight width100 hovered" src="../assets/img/news.jpg" alt=""
-                     onclick="showMaxImg(this)">
-            </div>
-            <div class="col-md-3">
-                <img class="imgheight width100 hovered" src="../assets/img/news.jpg" alt=""
-                     onclick="showMaxImg(this)">
-            </div>
+            <h4 class="font_bold titlehover">暂无数据</h4>
         </div>
     </div>
+    <%}else{
+    data.forEach(function(news){%>
+    <div class="col-md-12" style="padding-bottom: 20px;border-bottom: 1px solid #ccc">
+        <div class="col-md-12">
+            <h4 onclick="newsDetails('<%=news.id%>')" class="font_bold titlehover"><%=news.news.title%></h4>
+        </div>
+        <div class="col-md-12">
+            <% let imgs = 4;
+            if(news.news.imgList.length<4){
+            imgs = news.news.imgList.length;
+            }
+            for(let i=0;i
+            <imgs
+            ;i++){%>
+            <div class="col-md-3">
+                <img class="imgheight width100 hovered" src="<%=news.news.imgList[i]%>"
+                     onclick="showMaxImg(this)">
+            </div>
+            <%}%>
+        </div>
+    </div>
+    <%})}%>
 </script>
 <!--查看新闻详情开始-->
 <div id="newsDetails" class="page-wrapper displayNone">
@@ -64,24 +69,19 @@
                     </div>
                     <div class="panel-body">
                         <div class="col-md-12" style="text-align: center">
-                            <h3 style="padding: 0 0 20px 0">新闻标题</h3>
+                            <h3 id="title" style="padding: 0 0 20px 0"></h3>
                         </div>
                         <div class="col-md-12">
                             <div class="col-md-4 padding0">
-                                <span style="color:#ababab">2019.03.25 15:39:38</span>
+                                <span id="time" style="color:#ababab">
+                                </span>
                             </div>
                             <div class="col-md-8">
-                                <span style="float: right">来源：管理员</span>
+                                <span id="source" style="float: right"></span>
                             </div>
                         </div>
                         <div class="col-md-12">
-                            <div style="padding: 20px;">
-                                <p>新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容
-                                    新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容
-                                    新闻内容新闻内容新闻内容新闻内容新闻内容</p>
-                                <p>新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容
-                                    新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容
-                                    新闻内容新闻内容新闻内容新闻内容新闻内容</p>
+                            <div id="newsContent" style="padding: 20px;">
                             </div>
                         </div>
                         <div class="col-md-12">
@@ -108,31 +108,16 @@
 <!--图片弹出大图结束-->
 <!--查看更多新闻结束-->
 </body>
-
 <script src="../assets/js/common.js"></script>
-<!--分页开始-->
-<script>
-    $('.m-style').pagination({
-        pageCount: 5,
-        jump: true,
-        coping: true,
-        homePage: '首页',
-        endPage: '末页',
-        prevContent: '上页',
-        nextContent: '下页',
-        callback: function (api) {
-            console.log(api.getCurrent());
-        }
-    });
-</script>
-<!--分页结束-->
 <script>
     let pageCount = 0;
+    let newsId = [];
+
     function newsBrowse() {
         let viewNews = document.getElementById('viewNews').innerHTML;
         let viewNew = document.getElementById('viewNew');
-        let limit = 4;
-        let offset = 0;
+        let limit = 5;
+        let offset = 1;
         let url = "http://www.yuanbw.cn:20086/gpms/rol/showAllNews";
         $.ajax({
             url: url,
@@ -150,10 +135,9 @@
             },
             success: function (responseStr) {
                 if (responseStr.statusCode == "100") {
-                    console.log(responseStr)
                     pageCount = Math.ceil(responseStr.data.count / limit);
-                    console.log(responseStr.data)
-                    viewNew.innerHTML = ejs.render(viewNews, {data:responseStr.data});
+                    newsId = responseStr.data.newsList;
+                    viewNew.innerHTML = ejs.render(viewNews, {data: responseStr.data.newsList});
                     $('#newsPage').pagination({
                         pageCount: pageCount,
                         jump: true,
@@ -164,7 +148,7 @@
                         nextContent: '下页',
                         callback: function (api) {
                             let page = api.getCurrent();
-                            offset = (page - 1) * limit;
+                            offset = page;
                             $.ajax({
                                 url: url,
                                 type: "POST",
@@ -182,18 +166,16 @@
                                 success: function (responseStr) {
                                     let msg = responseStr.msg;
                                     if (responseStr.statusCode == "100") {
+                                        newsId = responseStr.data.newsList;
                                         pageCount = Math.ceil(responseStr.data.count / limit);
-                                        array = responseStr.data.projects;
-                                        if (array.length > 0) {
-                                            viewNew.innerHTML = ejs.render(viewNews, {data:responseStr.data});
-                                        }
+                                        viewNew.innerHTML = ejs.render(viewNews, {data: responseStr.data.newsList});
                                     } else if (msg == "系统繁忙") {
                                         alert("系统繁忙,请不要点击过快！");
                                     } else if (responseStr.statusCode == "102") {
                                         alert(responseStr.msg);
                                         window.location.href = "../login/login.html";
                                     } else {
-                                        topic.innerHTML = ejs.render(topics, {arrays: ""});
+                                        viewNew.innerHTML = ejs.render(viewNews, {data: ""});
                                     }
                                 },
                                 error: function (responseStr) {
@@ -203,16 +185,36 @@
                         }
                     });
                 } else if (responseStr.statusCode == "102") {
-                    alert(responseStr.msg);
                     window.location.href = "../login/login.html";
                 } else {
-                    topic.innerHTML = ejs.render(topics, {arrays: ""});
+                    viewNew.innerHTML = ejs.render(viewNews, {data: ""});
                 }
             },
             error: function (responseStr) {
                 window.location.href = "../404/404.html";
             }
         });
+    }
+
+    function newsDetails(id) {
+        $('#news').addClass('displayNone');
+        $('#news').removeClass('displayBlock');
+        $('#new').addClass('displayBlock');
+        $('#new').removeClass('displayNone');
+        $('#newsDetails').addClass('displayBlock');
+        $('#newsDetails').removeClass('displayNone');
+        newsId.forEach(function (news) {
+            if (news.id == id) {
+                $("#newsContent").html(news.news.content);
+                $("#title").html(news.news.title);
+                let unixTimestamp = new Date(news.sendDate);
+                let commonTime = unixTimestamp.toLocaleString();
+                $("#time").html(commonTime);
+                let source = "来源：";
+                source = source + news.sendCol + " " + news.sendName;
+                $("#source").html(source);
+            }
+        })
     }
 </script>
 </html>

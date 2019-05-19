@@ -20,6 +20,8 @@
     <script src="../assets/js/jquery-1.10.2.js"></script>
     <!-- 自定义 Js -->
     <script src="../assets/js/common.js"></script>
+    <!-- 自定义函数 Js -->
+    <script src="../assets/js/commonFunction.js"></script>
 </head>
 <body>
 <div id="wrapper">
@@ -112,15 +114,16 @@
             </li>
             <script id="publicAannouncements" type="text/template">
                 <ul>
+                    <%if(data==""){%>
                     <li class="liStyle liBorderBottom textEllipsis">
-                        公告公告公告公告公告
+                        暂无未读公告
                     </li>
+                    <%}else{
+                    data.forEach(function(announcements){%>
                     <li class="liStyle liBorderBottom textEllipsis">
-                        公告公告公告公告公告
+                        <%=announcements.notice.title%>
                     </li>
-                    <li class="liStyle liBorderBottom textEllipsis">
-                        公告公告公告公告公告公告公告公告公告公告
-                    </li>
+                    <%})}%>
                     <li class="liStyle liBorderBottom textEllipsis  text-center">
                         <a class="management_messageNotice text-center newPage topPage" href="#">
                             <strong>查看更多公告</strong>
@@ -131,15 +134,16 @@
             </script>
             <script id="publicNotices" type="text/template">
                 <ul>
+                    <%if(data==""){%>
                     <li class="liStyle liBorderBottom textEllipsis">
-                        通知通知通知通知通知通知通知
+                        暂无未读通知
                     </li>
+                    <%}else{
+                    data.forEach(function(notice){%>
                     <li class="liStyle liBorderBottom textEllipsis">
-                        通知通知通知通知通知通知通知通知通知
+                        <%=notice.title%>
                     </li>
-                    <li class="liStyle liBorderBottom textEllipsis">
-                        公通知通知通知通知通知通知通知通知通知通知
-                    </li>
+                    <%})}%>
                     <li class="liStyle liBorderBottom textEllipsis  text-center">
                         <a class="management_messageNotice text-center newPage topPage" href="#">
                             <strong>查看更多通知</strong>
@@ -2672,8 +2676,6 @@
 <script src="../assets/js/bootstrap.js"></script>
 <script src="../assets/js/sideCloseOpen.js"></script>
 <script src="../assets/js/ejs.js"></script>
-<!-- 自定义函数 Js -->
-<script src="../assets/js/commonFunction.js"></script>
 <!--圆形进度条-->
 <!-- easypiechart-data Js -->
 <script src="../assets/js/easypiechart-data.js"></script>
@@ -2695,47 +2697,6 @@
         $('.page-wrapper').addClass('displayNone');
         $('.page-wrapper').removeClass('displayBlock');
         $('#five').addClass('displayBlock');
-    }
-
-    //未读通知
-    function UnReadNotifications() {
-        let url = "http://www.yuanbw.cn:20086/gpms/rol/showUnReadNotifications";
-        let offset = 0;
-        let limit = 4;
-        $.ajax({
-            url: url,
-            type: "POST",
-            data: {
-                offset: offset,
-                limit: limit
-            },
-            xhrFields: {
-                withCredentials: true
-            },
-            crossDomain: true,
-            headers: {
-                Token: token
-            },
-            success: function (responseStr) {
-                if (responseStr.statusCode == "100") {
-                    console.log(responseStr)
-                } else if (responseStr.statusCode == "102") {
-                    alert(responseStr.msg);
-                    window.location.href = "../login/login.html";
-                } else {
-                    tutorList.innerHTML = ejs.render(tutorLists, {
-                        gName: "",
-                        gId: ""
-                    });
-                    information.innerHTML = ejs.render(informations, {informations: ""});
-                    informationDetailed.innerHTML = ejs.render(informationsDetailed, {informations: ""});
-                }
-
-            },
-            error: function (responseStr) {
-                window.location.href = "../404/404.html";
-            }
-        });
     }
 
     function colorOfProgress(progress) {
@@ -2871,11 +2832,20 @@
         });
     }
 
+
+    window.onload=function (){
+        UnReadNotifications();
+        showUnReadNotices();
+        count()
+    }
+
     $(function () {
         topicSelected();
         queryProgress();
         showRoleInfo();
-        UnReadNotifications();
+        // UnReadNotifications();
+        // showUnReadNotices();
+        // console.log(count());
     });
 
     function indexQuery() {
