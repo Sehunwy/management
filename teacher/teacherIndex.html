@@ -43,7 +43,7 @@
             <li class="noticeIcon">
                 <a href="#">
                     <span class="iconfont icon-lingdang iconColor fontSize14"></span>
-                    <span class="messageUnread textEllipsis">12</span>
+                    <span id="unRead" class="messageUnread"></span>
                     <span class="iconfont icon-jiantou iconColor fontSize8"></span>
                 </a>
                 <div id="content" class="noticeContent" style="width: 400px">
@@ -53,45 +53,53 @@
                     </ul>
                     <div class="horizontal"></div>
                     <div id="type0" class="type">
-                        <ul>
-                            <li class="liStyle liBorderBottom textEllipsis">
-                                公告公告公告公告公告
-                            </li>
-                            <li class="liStyle liBorderBottom textEllipsis">
-                                公告公告公告公告公告
-                            </li>
-                            <li class="liStyle liBorderBottom textEllipsis">
-                                公告公告公告公告公告公告公告公告公告公告
-                            </li>
-                            <li class="liStyle liBorderBottom textEllipsis  text-center">
-                                <a class="management_messageNotice text-center newPage topPage" href="#">
-                                    <strong>查看更多公告</strong>
-                                    <i class="fa fa-angle-right"></i>
-                                </a>
-                            </li>
-                        </ul>
+                        <div id="publicAannouncement"></div>
                     </div>
                     <div id="type1" class="type hide">
-                        <ul>
-                            <li class="liStyle liBorderBottom textEllipsis">
-                                通知通知通知通知通知通知通知
-                            </li>
-                            <li class="liStyle liBorderBottom textEllipsis">
-                                通知通知通知通知通知通知通知通知通知
-                            </li>
-                            <li class="liStyle liBorderBottom textEllipsis">
-                                公通知通知通知通知通知通知通知通知通知通知
-                            </li>
-                            <li class="liStyle liBorderBottom textEllipsis  text-center">
-                                <a class="management_messageNotice text-center newPage topPage" href="#">
-                                    <strong>查看更多通知</strong>
-                                    <i class="fa fa-angle-right"></i>
-                                </a>
-                            </li>
-                        </ul>
+                        <div id="publicNotice"></div>
                     </div>
                 </div>
             </li>
+            <script id="publicAannouncements" type="text/template">
+                <ul>
+                    <%if(data==""){%>
+                    <li class="liStyle liBorderBottom textEllipsis">
+                        暂无未读公告
+                    </li>
+                    <%}else{
+                    data.forEach(function(announcements){%>
+                    <li class="liStyle liBorderBottom textEllipsis">
+                        <%=announcements.notice.title%>
+                    </li>
+                    <%})}%>
+                    <li class="liStyle liBorderBottom textEllipsis  text-center">
+                        <a class="management_messageNotice text-center newPage topPage" href="#">
+                            <strong>查看更多公告</strong>
+                            <i class="fa fa-angle-right"></i>
+                        </a>
+                    </li>
+                </ul>
+            </script>
+            <script id="publicNotices" type="text/template">
+                <ul>
+                    <%if(data==""){%>
+                    <li class="liStyle liBorderBottom textEllipsis">
+                        暂无未读通知
+                    </li>
+                    <%}else{
+                    data.forEach(function(notice){%>
+                    <li class="liStyle liBorderBottom textEllipsis">
+                        <%=notice.title%>
+                    </li>
+                    <%})}%>
+                    <li class="liStyle liBorderBottom textEllipsis  text-center">
+                        <a class="management_messageNotice text-center newPage topPage" href="#">
+                            <strong>查看更多通知</strong>
+                            <i class="fa fa-angle-right"></i>
+                        </a>
+                    </li>
+                </ul>
+            </script>
             <!--通知公告结束-->
             <!--个人信息开始-->
             <li class="noticeIcon">
@@ -3900,6 +3908,16 @@
     let authority = getCookie("authority");
     if (token == "" || token == null || authority != 2) {
         window.location.href = "../login/login.html";
+    }
+
+    window.onload=function (){
+        let number = UnReadNotifications() + showUnReadNotices();
+        if(number>100){
+            $("#unRead").html('99+');
+        }else {
+            $("#unRead").html(number);
+        }
+        console.log(number);
     }
 
     $(function () {

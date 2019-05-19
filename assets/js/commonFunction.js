@@ -8,8 +8,34 @@ function fileClick(fileChoose, fileName) {
 }
 <!--获取上传文件名称结束-->
 
-let NotificationsCount = "";
-let NoticesCount = "";
+function messageNotice(){
+    $('.commmonTop').addClass('displayNone');
+    $('.commmonTop').removeClass('displayBlock');
+    $('.commmon').addClass('displayNone');
+    $('.commmon').removeClass('displayBlock');
+    $('.page-wrapper').addClass('displayNone');
+    $('.page-wrapper').removeClass('displayBlock');
+    $('#messageNotice').removeClass('displayNone');
+    $('#messageNotice').addClass('displayBlock');
+    $('#announcements').removeClass('displayNone');
+    $('#announcements').addClass('displayBlock');
+    showAllNotifications();
+}
+
+function messageProclamation(){
+    $('.commmonTop').addClass('displayNone');
+    $('.commmonTop').removeClass('displayBlock');
+    $('.commmon').addClass('displayNone');
+    $('.commmon').removeClass('displayBlock');
+    $('.page-wrapper').addClass('displayNone');
+    $('.page-wrapper').removeClass('displayBlock');
+    $('#messageProclamation').removeClass('displayNone');
+    $('#messageProclamation').addClass('displayBlock');
+    $('#ProclamationNotice').removeClass('displayNone');
+    $('#ProclamationNotice').addClass('displayBlock');
+    showProclamation();
+}
+
 //未读通知
 function UnReadNotifications() {
     let url = "http://www.yuanbw.cn:20086/gpms/rol/showUnReadNotifications";
@@ -20,6 +46,7 @@ function UnReadNotifications() {
     $.ajax({
         url: url,
         type: "POST",
+        async: false,
         data: {
             offset: offset,
             limit: limit
@@ -46,8 +73,6 @@ function UnReadNotifications() {
             window.location.href = "../404/404.html";
         }
     });
-    console.log(NotificationsCount)
-    count()
 }
 
 //未读公告
@@ -60,6 +85,7 @@ function showUnReadNotices() {
     $.ajax({
         url: url,
         type: "POST",
+        async: false,
         data: {
             offset: offset,
             limit: limit
@@ -88,12 +114,31 @@ function showUnReadNotices() {
     });
 }
 
-function count() {
-    // UnReadNotifications();
-    // showUnReadNotices();
-    console.log(NotificationsCount)
+//未读通知公告的条数
+let Noticecount = 0;
+function UnReadCount() {
+    let url = "http://www.yuanbw.cn:20086/gpms/rol/showUnReadCount";
+    $.ajax({
+        url: url,
+        type: "POST",
+        async: false,
+        data: {},
+        xhrFields: {
+            withCredentials: true
+        },
+        crossDomain: true,
+        headers: {
+            Token: token
+        },
+        success: function (responseStr) {
+            Noticecount = responseStr.data.unread_announcement+responseStr.data.unread_notice;
+        },
+        error: function (responseStr) {
+            window.location.href = "../404/404.html";
+        }
+    });
+    return Noticecount;
 }
-
 
 // 取消输入框的值开始
 function cancelTitle(classInput) {

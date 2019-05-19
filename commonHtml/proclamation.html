@@ -6,15 +6,15 @@
     <title>四川工商学院毕业设计管理系统</title>
 </head>
 <body>
-<!--查看更多通知开始-->
-<div id="messageNotice" class="page-wrapper displayNone">
+<!--查看更多公告开始-->
+<div id="messageProclamation" class="page-wrapper displayNone">
     <div class="header">
         <h3 class="page-header">
-            通知
+            公告
         </h3>
         <ol class="breadcrumb index">
             <li><a href="#">首页</a></li>
-            <li class="active">通知</li>
+            <li class="active">公告</li>
         </ol>
     </div>
     <div class="page-inner">
@@ -23,37 +23,33 @@
             <div class="col-md-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        通知
+                        公告
                     </div>
                     <div class="panel-body">
                         <div class="col-md-12 col-xs-12" style="padding-bottom: 10px">
                             <div class="col-md-6 col-xs-6">
                                 <span style="padding-right: 20px" class="clickColor cursorPointer" data-toggle="modal"
-                                      data-target="#deleMessage">
-                                            删除
-                                        </span>
-                                <span style="padding-right: 20px" class="clickColor cursorPointer" data-toggle="modal"
-                                      data-target="#readMessage">
+                                      data-target="#readProclamation">
                                             标为已读
                                         </span>
                             </div>
                             <div class="col-md-6 col-xs-6">
                                 <div style="padding-left: 0px" class="col-md-6">
-                                    <select id="noticeStatus" class="form-control">
+                                    <select id="ProclamationStatus" class="form-control">
                                         <option value="">全部</option>
                                         <option value="0">未读</option>
                                         <option value="1">已读</option>
                                     </select>
                                 </div>
                                 <div style="padding-left: 0px" class="col-md-6 padding0">
-                                    <button type="button" class="btn btn-info" onclick="queryNotice()">查询
+                                    <button type="button" class="btn btn-info" onclick="queryProclamation()">查询
                                     </button>
                                 </div>
                             </div>
                         </div>
-                        <div id="Notification"></div>
+                        <div id="Proclamation"></div>
                         <!--分页开始-->
-                        <div id="noticePage" style="margin-top: 10px" class="m-style"></div>
+                        <div id="ProclamationPage" style="margin-top: 10px" class="m-style"></div>
                         <!--分页结束-->
                     </div>
                 </div>
@@ -62,17 +58,17 @@
         <!--通知公告结束-->
     </div>
 </div>
-<script id="Notifications" type="text/template">
+<script id="Proclamations" type="text/template">
     <div class="alert alert-success textEllipsis border_radius marginBottom0">
         <div class="col-md-1 textAlign">
-            <input name="checkboxsAll" id="notices" onchange="selectAll('notices','checkboxNotice')" type="checkbox"
+            <input name="checkboxsAll" id="noticesProclamation" onchange="selectAll('noticesProclamation','checkboxNotice')" type="checkbox"
                    value="1"/>
         </div>
         <div class="col-md-3">
-            消息内容
+            消息题目
         </div>
         <div class="col-md-4">
-            接收人
+            发送人
         </div>
         <div class="col-md-3 textAlign">
             发送时间
@@ -90,19 +86,19 @@
             <input name="checkboxs" class="checkboxNotice" type="checkbox" value="<%=notice.id%>"/>
         </div>
         <div class="col-md-3 textEllipsis">
-            <%if(notice.hasRead){%>
+            <%if(notice.viewed){%>
             <span class="iconfont icon-yiduxiaoxi"></span>
             <%}else{%>
             <span class="iconfont icon-wodexiaoxi"></span>
             <%}%>
             <span class="clickColor cursorPointer" data-toggle="modal"
-                  data-target="#messageDetails" onclick="noticeId('<%=notice.id%>')">
-                                            <%=notice.title%>
+                  data-target="#ProclamationDetails" onclick="ProclamationId('<%=notice.id%>')">
+                                            <%=notice.notice.title%>
                                         </span>
 
         </div>
         <div class="col-md-4">
-            <%=notice.recvRole.name%>（<%=notice.recvRole.id%>）
+            <%=notice.sendName%>（<%=notice.sendCol%>）
         </div>
         <div class="col-md-3 textEllipsis textAlign">
             <%
@@ -112,32 +108,27 @@
             <%=commonTime%>
         </div>
         <div class="col-md-1 textAlign textEllipsis">
-            通知
+            公告
         </div>
     </div>
     <%})}%>
 </script>
-<!--查看通知详情开始-->
-<div class="modal fade" id="messageDetails" role="dialog">
-</div>
-<script id="messageDetailses" type="text/template">
+<!--查看公告详情开始-->
+<div class="modal fade" id="ProclamationDetails" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                         aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">通知详细信息</h4>
+                <h4 class="modal-title">公告详细信息</h4>
             </div>
             <div class="modal-body">
                 <div class="alert alert-success">
-                    <%=data.title%>
-                    <p><%=data.content%></p>
-                    <p style="float:right">发送时间： <%
-                        var unixTimestamp = new Date( data.sendDate ) ;
-                        commonTime = unixTimestamp.toLocaleString();
-                        %>
-                        <%=commonTime%></p>
-                    <p></p>
+                    <div style="text-align: center;font-weight: bold" id="titlePro"></div>
+                    <div id="contentPro"></div>
+                    <div style="float:right" id="timePro"></div>
+                    <br>
+                    <div style="float:right" id="sendPro"></div>
                     <p></p>
                 </div>
             </div>
@@ -146,32 +137,10 @@
             </div>
         </div>
     </div>
-</script>
-<!--查看通知详情结束-->
-<!--删除通知开始-->
-<div class="modal fade" id="deleMessage" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                        aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">提示</h4>
-            </div>
-            <div class="modal-body">
-                <div class="container-fluid">
-                    确定要删除通知公告？删除后不可恢复！
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-xs btn-white" data-dismiss="modal">取 消</button>
-                <button type="button" onclick="saveDele()" class="btn btn-xs btn-danger" data-dismiss="modal">保 存</button>
-            </div>
-        </div>
-    </div>
 </div>
-<!--删除通知结束-->
-<!--通知标为已读开始-->
-<div class="modal fade" id="readMessage" role="dialog">
+<!--查看公告详情结束-->
+<!--公告标为已读开始-->
+<div class="modal fade" id="readProclamation" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -186,27 +155,26 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-xs btn-white" data-dismiss="modal">取 消</button>
-                <button onclick="saveRead()" type="button" class="btn btn-xs btn-danger"  data-dismiss="modal">保 存</button>
+                <button onclick="saveReadProclamation()" type="button" class="btn btn-xs btn-danger"  data-dismiss="modal">保 存</button>
             </div>
         </div>
     </div>
 </div>
-<!--通知标为已读结束-->
-<!--查看更多通知结束-->
+<!--公告标为已读结束-->
+<!--查看更多公告结束-->
 </body>
 
 <script src="../assets/js/common.js"></script>
 <script src="../assets/js/commonFunction.js"></script>
 <!--分页开始-->
 <script>
-
     //条件查询通知
     let pageCount = 0;
-    let notices = [];
-    function showAllNotifications(hasRead) {
-        let url = "http://www.yuanbw.cn:20086/gpms/rol/showAllNotifications";
-        let Notifications = document.getElementById('Notifications').innerHTML;
-        let Notification = document.getElementById('Notification');
+    let ProclamationsData = [];
+    function showProclamation(hasRead) {
+        let url = "http://www.yuanbw.cn:20086/gpms/rol/showAllAnnounces";
+        let Proclamations = document.getElementById('Proclamations').innerHTML;
+        let Proclamation = document.getElementById('Proclamation');
         let limit = 6;
         let offset = 0;
         let data = {limit: limit, offset: offset};
@@ -227,9 +195,9 @@
             success: function (responseStr) {
                 if (responseStr.statusCode == "100") {
                     pageCount = Math.ceil(responseStr.data.count / limit);
-                    notices = responseStr.data.notificationsList;
-                    Notification.innerHTML = ejs.render(Notifications, {data: responseStr.data.notificationsList});
-                    $('#noticePage').pagination({
+                    ProclamationsData = responseStr.data.announcesList;
+                    Proclamation.innerHTML = ejs.render(Proclamations, {data: responseStr.data.announcesList});
+                    $('#ProclamationPage').pagination({
                         pageCount: pageCount,
                         jump: true,
                         coping: true,
@@ -255,10 +223,10 @@
                                 success: function (responseStr) {
                                     let msg = responseStr.msg;
                                     if (responseStr.statusCode == "100") {
-                                        notices = responseStr.data.notificationsList;
+                                        ProclamationsData = responseStr.data.announcesList;
                                         pageCount = Math.ceil(responseStr.data.count / limit);
-                                        if (responseStr.data.notificationsList.length > 0) {
-                                            Notification.innerHTML = ejs.render(Notifications, {data: responseStr.data.notificationsList});
+                                        if (responseStr.data.announcesList.length > 0) {
+                                            Proclamation.innerHTML = ejs.render(Proclamations, {data: responseStr.data.announcesList});
                                         }
                                     } else if (responseStr.statusCode == "102") {
                                         alert(responseStr.msg);
@@ -266,7 +234,7 @@
                                     } else if (msg == "系统繁忙") {
                                         alert("系统繁忙,请不要点击过快！");
                                     }else {
-                                        Notification.innerHTML = ejs.render(Notifications, {data: ""});
+                                        Proclamation.innerHTML = ejs.render(Proclamations, {data: ""});
                                     }
                                 },
                                 error: function (responseStr) {
@@ -279,7 +247,7 @@
                     alert(responseStr.msg);
                     window.location.href = "../login/login.html";
                 } else {
-                    Notification.innerHTML = ejs.render(Notifications, {data: ""});
+                    Proclamation.innerHTML = ejs.render(Proclamations, {data: ""});
                 }
             },
             error: function (responseStr) {
@@ -288,25 +256,28 @@
         });
     }
 
-    function noticeId(id) {
-        notices.forEach(function (notice) {
+    function ProclamationId(id) {
+        ProclamationsData.forEach(function (notice) {
             if(notice.id==id){
-                setNoticeRead(id);
-                let messageDetailses = document.getElementById('messageDetailses').innerHTML;
-                let messageDetails = document.getElementById('messageDetails');
-                messageDetails.innerHTML = ejs.render(messageDetailses, {data: notice});
+                setProclamationRead(id);
+                $("#titlePro").html(notice.notice.title);
+                $("#contentPro").html(notice.notice.content);
+                let unixTimestamp = new Date( notice.sendDate ) ;
+                let commonTime = unixTimestamp.toLocaleString();
+                $("#timePro").html(commonTime);
+                $("#sendPro").html(notice.sendName+'('+notice.sendCol+')');
             }
         })
     }
     
     //设置通知已读
-    function setNoticeRead(id) {
-        let url = "http://www.yuanbw.cn:20086/gpms/rol/setNoticeRead";
+    function setProclamationRead(id) {
+        let url = "http://www.yuanbw.cn:20086/gpms/rol/setAnnounceRead";
         $.ajax({
             url: url,
             type: "POST",
             data: {
-                nid:id
+                aid:id
             },
             xhrFields: {
                 withCredentials: true
@@ -316,7 +287,7 @@
                 Token: token
             },
             success: function (responseStr) {
-                showAllNotifications('')
+                showProclamation('')
             },
             error: function (responseStr) {
                 window.location.href = "../404/404.html";
@@ -325,48 +296,19 @@
     }
     let ids = []
     function checkboxs(){
-        // let ids = [];
         $("input[name='checkboxs']:checked").each(function (i) {
             let val = $(this).val();
             val = parseInt(val);
             ids.push(val)
         });
     }
-
-    //删除通知
-    function saveDele() {
-        checkboxs();
-        let url = "http://www.yuanbw.cn:20086/gpms/rol/delNotices";
-        $.ajax({
-            url: url,
-            type: "POST",
-            contentType: "application/json",
-            data: JSON.stringify({
-                msgIdList:ids
-            }),
-            xhrFields: {
-                withCredentials: true
-            },
-            crossDomain: true,
-            headers: {
-                Token: token
-            },
-            success: function (responseStr) {
-                alert(responseStr.msg);
-                showAllNotifications("");
-            },
-            error: function (responseStr) {
-                window.location.href = "../404/404.html";
-            }
-        });
-    }
     
-    //标为未读
-    function saveRead() {
+    //标为已读
+    function saveReadProclamation() {
         checkboxs();
         $("[name='checkboxs']").removeAttr("checked");
         $("[name='checkboxsAll ']").removeAttr("checked");
-        let url = "http://www.yuanbw.cn:20086/gpms/rol/setNoticeReadBatch";
+        let url = "http://www.yuanbw.cn:20086/gpms/rol/setAnnounceReadBatch";
         $.ajax({
             url: url,
             type: "POST",
@@ -383,7 +325,7 @@
             },
             success: function (responseStr) {
                 alert(responseStr.msg);
-                showAllNotifications("");
+                showProclamation("");
             },
             error: function (responseStr) {
                 window.location.href = "../404/404.html";
@@ -392,9 +334,9 @@
     }
 
     //条件查询
-    function queryNotice() {
-        let noticeStatus = document.getElementById('noticeStatus').value;
-        showAllNotifications(noticeStatus)
+    function queryProclamation() {
+        let ProclamationStatus = document.getElementById('ProclamationStatus').value;
+        showProclamation(ProclamationStatus)
     }
 
 </script>

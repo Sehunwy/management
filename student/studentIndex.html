@@ -42,7 +42,6 @@
         </div>
         <ul class="nav navbar-top-links navbar-right">
             <li style="color: #fff" id="information">
-
             </li>
             <script id="informations" type="text/template">
                 <%if(informations==""){%>
@@ -92,10 +91,10 @@
             </script>
             <!--任务进度结束-->
             <!--通知公告开始-->
-            <li class="noticeIcon">
+            <li id="noticeAnnouncement" class="noticeIcon">
                 <a href="#">
                     <span class="iconfont icon-lingdang iconColor fontSize14"></span>
-                    <span class="messageUnread textEllipsis">12</span>
+                    <span id="unRead" class="messageUnread"></span>
                     <span class="iconfont icon-jiantou iconColor fontSize8"></span>
                 </a>
                 <div id="content" class="noticeContent" style="width: 400px">
@@ -125,7 +124,7 @@
                     </li>
                     <%})}%>
                     <li class="liStyle liBorderBottom textEllipsis  text-center">
-                        <a class="management_messageNotice text-center newPage topPage" href="#">
+                        <a onclick="messageProclamation()" class="management_messageNotice text-center newPage topPage" href="#">
                             <strong>查看更多公告</strong>
                             <i class="fa fa-angle-right"></i>
                         </a>
@@ -145,7 +144,7 @@
                     </li>
                     <%})}%>
                     <li class="liStyle liBorderBottom textEllipsis  text-center">
-                        <a class="management_messageNotice text-center newPage topPage" href="#">
+                        <a onclick="messageNotice()" class="management_messageNotice text-center newPage topPage" href="#">
                             <strong>查看更多通知</strong>
                             <i class="fa fa-angle-right"></i>
                         </a>
@@ -197,7 +196,6 @@
                         <span class="iconfont icon-shouye iconColor fontSize14 naviconpadding"></span>首页
                     </a>
                 </li>
-                <!--<li><a href="#" id="management_two">-->
                 <li onclick="selectedTopic()"><a href="#" id="management_two">
                     <span class="iconfont icon-xuanti-mingcheng iconColorWhite fontSize14 naviconpadding"></span>学生选题
                 </a>
@@ -214,7 +212,7 @@
                     <span class="iconfont icon-yonghutongzhi iconColorWhite fontSize14 naviconpadding"></span>用户发送消息
                 </a>
                 </li>
-                <li><a href="#" id="management_good">
+                <li onclick="PastExcellent()"><a href="#" id="management_good">
                     <span class="iconfont icon-icon-test iconColorWhite fontSize14 naviconpadding"></span>历届优秀浏览
                 </a>
                 </li>
@@ -2514,7 +2512,6 @@
                 </div>
             </div>
             <div class="row" id="progressCircleAll">
-
             </div>
             <!--任务进度结束-->
         </div>
@@ -2612,7 +2609,7 @@
                             </strong>
                         </div>
                         <div class="col-md-10">
-                            <textarea class="form-control" style="width: 100%" rows="10"></textarea>
+                            <textarea id="contentNotification" class="form-control" style="width: 100%" rows="10"></textarea>
                         </div>
                     </div>
                 </div>
@@ -2620,7 +2617,7 @@
                     <button onclick="sendNotification()" type="button" class="btn btn-sm btn-success"
                             data-dismiss="modal">确定
                     </button>
-                    <button type="button" class="btn btn-sm btn-info" data-dismiss="modal">关闭</button>
+                    <button onclick="cancelNotification()" type="button" class="btn btn-sm btn-info" data-dismiss="modal">关闭</button>
                 </div>
             </div>
         </div>
@@ -2642,11 +2639,18 @@
         $("#changePassword").load("../commonHtml/changePassword.html");
     </script>
 
-    <!--通知公告-->
+    <!--通知-->
     <div id="announcements" class="commmonTop messageNotice displayNone" style="height: 100%">
     </div>
     <script>
         $("#announcements").load("../commonHtml/announcements.html");
+    </script>
+
+    <!--公告-->
+    <div id="ProclamationNotice" class="commmonTop messageNotice displayNone" style="height: 100%">
+    </div>
+    <script>
+        $("#ProclamationNotice").load("../commonHtml/proclamation.html");
     </script>
 
     <!--历届优秀浏览-->
@@ -2694,6 +2698,10 @@
     }
 
     function notice() {
+        $('.commmonTop').addClass('displayNone');
+        $('.commmonTop').removeClass('displayBlock');
+        $('.commmon').addClass('displayNone');
+        $('.commmon').removeClass('displayBlock');
         $('.page-wrapper').addClass('displayNone');
         $('.page-wrapper').removeClass('displayBlock');
         $('#five').addClass('displayBlock');
@@ -2832,20 +2840,30 @@
         });
     }
 
-
-    window.onload=function (){
+    $("#noticeAnnouncement").hover(function(){
         UnReadNotifications();
         showUnReadNotices();
-        count()
+        unRead()
+    },function(){
+    });
+
+    window.onload=function (){
+        unRead();
+    }
+
+    function unRead(){
+        let number = UnReadCount();
+        if(number>100){
+            $("#unRead").html('99+');
+        }else {
+            $("#unRead").html(number);
+        }
     }
 
     $(function () {
         topicSelected();
         queryProgress();
         showRoleInfo();
-        // UnReadNotifications();
-        // showUnReadNotices();
-        // console.log(count());
     });
 
     function indexQuery() {
@@ -3916,8 +3934,40 @@
     function sendNotification() {
         let ids = [];
         $("input[name='checkboxs']:checked").each(function (i) {
-            ids.push($(this).val())
-        })
+            let val = $(this).val();
+            val = parseInt(val);
+            ids.push(val)
+        });
+        let contentNotification = document.getElementById('contentNotification').value;
+        document.getElementById('contentNotification').value = "";
+        let url = "http://www.yuanbw.cn:20086/gpms/rol/sendRoleNotification";
+        $.ajax({
+            url: url,
+            type: "POST",
+            contentType: "application/json",
+            data: JSON.stringify({
+                content:contentNotification,
+                recvIds:ids
+            }),
+            xhrFields: {
+                withCredentials: true
+            },
+            crossDomain: true,
+            headers: {
+                Token: token
+            },
+            success: function (responseStr) {
+                alert(responseStr.msg);
+            },
+            error: function (responseStr) {
+                window.location.href = "../404/404.html";
+            }
+        });
+    }
+
+    //取消发送通知
+    function cancelNotification() {
+        document.getElementById('contentNotification').value = "";
     }
 </script>
 

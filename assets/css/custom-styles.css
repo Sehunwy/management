@@ -347,14 +347,14 @@ p {
     background-color: #f00;
     display: inline-block;
     position: absolute;
-    left: 26px;
-    top: 7px;
+    left: 24px;
+    top: 5px;
     border-radius: 50%;
     font-size: 12px;
     text-align: center;
     line-height: 20px;
-    width: 20px;
-    height: 20px;
+    width: 22px;
+    height: 22px;
     color: #fff;
 }
 

@@ -2633,7 +2633,6 @@
                 if (responseStr.statusCode == "100") {
                     let html = responseStr.data.name + '(' + responseStr.data.identifier + ')，欢迎使用系统';
                     $('#information').html(html);
-                    // teacherInfo = responseStr.data.identifier;
                 }else if (responseStr.statusCode == "102") {
                     alert(responseStr.msg);
                     window.location.href = "../login/login.html";
