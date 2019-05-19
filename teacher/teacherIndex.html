@@ -17,6 +17,8 @@
     <script src="../assets/js/jquery-1.10.2.js"></script>
     <!-- 自定义 Js -->
     <script src="../assets/js/common.js"></script>
+    <!-- 自定义函数 Js -->
+    <script src="../assets/js/commonFunction.js"></script>
 </head>
 <body>
 <div id="wrapper">
@@ -40,7 +42,7 @@
 
             </li>
             <!--通知公告开始-->
-            <li class="noticeIcon">
+            <li id="noticeAnnouncement" class="noticeIcon">
                 <a href="#">
                     <span class="iconfont icon-lingdang iconColor fontSize14"></span>
                     <span id="unRead" class="messageUnread"></span>
@@ -73,7 +75,7 @@
                     </li>
                     <%})}%>
                     <li class="liStyle liBorderBottom textEllipsis  text-center">
-                        <a class="management_messageNotice text-center newPage topPage" href="#">
+                        <a onclick="messageProclamation()" class="management_messageNotice text-center newPage topPage" href="#">
                             <strong>查看更多公告</strong>
                             <i class="fa fa-angle-right"></i>
                         </a>
@@ -93,7 +95,7 @@
                     </li>
                     <%})}%>
                     <li class="liStyle liBorderBottom textEllipsis  text-center">
-                        <a class="management_messageNotice text-center newPage topPage" href="#">
+                        <a onclick="messageNotice()" class="management_messageNotice text-center newPage topPage" href="#">
                             <strong>查看更多通知</strong>
                             <i class="fa fa-angle-right"></i>
                         </a>
@@ -153,11 +155,11 @@
                     <span class="iconfont icon-xuesheng iconColorWhite fontSize14 naviconpadding"></span>学生管理
                 </a>
                 </li>
-                <li><a href="#" id="management_good">
+                <li onclick="PastExcellent()"><a href="#" id="management_good">
                     <span class="iconfont icon-icon-test iconColorWhite fontSize14 naviconpadding"></span>历届优秀浏览
                 </a>
                 </li>
-                <li><a href="#" id="management_news">
+                <li onclick="newsBrowse()"><a href="#" id="management_news">
                     <span class="iconfont icon-xinwenguanli iconColorWhite fontSize14 naviconpadding"></span>新闻管理
                 </a>
                 </li>
@@ -1658,7 +1660,7 @@
                                 </div>
                                 <div class="alert alert-success textEllipsis border_radius marginBottom0">
                                     <div class="col-md-1 textAlign">
-                                        <input id="student_notice"
+                                        <input id="student_notice" name="checkboxNotices"
                                                onchange="selectAll('student_notice','checkbox_notice')" type="checkbox"
                                                value="1"/>
                                     </div>
@@ -2082,7 +2084,7 @@
                             </strong>
                         </div>
                         <div class="col-md-10">
-                            <textarea class="form-control" style="width: 100%" rows="10"></textarea>
+                            <textarea id="noticeContent" class="form-control" style="width: 100%" rows="10"></textarea>
                         </div>
                     </div>
                 </div>
@@ -2090,7 +2092,7 @@
                     <button type="button" onclick="sendNotification()" class="btn btn-sm btn-success"
                             data-dismiss="modal">确定
                     </button>
-                    <button type="button" class="btn btn-sm btn-info" data-dismiss="modal">关闭</button>
+                    <button onclick="cancelNotification()" type="button" class="btn btn-sm btn-info" data-dismiss="modal">关闭</button>
                 </div>
             </div>
         </div>
@@ -3859,11 +3861,18 @@
     </script>
     <!--历届优秀浏览结束-->
 
-    <!--通知公告-->
+    <!--通知-->
     <div id="announcements" class="commmonTop messageNotice displayNone" style="height: 100%">
     </div>
     <script>
         $("#announcements").load("../commonHtml/announcements.html");
+    </script>
+
+    <!--公告-->
+    <div id="ProclamationNotice" class="commmonTop messageNotice displayNone" style="height: 100%">
+    </div>
+    <script>
+        $("#ProclamationNotice").load("../commonHtml/proclamation.html");
     </script>
 
     <!--个人信息-->
@@ -3910,14 +3919,15 @@
         window.location.href = "../login/login.html";
     }
 
+    $("#noticeAnnouncement").hover(function(){
+        UnReadNotifications();
+        showUnReadNotices();
+        unRead()
+    },function(){
+    });
+
     window.onload=function (){
-        let number = UnReadNotifications() + showUnReadNotices();
-        if(number>100){
-            $("#unRead").html('99+');
-        }else {
-            $("#unRead").html(number);
-        }
-        console.log(number);
+        unRead();
     }
 
     $(function () {
@@ -5407,9 +5417,47 @@
     function sendNotification() {
         let ids = [];
         $("input[name='checkboxs']:checked").each(function (i) {
-            ids.push($(this).val())
-        })
-        console.log(ids)
+            let val = $(this).val();
+            val = parseInt(val);
+            ids.push(val)
+        });
+        if(ids.length==0){
+            alert("请选择用户！");
+        } else{
+            let noticeContent = document.getElementById('noticeContent').value;
+            let url = "http://www.yuanbw.cn:20086/gpms/rol/sendRoleNotification";
+            $.ajax({
+                url: url,
+                type: "POST",
+                contentType: "application/json",
+                data: JSON.stringify({
+                    content:noticeContent,
+                    recvIds:ids
+                }),
+                xhrFields: {
+                    withCredentials: true
+                },
+                crossDomain: true,
+                headers: {
+                    Token: token
+                },
+                success: function (responseStr) {
+                    alert(responseStr.msg);
+                },
+                error: function (responseStr) {
+                    window.location.href = "../404/404.html";
+                }
+            });
+            document.getElementById('noticeContent').value = "";
+            $("input:checkbox").removeAttr("checked");
+            console.log(ids)
+        }
+    }
+
+    //取消发送通知
+    function cancelNotification() {
+        document.getElementById('noticeContent').value = "";
+        $("input:checkbox").removeAttr("checked");
     }
 
 </script>

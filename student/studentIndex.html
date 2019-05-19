@@ -2851,15 +2851,6 @@
         unRead();
     }
 
-    function unRead(){
-        let number = UnReadCount();
-        if(number>100){
-            $("#unRead").html('99+');
-        }else {
-            $("#unRead").html(number);
-        }
-    }
-
     $(function () {
         topicSelected();
         queryProgress();

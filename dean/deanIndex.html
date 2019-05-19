@@ -17,6 +17,8 @@
     <script src="../assets/js/jquery-1.10.2.js"></script>
     <!-- 自定义 Js -->
     <script src="../assets/js/common.js"></script>
+    <!-- 自定义函数 Js -->
+    <script src="../assets/js/commonFunction.js"></script>
 </head>
 <body>
 <div id="wrapper">
@@ -40,10 +42,11 @@
 
             </li>
             <!--通知公告开始-->
-            <li class="noticeIcon">
+            <!--通知公告开始-->
+            <li id="noticeAnnouncement" class="noticeIcon">
                 <a href="#">
                     <span class="iconfont icon-lingdang iconColor fontSize14"></span>
-                    <span class="messageUnread textEllipsis">12</span>
+                    <span id="unRead" class="messageUnread"></span>
                     <span class="iconfont icon-jiantou iconColor fontSize8"></span>
                 </a>
                 <div id="content" class="noticeContent" style="width: 400px">
@@ -53,45 +56,53 @@
                     </ul>
                     <div class="horizontal"></div>
                     <div id="type0" class="type">
-                        <ul>
-                            <li class="liStyle liBorderBottom textEllipsis">
-                                公告公告公告公告公告
-                            </li>
-                            <li class="liStyle liBorderBottom textEllipsis">
-                                公告公告公告公告公告
-                            </li>
-                            <li class="liStyle liBorderBottom textEllipsis">
-                                公告公告公告公告公告公告公告公告公告公告
-                            </li>
-                            <li class="liStyle liBorderBottom textEllipsis  text-center">
-                                <a class="management_messageNotice text-center newPage topPage" href="#">
-                                    <strong>查看更多公告</strong>
-                                    <i class="fa fa-angle-right"></i>
-                                </a>
-                            </li>
-                        </ul>
+                        <div id="publicAannouncement"></div>
                     </div>
                     <div id="type1" class="type hide">
-                        <ul>
-                            <li class="liStyle liBorderBottom textEllipsis">
-                                通知通知通知通知通知通知通知
-                            </li>
-                            <li class="liStyle liBorderBottom textEllipsis">
-                                通知通知通知通知通知通知通知通知通知
-                            </li>
-                            <li class="liStyle liBorderBottom textEllipsis">
-                                公通知通知通知通知通知通知通知通知通知通知
-                            </li>
-                            <li class="liStyle liBorderBottom textEllipsis  text-center">
-                                <a class="management_messageNotice text-center newPage topPage" href="#">
-                                    <strong>查看更多通知</strong>
-                                    <i class="fa fa-angle-right"></i>
-                                </a>
-                            </li>
-                        </ul>
+                        <div id="publicNotice"></div>
                     </div>
                 </div>
             </li>
+            <script id="publicAannouncements" type="text/template">
+                <ul>
+                    <%if(data==""){%>
+                    <li class="liStyle liBorderBottom textEllipsis">
+                        暂无未读公告
+                    </li>
+                    <%}else{
+                    data.forEach(function(announcements){%>
+                    <li class="liStyle liBorderBottom textEllipsis">
+                        <%=announcements.notice.title%>
+                    </li>
+                    <%})}%>
+                    <li class="liStyle liBorderBottom textEllipsis  text-center">
+                        <a onclick="messageProclamation()" class="management_messageNotice text-center newPage topPage" href="#">
+                            <strong>查看更多公告</strong>
+                            <i class="fa fa-angle-right"></i>
+                        </a>
+                    </li>
+                </ul>
+            </script>
+            <script id="publicNotices" type="text/template">
+                <ul>
+                    <%if(data==""){%>
+                    <li class="liStyle liBorderBottom textEllipsis">
+                        暂无未读通知
+                    </li>
+                    <%}else{
+                    data.forEach(function(notice){%>
+                    <li class="liStyle liBorderBottom textEllipsis">
+                        <%=notice.title%>
+                    </li>
+                    <%})}%>
+                    <li class="liStyle liBorderBottom textEllipsis  text-center">
+                        <a onclick="messageNotice()" class="management_messageNotice text-center newPage topPage" href="#">
+                            <strong>查看更多通知</strong>
+                            <i class="fa fa-angle-right"></i>
+                        </a>
+                    </li>
+                </ul>
+            </script>
             <!--通知公告结束-->
             <!--个人信息开始-->
             <li class="noticeIcon">
@@ -141,11 +152,11 @@
                     <span class="iconfont icon-dabian iconColorWhite fontSize14 naviconpadding"></span>答辩管理
                 </a>
                 </li>
-                <li><a href="#" id="management_good">
+                <li onclick="PastExcellent()"><a href="#" id="management_good">
                     <span class="iconfont icon-icon-test iconColorWhite fontSize14 naviconpadding"></span>历届优秀浏览
                 </a>
                 </li>
-                <li><a href="#" id="management_news">
+                <li onclick="newsBrowse()"><a href="#" id="management_news">
                     <span class="iconfont icon-xinwenguanli iconColorWhite fontSize14 naviconpadding"></span>新闻管理
                 </a>
                 </li>
@@ -2516,11 +2527,18 @@
     </script>
     <!--历届优秀浏览结束-->
 
-    <!--通知公告-->
+    <!--通知-->
     <div id="announcements" class="commmonTop messageNotice displayNone" style="height: 100%">
     </div>
     <script>
         $("#announcements").load("../commonHtml/announcements.html");
+    </script>
+
+    <!--公告-->
+    <div id="ProclamationNotice" class="commmonTop messageNotice displayNone" style="height: 100%">
+    </div>
+    <script>
+        $("#ProclamationNotice").load("../commonHtml/proclamation.html");
     </script>
 
     <!--个人信息-->
@@ -2561,6 +2579,16 @@
 <script src="../assets/js/ejs.js"></script>
 <script src="../assets/js/xlsx.full.min.js"></script>
 <script>
+    $("#noticeAnnouncement").hover(function(){
+        UnReadNotifications();
+        showUnReadNotices();
+        unRead()
+    },function(){
+    });
+
+    window.onload=function (){
+        unRead();
+    }
 
     //出题情况统计报表导出
     function btn_export() {

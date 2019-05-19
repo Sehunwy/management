@@ -115,8 +115,8 @@ function showUnReadNotices() {
 }
 
 //未读通知公告的条数
-let Noticecount = 0;
 function UnReadCount() {
+    let Noticecount = 0;
     let url = "http://www.yuanbw.cn:20086/gpms/rol/showUnReadCount";
     $.ajax({
         url: url,
@@ -138,6 +138,15 @@ function UnReadCount() {
         }
     });
     return Noticecount;
+}
+
+function unRead(){
+    let number = UnReadCount();
+    if (number > 100) {
+        $("#unRead").html('99+');
+    } else {
+        $("#unRead").html(number);
+    }
 }
 
 // 取消输入框的值开始
