@@ -323,20 +323,19 @@
             }
         });
     }
-    let ids = []
-    function checkboxs(){
+    let NoticeIds = []
+    function checkboxsNotice(){
         $("input[name='checkboxs']:checked").each(function (i) {
             let val = $(this).val();
             val = parseInt(val);
-            ids.push(val)
+            NoticeIds.push(val)
         });
     }
 
     //删除通知
     function saveDele() {
-        checkboxs();
-        $("input:checkbox").removeAttr("checked");
-        if(ids.length==0) {
+        checkboxsNotice();
+        if(NoticeIds.length==0) {
             alert("请选择通知");
         }
         else {
@@ -346,7 +345,7 @@
                 type: "POST",
                 contentType: "application/json",
                 data: JSON.stringify({
-                    msgIdList:ids
+                    msgIdList:NoticeIds
                 }),
                 xhrFields: {
                     withCredentials: true
@@ -364,14 +363,13 @@
                 }
             });
         }
+        $("input:checkbox").removeAttr("checked");
     }
     
     //标为未读
     function saveRead() {
-        checkboxs();
-        $("[name='checkboxs']").removeAttr("checked");
-        $("[name='checkboxsAll ']").removeAttr("checked");
-        if(ids.length==0){
+        checkboxsNotice();
+        if(NoticeIds.length==0){
             alert("请选择通知");
         }else{
             let url = "http://www.yuanbw.cn:20086/gpms/rol/setNoticeReadBatch";
@@ -380,7 +378,7 @@
                 type: "POST",
                 contentType: "application/json",
                 data: JSON.stringify({
-                    msgIdList:ids
+                    msgIdList:NoticeIds
                 }),
                 xhrFields: {
                     withCredentials: true
@@ -398,6 +396,7 @@
                 }
             });
         }
+        $("input:checkbox").removeAttr("checked");
     }
 
     //条件查询

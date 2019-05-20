@@ -205,15 +205,18 @@
         if (contactTel == "") {
             contactTel = contactTelplaceholder;
         }
+        let data = {
+            email: email,
+            contactTel: contactTel
+        };
+        if (bindTel != bindTelplaceholder) {
+            data.bindTel = bindTel;
+        }
         let url = "http://www.yuanbw.cn:20086/gpms/rol/modifyRoleInfo";
         $.ajax({
             url: url,
             type: "POST",
-            data: {
-                bindTel: bindTel,
-                contactTel: contactTel,
-                email: email
-            },
+            data:data,
             xhrFields: {
                 withCredentials: true
             },

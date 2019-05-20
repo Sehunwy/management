@@ -76,7 +76,8 @@
                     </li>
                     <%})}%>
                     <li class="liStyle liBorderBottom textEllipsis  text-center">
-                        <a onclick="messageProclamation()" class="management_messageNotice text-center newPage topPage" href="#">
+                        <a onclick="messageProclamation()" class="management_messageNotice text-center newPage topPage"
+                           href="#">
                             <strong>查看更多公告</strong>
                             <i class="fa fa-angle-right"></i>
                         </a>
@@ -96,7 +97,8 @@
                     </li>
                     <%})}%>
                     <li class="liStyle liBorderBottom textEllipsis  text-center">
-                        <a onclick="messageNotice()" class="management_messageNotice text-center newPage topPage" href="#">
+                        <a onclick="messageNotice()" class="management_messageNotice text-center newPage topPage"
+                           href="#">
                             <strong>查看更多通知</strong>
                             <i class="fa fa-angle-right"></i>
                         </a>
@@ -998,8 +1000,9 @@
                                 <li onclick="queryStudentsPleaConditions('','','')"><a href="#replyStudent" role="tab"
                                                                                        data-toggle="tab">学生答辩分组统计报表</a>
                                 </li>
-                                <li onclick="summaryReportResults('','','ranking')"><a href="#results_Summary"
-                                                                                       role="tab" data-toggle="tab">成绩汇总统计报表</a>
+                                <li onclick="summaryReportResults('','','','','ranking')"><a href="#results_Summary"
+                                                                                             role="tab"
+                                                                                             data-toggle="tab">成绩汇总统计报表</a>
                                 </li>
                                 <li onclick="archivingStatistics('','','ranking')"><a href="#material_Archive"
                                                                                       role="tab"
@@ -1558,12 +1561,20 @@
                             <div class="tab-pane panel-body" id="results_Summary">
                                 <div style="padding-bottom: 15px;padding-left: 0px" class="col-md-12">
                                     <div style="padding-left: 0px" class="col-md-12">
-                                        <div class="col-md-4 col-xs-4">
+                                        <div class="col-md-2 col-xs-2">
                                             <input id="stuResultName" type="text" class="form-control"
                                                    placeholder="学生姓名">
                                         </div>
-                                        <div class="col-md-4 col-xs-4">
+                                        <div class="col-md-3 col-xs-3">
                                             <input id="stuResultId" type="text" class="form-control" placeholder="学生学号">
+                                        </div>
+                                        <div class="col-md-2 col-xs-2">
+                                            <input id="teaResultName" type="text" class="form-control"
+                                                   placeholder="指导教师姓名">
+                                        </div>
+                                        <div class="col-md-3 col-xs-3">
+                                            <input id="teaResultId" type="text" class="form-control"
+                                                   placeholder="指导教师工号">
                                         </div>
                                         <div class="col-md-2 col-xs-2" style="padding-left: 5px">
                                             <button type="button" class="btn btn-info" onclick="queryResultList()">查询
@@ -1583,9 +1594,12 @@
                                     </div>
                                 </div>
                                 <div id="studentsScore"></div>
-                                <!--分页开始-->
-                                <div style="margin-top: 15px" class="m-style" id="scorePage"></div>
-                                <!--分页结束-->
+                                <div class="col-md-12">
+                                    <!--分页开始-->
+                                    <div style="margin-top: 15px" class="m-style" id="scorePage"></div>
+                                    <!--分页结束-->
+                                </div>
+
                             </div>
                             <script id="studentsScores" type="text/template">
                                 <div class="alert alert-success textEllipsis border_radius marginBottom0">
@@ -1630,7 +1644,7 @@
                                     <div class="col-md-3 textEllipsis textAlign">
                                         <span class="clickColor cursorPointer" data-toggle="modal"
                                               data-target="#studentDetails"
-                                              onclick="summaryReportResults('<%=score.identifier%>','','student')">
+                                              onclick="summaryReportResults('<%=score.identifier%>','','','','student')">
                                             <%=score.name%>（<%=score.identifier%>）
                                         </span>
                                     </div>
@@ -1640,7 +1654,7 @@
                                         <%} else{%>
                                         <span class="clickColor cursorPointer" data-toggle="modal"
                                               data-target="#topicDetails"
-                                              onclick="summaryReportResults('<%=score.identifier%>','','title')">
+                                              onclick="summaryReportResults('<%=score.identifier%>','','','','title')">
                                         <%=score.checkedPro.title%>
                                             </span>
                                         <%}%>
@@ -2579,14 +2593,14 @@
 <script src="../assets/js/ejs.js"></script>
 <script src="../assets/js/xlsx.full.min.js"></script>
 <script>
-    $("#noticeAnnouncement").hover(function(){
+    $("#noticeAnnouncement").hover(function () {
         UnReadNotifications();
         showUnReadNotices();
         unRead()
-    },function(){
+    }, function () {
     });
 
-    window.onload=function (){
+    window.onload = function () {
         unRead();
     }
 
@@ -2617,7 +2631,7 @@
 
     //成绩汇总统计报表
     function exportScore() {
-        summaryReportResults(stuResultId, stuResultName, "count" + scoreCount);
+        summaryReportResults(stuResultId, stuResultName, teaResultId, teaResultName, "count" + scoreCount);
     }
 
     //材料归档统计报表
@@ -2636,7 +2650,7 @@
 
     let token = getCookie("token");
     let authority = getCookie("authority");
-    if (token == "" || token == null || authority!=3) {
+    if (token == "" || token == null || authority != 3) {
         window.location.href = "../login/login.html";
     }
     $(function () {
@@ -2661,10 +2675,10 @@
                 if (responseStr.statusCode == "100") {
                     let html = responseStr.data.name + '(' + responseStr.data.identifier + ')，欢迎使用系统';
                     $('#information').html(html);
-                }else if (responseStr.statusCode == "102") {
+                } else if (responseStr.statusCode == "102") {
                     alert(responseStr.msg);
                     window.location.href = "../login/login.html";
-                }else {
+                } else {
                     let html = "暂无数据";
                     $('#information').html(html);
                 }
@@ -2712,7 +2726,7 @@
                 } else if (responseStr.statusCode == "102") {
                     alert(responseStr.msg);
                     window.location.href = "../login/login.html";
-                }else {
+                } else {
                     hasDraw.innerHTML = ejs.render(hasDraws, {data: ""});
                 }
             },
@@ -2854,15 +2868,14 @@
                         } else if (responseStr.statusCode == "102") {
                             alert(responseStr.msg);
                             window.location.href = "../login/login.html";
-                        }
-                        else  {
+                        } else {
                             titleList.innerHTML = ejs.render(titleLists, {data: ""});
                         }
                     }
                 } else if (responseStr.statusCode == "102") {
                     alert(responseStr.msg);
                     window.location.href = "../login/login.html";
-                }else {
+                } else {
                     if (start == "count") {
                         alert("数据为空，暂不支持导出！");
                     }
@@ -2946,7 +2959,7 @@
                 } else if (responseStr.statusCode == "102") {
                     alert(responseStr.msg);
                     window.location.href = "../login/login.html";
-                }else {
+                } else {
                     hasSelect.innerHTML = ejs.render(hasSelects, {data: ""});
                 }
             },
@@ -3084,17 +3097,17 @@
                                     });
                                 }
                             });
-                        }else if (responseStr.statusCode == "102") {
+                        } else if (responseStr.statusCode == "102") {
                             alert(responseStr.msg);
                             window.location.href = "../login/login.html";
-                        } else  {
+                        } else {
                             if (start == "count") {
                                 alert("数据为空，暂不支持导出！");
                             }
                             studentList.innerHTML = ejs.render(studentLists, {data: ""});
                         }
                     }
-                }else if (responseStr.statusCode == "102") {
+                } else if (responseStr.statusCode == "102") {
                     alert(responseStr.msg);
                     window.location.href = "../login/login.html";
                 } else {
@@ -3165,7 +3178,7 @@
                 } else if (responseStr.statusCode == "102") {
                     alert(responseStr.msg);
                     window.location.href = "../login/login.html";
-                }else {
+                } else {
                     numberOfTitle.innerHTML = ejs.render(numberOfTitles, {data: ""});
                 }
             },
@@ -3325,14 +3338,13 @@
                                                     listOfTitle.innerHTML = ejs.render(listOfTitles, {data: responseStr.data.projectList});
                                                 }
                                             }
-                                            if (msg == "系统繁忙") {
+                                            else if (msg == "系统繁忙") {
                                                 alert("系统繁忙,请不要点击过快！");
-                                            }
-                                            else if (responseStr.statusCode == "102") {
+                                            } else if (responseStr.statusCode == "102") {
                                                 alert(responseStr.msg);
                                                 window.location.href = "../login/login.html";
-                                            }
-                                            else {
+                                            } else {
+                                                console.log("1212")
                                                 listOfTitle.innerHTML = ejs.render(listOfTitles, {data: ""});
                                             }
                                         },
@@ -3349,7 +3361,8 @@
                 } else if (responseStr.statusCode == "102") {
                     alert(responseStr.msg);
                     window.location.href = "../login/login.html";
-                }else {
+                } else {
+                    console.log(responseStr)
                     if (start == "count") {
                         alert("数据为空，暂不支持导出！");
                     }
@@ -3870,7 +3883,7 @@
     //成绩汇总统计报表
     let scoreCount;
 
-    function summaryReportResults(id, name, isRanking) {
+    function summaryReportResults(id, name, tid, tName, isRanking) {
         let len = isRanking.length;
         let end = isRanking.slice(5, len);
         let start = isRanking.substring(0, 5);
@@ -3889,6 +3902,12 @@
         }
         if (name != "") {
             data.name = name;
+        }
+        if (tid != "") {
+            data.tid = tid;
+        }
+        if (tName != "") {
+            data.tName = tName;
         }
         $.ajax({
             url: url,
@@ -4021,20 +4040,24 @@
 
             },
             error: function (responseStr) {
-                window.location.href = "../404/404.html";
+                // window.location.href = "../404/404.html";
             }
         });
     }
 
     //根据条件查询成绩列表
-    let stuResultName = "", stuResultId = "";
+    let stuResultName = "", stuResultId = "", teaResultId = "", teaResultName = "";
 
     function queryResultList() {
         stuResultName = document.getElementById('stuResultName').value;
         stuResultId = document.getElementById('stuResultId').value;
-        summaryReportResults(stuResultId, stuResultName, "ranking");
+        teaResultId = document.getElementById('teaResultId').value;
+        teaResultName = document.getElementById('teaResultName').value;
+        summaryReportResults(stuResultId, stuResultName, teaResultId, teaResultName, "ranking");
         document.getElementById('stuResultName').value = "";
         document.getElementById('stuResultId').value = "";
+        document.getElementById('teaResultId').value = "";
+        document.getElementById('teaResultName').value = "";
     }
 
     //材料归档统计报表
@@ -4584,10 +4607,10 @@
                     replyDate.innerHTML = ejs.render(replyDates, {
                         data: responseStr.data
                     });
-                }else if (responseStr.statusCode == "102") {
+                } else if (responseStr.statusCode == "102") {
                     alert(responseStr.msg);
                     window.location.href = "../login/login.html";
-                } else  {
+                } else {
                     replyDate.innerHTML = ejs.render(replyDates, {
                         data: ""
                     });
@@ -4736,7 +4759,7 @@
                     instructorGrouping.innerHTML = ejs.render(instructorGroupings, {
                         data: responseStr.data
                     });
-                }else if (responseStr.statusCode == "102") {
+                } else if (responseStr.statusCode == "102") {
                     alert(responseStr.msg);
                     window.location.href = "../login/login.html";
                 } else {
@@ -4892,12 +4915,10 @@
                 Token: token
             },
             success: function (responseStr) {
-                console.log("11");
-                console.log(responseStr)
+                alert(responseStr.msg);
             },
             error: function (responseStr) {
-                console.log(responseStr)
-                // window.location.href = "../404/404.html";
+                window.location.href = "../404/404.html";
             }
         });
     }
@@ -4917,12 +4938,10 @@
                 Token: token
             },
             success: function (responseStr) {
-                console.log("22");
-                console.log(responseStr)
+                // alert(responseStr.msg);
             },
             error: function (responseStr) {
-                console.log(responseStr)
-                // window.location.href = "../404/404.html";
+                window.location.href = "../404/404.html";
             }
         });
     }
