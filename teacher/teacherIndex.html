@@ -216,7 +216,7 @@
                                                     <select id="rangeType" style="margin:0px 5px" class="form-control">
                                                         <option value="">全部</option>
                                                         <option value="0">本系</option>
-                                                        <option value="1">全院</option>
+                                                        <option value="1">全校</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -439,7 +439,7 @@
                                         <h5 class="font_bold">可选专业</h5>
                                         <select style="margin:0px 5px" class="form-control" id="optionalProfessional">
                                             <option value="0">本系</option>
-                                            <option value="1">全院</option>
+                                            <option value="1">全校</option>
                                         </select>
                                         <%}else {%>
                                         <div hidden>
@@ -1690,7 +1690,11 @@
                                         <%=student.identifier%>
                                     </div>
                                     <div class="col-md-5 textEllipsis textAlign">
+                                        <%if(typeof(student.pName)=="undefined" || student.pName==""){%>
+                                        暂无选题
+                                        <%}else{%>
                                         <%=student.pName%>
+                                        <%}%>
                                     </div>
                                 </div>
                                 <%})}%>
@@ -2098,75 +2102,8 @@
         </div>
     </div>
     <!--发送通知内容结束-->
-    <!--查看毕业设计指导教师评审分数详情开始-->
-    <div class="modal fade" id="tutor_reviewPapers" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                            aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">毕业设计指导教师评审分数详情</h4>
-                </div>
-                <div class="modal-body">
-                    <div class="alert alert-success">
-                        <strong>
-                            <span>课题题目:</span>
-                        </strong>
-                        <span>PMMA灯具基于moldflow三维流动优化的注</span>
-                        <hr>
-                        <strong>
-                            <span>姓名（学号）:</span>
-                        </strong>
-                        <span>张珊珊（3120150905111）</span>
-                        <hr>
-                        <strong>
-                            <span>调查、论证（4）:</span>
-                        </strong>
-                        <span>4</span>
-                        <hr>
-                        <strong>
-                            <span>方案设计与技术路线（8）:</span>
-                        </strong>
-                        <span>
-                            7
-                        </span>
-                        <hr>
-                        <strong>
-                            <span>分析与解决问题的能力（8）:</span>
-                        </strong>
-                        <span>6</span>
-                        <hr>
-                        <strong>
-                            <span>工作量、工作态度（6）:</span>
-                        </strong>
-                        <span>6</span>
-                        <hr>
-                        <strong>
-                            <span>设计质量及设计说明书质量（10）:</span>
-                        </strong>
-                        <span>9</span>
-                        <hr>
-                        <strong>
-                            <span>创新（4）：</span>
-                        </strong>
-                        <span>4</span>
-                        <hr>
-                        <strong>
-                            <span>总分：</span>
-                        </strong>
-                        <span>90</span>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-sm btn-info" data-dismiss="modal">关闭</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--查看毕业设计指导教师评审分数详情结束-->
     <!--毕业设计指导教师评审开始-->
     <div id="tutor_scorePlea" class="page-wrapper displayNone">
-
     </div>
     <script id="tutor_scorePleas" type="text/template">
         <div style="margin: 0px" class="page-inner">

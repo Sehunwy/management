@@ -205,6 +205,7 @@
         $('#newsDetails').removeClass('displayNone');
         newsId.forEach(function (news) {
             if (news.id == id) {
+                reading(id);
                 $("#newsContent").html(news.news.content);
                 $("#title").html(news.news.title);
                 let unixTimestamp = new Date(news.sendDate);
@@ -215,6 +216,30 @@
                 $("#source").html(source);
             }
         })
+    }
+    
+    function reading(id) {
+        let url = "http://www.yuanbw.cn:20086/gpms/rol/addPageView";
+        $.ajax({
+            url: url,
+            type: "POST",
+            data: {
+                nid: id,
+            },
+            xhrFields: {
+                withCredentials: true
+            },
+            crossDomain: true,
+            headers: {
+                Token: token
+            },
+            success: function (responseStr) {
+                console.log(responseStr);
+            },
+            error: function (responseStr) {
+                window.location.href = "../404/404.html";
+            }
+        });
     }
 </script>
 </html>

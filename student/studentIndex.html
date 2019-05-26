@@ -410,15 +410,10 @@
         <div class="header">
             <h3 class="page-header">
                 首页
-                <small>欢迎 XXX</small>
+                <small>欢迎 <span id="stuNamePage"></span></small>
             </h3>
-            <ol class="breadcrumb index">
-                <li><a href="#">首页</a></li>
-                <li class="active">数据</li>
-            </ol>
         </div>
         <div class="page-inner">
-
             <!--进度提示开始-->
             <div class="row">
                 <div class="col-xs-12 col-md-12">
@@ -2265,12 +2260,6 @@
                                 <div class="row" style="margin-top: 10px">
                                     <div class="col-md-2">
                                         <button type="button"
-                                                class="management_graduation newPage btn btn-info">
-                                            更改
-                                        </button>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <button type="button"
                                                 class="btn btn-success" onclick="returnThree('graduationView')">
                                             返回
                                         </button>
@@ -2888,6 +2877,7 @@
             },
             success: function (responseStr) {
                 if (responseStr.statusCode == "100") {
+                    $('#stuNamePage').html(responseStr.data.name);
                     if (typeof (responseStr.data.tName) != "undefined" && responseStr.data.tName != "" && typeof (responseStr.data.tId) != "undefined" && responseStr.data.tId != "") {
                         gName = responseStr.data.tName;
                         gId = responseStr.data.tId;

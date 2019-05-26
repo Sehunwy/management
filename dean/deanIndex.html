@@ -660,7 +660,7 @@
                                                 <select id="range" style="margin:0px 5px" class="form-control">
                                                     <option value="">全部</option>
                                                     <option value="0">本系</option>
-                                                    <option value="1">全院</option>
+                                                    <option value="1">全校</option>
                                                 </select>
                                             </div>
                                             <div class="col-md-1 col-xs-1">
@@ -728,7 +728,7 @@
                             </div>
                             <script id="numberOfTitles" type="text/template">
                                 <div>本系出题题目数量：<%=data.total_count%></div>
-                                <div>本系已选完题目数量：<%=data.choose_not_rest_count%></div>
+                                <div>本系已选完题目数量：<%=data.choose_rest_count%></div>
                                 <div>本系未被选择题目数量：<%=data.not_choose_count%></div>
                                 <div>本系未被选完题目数量：<%=data.choose_not_rest_count%></div>
                             </script>
