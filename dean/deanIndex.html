@@ -198,10 +198,10 @@
                                     <div class="col-md-3">
                                         <input id="titleTeaId" type="text" class="form-control" placeholder="教师工号">
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-2">
                                         <input id="titleTeaName" type="text" class="form-control" placeholder="教师姓名">
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         <input id="titleName" type="text" class="form-control" placeholder="课题题目">
                                     </div>
                                     <div style="padding-left: 0px" class="col-md-2">
@@ -313,10 +313,10 @@
                                     <div class="col-md-3">
                                         <input id="sid" type="text" class="form-control" placeholder="学生学号">
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-2">
                                         <input id="sName" type="text" class="form-control" placeholder="学生姓名">
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         <input id="stuPName" type="text" class="form-control" placeholder="课题题目">
                                     </div>
                                     <div style="padding-left: 0px" class="col-md-2">
@@ -671,11 +671,9 @@
                                             <div class="col-md-2 col-xs-2 padding0">
                                                 <select id="genre" style="margin:0px 5px" class="form-control">
                                                     <option value="">全部</option>
-                                                    <option value="艺美设计">艺美设计</option>
-                                                    <option value="工程工业设计">工程工业设计</option>
-                                                    <option value="应用研究">应用研究</option>
-                                                    <option value="理论研究">理论研究</option>
-                                                    <option value="其他">其他</option>
+                                                    <option value="作品展演与创作报告">作品展演与创作报告</option>
+                                                    <option value="应用研发与设计">应用研发与设计</option>
+                                                    <option value="创意设计">创意设计</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -687,9 +685,8 @@
                                         <div class="col-md-3 col-xs-3 padding0">
                                             <select id="source" style="margin:0px 5px" class="form-control">
                                                 <option value="">全部</option>
-                                                <option value="生产实际（社会实践）题">生产实际（社会实践）题</option>
-                                                <option value="教师科研课题">教师科研课题</option>
-                                                <option value="其他">其他</option>
+                                                <option value="自选题目">自选题目</option>
+                                                <option value="生产和社会实践">生产和社会实践</option>
                                             </select>
                                         </div>
                                         <div class="col-md-1 col-xs-1">
@@ -727,10 +724,34 @@
                                 <!--分页结束-->
                             </div>
                             <script id="numberOfTitles" type="text/template">
-                                <div>本系出题题目数量：<%=data.total_count%></div>
-                                <div>本系已选完题目数量：<%=data.choose_rest_count%></div>
-                                <div>本系未被选择题目数量：<%=data.not_choose_count%></div>
-                                <div>本系未被选完题目数量：<%=data.choose_not_rest_count%></div>
+                                <div>本系出题题目数量：
+                                    <%if(typeof(data.total_count)=="undefined"||data.total_count==""){%>
+                                    0
+                                    <%}else{%>
+                                    <%=data.total_count%>
+                                    <%}%>
+                                </div>
+                                <div>本系已选完题目数量：
+                                    <%if(typeof(data.choose_rest_count)=="undefined"||data.choose_rest_count==""){%>
+                                    0
+                                    <%}else{%>
+                                    <%=data.choose_rest_count%>
+                                    <%}%>
+                                </div>
+                                <div>本系未被选择题目数量：
+                                    <%if(typeof(data.not_choose_count)=="undefined"||data.not_choose_count==""){%>
+                                    0
+                                    <%}else{%>
+                                    <%=data.not_choose_count%>
+                                    <%}%>
+                                </div>
+                                <div>本系未被选完题目数量：
+                                    <%if(typeof(data.choose_not_rest_count)=="undefined"||data.choose_not_rest_count==""){%>
+                                    0
+                                    <%}else{%>
+                                    <%=data.choose_not_rest_count%>
+                                    <%}%>
+                                </div>
                             </script>
                             <script id="listOfTitles" type="text/template">
                                 <div class="alert alert-success textEllipsis border_radius marginBottom0">
@@ -1310,7 +1331,11 @@
                                         </span>
                                     </div>
                                     <div title="<%=student.pName%>" class="col-md-3 textAlign textEllipsis">
+                                        <%if(student.pName==""){%>
+                                        暂无选题
+                                        <%}else{%>
                                         <%=student.pName%>
+                                        <%}%>
                                     </div>
                                     <div class="col-md-1 textAlign">
                                         <div style="padding-bottom: 2px">
@@ -1741,7 +1766,11 @@
                                         <%}%>
                                     </div>
                                     <div class="col-md-4 textAlign textEllipsis">
+                                        <%if(stu.pName==""){%>
+                                        暂无选题
+                                        <%}else{%>
                                         <%=stu.pName%>
+                                        <%}%>
                                     </div>
                                     <div class="col-md-2 textAlign">
                                         <span class="clickColor cursorPointer" data-toggle="modal"
@@ -3337,14 +3366,12 @@
                                                 if (responseStr.data.projectList.length > 0) {
                                                     listOfTitle.innerHTML = ejs.render(listOfTitles, {data: responseStr.data.projectList});
                                                 }
-                                            }
-                                            else if (msg == "系统繁忙") {
+                                            } else if (msg == "系统繁忙") {
                                                 alert("系统繁忙,请不要点击过快！");
                                             } else if (responseStr.statusCode == "102") {
                                                 alert(responseStr.msg);
                                                 window.location.href = "../login/login.html";
                                             } else {
-                                                console.log("1212")
                                                 listOfTitle.innerHTML = ejs.render(listOfTitles, {data: ""});
                                             }
                                         },
@@ -3362,7 +3389,6 @@
                     alert(responseStr.msg);
                     window.location.href = "../login/login.html";
                 } else {
-                    console.log(responseStr)
                     if (start == "count") {
                         alert("数据为空，暂不支持导出！");
                     }
@@ -3745,13 +3771,13 @@
                 } else if (responseStr.statusCode == "102") {
                     alert(responseStr.msg);
                     window.location.href = "../login/login.html";
-                } else if (responseStr.statusCode == "101") {
+                } else {
+                    console.log(responseStr)
                     if (start == "count") {
                         alert("数据为空，暂不支持导出！");
                     }
                     studentsGroup.innerHTML = ejs.render(studentsGroups, {data: ""});
                 }
-
             },
             error: function (responseStr) {
                 window.location.href = "../404/404.html";
@@ -4031,7 +4057,7 @@
                 } else if (responseStr.statusCode == "102") {
                     alert(responseStr.msg);
                     window.location.href = "../login/login.html";
-                } else if (responseStr.statusCode == "101") {
+                } else {
                     if (start == "count") {
                         alert("数据为空，暂不支持导出！");
                     }
@@ -4233,7 +4259,7 @@
                     window.location.href = "../login/login.html";
                 } else if (responseStr.statusCode == "104") {
                     alert("系统繁忙，请不要点击过快！");
-                } else if (responseStr.statusCode == "101") {
+                } else  {
                     materialArchive.innerHTML = ejs.render(materialArchives, {data: ""});
                 }
             },

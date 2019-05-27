@@ -542,7 +542,7 @@
                     <div class="panel panel-default">
                         <div style="background-color: #f5f5f5">
                             <ul class="nav nav-tabs" role="tablist">
-                                <li class="active"><a href="#topic_Selection" role="tab"
+                                <li onclick="selectedTopic()" class="active"><a href="#topic_Selection" role="tab"
                                                       data-toggle="tab">选题</a></li>
                                 <li onclick="topicSelected()"><a href="#topic_Selected" role="tab" data-toggle="tab">已选课题</a>
                                 </li>
@@ -557,11 +557,11 @@
                                 </div>
                                 <div style="padding-bottom: 15px;padding-left: 0px" class="col-md-12">
                                     <div style="padding-left: 0px" class="col-md-12">
-                                        <div style="margin-bottom: 10px" class="col-md-4 col-xs-4">
-                                            <div class="col-md-3 col-xs-3" style="padding: 0px">
+                                        <div style="margin-bottom: 10px" class="col-md-6 col-xs-6">
+                                            <div class="col-md-2 col-xs-2" style="padding: 0px">
                                                 课题题目：
                                             </div>
-                                            <div class="col-md-9 col-xs-9" style="padding: 0px">
+                                            <div class="col-md-10 col-xs-10" style="padding: 0px">
                                                 <input type="text" class="form-control" id="topicTitle"/>
                                             </div>
                                         </div>
@@ -575,11 +575,11 @@
                                             </div>
                                         </div>
                                         <div class="col-md-1 col-xs-1"></div>
-                                        <div style="margin-bottom: 10px" class="col-md-4 col-xs-4">
-                                            <div class="col-md-3 col-xs-3" style="padding: 0px">
+                                        <div style="margin-bottom: 10px" class="col-md-6 col-xs-6">
+                                            <div class="col-md-2 col-xs-2" style="padding: 0px">
                                                 教师编号：
                                             </div>
-                                            <div class="col-md-9 col-xs-9" style="padding: 0px">
+                                            <div class="col-md-10 col-xs-10" style="padding: 0px">
                                                 <input type="text" class="form-control" id="teacherNumber"/>
                                             </div>
                                         </div>
@@ -591,25 +591,22 @@
                                             <div class="col-md-9 col-xs-9" style="padding: 0px">
                                                 <select style="margin:0px 5px" class="form-control" id="titleType">
                                                     <option value="">全部</option>
-                                                    <option value="艺美设计">艺美设计</option>
-                                                    <option value="工程工业设计">工程工业设计</option>
-                                                    <option value="应用研究">应用研究</option>
-                                                    <option value="理论研究">理论研究</option>
-                                                    <option value="其他">其他</option>
+                                                    <option value="作品展演与创作报告">作品展演与创作报告</option>
+                                                    <option value="应用研发与设计">应用研发与设计</option>
+                                                    <option value="创意设计">创意设计</option>
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="col-md-1 col-xs-1"></div>
-                                        <div style="margin-bottom: 10px" class="col-md-4 col-xs-4">
-                                            <div class="col-md-3 col-xs-3" style="padding: 0px">
+                                        <div style="margin-bottom: 10px" class="col-md-6 col-xs-6">
+                                            <div class="col-md-2 col-xs-2" style="padding: 0px">
                                                 题目来源：
                                             </div>
-                                            <div class="col-md-9 col-xs-9" style="padding: 0px">
+                                            <div class="col-md-10 col-xs-10" style="padding: 0px">
                                                 <select style="margin:0px 5px" class="form-control" id="titleSource">
                                                     <option value="">全部</option>
-                                                    <option value="生产实际（社会实践）题">生产实际（社会实践）题</option>
-                                                    <option value="教师科研课题">教师科研课题</option>
-                                                    <option value="其他">其他</option>
+                                                    <option value="自选题目">自选题目</option>
+                                                    <option value="生产和社会实践">生产和社会实践</option>
                                                 </select>
                                             </div>
                                         </div>

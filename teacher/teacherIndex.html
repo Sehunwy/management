@@ -207,7 +207,11 @@
                                                     题目来源：
                                                 </div>
                                                 <div class="col-md-3 col-xs-3">
-                                                    <input id="source" type="text" class="form-control">
+                                                    <select style="margin:0px 5px" class="form-control" id="source">
+                                                        <option value="">全部</option>
+                                                        <option value="自选题目">自选题目</option>
+                                                        <option value="生产和社会实践">生产和社会实践</option>
+                                                    </select>
                                                 </div>
                                                 <div class="col-md-1 col-xs-1 padding0">
                                                     选题范围：
@@ -225,7 +229,12 @@
                                                     题目类型：
                                                 </div>
                                                 <div class="col-md-4 col-xs-4">
-                                                    <input id="genre" type="text" class="form-control">
+                                                    <select style="margin:0px 5px" class="form-control" id="genre">
+                                                        <option value="">全部</option>
+                                                        <option value="作品展演与创作报告">作品展演与创作报告</option>
+                                                        <option value="应用研发与设计">应用研发与设计</option>
+                                                        <option value="创意设计">创意设计</option>
+                                                    </select>
                                                 </div>
                                                 <div class="col-md-1 col-xs-1 padding0">
                                                     审核状态：
@@ -406,7 +415,7 @@
                                         <h4 class="font_bold" style="color: #f09b22">选题指南</h4>
                                         <h5 class="font_bold">题目类型</h5>
                                         <select style="margin:0px 5px" class="form-control" id="titleType">
-                                            <% let titleTypes = ["艺美设计","工程工业设计","应用研究","理论研究","其他"];
+                                            <% let titleTypes = ["作品展演与创作报告","应用研发与设计","创意设计"];
                                             titleTypes.forEach(function(titleType){
                                             if(titleType==genre) {%>
                                             <option value="<%=titleType%>" selected><%=titleType%></option>
@@ -417,7 +426,7 @@
                                         </select>
                                         <h5 class="font_bold">题目来源</h5>
                                         <select style="margin:0px 5px" class="form-control" id="titleSource">
-                                            <% let titleSources = ["生产实际（社会实践）题","教师科研课题","其他"];
+                                            <% let titleSources = ["自选题目","生产和社会实践"];
                                             titleSources.forEach(function(titleSource){
                                             if(titleSource==source) {%>
                                             <option value="<%=titleSource%>" selected><%=titleSource%></option>
@@ -541,7 +550,7 @@
                                             <div class="col-md-3 col-xs-3">
                                                 <select id="scStatus" style="margin:0px 5px" class="form-control">
                                                     <option value="">全部</option>
-                                                    <option value="1">审核通过</option>
+                                                    <option value="2">审核通过</option>
                                                     <option value="0">审核不通过</option>
                                                     <option value="3">审核中</option>
                                                 </select>
@@ -605,12 +614,15 @@
                                             <%=item.student.name%>(<%=item.student.identifier%>)
                                         </span>
                                     </div>
-                                    <div class="col-md-1 textEllipsis textAlign padding0">
+                                    <div class="col-md-1  textAlign padding0">
                                         <% if(item.cStatus==0){ %>
                                         不通过
                                         <% } else if(item.cStatus==1){ %>
                                         审核通过
-                                        <% } else { %>
+                                        <% } else if(item.cStatus==2){%>
+                                        教师审核通过
+                                        <%}
+                                        else { %>
                                         审核中
                                         <% } %>
                                     </div>
@@ -1932,7 +1944,11 @@
                                 data.forEach(function(student){%>
                                 <div class="alert alert-warning textEllipsis border_radius marginBottom0">
                                     <div title="<%=student.pName%>" class="col-md-3 textAlign textEllipsis">
+                                        <%if(student.pName==""){%>
+                                        暂无选题
+                                        <%}else{%>
                                         <%=student.pName%>
+                                        <%}%>
                                     </div>
                                     <div class="col-md-1 textAlign textEllipsis">
                                         <%=student.name%>
@@ -1959,7 +1975,7 @@
                                                 data-target="#tutor_viewScore"
                                                 onclick="viewScoreId('<%=student.identifier%>')">查看
                                         </button>
-                                        <%if(student.guidanceTeaGroup.hasReviewed) {%>
+                                        <%if(student.guidanceTeaGroup.hasReviewed || student.pName=="") {%>
                                         <button type="button" class="btn btn-info btn-xs" disabled>
                                             打分
                                         </button>
@@ -1970,7 +1986,6 @@
                                             打分
                                         </button>
                                         <%}%>
-
                                     </div>
                                 </div>
                                 <%})}%>
@@ -2049,7 +2064,11 @@
                                         <%=student.name%>（<%=student.identifier%>）
                                     </div>
                                     <div class="col-md-5 textAlign textEllipsis">
+                                        <%if(student.pName==""){%>
+                                        暂无选题
+                                        <%}else{%>
                                         <%=student.pName%>
+                                        <%}%>
                                     </div>
                                     <%if(typeof(student.proScore)=="undefined"||!student.proScore.hasReviewed) {%>
                                     <div class="col-md-2 textAlign padding0">暂无综合评定成绩</div>
@@ -2259,7 +2278,7 @@
                                 </div>
                                 <div class="col-md-2 textAlign">
                                     <input type="text" class="form-control pleaScoreinput" id="designInnovation"
-                                           onkeyup="designInnovationScore('designInnovation',10)">
+                                           onkeyup="designInnovationScore('designInnovation',4)">
                                 </div>
                             </div>
                             <div class="alert alert-warning textEllipsis border_radius marginBottom0">
@@ -2286,7 +2305,8 @@
                                 </div>
                                 <div class="col-md-2">
                                     <button type="button" class="management_student newPage  btn btn-success"
-                                            onclick="cancelTitle('pleaScoreinput')">
+                                            onclick="returnDesignReview()">
+                                            <!--onclick="cancelTitle('pleaScoreinput')">-->
                                         返回
                                     </button>
                                 </div>
@@ -2314,7 +2334,13 @@
                         <strong>
                             <span>课题题目:</span>
                         </strong>
-                        <span><%=data.pName%></span>
+                        <span>
+                            <%if(data.pName==""){%>
+                            暂无选题
+                            <%}else{%>
+                            <%=data.pName%>
+                            <%}%>
+                        </span>
                         <hr>
                         <strong>
                             <span>学生姓名（学号）:</span>
@@ -4107,13 +4133,13 @@
     //查询学生选题
     let pageCount = 1;
 
-    function queryStudentTopics(sid, sName, pid, pName, cStatus) {
+    function queryStudentTopics(sid, sName, pid, pName, cStatus,queryState) {
         let url = "http://www.yuanbw.cn:20086/gpms/tea/showProChooses";
         let limit = 4;
         let offset = 0;
         let data = {limit: limit, offset: offset};
         if (sid != "") {
-            data.sid = sid;
+            data.sid = parseInt(sid);
         }
         if (sName != "") {
             data.sName = sName;
@@ -4140,7 +4166,7 @@
             },
             success: function (responseStr) {
                 if (responseStr.statusCode == "100") {
-                    if (sid != "") {
+                    if (queryState=="student") {
                         let studentDetailses = document.getElementById('studentDetailses').innerHTML;
                         let studentDetails = document.getElementById('studentDetails');
                         let student = responseStr.data.chooseList[0].student;
@@ -4219,12 +4245,12 @@
     }
 
     function Students_Topics() {
-        queryStudentTopics("", "", "", "", "");
+        queryStudentTopics("", "", "", "", "","");
     }
 
     //传入学生id查询学生信息
     function studentId(id) {
-        queryStudentTopics(id, "", "", "", "");
+        queryStudentTopics(id, "", "", "", "","student");
     }
 
     //根据条件查询学生选题
@@ -4237,7 +4263,7 @@
         let sidValue = sid.value;
         let pNameValue = pName.value;
         let cStatusValue = cStatus.value;
-        queryStudentTopics("", sNameValue, sidValue, pNameValue, cStatusValue);
+        queryStudentTopics(sidValue, sNameValue, "", pNameValue, cStatusValue,"");
         sName.value = "";
         sid.value = "";
         pName.value = "";
@@ -4702,7 +4728,6 @@
         let viewScore = document.getElementById('viewScore');
         GraduationDesignStudents.forEach(function (student) {
             if (student.identifier == id) {
-                console.log(student)
                 viewScore.innerHTML = ejs.render(viewScores, {
                     data: student
                 });
@@ -5293,6 +5318,15 @@
         });
     }
 
+    //返回毕业评审列表
+    function returnDesignReview() {
+        cancelTitle('pleaScoreinput');
+        $('#tutor_scorePlea').addClass('displayNone');
+        $('#tutor_scorePlea').removeClass('displayBlock');
+        $('#student').addClass('displayBlock');
+        $('#student').removeClass('displayNone');
+    }
+
     //成绩公示
     function PerformancePublicInfo(id, name) {
         let data = {};
@@ -5388,7 +5422,6 @@
             });
             document.getElementById('noticeContent').value = "";
             $("input:checkbox").removeAttr("checked");
-            console.log(ids)
         }
     }
 
