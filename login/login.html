@@ -352,6 +352,9 @@
                 let msg = responseStr.msg;
                 if (msg == "验证成功") {
                     let authority = responseStr.data.authority;
+                    let token = responseStr.data.jwtToken;
+                    setCookie("token",token,"d1");
+                    setCookie("authority",authority,"d1");
                     if (authority == 1) {
                         window.location.href = "../student/studentIndex.html";
                     } else if (authority == 2) {

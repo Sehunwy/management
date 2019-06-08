@@ -196,6 +196,7 @@
         let emailplaceholder = $("#email").attr('placeholder');
         let bindTelplaceholder = $("#bindTel").attr('placeholder');
         let contactTelplaceholder = $("#contactTel").attr('placeholder');
+        let data = {};
         if (email == "") {
             email = emailplaceholder;
         }
@@ -205,35 +206,46 @@
         if (contactTel == "") {
             contactTel = contactTelplaceholder;
         }
-        let data = {
-            email: email,
-            contactTel: contactTel
-        };
+        // let data = {
+        //     email: email,
+        //     contactTel: contactTel
+        // };
+        if (email != emailplaceholder) {
+            data.email = email;
+        }
         if (bindTel != bindTelplaceholder) {
             data.bindTel = bindTel;
         }
-        let url = "http://www.yuanbw.cn:20086/gpms/rol/modifyRoleInfo";
-        $.ajax({
-            url: url,
-            type: "POST",
-            data:data,
-            xhrFields: {
-                withCredentials: true
-            },
-            crossDomain: true,
-            headers: {
-                Token: token
-            },
-            success: function (responseStr) {
-                alert(responseStr.msg);
-                if (responseStr.msg == "修改成功") {
-                    showRoleInfo();
+        if (contactTel != contactTelplaceholder) {
+            data.contactTel = contactTel;
+        }
+        if(JSON.stringify(data) == "{}"){
+            alert("请填写要修改的内容！")
+        }
+        else {
+            let url = "http://www.yuanbw.cn:20086/gpms/rol/modifyRoleInfo";
+            $.ajax({
+                url: url,
+                type: "POST",
+                data:data,
+                xhrFields: {
+                    withCredentials: true
+                },
+                crossDomain: true,
+                headers: {
+                    Token: token
+                },
+                success: function (responseStr) {
+                    alert(responseStr.msg);
+                    if (responseStr.msg == "修改成功") {
+                        showRoleInfo();
+                    }
+                },
+                error: function (responseStr) {
+                    window.location.href = "../404/404.html";
                 }
-            },
-            error: function (responseStr) {
-                window.location.href = "../404/404.html";
-            }
-        });
+            });
+        }
     }
 </script>
 </html>

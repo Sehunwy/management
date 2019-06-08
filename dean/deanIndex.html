@@ -697,7 +697,7 @@
                                         <div class="col-md-3 col-xs-3">
                                             <select id="status" style="margin:0px 5px" class="form-control">
                                                 <option value="">全部</option>
-                                                <option value="0">未被选择的题目</option>
+                                                <option value="0">暂无审核通过学生题目</option>
                                                 <option value="1">未选完的题目</option>
                                                 <option value="2">已选完的题目</option>
                                             </select>
@@ -738,7 +738,7 @@
                                     <%=data.choose_rest_count%>
                                     <%}%>
                                 </div>
-                                <div>本系未被选择题目数量：
+                                <div>本系暂无审核通过学生题目数量：
                                     <%if(typeof(data.not_choose_count)=="undefined"||data.not_choose_count==""){%>
                                     0
                                     <%}else{%>
@@ -1651,9 +1651,6 @@
                                     </div>
                                     <div class="col-md-1 textAlign">
                                         评定等级
-                                    </div>
-                                    <div class="col-md-1 textAlign">
-                                        操作
                                     </div>
                                 </div>
                                 <%if(data==""){%>
@@ -4756,7 +4753,7 @@
                 defensemTeacher();
             },
             error: function (responseStr) {
-                window.location.href = "../404/404.html";
+                // window.location.href = "../404/404.html";
             }
         });
     }

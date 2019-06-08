@@ -364,7 +364,7 @@
                                     <div class="col-md-12 openingReport">
                                         <%
                                         let
-                                        title="",id="",First="isFirst",rangeType,genre="艺美设计",source="生产实际（社会实践）题",briefIntro="",number=1,task="",referData="",uploadFile="",uploadTaskBookFile="",cStatus=0;
+                                        title="",id="",First="isFirst",rangeType,genre="艺美设计",source="生产实际（社会实践）题",briefIntro="",number=1,task="",referData="",uploadFile="",uploadTaskBookFile="",cStatus=0,rangeNumber=0;
                                         if(data!="") {
                                         id = data[0].project.id;
                                         cStatus = data[0].cStatus;
@@ -386,6 +386,12 @@
                                         {
                                         uploadTaskBookFile = data[0].project.taskBook.file.fileName;
                                         }
+                                        }
+                                        if(rangeType=="全校"){
+                                        rangeNumber = 1;
+                                        }
+                                        else {
+                                        rangeNumber = 0;
                                         }
                                         %>
                                         <%if(cStatus!=1) {%>
@@ -464,6 +470,8 @@
                                             <input value="<%=source%>" type="text" name="source">
                                             <h5 class="font_bold">可选人数</h5>
                                             <input value="<%=number%>" type="text" name="number">
+                                            <h5 class="font_bold">选题范围</h5>
+                                            <input value="<%=rangeNumber%>" type="text" name="rangeType">
                                         </div>
                                         <%}%>
                                         <h4 class="font_bold" style="color: #f09b22">任务书（选填）</h4>
@@ -545,12 +553,13 @@
                                                 <input id="pName" type="text" class="form-control">
                                             </div>
                                             <div class="col-md-1 col-xs-1 padding0">
-                                                教师审核状态：
+                                                审核状态：
                                             </div>
                                             <div class="col-md-3 col-xs-3">
                                                 <select id="scStatus" style="margin:0px 5px" class="form-control">
                                                     <option value="">全部</option>
-                                                    <option value="2">审核通过</option>
+                                                    <option value="1">系主任审核通过</option>
+                                                    <option value="2">教师审核通过</option>
                                                     <option value="0">审核不通过</option>
                                                     <option value="3">审核中</option>
                                                 </select>
